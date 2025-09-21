@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes
 {
-    partial class FrmLogin
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.PanelMid = new System.Windows.Forms.Panel();
+            this.btnView = new System.Windows.Forms.Button();
             this.LbLinkContra = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
-            this.LbLinkRegistrar = new System.Windows.Forms.LinkLabel();
-            this.BtnIngresar = new System.Windows.Forms.Button();
-            this.TxtContra = new System.Windows.Forms.TextBox();
+            this.lbLinkRegistrar = new System.Windows.Forms.LinkLabel();
+            this.btnIngresar = new System.Windows.Forms.Button();
+            this.txtContra = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.TxtUsuario = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnTema = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
             this.PanelMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,17 +64,33 @@
             this.PanelMid.Controls.Add(this.btnView);
             this.PanelMid.Controls.Add(this.LbLinkContra);
             this.PanelMid.Controls.Add(this.label6);
-            this.PanelMid.Controls.Add(this.LbLinkRegistrar);
-            this.PanelMid.Controls.Add(this.BtnIngresar);
-            this.PanelMid.Controls.Add(this.TxtContra);
+            this.PanelMid.Controls.Add(this.lbLinkRegistrar);
+            this.PanelMid.Controls.Add(this.btnIngresar);
+            this.PanelMid.Controls.Add(this.txtContra);
             this.PanelMid.Controls.Add(this.label4);
-            this.PanelMid.Controls.Add(this.TxtUsuario);
-            this.PanelMid.Controls.Add(this.label3);
+            this.PanelMid.Controls.Add(this.txtEmail);
+            this.PanelMid.Controls.Add(this.lblEmail);
             this.PanelMid.Controls.Add(this.label2);
             this.PanelMid.Location = new System.Drawing.Point(46, 102);
             this.PanelMid.Name = "PanelMid";
             this.PanelMid.Size = new System.Drawing.Size(376, 382);
             this.PanelMid.TabIndex = 1;
+            // 
+            // btnView
+            // 
+            this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnView.FlatAppearance.BorderSize = 0;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnView.Font = new System.Drawing.Font("Webdings", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnView.ForeColor = System.Drawing.Color.White;
+            this.btnView.Location = new System.Drawing.Point(304, 190);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(39, 26);
+            this.btnView.TabIndex = 10;
+            this.btnView.Text = "N";
+            this.btnView.UseVisualStyleBackColor = false;
+            this.btnView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnView_MouseDown);
+            this.btnView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnView_MouseUp);
             // 
             // LbLinkContra
             // 
@@ -97,45 +113,45 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "¿Nuevo en Michebyte?";
             // 
-            // LbLinkRegistrar
+            // lbLinkRegistrar
             // 
-            this.LbLinkRegistrar.AutoSize = true;
-            this.LbLinkRegistrar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbLinkRegistrar.Location = new System.Drawing.Point(211, 336);
-            this.LbLinkRegistrar.Name = "LbLinkRegistrar";
-            this.LbLinkRegistrar.Size = new System.Drawing.Size(132, 21);
-            this.LbLinkRegistrar.TabIndex = 7;
-            this.LbLinkRegistrar.TabStop = true;
-            this.LbLinkRegistrar.Text = "Crear una cuenta";
-            this.LbLinkRegistrar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LbLinkRegistrar_LinkClicked);
+            this.lbLinkRegistrar.AutoSize = true;
+            this.lbLinkRegistrar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLinkRegistrar.Location = new System.Drawing.Point(211, 336);
+            this.lbLinkRegistrar.Name = "lbLinkRegistrar";
+            this.lbLinkRegistrar.Size = new System.Drawing.Size(132, 21);
+            this.lbLinkRegistrar.TabIndex = 4;
+            this.lbLinkRegistrar.TabStop = true;
+            this.lbLinkRegistrar.Text = "Crear una cuenta";
+            this.lbLinkRegistrar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LbLinkRegistrar_LinkClicked);
             // 
-            // BtnIngresar
+            // btnIngresar
             // 
-            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.BtnIngresar.FlatAppearance.BorderSize = 0;
-            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnIngresar.ForeColor = System.Drawing.Color.White;
-            this.BtnIngresar.Location = new System.Drawing.Point(36, 278);
-            this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(307, 40);
-            this.BtnIngresar.TabIndex = 6;
-            this.BtnIngresar.Text = "Ingresar";
-            this.BtnIngresar.UseVisualStyleBackColor = false;
-            this.BtnIngresar.Click += new System.EventHandler(this.BtnLog_Click);
+            this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnIngresar.FlatAppearance.BorderSize = 0;
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.ForeColor = System.Drawing.Color.White;
+            this.btnIngresar.Location = new System.Drawing.Point(36, 278);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(307, 40);
+            this.btnIngresar.TabIndex = 3;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.UseVisualStyleBackColor = false;
+            this.btnIngresar.Click += new System.EventHandler(this.BtnLog_Click);
             // 
-            // TxtContra
+            // txtContra
             // 
-            this.TxtContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtContra.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtContra.ForeColor = System.Drawing.Color.Black;
-            this.TxtContra.Location = new System.Drawing.Point(36, 190);
-            this.TxtContra.Name = "TxtContra";
-            this.TxtContra.PasswordChar = '●';
-            this.TxtContra.Size = new System.Drawing.Size(307, 26);
-            this.TxtContra.TabIndex = 4;
-            this.TxtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtContra.UseSystemPasswordChar = true;
+            this.txtContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContra.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContra.ForeColor = System.Drawing.Color.Black;
+            this.txtContra.Location = new System.Drawing.Point(36, 190);
+            this.txtContra.Name = "txtContra";
+            this.txtContra.PasswordChar = '●';
+            this.txtContra.Size = new System.Drawing.Size(307, 26);
+            this.txtContra.TabIndex = 2;
+            this.txtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtContra.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -148,27 +164,27 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Contraseña";
             // 
-            // TxtUsuario
+            // txtEmail
             // 
-            this.TxtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtUsuario.ForeColor = System.Drawing.Color.Black;
-            this.TxtUsuario.Location = new System.Drawing.Point(36, 100);
-            this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(306, 26);
-            this.TxtUsuario.TabIndex = 2;
-            this.TxtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.Color.Black;
+            this.txtEmail.Location = new System.Drawing.Point(36, 100);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(306, 26);
+            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label3
+            // lblEmail
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(180)))), ((int)(((byte)(194)))));
-            this.label3.Location = new System.Drawing.Point(31, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 25);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Usuario";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(180)))), ((int)(((byte)(194)))));
+            this.lblEmail.Location = new System.Drawing.Point(31, 59);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(59, 25);
+            this.lblEmail.TabIndex = 1;
+            this.lblEmail.Text = "Email";
             // 
             // label2
             // 
@@ -190,28 +206,12 @@
             this.BtnTema.Location = new System.Drawing.Point(394, 490);
             this.BtnTema.Name = "BtnTema";
             this.BtnTema.Size = new System.Drawing.Size(75, 34);
-            this.BtnTema.TabIndex = 2;
+            this.BtnTema.TabIndex = 5;
             this.BtnTema.Text = "☀️";
             this.BtnTema.UseVisualStyleBackColor = true;
             this.BtnTema.Click += new System.EventHandler(this.BtnTema_Click);
             // 
-            // btnView
-            // 
-            this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.btnView.FlatAppearance.BorderSize = 0;
-            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnView.Font = new System.Drawing.Font("Webdings", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(304, 190);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(39, 26);
-            this.btnView.TabIndex = 10;
-            this.btnView.Text = "N";
-            this.btnView.UseVisualStyleBackColor = false;
-            this.btnView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnView_MouseDown);
-            this.btnView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnView_MouseUp);
-            // 
-            // FrmLogin
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,7 +220,7 @@
             this.Controls.Add(this.BtnTema);
             this.Controls.Add(this.PanelMid);
             this.Controls.Add(this.label1);
-            this.Name = "FrmLogin";
+            this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -235,14 +235,14 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel PanelMid;
-        private System.Windows.Forms.Button BtnIngresar;
-        private System.Windows.Forms.TextBox TxtContra;
+        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.TextBox txtContra;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TxtUsuario;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnTema;
-        private System.Windows.Forms.LinkLabel LbLinkRegistrar;
+        private System.Windows.Forms.LinkLabel lbLinkRegistrar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel LbLinkContra;
         private System.Windows.Forms.Button btnView;

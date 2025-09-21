@@ -14,20 +14,20 @@ using SendGrid.Helpers.Mail;
 
 namespace MicheBytesRecipes
 {
-    public partial class FrmLogin : Form
+    public partial class frmLogin : Form
     {
-        public FrmLogin()
+        public frmLogin()
         {
             InitializeComponent();
             //Setea los cues en los textbox
-            CueProvider.SetCue(TxtContra, "Ingrese su contraseña");
-            CueProvider.SetCue(TxtUsuario, "Ingrese su usuario");
+            CueProvider.SetCue(txtContra, "Ingrese su contraseña");
+            CueProvider.SetCue(txtEmail, "Ingrese su usuario");
 
             //Redondeo de botones, paneles y textbox
             UiHelpers.SetRoundedPanel(PanelMid, 25);
-            UiHelpers.SetRoundedTextBox(TxtUsuario, 10);
-            UiHelpers.SetRoundedTextBox(TxtContra, 10);
-            UiHelpers.SetRoundedButton(BtnIngresar, 40);
+            UiHelpers.SetRoundedTextBox(txtEmail, 10);
+            UiHelpers.SetRoundedTextBox(txtContra, 10);
+            UiHelpers.SetRoundedButton(btnIngresar, 40);
             UiHelpers.SetRoundedButton(BtnTema, 20);
 
             //Aplicación del tema y color gradiente al formulario
@@ -86,14 +86,17 @@ namespace MicheBytesRecipes
 
         private void btnView_MouseDown(object sender, MouseEventArgs e)
         {
-            TxtContra.UseSystemPasswordChar = false;
-            TxtContra.PasswordChar = '\0';
+            txtContra.UseSystemPasswordChar = false;
+            txtContra.PasswordChar = '\0';
         }
 
         private void btnView_MouseUp(object sender, MouseEventArgs e)
         {
-            TxtContra.UseSystemPasswordChar = true;
-            TxtContra.PasswordChar = '●';
+            txtContra.UseSystemPasswordChar = true;
+            txtContra.PasswordChar = '●';
         }
     }
+
+    // Metodo para que solo pueda escribir letras en el textbox del usuario
+
 }

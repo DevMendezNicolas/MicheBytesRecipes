@@ -68,7 +68,7 @@ namespace MicheBytesRecipes.Forms.Auth
         private void LinkIniciar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            FrmLogin login = new FrmLogin();
+            frmLogin login = new frmLogin();
             this.Close();
             login.Show();
             
