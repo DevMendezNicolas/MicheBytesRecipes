@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MicheBytesRecipes.Forms.Auth;
 using MicheBytesRecipes.Helpers;
 using System.Windows.Forms;
+using System.Diagnostics.Eventing.Reader;
 
 namespace MicheBytesRecipes
 {
@@ -28,11 +29,14 @@ namespace MicheBytesRecipes
         // Dirige al login
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-            
+
+            this.Hide(); // Oculta el formulario Inicio
+
             frmLogin login = new frmLogin();
-            login.Show();
-            this.Show();
-            
+            login.ShowDialog(); // Abre Login como modal
+
+            this.Show(); // Se ejecuta después de cerrar Login
+            this.Activate(); // Recupera el foco
 
         }
 
@@ -41,7 +45,7 @@ namespace MicheBytesRecipes
 
             FrmRegister register = new FrmRegister();
             register.Show();
-            this.Show();
+            this.Hide();
 
         }
 
@@ -49,5 +53,7 @@ namespace MicheBytesRecipes
         {
 
         }
+
+        
     }
 }

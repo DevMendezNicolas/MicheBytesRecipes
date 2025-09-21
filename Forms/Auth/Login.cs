@@ -40,7 +40,8 @@ namespace MicheBytesRecipes
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            txtEmail.MaxLength = 50;
+            txtContra.MaxLength = 20;
         }
 
         private void BtnTema_Click(object sender, EventArgs e)
@@ -95,8 +96,29 @@ namespace MicheBytesRecipes
             txtContra.UseSystemPasswordChar = true;
             txtContra.PasswordChar = '●';
         }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Metodo para que solo pueda escribir letras en el txtEmail
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && e.KeyChar != '_' && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtContra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show(); // Vuelve a mostrar el formulario Inicio
+            this.Activate(); // Opcional: le da el foco
+        }
+
     }
-
-    // Metodo para que solo pueda escribir letras en el textbox del usuario
-
 }
+
+    
