@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Forms.Auth;
 using System.Windows.Forms;
-//using SendGrid;
-//using SendGrid.Helpers.Mail;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace MicheBytesRecipes
 {
@@ -82,6 +82,18 @@ namespace MicheBytesRecipes
             EmailService emailService = new EmailService();
             emailService.EnviarRecuperacionPassword(email, password);
 
+        }
+
+        private void btnView_MouseDown(object sender, MouseEventArgs e)
+        {
+            TxtContra.UseSystemPasswordChar = false;
+            TxtContra.PasswordChar = '\0';
+        }
+
+        private void btnView_MouseUp(object sender, MouseEventArgs e)
+        {
+            TxtContra.UseSystemPasswordChar = true;
+            TxtContra.PasswordChar = '●';
         }
     }
 }
