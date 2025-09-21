@@ -83,5 +83,17 @@ namespace MicheBytesRecipes
             emailService.EnviarRecuperacionPassword(email, password);
 
         }
+
+        private void btnView_MouseDown(object sender, MouseEventArgs e)
+        {
+            TxtContra.UseSystemPasswordChar = false;
+            TxtContra.PasswordChar = '\0';
+        }
+
+        private void btnView_MouseUp(object sender, MouseEventArgs e)
+        {
+            TxtContra.UseSystemPasswordChar = true;
+            TxtContra.PasswordChar = '●';
+        }
     }
 }

@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnTema = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
             this.PanelMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@
             // 
             this.PanelMid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(59)))));
             this.PanelMid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PanelMid.Controls.Add(this.btnView);
             this.PanelMid.Controls.Add(this.LbLinkContra);
             this.PanelMid.Controls.Add(this.label6);
             this.PanelMid.Controls.Add(this.LbLinkRegistrar);
@@ -80,11 +82,9 @@
             this.LbLinkContra.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.LbLinkContra.Location = new System.Drawing.Point(38, 240);
             this.LbLinkContra.Name = "LbLinkContra";
-            this.LbLinkContra.Size = new System.Drawing.Size(185, 21);
+            this.LbLinkContra.Size = new System.Drawing.Size(0, 21);
             this.LbLinkContra.TabIndex = 9;
             this.LbLinkContra.TabStop = true;
-            /*this.LbLinkContra.Text = "¿Olvidaste la contraseña?";
-            this.LbLinkContra.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LbLinkContra_LinkClicked);*/
             // 
             // label6
             // 
@@ -131,9 +131,11 @@
             this.TxtContra.ForeColor = System.Drawing.Color.Black;
             this.TxtContra.Location = new System.Drawing.Point(36, 190);
             this.TxtContra.Name = "TxtContra";
+            this.TxtContra.PasswordChar = '●';
             this.TxtContra.Size = new System.Drawing.Size(307, 26);
             this.TxtContra.TabIndex = 4;
             this.TxtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtContra.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -193,6 +195,22 @@
             this.BtnTema.UseVisualStyleBackColor = true;
             this.BtnTema.Click += new System.EventHandler(this.BtnTema_Click);
             // 
+            // btnView
+            // 
+            this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnView.FlatAppearance.BorderSize = 0;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnView.Font = new System.Drawing.Font("Webdings", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnView.ForeColor = System.Drawing.Color.White;
+            this.btnView.Location = new System.Drawing.Point(304, 190);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(39, 26);
+            this.btnView.TabIndex = 10;
+            this.btnView.Text = "N";
+            this.btnView.UseVisualStyleBackColor = false;
+            this.btnView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnView_MouseDown);
+            this.btnView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnView_MouseUp);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,5 +245,6 @@
         private System.Windows.Forms.LinkLabel LbLinkRegistrar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel LbLinkContra;
+        private System.Windows.Forms.Button btnView;
     }
 }
