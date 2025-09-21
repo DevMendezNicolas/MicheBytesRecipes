@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Forms.Auth;
 using System.Windows.Forms;
-//using SendGrid;
-//using SendGrid.Helpers.Mail;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace MicheBytesRecipes
 {
