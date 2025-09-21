@@ -29,7 +29,7 @@ namespace MicheBytesRecipes
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
             
-            FrmLogin login = new FrmLogin();
+            frmLogin login = new frmLogin();
             login.Show();
             this.Show();
             
