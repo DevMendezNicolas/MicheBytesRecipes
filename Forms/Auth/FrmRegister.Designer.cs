@@ -51,8 +51,9 @@
             this.TxtRecupero = new System.Windows.Forms.TextBox();
             this.LblPalabra = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
-            this.TxtNombre = new System.Windows.Forms.TextBox();
             this.LblNombre = new System.Windows.Forms.Label();
+            this.TxtNombre = new System.Windows.Forms.TextBox();
+            this.BtnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelRight.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,7 @@
             this.LblTituloForm.AutoSize = true;
             this.LblTituloForm.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTituloForm.ForeColor = System.Drawing.Color.White;
-            this.LblTituloForm.Location = new System.Drawing.Point(152, 80);
+            this.LblTituloForm.Location = new System.Drawing.Point(147, 180);
             this.LblTituloForm.Name = "LblTituloForm";
             this.LblTituloForm.Size = new System.Drawing.Size(171, 37);
             this.LblTituloForm.TabIndex = 1;
@@ -71,7 +72,7 @@
             // LblParrafo
             // 
             this.LblParrafo.ForeColor = System.Drawing.Color.White;
-            this.LblParrafo.Location = new System.Drawing.Point(84, 165);
+            this.LblParrafo.Location = new System.Drawing.Point(76, 235);
             this.LblParrafo.Name = "LblParrafo";
             this.LblParrafo.Size = new System.Drawing.Size(377, 308);
             this.LblParrafo.TabIndex = 2;
@@ -299,15 +300,6 @@
             this.PanelRight.TabIndex = 0;
             this.PanelRight.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelRight_Paint);
             // 
-            // TxtNombre
-            // 
-            this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtNombre.Location = new System.Drawing.Point(80, 194);
-            this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(431, 22);
-            this.TxtNombre.TabIndex = 2;
-            this.TxtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
@@ -318,12 +310,31 @@
             this.LblNombre.TabIndex = 12;
             this.LblNombre.Text = "Nombre";
             // 
+            // TxtNombre
+            // 
+            this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtNombre.Location = new System.Drawing.Point(80, 194);
+            this.TxtNombre.Name = "TxtNombre";
+            this.TxtNombre.Size = new System.Drawing.Size(431, 22);
+            this.TxtNombre.TabIndex = 2;
+            this.TxtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.Location = new System.Drawing.Point(154, 94);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(138, 68);
+            this.BtnEliminar.TabIndex = 3;
+            this.BtnEliminar.Text = "ALTO BOTON";
+            this.BtnEliminar.UseVisualStyleBackColor = true;
+            // 
             // FrmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.LblParrafo);
             this.Controls.Add(this.LblTituloForm);
             this.Controls.Add(this.PanelRight);
@@ -366,5 +377,6 @@
         private System.Windows.Forms.Panel PanelRight;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.TextBox TxtNombre;
+        private System.Windows.Forms.Button BtnEliminar;
     }
 }
