@@ -84,10 +84,14 @@ namespace MicheBytesRecipes.Forms.Auth
                     control.BackColor = Color.Transparent;
                 }
             }
-
-
         }
 
-
+        private void pbxFotoPerfil_Click(object sender, EventArgs e)
+        {
+            if (ofdFotoPerfil.ShowDialog() == DialogResult.OK)
+            {
+                pbxFotoPerfil.Image = Image.FromFile(ofdFotoPerfil.FileName);
+            }
+        }
     }
 }
