@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes
 {
-    public partial class frmHome : Form
+    public partial class FrmMenuAdmin : Form
     {
-        public frmHome()
+        public FrmMenuAdmin()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
