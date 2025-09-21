@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegister));
-            this.LblTituloForm = new System.Windows.Forms.Label();
-            this.LblParrafo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.TxtApellido = new System.Windows.Forms.TextBox();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.TxtContra = new System.Windows.Forms.TextBox();
@@ -53,39 +52,28 @@
             this.PanelRight = new System.Windows.Forms.Panel();
             this.LblNombre = new System.Windows.Forms.Label();
             this.TxtNombre = new System.Windows.Forms.TextBox();
-            this.BtnEliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LblTituloForm = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
+            this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.PanelRight.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eprCampos)).BeginInit();
             this.SuspendLayout();
             // 
-            // LblTituloForm
+            // pbxFotoPerfil
             // 
-            this.LblTituloForm.AutoSize = true;
-            this.LblTituloForm.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTituloForm.ForeColor = System.Drawing.Color.White;
-            this.LblTituloForm.Location = new System.Drawing.Point(147, 180);
-            this.LblTituloForm.Name = "LblTituloForm";
-            this.LblTituloForm.Size = new System.Drawing.Size(171, 37);
-            this.LblTituloForm.TabIndex = 1;
-            this.LblTituloForm.Text = "Algun titulo";
-            // 
-            // LblParrafo
-            // 
-            this.LblParrafo.ForeColor = System.Drawing.Color.White;
-            this.LblParrafo.Location = new System.Drawing.Point(76, 235);
-            this.LblParrafo.Name = "LblParrafo";
-            this.LblParrafo.Size = new System.Drawing.Size(377, 308);
-            this.LblParrafo.TabIndex = 2;
-            this.LblParrafo.Text = resources.GetString("LblParrafo.Text");
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(235, 74);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(123, 88);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 74);
+            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
+            this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
+            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxFotoPerfil.TabIndex = 1;
+            this.pbxFotoPerfil.TabStop = false;
+            this.pbxFotoPerfil.Click += new System.EventHandler(this.pbxFotoPerfil_Click);
             // 
             // TxtApellido
             // 
@@ -222,6 +210,7 @@
             // 
             // LblTitulo
             // 
+            this.LblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo.ForeColor = System.Drawing.Color.White;
@@ -292,7 +281,7 @@
             this.PanelRight.Controls.Add(this.TxtEmail);
             this.PanelRight.Controls.Add(this.TxtApellido);
             this.PanelRight.Controls.Add(this.TxtNombre);
-            this.PanelRight.Controls.Add(this.pictureBox1);
+            this.PanelRight.Controls.Add(this.pbxFotoPerfil);
             this.PanelRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.PanelRight.Location = new System.Drawing.Point(584, 0);
             this.PanelRight.Name = "PanelRight";
@@ -319,14 +308,61 @@
             this.TxtNombre.TabIndex = 2;
             this.TxtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BtnEliminar
+            // panel1
             // 
-            this.BtnEliminar.Location = new System.Drawing.Point(154, 94);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(138, 68);
-            this.BtnEliminar.TabIndex = 3;
-            this.BtnEliminar.Text = "ALTO BOTON";
-            this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.LblTituloForm);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(584, 661);
+            this.panel1.TabIndex = 1;
+            // 
+            // LblTituloForm
+            // 
+            this.LblTituloForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblTituloForm.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTituloForm.ForeColor = System.Drawing.Color.White;
+            this.LblTituloForm.Location = new System.Drawing.Point(0, 0);
+            this.LblTituloForm.Name = "LblTituloForm";
+            this.LblTituloForm.Size = new System.Drawing.Size(584, 139);
+            this.LblTituloForm.TabIndex = 22;
+            this.LblTituloForm.Text = "🌟 Descubrí la magia de cocinar con MicheBytes Recipes 🌟";
+            this.LblTituloForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(584, 97);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Unite a nuestra comunidad y llevá tu experiencia en la cocina al siguiente nivel." +
+    "";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(0, 276);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(584, 314);
+            this.label2.TabIndex = 24;
+            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ofdFotoPerfil
+            // 
+            this.ofdFotoPerfil.FileName = "openFileDialog1";
+            // 
+            // eprCampos
+            // 
+            this.eprCampos.ContainerControl = this;
             // 
             // FrmRegister
             // 
@@ -334,9 +370,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1184, 661);
-            this.Controls.Add(this.BtnEliminar);
-            this.Controls.Add(this.LblParrafo);
-            this.Controls.Add(this.LblTituloForm);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelRight);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -344,18 +378,17 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.Load += new System.EventHandler(this.FrmRegister_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).EndInit();
             this.PanelRight.ResumeLayout(false);
             this.PanelRight.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.eprCampos)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label LblTituloForm;
-        private System.Windows.Forms.Label LblParrafo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxFotoPerfil;
         private System.Windows.Forms.TextBox TxtApellido;
         private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.TextBox TxtContra;
@@ -377,6 +410,11 @@
         private System.Windows.Forms.Panel PanelRight;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.TextBox TxtNombre;
-        private System.Windows.Forms.Button BtnEliminar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label LblTituloForm;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog ofdFotoPerfil;
+        private System.Windows.Forms.ErrorProvider eprCampos;
     }
 }
