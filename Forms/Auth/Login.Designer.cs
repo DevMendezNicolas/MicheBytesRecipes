@@ -41,6 +41,7 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnTema = new System.Windows.Forms.Button();
+            this.lblLinkResetContra = new System.Windows.Forms.LinkLabel();
             this.PanelMid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             // 
             this.PanelMid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(59)))));
             this.PanelMid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PanelMid.Controls.Add(this.lblLinkResetContra);
             this.PanelMid.Controls.Add(this.btnView);
             this.PanelMid.Controls.Add(this.LbLinkContra);
             this.PanelMid.Controls.Add(this.label6);
@@ -152,6 +154,7 @@
             this.txtContra.TabIndex = 2;
             this.txtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtContra.UseSystemPasswordChar = true;
+            this.txtContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContra_KeyPress);
             // 
             // label4
             // 
@@ -174,6 +177,7 @@
             this.txtEmail.Size = new System.Drawing.Size(306, 26);
             this.txtEmail.TabIndex = 1;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblEmail
             // 
@@ -211,6 +215,17 @@
             this.BtnTema.UseVisualStyleBackColor = true;
             this.BtnTema.Click += new System.EventHandler(this.BtnTema_Click);
             // 
+            // lblLinkResetContra
+            // 
+            this.lblLinkResetContra.AutoSize = true;
+            this.lblLinkResetContra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLinkResetContra.Location = new System.Drawing.Point(34, 229);
+            this.lblLinkResetContra.Name = "lblLinkResetContra";
+            this.lblLinkResetContra.Size = new System.Drawing.Size(195, 21);
+            this.lblLinkResetContra.TabIndex = 11;
+            this.lblLinkResetContra.TabStop = true;
+            this.lblLinkResetContra.Text = "¿Olvidaste tu contraseña?";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +238,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
             this.PanelMid.ResumeLayout(false);
             this.PanelMid.PerformLayout();
@@ -246,5 +262,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel LbLinkContra;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.LinkLabel lblLinkResetContra;
     }
 }
