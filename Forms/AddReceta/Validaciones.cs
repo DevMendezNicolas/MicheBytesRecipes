@@ -12,7 +12,7 @@ namespace MicheBytesRecipes
 {
     internal static class Validaciones
     {
-        public static bool ValidarReceta(TextBox txtNombre, TextBox txtDescripcion, TextBox txtInstrucciones, ComboBox cboCategoria, ComboBox cboPais, ComboBox cboDificultad, DateTimePicker dtpTiempo, string imagenPath, Button cmdCargarImagen, ErrorProvider errorProvider, CheckedListBox clbIngrediente)
+        public static bool ValidarReceta(TextBox txtNombre, TextBox txtDescripcion, TextBox txtInstrucciones, ComboBox cboCategoria, ComboBox cboPais, ComboBox cboDificultad, DateTimePicker dtpTiempo, string imagenPath, Button cmdCargarImagen, CheckedListBox clbIngrediente, ErrorProvider errorProvider)
         {
             // Validar que los campos no esten vacios
             bool esValido = true;

@@ -47,7 +47,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             //Crear una nueva receta
             Receta nuevaReceta = new Receta();
-            if (Validaciones.ValidarReceta(TXTnombre, TXTdescripcion, TXTinstrucciones, CBOcategoria, CBOpais, CBOdificultad, DTPtiempo, openFileDialog1.FileName, CMDcargar, errorProvider1))
+            if (Validaciones.ValidarReceta(TXTnombre, TXTdescripcion, TXTinstrucciones, CBOcategoria, CBOpais, CBOdificultad, DTPtiempo, openFileDialog1.FileName, CMDcargar, clbIngredientes, errorProvider1))
             {
                 nuevaReceta.Nombre = TXTnombre.Text;
                 nuevaReceta.Descripcion = TXTdescripcion.Text;
@@ -62,7 +62,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 nuevaReceta.NivelDificultad = (Dificultad)Convert.ToInt32(CBOdificultad.SelectedValue);
 
                 nuevaReceta.FechaRegistro = DateTime.Now;
-
                 
                 gestorReceta.AgregarReceta(nuevaReceta);
 
@@ -71,7 +70,10 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void FrmAgregarReceta_Load(object sender, EventArgs e)
         {
-
+            List<Ingrediente> ingredientes = gestorReceta.ObtenerIgredientes();
+            clbIngredientes.DataSource = ingredientes;
+            clbIngredientes.DisplayMember = "Nombre";
+            clbIngredientes.ValueMember = "Id";
         }
 
         private void button1_Click_1(object sender, EventArgs e)

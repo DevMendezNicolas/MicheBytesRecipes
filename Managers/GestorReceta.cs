@@ -91,61 +91,44 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         }
 
-        //Metodos para agregar
-        public void AgregarIngrediente(Ingrediente ingrediente)
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaAgregarIngrediente = "INSERT INTO Ingredientes (Nombre, UnidadMedida, Origen) VALUES (@Nombre, @UnidadMedida, @Origen)";
-                using (MySqlCommand comando = new MySqlCommand(consultaAgregarIngrediente, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Nombre", ingrediente.Nombre);
-                    comando.Parameters.AddWithValue("@UnidadMedida", ingrediente.Unidad.ToString());
-                    comando.Parameters.AddWithValue("@Origen", ingrediente.TipoOrigen.ToString());
 
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Ingrediente agregado exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo agregar el ingrediente.");
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error al agregar el ingrediente: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public void AgregarPais(Pais pais)
+
+        //Metodo para obtener ingredientes
+        public List<Ingrediente> ObtenerIgredientes()
         {
+            List<Ingrediente> ingredientes = new List<Ingrediente>();
             try
             {
                 conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("INSERT INTO Paises (nombre) VALUES (@Nombre)", conexion.GetConexion()))
+                string consultaListar = "SELECT * FROM Ingredientes";
+                using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@Nombre", pais.Nombre);
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("País agregado exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo agregar el país.");
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            Ingrediente ingrediente = new Ingrediente
+                            {
+                                IngredienteId = lector.GetInt32("IngredienteId"),
+                                Nombre = lector.GetString("Nombre"),
+                                Unidad = (UnidadMedida)Enum.Parse(typeof(UnidadMedida), lector.GetString("UnidadMedida")),
+                                TipoOrigen = (Origen)Enum.Parse(typeof(Origen), lector.GetString("Origen"))
+                            };
+                            ingredientes.Add(ingrediente);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar el país: " + ex.Message);
+                MessageBox.Show("Error al obtener los ingredientes: " + ex.Message);
             }
             finally
             {
                 conexion.Cerrar();
             }
+            return ingredientes;
         }
-
-
         public void ModificarReceta(Receta receta)
         {
             try
@@ -234,6 +217,59 @@ namespace MicheBytesRecipes.Classes.Recetas
             return recetas;
         }
 
+        //Metodos para agregar
+        public void AgregarIngrediente(Ingrediente ingrediente)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaAgregarIngrediente = "INSERT INTO Ingredientes (Nombre, UnidadMedida, Origen) VALUES (@Nombre, @UnidadMedida, @Origen)";
+                using (MySqlCommand comando = new MySqlCommand(consultaAgregarIngrediente, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@Nombre", ingrediente.Nombre);
+                    comando.Parameters.AddWithValue("@UnidadMedida", ingrediente.Unidad.ToString());
+                    comando.Parameters.AddWithValue("@Origen", ingrediente.TipoOrigen.ToString());
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                        MessageBox.Show("Ingrediente agregado exitosamente.");
+                    else
+                        MessageBox.Show("No se pudo agregar el ingrediente.");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al agregar el ingrediente: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public void AgregarPais(Pais pais)
+        {
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("INSERT INTO Paises (nombre) VALUES (@Nombre)", conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@Nombre", pais.Nombre);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                        MessageBox.Show("País agregado exitosamente.");
+                    else
+                        MessageBox.Show("No se pudo agregar el país.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el país: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         //Metodos de busqueda
         public List<Receta> BuscarRecetaPorNombre(string nombre)
         {
