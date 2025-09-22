@@ -108,6 +108,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\GestorReceta.cs" />
+    <Compile Include="Classes\Recetas\Ingrediente.cs" />
+    <Compile Include="Classes\Recetas\Receta.cs" />
     <Compile Include="Classes\Users\Usuario.cs" />
     <Compile Include="Connections\ConexionBD.cs" />
     <Compile Include="Forms\Admin\Menu.cs">
