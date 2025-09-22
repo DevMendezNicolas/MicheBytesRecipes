@@ -43,11 +43,6 @@ namespace MicheBytesRecipes.Forms.Auth
 
         }
 
-        private void LinkTerminos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
         private void PanelRight_Paint(object sender, PaintEventArgs e)
         {
 
