@@ -100,6 +100,18 @@ namespace MicheBytesRecipes
             }
             return esValido;
         }
+        public static bool ValidarPais(TextBox txtPais, ErrorProvider errorProvider)
+        {
+            bool esValido = true;
+            errorProvider.Clear();
+
+            if (string.IsNullOrWhiteSpace(txtPais.Text))
+            {
+                errorProvider.SetError(txtPais, "Debe ingresar un nombre de pais.");
+                esValido = false;
+            }
+            return esValido;
+        }
     }
     
 }

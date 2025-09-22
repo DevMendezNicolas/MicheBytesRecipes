@@ -86,6 +86,24 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 MessageBox.Show("Ingrediente agregado a la receta.");
             }
         }
+
+        private void CMDcancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnPais_Click(object sender, EventArgs e)
+        {
+            //Llamar al formulario de agregar pais
+            FrmAgregarPais frmAgregarPais = new FrmAgregarPais();
+            
+            if(frmAgregarPais.ShowDialog() == DialogResult.OK)
+            {
+                //Si se agrego un pais, actualizar la lista de paises en el formulario de agregar receta
+                //Aqui se puede actualizar una lista o un control que muestre los paises disponibles
+                MessageBox.Show("Pais agregado a la lista.");
+            }
+        }
     }
 }
                 

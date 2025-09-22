@@ -91,7 +91,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         }
 
-        //Metodo para agregar un ingrediente
+        //Metodos para agregar
         public void AgregarIngrediente(Ingrediente ingrediente)
         {
             try
@@ -120,6 +120,31 @@ namespace MicheBytesRecipes.Classes.Recetas
                 conexion.Cerrar();
             }
         }
+        public void AgregarPais(Pais pais)
+        {
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("INSERT INTO Paises (nombre) VALUES (@Nombre)", conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@Nombre", pais.Nombre);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                        MessageBox.Show("País agregado exitosamente.");
+                    else
+                        MessageBox.Show("No se pudo agregar el país.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el país: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
 
         public void ModificarReceta(Receta receta)
         {

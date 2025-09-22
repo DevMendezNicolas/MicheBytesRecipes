@@ -108,11 +108,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Recetas\Pais.cs" />
     <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.Designer.cs">
       <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarPais.Designer.cs">
+      <DependentUpon>FrmAgregarPais.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddReceta\FrmAgregarReceta.cs">
       <SubType>Form</SubType>
@@ -161,6 +168,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AddReceta\FrmAgregarIngrediente.resx">
       <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarPais.resx">
+      <DependentUpon>FrmAgregarPais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddReceta\FrmAgregarReceta.resx">
       <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
