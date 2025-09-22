@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes
 {
-    public partial class FrmMenuAdmin : Form
+    public partial class frmMenuAdmin : Form
     {
-        public FrmMenuAdmin()
+        public frmMenuAdmin()
         {
             InitializeComponent();
         }

@@ -132,7 +132,6 @@
             this.LinkTerminos.TabIndex = 8;
             this.LinkTerminos.TabStop = true;
             this.LinkTerminos.Text = "términos  y condiciones";
-            this.LinkTerminos.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkTerminos_LinkClicked);
             // 
             // BtnRegistrar
             // 

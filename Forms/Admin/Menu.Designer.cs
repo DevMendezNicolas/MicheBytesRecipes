@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes
 {
-    partial class FrmMenuAdmin
+    partial class frmMenuAdmin
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -30,134 +30,109 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.TxtBuscar = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnMetricas = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnAct = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.txtAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lblReceta = new System.Windows.Forms.Label();
+            this.lblMetricas = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.TxtBuscar);
+            this.panel1.Controls.Add(this.lblNombre);
+            this.panel1.Controls.Add(this.lblMetricas);
+            this.panel1.Controls.Add(this.lblReceta);
+            this.panel1.Controls.Add(this.btnMetricas);
+            this.panel1.Controls.Add(this.btnUsuarios);
+            this.panel1.Controls.Add(this.btnAct);
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnModificar);
+            this.panel1.Controls.Add(this.txtAgregar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 638);
+            this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
             // 
-            // button7
+            // btnMetricas
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(15, 13);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(46, 46);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "__\r\n__\r\n__";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnMetricas.Location = new System.Drawing.Point(13, 475);
+            this.btnMetricas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMetricas.Name = "btnMetricas";
+            this.btnMetricas.Size = new System.Drawing.Size(198, 42);
+            this.btnMetricas.TabIndex = 7;
+            this.btnMetricas.Text = "&Metricas";
+            this.btnMetricas.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnUsuarios
             // 
-            this.button6.Location = new System.Drawing.Point(14, 350);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(170, 32);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Location = new System.Drawing.Point(13, 425);
+            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(198, 42);
+            this.btnUsuarios.TabIndex = 6;
+            this.btnUsuarios.Text = "&Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnAct
             // 
-            this.button5.Location = new System.Drawing.Point(15, 303);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(170, 32);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnAct.Location = new System.Drawing.Point(13, 310);
+            this.btnAct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAct.Name = "btnAct";
+            this.btnAct.Size = new System.Drawing.Size(198, 42);
+            this.btnAct.TabIndex = 5;
+            this.btnAct.Text = "Activas - Inactivas";
+            this.btnAct.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnEliminar
             // 
-            this.button4.Location = new System.Drawing.Point(15, 255);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(170, 32);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnEliminar.Location = new System.Drawing.Point(13, 260);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(198, 42);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "&Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnModificar
             // 
-            this.button3.Location = new System.Drawing.Point(15, 206);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(170, 32);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnModificar.Location = new System.Drawing.Point(13, 210);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(198, 42);
+            this.btnModificar.TabIndex = 3;
+            this.btnModificar.Text = "&Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // txtAgregar
             // 
-            this.button2.Location = new System.Drawing.Point(14, 159);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(13, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TxtBuscar
-            // 
-            this.TxtBuscar.Location = new System.Drawing.Point(13, 65);
-            this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(170, 20);
-            this.TxtBuscar.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(868, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 638);
-            this.panel2.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "LblNombre";
+            this.txtAgregar.Location = new System.Drawing.Point(13, 160);
+            this.txtAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAgregar.Name = "txtAgregar";
+            this.txtAgregar.Size = new System.Drawing.Size(198, 42);
+            this.txtAgregar.TabIndex = 2;
+            this.txtAgregar.Text = "&Agregar";
+            this.txtAgregar.UseVisualStyleBackColor = true;
+            this.txtAgregar.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(200, 0);
+            this.panel3.Location = new System.Drawing.Point(233, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(668, 638);
+            this.panel3.Size = new System.Drawing.Size(951, 661);
             this.panel3.TabIndex = 2;
             // 
             // contextMenuStrip1
@@ -165,20 +140,61 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // FrmMenuAdmin
+            // lblReceta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.lblReceta.AutoSize = true;
+            this.lblReceta.Location = new System.Drawing.Point(81, 126);
+            this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblReceta.Name = "lblReceta";
+            this.lblReceta.Size = new System.Drawing.Size(53, 17);
+            this.lblReceta.TabIndex = 9;
+            this.lblReceta.Text = "Recetas";
+            // 
+            // lblMetricas
+            // 
+            this.lblMetricas.AutoSize = true;
+            this.lblMetricas.Location = new System.Drawing.Point(46, 395);
+            this.lblMetricas.Name = "lblMetricas";
+            this.lblMetricas.Size = new System.Drawing.Size(123, 17);
+            this.lblMetricas.TabIndex = 10;
+            this.lblMetricas.Text = "Usuarios y Metricas";
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(13, 24);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(198, 74);
+            this.lblNombre.TabIndex = 11;
+            this.lblNombre.Text = "Nombre Administrador";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // frmMenuAdmin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 638);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "FrmMenuAdmin";
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "frmMenuAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -186,18 +202,18 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox TxtBuscar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnMetricas;
+        private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnAct;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button txtAgregar;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label lblReceta;
+        private System.Windows.Forms.Label lblMetricas;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label label1;
     }
 }
 
