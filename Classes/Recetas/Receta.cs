@@ -25,7 +25,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             public int UsuarioId { get; set; }
             public string Descripcion { get; set; }
             public string Instrucciones { get; set; }
-            public string ImagenReceta { get; set; }
+            public byte[] ImagenReceta { get; set; } //blob
             public TimeSpan TiempoPreparacion { get; set; }
             public Dificultad NivelDificultad { get; set; }
             public DateTime FechaRegistro { get; set; }
@@ -39,7 +39,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 Ingredientes = new List<Ingrediente>();
             }
             //Constructor de la clase receta
-            public Receta(string nombre, int regionId, int categoriaId, int usuarioId, string descripcion, string instrucciones, string imagenReceta, TimeSpan tiempoPreparacion, Dificultad nivelDifultads)
+            public Receta(string nombre, int regionId, int categoriaId, int usuarioId, string descripcion, string instrucciones, byte[] imagenReceta, TimeSpan tiempoPreparacion, Dificultad nivelDifultads)
             {
 
                 this.Nombre = nombre;

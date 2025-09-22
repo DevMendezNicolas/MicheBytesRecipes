@@ -108,6 +108,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.Designer.cs">
+      <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarReceta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarReceta.Designer.cs">
+      <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\Validaciones.cs" />
     <Compile Include="Managers\GestorReceta.cs" />
     <Compile Include="Classes\Recetas\Ingrediente.cs" />
     <Compile Include="Classes\Recetas\Receta.cs" />
@@ -146,6 +159,12 @@
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarIngrediente.resx">
+      <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarReceta.resx">
+      <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>

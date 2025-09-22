@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq.Expressions;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
@@ -88,6 +89,36 @@ namespace MicheBytesRecipes.Classes.Recetas
                 conexion.Cerrar();
             }
 
+        }
+
+        //Metodo para agregar un ingrediente
+        public void AgregarIngrediente(Ingrediente ingrediente)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaAgregarIngrediente = "INSERT INTO Ingredientes (Nombre, UnidadMedida, Origen) VALUES (@Nombre, @UnidadMedida, @Origen)";
+                using (MySqlCommand comando = new MySqlCommand(consultaAgregarIngrediente, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@Nombre", ingrediente.Nombre);
+                    comando.Parameters.AddWithValue("@UnidadMedida", ingrediente.Unidad.ToString());
+                    comando.Parameters.AddWithValue("@Origen", ingrediente.TipoOrigen.ToString());
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                        MessageBox.Show("Ingrediente agregado exitosamente.");
+                    else
+                        MessageBox.Show("No se pudo agregar el ingrediente.");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al agregar el ingrediente: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
         }
 
         public void ModificarReceta(Receta receta)
