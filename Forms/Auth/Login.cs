@@ -11,11 +11,13 @@ using MicheBytesRecipes.Forms.Auth;
 using System.Windows.Forms;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes
 {
     public partial class frmLogin : Form
     {
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
         public frmLogin()
         {
             InitializeComponent();
@@ -49,11 +51,6 @@ namespace MicheBytesRecipes
             //Cambiar tema de claro a oscuro y viceversa
             ThemeManager.ToggleTheme();
             ThemeManager.ApplyTheme(this);
-
-        }
-
-        private void BtnLog_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -104,12 +101,15 @@ namespace MicheBytesRecipes
             {
                 e.Handled = true;
             }
-
         }
 
         private void txtContra_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            // Metodo para que solo pueda escribir letras y numeros en el txtContra y simbolos comunes
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
@@ -118,6 +118,30 @@ namespace MicheBytesRecipes
             this.Activate(); // Opcional: le da el foco
         }
 
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            eprIngresar.Clear();
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                eprIngresar.SetError(txtEmail, "El campo usuario es obligatorio.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtContra.Text))
+            {
+                eprIngresar.SetError(txtContra, "El campo contraseña es obligatorio.");
+                return;
+            }
+            //gestorUsuarios.HashearContraseña(txtContra.Text);
+            if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, txtContra.Text))
+            {
+                MessageBox.Show("✅ Inicio de sesión exitoso.");
+            }
+            else
+            {
+                MessageBox.Show("❌ Usuario o contraseña incorrectos.");
+
+            }
+        }
     }
 }
 

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.PanelMid = new System.Windows.Forms.Panel();
+            this.lblLinkResetContra = new System.Windows.Forms.LinkLabel();
             this.btnView = new System.Windows.Forms.Button();
             this.LbLinkContra = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,8 +43,9 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnTema = new System.Windows.Forms.Button();
-            this.lblLinkResetContra = new System.Windows.Forms.LinkLabel();
+            this.eprIngresar = new System.Windows.Forms.ErrorProvider(this.components);
             this.PanelMid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eprIngresar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,6 +80,17 @@
             this.PanelMid.Name = "PanelMid";
             this.PanelMid.Size = new System.Drawing.Size(376, 382);
             this.PanelMid.TabIndex = 1;
+            // 
+            // lblLinkResetContra
+            // 
+            this.lblLinkResetContra.AutoSize = true;
+            this.lblLinkResetContra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLinkResetContra.Location = new System.Drawing.Point(34, 229);
+            this.lblLinkResetContra.Name = "lblLinkResetContra";
+            this.lblLinkResetContra.Size = new System.Drawing.Size(195, 21);
+            this.lblLinkResetContra.TabIndex = 11;
+            this.lblLinkResetContra.TabStop = true;
+            this.lblLinkResetContra.Text = "¿Olvidaste tu contraseña?";
             // 
             // btnView
             // 
@@ -140,7 +154,7 @@
             this.btnIngresar.TabIndex = 3;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
-            this.btnIngresar.Click += new System.EventHandler(this.BtnLog_Click);
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // txtContra
             // 
@@ -215,16 +229,9 @@
             this.BtnTema.UseVisualStyleBackColor = true;
             this.BtnTema.Click += new System.EventHandler(this.BtnTema_Click);
             // 
-            // lblLinkResetContra
+            // eprIngresar
             // 
-            this.lblLinkResetContra.AutoSize = true;
-            this.lblLinkResetContra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLinkResetContra.Location = new System.Drawing.Point(34, 229);
-            this.lblLinkResetContra.Name = "lblLinkResetContra";
-            this.lblLinkResetContra.Size = new System.Drawing.Size(195, 21);
-            this.lblLinkResetContra.TabIndex = 11;
-            this.lblLinkResetContra.TabStop = true;
-            this.lblLinkResetContra.Text = "¿Olvidaste tu contraseña?";
+            this.eprIngresar.ContainerControl = this;
             // 
             // frmLogin
             // 
@@ -242,6 +249,7 @@
             this.Load += new System.EventHandler(this.Login_Load);
             this.PanelMid.ResumeLayout(false);
             this.PanelMid.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eprIngresar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,5 +271,6 @@
         private System.Windows.Forms.LinkLabel LbLinkContra;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.LinkLabel lblLinkResetContra;
+        private System.Windows.Forms.ErrorProvider eprIngresar;
     }
 }
