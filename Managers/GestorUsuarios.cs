@@ -88,11 +88,11 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consultaValidar = "SELECT * FROM usuarios WHERE Email = @Email AND Contraseña = @Contraseña AND FechaBaja IS NULL";
+                string consultaValidar = "SELECT * FROM usuarios WHERE email = @Email AND Contraseña = @Contraseña AND fecha_baja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consultaValidar, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@Email", email);
-                    comando.Parameters.AddWithValue("@Contraseña", HashearContraseña(contraseña));
+                    comando.Parameters.AddWithValue("@Contraseña",contraseña /*HashearContraseña(contraseña)*/);
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         return reader.HasRows; // Si hay filas, las credenciales son validas
@@ -181,7 +181,7 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consultaBuscar = "SELECT * FROM usuarios WHERE Email = @Email AND FechaBaja IS NULL";
+                string consultaBuscar = "Procedimiento_que_busca_usuario(@Email)";
                 using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@Email", email);
