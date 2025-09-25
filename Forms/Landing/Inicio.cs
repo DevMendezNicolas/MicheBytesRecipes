@@ -35,8 +35,8 @@ namespace MicheBytesRecipes
             frmLogin login = new frmLogin();
             login.ShowDialog(); // Abre Login como modal
 
-            this.Show(); // Se ejecuta después de cerrar Login
-            this.Activate(); // Recupera el foco
+            //this.Show(); // Se ejecuta después de cerrar Login
+            //this.Activate(); // Recupera el foco
 
         }
 

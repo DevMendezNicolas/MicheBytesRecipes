@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Classes;
 
 namespace MicheBytesRecipes
 {
@@ -134,15 +135,32 @@ namespace MicheBytesRecipes
             //gestorUsuarios.HashearContraseña(txtContra.Text);
             if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, txtContra.Text))
             {
-                MessageBox.Show("✅ Inicio de sesión exitoso.");
+                Usuario usuarioActivo = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
+
+                if (usuarioActivo.Rol == 1)
+                {
+                    //Abrir el formulario de menú de administrador y pasar el usuario
+                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
+                    //menuAdmin.FormClosed += (s, args) => this.Show(); // Mostrar el login al cerrar el menú
+                    menuAdmin.Show();
+                    this.Hide();
+                    //MessageBox.Show("Bienvenido, Administrador: " + usuarioActivo.NombreCompleto()+ usuarioActivo.UsuarioId);
+                }
+                else
+                {
+                    /*// Abrir el formulario de menú de usuario
+                    frmMenuUser menuUser = new frmMenuUser(usuarioActivo);
+                    menuUser.FormClosed += (s, args) => this.Show();
+                    menuUser.Show();
+                    this.Hide();
+                    */
+                }
             }
             else
             {
-                MessageBox.Show("❌ Usuario o contraseña incorrectos.");
-
+                MessageBox.Show("Usuario o contraseña incorrectos.");
+                return;
             }
-
-            // HOLO KEVO
         }
     }
 }

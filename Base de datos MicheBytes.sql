@@ -2,23 +2,6 @@ CREATE DATABASE MicheBytes;
 
 USE MicheBytes;
 
--- 14) STORE QUE DEVUELVA UN USUARIO
-DELIMITER $$
-CREATE PROCEDURE Procedimiento_que_busca_usuario(
-IN p_email VARCHAR(50)
-)
-BEGIN
-        SELECT
-                U.nombre, U.apellido, U.contraseña, U.email, U.telefono, U.imagen_perfil, R.nombre AS Nombre_rol
-        FROM
-                Usuarios AS U
-                INNER JOIN Roles_X_Usuario AS RXU ON U.usuario_id = RXU.usuario_id
-                INNER JOIN Roles AS R ON RXU.rol_id = R.rol_id
-
-        WHERE 
-                email = p_email;
-END $$
-DELIMITER ;
 
 CREATE TABLE Usuarios(
 usuario_id  INT AUTO_INCREMENT PRIMARY KEY,
@@ -156,7 +139,6 @@ INSERT INTO Usuarios (nombre, apellido, telefono, email, contraseña, imagen_per
 ('Ana', 'Torres', '444444444', 'anatorres@mail.com', 'passAna', NULL, CURDATE(), NULL),
 ('Lucía', 'Martínez', '555555555', 'luciamartinez@mail.com', 'passLucia', NULL, CURDATE(), NULL);
 
-SELECT * FROM usuarios WHERE Email = 'juanperez@mail.com' AND Contraseña = 'passJuan' AND Fecha_Baja IS NULL;
 INSERT INTO Usuarios (nombre, apellido, telefono, email, contraseña, imagen_perfil, fecha_registro, fecha_baja) VALUES
 ('Franco', 'Lopez', '344567', 'francolopez@gmial.com', 'passFranco', NULL, '2024-06-4', '2025-08-3');
 
@@ -455,7 +437,7 @@ SELECT * FROM Me_gustas;
 
 -- 9) INSERTAR COMENTARIOS
 DELIMITER $$
-CREATE PROCEDURE Comentario(
+CREATE PROCEDURE Insertar_comentario(
 IN p_descripcion TEXT,
 IN p_receta_id INT,
 IN p_usuario_id INT
@@ -466,7 +448,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL Comentario('Muy buena la receta, la hice y me encantó', 5, 1);
+CALL Insertar_comentario('Muy buena la receta, la hice y me encantó', 5, 1);
 SELECT * FROM Comentarios;
 
 
@@ -521,14 +503,66 @@ SELECT * FROM Auditorias;
 
 DELIMITER $$
 CREATE PROCEDURE Metricas_administrador(
-
+IN p_usuario_id INT, OUT cantidad_me_gustas INT, OUT cantidad_comentarios INT, OUT cantidad_de_vistas INT 
 )
 BEGIN
-
-
+	IF(p_usuario_id = 1)THEN
+    
+		SELECT
+				funcion_cantidad_me_gustas(3),
+				funcion_cantidad_de_comentarios(3),
+				funcion_cantidad_de_vistas(3) 
+                INTO cantidad_me_gustas, cantidad_comentarios, cantidad_de_vistas;
+	ELSE
+				SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'El usuario debe ser de aministrador';
+	END IF;
 END $$
 DELIMITER ;
 
+SET @megustas = 0;
+SET @comentario = 0;
+SET @vistas = 0;
+
+CALL Metricas_administrador(1, @megustas, @comentario, @vistas) ;
+select @megustas,@comentario, @vistas
+
+-- 14) STORE QUE DEVUELVE UN USUARIO
+DELIMITER $$
+CREATE PROCEDURE Procedimiento_que_busca_usuario(
+INOUT p_email VARCHAR(50), 
+OUT p_usuario_id INT,
+OUT p_nombre VARCHAR(50), 
+OUT p_apellido VARCHAR(50), 
+OUT p_telefono VARCHAR(20),
+OUT p_imagen_perfil BLOB,
+OUT p_rol_id INT
+)
+BEGIN
+		SELECT
+				 U.email, U.usuario_id, U.nombre, U.apellido, U.telefono, U.imagen_perfil, R.rol_id AS ID_rol
+                
+                INTO p_email, p_usuario_id, p_nombre, p_apellido, p_telefono, p_imagen_perfil, p_rol_id
+                
+		FROM
+				Usuarios AS U
+                INNER JOIN Roles_X_Usuario AS RXU ON U.usuario_id = RXU.usuario_id
+                INNER JOIN Roles AS R ON RXU.rol_id = R.rol_id
+                
+		WHERE 
+				email = p_email;
+END $$
+DELIMITER ;
+
+SET @email = 'mariagomez@mail.com';
+SET @usuario_id = 0;
+SET @nombre = 0;
+SET @apellido = '';
+SET @telefono = 0;
+SET @imagen_perfil = NULL;
+SET @rol_id = 0;
+
+CALL Procedimiento_que_busca_usuario(@email, @usuario_id, @nombre, @apellido,  @telefono, @imagen_perfil, @rol_id);
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------------------------------------------------
@@ -806,13 +840,25 @@ DELIMITER ;
 SELECT funcion_cantidad_de_usuarios_administradores();
 
 -- 8) Función cantidad de favoritas segun id de la receta
+DELIMITER $$
+CREATE FUNCTION funcion_cantidad_de_favoritas(p_receta_id INT)
+RETURNS INT
+NOT DETERMINISTIC
+READS SQL DATA
+BEGIN
+	DECLARE cantidad_de_recetas_favoritas INT;
+	SELECT
+			COUNT(favorita_id) INTO cantidad_de_recetas_favoritas
+	FROM
+			Favoritas
+	WHERE
+			p_receta_id = receta_id;
+            
+	RETURN cantidad_de_recetas_favoritas;
+END $$
+DELIMITER ;
 
-
-
-
-
-
-
+SELECT funcion_cantidad_de_favoritas(3);
 
 -- 9) Función cantidad de paises
 DELIMITER $$
@@ -892,3 +938,17 @@ END $$
 DELIMITER ;
 
 SELECT funcion_cantidad_de_ingredientes_x_receta(2);
+
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------- ÍNDICES -------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

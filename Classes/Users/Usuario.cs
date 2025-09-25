@@ -7,7 +7,7 @@ using System.Net.Mail;
 
 namespace MicheBytesRecipes.Classes
 {
-    internal class Usuario
+    public class Usuario
     {
         // Propiedades de la clase Usuario
         public int UsuarioId { get; set; }
@@ -20,8 +20,20 @@ namespace MicheBytesRecipes.Classes
         public int Rol { get; set; }
         public DateTime FechaRegistro { get; set; }
         public DateTime? FechaBaja { get; set; }
-        // Constructor de Usuario
-        public Usuario(int usuarioId, string nombre, string apellido, string telefono, string email, string contraseña, byte[] foto, int rol)
+        // Constructores de Usuario
+        public Usuario(string email, int usuarioId, string nombre, string apellido, string telefono, byte[] foto, int rol)
+        {
+            this.UsuarioId = usuarioId;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Telefono = telefono;
+            this.Email = email;
+            this.Foto = foto;
+            this.Rol = rol;
+            this.FechaRegistro = DateTime.Now;
+            this.FechaBaja = null;
+        }
+        public Usuario(string email, int usuarioId, string nombre, string apellido, string telefono, string contraseña, byte[] foto, int rol)
         {
             this.UsuarioId = usuarioId;
             this.Nombre = nombre;
@@ -100,7 +112,7 @@ namespace MicheBytesRecipes.Classes
 
             Contraseña = nuevaContraseña;
         }
-        // Metodo estatico para construir un usuario con sus validaciones
+        // Metodo estatico para construir un usuario con sus validaciones  -> REVISAR
         public static Usuario CrearUsuario(int usuarioId, string nombre, string apellido, string telefono, string email, string contraseña, byte[] foto, int rol)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -115,7 +127,7 @@ namespace MicheBytesRecipes.Classes
                 throw new ArgumentException("La contraseña debe tener al menos 6 caracteres.");
             if (rol < 0)
                 throw new ArgumentException("El rol no es válido.");
-            var usuario = new Usuario(usuarioId, nombre, apellido, telefono, email, contraseña, foto, rol);
+            var usuario = new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol);
             if (!usuario.ValidarEmail())
                 throw new ArgumentException("El email no es válido.");
             return usuario;

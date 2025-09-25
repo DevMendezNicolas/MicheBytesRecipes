@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Connections;
-using MySql.Data.MySqlClient;
-using System.Security.Cryptography;
 using MicheBytesRecipes.Interfaces;
+using MySql.Data.MySqlClient;
 
 
 namespace MicheBytesRecipes.Managers
@@ -149,14 +150,13 @@ namespace MicheBytesRecipes.Managers
                         if (reader.Read())
                         {
                             return new Usuario(
+                                reader.GetString("Email"),
                                 reader.GetInt32("UsuarioId"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                reader.GetString("Email"),
-                                reader.GetString("Contraseña"),
-                                null, // Asumiendo que la foto no se maneja en esta consulta
-                                0 // Asumiendo que el rol no se maneja en esta consulta
+                                (byte[])reader["ImagenPerfil"],
+                                (int)reader["ID_Rol"]
                             );
                         }
                         else
@@ -181,33 +181,45 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consultaBuscar = "Procedimiento_que_busca_usuario(@Email)";
+                string consultaBuscar = "Procedimiento_que_busca_usuario";
                 using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@Email", email);
-                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    comando.CommandType = CommandType.StoredProcedure;
+                    // Parametro INOUT
+                    var pEmail = comando.Parameters.Add("p_email", MySqlDbType.VarChar, 50);
+                    pEmail.Direction = ParameterDirection.InputOutput;
+                    pEmail.Value = email;
+
+                    // Parametros OUT
+                    comando.Parameters.Add("p_usuario_id", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_nombre", MySqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_apellido", MySqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_telefono", MySqlDbType.VarChar, 20).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_imagen_perfil", MySqlDbType.Blob).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_rol_id", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+
+                    comando.ExecuteNonQuery();
+                    if (comando.Parameters["p_usuario_id"].Value != DBNull.Value)
                     {
-                        if (reader.Read())
-                        {
-                            return new Usuario(
-                                reader.GetInt32("UsuarioId"),
-                                reader.GetString("Nombre"),
-                                reader.GetString("Apellido"),
-                                reader.GetString("Telefono"),
-                                reader.GetString("Email"),
-                                reader.GetString("Contraseña"),
-                                null, // Asumiendo que la foto no se maneja en esta consulta
-                                0 // Asumiendo que el rol no se maneja en esta consulta
-                            );
-                        }
-                        else
-                        {
-                            return null; // No se encontro el usuario
-                        }
+                        return new Usuario(
+                            comando.Parameters["p_email"].Value.ToString(),
+                            Convert.ToInt32(comando.Parameters["p_usuario_id"].Value),
+                            comando.Parameters["p_nombre"].Value.ToString(),
+                            comando.Parameters["p_apellido"].Value.ToString(),
+                            comando.Parameters["p_telefono"].Value.ToString(),
+                            comando.Parameters["p_imagen_perfil"].Value == DBNull.Value
+                                ? null
+                                : (byte[])comando.Parameters["p_imagen_perfil"].Value,
+                            Convert.ToInt32(comando.Parameters["p_rol_id"].Value)
+                        );
+                    }
+                    else
+                    {
+                        return null; // No se encontró el usuario
                     }
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 throw new Exception("Error al buscar el usuario por email: " + ex.Message);
             }
@@ -230,14 +242,13 @@ namespace MicheBytesRecipes.Managers
                         while (reader.Read())
                         {
                             usuarios.Add(new Usuario(
+                                reader.GetString("Email"),
                                 reader.GetInt32("UsuarioId"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                reader.GetString("Email"),
-                                reader.GetString("Contraseña"),
-                                null, // Asumiendo que la foto no se maneja en esta consulta
-                                0 // Asumiendo que el rol no se maneja en esta consulta
+                                (byte[])reader["ImagenPerfil"],
+                                (int)reader["ID_Rol"]
                             ));
                         }
                     }
@@ -266,14 +277,13 @@ namespace MicheBytesRecipes.Managers
                         while (reader.Read())
                         {
                             usuarios.Add(new Usuario(
+                                reader.GetString("Email"),
                                 reader.GetInt32("UsuarioId"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                reader.GetString("Email"),
-                                reader.GetString("Contraseña"),
-                                null, // Asumiendo que la foto no se maneja en esta consulta
-                                0 // Asumiendo que el rol no se maneja en esta consulta
+                                (byte[])reader["ImagenPerfil"],
+                                (int)reader["ID_Rol"]
                             ));
                         }
                     }
