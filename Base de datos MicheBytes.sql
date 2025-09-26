@@ -556,13 +556,15 @@ DELIMITER ;
 
 SET @email = 'mariagomez@mail.com';
 SET @usuario_id = 0;
-SET @nombre = 0;
+SET @nombre = '';
 SET @apellido = '';
-SET @telefono = 0;
+SET @telefono = '';
 SET @imagen_perfil = NULL;
 SET @rol_id = 0;
 
-CALL Procedimiento_que_busca_usuario(@email, @usuario_id, @nombre, @apellido,  @telefono, @imagen_perfil, @rol_id);
+CALL Procedimiento_que_busca_usuario(@email, @usuario_id, @nombre, @apellido, @telefono, @imagen_perfil, @rol_id);
+SELECT @email, @usuario_id, @nombre, @apellido, @telefono, @imagen_perfil, @rol_id;
+
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------------------------------------------------
