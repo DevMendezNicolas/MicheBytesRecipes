@@ -36,5 +36,10 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 this.Close();
             }
         }
+
+        private void FrmAgregarPais_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

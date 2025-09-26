@@ -115,6 +115,7 @@
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(331, 21);
             this.cboUnidad.TabIndex = 8;
+            this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
             // 
             // btnAgregar
             // 

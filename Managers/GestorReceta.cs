@@ -1,14 +1,9 @@
-﻿using MicheBytesRecipes.Classes.Recetas;
-using MicheBytesRecipes.Connections;
+﻿using MicheBytesRecipes.Connections;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows.Forms;
-using System.Linq.Expressions;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
@@ -18,49 +13,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         // Lista de recetas
         public List<Receta> recetas;
 
-        // ---- CRUD ----
-        public void AgregarReceta(Receta receta)
-        {
-            //Validacion con try catch porque las conexiones externas pueden fallar
-            //Ejemplo: la base de datos no esta disponible
-            try
-            {
-                //Abrir la conexion
-                conexion.Abrir();
-                // Comando SQL para insertar una nueva receta
-                string consultaAgregar = "INSERT INTO Recetas (Nombre, Descripcion, Instrucciones, ImagenReceta, TiempoPreparacion, NivelDificultad, FechaRegistro) " +
-                    "VALUES (@Nombre, @Descripcion, @Instrucciones, @ImagenReceta, @TiempoPreparacion, @NivelDificultad, @FechaRegistro);";
-
-                using (MySqlCommand comando = new MySqlCommand(consultaAgregar, conexion.GetConexion()))
-                {
-                    //Asignar los parametros del comando SQL
-                    comando.Parameters.AddWithValue("@Nombre", receta.Nombre);
-                    comando.Parameters.AddWithValue("@Descripcion", receta.Descripcion);
-                    comando.Parameters.AddWithValue("@Instrucciones", receta.Instrucciones);
-                    comando.Parameters.AddWithValue("@ImagenReceta", receta.ImagenReceta);
-                    comando.Parameters.AddWithValue("@TiempoPreparacion", receta.TiempoPreparacion);
-                    comando.Parameters.AddWithValue("@NivelDificultad", receta.NivelDificultad.ToString());
-                    comando.Parameters.AddWithValue("@FechaRegistro", receta.FechaRegistro);
-
-                    int filasAfectadas = comando.ExecuteNonQuery();
-
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Receta agregada exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo agregar la receta.");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar la receta: " + ex.Message);
-            }
-            finally
-            {
-                //Cerrar la conexion
-                conexion.Cerrar();
-            }
-        }
+        //Metodo para eliminar receta
         public void EliminarReceta(int recetaId)
         {
             try
@@ -91,8 +44,6 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         }
 
-
-
         //Metodo para obtener ingredientes
         public List<Ingrediente> ObtenerIgredientes()
         {
@@ -100,24 +51,30 @@ namespace MicheBytesRecipes.Classes.Recetas
             try
             {
                 conexion.Abrir();
-                string consultaListar = "SELECT * FROM Ingredientes";
+                string consultaListar = "SELECT * FROM Vista_de_ingredientes_con_detalles";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
+                using (MySqlDataReader lector = comando.ExecuteReader())
                 {
-                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    while (lector.Read())
                     {
-                        while (lector.Read())
+                        ingredientes.Add(new Ingrediente
                         {
-                            Ingrediente ingrediente = new Ingrediente
+                            IngredienteId = lector.GetInt32("ID_Ingrediente"),
+                            Nombre = lector.GetString("Nombre"),
+                            Unidad = new UnidadMedida
                             {
-                                IngredienteId = lector.GetInt32("IngredienteId"),
-                                Nombre = lector.GetString("Nombre"),
-                                Unidad = (UnidadMedida)Enum.Parse(typeof(UnidadMedida), lector.GetString("UnidadMedida")),
-                                TipoOrigen = (Origen)Enum.Parse(typeof(Origen), lector.GetString("Origen"))
-                            };
-                            ingredientes.Add(ingrediente);
-                        }
+                                UnidadMedidaId = lector.GetInt32("ID_Unidad_de_medida"),
+                                Nombre = lector.GetString("Unidad_de_medida")
+                            },
+                            Tipo = new TipoIngrediente
+                            {
+                                TipoIngredienteId = lector.GetInt32("ID_Tipo_de_ingrediente"),
+                                Nombre = lector.GetString("Tipo_de_ingrediente")
+                            }
+                        });
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -218,17 +175,67 @@ namespace MicheBytesRecipes.Classes.Recetas
         }
 
         //Metodos para agregar
+        //falta metodo de agregar categoria y unidades.
+        public void AgregarReceta(Receta receta)
+        {
+            //Validacion con try catch porque las conexiones externas pueden fallar
+            //Ejemplo: la base de datos no esta disponible
+            try
+            {
+                //Abrir la conexion
+                conexion.Abrir();
+                // Comando SQL para insertar una nueva receta
+                string consultaAgregar = "INSERT INTO Recetas (Nombre, Descripcion, Instrucciones, ImagenReceta, TiempoPreparacion, NivelDificultad, FechaRegistro) " +
+                    "VALUES (@Nombre, @Descripcion, @Instrucciones, @ImagenReceta, @TiempoPreparacion, @NivelDificultad, @FechaRegistro);"
+                    //"SELECT LAST_INSERT_ID();"
+                    ;
+
+                using (MySqlCommand comando = new MySqlCommand(consultaAgregar, conexion.GetConexion()))
+                {
+                    //Asignar los parametros del comando SQL
+                    comando.Parameters.AddWithValue("@Nombre", receta.Nombre);
+                    comando.Parameters.AddWithValue("@Descripcion", receta.Descripcion);
+                    comando.Parameters.AddWithValue("@Instrucciones", receta.Instrucciones);
+                    comando.Parameters.AddWithValue("@ImagenReceta", receta.ImagenReceta);
+                    comando.Parameters.AddWithValue("@TiempoPreparacion", receta.TiempoPreparacion);
+                    comando.Parameters.AddWithValue("@NivelDificultad", receta.NivelDificultad.ToString());
+                    comando.Parameters.AddWithValue("@FechaRegistro", receta.FechaRegistro);
+
+                    //Ejecutar el comando y obtener el ID generado
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
+                        MessageBox.Show("Receta agregada exitosamente.");
+                    else
+                        MessageBox.Show("No se pudo agregar la receta.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la receta: " + ex.Message);
+            }
+            finally
+            {
+                //Cerrar la conexion
+                conexion.Cerrar();
+            }
+        }
         public void AgregarIngrediente(Ingrediente ingrediente)
         {
             try
             {
                 conexion.Abrir();
-                string consultaAgregarIngrediente = "INSERT INTO Ingredientes (Nombre, UnidadMedida, Origen) VALUES (@Nombre, @UnidadMedida, @Origen)";
-                using (MySqlCommand comando = new MySqlCommand(consultaAgregarIngrediente, conexion.GetConexion()))
+
+                using (MySqlCommand comando = new MySqlCommand("Insertar_ingrediente", conexion.GetConexion()))
+                //Usar procedimiento almacenado
                 {
-                    comando.Parameters.AddWithValue("@Nombre", ingrediente.Nombre);
-                    comando.Parameters.AddWithValue("@UnidadMedida", ingrediente.Unidad.ToString());
-                    comando.Parameters.AddWithValue("@Origen", ingrediente.TipoOrigen.ToString());
+                    comando.CommandType = CommandType.StoredProcedure;// IMPORTANTE: Esto indica que es un procedimiento almacenado
+
+                    comando.Parameters.AddWithValue("@p_nombre", ingrediente.Nombre);
+                    comando.Parameters.AddWithValue("@p_unidad_de_medida_id", ingrediente.Unidad.UnidadMedidaId);
+                    comando.Parameters.AddWithValue("@p_tipo_ingrediente_id", ingrediente.Tipo.TipoIngredienteId);
 
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
@@ -237,9 +244,34 @@ namespace MicheBytesRecipes.Classes.Recetas
                         MessageBox.Show("No se pudo agregar el ingrediente.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al agregar el ingrediente: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public void AgregarIngredienteReceta(Receta receta)
+        {
+            try
+            {
+                conexion.Abrir();
+                foreach (var ing in receta.Ingredientes)
+                {
+                    string consulta = "INSERT INTO RecetaIngredientes (RecetaId, IngredienteId) VALUES (@RecetaId, @IngredienteId)";
+                    using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                    {
+                        comando.Parameters.AddWithValue("@RecetaId", receta.RecetaId);
+                        comando.Parameters.AddWithValue("@IngredienteId", ing.IngredienteId);
+                        comando.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el ingrediente a la receta: " + ex.Message);
             }
             finally
             {
@@ -251,9 +283,11 @@ namespace MicheBytesRecipes.Classes.Recetas
             try
             {
                 conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("INSERT INTO Paises (nombre) VALUES (@Nombre)", conexion.GetConexion()))
+                using (MySqlCommand comando = new MySqlCommand("insertar_paises", conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@Nombre", pais.Nombre);
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    comando.Parameters.AddWithValue("@nombre_pais", pais.Nombre);
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
                         MessageBox.Show("País agregado exitosamente.");
@@ -542,6 +576,157 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
             return null;
         }
+
+        //Metodos obtener
+        public List<UnidadMedida> ObtenerListaUnidades()
+        {
+            List<UnidadMedida> unidades = new List<UnidadMedida>();
+            try
+            {
+                conexion.Abrir();
+                // Consulta SQL para obtener todas las unidades de medida
+                string consultaUnidades = "SELECT * FROM vista_de_todas_las_unidades_de_medida";
+                // Ejecutar el comando SQL
+                using (MySqlCommand cmd = new MySqlCommand(consultaUnidades, conexion.GetConexion()))
+                {
+
+                    using (MySqlDataReader lector = cmd.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        // Leer cada fila y crear un objeto UnidadMedida
+                        {
+                            unidades.Add(new UnidadMedida
+                            // Crear y agregar cada unidad de medida a la lista
+                            {
+                                UnidadMedidaId = lector.GetInt32("ID"),//Asegurarse de que el nombre de la columna coincida con el de la base de datos
+                                Nombre = lector.GetString("Nombre")
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return unidades;
+        }
+        public List<TipoIngrediente> ObtenerListaTipos()
+        {
+            // Crear una lista para almacenar los tipos de ingredientes
+            List<TipoIngrediente> tipos = new List<TipoIngrediente>();
+            try
+            {
+                conexion.Abrir();
+                // Consulta SQL para obtener todos los tipos de ingredientes
+                string consultaTipos = "SELECT * FROM Vista_de_todos_los_tipos_de_ingredientes";
+                // Ejecutar el comando SQL
+                using (MySqlCommand comando = new MySqlCommand(consultaTipos, conexion.GetConexion()))
+                {
+                    // Leer los resultados
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            // Leer cada fila y crear un objeto TipoIngrediente
+                            TipoIngrediente tipo = new TipoIngrediente
+                            // Crear y agregar cada tipo de ingrediente a la lista
+                            {
+                                TipoIngredienteId = lector.GetInt32("ID"), //Asegurarse de que el nombre de la columna sea correcto
+                                Nombre = lector.GetString("Nombre")
+                            };
+                            tipos.Add(tipo);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return tipos;
+        }
+        public List<Pais> ObtenerListaPaises()
+        {
+            List<Pais> paises = new List<Pais>();
+            try
+            {
+                conexion.Abrir();
+                string consultaPaises = ("SELECT * FROM Vista_de_todos_los_paises");
+                using (MySqlCommand comando = new MySqlCommand(consultaPaises, conexion.GetConexion()))
+                {
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while ((lector.Read()))
+                        {
+                            Pais pais = new Pais
+                            {
+                                PaisId = lector.GetInt32("ID"),
+                                Nombre = lector.GetString("Nombre")
+                            };
+                            paises.Add(pais);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return paises;
+        }
+        public List<Categoria> ObtenerListaCategorias()
+        {
+            List<Categoria> categorias = new List<Categoria>();
+            try
+            {
+                conexion.Abrir();
+                string consultaCategorias = "SELECT * FROM Vista_de_categorias";
+                using (MySqlCommand comando = new MySqlCommand(consultaCategorias, conexion.GetConexion()))
+                {
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+
+                        while (lector.Read())
+                        {
+                            Categoria categoria = new Categoria
+                            {
+                                CategoriaId = lector.GetInt32("ID_Categoria"),
+                                Nombre = lector.GetString("Nombre"),
+                                Descripcion = lector.GetString("Descripcion")
+
+                            };
+                            categorias.Add(categoria);
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return categorias;
+        }
+
+
 
         //Metodos de estadisticas o utilidades
         public int ContarRecetas()

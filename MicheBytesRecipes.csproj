@@ -108,7 +108,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Recetas\Categoria.cs" />
     <Compile Include="Classes\Recetas\Pais.cs" />
+    <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
+    <Compile Include="Classes\Recetas\UnidadMedida.cs" />
     <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.cs">
       <SubType>Form</SubType>
     </Compile>

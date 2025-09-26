@@ -21,6 +21,8 @@ namespace MicheBytesRecipes
             //Application.Run(new Inicio());
             //Application.Run(new frmLogin());
             Application.Run(new FrmAgregarReceta());
+            //Application.Run(new FrmAgregarPais());
+            //Application.Run(new FrmAgregarIngrediente());
         }
     }
 }

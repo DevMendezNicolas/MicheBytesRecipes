@@ -47,12 +47,12 @@
             this.PCBimagen = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CMDcargarimagen = new System.Windows.Forms.Button();
-            this.CMDcancelar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.CMDcargar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.clbIngredientes = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAgregarIngrediente = new System.Windows.Forms.Button();
             this.btnPais = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PCBimagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -217,15 +217,15 @@
             this.CMDcargarimagen.UseVisualStyleBackColor = true;
             this.CMDcargarimagen.Click += new System.EventHandler(this.button1_Click);
             // 
-            // CMDcancelar
+            // btnCancelar
             // 
-            this.CMDcancelar.Location = new System.Drawing.Point(366, 520);
-            this.CMDcancelar.Name = "CMDcancelar";
-            this.CMDcancelar.Size = new System.Drawing.Size(98, 33);
-            this.CMDcancelar.TabIndex = 17;
-            this.CMDcancelar.Text = "&Cancelar";
-            this.CMDcancelar.UseVisualStyleBackColor = true;
-            this.CMDcancelar.Click += new System.EventHandler(this.CMDcancelar_Click);
+            this.btnCancelar.Location = new System.Drawing.Point(366, 520);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(98, 33);
+            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // CMDcargar
             // 
@@ -258,16 +258,17 @@
             this.clbIngredientes.Name = "clbIngredientes";
             this.clbIngredientes.Size = new System.Drawing.Size(330, 109);
             this.clbIngredientes.TabIndex = 20;
+            this.clbIngredientes.SelectedIndexChanged += new System.EventHandler(this.clbIngredientes_SelectedIndexChanged);
             // 
-            // button1
+            // btnAgregarIngrediente
             // 
-            this.button1.Location = new System.Drawing.Point(15, 485);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 33);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "&Agregar nuevo Ingrediente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnAgregarIngrediente.Location = new System.Drawing.Point(15, 485);
+            this.btnAgregarIngrediente.Name = "btnAgregarIngrediente";
+            this.btnAgregarIngrediente.Size = new System.Drawing.Size(149, 33);
+            this.btnAgregarIngrediente.TabIndex = 21;
+            this.btnAgregarIngrediente.Text = "&Agregar nuevo Ingrediente";
+            this.btnAgregarIngrediente.UseVisualStyleBackColor = true;
+            this.btnAgregarIngrediente.Click += new System.EventHandler(this.btnAgregarIngrediente_Click);
             // 
             // btnPais
             // 
@@ -285,11 +286,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 565);
             this.Controls.Add(this.btnPais);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAgregarIngrediente);
             this.Controls.Add(this.clbIngredientes);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.CMDcargar);
-            this.Controls.Add(this.CMDcancelar);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.CMDcargarimagen);
             this.Controls.Add(this.PCBimagen);
             this.Controls.Add(this.TXTinstrucciones);
@@ -337,10 +338,10 @@
         private System.Windows.Forms.PictureBox PCBimagen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button CMDcargarimagen;
-        private System.Windows.Forms.Button CMDcancelar;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button CMDcargar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAgregarIngrediente;
         private System.Windows.Forms.CheckedListBox clbIngredientes;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnPais;

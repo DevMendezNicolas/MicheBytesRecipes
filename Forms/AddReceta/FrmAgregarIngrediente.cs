@@ -1,4 +1,6 @@
 ﻿using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Connections;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,12 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
     public partial class FrmAgregarIngrediente : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
+
         public FrmAgregarIngrediente()
         {
             InitializeComponent();
@@ -31,16 +35,17 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Ingrediente nuevoIngrediente = new Ingrediente();
             if (Validaciones.ValidarIngrediente(txtIngrediente, cboUnidad, cboTipo, errorProvider1))
             {
-                nuevoIngrediente.Nombre = txtIngrediente.Text;
-                nuevoIngrediente.Unidad = (UnidadMedida)cboUnidad.SelectedItem;
-                nuevoIngrediente.TipoOrigen = (Origen)cboTipo.SelectedItem;
-                //Aqui se puede agregar el ingrediente a una lista o base de datos segun se requiera
-                
+                Ingrediente nuevoIngrediente = new Ingrediente
+                {
+                    Nombre = txtIngrediente.Text,
+                    Unidad = (UnidadMedida)cboUnidad.SelectedItem,
+                    Tipo = (TipoIngrediente)cboTipo.SelectedItem
+                };
+
                 gestorReceta.AgregarIngrediente(nuevoIngrediente);
-                MessageBox.Show("Ingrediente agregado: " + nuevoIngrediente.ToString());
+
                 this.DialogResult = DialogResult.OK; //Cerrar el formulario con resultado OK
                 this.Close();
             }
@@ -49,12 +54,42 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void FrmAgregarIngrediente_Load(object sender, EventArgs e)
         {
+            
+
+            //Cargar las unidades de medida y tipos de ingredientes en los ComboBox
+            var listaUnidades = gestorReceta.ObtenerListaUnidades();
+            var listaTipos = gestorReceta.ObtenerListaTipos();
+
+            MessageBox.Show($"Unidades: {listaUnidades?.Count ?? 0}, Tipos: {listaTipos?.Count ?? 0}");
+
+            CargarCombos(cboUnidad, listaUnidades, "Nombre", "UnidadMedidaId", "No se pudieron cargar las unidades de medida.");           
+            CargarCombos(cboTipo, listaTipos, "Nombre", "TipoIngredienteId", "No se pudieron cargar los tipos de ingredientes.");
 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cboUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarCombos<T>(ComboBox combo, List<T> lista, string displayMember, string valueMember, string mensajeError)
+        //Uso una lista generica para poder reutilizar el metodo
+        {
+            if (lista != null && lista.Count > 0)
+            {
+                combo.DataSource = lista; //Asigno la lista al DataSource del ComboBox
+                combo.DisplayMember = displayMember;//Propiedad que se muestra en el ComboBox
+                //combo.ValueMember = valueMember; //Propiedad que se usa como valor (Id)
+                combo.SelectedIndex = 0; //Selecciono el primer elemento por defecto
+            }else
+            {
+                MessageBox.Show(mensajeError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

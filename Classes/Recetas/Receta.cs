@@ -31,7 +31,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             public DateTime FechaRegistro { get; set; }
             public DateTime? FechaBaja { get; set; }
 
-            public List<Ingrediente> Ingredientes { get; set; }
+            public List<Ingrediente> Ingredientes { get; set; } = new List<Ingrediente>();
 
 
             public Receta()

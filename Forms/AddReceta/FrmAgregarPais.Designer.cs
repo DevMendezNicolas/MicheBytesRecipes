@@ -102,6 +102,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmAgregarPais";
             this.Text = "FrmAgregarPais";
+            this.Load += new System.EventHandler(this.FrmAgregarPais_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
