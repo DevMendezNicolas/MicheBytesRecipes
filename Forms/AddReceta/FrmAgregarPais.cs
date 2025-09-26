@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
             Pais pais = new Pais();
             if((Validaciones.ValidarPais(txtPais,errorProvider1)))
             {
-                pais.Nombre = txtPais.Text;
+                pais.Nombre = Utilidades.CapitalizarPrimeraLetra(txtPais.Text);
 
                 gestorReceta.AgregarPais(pais);
                 this.DialogResult = DialogResult.OK; //Cerrar el formulario con resultado OK

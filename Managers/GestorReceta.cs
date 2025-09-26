@@ -174,42 +174,56 @@ namespace MicheBytesRecipes.Classes.Recetas
             return recetas;
         }
 
-        //Metodos para agregar
-        //falta metodo de agregar categoria y unidades.
-        public void AgregarReceta(Receta receta)
+        public int AgregarReceta(Receta receta, List<int> ingredientesIds)
         {
+            int recetaId = -1;
             //Validacion con try catch porque las conexiones externas pueden fallar
             //Ejemplo: la base de datos no esta disponible
             try
             {
                 //Abrir la conexion
                 conexion.Abrir();
-                // Comando SQL para insertar una nueva receta
-                string consultaAgregar = "INSERT INTO Recetas (Nombre, Descripcion, Instrucciones, ImagenReceta, TiempoPreparacion, NivelDificultad, FechaRegistro) " +
-                    "VALUES (@Nombre, @Descripcion, @Instrucciones, @ImagenReceta, @TiempoPreparacion, @NivelDificultad, @FechaRegistro);"
-                    //"SELECT LAST_INSERT_ID();"
-                    ;
 
-                using (MySqlCommand comando = new MySqlCommand(consultaAgregar, conexion.GetConexion()))
+                using (MySqlCommand comando = new MySqlCommand("Insertar_receta", conexion.GetConexion()))
                 {
+                    comando.CommandType = CommandType.StoredProcedure;
                     //Asignar los parametros del comando SQL
-                    comando.Parameters.AddWithValue("@Nombre", receta.Nombre);
-                    comando.Parameters.AddWithValue("@Descripcion", receta.Descripcion);
-                    comando.Parameters.AddWithValue("@Instrucciones", receta.Instrucciones);
-                    comando.Parameters.AddWithValue("@ImagenReceta", receta.ImagenReceta);
-                    comando.Parameters.AddWithValue("@TiempoPreparacion", receta.TiempoPreparacion);
-                    comando.Parameters.AddWithValue("@NivelDificultad", receta.NivelDificultad.ToString());
-                    comando.Parameters.AddWithValue("@FechaRegistro", receta.FechaRegistro);
+                    comando.Parameters.AddWithValue("@p_nombre", receta.Nombre);
+                    comando.Parameters.AddWithValue("@p_descripcion", receta.Descripcion);
+                    comando.Parameters.AddWithValue("@p_instrucciones", receta.Instrucciones);
+                    //Imagen BLOB
+                    comando.Parameters.Add("@p_imagen_receta", MySqlDbType.Blob).Value = receta.ImagenReceta ??(object)DBNull.Value;
+                    //Tiempo (TimeSpan -> TIME)
+                    comando.Parameters.AddWithValue("@p_tiempo_preparacion", receta.TiempoPreparacion);
+                    comando.Parameters.AddWithValue("@p_dificultad", receta.NivelDificultad.ToString());
+                    //comando.Parameters.AddWithValue("@FechaRegistro", receta.FechaRegistro);
+                    //Claves foraneas
+                    comando.Parameters.AddWithValue("@p_pais_id", receta.PaisId);
+                    comando.Parameters.AddWithValue("@p_categoria_id", receta.CategoriaId);
+                    comando.Parameters.AddWithValue("@p_usuario_id", receta.UsuarioId);
 
-                    //Ejecutar el comando y obtener el ID generado
+                    //Parametro de salida
+                    var parametroId = new MySqlParameter("p_receta_id", MySqlDbType.Int32);
+                    parametroId.Direction = ParameterDirection.Output;
+                    comando.Parameters.Add(parametroId);
 
-                    int filasAfectadas = comando.ExecuteNonQuery();
+                    //Ejecutar
+                    comando.ExecuteNonQuery();
 
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Receta agregada exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo agregar la receta.");
+                    //Obtener el id
+                    recetaId = Convert.ToInt32(comando.Parameters["p_receta_id"].Value);
                 }
+                foreach(var ingredienteId in ingredientesIds)
+                {
+                    using (var cmd = new MySqlCommand("INSERT INTO ingredientes_x_receta (receta_id, ingrediente_id, cantidad) VALUES (@recetaId, @ingredienteId, @cantidad)", conexion.GetConexion()))
+                    {
+                        cmd.Parameters.AddWithValue("@recetaId", recetaId);
+                        cmd.Parameters.AddWithValue("@ingredienteId", ingredienteId);
+                        cmd.Parameters.AddWithValue("@cantidad", 1);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Receta agregada exitosamente.");
 
             }
             catch (Exception ex)
@@ -221,6 +235,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                 //Cerrar la conexion
                 conexion.Cerrar();
             }
+
+            return recetaId;
         }
         public void AgregarIngrediente(Ingrediente ingrediente)
         {
@@ -303,6 +319,35 @@ namespace MicheBytesRecipes.Classes.Recetas
             {
                 conexion.Cerrar();
             }
+        }
+        public void AgregarCategoria(Categoria categoria)
+        {
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("Insertar_categoria", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    comando.Parameters.AddWithValue("p_nombre", categoria.Nombre);
+                    comando.Parameters.AddWithValue("p_descripcion", categoria.Descripcion);
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show("Categoria agregada exitosamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo agregar la categoria.");
+                    }                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar categoria: " + ex.Message);
+            }
+            finally { conexion.Cerrar(); }
         }
         //Metodos de busqueda
         public List<Receta> BuscarRecetaPorNombre(string nombre)

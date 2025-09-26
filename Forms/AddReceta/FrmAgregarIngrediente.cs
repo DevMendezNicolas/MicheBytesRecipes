@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
@@ -39,7 +40,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
             {
                 Ingrediente nuevoIngrediente = new Ingrediente
                 {
-                    Nombre = txtIngrediente.Text,
+                    Nombre = Utilidades.CapitalizarPrimeraLetra(txtIngrediente.Text),
                     Unidad = (UnidadMedida)cboUnidad.SelectedItem,
                     Tipo = (TipoIngrediente)cboTipo.SelectedItem
                 };

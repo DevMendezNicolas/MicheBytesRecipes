@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes
@@ -108,6 +109,18 @@ namespace MicheBytesRecipes
             if (string.IsNullOrWhiteSpace(txtPais.Text))
             {
                 errorProvider.SetError(txtPais, "Debe ingresar un nombre de pais.");
+                esValido = false;
+            }
+            return esValido;
+        }
+        public static bool ValidarCategoria(TextBox txtNombre, TextBox txtdescripcion, ErrorProvider errorProvider)
+        {
+            bool esValido = true;
+            errorProvider.Clear();
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                errorProvider.SetError(txtNombre, "Debe ingresar un nombre");
                 esValido = false;
             }
             return esValido;
