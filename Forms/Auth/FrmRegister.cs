@@ -173,14 +173,7 @@ namespace MicheBytesRecipes.Forms.Auth
                 return;
             }
 
-            /*Usuario usuarioRegistro = new Usuario(
-
-                txtNombre.Text,
-                txtApellido.Text,
-                txtTelefono.Text,
-                txtEmail.Text,
-                txtContra.Text,
-                pbxFotoPerfil.Image != null ? ImageToByteArray.ConvertImageToByteArray(pbxFotoPerfil.Image) : null);*/
+            Usuario.CrearUsuario()
 
 
         }
