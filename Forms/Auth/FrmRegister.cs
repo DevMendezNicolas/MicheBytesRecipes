@@ -162,9 +162,13 @@ namespace MicheBytesRecipes.Forms.Auth
                 return;
             }
 
+            if (!Usuario.ValidarEmail(txtEmail.Text))
+            {
+                eprCampos.SetError(txtEmail, "El correo electrónico no es válido.");
+                return;
+            }
 
-
-            if(string.IsNullOrWhiteSpace(txtContra.Text))
+            if (string.IsNullOrWhiteSpace(txtContra.Text))
             {
                 eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
                 return;
@@ -200,7 +204,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
 
 
-            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,txtContra.Text,fotoBytes);
+            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(),txtContra.Text,fotoBytes);
             
             gestorUsuarios.AgregarUsuario(nuevoUsuario);
 

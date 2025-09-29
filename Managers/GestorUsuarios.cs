@@ -60,6 +60,7 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.AddWithValue("p_imagen_perfil", usuario.Foto);
                     // Ejecutar el comando
                     int filasAfectadas = comando.ExecuteNonQuery();
+
                     if (filasAfectadas > 0)
                         MessageBox.Show("Usuario agregado correctamente.");
                     else
