@@ -128,5 +128,22 @@ namespace MicheBytesRecipes.Classes
 
             return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol);
         }
+
+        public static Usuario CrearUsuario(string nombre, string apellido, string telefono, string email, string contraseña, byte[] foto)
+        {
+            if (string.IsNullOrWhiteSpace(nombre) || nombre.Length < 3)
+                throw new ArgumentException("El nombre no es válido.");
+            if (string.IsNullOrWhiteSpace(apellido) || apellido.Length < 2)
+                throw new ArgumentException("El apellido no es válido.");
+            if (string.IsNullOrWhiteSpace(telefono) || telefono.Length < 5)
+                throw new ArgumentException("El teléfono no es válido.");
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@") || !email.Contains(".com"))
+                throw new ArgumentException("El email no es válido.");
+            if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Length < 6)
+                throw new ArgumentException("La contraseña no es válida.");
+            if (foto == null || foto.Length == 0)
+                foto = Array.Empty<byte>();
+            return new Usuario(email, nombre, apellido, telefono, contraseña, foto);
+        }
     }
 }
