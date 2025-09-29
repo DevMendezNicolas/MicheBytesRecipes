@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MicheBytesRecipes.Helpers;
 using System.Windows.Forms;
+using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Classes;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
@@ -15,6 +17,8 @@ namespace MicheBytesRecipes.Forms.Auth
     {
         public FrmRegister()
         {
+            GestorUsuarios gestorUsuarios = new GestorUsuarios();
+
             InitializeComponent();
 
             //Setea los cues en los textbox
@@ -26,12 +30,6 @@ namespace MicheBytesRecipes.Forms.Auth
             CueProvider.SetCue(txtRepContra, "Repeti tu contraseña");
 
             //Redondeo de botones, paneles y textbox
-            /*UiHelpers.SetRoundedTextBox(txtNombre, 20);
-            UiHelpers.SetRoundedTextBox(txtApellido, 20);
-            UiHelpers.SetRoundedTextBox(txtTelefono, 20);
-            UiHelpers.SetRoundedTextBox(txtEmail, 20);
-            UiHelpers.SetRoundedTextBox(txtContra, 20);
-            UiHelpers.SetRoundedTextBox(txtRepContra, 20);*/
             UiHelpers.SetRoundedButton(btnRegistrar, 20);
 
             //Aplicación del tema y color gradiente al formulario y panel derecho
@@ -135,9 +133,140 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            txtNombre.Text = txtContra.Text;
+
+
+            eprCampos.Clear();
+            if(string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(txtApellido.Text))
+            {
+                eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(txtContra.Text))
+            {
+                eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
+                return;
+            }
+            if(txtContra != txtRepContra)
+            {
+                eprCampos.SetError(txtContra, "Las contraseña no coincinden");
+                eprCampos.SetError(txtRepContra, "Las contraseña no coincinden");
+                return;
+            }
+            if(!chkTerminos.Checked)
+            {
+                eprCampos.SetError(chkTerminos, "Debes aceptar los términos y condiciones.");
+                return;
+            }
+
+            Usuario usuarioRegistro = new Usuario(
+
+                txtNombre.Text,
+                txtApellido.Text,
+                txtTelefono.Text,
+                txtEmail.Text,
+                txtContra.Text,
+                pbxFotoPerfil.Image != null ? ImageToByteArray.ConvertImageToByteArray(pbxFotoPerfil.Image) : null);
+
+
         }
 
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
 
+            // Convertir a mayúscula la primera letra y después de un espacio
+            if (char.IsLower(e.KeyChar) && (txtNombre.SelectionStart == 0 || txtNombre.Text[txtNombre.SelectionStart - 1] == ' '))
+            {
+                e.KeyChar = char.ToUpper(e.KeyChar);
+            }
+
+            if(e.KeyChar == 13)
+            {
+                txtApellido.Focus();
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+            // Convertir a mayúscula la primera letra y después de un espacio
+            if (char.IsLower(e.KeyChar) && (txtApellido.SelectionStart == 0 || txtApellido.Text[txtApellido.SelectionStart - 1] == ' '))
+            {
+                e.KeyChar = char.ToUpper(e.KeyChar);
+            }
+            if (e.KeyChar == 13)
+            {
+                txtTelefono.Focus();
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y teclas de control
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == 13)
+            {
+                txtEmail.Focus();
+            }
+
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Validar que sea un email
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && e.KeyChar != '_' && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == 13)
+            {
+                txtContra.Focus();
+            }
+        }
+
+        private void txtContra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == 13)
+            {
+                txtRepContra.Focus();
+            }
+
+        }
+
+        private void txtRepContra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                chkTerminos.Focus();
+            }
+
+        }
     }
 }

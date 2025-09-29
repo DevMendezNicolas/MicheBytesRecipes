@@ -84,6 +84,7 @@
             this.txtApellido.Size = new System.Drawing.Size(431, 22);
             this.txtApellido.TabIndex = 3;
             this.txtApellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtEmail
             // 
@@ -94,6 +95,7 @@
             this.txtEmail.Size = new System.Drawing.Size(431, 22);
             this.txtEmail.TabIndex = 4;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // txtContra
             // 
@@ -104,6 +106,7 @@
             this.txtContra.Size = new System.Drawing.Size(431, 22);
             this.txtContra.TabIndex = 5;
             this.txtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContra_KeyPress);
             // 
             // txtRepContra
             // 
@@ -114,6 +117,7 @@
             this.txtRepContra.Size = new System.Drawing.Size(431, 22);
             this.txtRepContra.TabIndex = 6;
             this.txtRepContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRepContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRepContra_KeyPress);
             // 
             // chkTerminos
             // 
@@ -242,6 +246,7 @@
             this.txtTelefono.Size = new System.Drawing.Size(431, 22);
             this.txtTelefono.TabIndex = 17;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // lblTelefono
             // 
@@ -339,6 +344,7 @@
             this.txtNombre.Size = new System.Drawing.Size(431, 22);
             this.txtNombre.TabIndex = 2;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // pnlLeft
             // 
