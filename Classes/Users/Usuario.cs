@@ -45,12 +45,12 @@ namespace MicheBytesRecipes.Classes
             this.FechaBaja = null;
         }
         // Validaciones
-        public bool ValidarEmail() // pasarle esto a kevo
+        public static bool ValidarEmail(string mail)
         {
             try
             {
-                var mail = new MailAddress(Email.Trim());
-                return mail.Address == Email.Trim();
+                var email = new MailAddress(mail.Trim());
+                return email.Address == mail.Trim();
             }
             catch
             {
