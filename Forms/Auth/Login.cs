@@ -140,7 +140,7 @@ namespace MicheBytesRecipes
                 if (usuarioActivo.Rol == 1)
                 {
                     //Abrir el formulario de menú de administrador y pasar el usuario
-                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
+                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo, gestorUsuarios);
                     //menuAdmin.FormClosed += (s, args) => this.Show(); // Mostrar el login al cerrar el menú
                     menuAdmin.Show();
                     this.Hide();

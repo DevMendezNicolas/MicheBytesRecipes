@@ -18,11 +18,13 @@ namespace MicheBytesRecipes
     public partial class frmMenuAdmin : Form
     {
         private Usuario usuarioActivo;
-        public frmMenuAdmin(Usuario usuario)
+        private GestorUsuarios gestorUsuarios;
+        public frmMenuAdmin(Usuario usuario, GestorUsuarios p_gestorUsuarios)
         {
             InitializeComponent();
             usuarioActivo = usuario;
             lblNombre.Text = $"{usuarioActivo.NombreCompleto()}";
+            gestorUsuarios = p_gestorUsuarios;
         }
 
         private void button1_Click(object sender, EventArgs e)

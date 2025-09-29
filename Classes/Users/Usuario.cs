@@ -33,21 +33,19 @@ namespace MicheBytesRecipes.Classes
             this.FechaRegistro = DateTime.Now;
             this.FechaBaja = null;
         }
-        public Usuario(string email, int usuarioId, string nombre, string apellido, string telefono, string contraseña, byte[] foto, int rol)
+        public Usuario(string email, string nombre, string apellido, string telefono, string contraseña, byte[] foto)
         {
-            this.UsuarioId = usuarioId;
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.Telefono = telefono;
             this.Email = email;
             this.Contraseña = contraseña;
             this.Foto = foto;
-            this.Rol = rol;
             this.FechaRegistro = DateTime.Now;
             this.FechaBaja = null;
         }
         // Validaciones
-        public bool ValidarEmail()
+        public bool ValidarEmail() // pasarle esto a kevo
         {
             try
             {
@@ -72,7 +70,7 @@ namespace MicheBytesRecipes.Classes
         // ToString para mostrar información del usuario
         public override string ToString()
         {
-            return $"ID: {UsuarioId}, Nombre: {NombreCompleto()}, Email: {Email}, Teléfono: {Telefono}, Rol: {Rol}, Fecha de Registro: {FechaRegistro}, Activo: {EsActivo()}";
+            return $"ID: {UsuarioId}, Email: {Email}, Teléfono: {Telefono}, Rol: {(Rol != 1 ? "Usuario" : "Administrador")}, Fecha de Registro: {FechaRegistro}, Activo: {EsActivo()}";
         }
         // Equals y GetHashCode para comparar usuarios por ID
         public override bool Equals(object obj)
@@ -113,24 +111,22 @@ namespace MicheBytesRecipes.Classes
             Contraseña = nuevaContraseña;
         }
         // Metodo estatico para construir un usuario con sus validaciones  -> REVISAR
-        public static Usuario CrearUsuario(int usuarioId, string nombre, string apellido, string telefono, string email, string contraseña, byte[] foto, int rol)
+        public static Usuario CrearUsuario(int usuarioId, string nombre, string apellido, string telefono, string email, byte[] foto, int rol)
         {
-            if (string.IsNullOrWhiteSpace(nombre))
-                throw new ArgumentException("El nombre no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(apellido))
-                throw new ArgumentException("El apellido no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(telefono))
-                throw new ArgumentException("El teléfono no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("El email no puede estar vacío.");
-            if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Length < 6)
-                throw new ArgumentException("La contraseña debe tener al menos 6 caracteres.");
-            if (rol < 0)
-                throw new ArgumentException("El rol no es válido.");
-            var usuario = new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol);
-            if (!usuario.ValidarEmail())
+            if (string.IsNullOrWhiteSpace(nombre) || nombre.Length < 3)
+                throw new ArgumentException("El nombre no es válido.");
+            if (string.IsNullOrWhiteSpace(apellido) || apellido.Length < 2)
+                throw new ArgumentException("El apellido no es válido.");
+            if (string.IsNullOrWhiteSpace(telefono) || telefono.Length < 5)
+                throw new ArgumentException("El teléfono no es válido.");
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@") || !email.Contains(".com"))
                 throw new ArgumentException("El email no es válido.");
-            return usuario;
+            if (foto == null || foto.Length == 0)
+                foto = Array.Empty<byte>();
+            if (rol <= 0)
+                throw new ArgumentException("El rol no es válido.");
+
+            return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol);
         }
     }
 }
