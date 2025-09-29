@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicheBytesRecipes.Classes.Recetas
+namespace MicheBytesRecipes
 {
     internal class Categoria
     {

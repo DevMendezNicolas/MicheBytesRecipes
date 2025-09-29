@@ -23,7 +23,8 @@ namespace MicheBytesRecipes
             //Application.Run(new frmHome());
             //Application.Run(new Inicio());
             //Application.Run(new frmLogin());
-            Application.Run(new frmMenuAdmin());
+            //Application.Run(new frmMenuAdmin());
+            Application.Run(new Forms.AddReceta.FrmAgregarReceta());
         }
     }
 }

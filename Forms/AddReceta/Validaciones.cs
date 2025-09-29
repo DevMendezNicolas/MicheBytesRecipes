@@ -1,4 +1,4 @@
-﻿using MicheBytesRecipes.Classes.Recetas;
+﻿using MicheBytesRecipes.Classes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

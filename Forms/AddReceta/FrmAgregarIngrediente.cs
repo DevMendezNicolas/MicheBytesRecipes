@@ -1,4 +1,4 @@
-﻿using MicheBytesRecipes.Classes.Recetas;
+﻿using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Connections;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;

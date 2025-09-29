@@ -108,8 +108,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Recetas\Categoria.cs" />
+    <Compile Include="Classes\Recetas\Ingrediente.cs" />
+    <Compile Include="Classes\Recetas\Pais.cs" />
+    <Compile Include="Classes\Recetas\Receta.cs" />
+    <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
+    <Compile Include="Classes\Recetas\UnidadMedida.cs" />
     <Compile Include="Classes\Users\Usuario.cs" />
     <Compile Include="Connections\ConexionBD.cs" />
+    <Compile Include="Forms\AddReceta\FrmAgregarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarCategoria.Designer.cs">
+      <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.Designer.cs">
+      <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarPais.Designer.cs">
+      <DependentUpon>FrmAgregarPais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarReceta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddReceta\FrmAgregarReceta.Designer.cs">
+      <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddReceta\Validaciones.cs" />
     <Compile Include="Forms\Admin\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +171,23 @@
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\UiHelpers.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
+    <Compile Include="Classes\Recetas\GestorReceta.cs" />
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Utilidades.cs" />
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarCategoria.resx">
+      <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarIngrediente.resx">
+      <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarPais.resx">
+      <DependentUpon>FrmAgregarPais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarReceta.resx">
+      <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
