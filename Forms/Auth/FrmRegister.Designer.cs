@@ -70,7 +70,7 @@
             this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
             this.pbxFotoPerfil.Name = "pbxFotoPerfil";
             this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
-            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxFotoPerfil.TabIndex = 1;
             this.pbxFotoPerfil.TabStop = false;
             this.pbxFotoPerfil.Click += new System.EventHandler(this.pbxFotoPerfil_Click);
@@ -82,7 +82,7 @@
             this.txtApellido.Location = new System.Drawing.Point(81, 238);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(431, 22);
-            this.txtApellido.TabIndex = 3;
+            this.txtApellido.TabIndex = 2;
             this.txtApellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
@@ -176,7 +176,7 @@
             this.LinkIniciar.Location = new System.Drawing.Point(351, 621);
             this.LinkIniciar.Name = "LinkIniciar";
             this.LinkIniciar.Size = new System.Drawing.Size(102, 21);
-            this.LinkIniciar.TabIndex = 11;
+            this.LinkIniciar.TabIndex = 10;
             this.LinkIniciar.TabStop = true;
             this.LinkIniciar.Text = "Iniciar Sesion";
             this.LinkIniciar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkIniciar_LinkClicked);
@@ -244,7 +244,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(81, 299);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(431, 22);
-            this.txtTelefono.TabIndex = 17;
+            this.txtTelefono.TabIndex = 3;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
@@ -342,7 +342,7 @@
             this.txtNombre.Location = new System.Drawing.Point(81, 179);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(431, 22);
-            this.txtNombre.TabIndex = 2;
+            this.txtNombre.TabIndex = 1;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 

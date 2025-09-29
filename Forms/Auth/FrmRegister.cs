@@ -10,14 +10,17 @@ using MicheBytesRecipes.Helpers;
 using System.Windows.Forms;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Classes;
+using System.IO;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
     public partial class FrmRegister : Form
     {
+
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
         public FrmRegister()
         {
-            GestorUsuarios gestorUsuarios = new GestorUsuarios();
+            
 
             InitializeComponent();
 
@@ -102,6 +105,8 @@ namespace MicheBytesRecipes.Forms.Auth
             {
                 pbxFotoPerfil.Image = Image.FromFile(ofdFotoPerfil.FileName);
             }
+
+
         }
 
         private void btnViewContra_MouseDown(object sender, MouseEventArgs e)
@@ -156,24 +161,50 @@ namespace MicheBytesRecipes.Forms.Auth
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
                 return;
             }
+
+
+
             if(string.IsNullOrWhiteSpace(txtContra.Text))
             {
                 eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
                 return;
             }
-            if(txtContra != txtRepContra)
+            if(txtContra.Text.Length < 6)
+            {
+                eprCampos.SetError(txtContra, "La contraseña debe tener al menos 6 caracteres.");
+                return;
+            }
+
+            if (txtContra.Text != txtRepContra.Text)
             {
                 eprCampos.SetError(txtContra, "Las contraseña no coincinden");
                 eprCampos.SetError(txtRepContra, "Las contraseña no coincinden");
                 return;
             }
+
             if(!chkTerminos.Checked)
             {
                 eprCampos.SetError(chkTerminos, "Debes aceptar los términos y condiciones.");
                 return;
             }
 
-            Usuario.CrearUsuario()
+            byte[] fotoBytes = Array.Empty<byte>();
+            if (pbxFotoPerfil.Image != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pbxFotoPerfil.Image.Save(ms, pbxFotoPerfil.Image.RawFormat);
+                    fotoBytes = ms.ToArray();
+                }
+            }
+
+
+
+            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,txtContra.Text,fotoBytes);
+            
+            gestorUsuarios.AgregarUsuario(nuevoUsuario);
+
+            limpiarCampos();
 
 
         }
@@ -260,6 +291,18 @@ namespace MicheBytesRecipes.Forms.Auth
                 chkTerminos.Focus();
             }
 
+        }
+
+        private void limpiarCampos()
+        {
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtTelefono.Clear();
+            txtEmail.Clear();
+            txtContra.Clear();
+            txtRepContra.Clear();
+            pbxFotoPerfil.Image = null;
+            chkTerminos.Checked = false;
         }
     }
 }
