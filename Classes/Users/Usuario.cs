@@ -21,7 +21,7 @@ namespace MicheBytesRecipes.Classes
         public DateTime FechaRegistro { get; set; }
         public DateTime? FechaBaja { get; set; }
         // Constructores de Usuario
-        public Usuario(string email, int usuarioId, string nombre, string apellido, string telefono, byte[] foto, int rol)
+        public Usuario(string email, int usuarioId, string nombre, string apellido, string telefono, byte[] foto, int rol,DateTime fechaRegistro, DateTime? fechaBaja)
         {
             this.UsuarioId = usuarioId;
             this.Nombre = nombre;
@@ -30,8 +30,8 @@ namespace MicheBytesRecipes.Classes
             this.Email = email;
             this.Foto = foto;
             this.Rol = rol;
-            this.FechaRegistro = DateTime.Now;
-            this.FechaBaja = null;
+            this.FechaRegistro = fechaRegistro;
+            this.FechaBaja = fechaBaja;
         }
         public Usuario(string email, string nombre, string apellido, string telefono, string contraseña, byte[] foto)
         {

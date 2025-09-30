@@ -142,14 +142,23 @@ namespace MicheBytesRecipes.Managers
                     {
                         if (reader.Read())
                         {
+                            byte[] fotoPerfil = null;
+                            if (!reader.IsDBNull(reader.GetOrdinal("ImagenPerfil")))
+                            {
+                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, null, 0, 0);
+                                fotoPerfil = new byte[tamañoImagen];
+                                reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
+                            }
                             return new Usuario(
                                 reader.GetString("Email"),
                                 reader.GetInt32("UsuarioId"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                (byte[])reader["ImagenPerfil"],
-                                (int)reader["ID_Rol"]
+                                fotoPerfil,
+                                (int)reader["ID_Rol"],
+                                reader.GetDateTime("Fecha_Registro"),
+                                reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("FechaBaja")
                             );
                         }
                         else
@@ -244,14 +253,24 @@ namespace MicheBytesRecipes.Managers
                     {
                         while (reader.Read())
                         {
+                            byte[] fotoPerfil = null;
+                            if (!reader.IsDBNull(reader.GetOrdinal("ImagenPerfil")))
+                            {
+                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, null, 0, 0);
+                                fotoPerfil = new byte[tamañoImagen];
+                                reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
+                            }
+
                             allUsers.Add(new Usuario(
                                 reader.GetString("Email"),
                                 reader.GetInt32("Usuario_Id"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                (byte[])reader["ImagenPerfil"],
-                                reader.GetInt32("rol_id")
+                                fotoPerfil,
+                                reader.GetInt32("rol_id"),
+                                reader.GetDateTime("Fecha_Registro"),
+                                reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("FechaBaja")
 
                             ));
                         }
@@ -269,7 +288,7 @@ namespace MicheBytesRecipes.Managers
             }
         } // Revisar Uso
         // Listar usuarios inactivos
-        public void ListarUsuariosInactivos()
+        /*public void ListarUsuariosInactivos()
         {
             try
             {
@@ -304,6 +323,7 @@ namespace MicheBytesRecipes.Managers
             }
         } // Revisar Uso
         // Cantidad Total de usuario dados de alta
+        */
         public int CantidadTotalUsuarios()
         {
             try
