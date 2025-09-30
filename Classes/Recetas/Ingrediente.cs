@@ -2,7 +2,7 @@
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
-    internal class Ingrediente
+    public class Ingrediente
     {
 
         //Propiedades de la clase Ingrediente

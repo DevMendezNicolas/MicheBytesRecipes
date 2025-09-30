@@ -176,6 +176,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         public int AgregarReceta(Receta receta, List<int> ingredientesIds)
         {
+            //inicializo el id de la receta en -1 (valor que indica que no se ha insertado)
             int recetaId = -1;
             //Validacion con try catch porque las conexiones externas pueden fallar
             //Ejemplo: la base de datos no esta disponible
@@ -350,6 +351,48 @@ namespace MicheBytesRecipes.Classes.Recetas
             finally { conexion.Cerrar(); }
         }
         //Metodos de busqueda
+        public Receta ObtenerRecetaPorId(int recetaId)
+        {
+            Receta receta = null;
+            try
+            {
+                conexion.Abrir();
+                string consultaObtener = ("SELECT * FROM Vista_todas_las_recetas WHERE receta_id = @recetaId");
+
+                using (MySqlCommand comando = new MySqlCommand(consultaObtener, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+
+                    using(MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            receta = new Receta
+                            {
+                                RecetaId = reader.GetInt32("receta_id"),
+                                Nombre = reader.GetString("nombre"),
+                                Descripcion = reader.GetString("descripcion"),
+                                Instrucciones = reader.GetString("instrucciones"),
+                                ImagenReceta = reader["imagen_receta"] as byte[],
+                                TiempoPreparacion = reader.GetTimeSpan("tiempo_preparacion"),
+                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), reader.GetString("NivelDificultad")),
+                                PaisId = -1,
+                                CategoriaId = -1,
+                                UsuarioId = -1,
+                            };
+
+                        }
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error al obtener la receta: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }return receta;
+        }
         public List<Receta> BuscarRecetaPorNombre(string nombre)
         {
             List<Receta> recetas = new List<Receta>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
-    internal class UnidadMedida
+    public class UnidadMedida
     {
         public int UnidadMedidaId { get; set; } // <- Esto es lo que va en el ValueMember del ComboBox
         public string Nombre { get; set; } // <- Esto es lo que va en el DisplayMember del ComboBox

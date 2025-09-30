@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
-    internal class TipoIngrediente
+    public class TipoIngrediente
     {
         public int TipoIngredienteId { get; set; }
         public string Nombre { get; set; }
+
+
         public TipoIngrediente() { }
         public TipoIngrediente(string nombre)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
-    internal class Categoria
+    public class Categoria
     {
         public int CategoriaId { get; set; }
         public string Nombre { get; set; }
