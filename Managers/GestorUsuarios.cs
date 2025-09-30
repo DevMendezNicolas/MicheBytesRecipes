@@ -247,7 +247,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 List<Usuario> allUsers = new List<Usuario>();
-                string consultaListar = "SELECT * FROM usuarios";
+                string consultaListar = "SELECT * FROM Vista_todos_los_usuarios";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
                     using (MySqlDataReader reader = comando.ExecuteReader())

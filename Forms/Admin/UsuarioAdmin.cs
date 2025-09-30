@@ -25,6 +25,8 @@ namespace MicheBytesRecipes.Forms.Admin
 
             listaUsuarios = gestorUsuarios.ListarUsuarios();
 
+
+
             var listaReducida = listaUsuarios.Select(u => new
             {
                 u.Nombre,
@@ -32,9 +34,13 @@ namespace MicheBytesRecipes.Forms.Admin
                 u.Email,
                 u.Telefono,
                 Rol = u.Rol == 1 ? "Admin" : "Usuario",
-                u.FechaRegistro
-                //Estado = u.FechaBaja == null ? "Activo" : "Inactivo"
+                u.FechaRegistro,
+                Estado = u.FechaBaja == null ? "Activo" : "Inactivo"
             }).ToList();
+
+            //cargar al grid usuarios
+            dgvUsuarios.DataSource = listaReducida;
+
 
         }
 
