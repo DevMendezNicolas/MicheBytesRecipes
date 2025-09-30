@@ -221,6 +221,7 @@ namespace MicheBytesRecipes.Managers
                             comando.Parameters["p_rol_id"].Value == DBNull.Value
                                 ? 0
                                 : Convert.ToInt32(comando.Parameters["p_rol_id"].Value)
+                                , DateTime.Now, null
                         );
                     }
                     else
