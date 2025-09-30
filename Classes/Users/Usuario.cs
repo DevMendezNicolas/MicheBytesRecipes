@@ -111,7 +111,7 @@ namespace MicheBytesRecipes.Classes
             Contraseña = nuevaContraseña;
         }
         // Metodo estatico para construir un usuario con sus validaciones  -> REVISAR
-        public static Usuario CrearUsuario(int usuarioId, string nombre, string apellido, string telefono, string email, byte[] foto, int rol)
+        public static Usuario CrearUsuario(int usuarioId, string nombre, string apellido, string telefono, string email, byte[] foto, int rol, DateTime fechaRegistro, DateTime? fechaBaja)
         {
             if (string.IsNullOrWhiteSpace(nombre) || nombre.Length < 3)
                 throw new ArgumentException("El nombre no es válido.");
@@ -125,8 +125,11 @@ namespace MicheBytesRecipes.Classes
                 foto = Array.Empty<byte>();
             if (rol <= 0)
                 throw new ArgumentException("El rol no es válido.");
+            
 
-            return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol);
+
+
+            return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol, fechaRegistro,fechaBaja);
         }
 
         public static Usuario CrearUsuario(string nombre, string apellido, string telefono, string email, string contraseña, byte[] foto)
