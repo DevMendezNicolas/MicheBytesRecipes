@@ -16,13 +16,25 @@ namespace MicheBytesRecipes.Forms.Admin
     public partial class frmBuscarUsuario : Form
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
+        List <Usuario> listaUsuarios = new List<Usuario>();
 
         public frmBuscarUsuario()
         {
             InitializeComponent();
-            gestorUsuarios.ListarUsuarios();
 
-            gestorUsuarios.usuarios;
+
+            listaUsuarios = gestorUsuarios.ListarUsuarios();
+
+            var listaReducida = listaUsuarios.Select(u => new
+            {
+                u.Nombre,
+                u.Apellido,
+                u.Email,
+                u.Telefono,
+                Rol = u.Rol == 1 ? "Admin" : "Usuario",
+                u.FechaRegistro
+                //Estado = u.FechaBaja == null ? "Activo" : "Inactivo"
+            }).ToList();
 
         }
 
