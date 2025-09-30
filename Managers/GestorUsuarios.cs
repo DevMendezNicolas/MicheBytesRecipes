@@ -60,7 +60,6 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.AddWithValue("p_imagen_perfil", usuario.Foto);
                     // Ejecutar el comando
                     int filasAfectadas = comando.ExecuteNonQuery();
-
                     if (filasAfectadas > 0)
                         MessageBox.Show("Usuario agregado correctamente.");
                     else
@@ -231,11 +230,13 @@ namespace MicheBytesRecipes.Managers
             }
         }// OK
         // Listar usuarios activos
-        public void ListarUsuarios()
+        public List<Usuario> ListarUsuarios()
         {
+            
             try
             {
                 conexion.Abrir();
+                List<Usuario> allUsers = new List<Usuario>();
                 string consultaListar = "SELECT * FROM usuarios WHERE FechaBaja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
@@ -243,16 +244,18 @@ namespace MicheBytesRecipes.Managers
                     {
                         while (reader.Read())
                         {
-                            usuarios.Add(new Usuario(
+                            allUsers.Add(new Usuario(
                                 reader.GetString("Email"),
                                 reader.GetInt32("Usuario_Id"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
                                 (byte[])reader["ImagenPerfil"],
-                                reader.GetInt32("ID_Rol")
+                                reader.GetInt32("rol_id")
+
                             ));
                         }
+                        return allUsers;
                     }
                 }
             }
