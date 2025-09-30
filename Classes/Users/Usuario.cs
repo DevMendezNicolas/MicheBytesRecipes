@@ -126,7 +126,7 @@ namespace MicheBytesRecipes.Classes
             if (rol <= 0)
                 throw new ArgumentException("El rol no es válido.");
 
-            return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol);
+            return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol );
         }
 
         public static Usuario CrearUsuario(string nombre, string apellido, string telefono, string email, string contraseña, byte[] foto)
