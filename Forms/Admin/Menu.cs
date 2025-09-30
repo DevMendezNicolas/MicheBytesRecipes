@@ -19,6 +19,11 @@ namespace MicheBytesRecipes
         {
             InitializeComponent();
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
+            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
+            cboCategoria.DataSource = categorias;
+            cboCategoria.DisplayMember = "Nombre";
+            cboCategoria.ValueMember = "CategoriaId";
+            cboCategoria.SelectedIndex = -1;
         }
 
         private void frmMenuAdmin_Load(object sender, EventArgs e)
@@ -26,9 +31,9 @@ namespace MicheBytesRecipes
             List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
-            cboCategoria.ValueMember = "CategoriaId";
             cboCategoria.SelectedIndex = -1;
-           
+            cboCategoria.ValueMember = "CategoriaId";
+
 
 
         }

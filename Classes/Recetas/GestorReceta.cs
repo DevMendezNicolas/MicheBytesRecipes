@@ -51,7 +51,7 @@ namespace MicheBytesRecipes
             try
             {
                 conexion.Abrir();
-                string consultaListar = "SELECT * FROM Vista_de_ingredientes_con_detalles";
+                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 using (MySqlDataReader lector = comando.ExecuteReader())
                 {
@@ -741,7 +741,7 @@ namespace MicheBytesRecipes
             try
             {
                 conexion.Abrir();
-                string consultaCategorias = "SELECT * FROM Vista_de_categorias";
+                string consultaCategorias = "SELECT * FROM Vista_de_las_categorias";
                 using (MySqlCommand comando = new MySqlCommand(consultaCategorias, conexion.GetConexion()))
                 {
                     using (MySqlDataReader lector = comando.ExecuteReader())
@@ -751,8 +751,7 @@ namespace MicheBytesRecipes
                             Categoria categoria = new Categoria
                             {
                                 CategoriaId = lector.GetInt32("ID_Categoria"),
-                                Nombre = lector.GetString("Nombre"),
-                                Descripcion = lector.GetString("Descripcion")
+                                Nombre = lector.GetString("Nombre")
 
                             };
                             categorias.Add(categoria);

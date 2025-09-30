@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
@@ -58,14 +57,16 @@
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblMetricas);
             this.panel1.Controls.Add(this.lblReceta);
@@ -82,20 +83,11 @@
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(68, 569);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(13, 24);
+            this.lblNombre.Location = new System.Drawing.Point(13, 116);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(198, 74);
             this.lblNombre.TabIndex = 11;
@@ -105,7 +97,7 @@
             // lblMetricas
             // 
             this.lblMetricas.AutoSize = true;
-            this.lblMetricas.Location = new System.Drawing.Point(46, 395);
+            this.lblMetricas.Location = new System.Drawing.Point(46, 479);
             this.lblMetricas.Name = "lblMetricas";
             this.lblMetricas.Size = new System.Drawing.Size(123, 17);
             this.lblMetricas.TabIndex = 10;
@@ -114,7 +106,7 @@
             // lblReceta
             // 
             this.lblReceta.AutoSize = true;
-            this.lblReceta.Location = new System.Drawing.Point(81, 126);
+            this.lblReceta.Location = new System.Drawing.Point(81, 210);
             this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReceta.Name = "lblReceta";
             this.lblReceta.Size = new System.Drawing.Size(53, 17);
@@ -123,7 +115,7 @@
             // 
             // btnMetricas
             // 
-            this.btnMetricas.Location = new System.Drawing.Point(13, 475);
+            this.btnMetricas.Location = new System.Drawing.Point(13, 559);
             this.btnMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.btnMetricas.Name = "btnMetricas";
             this.btnMetricas.Size = new System.Drawing.Size(198, 42);
@@ -133,7 +125,7 @@
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.Location = new System.Drawing.Point(13, 425);
+            this.btnUsuarios.Location = new System.Drawing.Point(13, 509);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(198, 42);
@@ -143,7 +135,7 @@
             // 
             // btnAct
             // 
-            this.btnAct.Location = new System.Drawing.Point(13, 310);
+            this.btnAct.Location = new System.Drawing.Point(13, 394);
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
@@ -153,7 +145,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(13, 260);
+            this.btnEliminar.Location = new System.Drawing.Point(13, 344);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(198, 42);
@@ -163,7 +155,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(13, 210);
+            this.btnModificar.Location = new System.Drawing.Point(13, 294);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(198, 42);
@@ -173,7 +165,7 @@
             // 
             // txtAgregar
             // 
-            this.txtAgregar.Location = new System.Drawing.Point(13, 160);
+            this.txtAgregar.Location = new System.Drawing.Point(13, 244);
             this.txtAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.txtAgregar.Name = "txtAgregar";
             this.txtAgregar.Size = new System.Drawing.Size(198, 42);
@@ -353,6 +345,14 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(34, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(154, 85);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -371,6 +371,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,7 +391,6 @@
         private System.Windows.Forms.Label lblMetricas;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblBuscar;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cboDificultad;
         private System.Windows.Forms.ComboBox cboPais;
         private System.Windows.Forms.ComboBox cboCategoria;
@@ -406,6 +406,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnReinicio;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
