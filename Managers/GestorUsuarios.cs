@@ -245,12 +245,12 @@ namespace MicheBytesRecipes.Managers
                         {
                             usuarios.Add(new Usuario(
                                 reader.GetString("Email"),
-                                reader.GetInt32("UsuarioId"),
+                                reader.GetInt32("Usuario_Id"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
                                 (byte[])reader["ImagenPerfil"],
-                                (int)reader["ID_Rol"]
+                                reader.GetInt32("ID_Rol")
                             ));
                         }
                     }
