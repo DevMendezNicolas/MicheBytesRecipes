@@ -9,7 +9,7 @@ using MicheBytesRecipes.Connections;
 
 namespace MicheBytesRecipes.Interfaces
 {
-    public interface IUsuarioRepository
+    internal interface IUsuarioRepository
     {
         string HashearContraseña(string contraseña);
 
@@ -18,7 +18,7 @@ namespace MicheBytesRecipes.Interfaces
         void EliminarUsuario(int id);
         Usuario BuscarUsuario(int id);
         Usuario BuscarPorEmail(string email);
-        List <Usuario> ListarUsuarios();
+        void ListarUsuarios();
         void ListarUsuariosInactivos();
         int CantidadTotalUsuarios();
         int CantidadTotalUsuariosInactivos();

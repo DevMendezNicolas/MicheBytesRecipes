@@ -237,10 +237,10 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 List<Usuario> allUsers = new List<Usuario>();
-                string consultaListar = "SELECT * FROM usuarios";
+                string consultaListar = "SELECT * FROM usuarios WHERE FechaBaja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
-                    using (MySqlDataReader reader = comando.ExecuteReader() || )
+                    using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -250,7 +250,7 @@ namespace MicheBytesRecipes.Managers
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                (byte[])reader["Imagen_Perfil"],
+                                (byte[])reader["ImagenPerfil"],
                                 reader.GetInt32("rol_id")
 
                             ));
