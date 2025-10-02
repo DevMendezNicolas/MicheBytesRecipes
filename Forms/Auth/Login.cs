@@ -19,6 +19,7 @@ namespace MicheBytesRecipes
     public partial class frmLogin : Form
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
+        private bool salida = false;
         public frmLogin()
         {
             InitializeComponent();
@@ -58,9 +59,13 @@ namespace MicheBytesRecipes
         private void LbLinkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //Abrir el formulario de registro y cerrar el actual
+            salida = true; // Indica que se está cerrando por navegación
+            this.Close();
             FrmRegister register = new FrmRegister();
             register.Show();
-            this.Close();
+            
+
+
         }
 
         private void LbLinkContra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -115,6 +120,7 @@ namespace MicheBytesRecipes
 
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (salida) return; // Si se cerró por login exitoso, no hacer nada
             this.Show(); // Vuelve a mostrar el formulario Inicio
             this.Activate(); // Opcional: le da el foco
         }
@@ -132,19 +138,19 @@ namespace MicheBytesRecipes
                 eprIngresar.SetError(txtContra, "El campo contraseña es obligatorio.");
                 return;
             }
-            //gestorUsuarios.HashearContraseña(txtContra.Text);
-            if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, txtContra.Text))
+            
+            if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, gestorUsuarios.HashearContraseña(txtContra.Text)))
             {
                 Usuario usuarioActivo = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
 
                 if (usuarioActivo.Rol == 1)
                 {
                     //Abrir el formulario de menú de administrador y pasar el usuario
-                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo, gestorUsuarios);
-                    //menuAdmin.FormClosed += (s, args) => this.Show(); // Mostrar el login al cerrar el menú
+                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
                     menuAdmin.Show();
-                    this.Hide();
-                    //MessageBox.Show("Bienvenido, Administrador: " + usuarioActivo.NombreCompleto()+ usuarioActivo.UsuarioId);
+                    salida = true;
+                    this.Close();
+                    
                 }
                 else
                 {

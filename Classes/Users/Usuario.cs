@@ -85,6 +85,16 @@ namespace MicheBytesRecipes.Classes
         {
             return UsuarioId.GetHashCode();
         }
+        // obtener la foto en formato correcto para mostrar en un picturebox
+        public System.Drawing.Image ObtenerFoto()
+        {
+            if (Foto == null || Foto.Length == 0)
+                return null;
+            using (var ms = new System.IO.MemoryStream(Foto))
+            {
+                return System.Drawing.Image.FromStream(ms);
+            }
+        }
         // Baja y alta de usuario
         public void DarDeBaja()
         {

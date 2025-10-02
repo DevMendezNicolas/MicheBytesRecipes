@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -197,8 +198,10 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.Add("p_nombre", MySqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     comando.Parameters.Add("p_apellido", MySqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     comando.Parameters.Add("p_telefono", MySqlDbType.VarChar, 20).Direction = ParameterDirection.Output;
-                    comando.Parameters.Add("p_imagen_perfil", MySqlDbType.Blob).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_imagen_perfil", MySqlDbType.LongBlob).Direction = ParameterDirection.Output;
                     comando.Parameters.Add("p_rol_id", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_fecha_registro", MySqlDbType.DateTime).Direction = ParameterDirection.Output;
+                    comando.Parameters.Add("p_fecha_baja", MySqlDbType.DateTime).Direction = ParameterDirection.Output;
 
                     comando.ExecuteNonQuery();
                     if (comando.Parameters["p_usuario_id"].Value != DBNull.Value)
@@ -221,7 +224,13 @@ namespace MicheBytesRecipes.Managers
                             comando.Parameters["p_rol_id"].Value == DBNull.Value
                                 ? 0
                                 : Convert.ToInt32(comando.Parameters["p_rol_id"].Value)
-                                , DateTime.Now, null
+                                ,
+                            comando.Parameters["p_fecha_registro"].Value == DBNull.Value
+                                ? DateTime.MinValue
+                                : Convert.ToDateTime(comando.Parameters["p_fecha_registro"].Value),
+                            comando.Parameters["p_fecha_baja"].Value == DBNull.Value
+                                ? (DateTime?)null
+                                : Convert.ToDateTime(comando.Parameters["p_fecha_baja"].Value)
                         );
                     }
                     else
