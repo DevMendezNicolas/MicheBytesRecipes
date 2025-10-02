@@ -247,7 +247,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 List<Usuario> allUsers = new List<Usuario>();
-                string consultaListar = "SELECT * FROM usuarios WHERE FechaBaja IS NULL";
+                string consultaListar = "SELECT * FROM vista_todos_los_usuarios";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
                     using (MySqlDataReader reader = comando.ExecuteReader())
@@ -255,11 +255,11 @@ namespace MicheBytesRecipes.Managers
                         while (reader.Read())
                         {
                             byte[] fotoPerfil = null;
-                            if (!reader.IsDBNull(reader.GetOrdinal("ImagenPerfil")))
+                            if (!reader.IsDBNull(reader.GetOrdinal("Imagen_Perfil")))
                             {
-                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, null, 0, 0);
+                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("Imagen_Perfil"), 0, null, 0, 0);
                                 fotoPerfil = new byte[tamañoImagen];
-                                reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
+                                reader.GetBytes(reader.GetOrdinal("Imagen_Perfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
                             }
 
                             allUsers.Add(new Usuario(
