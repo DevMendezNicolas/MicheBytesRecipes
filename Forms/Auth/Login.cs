@@ -131,8 +131,8 @@ namespace MicheBytesRecipes
                 eprIngresar.SetError(txtContra, "El campo contraseña es obligatorio.");
                 return;
             }
-            //gestorUsuarios.HashearContraseña(txtContra.Text);
-            if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, txtContra.Text))
+            
+            if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, gestorUsuarios.HashearContraseña(txtContra.Text)))
             {
                 MessageBox.Show("✅ Inicio de sesión exitoso.");
             }

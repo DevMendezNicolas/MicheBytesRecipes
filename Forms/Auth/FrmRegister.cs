@@ -204,12 +204,14 @@ namespace MicheBytesRecipes.Forms.Auth
 
 
 
-            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(),txtContra.Text,fotoBytes);
+            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(),gestorUsuarios.HashearContraseña(txtContra.Text),fotoBytes);
             
             gestorUsuarios.AgregarUsuario(nuevoUsuario);
 
             limpiarCampos();
-
+            Inicio inicio = new Inicio();
+            inicio.Show();
+            this.Close();
 
         }
 
