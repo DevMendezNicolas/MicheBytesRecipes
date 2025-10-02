@@ -48,5 +48,27 @@ namespace MicheBytesRecipes.Forms.Admin
         {
 
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string criterio = txtBuscarUsuario.Text.ToLower();
+            var resultados = listaUsuarios.Where(u =>
+                u.Nombre.ToLower().Contains(criterio) ||
+                u.Apellido.ToLower().Contains(criterio) ||
+                u.Email.ToLower().Contains(criterio) ||
+                u.Telefono.ToLower().Contains(criterio)
+            ).Select(u => new
+            {
+                u.Nombre,
+                u.Apellido,
+                u.Email,
+                u.Telefono,
+                Rol = u.Rol == 1 ? "Admin" : "Usuario",
+                u.FechaRegistro,
+                Estado = u.FechaBaja == null ? "Activo" : "Inactivo"
+            }).ToList();
+            dgvUsuarios.DataSource = resultados;
+
+        }
     }
 }
