@@ -58,14 +58,10 @@ namespace MicheBytesRecipes
 
         private void LbLinkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //Abrir el formulario de registro y cerrar el actual
-            salida = true; // Indica que se está cerrando por navegación
-            this.Close();
-            FrmRegister register = new FrmRegister();
-            register.Show();
-            
-
-
+            var frmRegistro = new FrmRegister();
+            frmRegistro.FormClosed += (s, args) => this.Close(); // Cierra login cuando se cierra registro
+            frmRegistro.Show();
+            this.Hide();
         }
 
         private void LbLinkContra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -120,9 +116,8 @@ namespace MicheBytesRecipes
 
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (salida) return; // Si se cerró por login exitoso, no hacer nada
-            this.Show(); // Vuelve a mostrar el formulario Inicio
-            this.Activate(); // Opcional: le da el foco
+            if (salida) return; // login correcto → no mostrar nada
+            if (this.Owner != null) this.Owner.Show(); // volver a Inicio solo si se cerró sin loguear
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)

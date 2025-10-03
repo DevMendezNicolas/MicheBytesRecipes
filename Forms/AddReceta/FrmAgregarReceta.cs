@@ -16,7 +16,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
     public partial class FrmAgregarReceta : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
-        public FrmAgregarReceta()
+        public FrmAgregarReceta(Usuario usuario)
         {
             InitializeComponent();
         }
@@ -72,6 +72,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 }
 
                 LimpiarFormulario();
+                this.Close();
+                this.DialogResult = DialogResult.OK;
             }
         }
 

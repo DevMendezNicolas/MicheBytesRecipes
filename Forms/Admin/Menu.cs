@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes;
 using Mysqlx.Session;
 
 namespace MicheBytesRecipes
@@ -46,8 +48,18 @@ namespace MicheBytesRecipes
             List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
-            cboCategoria.SelectedIndex = -1;
+            cboCategoria.SelectedIndex = 0;
             cboCategoria.ValueMember = "CategoriaId";
+
+            List<Pais> paises = gestorReceta.ObtenerListaPaises();
+            cboPais.DataSource = paises;
+            cboPais.DisplayMember = "Nombre";
+            cboPais.SelectedIndex = 0;
+            cboPais.ValueMember = "PaisId";
+
+            Dificultad[] dificultades = (Dificultad[])Enum.GetValues(typeof(Dificultad));
+            cboDificultad.DataSource = dificultades;
+            cboDificultad.SelectedIndex = 0;
 
         }
 
@@ -65,5 +77,19 @@ namespace MicheBytesRecipes
 
         }
 
+        private void txtAgregar_Click(object sender, EventArgs e)
+        {
+            FrmAgregarReceta frmAgregarReceta = new FrmAgregarReceta(usuarioLog);
+            frmAgregarReceta.ShowDialog();
+            if (frmAgregarReceta.DialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show("Receta agregada exitosamente.");
+                }
+        }
+
+        private void frmMenuAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

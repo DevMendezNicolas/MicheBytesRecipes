@@ -29,23 +29,27 @@ namespace MicheBytesRecipes
         // Dirige al login
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-
-            this.Hide(); // Oculta el formulario Inicio
-
-            frmLogin login = new frmLogin();
-            login.ShowDialog(); // Abre Login como modal
-
-            this.Show(); // Se ejecuta después de cerrar Login
-            this.Activate(); // Recupera el foco
+            //this.Hide();
+            //var frmLogin = new frmLogin();
+            //frmLogin.FormClosed += (s, args) => this.Show(); // Vuelve a mostrar frmInicio si se cierra frmLogin
+            //frmLogin.Show();
+            var login = new frmLogin();
+            login.Owner = this; // importante
+            this.Hide();
+            login.Show();
 
         }
 
         private void BtnCrearCuenta_Click(object sender, EventArgs e)
         {
-
-            FrmRegister register = new FrmRegister();
-            register.Show();
+            //this.Hide();
+            //var frmRegistro = new FrmRegister();
+            //frmRegistro.FormClosed += (s, args) => this.Show(); // Vuelve a mostrar frmInicio si se cierra frmRegistro
+            //frmRegistro.Show();
+            var register = new FrmRegister();
+            register.Owner = this;
             this.Hide();
+            register.Show();
 
         }
 

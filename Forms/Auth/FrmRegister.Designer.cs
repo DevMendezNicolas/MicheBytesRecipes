@@ -416,6 +416,7 @@
             this.Name = "FrmRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRegister_FormClosed);
             this.Load += new System.EventHandler(this.FrmRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).EndInit();
             this.pnlRight.ResumeLayout(false);

@@ -59,17 +59,17 @@ namespace MicheBytesRecipes
                     {
                         ingredientes.Add(new Ingrediente
                         {
-                            IngredienteId = lector.GetInt32("ID_Ingrediente"),
+                            IngredienteId = lector.GetInt32("ingrediente_id"),
                             Nombre = lector.GetString("Nombre"),
                             Unidad = new UnidadMedida
                             {
-                                UnidadMedidaId = lector.GetInt32("ID_Unidad_de_medida"),
-                                Nombre = lector.GetString("Unidad_de_medida")
+                                UnidadMedidaId = lector.GetInt32("unidad_de_medida_id"),
+                                Nombre = lector.GetString("Unidad")
                             },
                             Tipo = new TipoIngrediente
                             {
-                                TipoIngredienteId = lector.GetInt32("ID_Tipo_de_ingrediente"),
-                                Nombre = lector.GetString("Tipo_de_ingrediente")
+                                TipoIngredienteId = lector.GetInt32("tipo_ingrediente_id"),
+                                Nombre = lector.GetString("Tipo_ingrediente")
                             }
                         });
                     }
@@ -303,7 +303,7 @@ namespace MicheBytesRecipes
                 {
                     comando.CommandType = CommandType.StoredProcedure;
 
-                    comando.Parameters.AddWithValue("@nombre_pais", pais.Nombre);
+                    comando.Parameters.AddWithValue("@p_nombre_pais", pais.Nombre);
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
                         MessageBox.Show("País agregado exitosamente.");
@@ -716,7 +716,7 @@ namespace MicheBytesRecipes
                         {
                             Pais pais = new Pais
                             {
-                                PaisId = lector.GetInt32("ID"),
+                                PaisId = lector.GetInt32("pais_id"),
                                 Nombre = lector.GetString("Nombre")
                             };
                             paises.Add(pais);
@@ -743,25 +743,23 @@ namespace MicheBytesRecipes
                 conexion.Abrir();
                 string consultaCategorias = "SELECT * FROM Vista_de_las_categorias";
                 using (MySqlCommand comando = new MySqlCommand(consultaCategorias, conexion.GetConexion()))
+                using (MySqlDataReader lector = comando.ExecuteReader())
                 {
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-
-                        while (lector.Read())
+                    while (lector.Read())
+                    {
+                        Categoria categoria = new Categoria
                         {
-                            Categoria categoria = new Categoria
-                            {
-                                CategoriaId = lector.GetInt32("ID_Categoria"),
-                                Nombre = lector.GetString("Nombre")
-
-                            };
-                            categorias.Add(categoria);
-                        }
+                            CategoriaId = lector.GetInt32("categoria_id"), // <- nombre real en la vista
+                            Nombre = lector.GetString("nombre")            // <- nombre real en la vista
+                        };
+                        categorias.Add(categoria);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
+                return new List<Categoria>(); // mejor devolver lista vacía en vez de null
             }
             finally
             {
@@ -769,9 +767,6 @@ namespace MicheBytesRecipes
             }
             return categorias;
         }
-
-
-
         //Metodos de estadisticas o utilidades
         public int ContarRecetas()
         {

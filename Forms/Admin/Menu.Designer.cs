@@ -178,6 +178,7 @@
             this.txtAgregar.TabIndex = 2;
             this.txtAgregar.Text = "&Agregar";
             this.txtAgregar.UseVisualStyleBackColor = true;
+            this.txtAgregar.Click += new System.EventHandler(this.txtAgregar_Click);
             // 
             // panel3
             // 
@@ -357,6 +358,7 @@
             this.Name = "frmMenuAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMenuAdmin_FormClosed);
             this.Load += new System.EventHandler(this.frmMenuAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

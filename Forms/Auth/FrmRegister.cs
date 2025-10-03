@@ -18,6 +18,7 @@ namespace MicheBytesRecipes.Forms.Auth
     {
 
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
+        private bool salida = false;
         public FrmRegister()
         {
             
@@ -80,11 +81,18 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void LinkIniciar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            var frmLogin = new frmLogin();
+            frmLogin.FormClosed += (s, args) => this.Close(); // Cierra registro cuando se cierra login
+            frmLogin.Show();
+            this.Hide();
 
+            /*
             frmLogin login = new frmLogin();
             this.Close();
             login.Show();
-            
+            */
+
+
         }
 
         private void FrmRegister_Load(object sender, EventArgs e)
@@ -211,6 +219,7 @@ namespace MicheBytesRecipes.Forms.Auth
             limpiarCampos();
             Inicio inicio = new Inicio();
             inicio.Show();
+            
             this.Close();
 
         }
@@ -309,6 +318,11 @@ namespace MicheBytesRecipes.Forms.Auth
             txtRepContra.Clear();
             pbxFotoPerfil.Image = null;
             chkTerminos.Checked = false;
+        }
+
+        private void FrmRegister_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.Owner != null) this.Owner.Show(); // volver a Inicio al cerrar registro
         }
     }
 }
