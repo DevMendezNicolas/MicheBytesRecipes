@@ -12,18 +12,22 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
+    
     public partial class FrmVerReceta : Form
     {
+        GestorReceta gestorReceta = new GestorReceta();
         private Receta receta;
         public FrmVerReceta(Receta receta)
         {
             InitializeComponent();
-            this.receta = receta;
+            this.receta = gestorReceta.ObtenerRecetaPorId(11);
             //Asignar los valores de la receta a los controles del formulario
         }
 
         private void FrmVerReceta_Load(object sender, EventArgs e)
         {
+            lblIdReceta.Visible = false;
+            lblIdUsuario.Visible = false;
            if(receta != null)
             {
                 lblNombre.Text = receta.Nombre;
@@ -53,7 +57,10 @@ namespace MicheBytesRecipes.Classes.Recetas
                 {
                     lstIngredientes.Items.Add(ingrediente.Nombre);
                 }
-
+                lblCategoria.Text = gestorReceta.ObtenercategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
+                lblPais.Text = gestorReceta.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
+                lblIdUsuario.Text = receta.UsuarioId.ToString();
+                lblIdReceta.Text = receta.RecetaId.ToString();
 
             }
         }

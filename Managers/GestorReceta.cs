@@ -357,7 +357,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             try
             {
                 conexion.Abrir();
-                string consultaObtener = ("SELECT * FROM Vista_todas_las_recetas WHERE receta_id = @recetaId");
+                string consultaObtener = ("SELECT * FROM recetas WHERE receta_id = @recetaId");
 
                 using (MySqlCommand comando = new MySqlCommand(consultaObtener, conexion.GetConexion()))
                 {
@@ -375,10 +375,10 @@ namespace MicheBytesRecipes.Classes.Recetas
                                 Instrucciones = reader.GetString("instrucciones"),
                                 ImagenReceta = reader["imagen_receta"] as byte[],
                                 TiempoPreparacion = reader.GetTimeSpan("tiempo_preparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), reader.GetString("NivelDificultad")),
-                                PaisId = -1,
-                                CategoriaId = -1,
-                                UsuarioId = -1,
+                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), reader.GetString("Dificultad")),
+                                PaisId = reader.GetInt32("pais_id"),
+                                CategoriaId = reader.GetInt32("categoria_id"),
+                                UsuarioId = reader.GetInt32("usuario_id"),
                             };
 
                         }
@@ -784,7 +784,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             try
             {
                 conexion.Abrir();
-                string consultaCategorias = "SELECT * FROM Vista_de_categorias";
+                string consultaCategorias = "SELECT * FROM Vista_de_las_categorias";
                 using (MySqlCommand comando = new MySqlCommand(consultaCategorias, conexion.GetConexion()))
                 {
                     using (MySqlDataReader lector = comando.ExecuteReader())
@@ -813,8 +813,75 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
             return categorias;
         }
-
-
+        public Pais ObtenerPaisPorId(int paisId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaPais = "SELECT * FROM Vista_de_todos_los_paises WHERE pais_id = @PaisId";
+                using (MySqlCommand comando = new MySqlCommand(consultaPais, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@PaisId", paisId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            Pais pais = new Pais
+                            {
+                                PaisId = lector.GetInt32("pais_id"),
+                                Nombre = lector.GetString("Nombre")
+                            };
+                            return pais;
+                        }
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public Categoria ObtenercategoriaPorId(int categoriaId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaCategoria = "SELECT * FROM Vista_de_las_categorias WHERE categoria_id = @CategoriaId";
+                using (MySqlCommand comando = new MySqlCommand(consultaCategoria, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@CategoriaId", categoriaId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            Categoria categoria = new Categoria
+                            {
+                                CategoriaId = lector.GetInt32("categoria_id"),
+                                Nombre = lector.GetString("Nombre")
+                            };
+                            return categoria;
+                        }
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+    
 
         //Metodos de estadisticas o utilidades
         public int ContarRecetas()
