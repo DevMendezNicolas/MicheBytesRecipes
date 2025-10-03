@@ -25,9 +25,9 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             if(int.TryParse(txtId.Text, out int id))
             {
-                Receta receta = gestorReceta.ObtenerRecetaPorId(id);
+                Receta receta = new Receta();
 
-                if(receta != null)
+                if (receta != null)
                 {
                     //imagen
                     if(receta.ImagenReceta != null)

@@ -20,8 +20,8 @@ namespace MicheBytesRecipes.Classes.Recetas
         public FrmVerReceta(Receta receta)
         {
             InitializeComponent();
-            this.receta = gestorReceta.ObtenerRecetaPorId(11);
-            //Asignar los valores de la receta a los controles del formulario
+            
+            
         }
 
         private void FrmVerReceta_Load(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 {
                     lstIngredientes.Items.Add(ingrediente.Nombre);
                 }
-                lblCategoria.Text = gestorReceta.ObtenercategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
+                lblCategoria.Text = gestorReceta.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
                 lblPais.Text = gestorReceta.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
                 lblIdUsuario.Text = receta.UsuarioId.ToString();
                 lblIdReceta.Text = receta.RecetaId.ToString();

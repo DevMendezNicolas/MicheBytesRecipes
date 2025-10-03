@@ -13,6 +13,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         // Lista de recetas
         public List<Receta> recetas;
 
+
         //Metodo para eliminar receta
         public void EliminarReceta(int recetaId)
         {
@@ -51,7 +52,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             try
             {
                 conexion.Abrir();
-                string consultaListar = "SELECT * FROM Vista_de_ingredientes_con_detalles";
+                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 using (MySqlDataReader lector = comando.ExecuteReader())
                 {
@@ -59,17 +60,17 @@ namespace MicheBytesRecipes.Classes.Recetas
                     {
                         ingredientes.Add(new Ingrediente
                         {
-                            IngredienteId = lector.GetInt32("ID_Ingrediente"),
+                            IngredienteId = lector.GetInt32("ingrediente_id"),
                             Nombre = lector.GetString("Nombre"),
                             Unidad = new UnidadMedida
                             {
-                                UnidadMedidaId = lector.GetInt32("ID_Unidad_de_medida"),
-                                Nombre = lector.GetString("Unidad_de_medida")
+                                UnidadMedidaId = lector.GetInt32("unidad_de_medida_id"),
+                                Nombre = lector.GetString("Unidad")
                             },
                             Tipo = new TipoIngrediente
                             {
-                                TipoIngredienteId = lector.GetInt32("ID_Tipo_de_ingrediente"),
-                                Nombre = lector.GetString("Tipo_de_ingrediente")
+                                TipoIngredienteId = lector.GetInt32("tipo_ingrediente_id"),
+                                Nombre = lector.GetString("Tipo_ingrediente")
                             }
                         });
                     }
@@ -176,7 +177,6 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         public int AgregarReceta(Receta receta, List<int> ingredientesIds)
         {
-            //inicializo el id de la receta en -1 (valor que indica que no se ha insertado)
             int recetaId = -1;
             //Validacion con try catch porque las conexiones externas pueden fallar
             //Ejemplo: la base de datos no esta disponible
@@ -193,7 +193,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                     comando.Parameters.AddWithValue("@p_descripcion", receta.Descripcion);
                     comando.Parameters.AddWithValue("@p_instrucciones", receta.Instrucciones);
                     //Imagen BLOB
-                    comando.Parameters.Add("@p_imagen_receta", MySqlDbType.Blob).Value = receta.ImagenReceta ??(object)DBNull.Value;
+                    comando.Parameters.Add("@p_imagen_receta", MySqlDbType.Blob).Value = receta.ImagenReceta ?? (object)DBNull.Value;
                     //Tiempo (TimeSpan -> TIME)
                     comando.Parameters.AddWithValue("@p_tiempo_preparacion", receta.TiempoPreparacion);
                     comando.Parameters.AddWithValue("@p_dificultad", receta.NivelDificultad.ToString());
@@ -214,7 +214,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                     //Obtener el id
                     recetaId = Convert.ToInt32(comando.Parameters["p_receta_id"].Value);
                 }
-                foreach(var ingredienteId in ingredientesIds)
+                foreach (var ingredienteId in ingredientesIds)
                 {
                     using (var cmd = new MySqlCommand("INSERT INTO ingredientes_x_receta (receta_id, ingrediente_id, cantidad) VALUES (@recetaId, @ingredienteId, @cantidad)", conexion.GetConexion()))
                     {
@@ -304,7 +304,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 {
                     comando.CommandType = CommandType.StoredProcedure;
 
-                    comando.Parameters.AddWithValue("@nombre_pais", pais.Nombre);
+                    comando.Parameters.AddWithValue("@p_nombre_pais", pais.Nombre);
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
                         MessageBox.Show("País agregado exitosamente.");
@@ -341,7 +341,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                     else
                     {
                         MessageBox.Show("No se pudo agregar la categoria.");
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -351,48 +351,6 @@ namespace MicheBytesRecipes.Classes.Recetas
             finally { conexion.Cerrar(); }
         }
         //Metodos de busqueda
-        public Receta ObtenerRecetaPorId(int recetaId)
-        {
-            Receta receta = null;
-            try
-            {
-                conexion.Abrir();
-                string consultaObtener = ("SELECT * FROM recetas WHERE receta_id = @recetaId");
-
-                using (MySqlCommand comando = new MySqlCommand(consultaObtener, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@recetaId", recetaId);
-
-                    using(MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            receta = new Receta
-                            {
-                                RecetaId = reader.GetInt32("receta_id"),
-                                Nombre = reader.GetString("nombre"),
-                                Descripcion = reader.GetString("descripcion"),
-                                Instrucciones = reader.GetString("instrucciones"),
-                                ImagenReceta = reader["imagen_receta"] as byte[],
-                                TiempoPreparacion = reader.GetTimeSpan("tiempo_preparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), reader.GetString("Dificultad")),
-                                PaisId = reader.GetInt32("pais_id"),
-                                CategoriaId = reader.GetInt32("categoria_id"),
-                                UsuarioId = reader.GetInt32("usuario_id"),
-                            };
-
-                        }
-                    }
-                }
-            }catch(Exception ex)
-            {
-                MessageBox.Show("Error al obtener la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }return receta;
-        }
         public List<Receta> BuscarRecetaPorNombre(string nombre)
         {
             List<Receta> recetas = new List<Receta>();
@@ -759,7 +717,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                         {
                             Pais pais = new Pais
                             {
-                                PaisId = lector.GetInt32("ID"),
+                                PaisId = lector.GetInt32("pais_id"),
                                 Nombre = lector.GetString("Nombre")
                             };
                             paises.Add(pais);
@@ -786,26 +744,23 @@ namespace MicheBytesRecipes.Classes.Recetas
                 conexion.Abrir();
                 string consultaCategorias = "SELECT * FROM Vista_de_las_categorias";
                 using (MySqlCommand comando = new MySqlCommand(consultaCategorias, conexion.GetConexion()))
+                using (MySqlDataReader lector = comando.ExecuteReader())
                 {
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-
-                        while (lector.Read())
+                    while (lector.Read())
+                    {
+                        Categoria categoria = new Categoria
                         {
-                            Categoria categoria = new Categoria
-                            {
-                                CategoriaId = lector.GetInt32("ID_Categoria"),
-                                Nombre = lector.GetString("Nombre"),
-                                Descripcion = lector.GetString("Descripcion")
-
-                            };
-                            categorias.Add(categoria);
-                        }
+                            CategoriaId = lector.GetInt32("categoria_id"), // <- nombre real en la vista
+                            Nombre = lector.GetString("nombre")            // <- nombre real en la vista
+                        };
+                        categorias.Add(categoria);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
+                return new List<Categoria>(); // mejor devolver lista vacía en vez de null
             }
             finally
             {
@@ -813,6 +768,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
             return categorias;
         }
+      
         public Pais ObtenerPaisPorId(int paisId)
         {
             try
@@ -826,28 +782,26 @@ namespace MicheBytesRecipes.Classes.Recetas
                     {
                         if (lector.Read())
                         {
-                            Pais pais = new Pais
+                            return new Pais
                             {
                                 PaisId = lector.GetInt32("pais_id"),
                                 Nombre = lector.GetString("Nombre")
                             };
-                            return pais;
                         }
-                        return null;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
             }
             finally
             {
                 conexion.Cerrar();
             }
+            return null; // Retorna null si no se encuentra el país
         }
-        public Categoria ObtenercategoriaPorId(int categoriaId)
+        public Categoria ObtenerCategoriaPorId(int categoriaId)
         {
             try
             {
@@ -860,28 +814,28 @@ namespace MicheBytesRecipes.Classes.Recetas
                     {
                         if (lector.Read())
                         {
-                            Categoria categoria = new Categoria
+                            return new Categoria
                             {
                                 CategoriaId = lector.GetInt32("categoria_id"),
-                                Nombre = lector.GetString("Nombre")
+                                Nombre = lector.GetString("nombre"),
+                                Descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? null : lector.GetString("descripcion")
                             };
-                            return categoria;
                         }
-                        return null;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
             }
             finally
             {
                 conexion.Cerrar();
             }
+            return null; // Retorna null si no se encuentra la categoría
         }
-    
+
+
 
         //Metodos de estadisticas o utilidades
         public int ContarRecetas()
