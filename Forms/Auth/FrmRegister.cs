@@ -216,9 +216,8 @@ namespace MicheBytesRecipes.Forms.Auth
             
             gestorUsuarios.AgregarUsuario(nuevoUsuario);
 
+            this.Owner.Show();
             limpiarCampos();
-            Inicio inicio = new Inicio();
-            inicio.Show();
             
             this.Close();
 
