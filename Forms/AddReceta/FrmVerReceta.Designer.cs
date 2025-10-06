@@ -121,7 +121,7 @@
             this.lblCategoria.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblCategoria.Location = new System.Drawing.Point(1023, 169);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(77, 21);
+            this.lblCategoria.Size = new System.Drawing.Size(123, 21);
             this.lblCategoria.TabIndex = 6;
             this.lblCategoria.Text = "Categoria";
             // 

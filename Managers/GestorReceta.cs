@@ -52,7 +52,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             try
             {
                 conexion.Abrir();
-                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad";
+                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 using (MySqlDataReader lector = comando.ExecuteReader())
                 {
@@ -61,17 +61,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                         ingredientes.Add(new Ingrediente
                         {
                             IngredienteId = lector.GetInt32("ingrediente_id"),
-                            Nombre = lector.GetString("Nombre"),
-                            Unidad = new UnidadMedida
-                            {
-                                UnidadMedidaId = lector.GetInt32("unidad_de_medida_id"),
-                                Nombre = lector.GetString("Unidad")
-                            },
-                            Tipo = new TipoIngrediente
-                            {
-                                TipoIngredienteId = lector.GetInt32("tipo_ingrediente_id"),
-                                Nombre = lector.GetString("Tipo_ingrediente")
-                            }
+                            Nombre = lector.GetString("nombre")
                         });
                     }
                 }
@@ -644,8 +634,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                             unidades.Add(new UnidadMedida
                             // Crear y agregar cada unidad de medida a la lista
                             {
-                                UnidadMedidaId = lector.GetInt32("ID"),//Asegurarse de que el nombre de la columna coincida con el de la base de datos
-                                Nombre = lector.GetString("Nombre")
+                                UnidadMedidaId = lector.GetInt32("unidad_de_medida_id"),//Asegurarse de que el nombre de la columna coincida con el de la base de datos
+                                Nombre = lector.GetString("nombre")
                             });
                         }
                     }
@@ -683,8 +673,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                             TipoIngrediente tipo = new TipoIngrediente
                             // Crear y agregar cada tipo de ingrediente a la lista
                             {
-                                TipoIngredienteId = lector.GetInt32("ID"), //Asegurarse de que el nombre de la columna sea correcto
-                                Nombre = lector.GetString("Nombre")
+                                TipoIngredienteId = lector.GetInt32("tipo_ingrediente_id"), //Asegurarse de que el nombre de la columna sea correcto
+                                Nombre = lector.GetString("nombre")
                             };
                             tipos.Add(tipo);
                         }
@@ -718,7 +708,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                             Pais pais = new Pais
                             {
                                 PaisId = lector.GetInt32("pais_id"),
-                                Nombre = lector.GetString("Nombre")
+                                Nombre = lector.GetString("nombre")
                             };
                             paises.Add(pais);
                         }
@@ -768,7 +758,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
             return categorias;
         }
-      
+
         public Pais ObtenerPaisPorId(int paisId)
         {
             try
@@ -785,7 +775,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                             return new Pais
                             {
                                 PaisId = lector.GetInt32("pais_id"),
-                                Nombre = lector.GetString("Nombre")
+                                Nombre = lector.GetString("nombre")
                             };
                         }
                     }
@@ -834,6 +824,121 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
             return null; // Retorna null si no se encuentra la categoría
         }
+        public Receta ObtenerRecetaPorId(int recetaId)
+        {
+            Receta receta = null;
+            try
+            {
+                conexion.Abrir();
+                string consultaReceta = "SELECT * FROM Vista_todas_las_recetas WHERE receta_id = @recetaId";
+                using (MySqlCommand comando = new MySqlCommand(consultaReceta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            receta = new Receta
+                            {
+                                RecetaId = lector.GetInt32("receta_id"),
+                                Nombre = lector.GetString("Nombre"),
+                                PaisId = lector.GetInt32("PaisId"),
+                                CategoriaId = lector.GetInt32("CategoriaId"),
+                                UsuarioId = lector.GetInt32("UsuarioId"),
+                                Descripcion = lector.GetString("Descripcion"),
+                                Instrucciones = lector.GetString("Instrucciones"),
+
+                                // Si la columna "ImagenReceta" existe y no es nula, la convertimos a byte[]
+                                ImagenReceta = lector.IsDBNull(lector.GetOrdinal("ImagenReceta"))
+                                    ? null
+                                    : (byte[])lector["ImagenReceta"],
+
+                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
+
+                                // Si el nivel de dificultad se guarda como texto
+                                NivelDificultad = (Dificultad)lector.GetInt32("NivelDificultad"),
+
+
+                            };
+                        }
+                    }
+                }
+
+                // Si se encontró la receta, obtenemos sus ingredientes
+                if (receta != null)
+                {
+                    receta.Ingredientes = ObtenerIngredientesPorRecetaId(recetaId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error al obtener receta: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+            return receta;
+        }
+        public List<Ingrediente> ObtenerIngredientesPorRecetaId(int recetaId)
+        {
+            List<Ingrediente> ingredientes = new List<Ingrediente>();
+
+            try
+            {
+                conexion.Abrir();
+
+                string consulta = @"
+                            SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad_x_receta
+                            WHERE Receta_Id = @RecetaId";
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@RecetaId", recetaId);
+
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            Ingrediente ingrediente = new Ingrediente
+                            {
+                                IngredienteId = lector.GetInt32("ingrediente_id"),
+                                Nombre = lector.GetString("nombre"),
+
+                                Unidad = new UnidadMedida
+                                {
+                                    UnidadMedidaId = lector.GetInt32("unidad_de_medida_id"),
+                                    Nombre = lector.GetString("nombre")
+                                },
+
+                                Tipo = new TipoIngrediente
+                                {
+                                    TipoIngredienteId = lector.GetInt32("tipo_ingrediente_id"),
+                                    Nombre = lector.GetString("nombre")
+                                },
+                            };
+
+                            ingredientes.Add(ingrediente);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error al obtener ingredientes por receta: " + ex.Message);
+                return new List<Ingrediente>();
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+            return ingredientes;
+        }
+
+
+
 
 
 

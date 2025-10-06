@@ -30,8 +30,10 @@ namespace MicheBytesRecipes.Classes.Recetas
             public Dificultad NivelDificultad { get; set; }
             public DateTime FechaRegistro { get; set; }
             public DateTime? FechaBaja { get; set; }
+            public Pais pais { get; set; }
+            public Categoria categoria { get; set; }
 
-            public List<Ingrediente> Ingredientes { get; set; } = new List<Ingrediente>();
+        public List<Ingrediente> Ingredientes { get; set; } = new List<Ingrediente>();
 
 
             public Receta()

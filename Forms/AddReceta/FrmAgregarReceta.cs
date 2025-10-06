@@ -179,6 +179,11 @@ namespace MicheBytesRecipes.Forms.AddReceta
             }
             errorProvider1.Clear();
         }
+
+        private void lblNombre_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
                 
