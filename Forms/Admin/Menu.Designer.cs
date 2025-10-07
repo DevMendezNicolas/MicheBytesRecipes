@@ -43,11 +43,6 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvReceta = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dificultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
@@ -56,6 +51,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
+            this.dgvReceta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dificultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -224,6 +225,7 @@
             // 
             this.dgvReceta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReceta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvReceta_id,
             this.Nombre,
             this.Categoria,
             this.Pais,
@@ -233,41 +235,6 @@
             this.dgvReceta.Name = "dgvReceta";
             this.dgvReceta.Size = new System.Drawing.Size(858, 382);
             this.dgvReceta.TabIndex = 4;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Pais
-            // 
-            this.Pais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Pais.HeaderText = "Pais";
-            this.Pais.Name = "Pais";
-            this.Pais.ReadOnly = true;
-            // 
-            // Dificultad
-            // 
-            this.Dificultad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Dificultad.HeaderText = "Dificultad";
-            this.Dificultad.Name = "Dificultad";
-            this.Dificultad.ReadOnly = true;
-            // 
-            // Tiempo
-            // 
-            this.Tiempo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tiempo.HeaderText = "Tiempo";
-            this.Tiempo.Name = "Tiempo";
-            this.Tiempo.ReadOnly = true;
             // 
             // cboDificultad
             // 
@@ -346,6 +313,48 @@
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Buscar receta por nombre";
             // 
+            // dgvReceta_id
+            // 
+            this.dgvReceta_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvReceta_id.HeaderText = "Receta id";
+            this.dgvReceta_id.Name = "dgvReceta_id";
+            this.dgvReceta_id.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Pais
+            // 
+            this.Pais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Pais.HeaderText = "Pais";
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            // 
+            // Dificultad
+            // 
+            this.Dificultad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Dificultad.HeaderText = "Dificultad";
+            this.Dificultad.Name = "Dificultad";
+            this.Dificultad.ReadOnly = true;
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tiempo.HeaderText = "Tiempo";
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -392,14 +401,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscarReceta;
         private System.Windows.Forms.DataGridView dgvReceta;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnReinicio;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvReceta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnReinicio;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -111,6 +111,7 @@
     <Compile Include="Classes\Recetas\Categoria.cs" />
     <Compile Include="Classes\Recetas\Ingrediente.cs" />
     <Compile Include="Classes\Recetas\Pais.cs" />
+    <Compile Include="Classes\Recetas\PreReceta.cs" />
     <Compile Include="Classes\Recetas\Receta.cs" />
     <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
     <Compile Include="Classes\Recetas\UnidadMedida.cs" />

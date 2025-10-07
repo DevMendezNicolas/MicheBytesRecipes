@@ -11,9 +11,9 @@ namespace MicheBytesRecipes
         //Enum para definir la dificultad de la receta
         public enum Dificultad
         {
-            Facil,
+            Fácil,
             Media,
-            Dificil
+            Difícil
         }
         internal class Receta
         {

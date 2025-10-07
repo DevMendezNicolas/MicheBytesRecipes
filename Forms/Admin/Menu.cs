@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes;
@@ -61,6 +62,16 @@ namespace MicheBytesRecipes
             cboDificultad.DataSource = dificultades;
             cboDificultad.SelectedIndex = 0;
 
+            List<PreReceta> preRecetas = gestorReceta.ObtenerPreRecetas();
+            //dgvReceta.DataSource = preRecetas;
+            dgvReceta.Columns["dgvReceta_id"].Visible = false;
+            foreach(var preReceta in preRecetas)
+            {
+                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, preReceta.PaisId, preReceta.CategoriaId, preReceta.Dificultad, preReceta.TiempoPreparacion);
+
+            }
+
+            
         }
 
         private void btnReinicio_Click(object sender, EventArgs e)

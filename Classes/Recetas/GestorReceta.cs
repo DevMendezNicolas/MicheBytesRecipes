@@ -1,9 +1,11 @@
-﻿using MicheBytesRecipes.Connections;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Connections;
+using MicheBytesRecipes.Helpers;
+using MySql.Data.MySqlClient;
 
 namespace MicheBytesRecipes
 {
@@ -192,7 +194,7 @@ namespace MicheBytesRecipes
                     comando.Parameters.AddWithValue("@p_descripcion", receta.Descripcion);
                     comando.Parameters.AddWithValue("@p_instrucciones", receta.Instrucciones);
                     //Imagen BLOB
-                    comando.Parameters.Add("@p_imagen_receta", MySqlDbType.Blob).Value = receta.ImagenReceta ??(object)DBNull.Value;
+                    comando.Parameters.Add("@p_imagen_receta", MySqlDbType.Blob).Value = receta.ImagenReceta ?? (object)DBNull.Value;
                     //Tiempo (TimeSpan -> TIME)
                     comando.Parameters.AddWithValue("@p_tiempo_preparacion", receta.TiempoPreparacion);
                     comando.Parameters.AddWithValue("@p_dificultad", receta.NivelDificultad.ToString());
@@ -213,7 +215,7 @@ namespace MicheBytesRecipes
                     //Obtener el id
                     recetaId = Convert.ToInt32(comando.Parameters["p_receta_id"].Value);
                 }
-                foreach(var ingredienteId in ingredientesIds)
+                foreach (var ingredienteId in ingredientesIds)
                 {
                     using (var cmd = new MySqlCommand("INSERT INTO ingredientes_x_receta (receta_id, ingrediente_id, cantidad) VALUES (@recetaId, @ingredienteId, @cantidad)", conexion.GetConexion()))
                     {
@@ -340,7 +342,7 @@ namespace MicheBytesRecipes
                     else
                     {
                         MessageBox.Show("No se pudo agregar la categoria.");
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -931,6 +933,45 @@ namespace MicheBytesRecipes
             {
                 conexion.Cerrar();
             }
+        }
+
+        // Obtener la previsualización de las recetas
+        public List<PreReceta> ObtenerPreRecetas()
+        {
+            List<PreReceta> recetas = new List<PreReceta>();
+            try
+            {
+                conexion.Abrir();
+                string consulta = "SELECT * FROM Vista_resumen_recetas";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            PreReceta receta = new PreReceta
+                            (
+                                lector.GetInt32("Receta_Id"),
+                                lector.GetString("Nombre"),
+                                lector.GetInt32("Pais_Id"),
+                                lector.GetInt32("Categoria_Id"),
+                                (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("Dificultad")),
+                                lector.GetTimeSpan("Tiempo_Preparacion")
+                            );
+                            recetas.Add(receta);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la previsualización de recetas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return recetas;
         }
     }
 }
