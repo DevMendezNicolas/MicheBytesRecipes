@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Connections;
 using MicheBytesRecipes.Helpers;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using Mysqlx.Session;
+using Org.BouncyCastle.Utilities.Zlib;
 
 namespace MicheBytesRecipes
 {
@@ -890,10 +894,9 @@ namespace MicheBytesRecipes
             try
             {
                 conexion.Abrir();
-                string consultaBaja = "UPDATE Recetas SET FechaBaja = @FechaBaja WHERE RecetaId = @RecetaId";
+                string consultaBaja = "CALL Dar_de_baja_receta(@RecetaId)";
                 using (MySqlCommand comando = new MySqlCommand(consultaBaja, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@FechaBaja", DateTime.Now);
                     comando.Parameters.AddWithValue("@RecetaId", recetaId);
 
                     int filasAfectadas = comando.ExecuteNonQuery();
@@ -916,7 +919,7 @@ namespace MicheBytesRecipes
             try
             {
                 conexion.Abrir();
-                string consultaAlta = "UPDATE Recetas SET FechaBaja = NULL WHERE RecetaId = @RecetaId";
+                string consultaAlta = "CALL Reactivar_receta(@RecetaId)";
                 using (MySqlCommand comando = new MySqlCommand(consultaAlta, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@RecetaId", recetaId);
@@ -933,6 +936,7 @@ namespace MicheBytesRecipes
             {
                 conexion.Cerrar();
             }
+
         }
 
         // Obtener la previsualización de las recetas
@@ -940,9 +944,9 @@ namespace MicheBytesRecipes
         {
             List<PreReceta> recetas = new List<PreReceta>();
             try
-            {
+            {           
                 conexion.Abrir();
-                string consulta = "SELECT * FROM Vista_resumen_recetas";
+                string consulta = "SELECT receta_id, nombre, categoria_id, pais_id, dificultad, tiempo_preparacion FROM Vista_resumen_recetas WHERE fecha_baja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
                 {
                     using (MySqlDataReader lector = comando.ExecuteReader())
@@ -972,6 +976,187 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return recetas;
+        }
+        // Obtener la previsualizacion de las recetas inactivas
+        public List<PreReceta> ObtenerPreRecetasInactivas()
+        {
+            List<PreReceta> recetas = new List<PreReceta>();
+            try
+            {
+                conexion.Abrir();
+                string consulta = "SELECT * FROM Vista_resumen_recetas WHERE fecha_baja IS NOT NULL";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            PreReceta receta = new PreReceta
+                            (
+                                lector.GetInt32("Receta_Id"),
+                                lector.GetString("Nombre"),
+                                lector.GetInt32("Pais_Id"),
+                                lector.GetInt32("Categoria_Id"),
+                                (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("Dificultad")),
+                                lector.GetTimeSpan("Tiempo_Preparacion")
+                            );
+                            recetas.Add(receta);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la previsualización de recetas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return recetas;
+        }
+        // obtener previsualizacion de recetas por nombre, categoria, pais, dificultad
+        // NO FUNCIONA TODAVIA
+        public List<PreReceta> ObtenerPreRecetasFiltradas(string nombre, int paisId, int categoriaId, Dificultad? dificultad)
+        {
+            List<PreReceta> recetas = new List<PreReceta>();
+
+            try
+            {
+                conexion.Abrir();
+
+                string consulta = "SELECT receta_id, nombre, categoria_id, pais_id, dificultad, tiempo_preparacion FROM Vista_resumen_recetas WHERE 1=1";
+                List<MySqlParameter> parametros = new List<MySqlParameter>();
+
+                if (!string.IsNullOrWhiteSpace(nombre))
+                {
+                    consulta += " AND LOWER(nombre) LIKE CONCAT('%', LOWER(@Nombre), '%')";
+                    parametros.Add(new MySqlParameter("@Nombre", nombre));
+                }
+
+                if (paisId > 0)
+                {
+                    consulta += " AND pais_id = @PaisId";
+                    parametros.Add(new MySqlParameter("@PaisId", paisId));
+                }
+
+                if (categoriaId > 0)
+                {
+                    consulta += " AND categoria_id = @CategoriaId";
+                    parametros.Add(new MySqlParameter("@CategoriaId", categoriaId));
+                }
+
+                if (dificultad.HasValue)
+                {
+                    consulta += " AND dificultad = @Dificultad";
+                    parametros.Add(new MySqlParameter("@Dificultad", dificultad.Value.ToString()));
+                }
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddRange(parametros.ToArray());
+
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            string dificultadDb = lector.GetString("dificultad");
+                            Dificultad dificultadEnum;
+
+                            if (dificultadDb == "Fácil")
+                                dificultadEnum = Dificultad.Fácil;
+                            else if (dificultadDb == "Media")
+                                dificultadEnum = Dificultad.Media;
+                            else if (dificultadDb == "Difícil")
+                                dificultadEnum = Dificultad.Difícil;
+                            else
+                                throw new Exception("Valor de dificultad desconocido en la base de datos.");
+
+                            PreReceta receta = new PreReceta(
+                                lector.GetInt32("receta_id"),
+                                lector.GetString("nombre"),
+                                lector.GetInt32("pais_id"),
+                                lector.GetInt32("categoria_id"),
+                                dificultadEnum,
+                                lector.GetTimeSpan("tiempo_preparacion")
+                            );
+
+                            recetas.Add(receta);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener las recetas filtradas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+            return recetas;
+        }
+
+
+
+
+        // Obtener pais
+        public string ObtenerPais(int paisId)
+        {
+            string nombrePais = string.Empty;
+            try
+            {
+                conexion.Abrir();
+                string consultaPais = "SELECT Devolver_nombre_pais(@PaisId)";
+
+                using (MySqlCommand comando = new MySqlCommand(consultaPais, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@PaisId", paisId);
+                    object resultado = comando.ExecuteScalar();
+                    if (resultado != null)
+                    {
+                        nombrePais = resultado.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener el país: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return nombrePais;
+        }
+        // Obtener categoria
+        public string ObtenerCategoria(int categoriaId)
+        {
+            string nombreCategoria = string.Empty;
+            try
+            {
+                conexion.Abrir();
+                string consultaCategoria = "SELECT Devolver_nombre_categoria(@CategoriaId)";
+                using (MySqlCommand comando = new MySqlCommand(consultaCategoria, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@CategoriaId", categoriaId);
+                    object resultado = comando.ExecuteScalar();
+                    if (resultado != null)
+                    {
+                        nombreCategoria = resultado.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la categoría: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return nombreCategoria;
         }
     }
 }
