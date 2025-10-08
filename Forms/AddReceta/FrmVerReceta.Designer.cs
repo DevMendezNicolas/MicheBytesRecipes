@@ -209,6 +209,9 @@
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(456, 108);
             this.txtComentario.TabIndex = 15;
+            this.txtComentario.Enter += new System.EventHandler(this.txtComentario_Enter);
+            this.txtComentario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComentario_KeyPress);
+            this.txtComentario.Leave += new System.EventHandler(this.txtComentario_Leave);
             // 
             // lstComentarios
             // 

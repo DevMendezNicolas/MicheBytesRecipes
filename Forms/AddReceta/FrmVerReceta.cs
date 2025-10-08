@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MicheBytesRecipes.Classes.Interacciones;
+using MicheBytesRecipes.Managers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,15 +17,16 @@ namespace MicheBytesRecipes.Classes.Recetas
 
     public partial class FrmVerReceta : Form
     {
-        private int recetaId;
-        GestorReceta gestorReceta = new GestorReceta();
         private Receta receta;
-        public FrmVerReceta(int id)
+        GestorReceta gestorReceta = new GestorReceta();
+        private bool control = true; //Controla el estado del texto comentario
+        private string comentarioUsuario; //Almacena el comentario del usuario
+
+        public FrmVerReceta(Receta receta)
         {
             InitializeComponent();
-            //this.receta = receta;
-            recetaId = id;
-            CargarDatosReceta();
+            this.receta = receta;
+            
 
         }
 
@@ -31,6 +34,11 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             lblIdReceta.Visible = false;
             lblIdUsuario.Visible = false;
+
+            CargarDatosReceta();
+
+            txtComentario.Text = "Escribe un comentario...";
+            txtComentario.ForeColor = Color.Gray; //Pone el texto en gris
         }
         
 
@@ -51,6 +59,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         private void CargarDatosReceta()
         {
+            //Cargar los datos de la receta en los controles del formulario
             if (receta != null)
             {
                 lblNombre.Text = receta.Nombre;
@@ -59,6 +68,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 lblTiempo.Text = receta.TiempoPreparacion.ToString(@"hh\:mm");
                 lblInstruccion.Text = receta.Instrucciones;
 
+                //Cargar la imagen de la receta si existe
                 if (receta.ImagenReceta != null && receta.ImagenReceta.Length > 0)
                 {
                     //Crea una imagen a partir del arreglo de bytes
@@ -77,7 +87,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
                 //Cargar los ingredientes en el listbox
                 lstIngredientes.Items.Clear();
-                if (receta.Ingredientes != null || receta.Ingredientes.Count > 0)
+                if (receta.Ingredientes != null && receta.Ingredientes.Count > 0)
                 {
                     foreach (var ingrediente in receta.Ingredientes)
                     {
@@ -87,11 +97,94 @@ namespace MicheBytesRecipes.Classes.Recetas
                 {
                     lstIngredientes.Items.Add("No hay ingredientes");
                 }
+                //Cargar la categoria y pais de la receta
                 lblCategoria.Text = gestorReceta.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
                 lblPais.Text = gestorReceta.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
+
                 lblIdUsuario.Text = receta.UsuarioId.ToString();
                 lblIdReceta.Text = receta.RecetaId.ToString();
+
+                CargarComentarios();
             }
         }
+        private void CargarComentarios()
+        {
+            lstComentarios.Items.Clear();
+            GestorIneracciones gestorInteracciones = new GestorIneracciones();
+            List<Comentarios> comentarios = gestorInteracciones.CargarComentarios(receta.RecetaId);
+
+            if (comentarios != null && comentarios.Count > 0)
+            {
+                foreach (var comentario in comentarios)
+                {
+                    lstComentarios.Items.Add($"{comentario.NombreUsuario} ({comentario.FechaComentario:dd/MM/yyyy}): {comentario.Descripcion}");
+                }
+            }
+            else
+                lstComentarios.Items.Add("No hay comentarios");            
+        }
+
+        private void txtComentario_Enter(object sender, EventArgs e)
+        {
+            if (control)
+            {
+                txtComentario.Text = "";
+                txtComentario.ForeColor = Color.Black; //Cambia el color del texto a negro
+                control = false; //Cambia el estado del control para que no vuelva a entrar
+            }
+        }
+        private void txtComentario_Leave(object sender, EventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(txtComentario.Text))
+            {
+                txtComentario.Text = "Escribe un comentario...";
+                txtComentario.ForeColor = Color.Gray; //Pone el texto en gris
+                control = true; //Cambia el estado del control para que vuelva a entrar
+            }
+        }
+
+        private void txtComentario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter) //Si se presiona la tecla Enter
+            {
+                e.Handled = true; //Asegura que no se agregue una nueva linea
+
+                if(!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
+                {
+                    // Asigna el comentario del usuario a la variable
+                    comentarioUsuario = txtComentario.Text;
+
+                    // Crear un nuevo objeto Comentarios
+                    Comentarios nuevoComentario = new Comentarios
+                    {
+                        Descripcion = comentarioUsuario,
+                        RecetaId = int.Parse(lblIdReceta.Text),
+                        UsuarioId = int.Parse(lblIdUsuario.Text)
+                    };
+
+                    // Guardar el comentario usando el gestor de interacciones
+                    GestorIneracciones gestorInteracciones = new GestorIneracciones();
+                    // Intentar agregar el comentario y mostrar un mensaje según el resultado
+                    bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
+                    // Mostrar mensaje de éxito o error
+                    if (exito)
+                    {
+                        MessageBox.Show("Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtComentario.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    //Restablecer el cuadro de texto
+                    control = true;
+                    txtComentario_Leave(sender, EventArgs.Empty); //Llama al metodo Leave para restaurar el texto
+
+                    CargarComentarios();
+                                                                 
+                }
+            }
+        }
+    
     }
 }

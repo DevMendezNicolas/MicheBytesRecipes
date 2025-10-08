@@ -759,6 +759,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             return categorias;
         }
 
+
         public Pais ObtenerPaisPorId(int paisId)
         {
             try
@@ -808,7 +809,6 @@ namespace MicheBytesRecipes.Classes.Recetas
                             {
                                 CategoriaId = lector.GetInt32("categoria_id"),
                                 Nombre = lector.GetString("nombre"),
-                                Descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? null : lector.GetString("descripcion")
                             };
                         }
                     }

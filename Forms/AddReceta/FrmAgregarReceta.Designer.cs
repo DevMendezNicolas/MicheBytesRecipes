@@ -93,7 +93,7 @@
             // DTPtiempo
             // 
             this.DTPtiempo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTPtiempo.Location = new System.Drawing.Point(653, 81);
+            this.DTPtiempo.Location = new System.Drawing.Point(664, 51);
             this.DTPtiempo.Name = "DTPtiempo";
             this.DTPtiempo.Size = new System.Drawing.Size(265, 20);
             this.DTPtiempo.TabIndex = 9;
@@ -116,7 +116,7 @@
             // 
             // PCBimagen
             // 
-            this.PCBimagen.Location = new System.Drawing.Point(975, 27);
+            this.PCBimagen.Location = new System.Drawing.Point(975, 12);
             this.PCBimagen.Name = "PCBimagen";
             this.PCBimagen.Size = new System.Drawing.Size(166, 101);
             this.PCBimagen.TabIndex = 15;
@@ -242,7 +242,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(656, 57);
+            this.label7.Location = new System.Drawing.Point(667, 27);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(185, 21);
             this.label7.TabIndex = 27;

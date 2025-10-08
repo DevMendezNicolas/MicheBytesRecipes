@@ -20,7 +20,7 @@ namespace MicheBytesRecipes
             {
                 RecetaId = 1,
                 Nombre = "Tacos al Pastor",
-                PaisId = 1, // México
+                PaisId = 2, // México
                 CategoriaId = 1, // Comida Rápida
                 UsuarioId = 1, // ID del usuario que creó la receta
                 Descripcion = "Deliciosos tacos al pastor con piña y cilantro.",
@@ -32,8 +32,13 @@ namespace MicheBytesRecipes
                 FechaBaja = null,
                 Ingredientes = new List<Ingrediente>()
             };
+            receta.Ingredientes.Add(new Ingrediente { Nombre = "Carne de cerdo", IngredienteId = 1 });
+            receta.Ingredientes.Add(new Ingrediente { Nombre = "Tortillas de maíz", IngredienteId = 2 });
+            receta.Ingredientes.Add(new Ingrediente { Nombre = "Piña", IngredienteId = 3 });
+            receta.Ingredientes.Add(new Ingrediente { Nombre = "Cilantro", IngredienteId = 4 });
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
             //Application.Run(new frmHome());
             //Application.Run(new Inicio());
             //Application.Run(new frmLogin());
@@ -41,7 +46,7 @@ namespace MicheBytesRecipes
             //Application.Run(new FrmAgregarPais());
             //Application.Run(new FrmAgregarIngrediente());
             //Application.Run(new PruebaImagen());
-            Application.Run(new FrmVerReceta(8));
+            Application.Run(new FrmVerReceta(receta));
         }
     }
 }
