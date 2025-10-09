@@ -91,6 +91,7 @@
             this.lblLinkResetContra.TabIndex = 11;
             this.lblLinkResetContra.TabStop = true;
             this.lblLinkResetContra.Text = "¿Olvidaste tu contraseña?";
+            this.lblLinkResetContra.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLinkResetContra_LinkClicked);
             // 
             // btnView
             // 

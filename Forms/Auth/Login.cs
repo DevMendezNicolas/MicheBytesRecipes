@@ -64,26 +64,6 @@ namespace MicheBytesRecipes
             this.Hide();
         }
 
-        private void LbLinkContra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            string email = "briankevinbotta@hotmail.com";
-
-            // Verificar que el email sea el correcto para la prueba
-            if (email != "briankevinbotta@hotmail.com")
-            {
-                MessageBox.Show("⚠️ Para esta prueba, usa: briankevinbotta@hotmail.com");
-                return;
-            }
-
-            // Simular obtención de contraseña de la BD
-            string password = "tucontraPrueba";
-
-            // Enviar el email
-            EmailService emailService = new EmailService();
-            emailService.EnviarRecuperacionPassword(email, password);
-
-        }
-
         private void btnView_MouseDown(object sender, MouseEventArgs e)
         {
             txtContra.UseSystemPasswordChar = false;
@@ -133,7 +113,7 @@ namespace MicheBytesRecipes
                 eprIngresar.SetError(txtContra, "El campo contraseña es obligatorio.");
                 return;
             }
-            
+
             if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, gestorUsuarios.HashearContraseña(txtContra.Text)))
             {
                 Usuario usuarioActivo = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
@@ -145,7 +125,7 @@ namespace MicheBytesRecipes
                     menuAdmin.Show();
                     salida = true;
                     this.Close();
-                    
+
                 }
                 else
                 {
@@ -162,6 +142,14 @@ namespace MicheBytesRecipes
                 MessageBox.Show("Usuario o contraseña incorrectos.");
                 return;
             }
+        }
+
+        private void lblLinkResetContra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //abrir Formulario en modal
+
+            RecuperarContra frmRecu = new RecuperarContra();
+            frmRecu.ShowDialog();
         }
     }
 }
