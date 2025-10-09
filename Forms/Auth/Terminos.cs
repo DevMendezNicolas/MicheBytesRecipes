@@ -18,18 +18,13 @@ namespace MicheBytesRecipes.Forms.Auth
         public Terminos()
         {
             InitializeComponent();
-        }
-
-        private void FrmTerms_Load(object sender, EventArgs e)
-        {
             CargarTerminos();
+            btnAceptar.Enabled = false; // Deshabilitar el botón inicialmente
         }
 
         private void CargarTerminos()
         {
-                       string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "terms.json");
-
-            MessageBox.Show("Buscando JSON en: " + jsonPath);
+            string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "terms.json");
 
             if (File.Exists(jsonPath))
             {
@@ -37,13 +32,54 @@ namespace MicheBytesRecipes.Forms.Auth
                 TerminosData terms = JsonConvert.DeserializeObject<TerminosData>(json);
 
                 lblTitulo.Text = terms.titulo;
-                richTextBox1.Text = terms.contenido;
+                rtbTerminos.Text = terms.contenido;
             }
             else
             {
-                richTextBox1.Text = "No se encontraron los términos y condiciones.";
+                rtbTerminos.Text = "No se encontraron los términos y condiciones.";
             }
         }
 
+
+        private bool ScrollFinalTexto()
+        {
+            try
+            {
+                // Obtener la posición del último carácter visible en la parte inferior
+                int indiceDelCaracterEnElFondo = rtbTerminos.GetCharIndexFromPosition(
+                    new Point(10, rtbTerminos.ClientSize.Height - 10));
+
+                // Obtener el índice del último carácter del texto
+                int indiceDelUltimoCaracter = rtbTerminos.TextLength - 1;
+
+                // Si el carácter en el fondo está cerca del final (último 2%)
+                return indiceDelCaracterEnElFondo >= indiceDelUltimoCaracter * 0.95;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        private void VerificarFinalScroll()
+        {
+            // Método más preciso para verificar si llegó al final
+            if (ScrollFinalTexto())
+            {
+                btnAceptar.Enabled = true;
+            }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+
+        }
+
+        private void rtbTerminos_VScroll(object sender, EventArgs e)
+        {
+            VerificarFinalScroll();
+
+        }
     }
 }
