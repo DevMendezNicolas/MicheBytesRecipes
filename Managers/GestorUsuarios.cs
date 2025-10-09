@@ -184,7 +184,7 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consultaBuscar = "Procedimiento_que_busca_usuario";
+                string consultaBuscar = "Buscar_usuario";
                 using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
@@ -297,43 +297,7 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         } // Revisar Uso
-        // Listar usuarios inactivos
-        /*public void ListarUsuariosInactivos()
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaListar = "SELECT * FROM usuarios WHERE FechaBaja IS NOT NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
-                {
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            usuarios.Add(new Usuario(
-                                reader.GetString("Email"),
-                                reader.GetInt32("UsuarioId"),
-                                reader.GetString("Nombre"),
-                                reader.GetString("Apellido"),
-                                reader.GetString("Telefono"),
-                                (byte[])reader["ImagenPerfil"],
-                                (int)reader["ID_Rol"]
-                            ));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al listar los usuarios inactivos: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Revisar Uso
-        // Cantidad Total de usuario dados de alta
-        */
+        
         public int CantidadTotalUsuarios()
         {
             try

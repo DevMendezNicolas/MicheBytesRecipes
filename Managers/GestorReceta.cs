@@ -192,7 +192,7 @@ namespace MicheBytesRecipes
             try
             {
                 conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("insertar_paises", conexion.GetConexion()))
+                using (MySqlCommand comando = new MySqlCommand("Insertar_paises", conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
 
