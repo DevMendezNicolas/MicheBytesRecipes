@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MicheBytesRecipes.Classes.Interacciones
 {
-    internal class Comentarios
+    public class Comentarios
     {
         public int ComentarioId { get; set; }
         public string Descripcion { get; set; }
