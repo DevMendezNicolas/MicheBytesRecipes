@@ -142,6 +142,7 @@
             this.lblLinkTerminos.TabIndex = 8;
             this.lblLinkTerminos.TabStop = true;
             this.lblLinkTerminos.Text = "términos  y condiciones";
+            this.lblLinkTerminos.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLinkTerminos_LinkClicked);
             // 
             // btnRegistrar
             // 

@@ -323,5 +323,10 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             if (this.Owner != null) this.Owner.Show(); // volver a Inicio al cerrar registro
         }
+
+        private void lblLinkTerminos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
