@@ -19,45 +19,18 @@ namespace MicheBytesRecipes
         // Lista de recetas
         public List<Receta> recetas;
 
-        //Metodo para eliminar receta
-        public void EliminarReceta(int recetaId)
+        public GestorReceta()
         {
-            try
-            {
-                conexion.Abrir();
-
-                string consultaEliminar = "DELETE FROM Recetas WHERE RecetaId = @RecetaId";
-                using (MySqlCommand comando = new MySqlCommand(consultaEliminar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@RecetaId", recetaId);
-
-                    int filasAfectadas = comando.ExecuteNonQuery();
-
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Receta eliminada exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo eliminar la receta.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al eliminar la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-
+            recetas = new List<Receta>();
         }
-
         //Metodo para obtener ingredientes
-        public List<Ingrediente> ObtenerIgredientes()
+        public List<Ingrediente> ObtenerIngredientes()
         {
             List<Ingrediente> ingredientes = new List<Ingrediente>();
             try
             {
                 conexion.Abrir();
-                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad";
+                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 using (MySqlDataReader lector = comando.ExecuteReader())
                 {
@@ -66,17 +39,7 @@ namespace MicheBytesRecipes
                         ingredientes.Add(new Ingrediente
                         {
                             IngredienteId = lector.GetInt32("ingrediente_id"),
-                            Nombre = lector.GetString("Nombre"),
-                            Unidad = new UnidadMedida
-                            {
-                                UnidadMedidaId = lector.GetInt32("unidad_de_medida_id"),
-                                Nombre = lector.GetString("Unidad")
-                            },
-                            Tipo = new TipoIngrediente
-                            {
-                                TipoIngredienteId = lector.GetInt32("tipo_ingrediente_id"),
-                                Nombre = lector.GetString("Tipo_ingrediente")
-                            }
+                            Nombre = lector.GetString("nombre")
                         });
                     }
                 }
@@ -92,7 +55,7 @@ namespace MicheBytesRecipes
             }
             return ingredientes;
         }
-        public void ModificarReceta(Receta receta)
+        public void ModificarReceta(Receta receta) // Cin lo esta terminado
         {
             try
             {
@@ -129,57 +92,6 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
         }
-        public List<Receta> listarRecetas()
-        {
-            List<Receta> recetas = new List<Receta>();
-
-            try
-            {
-                conexion.Abrir();
-                string consultaListar = "SELECT * FROM Recetas WHERE Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
-                {
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                    }
-
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Receta listada exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo listar la receta.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al listar las recetas: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return recetas;
-        }
-
         public int AgregarReceta(Receta receta, List<int> ingredientesIds)
         {
             int recetaId = -1;
@@ -275,31 +187,6 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
         }
-        public void AgregarIngredienteReceta(Receta receta)
-        {
-            try
-            {
-                conexion.Abrir();
-                foreach (var ing in receta.Ingredientes)
-                {
-                    string consulta = "INSERT INTO RecetaIngredientes (RecetaId, IngredienteId) VALUES (@RecetaId, @IngredienteId)";
-                    using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
-                    {
-                        comando.Parameters.AddWithValue("@RecetaId", receta.RecetaId);
-                        comando.Parameters.AddWithValue("@IngredienteId", ing.IngredienteId);
-                        comando.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar el ingrediente a la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
         public void AgregarPais(Pais pais)
         {
             try
@@ -355,279 +242,6 @@ namespace MicheBytesRecipes
             }
             finally { conexion.Cerrar(); }
         }
-        //Metodos de busqueda
-        public List<Receta> BuscarRecetaPorNombre(string nombre)
-        {
-            List<Receta> recetas = new List<Receta>();
-            try
-            {
-                conexion.Abrir();
-                string consultaBuscar = "SELECT * FROM Recetas WHERE Nombre = @Nombre AND Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Nombre", nombre);
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                        return recetas;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null;
-        }
-        public List<Receta> BuscarRecetaPorIngrediente(string ingrediente)
-        {
-            List<Receta> recetas = new List<Receta>();
-            try
-            {
-                conexion.Abrir();
-                string consultarBuscar = "SELECT * FROM recetas WHERE Ingrediente = @Ingrediente and Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultarBuscar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Ingrediente", ingrediente);
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                        return recetas;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null;
-        }
-        public List<Receta> BuscarRecetaPorPais(string pais)
-        {
-            List<Receta> recetas = new List<Receta>();
-            try
-            {
-                conexion.Abrir();
-                string consultarBuscar = "SELECT * FROM recetas WHERE Pais = @Pais and Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultarBuscar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Pais", pais);
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                        return recetas;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null;
-        }
-        public List<Receta> BuscarRecetaPorCategoria(string categoria)
-        {
-            List<Receta> recetas = new List<Receta>();
-            try
-            {
-                conexion.Abrir();
-                string consultarBuscar = "SELECT * FROM recetas WHERE Categoria = @Categoria and Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultarBuscar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Categoria", categoria);
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                        return recetas;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null;
-        }
-        public List<Receta> BuscarRecetaPorDificultad(Dificultad dificultad)
-        {
-            List<Receta> recetas = new List<Receta>();
-
-            try
-            {
-                conexion.Abrir();
-                string consultarBuscar = "SELECT * FROM recetas WHERE NivelDificultad = @NivelDificultad and Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultarBuscar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@NivelDificultad", dificultad.ToString());
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                        return recetas;
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar la receta: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null;
-        }
-        public List<Receta> BuscarRecetaActiva()
-        {
-            List<Receta> recetas = new List<Receta>();
-            try
-            {
-                conexion.Abrir();
-                string consultarBuscar = "SELECT * FROM recetas WHERE Fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultarBuscar, conexion.GetConexion()))
-                {
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            Receta receta = new Receta
-                            {
-                                RecetaId = lector.GetInt32("RecetaId"),
-                                Nombre = lector.GetString("Nombre"),
-                                PaisId = lector.GetInt32("PaisId"),
-                                CategoriaId = lector.GetInt32("CategoriaId"),
-                                UsuarioId = lector.GetInt32("UsuarioId"),
-                                Descripcion = lector.GetString("Descripcion"),
-                                Instrucciones = lector.GetString("Instrucciones"),
-                                ImagenReceta = null,
-                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
-                                NivelDificultad = (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("NivelDificultad")),
-                                FechaRegistro = lector.GetDateTime("FechaRegistro"),
-                                FechaBaja = lector.IsDBNull(lector.GetOrdinal("FechaBaja")) ? (DateTime?)null : lector.GetDateTime("FechaBaja")
-                            };
-                            recetas.Add(receta);
-                        }
-                        return recetas;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null;
-        }
-
         //Metodos obtener
         public List<UnidadMedida> ObtenerListaUnidades()
         {
@@ -796,7 +410,7 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return contador;
-        }
+        } // Verificar uso
         public List<Receta> ObtenerRecetasMasNuevas(int cantidad)
         {
             List<Receta> recetas = new List<Receta>();
@@ -1016,7 +630,6 @@ namespace MicheBytesRecipes
             return recetas;
         }
         // obtener previsualizacion de recetas por nombre, categoria, pais, dificultad
-        // NO FUNCIONA TODAVIA
         public List<PreReceta> ObtenerPreRecetasFiltradas(string nombre, int paisId, int categoriaId, Dificultad? dificultad)
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -1097,10 +710,6 @@ namespace MicheBytesRecipes
 
             return recetas;
         }
-
-
-
-
         // Obtener pais
         public string ObtenerPais(int paisId)
         {

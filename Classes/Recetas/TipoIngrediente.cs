@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MicheBytesRecipes
 {
-    internal class TipoIngrediente
+    public class TipoIngrediente
     {
         public int TipoIngredienteId { get; set; }
         public string Nombre { get; set; }

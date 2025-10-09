@@ -6,7 +6,7 @@ using MicheBytesRecipes.Classes;
 
 namespace MicheBytesRecipes
 {
-    internal class Ingrediente
+    public class Ingrediente
     {
 
         //Propiedades de la clase Ingrediente
