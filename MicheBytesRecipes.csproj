@@ -190,6 +190,7 @@
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\TerminosData.cs" />
     <Compile Include="Utilities\Utilidades.cs" />
     <EmbeddedResource Include="Forms\AddReceta\FrmAgregarCategoria.resx">
       <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
@@ -231,7 +232,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Data\terms.json" />
+    <Content Include="Data\terms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

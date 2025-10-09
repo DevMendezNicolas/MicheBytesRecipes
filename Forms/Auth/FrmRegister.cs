@@ -326,6 +326,8 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void lblLinkTerminos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            Terminos frm = new Terminos();
+            frm.ShowDialog();
 
         }
     }
