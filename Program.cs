@@ -18,7 +18,7 @@ namespace MicheBytesRecipes
         {
             Receta receta = new Receta
             {
-                RecetaId = 1,
+                RecetaId = 2,
                 Nombre = "Tacos al Pastor",
                 PaisId = 2, // México
                 CategoriaId = 1, // Comida Rápida

@@ -144,7 +144,7 @@
       <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddReceta\Validaciones.cs" />
-    <Compile Include="Managers\GestorIneracciones.cs" />
+    <Compile Include="Managers\GestorInteracciones.cs" />
     <Compile Include="Managers\GestorReceta.cs" />
     <Compile Include="Classes\Recetas\Ingrediente.cs" />
     <Compile Include="Classes\Recetas\Receta.cs" />

@@ -110,14 +110,14 @@ namespace MicheBytesRecipes.Classes.Recetas
         private void CargarComentarios()
         {
             lstComentarios.Items.Clear();
-            GestorIneracciones gestorInteracciones = new GestorIneracciones();
+            GestorInteracciones gestorInteracciones = new GestorInteracciones();
             List<Comentarios> comentarios = gestorInteracciones.CargarComentarios(receta.RecetaId);
 
             if (comentarios != null && comentarios.Count > 0)
             {
                 foreach (var comentario in comentarios)
                 {
-                    lstComentarios.Items.Add($"{comentario.NombreUsuario} ({comentario.FechaComentario:dd/MM/yyyy}): {comentario.Descripcion}");
+                    lstComentarios.Items.Add($"{comentario.NombreUsuario}: {comentario.Descripcion} ({comentario.FechaComentario:dd/MM/yyyy})");
                 }
             }
             else
@@ -162,8 +162,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                         UsuarioId = int.Parse(lblIdUsuario.Text)
                     };
 
-                    // Guardar el comentario usando el gestor de interacciones
-                    GestorIneracciones gestorInteracciones = new GestorIneracciones();
+                    // Instancia el gestor de interaccioes
+                    GestorInteracciones gestorInteracciones = new GestorInteracciones();
                     // Intentar agregar el comentario y mostrar un mensaje según el resultado
                     bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
                     // Mostrar mensaje de éxito o error

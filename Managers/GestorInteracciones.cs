@@ -7,7 +7,7 @@ using System.Data;
 
 namespace MicheBytesRecipes.Managers
 {
-    internal class GestorIneracciones
+    internal class GestorInteracciones
     {
         ConexionBD conexion = new ConexionBD();
 

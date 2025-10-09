@@ -77,7 +77,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void FrmAgregarReceta_Load(object sender, EventArgs e)
         {
-            List<Ingrediente> ingredientes = gestorReceta.ObtenerIgredientes();
+            List<Ingrediente> ingredientes = gestorReceta.ObtenerIngredientes();
             clbIngredientes.DataSource = ingredientes;
             clbIngredientes.DisplayMember = "Nombre";
             clbIngredientes.ValueMember = "IngredienteId";
@@ -122,7 +122,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
             if (frmAgregarIngrediente.ShowDialog() == DialogResult.OK)
             {
-                List<Ingrediente> ingredientes = gestorReceta.ObtenerIgredientes();
+                List<Ingrediente> ingredientes = gestorReceta.ObtenerIngredientes();
                 clbIngredientes.DataSource = null; //Limpia el origen de datos
                 clbIngredientes.DataSource = ingredientes; //Vuelve a asignar la lista actualizada
                 clbIngredientes.DisplayMember = "Nombre"; 
