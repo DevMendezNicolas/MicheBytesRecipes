@@ -558,7 +558,7 @@ namespace MicheBytesRecipes
         {
             List<PreReceta> recetas = new List<PreReceta>();
             try
-            {           
+            {
                 conexion.Abrir();
                 string consulta = "SELECT receta_id, nombre, categoria_id, pais_id, dificultad, tiempo_preparacion FROM Vista_resumen_recetas WHERE fecha_baja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
@@ -711,7 +711,7 @@ namespace MicheBytesRecipes
             return recetas;
         }
         // Obtener pais
-        public string ObtenerPais(int paisId)
+        /*public string ObtenerPais(int paisId)
         {
             string nombrePais = string.Empty;
             try
@@ -738,9 +738,43 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return nombrePais;
+        }*/
+
+        public Pais ObtenerPaisPorId(int paisId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaPais = "SELECT * FROM Vista_de_todos_los_paises WHERE pais_id = @PaisId";
+                using (MySqlCommand comando = new MySqlCommand(consultaPais, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@PaisId", paisId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            return new Pais
+                            {
+                                PaisId = lector.GetInt32("pais_id"),
+                                Nombre = lector.GetString("nombre")
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return null; // Retorna null si no se encuentra el país
         }
+
         // Obtener categoria
-        public string ObtenerCategoria(int categoriaId)
+        /*public string ObtenerCategoria(int categoriaId)
         {
             string nombreCategoria = string.Empty;
             try
@@ -766,6 +800,39 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return nombreCategoria;
+        }*/
+
+        public Categoria ObtenerCategoriaPorId(int categoriaId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaCategoria = "SELECT * FROM Vista_de_las_categorias WHERE categoria_id = @CategoriaId";
+                using (MySqlCommand comando = new MySqlCommand(consultaCategoria, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@CategoriaId", categoriaId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            return new Categoria
+                            {
+                                CategoriaId = lector.GetInt32("categoria_id"),
+                                Nombre = lector.GetString("nombre"),
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return null; // Retorna null si no se encuentra la categoría
         }
     }
 }

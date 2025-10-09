@@ -12,6 +12,7 @@ using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
 using MicheBytesRecipes;
 using Mysqlx.Session;
 
@@ -30,7 +31,7 @@ namespace MicheBytesRecipes
             List<PreReceta> preRecetas = recetasActivas ? gestorReceta.ObtenerPreRecetas() : gestorReceta.ObtenerPreRecetasInactivas();
             foreach (var preReceta in preRecetas)
             {
-                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoria(preReceta.CategoriaId), gestorReceta.ObtenerPais(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
             }
         }
         public frmMenuAdmin(Usuario usuarioActivado)
@@ -140,7 +141,7 @@ namespace MicheBytesRecipes
                 dgvReceta.Columns["dgvReceta_id"].Visible = false;
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoria(preReceta.CategoriaId), gestorReceta.ObtenerPais(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
                 }
 
             }

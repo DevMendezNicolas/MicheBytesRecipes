@@ -179,7 +179,8 @@
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\UiHelpers.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
-    <Compile Include="Classes\Recetas\GestorReceta.cs" />
+    <Compile Include="Managers\GestorReceta.cs" />
+    <Compile Include="Managers\GestorInteracciones.cs" />
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
