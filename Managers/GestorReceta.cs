@@ -18,7 +18,7 @@ namespace MicheBytesRecipes
         ConexionBD conexion = new ConexionBD();
         // Lista de recetas
         public List<Receta> recetas;
-
+        
         public GestorReceta()
         {
             recetas = new List<Receta>();

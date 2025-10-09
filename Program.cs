@@ -20,13 +20,8 @@ namespace MicheBytesRecipes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmHome());
             Application.Run(new Inicio());
-            //Application.Run(new frmLogin());
-            //Application.Run(new frmMenuAdmin());
-            //Application.Run(new Forms.AddReceta.FrmAgregarReceta());
-            //Application.Run(new Forms.Auth.FrmRegister());
-            //Application.Run(new Forms.Admin.frmBuscarUsuario());
+            
 
         }
     }
