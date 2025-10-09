@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Interacciones\Comentarios.cs" />
     <Compile Include="Classes\Recetas\Categoria.cs" />
     <Compile Include="Classes\Recetas\Ingrediente.cs" />
     <Compile Include="Classes\Recetas\Pais.cs" />
