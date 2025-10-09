@@ -15,7 +15,7 @@ namespace MicheBytesRecipes
             Media,
             Difícil
         }
-        internal class Receta
+        public class Receta
         {
             //Propiedades de la clase receta
             public int RecetaId { get; set; }
