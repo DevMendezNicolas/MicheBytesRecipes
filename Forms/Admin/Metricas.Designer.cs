@@ -246,6 +246,7 @@
             this.btnVolver.TabIndex = 13;
             this.btnVolver.Text = "🔙 &Menu";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // Receta_id
             // 
@@ -315,6 +316,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Metricas";
             this.Text = "Metricas";
+            this.Load += new System.EventHandler(this.Metricas_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();

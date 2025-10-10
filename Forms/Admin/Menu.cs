@@ -207,5 +207,12 @@ namespace MicheBytesRecipes
             gestionUsuarios.Show();
             this.Hide();
         }
+
+        private void btnMetricas_Click(object sender, EventArgs e)
+        {
+            Metricas metricas = new Metricas(this);
+            metricas.Show();
+            this.Hide();
+        }
     }
 }
