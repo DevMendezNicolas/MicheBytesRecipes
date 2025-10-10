@@ -35,7 +35,7 @@
             this.cboBuscar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
-            this.lblBuscar = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.panel3.Controls.Add(this.cboBuscar);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtBuscarUsuario);
-            this.panel3.Controls.Add(this.lblBuscar);
+            this.panel3.Controls.Add(this.lblTitulo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(233, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
@@ -75,7 +75,7 @@
             // 
             // btnReinicio
             // 
-            this.btnReinicio.Location = new System.Drawing.Point(772, 132);
+            this.btnReinicio.Location = new System.Drawing.Point(772, 141);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
             this.btnReinicio.TabIndex = 5;
@@ -85,7 +85,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(593, 132);
+            this.btnBuscar.Location = new System.Drawing.Point(593, 141);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
             this.btnBuscar.TabIndex = 5;
@@ -114,7 +114,7 @@
             // cboBuscar
             // 
             this.cboBuscar.FormattingEnabled = true;
-            this.cboBuscar.Location = new System.Drawing.Point(45, 90);
+            this.cboBuscar.Location = new System.Drawing.Point(45, 95);
             this.cboBuscar.Name = "cboBuscar";
             this.cboBuscar.Size = new System.Drawing.Size(179, 29);
             this.cboBuscar.TabIndex = 3;
@@ -125,31 +125,31 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 60);
+            this.label1.Location = new System.Drawing.Point(41, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 20);
+            this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Buscar usuario por: ";
+            this.label1.Text = "Filtrar por:";
             // 
             // txtBuscarUsuario
             // 
             this.txtBuscarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarUsuario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarUsuario.Location = new System.Drawing.Point(45, 134);
+            this.txtBuscarUsuario.Location = new System.Drawing.Point(45, 143);
             this.txtBuscarUsuario.Name = "txtBuscarUsuario";
             this.txtBuscarUsuario.Size = new System.Drawing.Size(518, 29);
             this.txtBuscarUsuario.TabIndex = 1;
             // 
-            // lblBuscar
+            // lblTitulo
             // 
-            this.lblBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(333, 24);
-            this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(136, 25);
-            this.lblBuscar.TabIndex = 0;
-            this.lblBuscar.Text = "Buscar usuario";
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(333, 24);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(181, 25);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Gestión de Usuarios";
             // 
             // panel1
             // 
@@ -194,7 +194,7 @@
             this.lblUsuarios.Name = "lblUsuarios";
             this.lblUsuarios.Size = new System.Drawing.Size(71, 21);
             this.lblUsuarios.TabIndex = 9;
-            this.lblUsuarios.Text = "Usuarios";
+            this.lblUsuarios.Text = "Acciones";
             // 
             // btnVolver
             // 
@@ -318,7 +318,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.TextBox txtBuscarUsuario;
-        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNombre;
