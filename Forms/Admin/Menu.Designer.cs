@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes
 {
-    partial class Menu
+    partial class frmMenuAdmin
     {
         /// <summary>
         /// Variable del diseñador necesaria.
