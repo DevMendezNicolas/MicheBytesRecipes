@@ -121,7 +121,7 @@ namespace MicheBytesRecipes
                 if (usuarioActivo.Rol == 1)
                 {
                     //Abrir el formulario de menú de administrador y pasar el usuario
-                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
+                    Menu menuAdmin = new Menu(usuarioActivo);
                     menuAdmin.Show();
                     salida = true;
                     this.Close();

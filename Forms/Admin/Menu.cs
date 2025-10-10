@@ -13,12 +13,11 @@ using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
-using MicheBytesRecipes;
-using Mysqlx.Session;
+using MicheBytesRecipes.Forms.Admin;
 
 namespace MicheBytesRecipes
 {
-    public partial class frmMenuAdmin : Form
+    public partial class Menu : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
         private Usuario usuarioLog;
@@ -34,7 +33,7 @@ namespace MicheBytesRecipes
                 dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
             }
         }
-        public frmMenuAdmin(Usuario usuarioActivado)
+        public Menu(Usuario usuarioActivado)
         {
             InitializeComponent();
             UiHelpers.SetRoundedButton(btnBuscar, 15);
@@ -199,5 +198,14 @@ namespace MicheBytesRecipes
                 }
             }
         }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            GestionUsuarios gestionUsuarios = new GestionUsuarios();
+            gestionUsuarios.Show();
+            this.Hide();
+        }
+
+
     }
 }
