@@ -203,14 +203,14 @@ namespace MicheBytesRecipes
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            GestionUsuarios gestionUsuarios = new GestionUsuarios(this);
+            GestionUsuarios gestionUsuarios = new GestionUsuarios(usuarioLog);
             gestionUsuarios.Show();
             this.Hide();
         }
 
         private void btnMetricas_Click(object sender, EventArgs e)
         {
-            Metricas metricas = new Metricas(this);
+            Metricas metricas = new Metricas(usuarioLog);
             metricas.Show();
             this.Hide();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MicheBytesRecipes.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,13 +14,31 @@ namespace MicheBytesRecipes.Forms.Admin
 {
     public partial class Metricas : Form
     {
+        private Usuario usuarioLog;
         GestorReceta gestorReceta = new GestorReceta();
-        private Form menuPrincipal;
 
-        public Metricas(Form menu)
+
+        public Metricas(Usuario usuarioActivado)
         {
             InitializeComponent();
-            menuPrincipal = menu;
+
+            usuarioLog = usuarioActivado;
+            lblNombre.Text = usuarioLog.NombreCompleto();
+            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
+            {
+                //Crea una imagen a partir del arreglo de bytes
+                using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
+                {
+                    //Se crea un objeto imagen a partir del stream
+                    pbImagenAdmin.Image = System.Drawing.Image.FromStream(ms);
+                    //Ajusta el tamaño de la imagen al tamaño del picturebox
+                    pbImagenAdmin.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            else
+            {
+                pbImagenAdmin.Image = null;
+            }
         }
 
         private void Metricas_Load(object sender, EventArgs e)
@@ -35,8 +54,10 @@ namespace MicheBytesRecipes.Forms.Admin
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            menuPrincipal.Show();
             this.Close();
+            //Mostrar el menú admin
+            frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioLog);
+            menuAdmin.Show();
         }
     }
 }

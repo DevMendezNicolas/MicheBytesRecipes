@@ -197,6 +197,12 @@
     <Compile Include="Forms\Landing\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\MenuUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\MenuUser.Designer.cs">
+      <DependentUpon>MenuUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CueProvider.cs" />
     <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Theme.cs" />
@@ -249,6 +255,9 @@
     <EmbeddedResource Include="Forms\Landing\Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\MenuUser.resx">
+      <DependentUpon>MenuUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -276,9 +285,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Users\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Cute_and_animated_lo.png" />
   </ItemGroup>

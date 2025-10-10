@@ -18,11 +18,28 @@ namespace MicheBytesRecipes.Forms.Admin
         private Usuario usuarioLog;
         GestorUsuarios gestorUsuario = new GestorUsuarios();
         private bool usuariosActivos = true;
-        private Form menuPrincipal;
-        public GestionUsuarios(Form menu)
+
+        public GestionUsuarios(Usuario usuarioActivado)
         {
             InitializeComponent();
-            menuPrincipal = menu;
+
+            usuarioLog = usuarioActivado;
+            lblNombre.Text = usuarioLog.NombreCompleto();
+            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
+            {
+                //Crea una imagen a partir del arreglo de bytes
+                using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
+                {
+                    //Se crea un objeto imagen a partir del stream
+                    pbImagenAdmin.Image = System.Drawing.Image.FromStream(ms);
+                    //Ajusta el tamaño de la imagen al tamaño del picturebox
+                    pbImagenAdmin.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            else
+            {
+                pbImagenAdmin.Image = null;
+            }
         }
 
         private void GestionUsuarios_Load(object sender, EventArgs e)
@@ -44,12 +61,12 @@ namespace MicheBytesRecipes.Forms.Admin
             }
         }
 
-
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            menuPrincipal.Show();
             this.Close();
+            //Abrir el menú admin
+            frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioLog);
+            menuAdmin.Show();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

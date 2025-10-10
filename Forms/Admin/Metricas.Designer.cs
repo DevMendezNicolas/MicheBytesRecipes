@@ -32,19 +32,6 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvReceta = new System.Windows.Forms.DataGridView();
-            this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscarReceta = new System.Windows.Forms.TextBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblReceta = new System.Windows.Forms.Label();
-            this.btnAct = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.txtAgregar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.Receta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,10 +40,23 @@
             this.Visualizaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Favoritos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.altaReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBuscarReceta = new System.Windows.Forms.TextBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblReceta = new System.Windows.Forms.Label();
+            this.btnAct = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.txtAgregar = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -112,6 +112,63 @@
             this.dgvReceta.Size = new System.Drawing.Size(858, 382);
             this.dgvReceta.TabIndex = 4;
             // 
+            // Receta_id
+            // 
+            this.Receta_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Receta_id.HeaderText = "Receta id";
+            this.Receta_id.Name = "Receta_id";
+            this.Receta_id.ReadOnly = true;
+            this.Receta_id.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Likes
+            // 
+            this.Likes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Likes.HeaderText = "Likes";
+            this.Likes.Name = "Likes";
+            this.Likes.ReadOnly = true;
+            // 
+            // Comentarios
+            // 
+            this.Comentarios.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Comentarios.HeaderText = "Comentarios";
+            this.Comentarios.Name = "Comentarios";
+            this.Comentarios.ReadOnly = true;
+            // 
+            // Visualizaciones
+            // 
+            this.Visualizaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Visualizaciones.HeaderText = "Visualizaciones";
+            this.Visualizaciones.Name = "Visualizaciones";
+            this.Visualizaciones.ReadOnly = true;
+            // 
+            // Favoritos
+            // 
+            this.Favoritos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Favoritos.HeaderText = "Favoritos";
+            this.Favoritos.Name = "Favoritos";
+            this.Favoritos.ReadOnly = true;
+            // 
+            // altaReceta
+            // 
+            this.altaReceta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.altaReceta.HeaderText = "Alta Receta";
+            this.altaReceta.Name = "altaReceta";
+            this.altaReceta.ReadOnly = true;
+            // 
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
@@ -154,7 +211,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnVolver);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pbImagenAdmin);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblReceta);
             this.panel1.Controls.Add(this.btnAct);
@@ -167,6 +224,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 3;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(13, 579);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(198, 42);
+            this.btnVolver.TabIndex = 13;
+            this.btnVolver.Text = "🔙 &Menu";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // pbImagenAdmin
+            // 
+            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenAdmin.Name = "pbImagenAdmin";
+            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenAdmin.TabIndex = 12;
+            this.pbImagenAdmin.TabStop = false;
             // 
             // lblNombre
             // 
@@ -229,82 +305,6 @@
             this.txtAgregar.Text = "&Agregar";
             this.txtAgregar.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(34, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(154, 85);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Location = new System.Drawing.Point(13, 579);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(198, 42);
-            this.btnVolver.TabIndex = 13;
-            this.btnVolver.Text = "🔙 &Menu";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // Receta_id
-            // 
-            this.Receta_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Receta_id.HeaderText = "Receta id";
-            this.Receta_id.Name = "Receta_id";
-            this.Receta_id.ReadOnly = true;
-            this.Receta_id.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Likes
-            // 
-            this.Likes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Likes.HeaderText = "Likes";
-            this.Likes.Name = "Likes";
-            this.Likes.ReadOnly = true;
-            // 
-            // Comentarios
-            // 
-            this.Comentarios.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Comentarios.HeaderText = "Comentarios";
-            this.Comentarios.Name = "Comentarios";
-            this.Comentarios.ReadOnly = true;
-            // 
-            // Visualizaciones
-            // 
-            this.Visualizaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Visualizaciones.HeaderText = "Visualizaciones";
-            this.Visualizaciones.Name = "Visualizaciones";
-            this.Visualizaciones.ReadOnly = true;
-            // 
-            // Favoritos
-            // 
-            this.Favoritos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Favoritos.HeaderText = "Favoritos";
-            this.Favoritos.Name = "Favoritos";
-            this.Favoritos.ReadOnly = true;
-            // 
-            // altaReceta
-            // 
-            this.altaReceta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.altaReceta.HeaderText = "Alta Receta";
-            this.altaReceta.Name = "altaReceta";
-            this.altaReceta.ReadOnly = true;
-            // 
             // Metricas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -322,7 +322,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,7 +338,7 @@
         private System.Windows.Forms.TextBox txtBuscarReceta;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbImagenAdmin;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnAct;

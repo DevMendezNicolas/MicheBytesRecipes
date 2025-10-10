@@ -13,6 +13,7 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Forms.User;
 
 namespace MicheBytesRecipes
 {
@@ -129,12 +130,12 @@ namespace MicheBytesRecipes
                 }
                 else
                 {
-                    /*// Abrir el formulario de menú de usuario
-                    frmMenuUser menuUser = new frmMenuUser(usuarioActivo);
+                    // Abrir el formulario de menú de usuario
+                    MenuUser menuUser = new MenuUser(usuarioActivo);
                     menuUser.FormClosed += (s, args) => this.Show();
                     menuUser.Show();
                     this.Hide();
-                    */
+                    
                 }
             }
             else

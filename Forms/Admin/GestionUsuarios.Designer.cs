@@ -32,17 +32,6 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.cboBuscar = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblUsuarios = new System.Windows.Forms.Label();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.btnAct = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAlta = new System.Windows.Forms.Button();
             this.UsuarioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,11 +39,22 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cboBuscar = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblUsuarios = new System.Windows.Forms.Label();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.btnAct = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAlta = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -111,6 +111,55 @@
             this.dgvUsuarios.Size = new System.Drawing.Size(858, 382);
             this.dgvUsuarios.TabIndex = 4;
             // 
+            // UsuarioId
+            // 
+            this.UsuarioId.HeaderText = "UsuarioId";
+            this.UsuarioId.Name = "UsuarioId";
+            this.UsuarioId.ReadOnly = true;
+            this.UsuarioId.Visible = false;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // fechaAlta
+            // 
+            this.fechaAlta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fechaAlta.HeaderText = "Fecha alta";
+            this.fechaAlta.Name = "fechaAlta";
+            this.fechaAlta.ReadOnly = true;
+            // 
+            // fechaBaja
+            // 
+            this.fechaBaja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fechaBaja.HeaderText = "Fecha baja";
+            this.fechaBaja.Name = "fechaBaja";
+            this.fechaBaja.ReadOnly = true;
+            // 
             // cboBuscar
             // 
             this.cboBuscar.FormattingEnabled = true;
@@ -153,7 +202,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pbImagenAdmin);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblUsuarios);
             this.panel1.Controls.Add(this.btnVolver);
@@ -166,6 +215,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 3;
+            // 
+            // pbImagenAdmin
+            // 
+            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenAdmin.Name = "pbImagenAdmin";
+            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenAdmin.TabIndex = 12;
+            this.pbImagenAdmin.TabStop = false;
             // 
             // lblNombre
             // 
@@ -232,63 +289,6 @@
             this.btnAlta.UseVisualStyleBackColor = true;
             this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
             // 
-            // UsuarioId
-            // 
-            this.UsuarioId.HeaderText = "UsuarioId";
-            this.UsuarioId.Name = "UsuarioId";
-            this.UsuarioId.ReadOnly = true;
-            this.UsuarioId.Visible = false;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // fechaAlta
-            // 
-            this.fechaAlta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fechaAlta.HeaderText = "Fecha alta";
-            this.fechaAlta.Name = "fechaAlta";
-            this.fechaAlta.ReadOnly = true;
-            // 
-            // fechaBaja
-            // 
-            this.fechaBaja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fechaBaja.HeaderText = "Fecha baja";
-            this.fechaBaja.Name = "fechaBaja";
-            this.fechaBaja.ReadOnly = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(34, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(154, 85);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
             // GestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -306,7 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,7 +320,7 @@
         private System.Windows.Forms.TextBox txtBuscarUsuario;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbImagenAdmin;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblUsuarios;
         private System.Windows.Forms.Button btnVolver;
