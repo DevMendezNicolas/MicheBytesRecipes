@@ -17,11 +17,20 @@ namespace MicheBytesRecipes.Forms.Admin
             InitializeComponent();
         }
 
+        private Form menuPrincipal;
+
+        public GestionUsuarios(Form menu)
+        {
+            InitializeComponent();
+            menuPrincipal = menu;
+        }
+
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //cerrar este form y mostrar el form menu que estaba en hide
+            menuPrincipal.Show();
             this.Close();
-            Application.OpenForms["Menu"].Show();
+            
 
 
         }

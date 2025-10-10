@@ -12,7 +12,7 @@ using MicheBytesRecipes.Forms.Auth;
 
 namespace MicheBytesRecipes
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
