@@ -32,7 +32,7 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.cboBuscar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.dgvUsuarios);
-            this.panel3.Controls.Add(this.cboCategoria);
+            this.panel3.Controls.Add(this.cboBuscar);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtBuscarUsuario);
             this.panel3.Controls.Add(this.lblBuscar);
@@ -81,6 +81,7 @@
             this.btnReinicio.TabIndex = 5;
             this.btnReinicio.Text = "🔄 Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = true;
+            this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
             // btnBuscar
             // 
@@ -110,13 +111,14 @@
             this.dgvUsuarios.Size = new System.Drawing.Size(858, 382);
             this.dgvUsuarios.TabIndex = 4;
             // 
-            // cboCategoria
+            // cboBuscar
             // 
-            this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(45, 90);
-            this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(179, 29);
-            this.cboCategoria.TabIndex = 3;
+            this.cboBuscar.FormattingEnabled = true;
+            this.cboBuscar.Location = new System.Drawing.Point(45, 90);
+            this.cboBuscar.Name = "cboBuscar";
+            this.cboBuscar.Size = new System.Drawing.Size(179, 29);
+            this.cboBuscar.TabIndex = 3;
+            this.cboBuscar.SelectedIndexChanged += new System.EventHandler(this.cboBuscar_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -325,7 +327,7 @@
         private System.Windows.Forms.Button btnAct;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAlta;
-        private System.Windows.Forms.ComboBox cboCategoria;
+        private System.Windows.Forms.ComboBox cboBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
