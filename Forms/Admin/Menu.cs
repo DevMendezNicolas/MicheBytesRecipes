@@ -1,4 +1,12 @@
-﻿using System;
+﻿using MicheBytesRecipes;
+using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Forms.AddReceta;
+using MicheBytesRecipes.Forms.Admin;
+using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
+using Mysqlx.Session;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +16,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MicheBytesRecipes.Classes;
-using MicheBytesRecipes.Classes.Recetas;
-using MicheBytesRecipes.Forms.AddReceta;
-using MicheBytesRecipes.Helpers;
-using MicheBytesRecipes.Managers;
-using MicheBytesRecipes;
-using Mysqlx.Session;
 
 namespace MicheBytesRecipes
 {
@@ -202,7 +203,9 @@ namespace MicheBytesRecipes
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-
+            GestionUsuarios gestionUsuarios = new GestionUsuarios(this);
+            gestionUsuarios.Show();
+            this.Hide();
         }
     }
 }

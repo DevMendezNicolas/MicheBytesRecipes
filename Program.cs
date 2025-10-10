@@ -23,10 +23,10 @@ namespace MicheBytesRecipes
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmHome());
-            //Application.Run(new Inicio());
+            Application.Run(new Inicio());
             //Application.Run(new frmLogin());
             //Application.Run(new Forms.Admin.GestionUsuarios());
-            Application.Run(new Forms.Admin.Menu());
+            //Application.Run(new frmMenuAdmin());
 
             //Application.Run(new Forms.AddReceta.FrmAgregarReceta());
             //Application.Run(new Forms.Auth.FrmRegister());

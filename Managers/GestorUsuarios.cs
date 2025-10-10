@@ -298,8 +298,9 @@ namespace MicheBytesRecipes.Managers
             }
         } // Revisar Uso
         // Listar usuarios inactivos
-        /*public void ListarUsuariosInactivos()
+        public List<Usuario> ListarUsuariosInactivos()
         {
+            List<Usuario> usuarios = new List<Usuario>();
             try
             {
                 conexion.Abrir();
@@ -310,15 +311,19 @@ namespace MicheBytesRecipes.Managers
                     {
                         while (reader.Read())
                         {
-                            usuarios.Add(new Usuario(
+                            Usuario user = new Usuario(
                                 reader.GetString("Email"),
                                 reader.GetInt32("UsuarioId"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
                                 (byte[])reader["ImagenPerfil"],
-                                (int)reader["ID_Rol"]
-                            ));
+                                (int)reader["ID_Rol"],
+                                reader.GetDateTime("Fecha_Registro"),
+                                reader.GetDateTime("Fecha_Baja")
+                            );
+                            
+                            usuarios.Add(user);
                         }
                     }
                 }
@@ -331,9 +336,10 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
+            return usuarios;
         } // Revisar Uso
         // Cantidad Total de usuario dados de alta
-        */
+        
         public int CantidadTotalUsuarios()
         {
             try
