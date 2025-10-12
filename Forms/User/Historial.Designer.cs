@@ -51,7 +51,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Button();
-            this.btnHistorialFav = new System.Windows.Forms.Button();
+            this.btnHistorialPdf = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnVerReceta = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
@@ -240,7 +240,7 @@
             this.pnlNavegacion.Controls.Add(this.lblNombre);
             this.pnlNavegacion.Controls.Add(this.lblReceta);
             this.pnlNavegacion.Controls.Add(this.btnConfig);
-            this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
+            this.pnlNavegacion.Controls.Add(this.btnHistorialPdf);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
             this.pnlNavegacion.Controls.Add(this.btnVerReceta);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
@@ -289,15 +289,16 @@
             this.btnConfig.Text = "&Configuracion";
             this.btnConfig.UseVisualStyleBackColor = true;
             // 
-            // btnHistorialFav
+            // btnHistorialPdf
             // 
-            this.btnHistorialFav.Location = new System.Drawing.Point(13, 281);
-            this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHistorialFav.Name = "btnHistorialFav";
-            this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
-            this.btnHistorialFav.TabIndex = 3;
-            this.btnHistorialFav.Text = "&Exportar Historial";
-            this.btnHistorialFav.UseVisualStyleBackColor = true;
+            this.btnHistorialPdf.Location = new System.Drawing.Point(13, 281);
+            this.btnHistorialPdf.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHistorialPdf.Name = "btnHistorialPdf";
+            this.btnHistorialPdf.Size = new System.Drawing.Size(198, 42);
+            this.btnHistorialPdf.TabIndex = 3;
+            this.btnHistorialPdf.Text = "&Exportar Historial";
+            this.btnHistorialPdf.UseVisualStyleBackColor = true;
+            this.btnHistorialPdf.Click += new System.EventHandler(this.btnHistorialPdf_Click);
             // 
             // btnInicio
             // 
@@ -362,7 +363,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnConfig;
-        private System.Windows.Forms.Button btnHistorialFav;
+        private System.Windows.Forms.Button btnHistorialPdf;
         private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.Button btnVerReceta;
         private System.Windows.Forms.DataGridViewTextBoxColumn recetaId;

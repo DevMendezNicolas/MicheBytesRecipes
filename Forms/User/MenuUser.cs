@@ -1,4 +1,6 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Forms.User.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +9,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MicheBytesRecipes.Forms.User.UserControls;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.User
@@ -15,6 +16,8 @@ namespace MicheBytesRecipes.Forms.User
     public partial class MenuUser : Form
     {
         private Usuario usuarioLog;
+        private bool recetasActivas = true;
+        GestorReceta gestorReceta = new GestorReceta();
         public MenuUser(Usuario usuarioActivado)
         {
             InitializeComponent();
@@ -46,8 +49,53 @@ namespace MicheBytesRecipes.Forms.User
 
         private void MenuUser_Load(object sender, EventArgs e)
         {
+            // --- Categorías ---
+            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
+            categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
+            cboCategoria.DataSource = categorias;
+            cboCategoria.DisplayMember = "Nombre";
+            cboCategoria.ValueMember = "CategoriaId";
+            cboCategoria.SelectedIndex = 0;
+
+            // --- Países ---
+            List<Pais> paises = gestorReceta.ObtenerListaPaises();
+            paises.Insert(0, new Pais { PaisId = 0, Nombre = "Todos" });
+            cboPais.DataSource = paises;
+            cboPais.DisplayMember = "Nombre";
+            cboPais.ValueMember = "PaisId";
+            cboPais.SelectedIndex = 0;
+
+            // --- Dificultad ---
+            List<Dificultad> dificultades = Enum.GetValues(typeof(Dificultad))
+                .Cast<Dificultad>()
+                .ToList();
+
+            // Creamos una lista de objetos (object) y agregamos "Todas" como primera opción
+            List<object> dificultadesConOpcion = new List<object>();
+            dificultadesConOpcion.Add("Todas");
+
+            // Agregamos las dificultades convertidas a object
+            dificultadesConOpcion.AddRange(dificultades.Cast<object>());
+
+            // Asignamos al combo
+            cboDificultad.DataSource = dificultadesConOpcion;
+            cboDificultad.SelectedIndex = 0;
+
+            // --- Cargar la grilla al inicio ---
+            this.ActualizarGrilla();
 
 
+
+        }
+
+        public void ActualizarGrilla()
+        {
+            dgvReceta.Rows.Clear();
+            List<PreReceta> preRecetas = recetasActivas ? gestorReceta.ObtenerPreRecetas() : gestorReceta.ObtenerPreRecetasInactivas();
+            foreach (var preReceta in preRecetas)
+            {
+                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+            }
         }
 
         private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)

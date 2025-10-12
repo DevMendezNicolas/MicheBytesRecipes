@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace MicheBytesRecipes.Forms.User
 {
@@ -95,6 +98,72 @@ namespace MicheBytesRecipes.Forms.User
             this.Close();
             MenuUser menuUser = new MenuUser(usuarioLog);
             menuUser.Show();
+        }
+
+
+
+        private void ExportarPDF(DataGridView dgv)
+        {
+            try
+            {
+                // Obtener ruta del proyecto y crear carpeta "historial" si no existe
+                string carpeta = Path.Combine(Application.StartupPath, "historial");
+                if (!Directory.Exists(carpeta))
+                {
+                    Directory.CreateDirectory(carpeta);
+                }
+
+                // Nombre del archivo PDF
+                string archivoPDF = Path.Combine(carpeta, "MiHistorial.pdf");
+
+                // Crear documento PDF
+                Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
+                PdfWriter.GetInstance(doc, new FileStream(archivoPDF, FileMode.Create));
+                doc.Open();
+
+                // Título
+                Paragraph titulo = new Paragraph("Mi Historial de Recetas");
+                titulo.Alignment = Element.ALIGN_CENTER;
+                doc.Add(titulo);
+                doc.Add(new Paragraph("\n"));
+
+                // Crear tabla con el mismo número de columnas que el DataGridView
+                PdfPTable tabla = new PdfPTable(dgv.Columns.Count);
+
+                // Encabezados
+                foreach (DataGridViewColumn columna in dgv.Columns)
+                {
+                    tabla.AddCell(new Phrase(columna.HeaderText));
+                }
+
+                // Filas
+                foreach (DataGridViewRow fila in dgv.Rows)
+                {
+                    if (!fila.IsNewRow)
+                    {
+                        foreach (DataGridViewCell celda in fila.Cells)
+                        {
+                            tabla.AddCell(celda.Value?.ToString() ?? "");
+                        }
+                    }
+                }
+
+                doc.Add(tabla);
+                doc.Close();
+
+                MessageBox.Show($"PDF generado correctamente en:\n{archivoPDF}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void btnHistorialPdf_Click(object sender, EventArgs e)
+        {
+            ExportarPDF(dgvHistorial);
+
         }
     }
 }
