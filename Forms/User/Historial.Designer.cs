@@ -32,6 +32,12 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
+            this.recetaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
@@ -48,12 +54,6 @@
             this.btnHistorialFav = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnVerReceta = new System.Windows.Forms.Button();
-            this.recetaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -114,6 +114,48 @@
             this.dgvHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistorial.Size = new System.Drawing.Size(858, 382);
             this.dgvHistorial.TabIndex = 4;
+            // 
+            // recetaId
+            // 
+            this.recetaId.HeaderText = "Receta Id";
+            this.recetaId.Name = "recetaId";
+            this.recetaId.ReadOnly = true;
+            this.recetaId.Visible = false;
+            // 
+            // Receta
+            // 
+            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Receta.HeaderText = "Receta";
+            this.Receta.Name = "Receta";
+            this.Receta.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Accion
+            // 
+            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Accion.HeaderText = "Accion";
+            this.Accion.Name = "Accion";
+            this.Accion.ReadOnly = true;
+            // 
+            // Calificacion
+            // 
+            this.Calificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Calificacion.HeaderText = "Calificacion";
+            this.Calificacion.Name = "Calificacion";
+            this.Calificacion.ReadOnly = true;
             // 
             // cboDificultad
             // 
@@ -278,48 +320,6 @@
             this.btnVerReceta.Text = "&Ver Receta";
             this.btnVerReceta.UseVisualStyleBackColor = true;
             // 
-            // recetaId
-            // 
-            this.recetaId.HeaderText = "Receta Id";
-            this.recetaId.Name = "recetaId";
-            this.recetaId.ReadOnly = true;
-            this.recetaId.Visible = false;
-            // 
-            // Receta
-            // 
-            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Receta.HeaderText = "Receta";
-            this.Receta.Name = "Receta";
-            this.Receta.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Accion
-            // 
-            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Accion.HeaderText = "Accion";
-            this.Accion.Name = "Accion";
-            this.Accion.ReadOnly = true;
-            // 
-            // Calificacion
-            // 
-            this.Calificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Calificacion.HeaderText = "Calificacion";
-            this.Calificacion.Name = "Calificacion";
-            this.Calificacion.ReadOnly = true;
-            // 
             // Historial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -328,8 +328,9 @@
             this.Controls.Add(this.pnlContenido);
             this.Controls.Add(this.pnlNavegacion);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Historial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial";
             this.Load += new System.EventHandler(this.Historial_Load);
             this.pnlContenido.ResumeLayout(false);

@@ -560,7 +560,7 @@ namespace MicheBytesRecipes
             try
             {
                 conexion.Abrir();
-                string consulta = "SELECT receta_id, nombre, categoria_id, pais_id, dificultad, tiempo_preparacion FROM Vista_todas_las_recetas WHERE fecha_baja IS NULL";
+                string consulta = "SELECT receta_id, nombre, categoria_id, pais_id, dificultad, tiempo_preparacion FROM Vista_resumen_recetas WHERE fecha_baja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
                 {
                     using (MySqlDataReader lector = comando.ExecuteReader())

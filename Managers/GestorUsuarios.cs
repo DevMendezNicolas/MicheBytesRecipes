@@ -184,7 +184,7 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consultaBuscar = "Procedimiento_que_busca_usuario";
+                string consultaBuscar = "Buscar_Usuario";
                 using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;

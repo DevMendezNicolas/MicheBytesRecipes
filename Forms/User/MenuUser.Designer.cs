@@ -54,8 +54,8 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.btnAgregarFav = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
+            this.btnAgregarFav = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -324,16 +324,6 @@
             this.btnHistorialFav.Text = "&Favoritos";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             // 
-            // btnAgregarFav
-            // 
-            this.btnAgregarFav.Location = new System.Drawing.Point(13, 278);
-            this.btnAgregarFav.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgregarFav.Name = "btnAgregarFav";
-            this.btnAgregarFav.Size = new System.Drawing.Size(198, 42);
-            this.btnAgregarFav.TabIndex = 2;
-            this.btnAgregarFav.Text = "&Agregar a Favoritos";
-            this.btnAgregarFav.UseVisualStyleBackColor = true;
-            // 
             // btnInicio
             // 
             this.btnInicio.Location = new System.Drawing.Point(13, 231);
@@ -343,6 +333,16 @@
             this.btnInicio.TabIndex = 2;
             this.btnInicio.Text = "&Inicio";
             this.btnInicio.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarFav
+            // 
+            this.btnAgregarFav.Location = new System.Drawing.Point(13, 278);
+            this.btnAgregarFav.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarFav.Name = "btnAgregarFav";
+            this.btnAgregarFav.Size = new System.Drawing.Size(198, 42);
+            this.btnAgregarFav.TabIndex = 2;
+            this.btnAgregarFav.Text = "&Agregar a Favoritos";
+            this.btnAgregarFav.UseVisualStyleBackColor = true;
             // 
             // MenuUser
             // 
@@ -354,6 +354,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MenuUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuUser_FormClosed);
             this.Load += new System.EventHandler(this.MenuUser_Load);
