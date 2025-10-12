@@ -118,6 +118,7 @@
             this.dgvReceta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReceta.Size = new System.Drawing.Size(858, 382);
             this.dgvReceta.TabIndex = 4;
+            this.dgvReceta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceta_CellDoubleClick);
             // 
             // Receta_id
             // 

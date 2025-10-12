@@ -157,5 +157,24 @@ namespace MicheBytesRecipes.Forms.User
 
 
         }
+
+        private void dgvReceta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Asegurarse de que no se haga clic en el encabezado
+            {
+                int recetaId = Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells["dgvReceta_id"].Value);
+                Receta receta = gestorReceta.
+                if (receta != null)
+                {
+                    FrmVerReceta frmVerReceta = new FrmVerReceta(receta);
+                    frmVerReceta.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo cargar la receta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
     }
 }
