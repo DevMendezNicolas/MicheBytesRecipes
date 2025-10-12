@@ -122,15 +122,15 @@ namespace MicheBytesRecipes.Forms.User
                     dificultad = (Dificultad)Enum.Parse(typeof(Dificultad), cboDificultad.SelectedItem.ToString());
                 }
 
-                // Llamada al método del gestor
+                // Llamada al método del gestor SOBRA PAIS Y DIFICULTAD
                 List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad);
 
                 // Mostrar resultados en el DataGridView
                 dgvHistorial.Rows.Clear();
-                dgvHistorial.Columns["dgvReceta_id"].Visible = false;
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                    //EJEMPLO SIN PAIS NI DIFICULAD
+                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), "Completada", "Comentario", "7");
                 }
 
             }
