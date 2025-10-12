@@ -160,21 +160,30 @@ namespace MicheBytesRecipes.Forms.User
 
         private void dgvReceta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Asegurarse de que no se haga clic en el encabezado
+            if (e.RowIndex >= 0)
             {
-                int recetaId = Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells["dgvReceta_id"].Value);
-                Receta receta = gestorReceta.
+                int recetaId = Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells["Receta_Id"].Value);
+
+                // Traer el objeto Receta completo usando GestorReceta
+                GestorReceta gestorReceta = new GestorReceta();
+                Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
+
+                //Mensaje de prueba con el id de la receta
+                MessageBox.Show("ID de la receta seleccionada: " + recetaId);
+
+
+
+
                 if (receta != null)
                 {
-                    FrmVerReceta frmVerReceta = new FrmVerReceta(receta);
-                    frmVerReceta.ShowDialog();
+                    FrmVerReceta verRecetaForm = new FrmVerReceta(receta);
+                    verRecetaForm.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo cargar la receta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se pudo cargar la receta seleccionada.");
                 }
             }
-
         }
     }
 }

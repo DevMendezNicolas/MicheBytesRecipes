@@ -834,5 +834,62 @@ namespace MicheBytesRecipes
             }
             return null; // Retorna null si no se encuentra la categoría
         }
+        public Receta ObtenerRecetaPorId(int recetaId)
+        {
+            Receta receta = null;
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("Devolver_receta", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetro de entrada
+                    comando.Parameters.AddWithValue("p_receta_id", recetaId);
+
+                    // Parámetros de salida
+                    comando.Parameters.Add(new MySqlParameter("p_nombre", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_descripcion", MySqlDbType.Text) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_instrucciones", MySqlDbType.Text) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_imagen_receta", MySqlDbType.LongBlob) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_tiempo_preparacion", MySqlDbType.Time) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_dificultad", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_pais_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_categoria_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_usuario_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
+
+                    comando.ExecuteNonQuery();
+
+                    receta = new Receta
+                    {
+                        RecetaId = recetaId,
+                        Nombre = comando.Parameters["p_nombre"].Value == DBNull.Value ? "" : comando.Parameters["p_nombre"].Value.ToString(),
+                        Descripcion = comando.Parameters["p_descripcion"].Value == DBNull.Value ? "" : comando.Parameters["p_descripcion"].Value.ToString(),
+                        Instrucciones = comando.Parameters["p_instrucciones"].Value == DBNull.Value ? "" : comando.Parameters["p_instrucciones"].Value.ToString(),
+                        ImagenReceta = comando.Parameters["p_imagen_receta"].Value == DBNull.Value ? null : (byte[])comando.Parameters["p_imagen_receta"].Value,
+                        TiempoPreparacion = comando.Parameters["p_tiempo_preparacion"].Value == DBNull.Value
+                        ? TimeSpan.Zero
+                        : TimeSpan.Parse(comando.Parameters["p_tiempo_preparacion"].Value.ToString()),
+                        NivelDificultad = Enum.TryParse<Dificultad>(
+                         comando.Parameters["p_dificultad"].Value == DBNull.Value ? "Facil" : comando.Parameters["p_dificultad"].Value.ToString(), true, out var d) ? d : Dificultad.Fácil,
+                        PaisId = comando.Parameters["p_pais_id"].Value == DBNull.Value ? 0 : Convert.ToInt32(comando.Parameters["p_pais_id"].Value),
+                        CategoriaId = comando.Parameters["p_categoria_id"].Value == DBNull.Value ? 0 : Convert.ToInt32(comando.Parameters["p_categoria_id"].Value),
+                        UsuarioId = comando.Parameters["p_usuario_id"].Value == DBNull.Value ? 0 : Convert.ToInt32(comando.Parameters["p_usuario_id"].Value)
+                    };
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener la receta: {ex.Message}");
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+            return receta;
+
+        }
     }
 }
