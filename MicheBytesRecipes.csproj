@@ -57,6 +57,8 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="SendGrid, Version=9.29.3.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>packages\SendGrid.9.29.3\lib\net452\SendGrid.dll</HintPath>
     </Reference>
@@ -94,6 +96,7 @@
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -103,6 +106,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
     <Reference Include="ZstdSharp, Version=0.8.5.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>packages\ZstdSharp.Port.0.8.5\lib\net462\ZstdSharp.dll</HintPath>
     </Reference>
@@ -203,6 +207,12 @@
     <Compile Include="Forms\User\MenuUser.Designer.cs">
       <DependentUpon>MenuUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\UserControls\UCHistorial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\User\UserControls\UCHistorial.Designer.cs">
+      <DependentUpon>UCHistorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CueProvider.cs" />
     <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Theme.cs" />
@@ -258,6 +268,9 @@
     <EmbeddedResource Include="Forms\User\MenuUser.resx">
       <DependentUpon>MenuUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\UserControls\UCHistorial.resx">
+      <DependentUpon>UCHistorial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -285,7 +298,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Cute_and_animated_lo.png" />
   </ItemGroup>

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MicheBytesRecipes.Forms.User.UserControls;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.User
@@ -35,6 +36,13 @@ namespace MicheBytesRecipes.Forms.User
                 pbImagenUser.Image = null;
             }
         }
+        private void CargarUserControl(UserControl uc)
+        {
+            uc.Dock = DockStyle.Fill;
+            pnlContenido.Controls.Clear();
+            pnlContenido.Controls.Add(uc);
+            uc.BringToFront();
+        }
 
         private void MenuUser_Load(object sender, EventArgs e)
         {
@@ -44,6 +52,11 @@ namespace MicheBytesRecipes.Forms.User
         private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnHistorialRecetas_Click(object sender, EventArgs e)
+        {
+            CargarUserControl(new UCHistorial(usuarioLog));
         }
     }
 }

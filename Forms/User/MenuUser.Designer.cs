@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlContenido = new System.Windows.Forms.Panel();
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvReceta = new System.Windows.Forms.DataGridView();
+            this.Receta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dificultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
@@ -40,7 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
@@ -49,37 +55,31 @@
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
             this.txtAgregarFav = new System.Windows.Forms.Button();
-            this.Receta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dificultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3.SuspendLayout();
+            this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel3
+            // pnlContenido
             // 
-            this.panel3.Controls.Add(this.btnReinicio);
-            this.panel3.Controls.Add(this.btnBuscar);
-            this.panel3.Controls.Add(this.dgvReceta);
-            this.panel3.Controls.Add(this.cboDificultad);
-            this.panel3.Controls.Add(this.cboPais);
-            this.panel3.Controls.Add(this.cboCategoria);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.txtBuscarReceta);
-            this.panel3.Controls.Add(this.lblBuscar);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(233, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(951, 661);
-            this.panel3.TabIndex = 4;
+            this.pnlContenido.Controls.Add(this.btnReinicio);
+            this.pnlContenido.Controls.Add(this.btnBuscar);
+            this.pnlContenido.Controls.Add(this.dgvReceta);
+            this.pnlContenido.Controls.Add(this.cboDificultad);
+            this.pnlContenido.Controls.Add(this.cboPais);
+            this.pnlContenido.Controls.Add(this.cboCategoria);
+            this.pnlContenido.Controls.Add(this.label3);
+            this.pnlContenido.Controls.Add(this.label2);
+            this.pnlContenido.Controls.Add(this.label1);
+            this.pnlContenido.Controls.Add(this.txtBuscarReceta);
+            this.pnlContenido.Controls.Add(this.lblBuscar);
+            this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContenido.Location = new System.Drawing.Point(233, 0);
+            this.pnlContenido.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlContenido.Name = "pnlContenido";
+            this.pnlContenido.Size = new System.Drawing.Size(951, 661);
+            this.pnlContenido.TabIndex = 4;
             // 
             // btnReinicio
             // 
@@ -115,6 +115,49 @@
             this.dgvReceta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReceta.Size = new System.Drawing.Size(858, 382);
             this.dgvReceta.TabIndex = 4;
+            // 
+            // Receta_id
+            // 
+            this.Receta_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Receta_id.HeaderText = "Receta id";
+            this.Receta_id.Name = "Receta_id";
+            this.Receta_id.ReadOnly = true;
+            this.Receta_id.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Pais
+            // 
+            this.Pais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Pais.HeaderText = "Pais";
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            // 
+            // Dificultad
+            // 
+            this.Dificultad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Dificultad.HeaderText = "Dificultad";
+            this.Dificultad.Name = "Dificultad";
+            this.Dificultad.ReadOnly = true;
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tiempo.HeaderText = "Tiempo";
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
             // 
             // cboDificultad
             // 
@@ -193,22 +236,22 @@
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Buscar receta por nombre";
             // 
-            // panel1
+            // pnlNavegacion
             // 
-            this.panel1.Controls.Add(this.pbImagenUser);
-            this.panel1.Controls.Add(this.lblNombre);
-            this.panel1.Controls.Add(this.lblMetricas);
-            this.panel1.Controls.Add(this.lblReceta);
-            this.panel1.Controls.Add(this.btnConfig);
-            this.panel1.Controls.Add(this.btnHistorialRecetas);
-            this.panel1.Controls.Add(this.btnHistorialFav);
-            this.panel1.Controls.Add(this.txtAgregarFav);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 661);
-            this.panel1.TabIndex = 3;
+            this.pnlNavegacion.Controls.Add(this.pbImagenUser);
+            this.pnlNavegacion.Controls.Add(this.lblNombre);
+            this.pnlNavegacion.Controls.Add(this.lblMetricas);
+            this.pnlNavegacion.Controls.Add(this.lblReceta);
+            this.pnlNavegacion.Controls.Add(this.btnConfig);
+            this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
+            this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
+            this.pnlNavegacion.Controls.Add(this.txtAgregarFav);
+            this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
+            this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlNavegacion.Name = "pnlNavegacion";
+            this.pnlNavegacion.Size = new System.Drawing.Size(233, 661);
+            this.pnlNavegacion.TabIndex = 3;
             // 
             // pbImagenUser
             // 
@@ -267,6 +310,7 @@
             this.btnHistorialRecetas.TabIndex = 6;
             this.btnHistorialRecetas.Text = "&Mi Historial";
             this.btnHistorialRecetas.UseVisualStyleBackColor = true;
+            this.btnHistorialRecetas.Click += new System.EventHandler(this.btnHistorialRecetas_Click);
             // 
             // btnHistorialFav
             // 
@@ -288,67 +332,24 @@
             this.txtAgregarFav.Text = "&Agregar a Favoritos";
             this.txtAgregarFav.UseVisualStyleBackColor = true;
             // 
-            // Receta_id
-            // 
-            this.Receta_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Receta_id.HeaderText = "Receta id";
-            this.Receta_id.Name = "Receta_id";
-            this.Receta_id.ReadOnly = true;
-            this.Receta_id.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Pais
-            // 
-            this.Pais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Pais.HeaderText = "Pais";
-            this.Pais.Name = "Pais";
-            this.Pais.ReadOnly = true;
-            // 
-            // Dificultad
-            // 
-            this.Dificultad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Dificultad.HeaderText = "Dificultad";
-            this.Dificultad.Name = "Dificultad";
-            this.Dificultad.ReadOnly = true;
-            // 
-            // Tiempo
-            // 
-            this.Tiempo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tiempo.HeaderText = "Tiempo";
-            this.Tiempo.Name = "Tiempo";
-            this.Tiempo.ReadOnly = true;
-            // 
             // MenuUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlContenido);
+            this.Controls.Add(this.pnlNavegacion);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MenuUser";
             this.Text = "Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuUser_FormClosed);
             this.Load += new System.EventHandler(this.MenuUser_Load);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlContenido.ResumeLayout(false);
+            this.pnlContenido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlNavegacion.ResumeLayout(false);
+            this.pnlNavegacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).EndInit();
             this.ResumeLayout(false);
 
@@ -356,7 +357,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlContenido;
         private System.Windows.Forms.Button btnReinicio;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvReceta;
@@ -368,7 +369,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscarReceta;
         private System.Windows.Forms.Label lblBuscar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblMetricas;
