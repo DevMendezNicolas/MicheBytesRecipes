@@ -38,8 +38,10 @@
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarHistorial = new System.Windows.Forms.TextBox();
@@ -52,8 +54,6 @@
             this.btnHistorialPdf = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnVerReceta = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -116,6 +116,7 @@
             this.dgvHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistorial.Size = new System.Drawing.Size(858, 382);
             this.dgvHistorial.TabIndex = 4;
+            this.dgvHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellContentClick);
             // 
             // recetaId
             // 
@@ -159,6 +160,14 @@
             this.Calificacion.Name = "Calificacion";
             this.Calificacion.ReadOnly = true;
             // 
+            // cboDificultad
+            // 
+            this.cboDificultad.FormattingEnabled = true;
+            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
+            this.cboDificultad.Name = "cboDificultad";
+            this.cboDificultad.Size = new System.Drawing.Size(179, 25);
+            this.cboDificultad.TabIndex = 3;
+            // 
             // cboPais
             // 
             this.cboPais.FormattingEnabled = true;
@@ -174,6 +183,17 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
             this.cboCategoria.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(562, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Dificultad";
             // 
             // label2
             // 
@@ -303,25 +323,6 @@
             this.btnVerReceta.TabIndex = 2;
             this.btnVerReceta.Text = "&Ver Receta";
             this.btnVerReceta.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(562, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Dificultad";
-            // 
-            // cboDificultad
-            // 
-            this.cboDificultad.FormattingEnabled = true;
-            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
-            this.cboDificultad.Name = "cboDificultad";
-            this.cboDificultad.Size = new System.Drawing.Size(179, 25);
-            this.cboDificultad.TabIndex = 3;
             // 
             // Historial
             // 

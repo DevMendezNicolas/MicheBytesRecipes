@@ -54,7 +54,6 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.btnInicio = new System.Windows.Forms.Button();
             this.btnAgregarFav = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
@@ -249,7 +248,6 @@
             this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
-            this.pnlNavegacion.Controls.Add(this.btnInicio);
             this.pnlNavegacion.Controls.Add(this.btnAgregarFav);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
@@ -319,7 +317,7 @@
             // 
             // btnHistorialFav
             // 
-            this.btnHistorialFav.Location = new System.Drawing.Point(13, 328);
+            this.btnHistorialFav.Location = new System.Drawing.Point(13, 281);
             this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialFav.Name = "btnHistorialFav";
             this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
@@ -327,25 +325,16 @@
             this.btnHistorialFav.Text = "&Favoritos";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             // 
-            // btnInicio
-            // 
-            this.btnInicio.Location = new System.Drawing.Point(13, 231);
-            this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Size = new System.Drawing.Size(198, 42);
-            this.btnInicio.TabIndex = 2;
-            this.btnInicio.Text = "&Inicio";
-            this.btnInicio.UseVisualStyleBackColor = true;
-            // 
             // btnAgregarFav
             // 
-            this.btnAgregarFav.Location = new System.Drawing.Point(13, 278);
+            this.btnAgregarFav.Location = new System.Drawing.Point(13, 231);
             this.btnAgregarFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarFav.Name = "btnAgregarFav";
             this.btnAgregarFav.Size = new System.Drawing.Size(198, 42);
             this.btnAgregarFav.TabIndex = 2;
             this.btnAgregarFav.Text = "&Agregar a Favoritos";
             this.btnAgregarFav.UseVisualStyleBackColor = true;
+            this.btnAgregarFav.Click += new System.EventHandler(this.btnAgregarFav_Click);
             // 
             // MenuUser
             // 
@@ -400,6 +389,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
-        private System.Windows.Forms.Button btnInicio;
     }
 }

@@ -152,5 +152,26 @@ namespace MicheBytesRecipes.Forms.User
             txtBuscarHistorial.Text = "";
             this.ActualizarGrilla();
         }
+
+        private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int recetaId = Convert.ToInt32(dgvHistorial.Rows[e.RowIndex].Cells[0].Value);
+
+                Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
+
+                if (receta != null)
+                {
+                    FrmVerReceta verRecetaForm = new FrmVerReceta(receta);
+                    verRecetaForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo cargar la receta seleccionada.");
+                }
+            }
+
+        }
     }
 }

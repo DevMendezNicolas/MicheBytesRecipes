@@ -177,5 +177,28 @@ namespace MicheBytesRecipes.Forms.User
                 }
             }
         }
+
+        private void btnAgregarFav_Click(object sender, EventArgs e)
+        {
+            if (dgvReceta.SelectedRows.Count > 0)
+            {
+                int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells[0].Value);
+                bool exito = gestorReceta.AgregarRecetaAFavoritos(usuarioLog.UsuarioId, recetaId);
+                if (exito)
+                {
+                    MessageBox.Show("Receta agregada a favoritos.");
+                }
+                else
+                {
+                    MessageBox.Show("La receta ya se encuentra en favoritos.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una receta para agregar a favoritos.");
+            }
+
+
+        }
     }
 }

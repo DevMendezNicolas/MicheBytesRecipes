@@ -834,6 +834,7 @@ namespace MicheBytesRecipes
             }
             return null; // Retorna null si no se encuentra la categoría
         }
+        // Obtener receta por ID
         public Receta ObtenerRecetaPorId(int recetaId)
         {
             Receta receta = null;
@@ -885,6 +886,33 @@ namespace MicheBytesRecipes
 
             return receta;
         }
+        // Agregar receta a favoritos por store procedure Insertar_favorita
+        public bool AgregarRecetaAFavoritos(int usuarioId, int recetaId)
+        {
+            bool exito = false;
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("Insertar_favorita", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                    comando.Parameters.AddWithValue("@p_receta_id", recetaId);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    exito = filasAfectadas > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la receta a favoritos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return exito;
+        }
+
     }
 
 }
