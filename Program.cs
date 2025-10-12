@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using MicheBytesRecipes.Forms.Auth;
 
@@ -22,7 +21,6 @@ namespace MicheBytesRecipes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmHome());
             Application.Run(new Inicio());
             //Application.Run(new frmLogin());
             //Application.Run(new Forms.Admin.GestionUsuarios());
