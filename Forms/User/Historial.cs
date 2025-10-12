@@ -1,18 +1,19 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.IO;
-using MicheBytesRecipes.Classes;
-using MicheBytesRecipes.Classes.Recetas;
-using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes.Forms.User
 {
@@ -27,6 +28,7 @@ namespace MicheBytesRecipes.Forms.User
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;
+            lblNombre.Text = usuarioLog.NombreCompleto();
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
                 //Crea una imagen a partir del arreglo de bytes
@@ -140,6 +142,15 @@ namespace MicheBytesRecipes.Forms.User
             }
 
 
+        }
+
+        private void btnReinicio_Click(object sender, EventArgs e)
+        {
+            cboCategoria.SelectedIndex = 0;
+            cboDificultad.SelectedIndex = 0;
+            cboPais.SelectedIndex = 0;
+            txtBuscarHistorial.Text = "";
+            this.ActualizarGrilla();
         }
     }
 }

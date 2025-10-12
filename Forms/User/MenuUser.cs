@@ -144,7 +144,6 @@ namespace MicheBytesRecipes.Forms.User
 
                 // Mostrar resultados en el DataGridView
                 dgvReceta.Rows.Clear();
-                dgvReceta.Columns["dgvReceta_id"].Visible = false;
                 foreach (var preReceta in recetasFiltradas)
                 {
                     dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);

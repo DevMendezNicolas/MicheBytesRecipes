@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -112,7 +113,19 @@ namespace MicheBytesRecipes.Utilities
                 doc.Add(tabla);
                 doc.Close();
 
-                MessageBox.Show($"PDF generado correctamente en:\n{archivoPDF}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // ✅ ABRIR PDF AUTOMÁTICAMENTE
+                try
+                {
+                    Process.Start(archivoPDF);
+                    MessageBox.Show($"PDF generado correctamente:\n{archivoPDF}",
+                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"PDF generado en:\n{archivoPDF}\n\nPero no se pudo abrir: {ex.Message}",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
             catch (Exception ex)
             {

@@ -38,10 +38,8 @@
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarHistorial = new System.Windows.Forms.TextBox();
@@ -54,6 +52,8 @@
             this.btnHistorialPdf = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnVerReceta = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -88,6 +88,7 @@
             this.btnReinicio.TabIndex = 5;
             this.btnReinicio.Text = "🔄 Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = true;
+            this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
             // btnBuscar
             // 
@@ -158,14 +159,6 @@
             this.Calificacion.Name = "Calificacion";
             this.Calificacion.ReadOnly = true;
             // 
-            // cboDificultad
-            // 
-            this.cboDificultad.FormattingEnabled = true;
-            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
-            this.cboDificultad.Name = "cboDificultad";
-            this.cboDificultad.Size = new System.Drawing.Size(179, 25);
-            this.cboDificultad.TabIndex = 3;
-            // 
             // cboPais
             // 
             this.cboPais.FormattingEnabled = true;
@@ -181,17 +174,6 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
             this.cboCategoria.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(562, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Dificultad";
             // 
             // label2
             // 
@@ -322,6 +304,25 @@
             this.btnVerReceta.Text = "&Ver Receta";
             this.btnVerReceta.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(562, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Dificultad";
+            // 
+            // cboDificultad
+            // 
+            this.cboDificultad.FormattingEnabled = true;
+            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
+            this.cboDificultad.Name = "cboDificultad";
+            this.cboDificultad.Size = new System.Drawing.Size(179, 25);
+            this.cboDificultad.TabIndex = 3;
+            // 
             // Historial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -351,10 +352,8 @@
         private System.Windows.Forms.Button btnReinicio;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvHistorial;
-        private System.Windows.Forms.ComboBox cboDificultad;
         private System.Windows.Forms.ComboBox cboPais;
         private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscarHistorial;
@@ -373,5 +372,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Accion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Calificacion;
+        private System.Windows.Forms.ComboBox cboDificultad;
+        private System.Windows.Forms.Label label3;
     }
 }
