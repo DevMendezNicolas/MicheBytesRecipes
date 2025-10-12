@@ -43,14 +43,13 @@
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblMetricas = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Button();
-            this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
-            this.txtAgregarFav = new System.Windows.Forms.Button();
-            this.nombreReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVerReceta = new System.Windows.Forms.Button();
+            this.recetaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,7 +102,8 @@
             // 
             this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHistorial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombreReceta,
+            this.recetaId,
+            this.Receta,
             this.Categoria,
             this.Estado,
             this.Accion,
@@ -188,21 +188,19 @@
             this.lblHistorial.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHistorial.Location = new System.Drawing.Point(342, 24);
             this.lblHistorial.Name = "lblHistorial";
-            this.lblHistorial.Size = new System.Drawing.Size(232, 25);
+            this.lblHistorial.Size = new System.Drawing.Size(201, 25);
             this.lblHistorial.TabIndex = 0;
-            this.lblHistorial.Text = "Buscar receta por nombre";
+            this.lblHistorial.Text = "Mi historial de recetas";
             // 
             // pnlNavegacion
             // 
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
-            this.pnlNavegacion.Controls.Add(this.lblMetricas);
             this.pnlNavegacion.Controls.Add(this.lblReceta);
             this.pnlNavegacion.Controls.Add(this.btnConfig);
-            this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
-            this.pnlNavegacion.Controls.Add(this.txtAgregarFav);
+            this.pnlNavegacion.Controls.Add(this.btnVerReceta);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
             this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
@@ -229,15 +227,6 @@
             this.lblNombre.Text = "Nombre Usuario";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblMetricas
-            // 
-            this.lblMetricas.AutoSize = true;
-            this.lblMetricas.Location = new System.Drawing.Point(46, 479);
-            this.lblMetricas.Name = "lblMetricas";
-            this.lblMetricas.Size = new System.Drawing.Size(123, 17);
-            this.lblMetricas.TabIndex = 10;
-            this.lblMetricas.Text = "Usuarios y Metricas";
-            // 
             // lblReceta
             // 
             this.lblReceta.AutoSize = true;
@@ -258,52 +247,50 @@
             this.btnConfig.Text = "&Configuracion";
             this.btnConfig.UseVisualStyleBackColor = true;
             // 
-            // btnHistorialRecetas
-            // 
-            this.btnHistorialRecetas.Location = new System.Drawing.Point(13, 509);
-            this.btnHistorialRecetas.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHistorialRecetas.Name = "btnHistorialRecetas";
-            this.btnHistorialRecetas.Size = new System.Drawing.Size(198, 42);
-            this.btnHistorialRecetas.TabIndex = 6;
-            this.btnHistorialRecetas.Text = "&Mi Historial";
-            this.btnHistorialRecetas.UseVisualStyleBackColor = true;
-            // 
             // btnHistorialFav
             // 
-            this.btnHistorialFav.Location = new System.Drawing.Point(13, 328);
+            this.btnHistorialFav.Location = new System.Drawing.Point(13, 281);
             this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialFav.Name = "btnHistorialFav";
             this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
             this.btnHistorialFav.TabIndex = 3;
-            this.btnHistorialFav.Text = "&Favoritos";
+            this.btnHistorialFav.Text = "&Exportar Historial";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             // 
             // btnInicio
             // 
-            this.btnInicio.Location = new System.Drawing.Point(13, 231);
+            this.btnInicio.Location = new System.Drawing.Point(13, 509);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
             this.btnInicio.TabIndex = 2;
             this.btnInicio.Text = "&Inicio";
             this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
-            // txtAgregarFav
+            // btnVerReceta
             // 
-            this.txtAgregarFav.Location = new System.Drawing.Point(13, 278);
-            this.txtAgregarFav.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAgregarFav.Name = "txtAgregarFav";
-            this.txtAgregarFav.Size = new System.Drawing.Size(198, 42);
-            this.txtAgregarFav.TabIndex = 2;
-            this.txtAgregarFav.Text = "&Agregar a Favoritos";
-            this.txtAgregarFav.UseVisualStyleBackColor = true;
+            this.btnVerReceta.Location = new System.Drawing.Point(13, 231);
+            this.btnVerReceta.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVerReceta.Name = "btnVerReceta";
+            this.btnVerReceta.Size = new System.Drawing.Size(198, 42);
+            this.btnVerReceta.TabIndex = 2;
+            this.btnVerReceta.Text = "&Ver Receta";
+            this.btnVerReceta.UseVisualStyleBackColor = true;
             // 
-            // nombreReceta
+            // recetaId
             // 
-            this.nombreReceta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombreReceta.HeaderText = "Nombre Receta";
-            this.nombreReceta.Name = "nombreReceta";
-            this.nombreReceta.ReadOnly = true;
+            this.recetaId.HeaderText = "Receta Id";
+            this.recetaId.Name = "recetaId";
+            this.recetaId.ReadOnly = true;
+            this.recetaId.Visible = false;
+            // 
+            // Receta
+            // 
+            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Receta.HeaderText = "Receta";
+            this.Receta.Name = "Receta";
+            this.Receta.ReadOnly = true;
             // 
             // Categoria
             // 
@@ -344,6 +331,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Historial";
             this.Text = "Historial";
+            this.Load += new System.EventHandler(this.Historial_Load);
             this.pnlContenido.ResumeLayout(false);
             this.pnlContenido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).EndInit();
@@ -360,11 +348,6 @@
         private System.Windows.Forms.Button btnReinicio;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvHistorial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreReceta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Accion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Calificacion;
         private System.Windows.Forms.ComboBox cboDificultad;
         private System.Windows.Forms.ComboBox cboPais;
         private System.Windows.Forms.ComboBox cboCategoria;
@@ -376,12 +359,16 @@
         private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblMetricas;
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnConfig;
-        private System.Windows.Forms.Button btnHistorialRecetas;
         private System.Windows.Forms.Button btnHistorialFav;
         private System.Windows.Forms.Button btnInicio;
-        private System.Windows.Forms.Button txtAgregarFav;
+        private System.Windows.Forms.Button btnVerReceta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recetaId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Receta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Accion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Calificacion;
     }
 }

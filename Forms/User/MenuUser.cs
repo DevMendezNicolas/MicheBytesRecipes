@@ -47,6 +47,7 @@ namespace MicheBytesRecipes.Forms.User
         private void MenuUser_Load(object sender, EventArgs e)
         {
 
+
         }
 
         private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
@@ -56,7 +57,10 @@ namespace MicheBytesRecipes.Forms.User
 
         private void btnHistorialRecetas_Click(object sender, EventArgs e)
         {
-            CargarUserControl(new UCHistorial(usuarioLog));
+            Historial historial = new Historial(usuarioLog);
+            historial.Show();
+            this.Hide();
+
         }
     }
 }

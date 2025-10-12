@@ -54,7 +54,7 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.txtAgregarFav = new System.Windows.Forms.Button();
+            this.btnAgregarFav = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
@@ -247,7 +247,7 @@
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
-            this.pnlNavegacion.Controls.Add(this.txtAgregarFav);
+            this.pnlNavegacion.Controls.Add(this.btnAgregarFav);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
             this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
@@ -324,15 +324,15 @@
             this.btnHistorialFav.Text = "&Favoritos";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             // 
-            // txtAgregarFav
+            // btnAgregarFav
             // 
-            this.txtAgregarFav.Location = new System.Drawing.Point(13, 278);
-            this.txtAgregarFav.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAgregarFav.Name = "txtAgregarFav";
-            this.txtAgregarFav.Size = new System.Drawing.Size(198, 42);
-            this.txtAgregarFav.TabIndex = 2;
-            this.txtAgregarFav.Text = "&Agregar a Favoritos";
-            this.txtAgregarFav.UseVisualStyleBackColor = true;
+            this.btnAgregarFav.Location = new System.Drawing.Point(13, 278);
+            this.btnAgregarFav.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarFav.Name = "btnAgregarFav";
+            this.btnAgregarFav.Size = new System.Drawing.Size(198, 42);
+            this.btnAgregarFav.TabIndex = 2;
+            this.btnAgregarFav.Text = "&Agregar a Favoritos";
+            this.btnAgregarFav.UseVisualStyleBackColor = true;
             // 
             // btnInicio
             // 
@@ -389,7 +389,7 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHistorialRecetas;
         private System.Windows.Forms.Button btnHistorialFav;
-        private System.Windows.Forms.Button txtAgregarFav;
+        private System.Windows.Forms.Button btnAgregarFav;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
