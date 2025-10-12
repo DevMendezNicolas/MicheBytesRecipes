@@ -837,9 +837,11 @@ namespace MicheBytesRecipes
         public Receta ObtenerRecetaPorId(int recetaId)
         {
             Receta receta = null;
+
             try
             {
                 conexion.Abrir();
+
                 using (MySqlCommand comando = new MySqlCommand("Devolver_receta", conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
@@ -847,36 +849,29 @@ namespace MicheBytesRecipes
                     // Parámetro de entrada
                     comando.Parameters.AddWithValue("p_receta_id", recetaId);
 
-                    // Parámetros de salida
-                    comando.Parameters.Add(new MySqlParameter("p_nombre", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_descripcion", MySqlDbType.Text) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_instrucciones", MySqlDbType.Text) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_imagen_receta", MySqlDbType.LongBlob) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_tiempo_preparacion", MySqlDbType.Time) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_dificultad", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_pais_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_categoria_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_usuario_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
-
-                    comando.ExecuteNonQuery();
-
-                    receta = new Receta
+                    using (MySqlDataReader reader = comando.ExecuteReader())
                     {
-                        RecetaId = recetaId,
-                        Nombre = comando.Parameters["p_nombre"].Value == DBNull.Value ? "" : comando.Parameters["p_nombre"].Value.ToString(),
-                        Descripcion = comando.Parameters["p_descripcion"].Value == DBNull.Value ? "" : comando.Parameters["p_descripcion"].Value.ToString(),
-                        Instrucciones = comando.Parameters["p_instrucciones"].Value == DBNull.Value ? "" : comando.Parameters["p_instrucciones"].Value.ToString(),
-                        ImagenReceta = comando.Parameters["p_imagen_receta"].Value == DBNull.Value ? null : (byte[])comando.Parameters["p_imagen_receta"].Value,
-                        TiempoPreparacion = comando.Parameters["p_tiempo_preparacion"].Value == DBNull.Value
-                        ? TimeSpan.Zero
-                        : TimeSpan.Parse(comando.Parameters["p_tiempo_preparacion"].Value.ToString()),
-                        NivelDificultad = Enum.TryParse<Dificultad>(
-                         comando.Parameters["p_dificultad"].Value == DBNull.Value ? "Facil" : comando.Parameters["p_dificultad"].Value.ToString(), true, out var d) ? d : Dificultad.Fácil,
-                        PaisId = comando.Parameters["p_pais_id"].Value == DBNull.Value ? 0 : Convert.ToInt32(comando.Parameters["p_pais_id"].Value),
-                        CategoriaId = comando.Parameters["p_categoria_id"].Value == DBNull.Value ? 0 : Convert.ToInt32(comando.Parameters["p_categoria_id"].Value),
-                        UsuarioId = comando.Parameters["p_usuario_id"].Value == DBNull.Value ? 0 : Convert.ToInt32(comando.Parameters["p_usuario_id"].Value)
-                    };
-
+                        if (reader.Read())
+                        {
+                            receta = new Receta
+                            {
+                                RecetaId = recetaId,
+                                Nombre = reader["nombre"] == DBNull.Value ? "" : reader["nombre"].ToString(),
+                                Descripcion = reader["descripcion"] == DBNull.Value ? "" : reader["descripcion"].ToString(),
+                                Instrucciones = reader["instrucciones"] == DBNull.Value ? "" : reader["instrucciones"].ToString(),
+                                ImagenReceta = reader["imagen_receta"] == DBNull.Value ? null : (byte[])reader["imagen_receta"],
+                                TiempoPreparacion = reader["tiempo_preparacion"] == DBNull.Value
+                                    ? TimeSpan.Zero
+                                    : (TimeSpan)reader["tiempo_preparacion"],
+                                NivelDificultad = reader["dificultad"] == DBNull.Value
+                                    ? Dificultad.Fácil
+                                    : Enum.TryParse(reader["dificultad"].ToString(), true, out Dificultad d) ? d : Dificultad.Fácil,
+                                PaisId = reader["pais_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["pais_id"]),
+                                CategoriaId = reader["categoria_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["categoria_id"]),
+                                UsuarioId = reader["usuario_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["usuario_id"])
+                            };
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -889,7 +884,7 @@ namespace MicheBytesRecipes
             }
 
             return receta;
-
         }
     }
+
 }

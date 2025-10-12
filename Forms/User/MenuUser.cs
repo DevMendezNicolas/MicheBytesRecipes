@@ -162,17 +162,9 @@ namespace MicheBytesRecipes.Forms.User
         {
             if (e.RowIndex >= 0)
             {
-                int recetaId = Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells["Receta_Id"].Value);
+                int recetaId = Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells[0].Value);
 
-                // Traer el objeto Receta completo usando GestorReceta
-                GestorReceta gestorReceta = new GestorReceta();
                 Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
-
-                //Mensaje de prueba con el id de la receta
-                MessageBox.Show("ID de la receta seleccionada: " + recetaId);
-
-
-
 
                 if (receta != null)
                 {
