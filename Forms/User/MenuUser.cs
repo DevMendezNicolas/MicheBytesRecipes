@@ -18,6 +18,7 @@ namespace MicheBytesRecipes.Forms.User
     {
         private Usuario usuarioLog;
         private bool recetasActivas = true;
+        private bool mostrarFavoritas = false;
         GestorReceta gestorReceta = new GestorReceta();
         public MenuUser(Usuario usuarioActivado)
         {
@@ -83,6 +84,7 @@ namespace MicheBytesRecipes.Forms.User
             cboDificultad.SelectedIndex = 0;
 
             // --- Cargar la grilla al inicio ---
+            recetasActivas = true;
             this.ActualizarGrilla();
 
 
@@ -92,10 +94,30 @@ namespace MicheBytesRecipes.Forms.User
         public void ActualizarGrilla()
         {
             dgvReceta.Rows.Clear();
-            List<PreReceta> preRecetas = recetasActivas ? gestorReceta.ObtenerPreRecetas() : gestorReceta.ObtenerPreRecetasInactivas();
+
+            List<PreReceta> preRecetas;
+
+            if (mostrarFavoritas)
+            {
+                // Trae solo recetas favoritas del usuario
+                preRecetas = gestorReceta.ObtenerRecetasFavoritasPorUsuario(usuarioLog.UsuarioId);
+            }
+            else
+            {
+                // Trae todas las recetas activas
+                preRecetas = gestorReceta.ObtenerPreRecetas();
+            }
+
             foreach (var preReceta in preRecetas)
             {
-                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                dgvReceta.Rows.Add(
+                    preReceta.RecetaId,
+                    preReceta.Nombre,
+                    gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
+                    gestorReceta.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
+                    preReceta.Dificultad,
+                    preReceta.TiempoPreparacion.ToString()
+                );
             }
         }
 
@@ -180,24 +202,71 @@ namespace MicheBytesRecipes.Forms.User
 
         private void btnAgregarFav_Click(object sender, EventArgs e)
         {
+            //Agregar o quitar de favoritas segun el estado de mostrarFavoritas
+
             if (dgvReceta.SelectedRows.Count > 0)
             {
                 int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells[0].Value);
-                bool exito = gestorReceta.AgregarRecetaAFavoritos(usuarioLog.UsuarioId, recetaId);
-                if (exito)
+                if (mostrarFavoritas)
                 {
-                    MessageBox.Show("Receta agregada a favoritos.");
+                    // Quitar de favoritas
+                    bool exito = gestorReceta.QuitarRecetaDeFavoritos(usuarioLog.UsuarioId, recetaId);
+                    if (exito)
+                    {
+                        MessageBox.Show("Receta quitada de favoritos.");
+                        this.ActualizarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo quitar la receta de favoritos.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("La receta ya se encuentra en favoritos.");
+                    // Agregar a favoritas
+                    bool exito = gestorReceta.AgregarRecetaAFavoritos(usuarioLog.UsuarioId, recetaId);
+                    if (exito)
+                    {
+                        MessageBox.Show("Receta agregada a favoritos.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo agregar la receta a favoritos o ya está en favoritos.");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione una receta para agregar a favoritos.");
+                MessageBox.Show("Seleccione una receta para agregar o quitar de favoritos.");
             }
 
+
+        }
+
+        private void btnComentar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCalificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHistorialFav_Click(object sender, EventArgs e)
+        {
+            mostrarFavoritas = !mostrarFavoritas;
+            if (mostrarFavoritas)
+            {
+                btnHistorialFav.Text = "Ver todas";
+                btnAgregarFav.Text = "Quitar de favoritos";
+            }
+            else
+            {
+                btnHistorialFav.Text = "Ver Favoritas";
+                btnAgregarFav.Text = "Agregar a favoritos";
+            }
+            this.ActualizarGrilla();
 
         }
     }

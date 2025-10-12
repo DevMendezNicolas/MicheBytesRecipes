@@ -49,12 +49,13 @@
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblMetricas = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
             this.btnAgregarFav = new System.Windows.Forms.Button();
+            this.btnComentar = new System.Windows.Forms.Button();
+            this.btnCalificar = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -243,11 +244,12 @@
             // 
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
-            this.pnlNavegacion.Controls.Add(this.lblMetricas);
             this.pnlNavegacion.Controls.Add(this.lblReceta);
             this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
+            this.pnlNavegacion.Controls.Add(this.btnCalificar);
+            this.pnlNavegacion.Controls.Add(this.btnComentar);
             this.pnlNavegacion.Controls.Add(this.btnAgregarFav);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
@@ -274,15 +276,6 @@
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre Usuario";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblMetricas
-            // 
-            this.lblMetricas.AutoSize = true;
-            this.lblMetricas.Location = new System.Drawing.Point(46, 479);
-            this.lblMetricas.Name = "lblMetricas";
-            this.lblMetricas.Size = new System.Drawing.Size(123, 17);
-            this.lblMetricas.TabIndex = 10;
-            this.lblMetricas.Text = "Usuarios y Metricas";
             // 
             // lblReceta
             // 
@@ -317,13 +310,14 @@
             // 
             // btnHistorialFav
             // 
-            this.btnHistorialFav.Location = new System.Drawing.Point(13, 281);
+            this.btnHistorialFav.Location = new System.Drawing.Point(13, 459);
             this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialFav.Name = "btnHistorialFav";
             this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
             this.btnHistorialFav.TabIndex = 3;
-            this.btnHistorialFav.Text = "&Favoritos";
+            this.btnHistorialFav.Text = "&Ver Favoritas";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
+            this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
             // btnAgregarFav
             // 
@@ -335,6 +329,28 @@
             this.btnAgregarFav.Text = "&Agregar a Favoritos";
             this.btnAgregarFav.UseVisualStyleBackColor = true;
             this.btnAgregarFav.Click += new System.EventHandler(this.btnAgregarFav_Click);
+            // 
+            // btnComentar
+            // 
+            this.btnComentar.Location = new System.Drawing.Point(13, 281);
+            this.btnComentar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnComentar.Name = "btnComentar";
+            this.btnComentar.Size = new System.Drawing.Size(198, 42);
+            this.btnComentar.TabIndex = 2;
+            this.btnComentar.Text = "&Comentar Receta";
+            this.btnComentar.UseVisualStyleBackColor = true;
+            this.btnComentar.Click += new System.EventHandler(this.btnComentar_Click);
+            // 
+            // btnCalificar
+            // 
+            this.btnCalificar.Location = new System.Drawing.Point(13, 331);
+            this.btnCalificar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCalificar.Name = "btnCalificar";
+            this.btnCalificar.Size = new System.Drawing.Size(198, 42);
+            this.btnCalificar.TabIndex = 2;
+            this.btnCalificar.Text = "&Calificar Receta";
+            this.btnCalificar.UseVisualStyleBackColor = true;
+            this.btnCalificar.Click += new System.EventHandler(this.btnCalificar_Click);
             // 
             // MenuUser
             // 
@@ -377,7 +393,6 @@
         private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblMetricas;
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHistorialRecetas;
@@ -389,5 +404,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.Button btnCalificar;
+        private System.Windows.Forms.Button btnComentar;
     }
 }

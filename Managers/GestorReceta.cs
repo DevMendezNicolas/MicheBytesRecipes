@@ -886,7 +886,7 @@ namespace MicheBytesRecipes
 
             return receta;
         }
-        // Agregar receta a favoritos por store procedure Insertar_favorita
+        // Agregar receta a favoritos
         public bool AgregarRecetaAFavoritos(int usuarioId, int recetaId)
         {
             bool exito = false;
@@ -912,7 +912,73 @@ namespace MicheBytesRecipes
             }
             return exito;
         }
+        // Quitar receta de favoritos
+        public bool QuitarRecetaDeFavoritos(int usuarioId, int recetaId)
+        {
+            bool exito = false;
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("Eliminar_favorita", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                    comando.Parameters.AddWithValue("@p_receta_id", recetaId);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    exito = filasAfectadas > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al quitar la receta de favoritos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return exito;
 
+        }
+        //Obtener recetas favoritas por usuario
+
+        public List<PreReceta> ObtenerRecetasFavoritasPorUsuario(int usuarioId)
+        {
+            List<PreReceta> recetas = new List<PreReceta>();
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("Obtener_recetas_favoritas", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            PreReceta receta = new PreReceta
+                            (
+                                lector.GetInt32("receta_id"),
+                                lector.GetString("nombre"),
+                                lector.GetInt32("pais_id"),
+                                lector.GetInt32("categoria_id"),
+                                (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("dificultad")),
+                                lector.GetTimeSpan("tiempo_preparacion")
+                            );
+                            recetas.Add(receta);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener las recetas favoritas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return recetas;
+
+        }
     }
-
 }
