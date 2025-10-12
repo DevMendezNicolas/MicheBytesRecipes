@@ -1,6 +1,7 @@
 ﻿using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.User.UserControls;
+using MicheBytesRecipes.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -108,6 +109,17 @@ namespace MicheBytesRecipes.Forms.User
             Historial historial = new Historial(usuarioLog);
             historial.Show();
             this.Hide();
+
+        }
+
+        private void btnReinicio_Click(object sender, EventArgs e)
+        {
+            cboCategoria.SelectedIndex = 0;
+            cboDificultad.SelectedIndex = 0;
+            cboPais.SelectedIndex = 0;
+            txtBuscarReceta.Text = "";
+            CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
+            this.ActualizarGrilla();
 
         }
     }

@@ -105,5 +105,41 @@ namespace MicheBytesRecipes.Forms.User
         {
             GeneradorPdf.ExportarPDF(dgvHistorial);
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener valores de los controles
+                string nombre = txtBuscarHistorial.Text.Trim();
+
+                int paisId = (cboPais.SelectedIndex > 0) ? Convert.ToInt32(cboPais.SelectedValue) : 0;
+                int categoriaId = (cboCategoria.SelectedIndex > 0) ? Convert.ToInt32(cboCategoria.SelectedValue) : 0;
+
+                Dificultad? dificultad = null;
+                if (cboDificultad.SelectedIndex > 0)
+                {
+                    dificultad = (Dificultad)Enum.Parse(typeof(Dificultad), cboDificultad.SelectedItem.ToString());
+                }
+
+                // Llamada al método del gestor
+                List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad);
+
+                // Mostrar resultados en el DataGridView
+                dgvHistorial.Rows.Clear();
+                dgvHistorial.Columns["dgvReceta_id"].Visible = false;
+                foreach (var preReceta in recetasFiltradas)
+                {
+                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar recetas: " + ex.Message);
+            }
+
+
+        }
     }
 }

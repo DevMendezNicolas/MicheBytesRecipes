@@ -90,6 +90,7 @@
             this.btnReinicio.TabIndex = 5;
             this.btnReinicio.Text = "🔄 Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = true;
+            this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
             // btnBuscar
             // 
