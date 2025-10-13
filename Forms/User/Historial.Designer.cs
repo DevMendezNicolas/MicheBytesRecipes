@@ -53,7 +53,6 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialPdf = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
-            this.btnVerReceta = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -245,7 +244,6 @@
             this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Controls.Add(this.btnHistorialPdf);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
-            this.pnlNavegacion.Controls.Add(this.btnVerReceta);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
             this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
@@ -294,7 +292,7 @@
             // 
             // btnHistorialPdf
             // 
-            this.btnHistorialPdf.Location = new System.Drawing.Point(13, 281);
+            this.btnHistorialPdf.Location = new System.Drawing.Point(13, 231);
             this.btnHistorialPdf.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialPdf.Name = "btnHistorialPdf";
             this.btnHistorialPdf.Size = new System.Drawing.Size(198, 42);
@@ -313,16 +311,6 @@
             this.btnInicio.Text = "&Inicio";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
-            // 
-            // btnVerReceta
-            // 
-            this.btnVerReceta.Location = new System.Drawing.Point(13, 231);
-            this.btnVerReceta.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVerReceta.Name = "btnVerReceta";
-            this.btnVerReceta.Size = new System.Drawing.Size(198, 42);
-            this.btnVerReceta.TabIndex = 2;
-            this.btnVerReceta.Text = "&Ver Receta";
-            this.btnVerReceta.UseVisualStyleBackColor = true;
             // 
             // Historial
             // 
@@ -366,7 +354,6 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHistorialPdf;
         private System.Windows.Forms.Button btnInicio;
-        private System.Windows.Forms.Button btnVerReceta;
         private System.Windows.Forms.DataGridViewTextBoxColumn recetaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
