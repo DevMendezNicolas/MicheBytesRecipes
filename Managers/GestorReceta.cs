@@ -835,7 +835,7 @@ namespace MicheBytesRecipes
             return null; // Retorna null si no se encuentra la categoría
         }
         // Obtener receta por ID
-        public Receta ObtenerRecetaPorId(int recetaId)
+        /*public Receta ObtenerRecetaPorId(int recetaId)
         {
             Receta receta = null;
 
@@ -885,7 +885,66 @@ namespace MicheBytesRecipes
             }
 
             return receta;
+        }*/
+        public Receta ObtenerRecetaPorId(int recetaId)
+        {
+            Receta receta = null;
+            try
+            {
+                conexion.Abrir();
+                string consultaReceta = "SELECT * FROM Vista_todas_las_recetas WHERE receta_id = @recetaId";
+                using (MySqlCommand comando = new MySqlCommand(consultaReceta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            receta = new Receta
+                            {
+                                RecetaId = lector.GetInt32("receta_id"),
+                                Nombre = lector.GetString("Nombre"),
+                                PaisId = lector.GetInt32("PaisId"),
+                                CategoriaId = lector.GetInt32("CategoriaId"),
+                                UsuarioId = lector.GetInt32("UsuarioId"),
+                                Descripcion = lector.GetString("Descripcion"),
+                                Instrucciones = lector.GetString("Instrucciones"),
+
+                                // Si la columna "ImagenReceta" existe y no es nula, la convertimos a byte[]
+                                ImagenReceta = lector.IsDBNull(lector.GetOrdinal("ImagenReceta"))
+                                    ? null
+                                    : (byte[])lector["ImagenReceta"],
+
+                                TiempoPreparacion = lector.GetTimeSpan("TiempoPreparacion"),
+
+                                // Si el nivel de dificultad se guarda como texto
+                                NivelDificultad = (Dificultad)lector.GetInt32("NivelDificultad"),
+
+
+                            };
+                        }
+                    }
+                }
+
+                // Si se encontró la receta, obtenemos sus ingredientes
+                if (receta != null)
+                {
+                    receta.Ingredientes = ObtenerIngredientesPorRecetaId(recetaId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error al obtener receta: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+            return receta;
         }
+
+
         // Agregar receta a favoritos
         public bool AgregarRecetaAFavoritos(int usuarioId, int recetaId)
         {
@@ -979,5 +1038,62 @@ namespace MicheBytesRecipes
             return recetas;
 
         }
+
+        public List<Ingrediente> ObtenerIngredientesPorRecetaId(int recetaId)
+        {
+            List<Ingrediente> ingredientes = new List<Ingrediente>();
+
+            try
+            {
+                conexion.Abrir();
+
+                string consulta = @"
+                     SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad_x_receta
+                     WHERE Receta_Id = @RecetaId";
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@RecetaId", recetaId);
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Ingrediente ingrediente = new Ingrediente
+                            {
+                                IngredienteId = reader.GetInt32("ingrediente_id"),
+                                Nombre = reader.GetString("nombre"),
+
+                                Unidad = new UnidadMedida
+                                {
+                                    UnidadMedidaId = reader.GetInt32("unidad_de_medida_id"),
+                                    Nombre = reader.GetString("nombre")
+                                },
+
+                                Tipo = new TipoIngrediente
+                                {
+                                    TipoIngredienteId = reader.GetInt32("tipo_ingrediente_id"),
+                                    Nombre = reader.GetString("nombre")
+                                },
+                            };
+
+                            ingredientes.Add(ingrediente);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error al obtener ingredientes por receta: " + ex.Message);
+                return new List<Ingrediente>();
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+            return ingredientes;
+        }
+
     }
 }

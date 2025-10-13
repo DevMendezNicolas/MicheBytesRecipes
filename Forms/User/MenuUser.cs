@@ -188,9 +188,14 @@ namespace MicheBytesRecipes.Forms.User
 
                 Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
 
+                //Msgbox que muestre los datos de la receta
+                MessageBox.Show(receta.InfoReceta(), "Información de la Receta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 if (receta != null)
                 {
+                    
                     FrmVerReceta verRecetaForm = new FrmVerReceta(receta);
+
                     verRecetaForm.ShowDialog();
                 }
                 else

@@ -54,8 +54,6 @@
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
             this.btnAgregarFav = new System.Windows.Forms.Button();
-            this.btnComentar = new System.Windows.Forms.Button();
-            this.btnCalificar = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -248,8 +246,6 @@
             this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
-            this.pnlNavegacion.Controls.Add(this.btnCalificar);
-            this.pnlNavegacion.Controls.Add(this.btnComentar);
             this.pnlNavegacion.Controls.Add(this.btnAgregarFav);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
@@ -330,28 +326,6 @@
             this.btnAgregarFav.UseVisualStyleBackColor = true;
             this.btnAgregarFav.Click += new System.EventHandler(this.btnAgregarFav_Click);
             // 
-            // btnComentar
-            // 
-            this.btnComentar.Location = new System.Drawing.Point(13, 281);
-            this.btnComentar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnComentar.Name = "btnComentar";
-            this.btnComentar.Size = new System.Drawing.Size(198, 42);
-            this.btnComentar.TabIndex = 2;
-            this.btnComentar.Text = "&Comentar Receta";
-            this.btnComentar.UseVisualStyleBackColor = true;
-            this.btnComentar.Click += new System.EventHandler(this.btnComentar_Click);
-            // 
-            // btnCalificar
-            // 
-            this.btnCalificar.Location = new System.Drawing.Point(13, 331);
-            this.btnCalificar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCalificar.Name = "btnCalificar";
-            this.btnCalificar.Size = new System.Drawing.Size(198, 42);
-            this.btnCalificar.TabIndex = 2;
-            this.btnCalificar.Text = "&Calificar Receta";
-            this.btnCalificar.UseVisualStyleBackColor = true;
-            this.btnCalificar.Click += new System.EventHandler(this.btnCalificar_Click);
-            // 
             // MenuUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -404,7 +378,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
-        private System.Windows.Forms.Button btnCalificar;
-        private System.Windows.Forms.Button btnComentar;
     }
 }
