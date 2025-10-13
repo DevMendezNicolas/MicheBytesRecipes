@@ -940,7 +940,6 @@ namespace MicheBytesRecipes
 
         }
         //Obtener recetas favoritas por usuario
-
         public List<PreReceta> ObtenerRecetasFavoritasPorUsuario(int usuarioId)
         {
             List<PreReceta> recetas = new List<PreReceta>();
