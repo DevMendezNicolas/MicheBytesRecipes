@@ -40,14 +40,6 @@ namespace MicheBytesRecipes.Forms.User
                 pbImagenUser.Image = null;
             }
         }
-        private void CargarUserControl(UserControl uc)
-        {
-            uc.Dock = DockStyle.Fill;
-            pnlContenido.Controls.Clear();
-            pnlContenido.Controls.Add(uc);
-            uc.BringToFront();
-        }
-
         private void MenuUser_Load(object sender, EventArgs e)
         {
             // --- Categorías ---
