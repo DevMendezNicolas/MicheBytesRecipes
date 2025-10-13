@@ -21,12 +21,13 @@ namespace MicheBytesRecipes.Classes.Recetas
         GestorReceta gestorReceta = new GestorReceta();
         private bool control = true; //Controla el estado del texto comentario
         private string comentarioUsuario; //Almacena el comentario del usuario
+        private Usuario Usuario;
 
-        public FrmVerReceta(Receta receta)
+        public FrmVerReceta(Receta receta, Usuario usuarioLog)
         {
             InitializeComponent();
             this.receta = receta;
-            
+            this.Usuario = usuarioLog;
 
         }
 
@@ -101,7 +102,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 lblCategoria.Text = gestorReceta.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
                 lblPais.Text = gestorReceta.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
 
-                lblIdUsuario.Text = receta.UsuarioId.ToString();
+                lblIdUsuario.Text = Usuario.UsuarioId.ToString();
                 lblIdReceta.Text = receta.RecetaId.ToString();
 
                 CargarComentarios();

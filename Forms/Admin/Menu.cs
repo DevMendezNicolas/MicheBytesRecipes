@@ -214,5 +214,17 @@ namespace MicheBytesRecipes
             metricas.Show();
             this.Hide();
         }
+
+        private void dgvReceta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Receta receta = gestorReceta.ObtenerRecetaPorId(Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells["dgvReceta_id"].Value));
+            if (receta != null)
+            {
+                FrmVerReceta frmVerReceta = new FrmVerReceta(receta, usuarioLog);
+                frmVerReceta.ShowDialog();
+            }
+
+            
+        }
     }
 }

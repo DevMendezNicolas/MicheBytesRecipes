@@ -182,7 +182,7 @@ namespace MicheBytesRecipes.Forms.User
                 if (receta != null)
                 {
                     
-                    FrmVerReceta verRecetaForm = new FrmVerReceta(receta);
+                    FrmVerReceta verRecetaForm = new FrmVerReceta(receta, usuarioLog);
 
                     verRecetaForm.ShowDialog();
                 }
