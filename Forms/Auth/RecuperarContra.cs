@@ -41,7 +41,6 @@ namespace MicheBytesRecipes.Forms.Auth
         private async void btnIngresar_Click(object sender, EventArgs e)
         {
             eprEmail.Clear();
-
             // 🔹 Validación básica
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
