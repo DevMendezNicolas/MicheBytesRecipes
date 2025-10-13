@@ -81,5 +81,10 @@ namespace MicheBytesRecipes.Forms.Auth
             VerificarFinalScroll();
 
         }
+
+        private void Terminos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
