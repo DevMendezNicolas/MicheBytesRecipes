@@ -34,7 +34,7 @@ namespace MicheBytesRecipes
             public List<Ingrediente> Ingredientes { get; set; } = new List<Ingrediente>();
 
 
-            public Receta()
+        public Receta()
             {
                 Ingredientes = new List<Ingrediente>();
             }

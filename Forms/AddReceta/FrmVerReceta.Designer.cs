@@ -50,6 +50,7 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblIdReceta = new System.Windows.Forms.Label();
             this.lblIdUsuario = new System.Windows.Forms.Label();
+            this.lblMeGusta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -258,11 +259,22 @@
             this.lblIdUsuario.Size = new System.Drawing.Size(0, 13);
             this.lblIdUsuario.TabIndex = 20;
             // 
+            // lblMeGusta
+            // 
+            this.lblMeGusta.AutoSize = true;
+            this.lblMeGusta.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeGusta.Location = new System.Drawing.Point(944, 230);
+            this.lblMeGusta.Name = "lblMeGusta";
+            this.lblMeGusta.Size = new System.Drawing.Size(17, 20);
+            this.lblMeGusta.TabIndex = 21;
+            this.lblMeGusta.Text = "0";
+            // 
             // FrmVerReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.lblMeGusta);
             this.Controls.Add(this.lblIdUsuario);
             this.Controls.Add(this.lblIdReceta);
             this.Controls.Add(this.btnCerrar);
@@ -316,5 +328,6 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblIdReceta;
         private System.Windows.Forms.Label lblIdUsuario;
+        private System.Windows.Forms.Label lblMeGusta;
     }
 }

@@ -10,6 +10,7 @@ namespace MicheBytesRecipes.Managers
     internal class GestorInteracciones
     {
         ConexionBD conexion = new ConexionBD();
+        Receta receta = new Receta();
 
         public bool AgregarComentario(Comentarios comentarios)
         {
@@ -46,7 +47,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 // Consulta SQL para obtener los comentarios de una receta específica
-                string consultaComentarios =@"SELECT 
+                string consultaComentarios = @"SELECT 
                          c.comentario_id, 
                          c.descripcion, 
                          c.fecha_comentario, 
@@ -92,6 +93,102 @@ namespace MicheBytesRecipes.Managers
             return listaComentarios;
         }
 
+        public bool GestorMeGusta(int recetaId, int usuarioId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaMeGusta = "SELECT COUNT(*) FROM me_gustas WHERE receta_id = @recetaId AND usuario_id = @usuarioId";
 
+                using (MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    comando.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        //Si existe el me gusta, se elimina
+                        using (MySqlCommand comando2 = new MySqlCommand("Eliminar_MeGusta", conexion.GetConexion()))
+                        {
+                            comando2.CommandType = CommandType.StoredProcedure;
+                            comando2.Parameters.AddWithValue("@p_receta_id", recetaId);
+                            comando2.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                            comando2.ExecuteNonQuery();
+                        }
+                        return false; //Me guasta eliminado
+                    }
+                    else
+                    {
+                        //Si no existe, llamamos al procedimiento para insertar el me gusta
+                        using (MySqlCommand comando3 = new MySqlCommand("insertar_me_gusta", conexion.GetConexion()))
+                        {
+                            comando3.CommandType = CommandType.StoredProcedure;
+                            comando3.Parameters.AddWithValue("@p_receta_id", recetaId);
+                            comando3.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                            comando3.ExecuteNonQuery();
+                        }
+                        return true; //Me gusta agregado
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error al dar me gusta: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+        }
+        public bool TieneMeGusta(int recetaId, int usuarioId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaMeGusta = " SELECT COUNT(*) FROM vista_me_gustas WHERE receta_id = @recetaId AND usuario_id = @usuarioId";
+
+                using (MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    comando.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    int count = Convert.ToInt32(comando.ExecuteScalar());
+                    return count > 0; //Retorna true si tiene me gusta
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error al verificar me gusta: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public int ContarMeGusta(int recetaId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaCantidad = "SELECT funcion_cantidad_me_gustas(@recetaId)";
+                using (MySqlCommand comando = new MySqlCommand(consultaCantidad, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    return Convert.ToInt32(comando.ExecuteScalar());
+                }
+
+            }catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error al ver los me gustas: {ex.Message}");
+                return -1;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
     }
 }

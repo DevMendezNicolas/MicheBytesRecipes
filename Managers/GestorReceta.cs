@@ -133,11 +133,11 @@ namespace MicheBytesRecipes
                 }
                 foreach (var ingredienteId in ingredientesIds)
                 {
-                    using (var cmd = new MySqlCommand("INSERT INTO ingredientes_x_receta (receta_id, ingrediente_id, cantidad) VALUES (@recetaId, @ingredienteId, @cantidad)", conexion.GetConexion()))
+                    using (var cmd = new MySqlCommand("Insertar_ingrediente_por_receta", conexion.GetConexion()))
                     {
-                        cmd.Parameters.AddWithValue("@recetaId", recetaId);
-                        cmd.Parameters.AddWithValue("@ingredienteId", ingredienteId);
-                        cmd.Parameters.AddWithValue("@cantidad", 1);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@p_ingrediente_id", ingredienteId);
+                        cmd.Parameters.AddWithValue("@p_receta_id", recetaId);
                         cmd.ExecuteNonQuery();
                     }
                 }
