@@ -407,32 +407,30 @@ namespace MicheBytesRecipes.Managers
             }
         }
 
-        //Obtener codigo de recuperacion de contraseña
-        public string ObtenerCodigoRecuperacion(string email)
-            {
+        //Verificar si existe mail
+        public bool ExisteUsuarioPorEmail(string email)
+        {
             try
             {
                 conexion.Abrir();
-                string consulta = "SELECT codigo_recuperacion FROM usuarios WHERE email = @Email AND fecha_baja IS NULL";
+                string consulta = "SELECT COUNT(*) FROM usuarios WHERE email = @Email AND fecha_baja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@Email", email);
-                    object resultado = comando.ExecuteScalar(); // Devuelve la primera columna de la primera fila
-                    if (resultado != null)
-                        return resultado.ToString();
-                    else
-                        return null;
+                    int count = Convert.ToInt32(comando.ExecuteScalar());
+                    return count > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener el código de recuperación: " + ex.Message);
+                throw new Exception("Error al verificar la existencia del usuario: " + ex.Message);
             }
             finally
             {
                 conexion.Cerrar();
             }
         }
+
 
     }
 }

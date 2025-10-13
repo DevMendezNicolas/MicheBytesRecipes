@@ -21,78 +21,7 @@ namespace MicheBytesRecipes.Forms.Auth
             InitializeComponent();
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
-        {
-
-            eprEmail.Clear();
-
-            // Validación básica del campo
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                eprEmail.SetError(txtEmail, "El email es obligatorio");
-                txtEmail.Focus();
-                return;
-            }
-
-            string email = txtEmail.Text.Trim();
-
-            // 🔹 Verificar que exista el usuario en BD
-            bool existeUsuario = gestorUsuarios.ExisteUsuarioPorEmail(email);
-            if (!existeUsuario)
-            {
-                MessageBox.Show("No se encontró ninguna cuenta con ese correo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 🔹 Generar código de verificación
-            EmailService emailService = new EmailService();
-            string codigo = emailService.GenerarCodigo();
-
-            // (Opcional) Guardar el código temporalmente en BD
-            gestorUsuarios.GuardarCodigoRecuperacion(email, codigo);
-
-            // 🔹 Enviar el correo con el código
-            await emailService.EnviarEmailAsync(
-                email,
-                "Código de recuperación - Michebytes",
-                ObtenerHtmlCodigo(codigo),
-                $"Tu código de recuperación es: {codigo}"
-            );
-
-            MessageBox.Show("✅ Te enviamos un correo con el código de recuperación.", "Correo enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-
-
-
-            /* eprEmail.Clear();
-             if (string.IsNullOrWhiteSpace(txtEmail.Text))
-             {
-                 eprEmail.SetError(txtEmail, "El email es obligatorio");
-                 txtEmail.Focus();
-                 return;
-             }
-
-
-             string email = txtEmail.Text.Trim();
-
-             // Simular obtención de contraseña de la BD
-             string password = gestorUsuarios.ObtenerContraseñaPorEmail(email);
-             if (string.IsNullOrEmpty(password))
-             {
-                 MessageBox.Show("No se encontró ninguna cuenta con ese correo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                 return;
-             }
-
-             // Enviar el email
-             EmailService emailService = new EmailService();
-             emailService.EnviarRecuperacionPassword(email, password);
-             MessageBox.Show("Te enviamos un correo con tu contraseña.", "Recuperación enviada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             this.DialogResult = DialogResult.OK;
-             this.Close();*/
-
-        }
+        
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -107,6 +36,56 @@ namespace MicheBytesRecipes.Forms.Auth
             {
                 e.Handled = true;
             }
+        }
+
+        private async void btnIngresar_Click(object sender, EventArgs e)
+        {
+            eprEmail.Clear();
+
+            // 🔹 Validación básica
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                eprEmail.SetError(txtEmail, "El email es obligatorio");
+                txtEmail.Focus();
+                return;
+            }
+
+            string email = txtEmail.Text.Trim();
+
+            // 🔹 Verificar existencia en la BD
+            bool existeUsuario = gestorUsuarios.ExisteUsuarioPorEmail(email);
+            if (!existeUsuario)
+            {
+                MessageBox.Show("No se encontró ninguna cuenta con ese correo.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 🔹 Crear instancia del servicio de email
+            EmailService emailService = new EmailService();
+
+            try
+            {
+                // 🔹 Enviar código de verificación (se genera internamente)
+                await Task.Run(() => emailService.EnviarCodigoVerificacion(email));
+
+                MessageBox.Show("✅ Te enviamos un correo con el código de verificación.",
+                                "Correo enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 🔹 Guardar el código generado temporalmente en variable
+                string codigoGenerado = emailService.ObtenerUltimoCodigo();
+
+                // 🔹 Podés abrir el formulario siguiente para ingresar el código
+                /*Form frmCodigo = new FrmVerificarCodigo(email);
+                frmCodigo.Show();
+                this.Hide();*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"❌ No se pudo enviar el correo.\n{ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
