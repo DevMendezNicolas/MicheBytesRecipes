@@ -216,12 +216,6 @@
     <Compile Include="Forms\User\MenuUser.Designer.cs">
       <DependentUpon>MenuUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\UserControls\UCHistorial.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\User\UserControls\UCHistorial.Designer.cs">
-      <DependentUpon>UCHistorial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\CueProvider.cs" />
     <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Theme.cs" />
@@ -280,9 +274,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\MenuUser.resx">
       <DependentUpon>MenuUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\UserControls\UCHistorial.resx">
-      <DependentUpon>UCHistorial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
