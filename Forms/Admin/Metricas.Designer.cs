@@ -48,11 +48,6 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblReceta = new System.Windows.Forms.Label();
-            this.btnAct = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.txtAgregar = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.panel1.SuspendLayout();
@@ -213,11 +208,6 @@
             this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.pbImagenAdmin);
             this.panel1.Controls.Add(this.lblNombre);
-            this.panel1.Controls.Add(this.lblReceta);
-            this.panel1.Controls.Add(this.btnAct);
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.btnModificar);
-            this.panel1.Controls.Add(this.txtAgregar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -255,56 +245,6 @@
             this.lblNombre.Text = "Nombre Administrador";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblReceta
-            // 
-            this.lblReceta.AutoSize = true;
-            this.lblReceta.Location = new System.Drawing.Point(81, 210);
-            this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReceta.Name = "lblReceta";
-            this.lblReceta.Size = new System.Drawing.Size(71, 21);
-            this.lblReceta.TabIndex = 9;
-            this.lblReceta.Text = "Acciones";
-            // 
-            // btnAct
-            // 
-            this.btnAct.Location = new System.Drawing.Point(13, 394);
-            this.btnAct.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAct.Name = "btnAct";
-            this.btnAct.Size = new System.Drawing.Size(198, 42);
-            this.btnAct.TabIndex = 5;
-            this.btnAct.Text = "Activas - Inactivas";
-            this.btnAct.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(13, 344);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(198, 42);
-            this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "&Dar baja";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(13, 294);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(198, 42);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "&Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // txtAgregar
-            // 
-            this.txtAgregar.Location = new System.Drawing.Point(13, 244);
-            this.txtAgregar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAgregar.Name = "txtAgregar";
-            this.txtAgregar.Size = new System.Drawing.Size(198, 42);
-            this.txtAgregar.TabIndex = 2;
-            this.txtAgregar.Text = "&Agregar";
-            this.txtAgregar.UseVisualStyleBackColor = true;
-            // 
             // Metricas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -321,7 +261,6 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).EndInit();
             this.ResumeLayout(false);
 
@@ -340,11 +279,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbImagenAdmin;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblReceta;
-        private System.Windows.Forms.Button btnAct;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button txtAgregar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
