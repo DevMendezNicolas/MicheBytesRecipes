@@ -52,6 +52,15 @@ namespace MicheBytesRecipes.Classes.Recetas
             {
                 btnMeGusta.Text = "🤍 Me gusta";
             }
+            if(gestorInteracciones.EstaFavorito(receta.RecetaId, usuario.UsuarioId))
+            {
+                btnFavoritos.Text = "💛 Favorito";
+            }
+            else
+            {
+                btnFavoritos.Text = "🤍 Favorito";
+            }
+
         }
         
 
@@ -60,10 +69,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             this.Close();
         }
 
-        private void lblFavoritos_Click(object sender, EventArgs e)
-        {
-            //Agregar a favoritos
-        }
+
 
         private void btnMeGusta_Click(object sender, EventArgs e)
         {
@@ -144,7 +150,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             int recetaId = receta.RecetaId;
             int usuarioId = usuario.UsuarioId;
 
-            bool resultado = gestorInteracciones.GestorMeGusta(recetaId, usuarioId);
+            bool resultado = gestorInteracciones.GestionarMeGusta(recetaId, usuarioId);
 
             if (resultado)
             {
@@ -170,6 +176,26 @@ namespace MicheBytesRecipes.Classes.Recetas
             }else
             {
                 lblMeGusta.Text = "Error";
+            }
+        }
+        private void GestionFavorito()
+        {
+            int recetaId = receta.RecetaId;
+            int usuarioId = usuario.UsuarioId;
+
+            bool resultado = gestorInteracciones.GestionarFavoritos(recetaId, usuarioId);
+
+            if (resultado)
+            {
+                // Se agrego a favoritos
+                btnFavoritos.Text = "💛 Favorito";
+                MessageBox.Show("¡Receta agregada a favoritos!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Se elimino de favoritos
+                btnFavoritos.Text = "🤍 Favorito";
+                MessageBox.Show("Receta eliminada de favoritos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -235,6 +261,10 @@ namespace MicheBytesRecipes.Classes.Recetas
                 }
             }
         }
-    
+
+        private void btnFavoritos_Click(object sender, EventArgs e)
+        {
+            GestionFavorito();
+        }
     }
 }

@@ -93,7 +93,9 @@ namespace MicheBytesRecipes.Managers
             return listaComentarios;
         }
 
-        public bool GestorMeGusta(int recetaId, int usuarioId)
+
+        //Metodos para gestionar los me gustas
+        public bool GestionarMeGusta(int recetaId, int usuarioId)
         {
             try
             {
@@ -180,10 +182,88 @@ namespace MicheBytesRecipes.Managers
                     return Convert.ToInt32(comando.ExecuteScalar());
                 }
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.Error.WriteLine($"Error al ver los me gustas: {ex.Message}");
                 return -1;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
+        //Metodos para gestionar los favoritos
+        public bool GestionarFavoritos(int recetaId, int usuarioId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaFavoritos = "SELECT COUNT(*) FROM favoritas WHERE receta_id = @recetaId and usuario_Id = @usuarioId";
+                using (MySqlCommand comando = new MySqlCommand(consultaFavoritos, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    comando.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    int existe = Convert.ToInt32(comando.ExecuteScalar());
+
+                    if (existe > 0)
+                    {
+                        //Si ya esta en favoritos, se elimina
+                        using (MySqlCommand comando2 = new MySqlCommand("Eliminar_favorita", conexion.GetConexion()))
+                        {
+                            comando2.CommandType = CommandType.StoredProcedure;
+                            comando2.Parameters.AddWithValue("@p_recetaId", recetaId);
+                            comando2.Parameters.AddWithValue("@p_usuarioId", usuarioId);
+                            comando2.ExecuteNonQuery();
+                        }
+                        return false;
+                    }
+                    else
+                    {
+                        //Si no esta, se inserta
+                        using (MySqlCommand comando3 = new MySqlCommand("Insertar_favorita", conexion.GetConexion()))
+                        {
+                            comando3.CommandType = CommandType.StoredProcedure;
+                            comando3.Parameters.AddWithValue("@p_usuarioId", usuarioId);
+                            comando3.Parameters.AddWithValue("@p_recetaId", recetaId);
+                            comando3.ExecuteNonQuery();
+                        }
+                        return true;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error al guardar favorita: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public bool EstaFavorito(int recetaId, int usuarioId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaFavoritos = "SELECT COUNT(*) FROM vista_favoritas WHERE receta_id = @recetaId and usuario_Id = @usuarioId";
+
+                using (MySqlCommand comando = new MySqlCommand(consultaFavoritos, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@recetaId", recetaId);
+                    comando.Parameters.AddWithValue("@usuarioId", usuarioId);
+
+                    int count = Convert.ToInt16(comando.ExecuteScalar());
+                    return count > 0; //Retorna true si esta en favoritos
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error al verificar favorita: {ex.Message}");
+                return false;
             }
             finally
             {

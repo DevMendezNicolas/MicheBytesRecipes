@@ -42,7 +42,7 @@
             this.lstIngredientes = new System.Windows.Forms.ListView();
             this.lblInstruccion = new System.Windows.Forms.Label();
             this.btnMeGusta = new System.Windows.Forms.Button();
-            this.lblFavoritos = new System.Windows.Forms.Button();
+            this.btnFavoritos = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.lstComentarios = new System.Windows.Forms.ListBox();
@@ -182,15 +182,15 @@
             this.btnMeGusta.UseVisualStyleBackColor = true;
             this.btnMeGusta.Click += new System.EventHandler(this.btnMeGusta_Click);
             // 
-            // lblFavoritos
+            // btnFavoritos
             // 
-            this.lblFavoritos.Location = new System.Drawing.Point(982, 261);
-            this.lblFavoritos.Name = "lblFavoritos";
-            this.lblFavoritos.Size = new System.Drawing.Size(164, 28);
-            this.lblFavoritos.TabIndex = 13;
-            this.lblFavoritos.Text = "Favorito";
-            this.lblFavoritos.UseVisualStyleBackColor = true;
-            this.lblFavoritos.Click += new System.EventHandler(this.lblFavoritos_Click);
+            this.btnFavoritos.Location = new System.Drawing.Point(982, 261);
+            this.btnFavoritos.Name = "btnFavoritos";
+            this.btnFavoritos.Size = new System.Drawing.Size(164, 28);
+            this.btnFavoritos.TabIndex = 13;
+            this.btnFavoritos.Text = "Favorito";
+            this.btnFavoritos.UseVisualStyleBackColor = true;
+            this.btnFavoritos.Click += new System.EventHandler(this.btnFavoritos_Click);
             // 
             // label3
             // 
@@ -282,7 +282,7 @@
             this.Controls.Add(this.lstComentarios);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblFavoritos);
+            this.Controls.Add(this.btnFavoritos);
             this.Controls.Add(this.btnMeGusta);
             this.Controls.Add(this.lblInstruccion);
             this.Controls.Add(this.lstIngredientes);
@@ -320,7 +320,7 @@
         private System.Windows.Forms.ListView lstIngredientes;
         private System.Windows.Forms.Label lblInstruccion;
         private System.Windows.Forms.Button btnMeGusta;
-        private System.Windows.Forms.Button lblFavoritos;
+        private System.Windows.Forms.Button btnFavoritos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.ListBox lstComentarios;
