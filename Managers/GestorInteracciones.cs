@@ -213,8 +213,8 @@ namespace MicheBytesRecipes.Managers
                         using (MySqlCommand comando2 = new MySqlCommand("Eliminar_favorita", conexion.GetConexion()))
                         {
                             comando2.CommandType = CommandType.StoredProcedure;
-                            comando2.Parameters.AddWithValue("@p_recetaId", recetaId);
-                            comando2.Parameters.AddWithValue("@p_usuarioId", usuarioId);
+                            comando2.Parameters.AddWithValue("@p_receta_Id", recetaId);
+                            comando2.Parameters.AddWithValue("@p_usuario_Id", usuarioId);
                             comando2.ExecuteNonQuery();
                         }
                         return false;
@@ -225,8 +225,8 @@ namespace MicheBytesRecipes.Managers
                         using (MySqlCommand comando3 = new MySqlCommand("Insertar_favorita", conexion.GetConexion()))
                         {
                             comando3.CommandType = CommandType.StoredProcedure;
-                            comando3.Parameters.AddWithValue("@p_usuarioId", usuarioId);
-                            comando3.Parameters.AddWithValue("@p_recetaId", recetaId);
+                            comando3.Parameters.AddWithValue("@p_usuario_Id", usuarioId);
+                            comando3.Parameters.AddWithValue("@p_receta_Id", recetaId);
                             comando3.ExecuteNonQuery();
                         }
                         return true;
