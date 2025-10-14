@@ -185,6 +185,7 @@ namespace MicheBytesRecipes.Forms.User
                     FrmVerReceta verRecetaForm = new FrmVerReceta(receta, usuarioLog);
 
                     verRecetaForm.ShowDialog();
+                    ActualizarGrilla();
                 }
                 else
                 {
