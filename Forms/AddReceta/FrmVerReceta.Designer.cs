@@ -42,7 +42,7 @@
             this.lstIngredientes = new System.Windows.Forms.ListView();
             this.lblInstruccion = new System.Windows.Forms.Label();
             this.btnMeGusta = new System.Windows.Forms.Button();
-            this.lblFavoritos = new System.Windows.Forms.Button();
+            this.btnFavoritos = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.lstComentarios = new System.Windows.Forms.ListBox();
@@ -50,6 +50,7 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblIdReceta = new System.Windows.Forms.Label();
             this.lblIdUsuario = new System.Windows.Forms.Label();
+            this.lblMeGusta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,15 +182,15 @@
             this.btnMeGusta.UseVisualStyleBackColor = true;
             this.btnMeGusta.Click += new System.EventHandler(this.btnMeGusta_Click);
             // 
-            // lblFavoritos
+            // btnFavoritos
             // 
-            this.lblFavoritos.Location = new System.Drawing.Point(982, 261);
-            this.lblFavoritos.Name = "lblFavoritos";
-            this.lblFavoritos.Size = new System.Drawing.Size(164, 28);
-            this.lblFavoritos.TabIndex = 13;
-            this.lblFavoritos.Text = "Favorito";
-            this.lblFavoritos.UseVisualStyleBackColor = true;
-            this.lblFavoritos.Click += new System.EventHandler(this.lblFavoritos_Click);
+            this.btnFavoritos.Location = new System.Drawing.Point(982, 261);
+            this.btnFavoritos.Name = "btnFavoritos";
+            this.btnFavoritos.Size = new System.Drawing.Size(164, 28);
+            this.btnFavoritos.TabIndex = 13;
+            this.btnFavoritos.Text = "Favorito";
+            this.btnFavoritos.UseVisualStyleBackColor = true;
+            this.btnFavoritos.Click += new System.EventHandler(this.btnFavoritos_Click);
             // 
             // label3
             // 
@@ -258,11 +259,22 @@
             this.lblIdUsuario.Size = new System.Drawing.Size(0, 13);
             this.lblIdUsuario.TabIndex = 20;
             // 
+            // lblMeGusta
+            // 
+            this.lblMeGusta.AutoSize = true;
+            this.lblMeGusta.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMeGusta.Location = new System.Drawing.Point(944, 230);
+            this.lblMeGusta.Name = "lblMeGusta";
+            this.lblMeGusta.Size = new System.Drawing.Size(17, 20);
+            this.lblMeGusta.TabIndex = 21;
+            this.lblMeGusta.Text = "0";
+            // 
             // FrmVerReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.lblMeGusta);
             this.Controls.Add(this.lblIdUsuario);
             this.Controls.Add(this.lblIdReceta);
             this.Controls.Add(this.btnCerrar);
@@ -270,7 +282,7 @@
             this.Controls.Add(this.lstComentarios);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblFavoritos);
+            this.Controls.Add(this.btnFavoritos);
             this.Controls.Add(this.btnMeGusta);
             this.Controls.Add(this.lblInstruccion);
             this.Controls.Add(this.lstIngredientes);
@@ -308,7 +320,7 @@
         private System.Windows.Forms.ListView lstIngredientes;
         private System.Windows.Forms.Label lblInstruccion;
         private System.Windows.Forms.Button btnMeGusta;
-        private System.Windows.Forms.Button lblFavoritos;
+        private System.Windows.Forms.Button btnFavoritos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.ListBox lstComentarios;
@@ -316,5 +328,6 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblIdReceta;
         private System.Windows.Forms.Label lblIdUsuario;
+        private System.Windows.Forms.Label lblMeGusta;
     }
 }

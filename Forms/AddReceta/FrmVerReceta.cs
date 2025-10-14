@@ -19,15 +19,17 @@ namespace MicheBytesRecipes.Classes.Recetas
     {
         private Receta receta;
         GestorReceta gestorReceta = new GestorReceta();
+        GestorInteracciones gestorInteracciones = new GestorInteracciones();
         private bool control = true; //Controla el estado del texto comentario
         private string comentarioUsuario; //Almacena el comentario del usuario
-        private Usuario Usuario;
+        private Usuario usuario; 
 
         public FrmVerReceta(Receta receta, Usuario usuarioLog)
         {
             InitializeComponent();
             this.receta = receta;
-            this.Usuario = usuarioLog;
+            this.usuario = usuarioLog;
+
 
         }
 
@@ -40,6 +42,25 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             txtComentario.Text = "Escribe un comentario...";
             txtComentario.ForeColor = Color.Gray; //Pone el texto en gris
+
+            // Verificar si ya dio "Me Gusta"
+            if(gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
+            {
+                btnMeGusta.Text = "❤️ Me gusta";
+            }
+            else
+            {
+                btnMeGusta.Text = "🤍 Me gusta";
+            }
+            if(gestorInteracciones.EstaFavorito(receta.RecetaId, usuario.UsuarioId))
+            {
+                btnFavoritos.Text = "💛 Favorito";
+            }
+            else
+            {
+                btnFavoritos.Text = "🤍 Favorito";
+            }
+
         }
         
 
@@ -48,14 +69,12 @@ namespace MicheBytesRecipes.Classes.Recetas
             this.Close();
         }
 
-        private void lblFavoritos_Click(object sender, EventArgs e)
-        {
-            //Agregar a favoritos
-        }
+
 
         private void btnMeGusta_Click(object sender, EventArgs e)
         {
-            //Agregar me gusta
+            GestionMeGusta();
+            ActualizarMeGusta();
         }
 
         private void CargarDatosReceta()
@@ -102,10 +121,12 @@ namespace MicheBytesRecipes.Classes.Recetas
                 lblCategoria.Text = gestorReceta.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
                 lblPais.Text = gestorReceta.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
 
-                lblIdUsuario.Text = Usuario.UsuarioId.ToString();
+                lblIdUsuario.Text = usuario.UsuarioId.ToString();
                 lblIdReceta.Text = receta.RecetaId.ToString();
 
                 CargarComentarios();
+                ActualizarMeGusta();
+
             }
         }
         private void CargarComentarios()
@@ -124,6 +145,60 @@ namespace MicheBytesRecipes.Classes.Recetas
             else
                 lstComentarios.Items.Add("No hay comentarios");            
         }
+        private void GestionMeGusta()
+        {
+            int recetaId = receta.RecetaId;
+            int usuarioId = usuario.UsuarioId;
+
+            bool resultado = gestorInteracciones.GestionarMeGusta(recetaId, usuarioId);
+
+            if (resultado)
+            {
+                //Si se agrego el me gusta 
+                btnMeGusta.Text = "❤️ Me gusta";
+                MessageBox.Show("¡Te gustó la receta!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                //Si se elimino el me gusta
+                btnMeGusta.Text = "🤍 Me gusta";
+                MessageBox.Show("Quitaste el me gusta.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+        private void ActualizarMeGusta()
+        {
+            int cantidad = gestorInteracciones.ContarMeGusta(receta.RecetaId);
+
+            if(cantidad >= 0)
+            {
+                lblMeGusta.Text = cantidad.ToString();
+            }else
+            {
+                lblMeGusta.Text = "Error";
+            }
+        }
+        private void GestionFavorito()
+        {
+            int recetaId = receta.RecetaId;
+            int usuarioId = usuario.UsuarioId;
+
+            bool resultado = gestorInteracciones.GestionarFavoritos(recetaId, usuarioId);
+
+            if (resultado)
+            {
+                // Se agrego a favoritos
+                btnFavoritos.Text = "💛 Favorito";
+                MessageBox.Show("¡Receta agregada a favoritos!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Se elimino de favoritos
+                btnFavoritos.Text = "🤍 Favorito";
+                MessageBox.Show("Receta eliminada de favoritos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         private void txtComentario_Enter(object sender, EventArgs e)
         {
@@ -186,6 +261,10 @@ namespace MicheBytesRecipes.Classes.Recetas
                 }
             }
         }
-    
+
+        private void btnFavoritos_Click(object sender, EventArgs e)
+        {
+            GestionFavorito();
+        }
     }
 }
