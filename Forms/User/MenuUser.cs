@@ -193,58 +193,6 @@ namespace MicheBytesRecipes.Forms.User
             }
         }
 
-        private void btnAgregarFav_Click(object sender, EventArgs e)
-        {
-            //Agregar o quitar de favoritas segun el estado de mostrarFavoritas
-
-            if (dgvReceta.SelectedRows.Count > 0)
-            {
-                int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells[0].Value);
-                if (mostrarFavoritas)
-                {
-                    // Quitar de favoritas
-                    bool exito = gestorReceta.QuitarRecetaDeFavoritos(usuarioLog.UsuarioId, recetaId);
-                    if (exito)
-                    {
-                        MessageBox.Show("Receta quitada de favoritos.");
-                        this.ActualizarGrilla();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo quitar la receta de favoritos.");
-                    }
-                }
-                else
-                {
-                    // Agregar a favoritas
-                    bool exito = gestorReceta.AgregarRecetaAFavoritos(usuarioLog.UsuarioId, recetaId);
-                    if (exito)
-                    {
-                        MessageBox.Show("Receta agregada a favoritos.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo agregar la receta a favoritos o ya está en favoritos.");
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccione una receta para agregar o quitar de favoritos.");
-            }
-
-
-        }
-
-        private void btnComentar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCalificar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnHistorialFav_Click(object sender, EventArgs e)
         {
@@ -252,12 +200,10 @@ namespace MicheBytesRecipes.Forms.User
             if (mostrarFavoritas)
             {
                 btnHistorialFav.Text = "Ver todas";
-                btnAgregarFav.Text = "Quitar de favoritos";
             }
             else
             {
                 btnHistorialFav.Text = "Ver Favoritas";
-                btnAgregarFav.Text = "Agregar a favoritos";
             }
             this.ActualizarGrilla();
 

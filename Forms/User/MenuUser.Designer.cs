@@ -49,11 +49,9 @@
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblReceta = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.btnAgregarFav = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -242,11 +240,9 @@
             // 
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
-            this.pnlNavegacion.Controls.Add(this.lblReceta);
             this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
-            this.pnlNavegacion.Controls.Add(this.btnAgregarFav);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
             this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
@@ -272,16 +268,6 @@
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre Usuario";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblReceta
-            // 
-            this.lblReceta.AutoSize = true;
-            this.lblReceta.Location = new System.Drawing.Point(81, 210);
-            this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReceta.Name = "lblReceta";
-            this.lblReceta.Size = new System.Drawing.Size(59, 17);
-            this.lblReceta.TabIndex = 9;
-            this.lblReceta.Text = "Acciones";
             // 
             // btnConfig
             // 
@@ -315,17 +301,6 @@
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
-            // btnAgregarFav
-            // 
-            this.btnAgregarFav.Location = new System.Drawing.Point(13, 231);
-            this.btnAgregarFav.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgregarFav.Name = "btnAgregarFav";
-            this.btnAgregarFav.Size = new System.Drawing.Size(198, 42);
-            this.btnAgregarFav.TabIndex = 2;
-            this.btnAgregarFav.Text = "&Agregar a Favoritos";
-            this.btnAgregarFav.UseVisualStyleBackColor = true;
-            this.btnAgregarFav.Click += new System.EventHandler(this.btnAgregarFav_Click);
-            // 
             // MenuUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -344,7 +319,6 @@
             this.pnlContenido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
             this.pnlNavegacion.ResumeLayout(false);
-            this.pnlNavegacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).EndInit();
             this.ResumeLayout(false);
 
@@ -367,11 +341,9 @@
         private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHistorialRecetas;
         private System.Windows.Forms.Button btnHistorialFav;
-        private System.Windows.Forms.Button btnAgregarFav;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
