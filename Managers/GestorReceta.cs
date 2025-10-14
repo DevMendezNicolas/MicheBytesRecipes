@@ -927,6 +927,47 @@ namespace MicheBytesRecipes
 
             return ingredientes;
         }
+
+        //Obtener historial de un usuario
+        public List<PreReceta> ObtenerHistorialUsuario(int usuarioId)
+        {
+            List<PreReceta> recetas = new List<PreReceta>();
+            try
+            {
+                conexion.Abrir();
+                string consulta = "SELECT receta_id, nombre, categoria_id, pais_id, dificultad, tiempo_preparacion FROM Vista_resumen_receta_historial WHERE fecha_baja IS NULL AND usuario_Id = @UsuarioId ORDER BY Historial_Id DESC LIMIT 15";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    comando.Parameters.AddWithValue("@UsuarioId", usuarioId);
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            PreReceta receta = new PreReceta
+                            (
+                                lector.GetInt32("Receta_Id"),
+                                lector.GetString("Nombre"),
+                                lector.GetInt32("Pais_Id"),
+                                lector.GetInt32("Categoria_Id"),
+                                (Dificultad)Enum.Parse(typeof(Dificultad), lector.GetString("Dificultad")),
+                                lector.GetTimeSpan("Tiempo_Preparacion")
+                            );
+                            recetas.Add(receta);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la previsualización de recetas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+            return recetas;
+        }
+
         // Agregar visita al historial
         public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
         {

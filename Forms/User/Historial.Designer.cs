@@ -32,12 +32,6 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
-            this.recetaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
@@ -53,6 +47,12 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialPdf = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
+            this.recetaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dificultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -106,9 +106,9 @@
             this.recetaId,
             this.Receta,
             this.Categoria,
-            this.Estado,
-            this.Accion,
-            this.Calificacion});
+            this.Pais,
+            this.Dificultad,
+            this.Tiempo});
             this.dgvHistorial.Location = new System.Drawing.Point(45, 210);
             this.dgvHistorial.MultiSelect = false;
             this.dgvHistorial.Name = "dgvHistorial";
@@ -116,48 +116,6 @@
             this.dgvHistorial.Size = new System.Drawing.Size(858, 382);
             this.dgvHistorial.TabIndex = 4;
             this.dgvHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellContentClick);
-            // 
-            // recetaId
-            // 
-            this.recetaId.HeaderText = "Receta Id";
-            this.recetaId.Name = "recetaId";
-            this.recetaId.ReadOnly = true;
-            this.recetaId.Visible = false;
-            // 
-            // Receta
-            // 
-            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Receta.HeaderText = "Receta";
-            this.Receta.Name = "Receta";
-            this.Receta.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Accion
-            // 
-            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Accion.HeaderText = "Accion";
-            this.Accion.Name = "Accion";
-            this.Accion.ReadOnly = true;
-            // 
-            // Calificacion
-            // 
-            this.Calificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Calificacion.HeaderText = "Calificacion";
-            this.Calificacion.Name = "Calificacion";
-            this.Calificacion.ReadOnly = true;
             // 
             // cboDificultad
             // 
@@ -312,6 +270,48 @@
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
+            // recetaId
+            // 
+            this.recetaId.HeaderText = "Receta Id";
+            this.recetaId.Name = "recetaId";
+            this.recetaId.ReadOnly = true;
+            this.recetaId.Visible = false;
+            // 
+            // Receta
+            // 
+            this.Receta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Receta.HeaderText = "Receta";
+            this.Receta.Name = "Receta";
+            this.Receta.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Pais
+            // 
+            this.Pais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Pais.HeaderText = "Pais";
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            // 
+            // Dificultad
+            // 
+            this.Dificultad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Dificultad.HeaderText = "Dificultad";
+            this.Dificultad.Name = "Dificultad";
+            this.Dificultad.ReadOnly = true;
+            // 
+            // Tiempo
+            // 
+            this.Tiempo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tiempo.HeaderText = "Tiempo";
+            this.Tiempo.Name = "Tiempo";
+            this.Tiempo.ReadOnly = true;
+            // 
             // Historial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -354,13 +354,13 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Button btnHistorialPdf;
         private System.Windows.Forms.Button btnInicio;
+        private System.Windows.Forms.ComboBox cboDificultad;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn recetaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Accion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Calificacion;
-        private System.Windows.Forms.ComboBox cboDificultad;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
     }
 }

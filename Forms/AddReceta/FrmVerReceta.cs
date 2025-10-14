@@ -37,6 +37,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             lblIdReceta.Visible = false;
             lblIdUsuario.Visible = false;
+            gestorReceta.AgregarVisitaAlHistorial(receta.RecetaId, usuario.UsuarioId);
 
             CargarDatosReceta();
 

@@ -89,10 +89,17 @@ namespace MicheBytesRecipes.Forms.User
         public void ActualizarGrilla()
         {
             dgvHistorial.Rows.Clear();
-            List<PreReceta> preRecetas = recetasActivas ? gestorReceta.ObtenerPreRecetas() : gestorReceta.ObtenerPreRecetasInactivas();
+            List<PreReceta> preRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
             foreach (var preReceta in preRecetas)
             {
-                dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), "Completada", "Comentario", "7");
+                dgvHistorial.Rows.Add(
+                    preReceta.RecetaId,
+                    preReceta.Nombre,
+                    gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
+                    gestorReceta.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
+                    preReceta.Dificultad,
+                    preReceta.TiempoPreparacion.ToString()
+                );
             }
         }
 
@@ -131,8 +138,7 @@ namespace MicheBytesRecipes.Forms.User
                 dgvHistorial.Rows.Clear();
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    //EJEMPLO SIN PAIS NI DIFICULAD
-                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), "Completada", "Comentario", "7");
+                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
                 }
 
             }
@@ -165,12 +171,14 @@ namespace MicheBytesRecipes.Forms.User
                 {
                     FrmVerReceta verRecetaForm = new FrmVerReceta(receta, usuarioLog);
                     verRecetaForm.ShowDialog();
+                    ActualizarGrilla();
                 }
                 else
                 {
                     MessageBox.Show("No se pudo cargar la receta seleccionada.");
                 }
             }
+
 
         }
 
