@@ -241,16 +241,16 @@ namespace MicheBytesRecipes.Classes.Recetas
                     // Guardar el comentario usando el gestor de interacciones
                     GestorInteracciones gestorInteracciones = new GestorInteracciones();
                     // Intentar agregar el comentario y mostrar un mensaje según el resultado
-                    bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
+                    //bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
                     // Mostrar mensaje de éxito o error
-                    if (exito)
+                    if (gestorInteracciones.AgregarComentario(nuevoComentario))
                     {
                         MessageBox.Show("Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtComentario.Clear();
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al agregar el COMENTARIO. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     //Restablecer el cuadro de texto
                     control = true;
