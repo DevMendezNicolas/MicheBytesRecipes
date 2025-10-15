@@ -13,7 +13,7 @@ namespace MicheBytesRecipes
 {
     internal static class Validaciones
     {
-        public static bool ValidarReceta(TextBox txtNombre, TextBox txtDescripcion, TextBox txtInstrucciones, ComboBox cboCategoria, ComboBox cboPais, ComboBox cboDificultad, DateTimePicker dtpTiempo, string imagenPath, Button cmdCargarImagen, CheckedListBox clbIngrediente, ErrorProvider errorProvider)
+        public static bool ValidarReceta(TextBox txtNombre, TextBox txtDescripcion, TextBox txtInstrucciones, ComboBox cboCategoria, ComboBox cboPais, ComboBox cboDificultad, DateTimePicker dtpTiempo, PictureBox pcbImagen, Button btnAsociado, CheckedListBox clbIngrediente, ErrorProvider errorProvider)
         {
             // Validar que los campos no esten vacios
             bool esValido = true;
@@ -54,24 +54,13 @@ namespace MicheBytesRecipes
                 errorProvider.SetError(dtpTiempo, "El tiempo de preparacion debe ser mayor a 0 minutos.");
                 esValido = false;
             }
-            if (string.IsNullOrWhiteSpace(imagenPath) || !File.Exists(imagenPath))
+            if (pcbImagen.Image == null)
             {
-                errorProvider.SetError(cmdCargarImagen, "Debe seleccionar una imagen.");
-                esValido = false;
+                // El error se asocia al botón de cargar imagen para guiar al usuario
+                errorProvider.SetError(btnAsociado, "Debe seleccionar una imagen.");
+                esValido = false;              
             }
-            else
-            {
-                try
-                {
-                    using (var img = Image.FromFile(imagenPath)) { }
-                }
-                catch
-                {
-                    errorProvider.SetError(cmdCargarImagen, "El archivo seleccionado no es una imagen valida.");
-                    esValido = false;
-                }
-                
-            }
+
             if(clbIngrediente.CheckedItems.Count == 0)
             {
                 errorProvider.SetError(clbIngrediente, "Debe agregar al menos un ingrediente.");

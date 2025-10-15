@@ -53,7 +53,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             //Crear una nueva receta
             Receta nuevaReceta = new Receta();
-            if (Validaciones.ValidarReceta(TXTnombre, TXTdescripcion, TXTinstrucciones, CBOcategoria, CBOpais, CBOdificultad, DTPtiempo, openFileDialog1.FileName, CMDcargar, clbIngredientes, errorProvider1))
+            if (Validaciones.ValidarReceta(TXTnombre, TXTdescripcion, TXTinstrucciones, CBOcategoria, CBOpais, CBOdificultad, DTPtiempo, pcbImagen, CMDcargar, clbIngredientes, errorProvider1))
             {
                 nuevaReceta.Nombre = Utilidades.CapitalizarPrimeraLetra(TXTnombre.Text);
                 nuevaReceta.Descripcion = TXTdescripcion.Text;
@@ -88,8 +88,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 }
 
                 LimpiarFormulario();
-                this.Close();
                 this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
         private void btnPais_Click(object sender, EventArgs e)
@@ -143,8 +143,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                PCBimagen.Image = Image.FromFile(openFileDialog1.FileName);
-                PCBimagen.SizeMode = PictureBoxSizeMode.Zoom; //Ajusta la imagen al tamanio del PictureBox
+                pcbImagen.Image = Image.FromFile(openFileDialog1.FileName);
+                pcbImagen.SizeMode = PictureBoxSizeMode.Zoom; //Ajusta la imagen al tamanio del PictureBox
             }
         }
 
@@ -158,7 +158,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
             CBOpais.SelectedIndex = 0;
             CBOdificultad.SelectedIndex = 0;
             DTPtiempo.Value = DateTime.Today.AddHours(1);
-            PCBimagen.Image = null;
+            pcbImagen.Image = null;
             foreach (int i in clbIngredientes.CheckedIndices)
             {
                 clbIngredientes.SetItemChecked(i, false);

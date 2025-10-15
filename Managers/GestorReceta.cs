@@ -25,36 +25,49 @@ namespace MicheBytesRecipes
         }      
         
 
-        public bool ModificarReceta(Receta receta) // Cin lo esta terminado
+        public bool ModificarReceta(Receta receta, List<int> nuevosIngredientesId) // Cin lo esta terminado
         {
+            bool exito = false;
             try
             {
                 conexion.Abrir();
 
-                string consultaModificar = "UPDATE Recetas SET Nombre = @Nombre, Descripcion = @Descripcion, Instrucciones = @Instrucciones, " +
-                    "ImagenReceta = @ImagenReceta, TiempoPreparacion = @TiempoPreparacion, NivelDificultad = @NivelDificultad WHERE RecetaId = @RecetaId";
-
-                using (MySqlCommand comando = new MySqlCommand(consultaModificar, conexion.GetConexion()))
+                using (MySqlCommand comando = new MySqlCommand("Modificar_Receta", conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@Nombre", receta.Nombre);
-                    comando.Parameters.AddWithValue("@Descripcion", receta.Descripcion);
-                    comando.Parameters.AddWithValue("@Instrucciones", receta.Instrucciones);
-                    comando.Parameters.AddWithValue("@ImagenReceta", receta.ImagenReceta);
-                    comando.Parameters.AddWithValue("@TiempoPreparacion", receta.TiempoPreparacion);
-                    comando.Parameters.AddWithValue("@NivelDificultad", receta.NivelDificultad.ToString());
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@p_receta_id", receta.RecetaId);
+                    comando.Parameters.AddWithValue("@p_nombre", receta.Nombre);
+                    comando.Parameters.AddWithValue("@p_descripcion", receta.Descripcion);
+                    comando.Parameters.AddWithValue("@p_instrucciones", receta.Instrucciones);
+                    comando.Parameters.Add("@p_imagen", MySqlDbType.Blob).Value = receta.ImagenReceta ?? (object)DBNull.Value;
+                    comando.Parameters.AddWithValue("@p_tiempo", receta.TiempoPreparacion);
+                    comando.Parameters.AddWithValue("@p_dificultad", receta.NivelDificultad.ToString());
+                    comando.Parameters.AddWithValue("@p_pais_id", receta.PaisId);
+                    comando.Parameters.AddWithValue("@p_categoria_id", receta.CategoriaId);
 
-
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        Console.WriteLine("Receta modificada exitosamente.");
-                    else
-                    {
-                        Console.Error.WriteLine("No se encontró la receta para modificar.");
-                        return false;
-                    }
-
+                    comando.ExecuteNonQuery();
+                }
+                // Eliminar los ingredientes actuales de la receta
+                string consultaEliminar = "DELETE FROM Ingredientes_por_receta WHERE receta_id = @RecetaId";
+                using (MySqlCommand comandoEliminar = new MySqlCommand(consultaEliminar, conexion.GetConexion()))
+                {
+                    comandoEliminar.Parameters.AddWithValue("@RecetaId", receta.RecetaId);
+                    comandoEliminar.ExecuteNonQuery();
                 }
 
+                // Agregar los nuevos ingredientes a la receta
+                foreach (var idIngrediente in nuevosIngredientesId)
+                {
+                    using(MySqlCommand comandoInsertar = new MySqlCommand ("insertar_ingrediente_por_receta", conexion.GetConexion()))
+                    {
+                        comandoInsertar.CommandType = CommandType.StoredProcedure;
+                        comandoInsertar.Parameters.AddWithValue("@p_ingrediente_id", idIngrediente);
+                        comandoInsertar.Parameters.AddWithValue("@p_receta_id", receta.RecetaId);
+                        comandoInsertar.ExecuteNonQuery();
+                    }
+
+                } 
+                exito = true;
 
             }
             catch (Exception ex)
@@ -65,7 +78,7 @@ namespace MicheBytesRecipes
             {
                 conexion.Cerrar();
             }
-            return true;
+            return exito;
         }
         public int AgregarReceta(Receta receta, List<int> ingredientesIds)
         {

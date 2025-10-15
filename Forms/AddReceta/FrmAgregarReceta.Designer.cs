@@ -44,7 +44,7 @@
             this.TXTdescripcion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TXTinstrucciones = new System.Windows.Forms.TextBox();
-            this.PCBimagen = new System.Windows.Forms.PictureBox();
+            this.pcbImagen = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnImagen = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             this.btnAgregarIngrediente = new System.Windows.Forms.Button();
             this.btnPais = new System.Windows.Forms.Button();
             this.btbAgregarCategorias = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.PCBimagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,13 +194,13 @@
             this.TXTinstrucciones.Size = new System.Drawing.Size(443, 140);
             this.TXTinstrucciones.TabIndex = 14;
             // 
-            // PCBimagen
+            // pcbImagen
             // 
-            this.PCBimagen.Location = new System.Drawing.Point(15, 335);
-            this.PCBimagen.Name = "PCBimagen";
-            this.PCBimagen.Size = new System.Drawing.Size(135, 91);
-            this.PCBimagen.TabIndex = 15;
-            this.PCBimagen.TabStop = false;
+            this.pcbImagen.Location = new System.Drawing.Point(15, 335);
+            this.pcbImagen.Name = "pcbImagen";
+            this.pcbImagen.Size = new System.Drawing.Size(135, 91);
+            this.pcbImagen.TabIndex = 15;
+            this.pcbImagen.TabStop = false;
             // 
             // openFileDialog1
             // 
@@ -301,7 +301,7 @@
             this.Controls.Add(this.CMDcargar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnImagen);
-            this.Controls.Add(this.PCBimagen);
+            this.Controls.Add(this.pcbImagen);
             this.Controls.Add(this.TXTinstrucciones);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TXTdescripcion);
@@ -320,7 +320,7 @@
             this.Name = "FrmAgregarReceta";
             this.Text = "FrmAgregarReceta";
             this.Load += new System.EventHandler(this.FrmAgregarReceta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PCBimagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -344,7 +344,7 @@
         private System.Windows.Forms.TextBox TXTdescripcion;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TXTinstrucciones;
-        private System.Windows.Forms.PictureBox PCBimagen;
+        private System.Windows.Forms.PictureBox pcbImagen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnImagen;
         private System.Windows.Forms.Button btnCancelar;
