@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace MicheBytesRecipes.Forms.Admin
     {
         private Usuario usuarioLog;
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
 
 
         public Metricas(Usuario usuarioActivado)
@@ -43,7 +45,7 @@ namespace MicheBytesRecipes.Forms.Admin
 
         private void Metricas_Load(object sender, EventArgs e)
         {
-            List<Categoria>categorias = gestorReceta.ObtenerListaCategorias();
+            List<Categoria>categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";

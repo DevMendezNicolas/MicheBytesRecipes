@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,26 +18,35 @@ namespace MicheBytesRecipes.Forms.AddReceta
         private Receta receta;
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
+        GestorIngredientes gestorIngredientes = new GestorIngredientes();
+
+
         public FrmModificarReceta(Receta receta)
         {
             InitializeComponent();
             this.receta = receta;
-            CargarDatosReceta();
+            
         }
+        private void FrmModificarReceta_Load(object sender, EventArgs e)
+        {
 
+        }
         private void CargarDatosReceta()
         {
             if (receta != null)
             {
                 txtNombre.Text = receta.Nombre;
                 txtDescripcion.Text = receta.Descripcion;
-                cboDificultad.SelectedItem = receta.NivelDificultad.ToString();
-                dtpTiempo.Value = DateTime.Today.Add(receta.TiempoPreparacion);
                 txtInstrucciones.Text = receta.Instrucciones;
+                dtpTiempo.Value = DateTime.Today.Add(receta.TiempoPreparacion);
+
+                cboPais.SelectedValue = receta.PaisId;
+                cboCategoria.SelectedValue = receta.CategoriaId;
+                cboDificultad.SelectedItem = receta.NivelDificultad;
 
                 if (receta.ImagenReceta != null && receta.ImagenReceta.Length > 0)
                 {
-                    using (var ms = new System.IO.MemoryStream(receta.ImagenReceta))
+                    using (var ms = new MemoryStream(receta.ImagenReceta))
                     {
                         pcbImagen.Image = Image.FromStream(ms);
                         pcbImagen.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -45,24 +55,50 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 else
                 {
                     pcbImagen.Image = null;
-                }
-                clbIngredientes.Items.Clear();
-                if (receta.Ingredientes != null && receta.Ingredientes.Count > 0)
+                }               
+            }
+            MarcarIngredientesSeleccionados(); // Marcar los ingredientes seleccionados en el CheckedListBox
+        }
+        private void MarcarIngredientesSeleccionados() //Para la documentacion este metodo fue creado con la ayuda de ChatGPT
+        {
+            if (receta.Ingredientes == null) return;
+
+            //Obtenemos los ID de los ingredientes de la receta
+            var ingredientesRecetaIds = new HashSet<int>(receta.Ingredientes.Select(i => i.IngredienteId)); // HashSet para busquedas rapidas
+
+            //Recorremos los items del CheckedListBox y marcamos los que estan en la receta
+            for (int i = 0; i < clbIngredientes.Items.Count; i++)
+            {
+                // Obtenemos el ingrediente del item actual
+                var ingrediente = (Ingrediente)clbIngredientes.Items[i];
+                // Si el ID del ingrediente esta en la lista de la receta, lo marcamos
+                if (ingredientesRecetaIds.Contains(ingrediente.IngredienteId))
                 {
-                    foreach (var ingrediente in receta.Ingredientes)
-                    {
-                        clbIngredientes.Items.Add(ingrediente.Nombre, true);
-
-                    }
-                }else 
-                    clbIngredientes.Items.Add("No hay ingredientes asignados", false);
-                cboCategoria.SelectedItem = gestorCatalogo.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
-                cboPais.SelectedItem = gestorCatalogo.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocido";
-
-
+                    clbIngredientes.SetItemChecked(i, true);
+                }
             }
         }
+        public void CargarControles()
+        {
+            //Cargar ComboBox Paises
+            cboPais.DataSource = gestorCatalogo.ObtenerListaCategorias();
+            cboPais.DisplayMember = "Nombre"; //Propiedad que se muestra en el ComboBox
+            cboPais.ValueMember = "PaisId"; //Propiedad que se usa como valor (Id)
 
+            //Cargar ComboBox Categorias
+            cboCategoria.DataSource = gestorCatalogo.ObtenerListaPaises();
+            cboCategoria.DisplayMember = "Nombre"; //Propiedad que se muestra en el ComboBox
+            cboCategoria.ValueMember = "CategoriaId"; //Propiedad que se usa como valor (Id)
+
+            // Cargar ComboBox de Dificultad
+            cboDificultad.DataSource = Enum.GetValues(typeof(Dificultad));
+
+            // Cargar CheckedListBox de Ingredientes
+            var todosLosIngredientes = gestorIngredientes.ObtenerIngredientes();
+            clbIngredientes.DataSource = todosLosIngredientes;
+            clbIngredientes.DisplayMember = "Nombre";
+            clbIngredientes.ValueMember = "IngredienteId";
+        }
 
 
 

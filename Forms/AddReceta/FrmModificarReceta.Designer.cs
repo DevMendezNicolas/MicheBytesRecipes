@@ -301,6 +301,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmModificarReceta";
             this.Text = "FrmModificarReceta";
+            this.Load += new System.EventHandler(this.FrmModificarReceta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

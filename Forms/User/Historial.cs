@@ -3,6 +3,7 @@ using iTextSharp.text.pdf;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace MicheBytesRecipes.Forms.User
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
 
 
         public Historial(Usuario usuarioActivado)
@@ -50,7 +52,7 @@ namespace MicheBytesRecipes.Forms.User
         {
 
             // --- Categorías ---
-            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
+            List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
@@ -58,7 +60,7 @@ namespace MicheBytesRecipes.Forms.User
             cboCategoria.SelectedIndex = 0;
 
             // --- Países ---
-            List<Pais> paises = gestorReceta.ObtenerListaPaises();
+            List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
             paises.Insert(0, new Pais { PaisId = 0, Nombre = "Todos" });
             cboPais.DataSource = paises;
             cboPais.DisplayMember = "Nombre";
@@ -95,8 +97,8 @@ namespace MicheBytesRecipes.Forms.User
                 dgvHistorial.Rows.Add(
                     preReceta.RecetaId,
                     preReceta.Nombre,
-                    gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
-                    gestorReceta.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
+                    gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
+                    gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
                     preReceta.Dificultad,
                     preReceta.TiempoPreparacion.ToString()
                 );
@@ -138,7 +140,7 @@ namespace MicheBytesRecipes.Forms.User
                 dgvHistorial.Rows.Clear();
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                    dgvHistorial.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
                 }
 
             }
