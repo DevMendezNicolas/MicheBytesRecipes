@@ -228,5 +228,15 @@ namespace MicheBytesRecipes
 
             
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Receta receta = gestorReceta.ObtenerRecetaPorId(Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value));
+            if (receta != null)
+            {
+                FrmModificarReceta frmModificarReceta = new FrmModificarReceta(receta, usuarioLog);
+                frmModificarReceta.ShowDialog();
+            }
+        }
     }
 }

@@ -1,10 +1,16 @@
-﻿using MicheBytesRecipes.Classes.Interacciones;
-using MicheBytesRecipes.Connections;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MicheBytesRecipes.Classes.Interacciones;
 using System.Data;
-
+using System.Drawing;
+using System.Windows.Forms;
+using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Connections;
+using MicheBytesRecipes.Helpers;
+using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using Mysqlx.Session;
+using Org.BouncyCastle.Utilities.Zlib;
 namespace MicheBytesRecipes.Managers
 {
     internal class GestorInteracciones
@@ -270,5 +276,29 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
+
+        public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
+        {
+            try
+            {
+                conexion.Abrir();
+                using (MySqlCommand comando = new MySqlCommand("Insertar_historial", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@p_receta_id", recetaId);
+                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la visita al historial: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        } // Usar cuando nehuen termine el formulario
+
     }
 }

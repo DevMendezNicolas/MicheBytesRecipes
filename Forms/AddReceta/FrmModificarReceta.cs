@@ -1,4 +1,5 @@
-﻿using MicheBytesRecipes.Managers;
+﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         GestorIngredientes gestorIngredientes = new GestorIngredientes();
 
 
-        public FrmModificarReceta(Receta receta)
+        public FrmModificarReceta(Receta receta, Usuario usuarioLog)
         {
             InitializeComponent();
             this.receta = receta;
@@ -29,7 +30,11 @@ namespace MicheBytesRecipes.Forms.AddReceta
         }
         private void FrmModificarReceta_Load(object sender, EventArgs e)
         {
-
+            CargarControles();
+            if (receta != null)
+            {
+                CargarDatosReceta();
+            }
         }
         private void CargarDatosReceta()
         {
@@ -81,12 +86,12 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public void CargarControles()
         {
             //Cargar ComboBox Paises
-            cboPais.DataSource = gestorCatalogo.ObtenerListaCategorias();
+            cboPais.DataSource = gestorCatalogo.ObtenerListaPaises();
             cboPais.DisplayMember = "Nombre"; //Propiedad que se muestra en el ComboBox
             cboPais.ValueMember = "PaisId"; //Propiedad que se usa como valor (Id)
 
             //Cargar ComboBox Categorias
-            cboCategoria.DataSource = gestorCatalogo.ObtenerListaPaises();
+            cboCategoria.DataSource = gestorCatalogo.ObtenerListaCategorias();
             cboCategoria.DisplayMember = "Nombre"; //Propiedad que se muestra en el ComboBox
             cboCategoria.ValueMember = "CategoriaId"; //Propiedad que se usa como valor (Id)
 

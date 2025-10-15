@@ -641,27 +641,5 @@ namespace MicheBytesRecipes
         }
 
         // Metodos auxiliares      
-        public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
-        {
-            try
-            {
-                conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("Insertar_historial", conexion.GetConexion()))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@p_receta_id", recetaId);
-                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
-                    comando.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar la visita al historial: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Usar cuando nehuen termine el formulario
     }
 }
