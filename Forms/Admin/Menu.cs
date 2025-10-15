@@ -186,7 +186,7 @@ namespace MicheBytesRecipes
                 if (dgvReceta.SelectedRows.Count > 0)
                 {
                     int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
-                    gestorReceta.DarDeBajaReceta(recetaId);
+                    gestorReceta.DarDeBajaReceta(recetaId, usuarioLog.UsuarioId);
                     this.ActualizarGrilla();
                 }
             }
@@ -195,7 +195,7 @@ namespace MicheBytesRecipes
                 if (dgvReceta.SelectedRows.Count > 0)
                 {
                     int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
-                    gestorReceta.DarDeAltaReceta(recetaId);
+                    gestorReceta.DarDeAltaReceta(recetaId, usuarioLog.UsuarioId);
                     this.ActualizarGrilla();
                 }
             }
@@ -203,9 +203,11 @@ namespace MicheBytesRecipes
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            GestionUsuarios gestionUsuarios = new GestionUsuarios(usuarioLog);
-            gestionUsuarios.Show();
             this.Hide();
+            GestionUsuarios gestionUsuarios = new GestionUsuarios(usuarioLog);
+            gestionUsuarios.ShowDialog();
+            this.Show();
+
         }
 
         private void btnMetricas_Click(object sender, EventArgs e)

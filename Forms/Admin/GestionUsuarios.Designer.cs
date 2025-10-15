@@ -39,18 +39,19 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboBuscar = new System.Windows.Forms.ComboBox();
+            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
+            this.txtBuscarEmail = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnPermisos = new System.Windows.Forms.Button();
             this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblUsuarios = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAlta = new System.Windows.Forms.Button();
+            this.btnAccion = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,9 +63,8 @@
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.dgvUsuarios);
-            this.panel3.Controls.Add(this.cboBuscar);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.txtBuscarUsuario);
+            this.panel3.Controls.Add(this.txtBuscarEmail);
             this.panel3.Controls.Add(this.lblTitulo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(233, 0);
@@ -75,7 +75,7 @@
             // 
             // btnReinicio
             // 
-            this.btnReinicio.Location = new System.Drawing.Point(772, 141);
+            this.btnReinicio.Location = new System.Drawing.Point(761, 95);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
             this.btnReinicio.TabIndex = 5;
@@ -85,7 +85,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(593, 141);
+            this.btnBuscar.Location = new System.Drawing.Point(583, 95);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
             this.btnBuscar.TabIndex = 5;
@@ -103,12 +103,13 @@
             this.Apellido,
             this.Telefono,
             this.fechaAlta,
-            this.fechaBaja});
-            this.dgvUsuarios.Location = new System.Drawing.Point(45, 210);
+            this.fechaBaja,
+            this.rol});
+            this.dgvUsuarios.Location = new System.Drawing.Point(45, 149);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(858, 382);
+            this.dgvUsuarios.Size = new System.Drawing.Size(858, 443);
             this.dgvUsuarios.TabIndex = 4;
             // 
             // UsuarioId
@@ -160,34 +161,32 @@
             this.fechaBaja.Name = "fechaBaja";
             this.fechaBaja.ReadOnly = true;
             // 
-            // cboBuscar
+            // rol
             // 
-            this.cboBuscar.FormattingEnabled = true;
-            this.cboBuscar.Location = new System.Drawing.Point(45, 95);
-            this.cboBuscar.Name = "cboBuscar";
-            this.cboBuscar.Size = new System.Drawing.Size(179, 29);
-            this.cboBuscar.TabIndex = 3;
-            this.cboBuscar.SelectedIndexChanged += new System.EventHandler(this.cboBuscar_SelectedIndexChanged);
+            this.rol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.rol.HeaderText = "Rol";
+            this.rol.Name = "rol";
+            this.rol.ReadOnly = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 65);
+            this.label1.Location = new System.Drawing.Point(41, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Filtrar por:";
             // 
-            // txtBuscarUsuario
+            // txtBuscarEmail
             // 
-            this.txtBuscarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscarUsuario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarUsuario.Location = new System.Drawing.Point(45, 143);
-            this.txtBuscarUsuario.Name = "txtBuscarUsuario";
-            this.txtBuscarUsuario.Size = new System.Drawing.Size(518, 29);
-            this.txtBuscarUsuario.TabIndex = 1;
+            this.txtBuscarEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscarEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarEmail.Location = new System.Drawing.Point(45, 95);
+            this.txtBuscarEmail.Name = "txtBuscarEmail";
+            this.txtBuscarEmail.Size = new System.Drawing.Size(518, 29);
+            this.txtBuscarEmail.TabIndex = 1;
             // 
             // lblTitulo
             // 
@@ -202,19 +201,41 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.btnPermisos);
             this.panel1.Controls.Add(this.pbImagenAdmin);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblUsuarios);
             this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.btnAct);
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.btnAlta);
+            this.panel1.Controls.Add(this.btnAccion);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 475);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 21);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Asignar permisos";
+            // 
+            // btnPermisos
+            // 
+            this.btnPermisos.Location = new System.Drawing.Point(18, 500);
+            this.btnPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPermisos.Name = "btnPermisos";
+            this.btnPermisos.Size = new System.Drawing.Size(198, 42);
+            this.btnPermisos.TabIndex = 14;
+            this.btnPermisos.Text = "&Modificar Rol";
+            this.btnPermisos.UseVisualStyleBackColor = true;
+            this.btnPermisos.Click += new System.EventHandler(this.btnPermisos_Click);
             // 
             // pbImagenAdmin
             // 
@@ -258,36 +279,25 @@
             // 
             // btnAct
             // 
-            this.btnAct.Location = new System.Drawing.Point(13, 344);
+            this.btnAct.Location = new System.Drawing.Point(13, 294);
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
             this.btnAct.TabIndex = 5;
-            this.btnAct.Text = "Activas - Inactivas";
+            this.btnAct.Text = "Activos - Inactivos";
             this.btnAct.UseVisualStyleBackColor = true;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
             // 
-            // btnEliminar
+            // btnAccion
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(13, 294);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(198, 42);
-            this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "&Baja";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnAlta
-            // 
-            this.btnAlta.Location = new System.Drawing.Point(13, 244);
-            this.btnAlta.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAlta.Name = "btnAlta";
-            this.btnAlta.Size = new System.Drawing.Size(198, 42);
-            this.btnAlta.TabIndex = 3;
-            this.btnAlta.Text = "&Alta";
-            this.btnAlta.UseVisualStyleBackColor = true;
-            this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
+            this.btnAccion.Location = new System.Drawing.Point(13, 244);
+            this.btnAccion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAccion.Name = "btnAccion";
+            this.btnAccion.Size = new System.Drawing.Size(198, 42);
+            this.btnAccion.TabIndex = 3;
+            this.btnAccion.Text = "&Dar de baja";
+            this.btnAccion.UseVisualStyleBackColor = true;
+            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
             // GestionUsuarios
             // 
@@ -300,6 +310,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GestionUsuarios";
             this.Text = "GestionUsuarios";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionUsuarios_FormClosed);
             this.Load += new System.EventHandler(this.GestionUsuarios_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -317,7 +328,7 @@
         private System.Windows.Forms.Button btnReinicio;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvUsuarios;
-        private System.Windows.Forms.TextBox txtBuscarUsuario;
+        private System.Windows.Forms.TextBox txtBuscarEmail;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbImagenAdmin;
@@ -325,9 +336,7 @@
         private System.Windows.Forms.Label lblUsuarios;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnAct;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnAlta;
-        private System.Windows.Forms.ComboBox cboBuscar;
+        private System.Windows.Forms.Button btnAccion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
@@ -336,5 +345,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaAlta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaBaja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rol;
+        private System.Windows.Forms.Button btnPermisos;
+        private System.Windows.Forms.Label label2;
     }
 }

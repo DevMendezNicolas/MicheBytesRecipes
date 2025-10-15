@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Classes.Users;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
@@ -18,6 +19,7 @@ namespace MicheBytesRecipes.Forms.Admin
         private Usuario usuarioLog;
         GestorUsuarios gestorUsuario = new GestorUsuarios();
         private bool usuariosActivos = true;
+        List<PreUsuario> usuarios = new List<PreUsuario>();
 
         public GestionUsuarios(Usuario usuarioActivado)
         {
@@ -44,105 +46,138 @@ namespace MicheBytesRecipes.Forms.Admin
 
         private void GestionUsuarios_Load(object sender, EventArgs e)
         {
-            cboBuscar.Items.Add("Email");
-            cboBuscar.Items.Add("Nombre");
-            cboBuscar.Items.Add("Apellido");
-            cboBuscar.SelectedIndex = 0;
             this.ActualizarGrilla();
-
         }
         public void ActualizarGrilla()
         {
             dgvUsuarios.Rows.Clear();
-            List<Usuario> usuarios = usuariosActivos ? gestorUsuario.ListarUsuarios() : gestorUsuario.ListarUsuariosInactivos();
-            foreach (var usuario in usuarios)
+            usuarios = usuariosActivos ? gestorUsuario.ListarUsuarios() : gestorUsuario.ListarUsuariosInactivos();
+            foreach (var preUsuario in usuarios)
             {
-                dgvUsuarios.Rows.Add(usuario.UsuarioId, usuario.Email, usuario.Nombre, usuario.Apellido, usuario.Telefono, usuario.FechaRegistro, usuario.FechaBaja);
+                dgvUsuarios.Rows.Add(preUsuario.UsuarioId, preUsuario.Email, preUsuario.Nombre, preUsuario.Apellido, preUsuario.Telefono, preUsuario.FechaAlta(), preUsuario.MostrarEstado(), preUsuario.Rol);
             }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-            //Abrir el menú admin
-            frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioLog);
-            menuAdmin.Show();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if(usuariosActivos)
-            {
-                if(dgvUsuarios.SelectedRows.Count > 0)
-                {
-                    int usuarioId = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value);
-                    gestorUsuario.EliminarUsuario(usuarioId);
-                    this.ActualizarGrilla();
-                }
-
-            }
-
-        }
-
-        private void btnAlta_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnAct_Click(object sender, EventArgs e)
         {
             usuariosActivos = !usuariosActivos;
             btnAct.Text = usuariosActivos ? "Ver Inactivos" : "Ver Activos";
+            btnAccion.Text = usuariosActivos ? "Dar de Baja" : "Dar de Alta";
             this.ActualizarGrilla();
 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string email = txtBuscarUsuario.Text.Trim();
+            string email = txtBuscarEmail.Text.Trim();
             dgvUsuarios.Rows.Clear();
-
-            //Ver cambiar a una lista para ampliar busqueda
-
-            Usuario usuario = gestorUsuario.BuscarPorEmail(email);
-
-            if (usuario != null)
+            usuarios = usuariosActivos ? gestorUsuario.ListarUsuarios() : gestorUsuario.ListarUsuariosInactivos();
+            List<PreUsuario> usuariosFiltrados = usuarios.Where(u => u.Email.IndexOf(email, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            foreach (var preUsuario in usuariosFiltrados)
             {
-                dgvUsuarios.Rows.Add(usuario.UsuarioId, usuario.Email, usuario.Nombre, usuario.Apellido, usuario.Telefono, usuario.FechaRegistro, usuario.FechaBaja);
-            }
-            else
-            {
-                MessageBox.Show("No se encontraron usuarios con ese email.", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ActualizarGrilla();
+                dgvUsuarios.Rows.Add(preUsuario.UsuarioId, preUsuario.Email, preUsuario.Nombre, preUsuario.Apellido, preUsuario.Telefono, preUsuario.FechaAlta(), preUsuario.MostrarEstado(), preUsuario.Rol);
             }
         }
 
         private void btnReinicio_Click(object sender, EventArgs e)
         {
-            txtBuscarUsuario.Clear();
-            cboBuscar.SelectedIndex = 0;
+            txtBuscarEmail.Clear();
+            usuariosActivos = true;
+            btnAct.Text = usuariosActivos ? "Ver Inactivos" : "Ver Activos";
+            btnAccion.Text = usuariosActivos ? "Dar de Baja" : "Dar de Alta";
             this.ActualizarGrilla();
-
         }
 
-        private void cboBuscar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cboBuscar.SelectedItem.ToString())
-            {
-                case "Email":
-                    CueProvider.SetCue(txtBuscarUsuario, "Ingrese el email del usuario");
-                    break;
-                case "Nombre":
-                    CueProvider.SetCue(txtBuscarUsuario, "Ingrese el nombre del usuario");
-                    break;
-                case "Apellido":
-                    CueProvider.SetCue(txtBuscarUsuario, "Ingrese el apellido del usuario");
-                    break;
-                default:
-                    CueProvider.SetCue(txtBuscarUsuario, "Ingrese el email a buscar");
-                    break;
-            }
 
+        private void btnAccion_Click(object sender, EventArgs e)
+        {
+            if (usuariosActivos)
+            {
+                if (usuarioLog.UsuarioId == Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value))
+                {
+                    MessageBox.Show("No puede darse de baja a sí mismo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Un message box para confirmar la acción
+                if (MessageBox.Show("¿Está seguro de que desea dar de baja al usuario seleccionado?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (dgvUsuarios.SelectedRows.Count > 0)
+                    {
+                        int usuarioId = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value);
+                        gestorUsuario.DarDeBajaUsuario(usuarioLog.UsuarioId, usuarioId);
+                        this.ActualizarGrilla();
+                    }
+                }
+
+            }
+            else
+            {
+                if (usuarioLog.UsuarioId == Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value))
+                {
+                    MessageBox.Show("No puede darse de alta a sí mismo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("¿Está seguro de que desea dar de alta al usuario seleccionado?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (dgvUsuarios.SelectedRows.Count > 0)
+                    {
+                        int usuarioId = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value);
+                        gestorUsuario.DarDeAltaUsuario(usuarioLog.UsuarioId, usuarioId);
+                        this.ActualizarGrilla();
+                    }
+                }
+            }
+        }
+
+        private void btnPermisos_Click(object sender, EventArgs e)
+        {
+            if (usuariosActivos)
+            {
+                string rol = dgvUsuarios.SelectedRows[0].Cells["Rol"].Value.ToString();
+                if (usuarioLog.UsuarioId == Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value))
+                {
+                    MessageBox.Show("No puede cambiar sus propios permisos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (rol == "Administrador")
+                {
+                    if (MessageBox.Show("¿Está seguro de que desea cambiar el rol del usuario seleccionado a USUARIO?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (dgvUsuarios.SelectedRows.Count > 0)
+                        {
+                            int usuarioId = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value);
+                            gestorUsuario.RevocarRolAdministrador(usuarioId, usuarioLog.UsuarioId);
+                            this.ActualizarGrilla();
+                        }
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("¿Está seguro de que desea cambiar el rol del usuario seleccionado a ADMINISTRADOR?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (dgvUsuarios.SelectedRows.Count > 0)
+                        {
+                            int usuarioId = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value);
+                            gestorUsuario.OtorgarRolAdministrador(usuarioId, usuarioLog.UsuarioId);
+                            this.ActualizarGrilla();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se pueden cambiar los permisos de un usuario inactivo. Primero debe darlo de alta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GestionUsuarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

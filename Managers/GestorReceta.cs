@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
@@ -504,15 +507,18 @@ namespace MicheBytesRecipes
         }
 
         //Metodos de mantenimiento
-        public bool DarDeBajaReceta(int recetaId)
+        public bool DarDeBajaReceta(int recetaId, int usuarioId)
         {
             try
             {
+                // uso la consulta del store procedure
                 conexion.Abrir();
-                string consultaBaja = "CALL Dar_de_baja_receta(@RecetaId)";
+                string consultaBaja = "Dar_de_baja_receta";
                 using (MySqlCommand comando = new MySqlCommand(consultaBaja, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@RecetaId", recetaId);
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("p_receta_id", recetaId);
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioId);
 
                     int filasAfectadas = comando.ExecuteNonQuery();
 
@@ -529,15 +535,17 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
         }
-        public bool DarDeAltaReceta(int recetaId)
+        public bool DarDeAltaReceta(int recetaId, int usuarioId)
         {
             try
             {
                 conexion.Abrir();
-                string consultaAlta = "CALL Reactivar_receta(@RecetaId)";
+                string consultaAlta = "Reactivar_receta";
                 using (MySqlCommand comando = new MySqlCommand(consultaAlta, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@RecetaId", recetaId);
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("p_receta_id", recetaId);
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioId);
                     int filasAfectadas = comando.ExecuteNonQuery();
                     return filasAfectadas > 0;
                 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Users;
 using MicheBytesRecipes.Connections;
 
 
@@ -15,11 +16,12 @@ namespace MicheBytesRecipes.Interfaces
 
         void AgregarUsuario(Usuario usuario);
         bool ValidarCredenciales(string email, string contraseña);
-        void EliminarUsuario(int id);
+        void DarDeBajaUsuario(int AdminId, int usuarioBajaId);
+        void DarDeAltaUsuario(int AdminId, int usuarioAltaId);
         Usuario BuscarUsuario(int id);
         Usuario BuscarPorEmail(string email);
-        List<Usuario> ListarUsuarios();
-        //void ListarUsuariosInactivos();
+        List<PreUsuario> ListarUsuarios();
+        List<PreUsuario> ListarUsuariosInactivos();
         int CantidadTotalUsuarios();
         int CantidadTotalUsuariosInactivos();
     }

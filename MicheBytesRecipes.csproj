@@ -123,6 +123,7 @@
     <Compile Include="Classes\Recetas\Receta.cs" />
     <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
     <Compile Include="Classes\Recetas\UnidadMedida.cs" />
+    <Compile Include="Classes\Users\PreUsuario.cs" />
     <Compile Include="Classes\Users\Usuario.cs" />
     <Compile Include="Connections\ConexionBD.cs" />
     <Compile Include="Forms\AddReceta\FrmAgregarCategoria.cs">

@@ -88,11 +88,16 @@ namespace MicheBytesRecipes
 
         private void txtContra_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Metodo para que solo pueda escribir letras y numeros en el txtContra y simbolos comunes
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsPunctuation(e.KeyChar))
+            // Metodo para que solo pueda escribir letras y numeros en el txtContra y simbolos comunes y si presiona enter, haga click en btnIngresar
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && !char.IsSymbol(e.KeyChar))
             {
                 e.Handled = true;
             }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnIngresar.PerformClick();
+            }
+
         }
 
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
