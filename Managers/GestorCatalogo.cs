@@ -96,7 +96,7 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.AddWithValue("@p_nombre_pais", pais.Nombre);
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
-                        Console.Error.WriteLine("País agregado exitosamente.");
+                        Console.WriteLine("País agregado exitosamente.");
                     else
                     {
                         Console.Error.WriteLine("No se pudo agregar el país.");
@@ -129,7 +129,7 @@ namespace MicheBytesRecipes.Managers
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
                     {
-                        Console.Error.WriteLine("Categoria agregada exitosamente.");
+                        Console.WriteLine("Categoria agregada exitosamente.");
                     }
                     else
                     {

@@ -48,7 +48,7 @@ namespace MicheBytesRecipes.Managers
             }
             return ingredientes;
         }
-        public void AgregarIngrediente(Ingrediente ingrediente)
+        public bool AgregarIngrediente(Ingrediente ingrediente)
         {
             try
             {
@@ -65,9 +65,13 @@ namespace MicheBytesRecipes.Managers
 
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
-                        MessageBox.Show("Ingrediente agregado exitosamente.");
+                        Console.WriteLine("Ingrediente agregado exitosamente.");
                     else
-                        MessageBox.Show("No se pudo agregar el ingrediente.");
+                    {
+                        Console.Error.WriteLine("No se pudo agregar el ingrediente.");
+                        return false;
+                    }
+                        
                 }
             }
             catch (Exception ex)
@@ -78,6 +82,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
+            return true;
         }
 
     }

@@ -25,7 +25,7 @@ namespace MicheBytesRecipes
         }      
         
 
-        public void ModificarReceta(Receta receta) // Cin lo esta terminado
+        public bool ModificarReceta(Receta receta) // Cin lo esta terminado
         {
             try
             {
@@ -46,9 +46,13 @@ namespace MicheBytesRecipes
 
                     int filasAfectadas = comando.ExecuteNonQuery();
                     if (filasAfectadas > 0)
-                        MessageBox.Show("Receta modificada exitosamente.");
+                        Console.WriteLine("Receta modificada exitosamente.");
                     else
-                        MessageBox.Show("No se pudo modificar la receta.");
+                    {
+                        Console.Error.WriteLine("No se encontró la receta para modificar.");
+                        return false;
+                    }
+
                 }
 
 
@@ -61,6 +65,7 @@ namespace MicheBytesRecipes
             {
                 conexion.Cerrar();
             }
+            return true;
         }
         public int AgregarReceta(Receta receta, List<int> ingredientesIds)
         {
