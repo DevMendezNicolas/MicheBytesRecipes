@@ -63,12 +63,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(249, 9);
+            this.label1.Location = new System.Drawing.Point(286, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(263, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Agregar recetas nuevas";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -168,14 +167,13 @@
             this.label7.Size = new System.Drawing.Size(82, 16);
             this.label7.TabIndex = 11;
             this.label7.Text = "Descripcion:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // TXTdescripcion
             // 
             this.TXTdescripcion.Location = new System.Drawing.Point(366, 78);
             this.TXTdescripcion.Multiline = true;
             this.TXTdescripcion.Name = "TXTdescripcion";
-            this.TXTdescripcion.Size = new System.Drawing.Size(335, 106);
+            this.TXTdescripcion.Size = new System.Drawing.Size(443, 106);
             this.TXTdescripcion.TabIndex = 12;
             // 
             // label8
@@ -193,7 +191,7 @@
             this.TXTinstrucciones.Location = new System.Drawing.Point(366, 211);
             this.TXTinstrucciones.Multiline = true;
             this.TXTinstrucciones.Name = "TXTinstrucciones";
-            this.TXTinstrucciones.Size = new System.Drawing.Size(335, 140);
+            this.TXTinstrucciones.Size = new System.Drawing.Size(443, 140);
             this.TXTinstrucciones.TabIndex = 14;
             // 
             // PCBimagen
@@ -257,7 +255,7 @@
             this.clbIngredientes.FormattingEnabled = true;
             this.clbIngredientes.Location = new System.Drawing.Point(370, 380);
             this.clbIngredientes.Name = "clbIngredientes";
-            this.clbIngredientes.Size = new System.Drawing.Size(330, 109);
+            this.clbIngredientes.Size = new System.Drawing.Size(439, 109);
             this.clbIngredientes.TabIndex = 20;
             // 
             // btnAgregarIngrediente
@@ -294,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 565);
+            this.ClientSize = new System.Drawing.Size(841, 565);
             this.Controls.Add(this.btbAgregarCategorias);
             this.Controls.Add(this.btnPais);
             this.Controls.Add(this.btnAgregarIngrediente);

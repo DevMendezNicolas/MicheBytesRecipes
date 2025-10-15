@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,23 +17,38 @@ namespace MicheBytesRecipes.Forms.AddReceta
     public partial class FrmAgregarReceta : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo  gestorCatalogo = new GestorCatalogo();
+        GestorIngredientes gestorIngredientes = new GestorIngredientes();
         public FrmAgregarReceta(Usuario usuario)
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+  
+        private void FrmAgregarReceta_Load(object sender, EventArgs e)
         {
+            List<Ingrediente> ingredientes = gestorIngredientes.ObtenerIngredientes();
+            clbIngredientes.DataSource = ingredientes;
+            clbIngredientes.DisplayMember = "Nombre";
+            clbIngredientes.ValueMember = "IngredienteId";
+            List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
+            CBOpais.DataSource = paises;
+            CBOpais.DisplayMember = "Nombre";
+            CBOpais.ValueMember = "PaisId";
+            List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
+            CBOcategoria.DataSource = categorias;
+            CBOcategoria.DisplayMember = "Nombre";
+            CBOcategoria.SelectedIndex = 2;
+            CBOcategoria.ValueMember = "CategoriaId";
+            CBOdificultad.DataSource = Enum.GetValues(typeof(Dificultad));
+
+            DTPtiempo.Format = DateTimePickerFormat.Custom;
+            DTPtiempo.CustomFormat = "HH:mm";
+            DTPtiempo.ShowUpDown = true;
+            DTPtiempo.Value = DateTime.Today.AddHours(1);
 
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
+        //Botones 
         private void CMDcargar_Click(object sender, EventArgs e)
         {
             //Crear una nueva receta
@@ -76,32 +92,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 this.DialogResult = DialogResult.OK;
             }
         }
-
-        private void FrmAgregarReceta_Load(object sender, EventArgs e)
-        {
-            List<Ingrediente> ingredientes = gestorReceta.ObtenerIngredientes();
-            clbIngredientes.DataSource = ingredientes;
-            clbIngredientes.DisplayMember = "Nombre";
-            clbIngredientes.ValueMember = "IngredienteId";
-            List<Pais> paises = gestorReceta.ObtenerListaPaises();
-            CBOpais.DataSource = paises;
-            CBOpais.DisplayMember = "Nombre";
-            CBOpais.ValueMember = "PaisId";
-            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
-            CBOcategoria.DataSource = categorias;
-            CBOcategoria.DisplayMember = "Nombre";
-            CBOcategoria.SelectedIndex = 2;
-            CBOcategoria.ValueMember = "CategoriaId";
-            CBOdificultad.DataSource = Enum.GetValues(typeof(Dificultad));
-
-            DTPtiempo.Format = DateTimePickerFormat.Custom;
-            DTPtiempo.CustomFormat = "HH:mm";
-            DTPtiempo.ShowUpDown = true;
-            DTPtiempo.Value = DateTime.Today.AddHours(1);
-
-        }
-
-
         private void btnPais_Click(object sender, EventArgs e)
         {
             //Llamar al formulario de agregar pais
@@ -109,14 +99,13 @@ namespace MicheBytesRecipes.Forms.AddReceta
             
             if(frmAgregarPais.ShowDialog() == DialogResult.OK)
             {
-                List<Pais> paises = gestorReceta.ObtenerListaPaises();
+                List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
                 CBOpais.DataSource = null; //Limpia el origen de datos
                 CBOpais.DataSource = paises; //Vuelve a asignar la lista actualizada
                 CBOpais.DisplayMember = "Nombre";
                 //MessageBox.Show("Pais agregado a la lista.");
             }
         }
-
         private void btnAgregarIngrediente_Click(object sender, EventArgs e)
         {
             //llamAR AL FORMULARIO DE AGREGAR INGREDIENTE
@@ -124,33 +113,28 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
             if (frmAgregarIngrediente.ShowDialog() == DialogResult.OK)
             {
-                List<Ingrediente> ingredientes = gestorReceta.ObtenerIngredientes();
+                List<Ingrediente> ingredientes = gestorIngredientes.ObtenerIngredientes();
                 clbIngredientes.DataSource = null; //Limpia el origen de datos
                 clbIngredientes.DataSource = ingredientes; //Vuelve a asignar la lista actualizada
                 clbIngredientes.DisplayMember = "Nombre"; 
                 //MessageBox.Show("Ingrediente agregado a la receta.");
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
-
         private void btbAgregarCategorias_Click(object sender, EventArgs e)
         {
             FrmAgregarCategoria frmAgregarCategoria = new FrmAgregarCategoria();
             if(frmAgregarCategoria.ShowDialog() == DialogResult.OK)
             {
-                List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
+                List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
                 CBOcategoria.DataSource = null;
                 CBOcategoria.DataSource = categorias;
                 CBOcategoria.DisplayMember = "Nombre";
             }
         }
-
         private void btnImagen_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

@@ -12,12 +12,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MicheBytesRecipes.Utilities;
+using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
     public partial class FrmAgregarIngrediente : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
+        GestorIngredientes gestorIngredientes = new GestorIngredientes();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
 
         public FrmAgregarIngrediente()
         {
@@ -45,7 +48,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
                     Tipo = (TipoIngrediente)cboTipo.SelectedItem
                 };
 
-                gestorReceta.AgregarIngrediente(nuevoIngrediente);
+                gestorIngredientes.AgregarIngrediente(nuevoIngrediente);
 
                 this.DialogResult = DialogResult.OK; //Cerrar el formulario con resultado OK
                 this.Close();
@@ -58,8 +61,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
             
 
             //Cargar las unidades de medida y tipos de ingredientes en los ComboBox
-            var listaUnidades = gestorReceta.ObtenerListaUnidades();
-            var listaTipos = gestorReceta.ObtenerListaTipos();
+            var listaUnidades = gestorCatalogo.ObtenerListaUnidades();
+            var listaTipos = gestorCatalogo.ObtenerListaTipos();
 
             MessageBox.Show($"Unidades: {listaUnidades?.Count ?? 0}, Tipos: {listaTipos?.Count ?? 0}");
 

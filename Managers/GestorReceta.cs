@@ -22,39 +22,9 @@ namespace MicheBytesRecipes
         public GestorReceta()
         {
             recetas = new List<Receta>();
-        }
-        //Metodo para obtener ingredientes
-        public List<Ingrediente> ObtenerIngredientes()
-        {
-            List<Ingrediente> ingredientes = new List<Ingrediente>();
-            try
-            {
-                conexion.Abrir();
-                string consultaListar = "SELECT * FROM Vista_de_todos_los_ingredientes";
-                using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
-                using (MySqlDataReader lector = comando.ExecuteReader())
-                {
-                    while (lector.Read())
-                    {
-                        ingredientes.Add(new Ingrediente
-                        {
-                            IngredienteId = lector.GetInt32("ingrediente_id"),
-                            Nombre = lector.GetString("nombre")
-                        });
-                    }
-                }
+        }      
+        
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener los ingredientes: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return ingredientes;
-        }
         public void ModificarReceta(Receta receta) // Cin lo esta terminado
         {
             try
@@ -156,238 +126,62 @@ namespace MicheBytesRecipes
 
             return recetaId;
         }
-        public void AgregarIngrediente(Ingrediente ingrediente)
+        public Receta ObtenerRecetaPorId(int recetaId)
         {
+            Receta receta = null;
             try
             {
                 conexion.Abrir();
-
-                using (MySqlCommand comando = new MySqlCommand("Insertar_ingrediente", conexion.GetConexion()))
-                //Usar procedimiento almacenado
-                {
-                    comando.CommandType = CommandType.StoredProcedure;// IMPORTANTE: Esto indica que es un procedimiento almacenado
-
-                    comando.Parameters.AddWithValue("@p_nombre", ingrediente.Nombre);
-                    comando.Parameters.AddWithValue("@p_unidad_de_medida_id", ingrediente.Unidad.UnidadMedidaId);
-                    comando.Parameters.AddWithValue("@p_tipo_ingrediente_id", ingrediente.Tipo.TipoIngredienteId);
-
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Ingrediente agregado exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo agregar el ingrediente.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar el ingrediente: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public void AgregarPais(Pais pais)
-        {
-            try
-            {
-                conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("insertar_paises", conexion.GetConexion()))
+                using (MySqlCommand comando = new MySqlCommand("Devolver_receta", conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
 
-                    comando.Parameters.AddWithValue("@p_nombre_pais", pais.Nombre);
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("País agregado exitosamente.");
-                    else
-                        MessageBox.Show("No se pudo agregar el país.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar el país: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-        public void AgregarCategoria(Categoria categoria)
-        {
-            try
-            {
-                conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("Insertar_categoria", conexion.GetConexion()))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
+                    // IN
+                    comando.Parameters.AddWithValue("p_receta_id", recetaId);
 
-                    comando.Parameters.AddWithValue("p_nombre", categoria.Nombre);
-                    comando.Parameters.AddWithValue("p_descripcion", categoria.Descripcion);
+                    // OUT
+                    comando.Parameters.Add(new MySqlParameter("p_nombre", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_descripcion", MySqlDbType.Text) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_instrucciones", MySqlDbType.Text) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_imagen_receta", MySqlDbType.LongBlob) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_tiempo_preparacion", MySqlDbType.Time) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_dificultad", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_pais_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_categoria_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
+                    comando.Parameters.Add(new MySqlParameter("p_usuario_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
 
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                    {
-                        MessageBox.Show("Categoria agregada exitosamente.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo agregar la categoria.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar categoria: " + ex.Message);
-            }
-            finally { conexion.Cerrar(); }
-        }
-        //Metodos obtener
-        public List<UnidadMedida> ObtenerListaUnidades()
-        {
-            List<UnidadMedida> unidades = new List<UnidadMedida>();
-            try
-            {
-                conexion.Abrir();
-                // Consulta SQL para obtener todas las unidades de medida
-                string consultaUnidades = "SELECT * FROM vista_de_todas_las_unidades_de_medida";
-                // Ejecutar el comando SQL
-                using (MySqlCommand cmd = new MySqlCommand(consultaUnidades, conexion.GetConexion()))
-                {
+                    comando.ExecuteNonQuery();
 
-                    using (MySqlDataReader lector = cmd.ExecuteReader())
+                    receta = new Receta
                     {
-                        while (lector.Read())
-                        // Leer cada fila y crear un objeto UnidadMedida
-                        {
-                            unidades.Add(new UnidadMedida
-                            // Crear y agregar cada unidad de medida a la lista
-                            {
-                                UnidadMedidaId = lector.GetInt32("ID"),//Asegurarse de que el nombre de la columna coincida con el de la base de datos
-                                Nombre = lector.GetString("Nombre")
-                            });
-                        }
-                    }
+                        RecetaId = recetaId,
+                        Nombre = comando.Parameters["p_nombre"].Value?.ToString(),
+                        Descripcion = comando.Parameters["p_descripcion"].Value?.ToString(),
+                        Instrucciones = comando.Parameters["p_instrucciones"].Value?.ToString(),
+                        ImagenReceta = comando.Parameters["p_imagen_receta"].Value == DBNull.Value ? null : (byte[])comando.Parameters["p_imagen_receta"].Value,
+                        TiempoPreparacion = comando.Parameters["p_tiempo_preparacion"].Value == DBNull.Value ? TimeSpan.Zero : (TimeSpan)comando.Parameters["p_tiempo_preparacion"].Value,
+                        NivelDificultad = Enum.TryParse(comando.Parameters["p_dificultad"].Value?.ToString(), true, out Dificultad d) ? d : Dificultad.Fácil,
+                        PaisId = Convert.ToInt32(comando.Parameters["p_pais_id"].Value),
+                        CategoriaId = Convert.ToInt32(comando.Parameters["p_categoria_id"].Value),
+                        UsuarioId = Convert.ToInt32(comando.Parameters["p_usuario_id"].Value)
+                    };
                 }
+
+
+                receta.Ingredientes = ObtenerIngredientesPorRecetaId(recetaId);
+
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
+                MessageBox.Show($"Error al obtener la receta: {ex.Message}");
             }
             finally
             {
                 conexion.Cerrar();
             }
-            return unidades;
+            return receta;
         }
-        public List<TipoIngrediente> ObtenerListaTipos()
-        {
-            // Crear una lista para almacenar los tipos de ingredientes
-            List<TipoIngrediente> tipos = new List<TipoIngrediente>();
-            try
-            {
-                conexion.Abrir();
-                // Consulta SQL para obtener todos los tipos de ingredientes
-                string consultaTipos = "SELECT * FROM Vista_de_todos_los_tipos_de_ingredientes";
-                // Ejecutar el comando SQL
-                using (MySqlCommand comando = new MySqlCommand(consultaTipos, conexion.GetConexion()))
-                {
-                    // Leer los resultados
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while (lector.Read())
-                        {
-                            // Leer cada fila y crear un objeto TipoIngrediente
-                            TipoIngrediente tipo = new TipoIngrediente
-                            // Crear y agregar cada tipo de ingrediente a la lista
-                            {
-                                TipoIngredienteId = lector.GetInt32("ID"), //Asegurarse de que el nombre de la columna sea correcto
-                                Nombre = lector.GetString("Nombre")
-                            };
-                            tipos.Add(tipo);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return tipos;
-        }
-        public List<Pais> ObtenerListaPaises()
-        {
-            List<Pais> paises = new List<Pais>();
-            try
-            {
-                conexion.Abrir();
-                string consultaPaises = ("SELECT * FROM Vista_de_todos_los_paises");
-                using (MySqlCommand comando = new MySqlCommand(consultaPaises, conexion.GetConexion()))
-                {
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        while ((lector.Read()))
-                        {
-                            Pais pais = new Pais
-                            {
-                                PaisId = lector.GetInt32("pais_id"),
-                                Nombre = lector.GetString("Nombre")
-                            };
-                            paises.Add(pais);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error: " + ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return paises;
-        }
-        public List<Categoria> ObtenerListaCategorias()
-        {
-            List<Categoria> categorias = new List<Categoria>();
-            try
-            {
-                conexion.Abrir();
-                string consultaCategorias = "SELECT * FROM Vista_de_las_categorias";
-                using (MySqlCommand comando = new MySqlCommand(consultaCategorias, conexion.GetConexion()))
-                using (MySqlDataReader lector = comando.ExecuteReader())
-                {
-                    while (lector.Read())
-                    {
-                        Categoria categoria = new Categoria
-                        {
-                            CategoriaId = lector.GetInt32("categoria_id"), // <- nombre real en la vista
-                            Nombre = lector.GetString("nombre")            // <- nombre real en la vista
-                        };
-                        categorias.Add(categoria);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error: " + ex.Message);
-                return new List<Categoria>(); // mejor devolver lista vacía en vez de null
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return categorias;
-        }
-        //Metodos de estadisticas o utilidades
+
         public int ContarRecetas()
         {
             int contador = 0;
@@ -553,7 +347,7 @@ namespace MicheBytesRecipes
 
         }
 
-        // Obtener la previsualización de las recetas
+        // Metodos de consulta y busqueda
         public List<PreReceta> ObtenerPreRecetas()
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -591,7 +385,6 @@ namespace MicheBytesRecipes
             }
             return recetas;
         }
-        // Obtener la previsualizacion de las recetas inactivas
         public List<PreReceta> ObtenerPreRecetasInactivas()
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -629,7 +422,6 @@ namespace MicheBytesRecipes
             }
             return recetas;
         }
-        // obtener previsualizacion de recetas por nombre, categoria, pais, dificultad
         public List<PreReceta> ObtenerPreRecetasFiltradas(string nombre, int paisId, int categoriaId, Dificultad? dificultad)
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -710,73 +502,6 @@ namespace MicheBytesRecipes
 
             return recetas;
         }
-        // Obtener pais
-        public Pais ObtenerPaisPorId(int paisId)
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaPais = "SELECT * FROM Vista_de_todos_los_paises WHERE pais_id = @PaisId";
-                using (MySqlCommand comando = new MySqlCommand(consultaPais, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@PaisId", paisId);
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        if (lector.Read())
-                        {
-                            return new Pais
-                            {
-                                PaisId = lector.GetInt32("pais_id"),
-                                Nombre = lector.GetString("nombre")
-                            };
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null; // Retorna null si no se encuentra el país
-        }
-        // Obtener categoria por Id
-        public Categoria ObtenerCategoriaPorId(int categoriaId)
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaCategoria = "SELECT * FROM Vista_de_las_categorias WHERE categoria_id = @CategoriaId";
-                using (MySqlCommand comando = new MySqlCommand(consultaCategoria, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@CategoriaId", categoriaId);
-                    using (MySqlDataReader lector = comando.ExecuteReader())
-                    {
-                        if (lector.Read())
-                        {
-                            return new Categoria
-                            {
-                                CategoriaId = lector.GetInt32("categoria_id"),
-                                Nombre = lector.GetString("nombre"),
-                            };
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return null; // Retorna null si no se encuentra la categoría
-        }
-        //Obtener recetas favoritas por usuario
         public List<PreReceta> ObtenerRecetasFavoritasPorUsuario(int usuarioId)
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -816,119 +541,6 @@ namespace MicheBytesRecipes
             return recetas;
 
         }
-        // Obtener receta por id por Store
-        public Receta ObtenerRecetaPorId(int recetaId)
-        {
-            Receta receta = null;
-            try
-            {
-                conexion.Abrir();
-                using (MySqlCommand comando = new MySqlCommand("Devolver_receta", conexion.GetConexion()))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-
-                    // IN
-                    comando.Parameters.AddWithValue("p_receta_id", recetaId);
-
-                    // OUT
-                    comando.Parameters.Add(new MySqlParameter("p_nombre", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_descripcion", MySqlDbType.Text) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_instrucciones", MySqlDbType.Text) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_imagen_receta", MySqlDbType.LongBlob) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_tiempo_preparacion", MySqlDbType.Time) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_dificultad", MySqlDbType.VarChar, 50) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_pais_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_categoria_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
-                    comando.Parameters.Add(new MySqlParameter("p_usuario_id", MySqlDbType.Int32) { Direction = ParameterDirection.Output });
-
-                    comando.ExecuteNonQuery();
-
-                    receta = new Receta
-                    {
-                        RecetaId = recetaId,
-                        Nombre = comando.Parameters["p_nombre"].Value?.ToString(),
-                        Descripcion = comando.Parameters["p_descripcion"].Value?.ToString(),
-                        Instrucciones = comando.Parameters["p_instrucciones"].Value?.ToString(),
-                        ImagenReceta = comando.Parameters["p_imagen_receta"].Value == DBNull.Value ? null : (byte[])comando.Parameters["p_imagen_receta"].Value,
-                        TiempoPreparacion = comando.Parameters["p_tiempo_preparacion"].Value == DBNull.Value ? TimeSpan.Zero : (TimeSpan)comando.Parameters["p_tiempo_preparacion"].Value,
-                        NivelDificultad = Enum.TryParse(comando.Parameters["p_dificultad"].Value?.ToString(), true, out Dificultad d) ? d : Dificultad.Fácil,
-                        PaisId = Convert.ToInt32(comando.Parameters["p_pais_id"].Value),
-                        CategoriaId = Convert.ToInt32(comando.Parameters["p_categoria_id"].Value),
-                        UsuarioId = Convert.ToInt32(comando.Parameters["p_usuario_id"].Value)
-                    };
-                }
-
-
-                receta.Ingredientes = ObtenerIngredientesPorRecetaId(recetaId);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al obtener la receta: {ex.Message}");
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-            return receta;
-        }
-        //Obtener ingredientes por receta
-        public List<Ingrediente> ObtenerIngredientesPorRecetaId(int recetaId)
-        {
-            List<Ingrediente> ingredientes = new List<Ingrediente>();
-            try
-            {
-                conexion.Abrir();
-
-                string consulta = "SELECT * FROM Vista_de_todos_los_ingredientes_tipo_y_unidad_x_receta WHERE receta_Id = @RecetaId";
-
-                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@RecetaId", recetaId);
-
-
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Ingrediente ingrediente = new Ingrediente
-                            {
-                                IngredienteId = reader.GetInt32("ingrediente_id"),
-                                Nombre = reader.GetString("nombre"),
-
-
-                                Unidad = new UnidadMedida
-                                {
-                                    UnidadMedidaId = reader.GetInt32("unidad_de_medida_id"),
-                                    Nombre = reader.GetString("unidad")
-                                },
-
-                                Tipo = new TipoIngrediente
-                                {
-                                    TipoIngredienteId = reader.GetInt32("tipo_ingrediente_id"),
-                                    Nombre = reader.GetString("tipo_ingrediente")
-                                },
-                            };
-
-                            ingredientes.Add(ingrediente);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error al obtener ingredientes por receta: " + ex.Message);
-                return new List<Ingrediente>();
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-
-            return ingredientes;
-        }
-
-        //Obtener historial de un usuario
         public List<PreReceta> ObtenerHistorialUsuario(int usuarioId)
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -968,7 +580,7 @@ namespace MicheBytesRecipes
             return recetas;
         }
 
-        // Agregar visita al historial
+        // Metodos auxiliares      
         public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
         {
             try

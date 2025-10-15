@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
 using System.Collections.Generic;
@@ -17,19 +18,16 @@ namespace MicheBytesRecipes.Forms.AddReceta
     public partial class FrmAgregarCategoria : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
+
+
         public FrmAgregarCategoria()
         {
             InitializeComponent();
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void FrmAgregarCategoria_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -40,7 +38,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 categoria.Nombre = Utilidades.CapitalizarPrimeraLetra(txtNombre.Text);
                 categoria.Descripcion = Utilidades.CapitalizarPrimeraLetra(txtDescripcion.Text);
 
-                gestorReceta.AgregarCategoria(categoria);
+                gestorCatalogo.AgregarCategoria(categoria);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

@@ -20,6 +20,8 @@ namespace MicheBytesRecipes.Classes.Recetas
         private Receta receta;
         GestorReceta gestorReceta = new GestorReceta();
         GestorInteracciones gestorInteracciones = new GestorInteracciones();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
+        GestorIngredientes gestorIngredientes = new GestorIngredientes();
         private bool control = true; //Controla el estado del texto comentario
         private string comentarioUsuario; //Almacena el comentario del usuario
         private Usuario usuario; 
@@ -47,7 +49,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             // Verificar si ya dio "Me Gusta"
             if(gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
             {
-                btnMeGusta.Text = "❤️ Me gusta";
+                btnMeGusta.Text = "❤️ Te gusta";
             }
             else
             {
@@ -55,7 +57,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
             if(gestorInteracciones.EstaFavorito(receta.RecetaId, usuario.UsuarioId))
             {
-                btnFavoritos.Text = "💛 Favorito";
+                btnFavoritos.Text = "❤️ Favorito";
             }
             else
             {
@@ -69,15 +71,17 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             this.Close();
         }
-
-
-
         private void btnMeGusta_Click(object sender, EventArgs e)
         {
             GestionMeGusta();
             ActualizarMeGusta();
         }
+        private void btnFavoritos_Click(object sender, EventArgs e)
+        {
+            GestionFavorito();
+        }
 
+        // Metodo para cargar los datos de la receta en los controles del formulario
         private void CargarDatosReceta()
         {
             //Cargar los datos de la receta en los controles del formulario
@@ -119,8 +123,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                     lstIngredientes.Items.Add("No hay ingredientes");
                 }
                 //Cargar la categoria y pais de la receta
-                lblCategoria.Text = gestorReceta.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
-                lblPais.Text = gestorReceta.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
+                lblCategoria.Text = gestorCatalogo.ObtenerCategoriaPorId(receta.CategoriaId)?.Nombre ?? "Desconocida";
+                lblPais.Text = gestorCatalogo.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocida";
 
                 lblIdUsuario.Text = usuario.UsuarioId.ToString();
                 lblIdReceta.Text = receta.RecetaId.ToString();
@@ -146,6 +150,8 @@ namespace MicheBytesRecipes.Classes.Recetas
             else
                 lstComentarios.Items.Add("No hay comentarios");            
         }
+
+        // Metodo para gestionar Interacciones
         private void GestionMeGusta()
         {
             int recetaId = receta.RecetaId;
@@ -156,7 +162,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             if (resultado)
             {
                 //Si se agrego el me gusta 
-                btnMeGusta.Text = "❤️ Me gusta";
+                btnMeGusta.Text = "❤️ Te gusta";
                 MessageBox.Show("¡Te gustó la receta!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -189,7 +195,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             if (resultado)
             {
                 // Se agrego a favoritos
-                btnFavoritos.Text = "💛 Favorito";
+                btnFavoritos.Text = "❤️ Favorito";
                 MessageBox.Show("¡Receta agregada a favoritos!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -200,7 +206,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
         }
 
-
+        // Metodos para gestionar el cuadro de texto del comentario
         private void txtComentario_Enter(object sender, EventArgs e)
         {
             if (control)
@@ -219,7 +225,6 @@ namespace MicheBytesRecipes.Classes.Recetas
                 control = true; //Cambia el estado del control para que vuelva a entrar
             }
         }
-
         private void txtComentario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter) //Si se presiona la tecla Enter
@@ -263,9 +268,6 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
         }
 
-        private void btnFavoritos_Click(object sender, EventArgs e)
-        {
-            GestionFavorito();
-        }
+        
     }
 }
