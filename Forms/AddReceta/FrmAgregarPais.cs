@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
     public partial class FrmAgregarPais : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
         public FrmAgregarPais()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
             {
                 pais.Nombre = Utilidades.CapitalizarPrimeraLetra(txtPais.Text);
 
-                gestorReceta.AgregarPais(pais);
+                gestorCatalogo.AgregarPais(pais);
                 this.DialogResult = DialogResult.OK; //Cerrar el formulario con resultado OK
                 this.Close();
             }
