@@ -212,9 +212,11 @@ namespace MicheBytesRecipes
 
         private void btnMetricas_Click(object sender, EventArgs e)
         {
-            Metricas metricas = new Metricas(usuarioLog);
-            metricas.Show();
             this.Hide();
+            frmMetricas metricas = new frmMetricas(usuarioLog);
+            metricas.ShowDialog();
+            this.Show();
+
         }
 
         private void dgvReceta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

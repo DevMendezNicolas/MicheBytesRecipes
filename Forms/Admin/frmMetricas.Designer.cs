@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.Admin
 {
-    partial class Metricas
+    partial class frmMetricas
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dgvReceta = new System.Windows.Forms.DataGridView();
+            this.dgvMetricas = new System.Windows.Forms.DataGridView();
             this.Receta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,22 +39,20 @@
             this.Comentarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Visualizaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Favoritos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.altaReceta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnAct = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.txtAgregar = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMetricas)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +61,7 @@
             // 
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
-            this.panel3.Controls.Add(this.dgvReceta);
+            this.panel3.Controls.Add(this.dgvMetricas);
             this.panel3.Controls.Add(this.cboCategoria);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtBuscarReceta);
@@ -83,6 +81,7 @@
             this.btnReinicio.TabIndex = 5;
             this.btnReinicio.Text = "🔄 Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = true;
+            this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
             // btnBuscar
             // 
@@ -93,10 +92,10 @@
             this.btnBuscar.Text = "🔍 Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // dgvReceta
+            // dgvMetricas
             // 
-            this.dgvReceta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReceta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMetricas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMetricas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Receta_id,
             this.Nombre,
             this.Categoria,
@@ -104,13 +103,13 @@
             this.Comentarios,
             this.Visualizaciones,
             this.Favoritos,
-            this.altaReceta});
-            this.dgvReceta.Location = new System.Drawing.Point(45, 210);
-            this.dgvReceta.MultiSelect = false;
-            this.dgvReceta.Name = "dgvReceta";
-            this.dgvReceta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReceta.Size = new System.Drawing.Size(858, 382);
-            this.dgvReceta.TabIndex = 4;
+            this.Estado});
+            this.dgvMetricas.Location = new System.Drawing.Point(45, 210);
+            this.dgvMetricas.MultiSelect = false;
+            this.dgvMetricas.Name = "dgvMetricas";
+            this.dgvMetricas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMetricas.Size = new System.Drawing.Size(858, 382);
+            this.dgvMetricas.TabIndex = 4;
             // 
             // Receta_id
             // 
@@ -162,12 +161,12 @@
             this.Favoritos.Name = "Favoritos";
             this.Favoritos.ReadOnly = true;
             // 
-            // altaReceta
+            // Estado
             // 
-            this.altaReceta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.altaReceta.HeaderText = "Alta Receta";
-            this.altaReceta.Name = "altaReceta";
-            this.altaReceta.ReadOnly = true;
+            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
             // 
             // cboCategoria
             // 
@@ -210,20 +209,28 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.pbImagenAdmin);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblReceta);
             this.panel1.Controls.Add(this.btnAct);
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.btnModificar);
-            this.panel1.Controls.Add(this.txtAgregar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 3;
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(18, 519);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(198, 42);
+            this.btnExportar.TabIndex = 14;
+            this.btnExportar.Text = "Exportar a pdf";
+            this.btnExportar.UseVisualStyleBackColor = true;
             // 
             // btnVolver
             // 
@@ -267,45 +274,16 @@
             // 
             // btnAct
             // 
-            this.btnAct.Location = new System.Drawing.Point(13, 394);
+            this.btnAct.Location = new System.Drawing.Point(13, 235);
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
             this.btnAct.TabIndex = 5;
             this.btnAct.Text = "Activas - Inactivas";
             this.btnAct.UseVisualStyleBackColor = true;
+            this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(13, 344);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(198, 42);
-            this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "&Dar baja";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(13, 294);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(198, 42);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "&Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // txtAgregar
-            // 
-            this.txtAgregar.Location = new System.Drawing.Point(13, 244);
-            this.txtAgregar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAgregar.Name = "txtAgregar";
-            this.txtAgregar.Size = new System.Drawing.Size(198, 42);
-            this.txtAgregar.TabIndex = 2;
-            this.txtAgregar.Text = "&Agregar";
-            this.txtAgregar.UseVisualStyleBackColor = true;
-            // 
-            // Metricas
+            // frmMetricas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -314,12 +292,13 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Metricas";
+            this.Name = "frmMetricas";
             this.Text = "Metricas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMetricas_FormClosed);
             this.Load += new System.EventHandler(this.Metricas_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMetricas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenAdmin)).EndInit();
@@ -332,7 +311,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnReinicio;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridView dgvReceta;
+        private System.Windows.Forms.DataGridView dgvMetricas;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscarReceta;
@@ -342,9 +321,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnAct;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button txtAgregar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -353,6 +329,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Comentarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visualizaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Favoritos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn altaReceta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

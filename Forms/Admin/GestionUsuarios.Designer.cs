@@ -175,9 +175,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(41, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 20);
+            this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Filtrar por:";
+            this.label1.Text = "Buscar por Email";
             // 
             // txtBuscarEmail
             // 

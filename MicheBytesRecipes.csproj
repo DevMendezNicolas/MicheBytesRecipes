@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Interacciones\Comentarios.cs" />
+    <Compile Include="Classes\Interacciones\Metricas.cs" />
     <Compile Include="Classes\Recetas\Categoria.cs" />
     <Compile Include="Classes\Recetas\Ingrediente.cs" />
     <Compile Include="Classes\Recetas\Pais.cs" />
@@ -169,11 +170,11 @@
     <Compile Include="Forms\Admin\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\Metricas.cs">
+    <Compile Include="Forms\Admin\frmMetricas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\Metricas.Designer.cs">
-      <DependentUpon>Metricas.cs</DependentUpon>
+    <Compile Include="Forms\Admin\frmMetricas.Designer.cs">
+      <DependentUpon>frmMetricas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Auth\FrmRegister.cs">
       <SubType>Form</SubType>
@@ -223,6 +224,7 @@
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\UiHelpers.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
+    <Compile Include="Managers\GestorDeMetricas.cs" />
     <Compile Include="Managers\GestorReceta.cs" />
     <Compile Include="Managers\GestorInteracciones.cs" />
     <Compile Include="Managers\GestorUsuarios.cs" />
@@ -252,8 +254,8 @@
     <EmbeddedResource Include="Forms\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\Metricas.resx">
-      <DependentUpon>Metricas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\frmMetricas.resx">
+      <DependentUpon>frmMetricas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Auth\FrmRegister.resx">
       <DependentUpon>FrmRegister.cs</DependentUpon>
