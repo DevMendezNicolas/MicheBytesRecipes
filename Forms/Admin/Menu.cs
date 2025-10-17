@@ -236,6 +236,7 @@ namespace MicheBytesRecipes
             {
                 FrmModificarReceta frmModificarReceta = new FrmModificarReceta(receta, usuarioLog);
                 frmModificarReceta.ShowDialog();
+                ActualizarGrilla();
             }
         }
     }

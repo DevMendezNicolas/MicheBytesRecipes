@@ -15,6 +15,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
     public partial class FrmModificarReceta : Form
     {
         private Receta receta;
+        private Usuario usuarioLog;
         private string nuevaRuta = string.Empty; // Variable para almacenar la nueva ruta de la imagen
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
@@ -25,7 +26,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             InitializeComponent();
             this.receta = receta;
-
+            this.usuarioLog = usuarioLog;
         }
         private void FrmModificarReceta_Load(object sender, EventArgs e)
         {
@@ -135,7 +136,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 var ingredientesSeleccionados = clbIngredientes.CheckedItems.Cast<Ingrediente>().Select(i => i.IngredienteId).ToList();
 
                 // Llamar al gestor para actualizar la receta en la base de datos
-                bool exito = gestorReceta.ModificarReceta(receta, ingredientesSeleccionados);
+                bool exito = gestorReceta.ModificarReceta(receta, ingredientesSeleccionados, usuarioLog.UsuarioId);
 
                 if (exito)
                 {

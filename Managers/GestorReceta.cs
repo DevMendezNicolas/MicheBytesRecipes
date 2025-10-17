@@ -1,15 +1,10 @@
-﻿using System;
+﻿using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Connections;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-using MicheBytesRecipes.Classes.Recetas;
-using MicheBytesRecipes.Connections;
-using MicheBytesRecipes.Helpers;
-using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using Mysqlx.Session;
-using Org.BouncyCastle.Utilities.Zlib;
 
 namespace MicheBytesRecipes
 {
@@ -22,10 +17,10 @@ namespace MicheBytesRecipes
         public GestorReceta()
         {
             recetas = new List<Receta>();
-        }      
-        
+        }
 
-        public bool ModificarReceta(Receta receta, List<int> nuevosIngredientesId) // Cin lo esta terminado
+
+        public bool ModificarReceta(Receta receta, List<int> nuevosIngredientesId, int usuarioModId) 
         {
             bool exito = false;
             try
@@ -35,39 +30,38 @@ namespace MicheBytesRecipes
                 using (MySqlCommand comando = new MySqlCommand("Modificar_Receta", conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@p_receta_id", receta.RecetaId);
-                    comando.Parameters.AddWithValue("@p_nombre", receta.Nombre);
-                    comando.Parameters.AddWithValue("@p_descripcion", receta.Descripcion);
-                    comando.Parameters.AddWithValue("@p_instrucciones", receta.Instrucciones);
-                    comando.Parameters.Add("@p_imagen", MySqlDbType.Blob).Value = receta.ImagenReceta ?? (object)DBNull.Value;
-                    comando.Parameters.AddWithValue("@p_tiempo", receta.TiempoPreparacion);
-                    comando.Parameters.AddWithValue("@p_dificultad", receta.NivelDificultad.ToString());
-                    comando.Parameters.AddWithValue("@p_pais_id", receta.PaisId);
-                    comando.Parameters.AddWithValue("@p_categoria_id", receta.CategoriaId);
+                    comando.Parameters.AddWithValue("p_receta_id", receta.RecetaId);
+                    comando.Parameters.AddWithValue("p_nombre", receta.Nombre);
+                    comando.Parameters.AddWithValue("p_descripcion", receta.Descripcion);
+                    comando.Parameters.AddWithValue("p_instrucciones", receta.Instrucciones);
+                    comando.Parameters.AddWithValue("p_imagen_receta", receta.ImagenReceta);
+                    comando.Parameters.AddWithValue("p_tiempo_preparacion", receta.TiempoPreparacion);
+                    comando.Parameters.AddWithValue("p_dificultad", receta.NivelDificultad.ToString());
+                    comando.Parameters.AddWithValue("p_pais_id", receta.PaisId);
+                    comando.Parameters.AddWithValue("p_categoria_id", receta.CategoriaId);
+                    comando.Parameters.AddWithValue("p_usuario_modificador_id", usuarioModId);
 
-                    comando.ExecuteNonQuery();
-                }
-                // Eliminar los ingredientes actuales de la receta
-                string consultaEliminar = "DELETE FROM Ingredientes_por_receta WHERE receta_id = @RecetaId";
-                using (MySqlCommand comandoEliminar = new MySqlCommand(consultaEliminar, conexion.GetConexion()))
-                {
-                    comandoEliminar.Parameters.AddWithValue("@RecetaId", receta.RecetaId);
-                    comandoEliminar.ExecuteNonQuery();
-                }
-
-                // Agregar los nuevos ingredientes a la receta
-                foreach (var idIngrediente in nuevosIngredientesId)
-                {
-                    using(MySqlCommand comandoInsertar = new MySqlCommand ("insertar_ingrediente_por_receta", conexion.GetConexion()))
+                    using (var reader = comando.ExecuteReader())
                     {
-                        comandoInsertar.CommandType = CommandType.StoredProcedure;
-                        comandoInsertar.Parameters.AddWithValue("@p_ingrediente_id", idIngrediente);
-                        comandoInsertar.Parameters.AddWithValue("@p_receta_id", receta.RecetaId);
-                        comandoInsertar.ExecuteNonQuery();
-                    }
+                        if (reader.Read())
+                        {
 
-                } 
-                exito = true;
+                            string mensaje = reader.GetString(0);
+                            if (mensaje.Contains("exitosa"))
+                                exito = true;
+                        }
+                    }
+                    foreach (var ingredientesId in nuevosIngredientesId)
+                    {
+                        using (var cmd = new MySqlCommand("Insertar_ingrediente_por_receta", conexion.GetConexion()))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@p_ingrediente_id", ingredientesId);
+                            cmd.Parameters.AddWithValue("@p_receta_id", receta.RecetaId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
