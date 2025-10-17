@@ -31,105 +31,180 @@ namespace MicheBytesRecipes.Utilities
             }
         }
 
-        public static void ExportarPDF(DataGridView dgv, string titulo = "Reporte")
+        public static void ExportarPDF(DataGridView dgv, string titulo = "Reporte", bool landscapeIfManyColumns = true)
         {
             try
             {
-                // Obtener carpeta Descargas
+                // Ruta destino
                 string carpetaDescargas = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-                string carpetaDestino;
+                string carpetaDestino = Directory.Exists(carpetaDescargas) ? carpetaDescargas : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Reportes");
+                if (!Directory.Exists(carpetaDestino)) Directory.CreateDirectory(carpetaDestino);
 
-                // Verificar si existe la carpeta Downloads, si no usar Escritorio/Reportes
-                if (Directory.Exists(carpetaDescargas))
-                {
-                    carpetaDestino = carpetaDescargas;
-                }
-                else
-                {
-                    // Crear carpeta Reportes en el Escritorio
-                    string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    carpetaDestino = Path.Combine(escritorio, "Reportes");
-
-                    if (!Directory.Exists(carpetaDestino))
-                        Directory.CreateDirectory(carpetaDestino);
-                }
-
-                // Nombre de archivo con fecha y hora
-                string nombreArchivo = $"{titulo.Replace(" ", "_")}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                string nombreArchivo = $"{SanitizarArchivo(titulo)}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
                 string archivoPDF = Path.Combine(carpetaDestino, nombreArchivo);
 
-                // Crear documento PDF
-                Document doc = new Document(PageSize.A4, 10, 10, 10, 50); // margen inferior más grande para footer
-                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(archivoPDF, FileMode.Create));
+                // Determinar orientación
+                int visibleCols = dgv.Columns.Cast<DataGridViewColumn>().Count(c => c.Visible);
+                bool useLandscape = landscapeIfManyColumns && visibleCols > 6;
+                Rectangle pageSize = useLandscape ? PageSize.A4.Rotate() : PageSize.A4;
 
-                writer.PageEvent = new PdfFooter();
-
-                doc.Open();
-
-                // Agregar título
-                Paragraph parTitulo = new Paragraph(titulo)
+                using (var fs = new FileStream(archivoPDF, FileMode.Create, FileAccess.Write, FileShare.None))
+                using (var doc = new Document(pageSize, 20f, 20f, 60f, 40f)) // márgenes superiores/inferiores
                 {
-                    Alignment = Element.ALIGN_CENTER,
-                    SpacingAfter = 10f
-                };
-                doc.Add(parTitulo);
+                    var writer = PdfWriter.GetInstance(doc, fs);
+                    var footer = new PdfHeaderFooter(titulo); // header+footer configurable
+                    writer.PageEvent = footer;
 
-                // Contar columnas visibles
-                int columnasVisibles = 0;
-                foreach (DataGridViewColumn col in dgv.Columns)
-                {
-                    if (col.Visible) columnasVisibles++;
-                }
+                    doc.Open();
 
-                PdfPTable tabla = new PdfPTable(columnasVisibles);
+                    // Fuentes reutilizables
+                    var fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16);
+                    var fuenteSub = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.DARK_GRAY);
+                    var fuenteHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11);
+                    var fuenteCelda = FontFactory.GetFont(FontFactory.HELVETICA, 10);
 
-                // Encabezados en negrita
-                foreach (DataGridViewColumn col in dgv.Columns)
-                {
-                    if (col.Visible)
+                    // Título y subtítulo (fecha y conteo)
+                    var pTitulo = new Paragraph(titulo, fuenteTitulo) { Alignment = Element.ALIGN_CENTER, SpacingAfter = 6f };
+                    doc.Add(pTitulo);
+                    var pSub = new Paragraph($"Generado: {DateTime.Now:dd/MM/yyyy HH:mm}    Filas: {dgv.Rows.Count - (dgv.AllowUserToAddRows ? 1 : 0)}", fuenteSub) { Alignment = Element.ALIGN_CENTER, SpacingAfter = 10f };
+                    doc.Add(pSub);
+
+                    // Preparar tabla
+                    PdfPTable tabla;
+                    var columnasVisibles = dgv.Columns.Cast<DataGridViewColumn>().Where(c => c.Visible).ToList();
+                    if (columnasVisibles.Count == 0)
                     {
-                        PdfPCell celdaEncabezado = new PdfPCell(new Phrase(col.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)))
-                        {
-                            BackgroundColor = BaseColor.LIGHT_GRAY,
-                            HorizontalAlignment = Element.ALIGN_CENTER
-                        };
-                        tabla.AddCell(celdaEncabezado);
+                        doc.Add(new Paragraph("No hay columnas visibles para exportar.", fuenteSub));
+                        doc.Close();
+                        return;
                     }
-                }
+                    tabla = new PdfPTable(columnasVisibles.Count) { WidthPercentage = 100f, SpacingBefore = 6f };
 
-                // Filas
-                foreach (DataGridViewRow fila in dgv.Rows)
-                {
-                    if (!fila.IsNewRow)
+                    // Calcular anchos relativos basados en ancho de columnas del DataGridView
+                    float totalAncho = columnasVisibles.Sum(c => Math.Max(1, c.Width));
+                    float[] proporciones = columnasVisibles.Select(c => Math.Max(1, c.Width) / totalAncho).ToArray();
+                    tabla.SetWidths(proporciones);
+
+                    // Encabezados
+                    foreach (var col in columnasVisibles)
                     {
-                        foreach (DataGridViewCell celda in fila.Cells)
+                        var celHeader = new PdfPCell(new Phrase(col.HeaderText, fuenteHeader))
                         {
-                            if (dgv.Columns[celda.ColumnIndex].Visible)
-                                tabla.AddCell(celda.Value?.ToString() ?? "");
+                            BackgroundColor = new BaseColor(230, 230, 230),
+                            HorizontalAlignment = Element.ALIGN_CENTER,
+                            Padding = 6f,
+                            BorderWidth = 0.5f
+                        };
+                        tabla.AddCell(celHeader);
+                    }
+
+                    // Filas: alternado de color y truncado / wrap controlado
+                    bool alternar = false;
+                    foreach (DataGridViewRow row in dgv.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        alternar = !alternar;
+                        BaseColor rowColor = alternar ? BaseColor.WHITE : new BaseColor(245, 245, 245);
+
+                        foreach (var col in columnasVisibles)
+                        {
+                            var cell = row.Cells[col.Index];
+                            string texto = cell?.Value?.ToString() ?? string.Empty;
+                            var pdfCell = new PdfPCell(new Phrase(texto, fuenteCelda))
+                            {
+                                BackgroundColor = rowColor,
+                                Padding = 5f,
+                                HorizontalAlignment = Element.ALIGN_LEFT,
+                                VerticalAlignment = Element.ALIGN_MIDDLE,
+                                BorderWidth = 0.3f
+                            };
+                            tabla.AddCell(pdfCell);
                         }
                     }
+
+                    doc.Add(tabla);
+                    doc.Close();
                 }
 
-                doc.Add(tabla);
-                doc.Close();
-
-                // ✅ ABRIR PDF AUTOMÁTICAMENTE
-                try
+                // Abrir PDF si existe
+                if (File.Exists(archivoPDF))
                 {
-                    Process.Start(archivoPDF);
-                    MessageBox.Show($"PDF generado correctamente:\n{archivoPDF}",
-                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        var psi = new ProcessStartInfo
+                        {
+                            FileName = archivoPDF,
+                            UseShellExecute = true
+                        };
+                        Process.Start(psi);
+                        MessageBox.Show($"PDF generado correctamente:\n{archivoPDF}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"PDF generado en:\n{archivoPDF}\n\nPero no se pudo abrir: {ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"PDF generado en:\n{archivoPDF}\n\nPero no se pudo abrir: {ex.Message}",
-                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al generar PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static string SanitizarArchivo(string s)
+        {
+            foreach (var c in Path.GetInvalidFileNameChars()) s = s.Replace(c, '_');
+            return s.Replace(" ", "_");
+        }
+
+        // Clase para Header y Footer
+        public class PdfHeaderFooter : PdfPageEventHelper
+        {
+            private readonly string _titulo;
+            private PdfTemplate _totalPages;
+            private BaseFont _bf;
+
+            public PdfHeaderFooter(string titulo)
+            {
+                _titulo = titulo;
+            }
+
+            public override void OnOpenDocument(PdfWriter writer, Document document)
+            {
+                _totalPages = writer.DirectContent.CreateTemplate(50, 50);
+                _bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            }
+
+            public override void OnEndPage(PdfWriter writer, Document document)
+            {
+                var cb = writer.DirectContent;
+                int pageN = writer.PageNumber;
+                string footerText = $"Página {pageN} de ";
+                float len = _bf.GetWidthPoint(footerText, 9);
+
+                // Footer: número de página a la derecha, fecha a la izquierda
+                cb.BeginText();
+                cb.SetFontAndSize(_bf, 9);
+                cb.SetTextMatrix(document.Left, document.Bottom - 20);
+                cb.ShowText($"Generado: {DateTime.Now:dd/MM/yyyy HH:mm}");
+                cb.EndText();
+
+                cb.BeginText();
+                cb.SetFontAndSize(_bf, 9);
+                cb.SetTextMatrix(document.Right - 100, document.Bottom - 20);
+                cb.ShowText(footerText);
+                cb.EndText();
+
+                cb.AddTemplate(_totalPages, document.Right - 100 + len, document.Bottom - 20);
+            }
+
+            public override void OnCloseDocument(PdfWriter writer, Document document)
+            {
+                _totalPages.BeginText();
+                _totalPages.SetFontAndSize(_bf, 9);
+                _totalPages.SetTextMatrix(0, 0);
+                _totalPages.ShowText($"{writer.PageNumber - 1}");
+                _totalPages.EndText();
             }
         }
     }

@@ -41,7 +41,7 @@ namespace MicheBytesRecipes.Managers
                 //Console.WriteLine(builder.ToString());
                 return builder.ToString();
             }
-        } //OK
+        }
         // Agregar usuario
         public void AgregarUsuario(Usuario usuario)
         {

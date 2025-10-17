@@ -59,7 +59,7 @@ namespace MicheBytesRecipes
             }
             return ingredientes;
         }
-        public void ModificarReceta(Receta receta) // Cin lo esta terminado
+        public void ModificarReceta(Receta receta) 
         {
             try
             {
