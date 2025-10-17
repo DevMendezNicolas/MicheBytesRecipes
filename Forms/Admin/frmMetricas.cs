@@ -157,7 +157,10 @@ namespace MicheBytesRecipes.Forms.Admin
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            GeneradorPdf.ExportarPDF(dgvMetricas, "Métricas de Recetas");
+            if(MessageBox.Show("¿Desea exportar las métricas a PDF?","Confirmar Exportación",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                GeneradorPdf.ExportarPDF(dgvMetricas, "Métricas de Recetas", true);
+            }
         }
     }
 }

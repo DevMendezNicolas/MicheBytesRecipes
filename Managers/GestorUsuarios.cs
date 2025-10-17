@@ -17,7 +17,7 @@ using MySql.Data.MySqlClient;
 namespace MicheBytesRecipes.Managers
 {
     
-    public class GestorUsuarios: IUsuarioRepository
+    public class GestorUsuarios: IUsuarioRepository, IPermisosUsuario
     {
         private ConexionBD conexion = new ConexionBD();
         //Lista de usuarios
@@ -73,8 +73,8 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         } //OK
-        // Validar credenciales de usuario (Email y Contraseña) // MEJORAR
-        public bool ValidarCredenciales(string email, string contraseña)
+        // Validar credenciales de usuario (Email y Contraseña)
+        public bool ValidarCredenciales(string email, string contraseña) // MEJORAR
         {
             try
             {
@@ -146,56 +146,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
-        } // OK
-        // Buscar usuario por ID
-        public Usuario BuscarUsuario(int id)
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaBuscar = "SELECT * FROM usuarios WHERE UsuarioId = @UsuarioId AND FechaBaja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@UsuarioId", id);
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            byte[] fotoPerfil = null;
-                            if (!reader.IsDBNull(reader.GetOrdinal("ImagenPerfil")))
-                            {
-                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, null, 0, 0);
-                                fotoPerfil = new byte[tamañoImagen];
-                                reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
-                            }
-                            return new Usuario(
-                                reader.GetString("Email"),
-                                reader.GetInt32("UsuarioId"),
-                                reader.GetString("Nombre"),
-                                reader.GetString("Apellido"),
-                                reader.GetString("Telefono"),
-                                fotoPerfil,
-                                (int)reader["ID_Rol"],
-                                reader.GetDateTime("Fecha_Registro"),
-                                reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("FechaBaja")
-                            );
-                        }
-                        else
-                        {
-                            return null; // No se encontro el usuario
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al buscar el usuario: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Revisar Uso
+        } 
         // Buscar usuario por Email
         public Usuario BuscarPorEmail(string email)
         {
@@ -347,81 +298,9 @@ namespace MicheBytesRecipes.Managers
             }
             return usuarios;
         } 
-        // Cantidad Total de usuario dados de alta
         
-        public int CantidadTotalUsuarios()
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaContar = "SELECT COUNT(*) FROM usuarios WHERE FechaBaja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaContar, conexion.GetConexion()))
-                {
-                    int count = Convert.ToInt32(comando.ExecuteScalar());
-                    return count;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al contar los usuarios: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Revisar Uso
-        // Cantidad Total de usuario dados de baja
-        public int CantidadTotalUsuariosInactivos()
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaContar = "SELECT COUNT(*) FROM usuarios WHERE FechaBaja IS NOT NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaContar, conexion.GetConexion()))
-                {
-                    int count = Convert.ToInt32(comando.ExecuteScalar());
-                    return count;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al contar los usuarios inactivos: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Revisar Uso
-
-        public string ObtenerContraseñaPorEmail(string email)
-        {
-            try
-            {
-                conexion.Abrir();
-                string consulta = "SELECT Contraseña FROM usuarios WHERE email = @Email AND fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Email", email);
-                    object resultado = comando.ExecuteScalar(); // Devuelve la primera columna de la primera fila
-
-                    if (resultado != null)
-                        return resultado.ToString();
-                    else
-                        return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener la contraseña: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-
         //Verificar si existe mail
-        public bool ExisteUsuarioPorEmail(string email)
+        public bool ExisteUsuarioPorEmail(string email)// Emprolijar con una funcion en BDD
         {
             try
             {

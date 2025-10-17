@@ -223,6 +223,7 @@
     <Compile Include="Helpers\Theme.cs" />
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\UiHelpers.cs" />
+    <Compile Include="Interfaces\IPermisosUsuario.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Managers\GestorDeMetricas.cs" />
     <Compile Include="Managers\GestorReceta.cs" />

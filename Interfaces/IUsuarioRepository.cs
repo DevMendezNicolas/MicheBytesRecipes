@@ -18,11 +18,8 @@ namespace MicheBytesRecipes.Interfaces
         bool ValidarCredenciales(string email, string contraseña);
         void DarDeBajaUsuario(int AdminId, int usuarioBajaId);
         void DarDeAltaUsuario(int AdminId, int usuarioAltaId);
-        Usuario BuscarUsuario(int id);
         Usuario BuscarPorEmail(string email);
         List<PreUsuario> ListarUsuarios();
         List<PreUsuario> ListarUsuariosInactivos();
-        int CantidadTotalUsuarios();
-        int CantidadTotalUsuariosInactivos();
     }
 }

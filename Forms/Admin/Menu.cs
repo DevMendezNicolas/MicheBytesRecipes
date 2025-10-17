@@ -230,5 +230,24 @@ namespace MicheBytesRecipes
 
             
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            if (dgvReceta.SelectedRows.Count > 0)
+            {
+                int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
+                Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
+                if (receta != null)
+                {
+                    //FrmAgregarReceta frmModificarReceta = new FrmAgregarReceta(usuarioLog, receta);
+                    //frmModificarReceta.ShowDialog();
+                    /*if (frmModificarReceta.DialogResult == DialogResult.OK)
+                    {
+                        this.ActualizarGrilla();
+                    }*/
+                }
+            }
+        }
     }
 }
