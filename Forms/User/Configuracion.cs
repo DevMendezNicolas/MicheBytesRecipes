@@ -24,7 +24,7 @@ namespace MicheBytesRecipes.Forms.User
             CargarDatosUsuario();
             DesactivarCampos();
         }
-
+        
 
         private void Configuracion_Load(object sender, EventArgs e)
         {

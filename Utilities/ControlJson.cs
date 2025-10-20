@@ -177,6 +177,57 @@ namespace MicheBytesRecipes.Utilities
                 return false;
             }
         }*/
+        public static List<Receta> ImportarRecetasDesdeJson(string rutaArchivo, out string mensaje, Encoding encoding = null)
+        {
+            if (encoding == null)
+                encoding = Encoding.UTF8;
 
+            mensaje = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(rutaArchivo) || !File.Exists(rutaArchivo))
+            {
+                mensaje = "Ruta de archivo inválida o archivo no encontrado.";
+                return new List<Receta>();
+            }
+
+            try
+            {
+                string json = File.ReadAllText(rutaArchivo, encoding);
+
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    Culture = CultureInfo.InvariantCulture,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                };
+
+                var recetas = JsonConvert.DeserializeObject<List<Receta>>(json, settings);
+
+                if (recetas == null || recetas.Count == 0)
+                {
+                    mensaje = "No se encontraron recetas en el archivo JSON.";
+                    return new List<Receta>();
+                }
+
+                // 🔹 Limpiar las imágenes (para evitar cargar bytes del JSON)
+                foreach (var receta in recetas)
+                {
+                    receta.ImagenReceta = null;
+                }
+
+                mensaje = $"Se importaron {recetas.Count} recetas correctamente (sin imágenes).";
+                return recetas;
+            }
+            catch (JsonException jex)
+            {
+                mensaje = $"Error al deserializar el archivo JSON: {jex.Message}";
+                return new List<Receta>();
+            }
+            catch (Exception ex)
+            {
+                mensaje = $"Error al importar recetas: {ex.Message}";
+                return new List<Receta>();
+            }
+        }
     }
 }

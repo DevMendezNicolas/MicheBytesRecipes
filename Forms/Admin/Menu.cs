@@ -299,6 +299,13 @@ namespace MicheBytesRecipes
             opfImportar.Title = "Seleccione el archivo JSON de recetas a importar";
             opfImportar.Filter = "Archivos JSON|*.json";
             opfImportar.Multiselect = false;
+            if (opfImportar.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            string Origen = opfImportar.FileName;
+            string mensaje;
+            
         }
 
         
