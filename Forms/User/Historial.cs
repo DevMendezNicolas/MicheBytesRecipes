@@ -23,6 +23,7 @@ namespace MicheBytesRecipes.Forms.User
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo recetasCatalogo = new GestorCatalogo();
         private UcRecetaTarjeta receta;
 
 
@@ -101,8 +102,8 @@ namespace MicheBytesRecipes.Forms.User
                 {
                     RecetaId = recetaCompleta.RecetaId,
                     NombreReceta = recetaCompleta.Nombre,
-                    CategoriaReceta = gestorReceta.ObtenerCategoriaPorId(recetaCompleta.CategoriaId)?.Nombre ?? "Desconocida",
-                    PaisReceta = gestorReceta.ObtenerPaisPorId(recetaCompleta.PaisId)?.Nombre ?? "Desconocido",
+                    CategoriaReceta = recetasCatalogo.ObtenerCategoriaPorId(recetaCompleta.CategoriaId)?.Nombre ?? "Desconocida",
+                    PaisReceta = recetasCatalogo.ObtenerPaisPorId(recetaCompleta.PaisId)?.Nombre ?? "Desconocido",
                     TiempoReceta = recetaCompleta.TiempoPreparacion.ToString(@"hh\:mm"),
                     DificultadReceta = recetaCompleta.NivelDificultad.ToString(),
                     ImagenReceta = recetaCompleta.ImagenReceta // directamente el byte[] sin conversiones
