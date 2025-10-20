@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Users;
 using MicheBytesRecipes.Connections;
 using MicheBytesRecipes.Interfaces;
 using MySql.Data.MySqlClient;
@@ -16,7 +17,7 @@ using MySql.Data.MySqlClient;
 namespace MicheBytesRecipes.Managers
 {
     
-    public class GestorUsuarios: IUsuarioRepository
+    public class GestorUsuarios: IUsuarioRepository, IPermisosUsuario
     {
         private ConexionBD conexion = new ConexionBD();
         //Lista de usuarios
@@ -40,7 +41,7 @@ namespace MicheBytesRecipes.Managers
                 //Console.WriteLine(builder.ToString());
                 return builder.ToString();
             }
-        } //OK
+        }
         // Agregar usuario
         public void AgregarUsuario(Usuario usuario)
         {
@@ -72,8 +73,8 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         } //OK
-        // Validar credenciales de usuario (Email y Contraseña) // MEJORAR
-        public bool ValidarCredenciales(string email, string contraseña)
+        // Validar credenciales de usuario (Email y Contraseña)
+        public bool ValidarCredenciales(string email, string contraseña) // MEJORAR
         {
             try
             {
@@ -98,82 +99,54 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
-        // Eliminar usuario (marcar como inactivo)
-        public void EliminarUsuario(int id) // Necesito el SP
+        // Dar de baja usuario (marcar como inactivo)
+        public void DarDeBajaUsuario(int AdminId,int usuarioBajaId)
         {
             try
             {
                 conexion.Abrir();
-                string consultaEliminar = "Procedimiento_que_elimina_usuario";
-                using (MySqlCommand comando = new MySqlCommand(consultaEliminar, conexion.GetConexion()))
+                string consulta = "Dar_de_baja_usuario";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("p_usuario_id", id);
+                    comando.Parameters.AddWithValue("p_admin_id", AdminId);
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioBajaId);
                     int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        MessageBox.Show("Usuario eliminado correctamente.");
-                    else
-                        MessageBox.Show("No se encontro el usuario con el ID proporcionado.");
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar el usuario: " + ex.Message);
+                throw new Exception("Error al dar de baja el usuario: " + ex.Message);
             }
             finally
             {
                 conexion.Cerrar();
             }
         }
-        // Buscar usuario por ID
-        public Usuario BuscarUsuario(int id)
+        // Dar de alta usuario (marcar como activo)
+        public void DarDeAltaUsuario(int AdminId, int usuarioAltaId)
         {
             try
             {
                 conexion.Abrir();
-                string consultaBuscar = "SELECT * FROM usuarios WHERE UsuarioId = @UsuarioId AND FechaBaja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaBuscar, conexion.GetConexion()))
+                string consulta = "Dar_de_alta_usuario";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@UsuarioId", id);
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            byte[] fotoPerfil = null;
-                            if (!reader.IsDBNull(reader.GetOrdinal("ImagenPerfil")))
-                            {
-                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, null, 0, 0);
-                                fotoPerfil = new byte[tamañoImagen];
-                                reader.GetBytes(reader.GetOrdinal("ImagenPerfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
-                            }
-                            return new Usuario(
-                                reader.GetString("Email"),
-                                reader.GetInt32("UsuarioId"),
-                                reader.GetString("Nombre"),
-                                reader.GetString("Apellido"),
-                                reader.GetString("Telefono"),
-                                fotoPerfil,
-                                (int)reader["ID_Rol"],
-                                reader.GetDateTime("Fecha_Registro"),
-                                reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("FechaBaja")
-                            );
-                        }
-                        else
-                        {
-                            return null; // No se encontro el usuario
-                        }
-                    }
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("p_admin_id", AdminId);
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioAltaId);
+                    int filasAfectadas = comando.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al buscar el usuario: " + ex.Message);
+                throw new Exception("Error al dar de alta el usuario: " + ex.Message);
             }
             finally
             {
                 conexion.Cerrar();
             }
-        } // Revisar Uso
+        } 
         // Buscar usuario por Email
         public Usuario BuscarPorEmail(string email)
         {
@@ -243,44 +216,35 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
-        }// OK
+        }
         // Listar usuarios activos
-        public List<Usuario> ListarUsuarios()
+        public List<PreUsuario> ListarUsuarios()
         {
-            
+
+            List<PreUsuario> usuarios = new List<PreUsuario>();
             try
             {
                 conexion.Abrir();
-                List<Usuario> allUsers = new List<Usuario>();
-                string consultaListar = "SELECT * FROM Vista_todos_los_usuarios";
+                string consultaListar = "SELECT usuario_id, nombre, apellido, telefono, email, fecha_registro, fecha_baja, rol FROM Vista_de_todos_los_usuarios_activos WHERE Fecha_Baja IS NULL";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            byte[] fotoPerfil = null;
-                            if (!reader.IsDBNull(reader.GetOrdinal("Imagen_Perfil")))
-                            {
-                                long tamañoImagen = reader.GetBytes(reader.GetOrdinal("Imagen_Perfil"), 0, null, 0, 0);
-                                fotoPerfil = new byte[tamañoImagen];
-                                reader.GetBytes(reader.GetOrdinal("Imagen_Perfil"), 0, fotoPerfil, 0, (int)tamañoImagen);
-                            }
-
-                            allUsers.Add(new Usuario(
-                                reader.GetString("Email"),
+                            PreUsuario user = new PreUsuario(
                                 reader.GetInt32("Usuario_Id"),
+                                reader.GetString("Email"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                fotoPerfil,
-                                reader.GetInt32("rol_id"),
+                                reader.GetString("Rol"),
                                 reader.GetDateTime("Fecha_Registro"),
                                 reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("Fecha_Baja")
+                            );
 
-                            ));
+                            usuarios.Add(user);
                         }
-                        return allUsers;
                     }
                 }
             }
@@ -292,31 +256,31 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
-        } // Revisar Uso
+            return usuarios;
+        } 
         // Listar usuarios inactivos
-        public List<Usuario> ListarUsuariosInactivos()
+        public List<PreUsuario> ListarUsuariosInactivos()
         {
-            List<Usuario> usuarios = new List<Usuario>();
+            List<PreUsuario> usuarios = new List<PreUsuario>();
             try
             {
                 conexion.Abrir();
-                string consultaListar = "SELECT * FROM usuarios WHERE Fecha_Baja IS NOT NULL";
+                string consultaListar = "SELECT usuario_id, nombre, apellido, telefono, email, fecha_registro, fecha_baja, rol FROM Vista_de_todos_los_usuarios_inactivos WHERE Fecha_Baja IS NOT NULL";
                 using (MySqlCommand comando = new MySqlCommand(consultaListar, conexion.GetConexion()))
                 {
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            Usuario user = new Usuario(
+                            PreUsuario user = new PreUsuario(
+                                reader.GetInt32("Usuario_Id"),
                                 reader.GetString("Email"),
-                                reader.GetInt32("UsuarioId"),
                                 reader.GetString("Nombre"),
                                 reader.GetString("Apellido"),
                                 reader.GetString("Telefono"),
-                                (byte[])reader["ImagenPerfil"],
-                                (int)reader["ID_Rol"],
+                                reader.GetString("Rol"),
                                 reader.GetDateTime("Fecha_Registro"),
-                                reader.GetDateTime("Fecha_Baja")
+                                reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("Fecha_Baja")
                             );
                             
                             usuarios.Add(user);
@@ -333,82 +297,10 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
             return usuarios;
-        } // Revisar Uso *MODIFICADO
-        // Cantidad Total de usuario dados de alta
+        } 
         
-        public int CantidadTotalUsuarios()
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaContar = "SELECT COUNT(*) FROM usuarios WHERE FechaBaja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaContar, conexion.GetConexion()))
-                {
-                    int count = Convert.ToInt32(comando.ExecuteScalar());
-                    return count;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al contar los usuarios: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Revisar Uso
-        // Cantidad Total de usuario dados de baja
-        public int CantidadTotalUsuariosInactivos()
-        {
-            try
-            {
-                conexion.Abrir();
-                string consultaContar = "SELECT COUNT(*) FROM usuarios WHERE FechaBaja IS NOT NULL";
-                using (MySqlCommand comando = new MySqlCommand(consultaContar, conexion.GetConexion()))
-                {
-                    int count = Convert.ToInt32(comando.ExecuteScalar());
-                    return count;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al contar los usuarios inactivos: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        } // Revisar Uso
-
-        public string ObtenerContraseñaPorEmail(string email)
-        {
-            try
-            {
-                conexion.Abrir();
-                string consulta = "SELECT Contraseña FROM usuarios WHERE email = @Email AND fecha_baja IS NULL";
-                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
-                {
-                    comando.Parameters.AddWithValue("@Email", email);
-                    object resultado = comando.ExecuteScalar(); // Devuelve la primera columna de la primera fila
-
-                    if (resultado != null)
-                        return resultado.ToString();
-                    else
-                        return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener la contraseña: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Cerrar();
-            }
-        }
-
         //Verificar si existe mail
-        public bool ExisteUsuarioPorEmail(string email)
+        public bool ExisteUsuarioPorEmail(string email)// Emprolijar con una funcion en BDD
         {
             try
             {
@@ -430,7 +322,55 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
+        // Otorgar rol administrador a un usuario
+        public void OtorgarRolAdministrador(int usuarioId, int adminId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consulta = "Asignar_rol_administrador";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioId);
+                    comando.Parameters.AddWithValue("p_admin_id", adminId);
+                    int filasAfectadas = comando.ExecuteNonQuery();            
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al otorgar el rol de administrador: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
 
+        // Revocar rol administrador a un usuario
+        public void RevocarRolAdministrador(int usuarioId, int adminId)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consulta = "Asignar_rol_usuario";
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioId);
+                    comando.Parameters.AddWithValue("p_admin_id", adminId);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al revocar el rol de administrador: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
 
     }
 }
