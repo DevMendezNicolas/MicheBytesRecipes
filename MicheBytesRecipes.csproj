@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Interacciones\Comentarios.cs" />
+    <Compile Include="Classes\Interacciones\Metricas.cs" />
     <Compile Include="Classes\Recetas\Categoria.cs" />
     <Compile Include="Classes\Recetas\Ingrediente.cs" />
     <Compile Include="Classes\Recetas\Pais.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Classes\Recetas\Receta.cs" />
     <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
     <Compile Include="Classes\Recetas\UnidadMedida.cs" />
+    <Compile Include="Classes\Users\PreUsuario.cs" />
     <Compile Include="Classes\Users\Usuario.cs" />
     <Compile Include="Connections\ConexionBD.cs" />
     <Compile Include="Forms\AddReceta\FrmAgregarCategoria.cs">
@@ -162,6 +164,12 @@
       <DependentUpon>FrmVerReceta.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddReceta\Validaciones.cs" />
+    <Compile Include="Forms\Admin\frmMetricas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\frmMetricas.Designer.cs">
+      <DependentUpon>frmMetricas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin\GestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +218,12 @@
     <Compile Include="Forms\Landing\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\Configuracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\Configuracion.Designer.cs">
+      <DependentUpon>Configuracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\Historial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,21 +236,32 @@
     <Compile Include="Forms\User\MenuUser.Designer.cs">
       <DependentUpon>MenuUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\UcRecetaTarjeta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\User\UcRecetaTarjeta.Designer.cs">
+      <DependentUpon>UcRecetaTarjeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CueProvider.cs" />
     <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Theme.cs" />
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\UiHelpers.cs" />
+    <Compile Include="Interfaces\IPermisosUsuario.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Managers\GestorCatalogo.cs" />
+    <Compile Include="Managers\GestorDeMetricas.cs" />
     <Compile Include="Managers\GestorIngredientes.cs" />
     <Compile Include="Managers\GestorReceta.cs" />
     <Compile Include="Managers\GestorInteracciones.cs" />
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CargarJson.cs" />
+    <Compile Include="Utilities\ControlJson.cs" />
     <Compile Include="Utilities\GeneradorPdf.cs" />
     <Compile Include="Utilities\TerminosData.cs" />
+    <Compile Include="Utilities\TextoJson.cs" />
     <Compile Include="Utilities\Utilidades.cs" />
     <EmbeddedResource Include="Forms\AddReceta\FrmAgregarCategoria.resx">
       <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
@@ -255,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddReceta\FrmVerReceta.resx">
       <DependentUpon>FrmVerReceta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\frmMetricas.resx">
+      <DependentUpon>frmMetricas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\GestionUsuarios.resx">
       <DependentUpon>GestionUsuarios.cs</DependentUpon>
@@ -280,11 +308,17 @@
     <EmbeddedResource Include="Forms\Landing\Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\Configuracion.resx">
+      <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\Historial.resx">
       <DependentUpon>Historial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\MenuUser.resx">
       <DependentUpon>MenuUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\UcRecetaTarjeta.resx">
+      <DependentUpon>UcRecetaTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -299,6 +333,8 @@
     <Content Include="Data\terms.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Data\inicioContenido.json" />
+    <None Include="Data\registroContenido.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
