@@ -1,6 +1,4 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 
 namespace MicheBytesRecipes.Utilities
 {
@@ -207,6 +208,163 @@ namespace MicheBytesRecipes.Utilities
                 _totalPages.EndText();
             }
         }
+
+        public static void ExportarRecetaAPdf(string nombreReceta,string descripcion,string instrucciones,byte[] imagenReceta,List<string> ingredientes,string pais,string categoria,string dificultad,TimeSpan tiempoPreparacion)
+        {
+            try
+            {
+                // 📂 Crear carpeta de destino (Descargas o Escritorio)
+                string carpetaDescargas = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+                string carpetaDestino = Directory.Exists(carpetaDescargas)
+                    ? carpetaDescargas
+                    : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "RecetasPDF");
+
+                if (!Directory.Exists(carpetaDestino))
+                    Directory.CreateDirectory(carpetaDestino);
+
+                string nombreArchivo = $"{SanitizarArchivo(nombreReceta)}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                string rutaPdf = Path.Combine(carpetaDestino, nombreArchivo);
+
+                using (var fs = new FileStream(rutaPdf, FileMode.Create, FileAccess.Write, FileShare.None))
+                using (var doc = new Document(PageSize.A4, 50f, 50f, 60f, 50f))
+                {
+                    var writer = PdfWriter.GetInstance(doc, fs);
+                    writer.PageEvent = new PdfHeaderFooter(nombreReceta);
+                    doc.Open();
+
+                    // 🎨 Fuentes y colores
+                    BaseColor colorPrincipal = new BaseColor(240, 90, 40); // naranja suave
+                    BaseColor colorSecundario = new BaseColor(80, 80, 80);
+                    BaseColor colorFondo = new BaseColor(250, 250, 250);
+
+                    var fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 20, colorPrincipal);
+                    var fuenteSubtitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 13, colorSecundario);
+                    var fuenteTexto = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+                    var fuenteIngrediente = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.DARK_GRAY);
+
+                    // 🏷️ Título centrado
+                    var titulo = new Paragraph(nombreReceta, fuenteTitulo)
+                    {
+                        Alignment = Element.ALIGN_CENTER,
+                        SpacingAfter = 12f
+                    };
+                    doc.Add(titulo);
+
+                    // 📋 Panel de información principal (categoría, país, dificultad, tiempo)
+                    PdfPTable tablaInfo = new PdfPTable(2)
+                    {
+                        WidthPercentage = 90,
+                        SpacingAfter = 12f
+                    };
+                    tablaInfo.DefaultCell.Border = Rectangle.NO_BORDER;
+                    tablaInfo.SetWidths(new float[] { 1f, 1f });
+
+                    void AddInfo(string label, string value)
+                    {
+                        var cellLabel = new PdfPCell(new Phrase(label + ":", fuenteSubtitulo))
+                        {
+                            Border = Rectangle.NO_BORDER,
+                            PaddingBottom = 5f
+                        };
+                        var cellValue = new PdfPCell(new Phrase(value ?? "-", fuenteTexto))
+                        {
+                            Border = Rectangle.NO_BORDER,
+                            PaddingBottom = 5f
+                        };
+                        tablaInfo.AddCell(cellLabel);
+                        tablaInfo.AddCell(cellValue);
+                    }
+
+                    AddInfo("Categoría", categoria);
+                    AddInfo("País", pais);
+                    AddInfo("Dificultad", dificultad);
+                    AddInfo("Tiempo de preparación", $"{tiempoPreparacion.TotalMinutes} minutos");
+
+                    doc.Add(tablaInfo);
+
+                    // 🖼️ Imagen centrada
+                    if (imagenReceta != null && imagenReceta.Length > 0)
+                    {
+                        try
+                        {
+                            var img = iTextSharp.text.Image.GetInstance(imagenReceta);
+                            img.Alignment = Element.ALIGN_CENTER;
+                            img.ScaleToFit(400f, 300f);
+                            img.SpacingAfter = 15f;
+                            img.BorderWidth = 1f;
+                            img.BorderColor = new BaseColor(200, 200, 200);
+                            doc.Add(img);
+                        }
+                        catch
+                        {
+                            doc.Add(new Paragraph("(No se pudo cargar la imagen)", fuenteTexto) { Alignment = Element.ALIGN_CENTER });
+                        }
+                    }
+
+                    // 🧾 Descripción con fondo gris claro
+                    PdfPTable tablaDescripcion = new PdfPTable(1) { WidthPercentage = 90, SpacingAfter = 15f };
+                    PdfPCell celdaDescTitulo = new PdfPCell(new Phrase("Descripción", fuenteSubtitulo))
+                    {
+                        BackgroundColor = new BaseColor(240, 240, 240),
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 6f
+                    };
+                    PdfPCell celdaDescTexto = new PdfPCell(new Phrase(descripcion ?? "Sin descripción disponible.", fuenteTexto))
+                    {
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 8f
+                    };
+                    tablaDescripcion.AddCell(celdaDescTitulo);
+                    tablaDescripcion.AddCell(celdaDescTexto);
+                    doc.Add(tablaDescripcion);
+
+                    // 🍽️ Ingredientes
+                    doc.Add(new Paragraph("Ingredientes", fuenteSubtitulo) { SpacingAfter = 5f });
+                    if (ingredientes != null && ingredientes.Count > 0)
+                    {
+                        var lista = new List(List.UNORDERED, 8f);
+                        lista.SetListSymbol("• ");
+                        foreach (var ing in ingredientes)
+                            lista.Add(new ListItem(ing, fuenteIngrediente));
+                        doc.Add(lista);
+                    }
+                    else
+                    {
+                        doc.Add(new Paragraph("No se registraron ingredientes.", fuenteTexto));
+                    }
+
+                    doc.Add(new Paragraph("\nInstrucciones", fuenteSubtitulo) { SpacingBefore = 10f, SpacingAfter = 5f });
+                    doc.Add(new Paragraph(instrucciones ?? "Sin instrucciones.", fuenteTexto));
+
+                    // 🧾 Línea divisoria y pie
+                    var linea = new LineSeparator(1f, 100f, colorPrincipal, Element.ALIGN_CENTER, -2);
+                    doc.Add(new Chunk(linea));
+                    doc.Add(new Paragraph($"PDF generado el {DateTime.Now:dd/MM/yyyy HH:mm}", FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 9, BaseColor.GRAY))
+                    {
+                        Alignment = Element.ALIGN_RIGHT
+                    });
+
+                    doc.Close();
+                }
+
+                // ✅ Abrir el PDF al finalizar
+                if (File.Exists(rutaPdf))
+                {
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName = rutaPdf,
+                        UseShellExecute = true
+                    };
+                    Process.Start(psi);
+                    MessageBox.Show($"PDF generado correctamente:\n{rutaPdf}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar PDF de la receta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        } // HAY QUE PROBARLO
+
     }
 }
 

@@ -230,7 +230,7 @@ namespace MicheBytesRecipes
                 frmVerReceta.ShowDialog();
             }
 
-            
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -263,7 +263,7 @@ namespace MicheBytesRecipes
                                     "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
+
                 sfdExpotar.Title = "Seleccione la ubicación y el nombre del archivo JSON para exportar las recetas";
                 sfdExpotar.Filter = "Archivos JSON|*.json";
                 sfdExpotar.FileName = "recetas_exportadas.json";
@@ -285,7 +285,7 @@ namespace MicheBytesRecipes
                     MessageBox.Show($"Error al exportar.\n\n{mensaje}",
                                     "Error de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -294,20 +294,43 @@ namespace MicheBytesRecipes
             }
         }
 
-        private void brnImportar_Click(object sender, EventArgs e)
+        private void brnImportar_Click(object sender, EventArgs e) // Probar este evento cuando funcione todo
         {
-            opfImportar.Title = "Seleccione el archivo JSON de recetas a importar";
-            opfImportar.Filter = "Archivos JSON|*.json";
-            opfImportar.Multiselect = false;
-            if (opfImportar.ShowDialog() != DialogResult.OK)
+            try
             {
-                return;
-            }
-            string Origen = opfImportar.FileName;
-            string mensaje;
-            
-        }
+                opfImportar.Title = "Seleccionar archivo de recetas JSON";
+                opfImportar.Filter = "Archivos JSON (*.json)|*.json";
+                opfImportar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        
+                if (opfImportar.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                string mensaje;
+                List<Receta> recetasImportadas = ControlJson.ImportarRecetasDesdeJson(opfImportar.FileName, out mensaje);
+
+                // Mostrar mensaje de resultado
+                MessageBox.Show(mensaje, "Importación de Recetas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Guardar las recetas importadas en la base de datos
+                if (recetasImportadas != null && recetasImportadas.Count > 0)
+                {
+                    List<Receta> recetas = new List<Receta>(recetasImportadas);
+                    foreach (var receta in recetas)
+                    {
+                        List<int> ingredientesReceta = receta.Ingredientes.Select(i => i.IngredienteId).ToList();
+                        gestorReceta.AgregarReceta(receta, ingredientesReceta);
+                    }
+                    MessageBox.Show($"Se importaron {recetas.Count} recetas correctamente.", "Importación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ActualizarGrilla();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al importar recetas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
