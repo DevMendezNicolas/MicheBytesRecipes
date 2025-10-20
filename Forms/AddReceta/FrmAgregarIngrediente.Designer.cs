@@ -157,7 +157,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FrmAgregarIngrediente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAgregarIngrediente";
             this.Load += new System.EventHandler(this.FrmAgregarIngrediente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

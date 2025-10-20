@@ -317,7 +317,10 @@
             this.Controls.Add(this.TXTnombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FrmAgregarReceta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAgregarReceta";
             this.Load += new System.EventHandler(this.FrmAgregarReceta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();

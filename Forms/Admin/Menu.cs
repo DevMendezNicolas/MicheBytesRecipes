@@ -23,6 +23,7 @@ namespace MicheBytesRecipes
     public partial class frmMenuAdmin : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
         private Usuario usuarioLog;
         private bool recetasActivas = true;
 
@@ -33,7 +34,7 @@ namespace MicheBytesRecipes
             List<PreReceta> preRecetas = recetasActivas ? gestorReceta.ObtenerPreRecetas() : gestorReceta.ObtenerPreRecetasInactivas();
             foreach (var preReceta in preRecetas)
             {
-                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
             }
         }
         public frmMenuAdmin(Usuario usuarioActivado)
@@ -71,7 +72,7 @@ namespace MicheBytesRecipes
         private void frmMenuAdmin_Load(object sender, EventArgs e)
         {
             // --- Categorías ---
-            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
+            List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
@@ -79,7 +80,7 @@ namespace MicheBytesRecipes
             cboCategoria.SelectedIndex = 0;
 
             // --- Países ---
-            List<Pais> paises = gestorReceta.ObtenerListaPaises();
+            List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
             paises.Insert(0, new Pais { PaisId = 0, Nombre = "Todos" });
             cboPais.DataSource = paises;
             cboPais.DisplayMember = "Nombre";
@@ -143,7 +144,7 @@ namespace MicheBytesRecipes
                 dgvReceta.Columns["dgvReceta_id"].Visible = false;
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
                 }
 
             }
@@ -234,19 +235,18 @@ namespace MicheBytesRecipes
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            this.Hide();
             if (dgvReceta.SelectedRows.Count > 0)
             {
                 int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
                 Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
                 if (receta != null)
                 {
-                    //FrmAgregarReceta frmModificarReceta = new FrmAgregarReceta(usuarioLog, receta);
-                    //frmModificarReceta.ShowDialog();
-                    /*if (frmModificarReceta.DialogResult == DialogResult.OK)
+                    FrmModificarReceta frmModificarReceta = new FrmModificarReceta(receta, usuarioLog);
+                    frmModificarReceta.ShowDialog();
+                    if (frmModificarReceta.DialogResult == DialogResult.OK)
                     {
                         this.ActualizarGrilla();
-                    }*/
+                    }
                 }
             }
         }

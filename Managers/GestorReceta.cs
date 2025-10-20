@@ -564,8 +564,7 @@ namespace MicheBytesRecipes
             return recetas;
         }
 
-        // Metodos auxiliares
-        // 
+
         // Obtener lista de recetas para exportar
         public List<Receta> ObtenerTodasRecetasParaExportar(int batchSize = 200)
         {
@@ -592,7 +591,7 @@ namespace MicheBytesRecipes
                             Descripcion = reader["descripcion"] as string,
                             Instrucciones = reader["instrucciones"] as string,
                             TiempoPreparacion = reader["tiempo_preparacion"] == DBNull.Value ? TimeSpan.Zero : (TimeSpan)reader["tiempo_preparacion"],
-                            NivelDificultad = Enum.TryParse(reader["dificultad"] as string, true, out Dificultad dif) ? dif : Dificultad.FÃ¡cil,
+                            NivelDificultad = Enum.TryParse(reader["dificultad"] as string, true, out Dificultad dif) ? dif : Dificultad.Fácil,
                             PaisId = reader["pais_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["pais_id"]),
                             CategoriaId = reader["categoria_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["categoria_id"]),
                             UsuarioId = reader["usuario_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["usuario_id"]),

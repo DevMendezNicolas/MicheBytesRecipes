@@ -182,12 +182,6 @@
     <Compile Include="Forms\Admin\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\Metricas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin\Metricas.Designer.cs">
-      <DependentUpon>Metricas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Auth\FrmRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,9 +283,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\Metricas.resx">
-      <DependentUpon>Metricas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Auth\FrmRegister.resx">
       <DependentUpon>FrmRegister.cs</DependentUpon>

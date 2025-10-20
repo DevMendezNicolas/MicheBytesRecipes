@@ -296,7 +296,10 @@
             this.Controls.Add(this.lblTiempo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FrmVerReceta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVerReceta";
             this.Load += new System.EventHandler(this.FrmVerReceta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();

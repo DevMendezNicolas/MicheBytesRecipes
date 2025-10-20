@@ -100,7 +100,10 @@
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FrmAgregarPais";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAgregarPais";
             this.Load += new System.EventHandler(this.FrmAgregarPais_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

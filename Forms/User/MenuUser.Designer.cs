@@ -47,11 +47,11 @@
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
+            this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -250,6 +250,14 @@
             this.pnlNavegacion.Size = new System.Drawing.Size(233, 661);
             this.pnlNavegacion.TabIndex = 3;
             // 
+            // pbImagenUser
+            // 
+            this.pbImagenUser.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenUser.Name = "pbImagenUser";
+            this.pbImagenUser.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenUser.TabIndex = 12;
+            this.pbImagenUser.TabStop = false;
+            // 
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -294,14 +302,6 @@
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
-            // pbImagenUser
-            // 
-            this.pbImagenUser.Location = new System.Drawing.Point(34, 24);
-            this.pbImagenUser.Name = "pbImagenUser";
-            this.pbImagenUser.Size = new System.Drawing.Size(154, 85);
-            this.pbImagenUser.TabIndex = 12;
-            this.pbImagenUser.TabStop = false;
-            // 
             // MenuUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -310,7 +310,9 @@
             this.Controls.Add(this.pnlContenido);
             this.Controls.Add(this.pnlNavegacion);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "MenuUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
