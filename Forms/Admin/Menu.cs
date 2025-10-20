@@ -4,6 +4,7 @@ using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Forms.Admin;
 using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Utilities;
 using MicheBytesRecipes.Managers;
 using Mysqlx.Session;
 using System;
@@ -249,5 +250,57 @@ namespace MicheBytesRecipes
                 }
             }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Receta> recetasExportar = gestorReceta.ObtenerTodasRecetasParaExportar();
+
+                if (recetasExportar == null || recetasExportar.Count == 0)
+                {
+                    MessageBox.Show("No hay recetas para exportar.",
+                                    "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
+                sfdExpotar.Title = "Seleccione la ubicación y el nombre del archivo JSON para exportar las recetas";
+                sfdExpotar.Filter = "Archivos JSON|*.json";
+                sfdExpotar.FileName = "recetas_exportadas.json";
+                if (sfdExpotar.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                string Destino = sfdExpotar.FileName;
+                string mensaje;
+
+                if (ControlJson.ExportarRecetasAJson(Destino, recetasExportar, out mensaje))
+                {
+                    MessageBox.Show($"Exportación completada.\n\n{mensaje}",
+                                    "Exportación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Error al exportar.\n\n{mensaje}",
+                                    "Error de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error:\n{ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void brnImportar_Click(object sender, EventArgs e)
+        {
+            opfImportar.Title = "Seleccione el archivo JSON de recetas a importar";
+            opfImportar.Filter = "Archivos JSON|*.json";
+            opfImportar.Multiselect = false;
+        }
+
+        
     }
 }

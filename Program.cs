@@ -29,6 +29,7 @@ namespace MicheBytesRecipes
             //Application.Run(new Forms.AddReceta.FrmAgregarReceta());
             //Application.Run(new Forms.Auth.FrmRegister());
             //Application.Run(new Forms.Admin.frmBuscarUsuario());
+            
 
         }
     }

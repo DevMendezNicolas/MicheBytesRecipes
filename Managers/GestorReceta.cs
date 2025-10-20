@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
@@ -936,6 +937,224 @@ namespace MicheBytesRecipes
 
             return ingredientes;
         }
+        // Obtener lista de recetas para exportar
+        /*public List<Receta> ObtenerTodasRecetasParaExportar(int batchSize = 200)
+        {
+            var recetas = new Dictionary<int, Receta>();
+
+            try
+            {
+                conexion.Abrir();
+
+                // 1) Obtener las recetas principales
+                string sqlRecetas = "SELECT receta_id, nombre, descripcion, instrucciones, imagen_receta,tiempo_preparacion, dificultad, fecha_baja, pais_id, categoria_id, usuario_id FROM Vista_de_receta_completa WHERE fecha_baja IS NULL;";
+
+                using (var cmd = new MySqlCommand(sqlRecetas, conexion.GetConexion()))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32("receta_id");
+
+                        var receta = new Receta
+                        {
+                            RecetaId = id,
+                            Nombre = reader["nombre"] as string,
+                            Descripcion = reader["descripcion"] as string,
+                            Instrucciones = reader["instrucciones"] as string,
+                            ImagenReceta = reader["imagen_receta"] == DBNull.Value ? null : (byte[])reader["imagen_receta"],
+                            TiempoPreparacion = reader["tiempo_preparacion"] == DBNull.Value ? TimeSpan.Zero : (TimeSpan)reader["tiempo_preparacion"],
+                            NivelDificultad = Enum.TryParse(reader["dificultad"] as string, true, out Dificultad dif) ? dif : Dificultad.Fácil,
+                            PaisId = reader["pais_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["pais_id"]),
+                            CategoriaId = reader["categoria_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["categoria_id"]),
+                            UsuarioId = reader["usuario_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["usuario_id"]),
+                            FechaBaja = reader["fecha_baja"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["fecha_baja"]),
+                            Ingredientes = new List<Ingrediente>()
+                        };
+                        recetas[id] = receta;
+                    }
+                }
+
+                if (recetas.Count == 0)
+                { 
+                    return recetas.Values.ToList();
+                }
+                // 2) Obtener ingredientes por lotes (batch)
+                var allIds = recetas.Keys.ToList();
+                for (int i = 0; i < allIds.Count; i += batchSize)
+                {
+                    var batchIds = allIds.Skip(i).Take(batchSize).ToList();
+
+                    using (var cmdIng = new MySqlCommand())
+                    {
+                        cmdIng.Connection = conexion.GetConexion();
+
+                        var paramNames = new List<string>();
+                        for (int j = 0; j < batchIds.Count; j++)
+                        {
+                            string pname = "@id" + j;
+                            cmdIng.Parameters.AddWithValue(pname, batchIds[j]);
+                            paramNames.Add(pname);
+                        }
+
+                        cmdIng.CommandText = $@"
+                    SELECT receta_id, ingrediente_id, nombre,
+                           unidad_de_medida_id, unidad,
+                           tipo_ingrediente_id, tipo_ingrediente
+                    FROM Vista_de_todos_los_ingredientes_tipo_y_unidad_x_receta
+                    WHERE receta_id IN ({string.Join(",", paramNames)});";
+
+                        using (var rdrIng = cmdIng.ExecuteReader())
+                        {
+                            while (rdrIng.Read())
+                            {
+                                int recetaId = rdrIng.GetInt32("receta_id");
+                                if (!recetas.TryGetValue(recetaId, out var receta)) continue;
+
+                                var ing = new Ingrediente
+                                {
+                                    IngredienteId = rdrIng["ingrediente_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdrIng["ingrediente_id"]),
+                                    Nombre = rdrIng["nombre"] as string,
+                                    Unidad = new UnidadMedida
+                                    {
+                                        UnidadMedidaId = rdrIng["unidad_de_medida_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdrIng["unidad_de_medida_id"]),
+                                        Nombre = rdrIng["unidad"] as string
+                                    },
+                                    Tipo = new TipoIngrediente
+                                    {
+                                        TipoIngredienteId = rdrIng["tipo_ingrediente_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdrIng["tipo_ingrediente_id"]),
+                                        Nombre = rdrIng["tipo_ingrediente"] as string
+                                    }
+                                };
+
+                                receta.Ingredientes.Add(ing);
+                            }
+                        }
+                    }
+                }
+
+                return recetas.Values.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                Console.Error.WriteLine("Error al obtener recetas para exportar: " + ex.Message);
+                return new List<Receta>();
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }*/
+        public List<Receta> ObtenerTodasRecetasParaExportar(int batchSize = 200)
+        {
+            var recetas = new Dictionary<int, Receta>();
+
+            try
+            {
+                conexion.Abrir();
+
+                // 1) Obtener las recetas principales
+                string sqlRecetas = "SELECT receta_id, nombre, descripcion, instrucciones,tiempo_preparacion, dificultad, fecha_baja, pais_id, categoria_id, usuario_id FROM Vista_de_receta_completa WHERE fecha_baja IS NULL;";
+
+                using (var cmd = new MySqlCommand(sqlRecetas, conexion.GetConexion()))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32("receta_id");
+
+                        var receta = new Receta
+                        {
+                            RecetaId = id,
+                            Nombre = reader["nombre"] as string,
+                            Descripcion = reader["descripcion"] as string,
+                            Instrucciones = reader["instrucciones"] as string,
+                            TiempoPreparacion = reader["tiempo_preparacion"] == DBNull.Value ? TimeSpan.Zero : (TimeSpan)reader["tiempo_preparacion"],
+                            NivelDificultad = Enum.TryParse(reader["dificultad"] as string, true, out Dificultad dif) ? dif : Dificultad.Fácil,
+                            PaisId = reader["pais_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["pais_id"]),
+                            CategoriaId = reader["categoria_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["categoria_id"]),
+                            UsuarioId = reader["usuario_id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["usuario_id"]),
+                            FechaBaja = reader["fecha_baja"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["fecha_baja"]),
+                            Ingredientes = new List<Ingrediente>()
+                        };
+                        recetas[id] = receta;
+                    }
+                }
+
+                if (recetas.Count == 0)
+                {
+                    return recetas.Values.ToList();
+                }
+                // 2) Obtener ingredientes por lotes (batch)
+                var allIds = recetas.Keys.ToList();
+                for (int i = 0; i < allIds.Count; i += batchSize)
+                {
+                    var batchIds = allIds.Skip(i).Take(batchSize).ToList();
+
+                    using (var cmdIng = new MySqlCommand())
+                    {
+                        cmdIng.Connection = conexion.GetConexion();
+
+                        var paramNames = new List<string>();
+                        for (int j = 0; j < batchIds.Count; j++)
+                        {
+                            string pname = "@id" + j;
+                            cmdIng.Parameters.AddWithValue(pname, batchIds[j]);
+                            paramNames.Add(pname);
+                        }
+
+                        cmdIng.CommandText = $@"
+                    SELECT receta_id, ingrediente_id, nombre,
+                           unidad_de_medida_id, unidad,
+                           tipo_ingrediente_id, tipo_ingrediente
+                    FROM Vista_de_todos_los_ingredientes_tipo_y_unidad_x_receta
+                    WHERE receta_id IN ({string.Join(",", paramNames)});";
+
+                        using (var rdrIng = cmdIng.ExecuteReader())
+                        {
+                            while (rdrIng.Read())
+                            {
+                                int recetaId = rdrIng.GetInt32("receta_id");
+                                if (!recetas.TryGetValue(recetaId, out var receta)) continue;
+
+                                var ing = new Ingrediente
+                                {
+                                    IngredienteId = rdrIng["ingrediente_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdrIng["ingrediente_id"]),
+                                    Nombre = rdrIng["nombre"] as string,
+                                    Unidad = new UnidadMedida
+                                    {
+                                        UnidadMedidaId = rdrIng["unidad_de_medida_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdrIng["unidad_de_medida_id"]),
+                                        Nombre = rdrIng["unidad"] as string
+                                    },
+                                    Tipo = new TipoIngrediente
+                                    {
+                                        TipoIngredienteId = rdrIng["tipo_ingrediente_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdrIng["tipo_ingrediente_id"]),
+                                        Nombre = rdrIng["tipo_ingrediente"] as string
+                                    }
+                                };
+
+                                receta.Ingredientes.Add(ing);
+                            }
+                        }
+                    }
+                }
+
+                return recetas.Values.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                Console.Error.WriteLine("Error al obtener recetas para exportar: " + ex.Message);
+                return new List<Receta>();
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
+
         // Agregar visita al historial
         public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
         {
@@ -958,6 +1177,6 @@ namespace MicheBytesRecipes
             {
                 conexion.Cerrar();
             }
-        } // Usar cuando nehuen termine el formulario
+        } // PASAR A GESTOR INTERACCIONES
     }
 }

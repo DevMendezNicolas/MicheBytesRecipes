@@ -231,6 +231,7 @@
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ControlJson.cs" />
     <Compile Include="Utilities\GeneradorPdf.cs" />
     <Compile Include="Utilities\TerminosData.cs" />
     <Compile Include="Utilities\Utilidades.cs" />
