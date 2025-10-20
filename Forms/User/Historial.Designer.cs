@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlContenido = new System.Windows.Forms.Panel();
-            this.btnReinicio = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dgvHistorial = new System.Windows.Forms.DataGridView();
             this.recetaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Receta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,13 +37,6 @@
             this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dificultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboDificultad = new System.Windows.Forms.ComboBox();
-            this.cboPais = new System.Windows.Forms.ComboBox();
-            this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscarHistorial = new System.Windows.Forms.TextBox();
             this.lblHistorial = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
@@ -60,16 +52,8 @@
             // 
             // pnlContenido
             // 
-            this.pnlContenido.Controls.Add(this.btnReinicio);
-            this.pnlContenido.Controls.Add(this.btnBuscar);
+            this.pnlContenido.Controls.Add(this.flowLayoutPanel1);
             this.pnlContenido.Controls.Add(this.dgvHistorial);
-            this.pnlContenido.Controls.Add(this.cboDificultad);
-            this.pnlContenido.Controls.Add(this.cboPais);
-            this.pnlContenido.Controls.Add(this.cboCategoria);
-            this.pnlContenido.Controls.Add(this.label3);
-            this.pnlContenido.Controls.Add(this.label2);
-            this.pnlContenido.Controls.Add(this.label1);
-            this.pnlContenido.Controls.Add(this.txtBuscarHistorial);
             this.pnlContenido.Controls.Add(this.lblHistorial);
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenido.Location = new System.Drawing.Point(233, 0);
@@ -78,25 +62,13 @@
             this.pnlContenido.Size = new System.Drawing.Size(951, 661);
             this.pnlContenido.TabIndex = 6;
             // 
-            // btnReinicio
+            // flowLayoutPanel1
             // 
-            this.btnReinicio.Location = new System.Drawing.Point(772, 142);
-            this.btnReinicio.Name = "btnReinicio";
-            this.btnReinicio.Size = new System.Drawing.Size(131, 29);
-            this.btnReinicio.TabIndex = 5;
-            this.btnReinicio.Text = "🔄 Reiniciar filtros";
-            this.btnReinicio.UseVisualStyleBackColor = true;
-            this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(751, 69);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(152, 29);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "🔍 Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(45, 76);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(858, 560);
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // dgvHistorial
             // 
@@ -108,13 +80,12 @@
             this.Pais,
             this.Dificultad,
             this.Tiempo});
-            this.dgvHistorial.Location = new System.Drawing.Point(45, 210);
+            this.dgvHistorial.Location = new System.Drawing.Point(45, 76);
             this.dgvHistorial.MultiSelect = false;
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHistorial.Size = new System.Drawing.Size(858, 382);
+            this.dgvHistorial.Size = new System.Drawing.Size(858, 114);
             this.dgvHistorial.TabIndex = 4;
-            this.dgvHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellContentClick);
             // 
             // recetaId
             // 
@@ -157,72 +128,6 @@
             this.Tiempo.HeaderText = "Tiempo";
             this.Tiempo.Name = "Tiempo";
             this.Tiempo.ReadOnly = true;
-            // 
-            // cboDificultad
-            // 
-            this.cboDificultad.FormattingEnabled = true;
-            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
-            this.cboDificultad.Name = "cboDificultad";
-            this.cboDificultad.Size = new System.Drawing.Size(179, 25);
-            this.cboDificultad.TabIndex = 3;
-            // 
-            // cboPais
-            // 
-            this.cboPais.FormattingEnabled = true;
-            this.cboPais.Location = new System.Drawing.Point(332, 146);
-            this.cboPais.Name = "cboPais";
-            this.cboPais.Size = new System.Drawing.Size(179, 25);
-            this.cboPais.TabIndex = 3;
-            // 
-            // cboCategoria
-            // 
-            this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(75, 146);
-            this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(179, 25);
-            this.cboCategoria.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(562, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Dificultad";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(328, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Pais";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Categoria";
-            // 
-            // txtBuscarHistorial
-            // 
-            this.txtBuscarHistorial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscarHistorial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarHistorial.Location = new System.Drawing.Point(219, 69);
-            this.txtBuscarHistorial.Name = "txtBuscarHistorial";
-            this.txtBuscarHistorial.Size = new System.Drawing.Size(488, 29);
-            this.txtBuscarHistorial.TabIndex = 1;
             // 
             // lblHistorial
             // 
@@ -326,14 +231,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlContenido;
-        private System.Windows.Forms.Button btnReinicio;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvHistorial;
-        private System.Windows.Forms.ComboBox cboPais;
-        private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBuscarHistorial;
         private System.Windows.Forms.Label lblHistorial;
         private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
@@ -341,13 +239,12 @@
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnHistorialPdf;
         private System.Windows.Forms.Button btnInicio;
-        private System.Windows.Forms.ComboBox cboDificultad;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn recetaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

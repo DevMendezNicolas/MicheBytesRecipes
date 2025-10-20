@@ -15,6 +15,8 @@ namespace MicheBytesRecipes.Forms.Auth
 {
     public partial class Terminos : Form
     {
+        private const string jsonpath = @"Data/terms.json";
+
         public Terminos()
         {
             InitializeComponent();
@@ -25,19 +27,7 @@ namespace MicheBytesRecipes.Forms.Auth
         private void CargarTerminos()
         {
             string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "terms.json");
-
-            if (File.Exists(jsonPath))
-            {
-                string json = File.ReadAllText(jsonPath);
-                TerminosData terms = JsonConvert.DeserializeObject<TerminosData>(json);
-
-                lblTitulo.Text = terms.titulo;
-                rtbTerminos.Text = terms.contenido;
-            }
-            else
-            {
-                rtbTerminos.Text = "No se encontraron los términos y condiciones.";
-            }
+            CargarJson.CargarRichTextBox(rtbTerminos, jsonPath);
         }
 
 

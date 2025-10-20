@@ -16,12 +16,11 @@ namespace MicheBytesRecipes.Forms.User
 {
     public partial class MenuUser : Form
     {
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         private bool mostrarFavoritas = false;
         GestorReceta gestorReceta = new GestorReceta();
-        GestorCatalogo gestorCatalogo = new GestorCatalogo();
-        GestorIngredientes gestorIngredientes = new GestorIngredientes();
         public MenuUser(Usuario usuarioActivado)
         {
             InitializeComponent();
@@ -46,7 +45,7 @@ namespace MicheBytesRecipes.Forms.User
         private void MenuUser_Load(object sender, EventArgs e)
         {
             // --- Categorías ---
-            List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
+            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
@@ -54,7 +53,7 @@ namespace MicheBytesRecipes.Forms.User
             cboCategoria.SelectedIndex = 0;
 
             // --- Países ---
-            List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
+            List<Pais> paises = gestorReceta.ObtenerListaPaises();
             paises.Insert(0, new Pais { PaisId = 0, Nombre = "Todos" });
             cboPais.DataSource = paises;
             cboPais.DisplayMember = "Nombre";
@@ -107,8 +106,8 @@ namespace MicheBytesRecipes.Forms.User
                 dgvReceta.Rows.Add(
                     preReceta.RecetaId,
                     preReceta.Nombre,
-                    gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
-                    gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
+                    gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
+                    gestorReceta.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
                     preReceta.Dificultad,
                     preReceta.TiempoPreparacion.ToString()
                 );
@@ -162,7 +161,7 @@ namespace MicheBytesRecipes.Forms.User
                 dgvReceta.Rows.Clear();
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
                 }
 
             }
@@ -211,6 +210,32 @@ namespace MicheBytesRecipes.Forms.User
             }
             this.ActualizarGrilla();
 
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Configuracion configuracion = new Configuracion(usuarioLog);
+            configuracion.ShowDialog();
+            this.Show();
+
+            usuarioLog = gestorUsuarios.BuscarPorEmail(usuarioLog.Email);
+            lblNombre.Text = usuarioLog.NombreCompleto();
+            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
+            {
+                //Crea una imagen a partir del arreglo de bytes
+                using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
+                {
+                    //Se crea un objeto imagen a partir del stream
+                    pbImagenUser.Image = System.Drawing.Image.FromStream(ms);
+                    //Ajusta el tamaño de la imagen al tamaño del picturebox
+                    pbImagenUser.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            else
+            {
+                pbImagenUser.Image = null;
+            }
         }
     }
 }

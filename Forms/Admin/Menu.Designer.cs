@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.brnImportar = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
@@ -40,6 +43,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.txtAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvReceta = new System.Windows.Forms.DataGridView();
@@ -57,6 +61,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
+            this.opfImportar = new System.Windows.Forms.OpenFileDialog();
+            this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
+            this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -65,6 +72,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.brnImportar);
+            this.panel1.Controls.Add(this.btnExportar);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblMetricas);
@@ -81,6 +91,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
+            // 
+            // brnImportar
+            // 
+            this.brnImportar.Location = new System.Drawing.Point(119, 467);
+            this.brnImportar.Margin = new System.Windows.Forms.Padding(4);
+            this.brnImportar.Name = "brnImportar";
+            this.brnImportar.Size = new System.Drawing.Size(92, 42);
+            this.brnImportar.TabIndex = 15;
+            this.brnImportar.Text = "&Importar";
+            this.brnImportar.UseVisualStyleBackColor = true;
+            this.brnImportar.Click += new System.EventHandler(this.brnImportar_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(18, 467);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(92, 42);
+            this.btnExportar.TabIndex = 14;
+            this.btnExportar.Text = "&Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 446);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "&Importar y exportar";
             // 
             // pictureBox1
             // 
@@ -104,7 +146,7 @@
             // lblMetricas
             // 
             this.lblMetricas.AutoSize = true;
-            this.lblMetricas.Location = new System.Drawing.Point(46, 479);
+            this.lblMetricas.Location = new System.Drawing.Point(50, 535);
             this.lblMetricas.Name = "lblMetricas";
             this.lblMetricas.Size = new System.Drawing.Size(123, 17);
             this.lblMetricas.TabIndex = 10;
@@ -122,7 +164,7 @@
             // 
             // btnMetricas
             // 
-            this.btnMetricas.Location = new System.Drawing.Point(13, 559);
+            this.btnMetricas.Location = new System.Drawing.Point(13, 606);
             this.btnMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.btnMetricas.Name = "btnMetricas";
             this.btnMetricas.Size = new System.Drawing.Size(198, 42);
@@ -133,7 +175,7 @@
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.Location = new System.Drawing.Point(13, 509);
+            this.btnUsuarios.Location = new System.Drawing.Point(13, 556);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(198, 42);
@@ -144,7 +186,7 @@
             // 
             // btnAct
             // 
-            this.btnAct.Location = new System.Drawing.Point(13, 394);
+            this.btnAct.Location = new System.Drawing.Point(13, 380);
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
@@ -155,7 +197,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(13, 344);
+            this.btnEliminar.Location = new System.Drawing.Point(13, 330);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(198, 42);
@@ -166,7 +208,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(13, 294);
+            this.btnModificar.Location = new System.Drawing.Point(13, 280);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(198, 42);
@@ -177,7 +219,7 @@
             // 
             // txtAgregar
             // 
-            this.txtAgregar.Location = new System.Drawing.Point(13, 244);
+            this.txtAgregar.Location = new System.Drawing.Point(13, 230);
             this.txtAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.txtAgregar.Name = "txtAgregar";
             this.txtAgregar.Size = new System.Drawing.Size(198, 42);
@@ -188,6 +230,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.dgvReceta);
@@ -206,19 +249,30 @@
             this.panel3.Size = new System.Drawing.Size(951, 661);
             this.panel3.TabIndex = 2;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(128, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 20);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Nombre de la receta";
+            // 
             // btnReinicio
             // 
-            this.btnReinicio.Location = new System.Drawing.Point(772, 142);
+            this.btnReinicio.Location = new System.Drawing.Point(784, 91);
             this.btnReinicio.Name = "btnReinicio";
-            this.btnReinicio.Size = new System.Drawing.Size(131, 29);
+            this.btnReinicio.Size = new System.Drawing.Size(34, 29);
             this.btnReinicio.TabIndex = 5;
-            this.btnReinicio.Text = "🔄 Reiniciar filtros";
+            this.btnReinicio.Text = "🔄";
             this.btnReinicio.UseVisualStyleBackColor = true;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(751, 69);
+            this.btnBuscar.Location = new System.Drawing.Point(626, 91);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
             this.btnBuscar.TabIndex = 5;
@@ -289,7 +343,7 @@
             // cboDificultad
             // 
             this.cboDificultad.FormattingEnabled = true;
-            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
+            this.cboDificultad.Location = new System.Drawing.Point(623, 153);
             this.cboDificultad.Name = "cboDificultad";
             this.cboDificultad.Size = new System.Drawing.Size(179, 25);
             this.cboDificultad.TabIndex = 3;
@@ -297,7 +351,7 @@
             // cboPais
             // 
             this.cboPais.FormattingEnabled = true;
-            this.cboPais.Location = new System.Drawing.Point(332, 146);
+            this.cboPais.Location = new System.Drawing.Point(389, 153);
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(179, 25);
             this.cboPais.TabIndex = 3;
@@ -305,7 +359,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(75, 146);
+            this.cboCategoria.Location = new System.Drawing.Point(132, 153);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
             this.cboCategoria.TabIndex = 3;
@@ -315,7 +369,7 @@
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(562, 117);
+            this.label3.Location = new System.Drawing.Point(619, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 2;
@@ -326,7 +380,7 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(328, 118);
+            this.label2.Location = new System.Drawing.Point(385, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 20);
             this.label2.TabIndex = 2;
@@ -337,7 +391,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, 116);
+            this.label1.Location = new System.Drawing.Point(128, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 2;
@@ -347,7 +401,7 @@
             // 
             this.txtBuscarReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarReceta.Location = new System.Drawing.Point(219, 69);
+            this.txtBuscarReceta.Location = new System.Drawing.Point(132, 91);
             this.txtBuscarReceta.Name = "txtBuscarReceta";
             this.txtBuscarReceta.Size = new System.Drawing.Size(488, 29);
             this.txtBuscarReceta.TabIndex = 1;
@@ -359,9 +413,16 @@
             this.lblBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscar.Location = new System.Drawing.Point(342, 24);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(232, 25);
+            this.lblBuscar.Size = new System.Drawing.Size(187, 25);
             this.lblBuscar.TabIndex = 0;
-            this.lblBuscar.Text = "Buscar receta por nombre";
+            this.lblBuscar.Text = "Menú administrador";
+            // 
+            // opfImportar
+            // 
+            this.opfImportar.FileName = "openFileDialog1";
+            // 
+            // sfdExpotar
+            // 
             // 
             // frmMenuAdmin
             // 
@@ -418,6 +479,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button brnImportar;
+        private System.Windows.Forms.OpenFileDialog opfImportar;
+        private System.Windows.Forms.FolderBrowserDialog fbdCarpetaDestino;
+        private System.Windows.Forms.SaveFileDialog sfdExpotar;
     }
 }
 

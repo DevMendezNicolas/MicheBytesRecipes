@@ -4,6 +4,7 @@ using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Forms.Admin;
 using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Utilities;
 using MicheBytesRecipes.Managers;
 using Mysqlx.Session;
 using System;
@@ -22,8 +23,6 @@ namespace MicheBytesRecipes
     public partial class frmMenuAdmin : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
-        GestorCatalogo gestorCatalogo = new GestorCatalogo();
-        GestorIngredientes gestorIngredientes = new GestorIngredientes();
         private Usuario usuarioLog;
         private bool recetasActivas = true;
 
@@ -34,7 +33,7 @@ namespace MicheBytesRecipes
             List<PreReceta> preRecetas = recetasActivas ? gestorReceta.ObtenerPreRecetas() : gestorReceta.ObtenerPreRecetasInactivas();
             foreach (var preReceta in preRecetas)
             {
-                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
             }
         }
         public frmMenuAdmin(Usuario usuarioActivado)
@@ -72,7 +71,7 @@ namespace MicheBytesRecipes
         private void frmMenuAdmin_Load(object sender, EventArgs e)
         {
             // --- Categorías ---
-            List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
+            List<Categoria> categorias = gestorReceta.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
@@ -80,7 +79,7 @@ namespace MicheBytesRecipes
             cboCategoria.SelectedIndex = 0;
 
             // --- Países ---
-            List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
+            List<Pais> paises = gestorReceta.ObtenerListaPaises();
             paises.Insert(0, new Pais { PaisId = 0, Nombre = "Todos" });
             cboPais.DataSource = paises;
             cboPais.DisplayMember = "Nombre";
@@ -144,7 +143,7 @@ namespace MicheBytesRecipes
                 dgvReceta.Columns["dgvReceta_id"].Visible = false;
                 foreach (var preReceta in recetasFiltradas)
                 {
-                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
+                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorReceta.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorReceta.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
                 }
 
             }
@@ -188,7 +187,7 @@ namespace MicheBytesRecipes
                 if (dgvReceta.SelectedRows.Count > 0)
                 {
                     int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
-                    gestorReceta.DarDeBajaReceta(recetaId);
+                    gestorReceta.DarDeBajaReceta(recetaId, usuarioLog.UsuarioId);
                     this.ActualizarGrilla();
                 }
             }
@@ -197,7 +196,7 @@ namespace MicheBytesRecipes
                 if (dgvReceta.SelectedRows.Count > 0)
                 {
                     int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
-                    gestorReceta.DarDeAltaReceta(recetaId);
+                    gestorReceta.DarDeAltaReceta(recetaId, usuarioLog.UsuarioId);
                     this.ActualizarGrilla();
                 }
             }
@@ -205,16 +204,20 @@ namespace MicheBytesRecipes
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            GestionUsuarios gestionUsuarios = new GestionUsuarios(usuarioLog);
-            gestionUsuarios.Show();
             this.Hide();
+            GestionUsuarios gestionUsuarios = new GestionUsuarios(usuarioLog);
+            gestionUsuarios.ShowDialog();
+            this.Show();
+
         }
 
         private void btnMetricas_Click(object sender, EventArgs e)
         {
-            Metricas metricas = new Metricas(usuarioLog);
-            metricas.Show();
             this.Hide();
+            frmMetricas metricas = new frmMetricas(usuarioLog);
+            metricas.ShowDialog();
+            this.Show();
+
         }
 
         private void dgvReceta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -231,13 +234,73 @@ namespace MicheBytesRecipes
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Receta receta = gestorReceta.ObtenerRecetaPorId(Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value));
-            if (receta != null)
+            this.Hide();
+            if (dgvReceta.SelectedRows.Count > 0)
             {
-                FrmModificarReceta frmModificarReceta = new FrmModificarReceta(receta, usuarioLog);
-                frmModificarReceta.ShowDialog();
-                ActualizarGrilla();
+                int recetaId = Convert.ToInt32(dgvReceta.SelectedRows[0].Cells["dgvReceta_id"].Value);
+                Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
+                if (receta != null)
+                {
+                    //FrmAgregarReceta frmModificarReceta = new FrmAgregarReceta(usuarioLog, receta);
+                    //frmModificarReceta.ShowDialog();
+                    /*if (frmModificarReceta.DialogResult == DialogResult.OK)
+                    {
+                        this.ActualizarGrilla();
+                    }*/
+                }
             }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Receta> recetasExportar = gestorReceta.ObtenerTodasRecetasParaExportar();
+
+                if (recetasExportar == null || recetasExportar.Count == 0)
+                {
+                    MessageBox.Show("No hay recetas para exportar.",
+                                    "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
+                sfdExpotar.Title = "Seleccione la ubicación y el nombre del archivo JSON para exportar las recetas";
+                sfdExpotar.Filter = "Archivos JSON|*.json";
+                sfdExpotar.FileName = "recetas_exportadas.json";
+                if (sfdExpotar.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                string Destino = sfdExpotar.FileName;
+                string mensaje;
+
+                if (ControlJson.ExportarRecetasAJson(Destino, recetasExportar, out mensaje))
+                {
+                    MessageBox.Show($"Exportación completada.\n\n{mensaje}",
+                                    "Exportación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Error al exportar.\n\n{mensaje}",
+                                    "Error de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error:\n{ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void brnImportar_Click(object sender, EventArgs e)
+        {
+            opfImportar.Title = "Seleccione el archivo JSON de recetas a importar";
+            opfImportar.Filter = "Archivos JSON|*.json";
+            opfImportar.Multiselect = false;
+        }
+
+        
     }
 }
