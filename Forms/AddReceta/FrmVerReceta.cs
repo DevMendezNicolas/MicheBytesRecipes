@@ -272,23 +272,45 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         private void btnExportarPdf_Click(object sender, EventArgs e)
         {
-            TimeSpan tiempo = TimeSpan.Parse(lblTiempo.Text);
-            List<string> ingredientes = new List<string>();
-
-            foreach(var ingrendiente in lstIngredientes.Items)
+            try
             {
-                ingredientes.Add(ingrendiente.ToString());
-            }
+                TimeSpan tiempo = TimeSpan.Parse(lblTiempo.Text);
+                List<string> ingredientes = lstIngredientes.Items
+                    .Cast<ListViewItem>()
+                    .Select(item => item.Text) // 👈 obtiene solo el texto visible
+                    .ToList();
 
-            using (MemoryStream ms = new MemoryStream())
+
+
+                byte[] foto = null;
+
+                if (pbxImagen.Image != null)
+                {
+                    using (var bmp = new Bitmap(pbxImagen.Image)) // Clona la imagen (rompe el bloqueo GDI+)
+                    using (var ms = new MemoryStream())
+                    {
+                        bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Usamos PNG para compatibilidad y evitar códecs
+                        foto = ms.ToArray();
+                    }
+                }
+
+                GeneradorPdf.ExportarRecetaAPdf(
+                    lblNombre.Text,
+                    lblDescripcion.Text,
+                    lblInstruccion.Text,
+                    foto,
+                    ingredientes,
+                    lblPais.Text,
+                    lblCategoria.Text,
+                    lblDificultad.Text,
+                    tiempo
+                );
+            }
+            catch (Exception ex)
             {
-                pbxImagen.Image.Save(ms, pbxImagen.Image.RawFormat); // Guarda en el formato original
-                byte[] foto = ms.ToArray();
-                GeneradorPdf.ExportarRecetaAPdf(lblNombre.Text, lblDescripcion.Text, lblInstruccion.Text, foto , ingredientes, lblPais.Text, lblCategoria.Text, lblDificultad.Text, tiempo);
+                MessageBox.Show($"Error al exportar PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-           
-
         }
+
     }
 }

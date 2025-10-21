@@ -241,46 +241,62 @@ namespace MicheBytesRecipes.Utilities
                     var fuenteSubtitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 13, colorSecundario);
                     var fuenteTexto = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
                     var fuenteIngrediente = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.DARK_GRAY);
-
-                    // 🏷️ Título centrado
-                    var titulo = new Paragraph(nombreReceta, fuenteTitulo)
+ 
+                    // 🏷️ TÍTULO CENTRADO CON LÍNEA DECORATIVA
+                    var titulo = new Paragraph(nombreReceta.ToUpper(), fuenteTitulo)
                     {
                         Alignment = Element.ALIGN_CENTER,
-                        SpacingAfter = 12f
+                        SpacingAfter = 6f
                     };
                     doc.Add(titulo);
 
-                    // 📋 Panel de información principal (categoría, país, dificultad, tiempo)
+                    // Línea decorativa debajo del título
+                    var lineaTitulo = new LineSeparator(1f, 40f, colorPrincipal, Element.ALIGN_CENTER, -2);
+                    doc.Add(new Chunk(lineaTitulo));
+
+                    // 📋 PANEL DE INFORMACIÓN PRINCIPAL
                     PdfPTable tablaInfo = new PdfPTable(2)
                     {
-                        WidthPercentage = 90,
-                        SpacingAfter = 12f
+                        WidthPercentage = 85,
+                        SpacingBefore = 15f,
+                        SpacingAfter = 15f
                     };
-                    tablaInfo.DefaultCell.Border = Rectangle.NO_BORDER;
                     tablaInfo.SetWidths(new float[] { 1f, 1f });
 
-                    void AddInfo(string label, string value)
+                    // Fondo suave y bordes redondeados simulados con padding
+                    BaseColor fondoInfo = new BaseColor(255, 247, 240); // color crema suave
+
+                    // 🧩 Función para agregar filas estilizadas
+                    void AddInfo(string emoji, string label, string value)
                     {
-                        var cellLabel = new PdfPCell(new Phrase(label + ":", fuenteSubtitulo))
+                        var cellLabel = new PdfPCell(new Phrase($"{emoji} {label.ToUpper()}", fuenteSubtitulo))
                         {
                             Border = Rectangle.NO_BORDER,
-                            PaddingBottom = 5f
+                            BackgroundColor = fondoInfo,
+                            Padding = 6f,
+                            PaddingLeft = 10f
                         };
+
                         var cellValue = new PdfPCell(new Phrase(value ?? "-", fuenteTexto))
                         {
                             Border = Rectangle.NO_BORDER,
-                            PaddingBottom = 5f
+                            BackgroundColor = fondoInfo,
+                            Padding = 6f,
+                            PaddingLeft = 10f
                         };
+
                         tablaInfo.AddCell(cellLabel);
                         tablaInfo.AddCell(cellValue);
                     }
 
-                    AddInfo("Categoría", categoria);
-                    AddInfo("País", pais);
-                    AddInfo("Dificultad", dificultad);
-                    AddInfo("Tiempo de preparación", $"{tiempoPreparacion.TotalMinutes} minutos");
+                    // Agregar información con íconos
+                    AddInfo("📂", "Categoría", categoria);
+                    AddInfo("🌎", "País", pais);
+                    AddInfo("⚙️", "Dificultad", dificultad);
+                    AddInfo("⏱️", "Tiempo de preparación", $"{tiempoPreparacion.TotalMinutes} minutos");
 
                     doc.Add(tablaInfo);
+
 
                     // 🖼️ Imagen centrada
                     if (imagenReceta != null && imagenReceta.Length > 0)
@@ -301,40 +317,145 @@ namespace MicheBytesRecipes.Utilities
                         }
                     }
 
-                    // 🧾 Descripción con fondo gris claro
-                    PdfPTable tablaDescripcion = new PdfPTable(1) { WidthPercentage = 90, SpacingAfter = 15f };
-                    PdfPCell celdaDescTitulo = new PdfPCell(new Phrase("Descripción", fuenteSubtitulo))
+                    // 🧾 BLOQUE DE DESCRIPCIÓN CON ESTILO TARJETA
+                    PdfPTable tablaDescripcion = new PdfPTable(1)
                     {
-                        BackgroundColor = new BaseColor(240, 240, 240),
-                        Border = Rectangle.NO_BORDER,
-                        Padding = 6f
+                        WidthPercentage = 85,
+                        SpacingBefore = 10f,
+                        SpacingAfter = 20f
                     };
-                    PdfPCell celdaDescTexto = new PdfPCell(new Phrase(descripcion ?? "Sin descripción disponible.", fuenteTexto))
+
+                    // Colores suaves coherentes con el diseño general
+                    BaseColor fondoDescripcion = new BaseColor(255, 250, 245); // color cálido
+                    BaseColor bordeDescripcion = new BaseColor(240, 90, 40);   // naranja principal
+
+                    // 📄 Título de la sección
+                    PdfPCell celdaTitulo = new PdfPCell(new Phrase("🧾 DESCRIPCIÓN", fuenteSubtitulo))
                     {
+                        BackgroundColor = bordeDescripcion,
                         Border = Rectangle.NO_BORDER,
-                        Padding = 8f
+                        Padding = 8f,
+                        HorizontalAlignment = Element.ALIGN_LEFT
                     };
-                    tablaDescripcion.AddCell(celdaDescTitulo);
-                    tablaDescripcion.AddCell(celdaDescTexto);
+                    celdaTitulo.Phrase.Font.Color = BaseColor.WHITE; // Texto blanco sobre fondo naranja
+
+                    // 📃 Texto descriptivo
+                    PdfPCell celdaTexto = new PdfPCell(new Phrase(descripcion ?? "Sin descripción disponible.", fuenteTexto))
+                    {
+                        BorderColor = bordeDescripcion,
+                        BackgroundColor = fondoDescripcion,
+                        BorderWidth = 1f,
+                        Padding = 10f,
+                    };
+
+                    tablaDescripcion.AddCell(celdaTitulo);
+                    tablaDescripcion.AddCell(celdaTexto);
                     doc.Add(tablaDescripcion);
 
-                    // 🍽️ Ingredientes
-                    doc.Add(new Paragraph("Ingredientes", fuenteSubtitulo) { SpacingAfter = 5f });
+
+                    // 🍽️ Ingredientes (versión estética mejorada)
+                    doc.Add(new Paragraph("\nIngredientes", fuenteSubtitulo)
+                    {
+                        Alignment = Element.ALIGN_CENTER,
+                        SpacingBefore = 10f,
+                        SpacingAfter = 10f
+                    });
+
                     if (ingredientes != null && ingredientes.Count > 0)
                     {
-                        var lista = new List(List.UNORDERED, 8f);
-                        lista.SetListSymbol("• ");
+                        // Creamos tabla con 2 columnas para mejor disposición visual
+                        PdfPTable tablaIngredientes = new PdfPTable(2)
+                        {
+                            WidthPercentage = 90,
+                            HorizontalAlignment = Element.ALIGN_CENTER,
+                            SpacingAfter = 15f
+                        };
+                        tablaIngredientes.DefaultCell.Border = Rectangle.NO_BORDER;
+                        tablaIngredientes.SetWidths(new float[] { 0.05f, 0.95f });
+
+                        // Estilo base
+                        BaseColor colorFondoIngrediente = new BaseColor(250, 245, 240);
+                        BaseColor colorBorde = new BaseColor(230, 230, 230);
+                        var fuenteIngredienteNegrita = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+
                         foreach (var ing in ingredientes)
-                            lista.Add(new ListItem(ing, fuenteIngrediente));
-                        doc.Add(lista);
+                        {
+                            // Viñeta o ícono tipo punto naranja
+                            PdfPCell cellIcono = new PdfPCell(new Phrase("•", new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, new BaseColor(240, 90, 40))))
+                            {
+                                Border = Rectangle.NO_BORDER,
+                                VerticalAlignment = Element.ALIGN_MIDDLE,
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                PaddingTop = 3f,
+                                PaddingBottom = 3f
+                            };
+
+                            // Nombre del ingrediente con fondo suave
+                            PdfPCell cellTexto = new PdfPCell(new Phrase(ing, fuenteIngredienteNegrita))
+                            {
+                                BackgroundColor = colorFondoIngrediente,
+                                BorderColor = colorBorde,
+                                BorderWidth = 0.5f,
+                                Padding = 8f,
+                                VerticalAlignment = Element.ALIGN_MIDDLE,
+                                MinimumHeight = 25f
+                            };
+
+                            tablaIngredientes.AddCell(cellIcono);
+                            tablaIngredientes.AddCell(cellTexto);
+                        }
+
+                        doc.Add(tablaIngredientes);
                     }
                     else
                     {
-                        doc.Add(new Paragraph("No se registraron ingredientes.", fuenteTexto));
+                        var sinIngredientes = new Paragraph("No se registraron ingredientes.", fuenteTexto)
+                        {
+                            Alignment = Element.ALIGN_CENTER,
+                            SpacingAfter = 10f
+                        };
+                        doc.Add(sinIngredientes);
                     }
 
-                    doc.Add(new Paragraph("\nInstrucciones", fuenteSubtitulo) { SpacingBefore = 10f, SpacingAfter = 5f });
-                    doc.Add(new Paragraph(instrucciones ?? "Sin instrucciones.", fuenteTexto));
+
+                    //doc.Add(new Paragraph("\nInstrucciones", fuenteSubtitulo) { SpacingBefore = 10f, SpacingAfter = 5f });
+                    //doc.Add(new Paragraph(instrucciones ?? "Sin instrucciones.", fuenteTexto));
+                    // 🍳 BLOQUE DE INSTRUCCIONES CON ESTILO TARJETA
+                    PdfPTable tablaInstrucciones = new PdfPTable(1)
+                    {
+                        WidthPercentage = 85,
+                        SpacingBefore = 10f,
+                        SpacingAfter = 15f
+                    };
+
+                    BaseColor fondoInstrucciones = new BaseColor(255, 255, 250); // fondo cálido claro
+                    BaseColor bordeInstrucciones = new BaseColor(240, 90, 40);   // naranja principal
+
+                    // 🔹 Título con fondo naranja
+                    PdfPCell celdaTituloInstr = new PdfPCell(new Phrase("🍳 INSTRUCCIONES", fuenteSubtitulo))
+                    {
+                        BackgroundColor = bordeInstrucciones,
+                        Border = Rectangle.NO_BORDER,
+                        Padding = 8f,
+                        HorizontalAlignment = Element.ALIGN_LEFT
+                    };
+                    celdaTituloInstr.Phrase.Font.Color = BaseColor.WHITE;
+
+                    // 📖 Texto de las instrucciones
+                    PdfPCell celdaTextoInstr = new PdfPCell(new Phrase(instrucciones ?? "Sin instrucciones disponibles.", fuenteTexto))
+                    {
+                        BorderColor = bordeInstrucciones,
+                        BackgroundColor = fondoInstrucciones,
+                        BorderWidth = 1f,
+                        Padding = 10f,
+                        HorizontalAlignment = Element.ALIGN_JUSTIFIED
+                    };
+
+                    tablaInstrucciones.AddCell(celdaTituloInstr);
+                    tablaInstrucciones.AddCell(celdaTextoInstr);
+
+                    doc.Add(tablaInstrucciones);
+
 
                     // 🧾 Línea divisoria y pie
                     var linea = new LineSeparator(1f, 100f, colorPrincipal, Element.ALIGN_CENTER, -2);

@@ -64,6 +64,7 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
+            this.linklblCuenta = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.linklblCuenta);
             this.panel1.Controls.Add(this.brnImportar);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.label4);
@@ -94,7 +96,7 @@
             // 
             // brnImportar
             // 
-            this.brnImportar.Location = new System.Drawing.Point(119, 467);
+            this.brnImportar.Location = new System.Drawing.Point(119, 446);
             this.brnImportar.Margin = new System.Windows.Forms.Padding(4);
             this.brnImportar.Name = "brnImportar";
             this.brnImportar.Size = new System.Drawing.Size(92, 42);
@@ -105,7 +107,7 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(18, 467);
+            this.btnExportar.Location = new System.Drawing.Point(18, 446);
             this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(92, 42);
@@ -117,7 +119,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 446);
+            this.label4.Location = new System.Drawing.Point(50, 425);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(123, 17);
@@ -146,7 +148,7 @@
             // lblMetricas
             // 
             this.lblMetricas.AutoSize = true;
-            this.lblMetricas.Location = new System.Drawing.Point(50, 535);
+            this.lblMetricas.Location = new System.Drawing.Point(50, 492);
             this.lblMetricas.Name = "lblMetricas";
             this.lblMetricas.Size = new System.Drawing.Size(123, 17);
             this.lblMetricas.TabIndex = 10;
@@ -164,7 +166,7 @@
             // 
             // btnMetricas
             // 
-            this.btnMetricas.Location = new System.Drawing.Point(13, 606);
+            this.btnMetricas.Location = new System.Drawing.Point(13, 563);
             this.btnMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.btnMetricas.Name = "btnMetricas";
             this.btnMetricas.Size = new System.Drawing.Size(198, 42);
@@ -175,7 +177,7 @@
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.Location = new System.Drawing.Point(13, 556);
+            this.btnUsuarios.Location = new System.Drawing.Point(13, 513);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(198, 42);
@@ -421,6 +423,17 @@
             // 
             this.opfImportar.FileName = "openFileDialog1";
             // 
+            // linklblCuenta
+            // 
+            this.linklblCuenta.AutoSize = true;
+            this.linklblCuenta.Location = new System.Drawing.Point(38, 620);
+            this.linklblCuenta.Name = "linklblCuenta";
+            this.linklblCuenta.Size = new System.Drawing.Size(150, 17);
+            this.linklblCuenta.TabIndex = 17;
+            this.linklblCuenta.TabStop = true;
+            this.linklblCuenta.Text = "Configuracion de cuenta";
+            this.linklblCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblCuenta_LinkClicked);
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -485,6 +498,7 @@
         private System.Windows.Forms.OpenFileDialog opfImportar;
         private System.Windows.Forms.FolderBrowserDialog fbdCarpetaDestino;
         private System.Windows.Forms.SaveFileDialog sfdExpotar;
+        private System.Windows.Forms.LinkLabel linklblCuenta;
     }
 }
 
