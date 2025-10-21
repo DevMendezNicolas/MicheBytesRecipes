@@ -16,8 +16,8 @@ using MySql.Data.MySqlClient;
 
 namespace MicheBytesRecipes.Managers
 {
-    
-    public class GestorUsuarios: IUsuarioRepository, IPermisosUsuario
+
+    public class GestorUsuarios : IUsuarioRepository, IPermisosUsuario
     {
         private ConexionBD conexion = new ConexionBD();
         //Lista de usuarios
@@ -45,7 +45,7 @@ namespace MicheBytesRecipes.Managers
         // Agregar usuario
         public void AgregarUsuario(Usuario usuario)
         {
-           
+
             try
             {
                 conexion.Abrir();
@@ -83,7 +83,7 @@ namespace MicheBytesRecipes.Managers
                 using (MySqlCommand comando = new MySqlCommand(consultaValidar, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@Email", email);
-                    comando.Parameters.AddWithValue("@Contraseña",contraseña /*HashearContraseña(contraseña)*/);
+                    comando.Parameters.AddWithValue("@Contraseña", contraseña /*HashearContraseña(contraseña)*/);
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         return reader.HasRows; // Si hay filas, las credenciales son validas
@@ -100,7 +100,7 @@ namespace MicheBytesRecipes.Managers
             }
         }
         // Dar de baja usuario (marcar como inactivo)
-        public void DarDeBajaUsuario(int AdminId,int usuarioBajaId)
+        public void DarDeBajaUsuario(int AdminId, int usuarioBajaId)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
-        } 
+        }
         // Buscar usuario por Email
         public Usuario BuscarPorEmail(string email)
         {
@@ -204,11 +204,11 @@ namespace MicheBytesRecipes.Managers
                     }
                     else
                     {
-                        return null; 
+                        return null;
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error al buscar el usuario por email: " + ex.Message);
             }
@@ -257,7 +257,7 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
             return usuarios;
-        } 
+        }
         // Listar usuarios inactivos
         public List<PreUsuario> ListarUsuariosInactivos()
         {
@@ -282,7 +282,7 @@ namespace MicheBytesRecipes.Managers
                                 reader.GetDateTime("Fecha_Registro"),
                                 reader.IsDBNull(reader.GetOrdinal("Fecha_Baja")) ? (DateTime?)null : reader.GetDateTime("Fecha_Baja")
                             );
-                            
+
                             usuarios.Add(user);
                         }
                     }
@@ -297,8 +297,8 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
             return usuarios;
-        } 
-        
+        }
+
         //Verificar si existe mail
         public bool ExisteUsuarioPorEmail(string email)// Emprolijar con una funcion en BDD
         {
@@ -334,7 +334,7 @@ namespace MicheBytesRecipes.Managers
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("p_usuario_id", usuarioId);
                     comando.Parameters.AddWithValue("p_admin_id", adminId);
-                    int filasAfectadas = comando.ExecuteNonQuery();            
+                    int filasAfectadas = comando.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -371,7 +371,7 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
-        
+
         // Actualizar datos del usuario.
         public void ActualizarUsuario(int usuario_id, string email, string nombre, string apellido, string telefono, Byte[] foto)
         {
@@ -404,6 +404,54 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
+
+        //Buscar usuario por email y contra
+
+        public string CambiarContraseña(int usuarioId, string contraseñaActual, string nuevaContraseña)
+        {
+            try
+            {
+                conexion.Abrir();
+
+                using (MySqlCommand comando = new MySqlCommand("Cambiar_contraseña", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetros de entrada
+                    comando.Parameters.AddWithValue("p_usuario_id", usuarioId);
+                    comando.Parameters.AddWithValue("p_contraseña_actual", contraseñaActual);
+                    comando.Parameters.AddWithValue("p_nueva_contraseña", nuevaContraseña);
+
+                    // Ejecutar y leer resultado (el SELECT final del procedimiento)
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.GetString(0); // Devuelve el mensaje del procedimiento
+                        }
+                        else
+                        {
+                            return "No se recibió respuesta del servidor.";
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                // Si el procedimiento hace SIGNAL, cae acá
+                return $"Error SQL: {ex.Message}";
+            }
+            catch (Exception ex)
+            {
+                return $"Error general: {ex.Message}";
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
+
 
     }
 }

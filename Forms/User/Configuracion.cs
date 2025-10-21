@@ -223,16 +223,12 @@ namespace MicheBytesRecipes.Forms.User
                     return;
                 }
 
-                if (!gestorUsuarios.VerificarContraseñaActual(usuarioLog.UsuarioId, txtContraActual.Text))
-                {
-                    eprCampos.SetError(txtContraActual, "La contraseña actual no es correcta.");
-                    return;
-                }
+
 
                 // Si pasa, actualiza la nueva contraseña
 
                 string nuevaContraHash = gestorUsuarios.HashearContraseña(txtContraNueva.Text);
-                gestorUsuarios.ModificarContraseña(usuarioLog.UsuarioId, nuevaContraHash);
+                gestorUsuarios.CambiarContraseña(usuarioLog.UsuarioId,gestorUsuarios.HashearContraseña(txtContraActual.Text), nuevaContraHash);
                 cambioContra = true;
             }
 

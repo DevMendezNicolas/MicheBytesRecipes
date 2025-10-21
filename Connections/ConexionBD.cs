@@ -14,7 +14,7 @@ namespace MicheBytesRecipes.Connections
         public ConexionBD()
         {
             //se arma el string/cadena de conexion (se puede googlear y se adapta)
-            string connectionString = "Server=localhost;Port=3306;Database=MicheBytes;Uid=root;Pwd=Root;";
+            string connectionString = "Server=localhost;Port=3306;Database=MicheBytes;Uid=root;Pwd=root;";
             conexion = new MySqlConnection(connectionString);
         }
         public MySqlConnection GetConexion()

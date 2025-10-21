@@ -88,8 +88,8 @@ namespace MicheBytesRecipes.Utilities
             richTextBox.SelectionFont = new Font(FUENTE, item.Tamaño, estilo);
 
             // Aplicar color según el tema
-            var colorHex = ThemeManager.EsTemaOscuro ? item.ColorTextoOscuro : item.ColorTextoClaro;
-            richTextBox.SelectionColor = HexAColor(colorHex);
+            //var colorHex = ThemeManager.EsTemaOscuro ? item.ColorTextoOscuro : item.ColorTextoClaro;
+            //richTextBox.SelectionColor = HexAColor(colorHex);
         }
 
         private static Label BuscarLabel(Panel panel, string nombre)
@@ -103,10 +103,10 @@ namespace MicheBytesRecipes.Utilities
             label.Text = item.Texto;
 
             // Aplicar color según el tema
-            var colorHex = ThemeManager.EsTemaOscuro ? item.ColorTextoOscuro : item.ColorTextoClaro;
-            if (!string.IsNullOrEmpty(colorHex))
+            //var colorHex = ThemeManager.EsTemaOscuro ? item.ColorTextoOscuro : item.ColorTextoClaro;
+            //if (!string.IsNullOrEmpty(colorHex))
             {
-                label.ForeColor = HexAColor(colorHex);
+            //    label.ForeColor = HexAColor(colorHex);
             }
 
             // Aplicar fuente
@@ -114,7 +114,7 @@ namespace MicheBytesRecipes.Utilities
             label.Font = new Font(FUENTE, item.Tamaño, estilo);
         }
 
-        private static Color HexAColor(string hex)
+        /*private static Color HexAColor(string hex)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace MicheBytesRecipes.Utilities
         public static void ActualizarColores(Panel panel, string rutaJson)
         {
             CargarLabels(panel, rutaJson);
-        }
+        }*/
     }
 }
         
