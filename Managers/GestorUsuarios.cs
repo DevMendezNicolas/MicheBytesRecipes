@@ -371,6 +371,39 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
+        
+        // Actualizar datos del usuario.
+        public void ActualizarUsuario(int usuario_id, string email, string nombre, string apellido, string telefono, Byte[] foto)
+        {
+            try
+            {
+                conexion.Abrir();
+                string consultaActualizar = "Actualizar_Usuario";
+                using (MySqlCommand comando = new MySqlCommand(consultaActualizar, conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    // Parametros IN
+                    comando.Parameters.AddWithValue("p_usuario_id", usuario_id);
+                    comando.Parameters.AddWithValue("p_email", email);
+                    comando.Parameters.AddWithValue("p_nombre", nombre);
+                    comando.Parameters.AddWithValue("p_apellido", apellido);
+                    comando.Parameters.AddWithValue("p_telefono", telefono);
+                    comando.Parameters.AddWithValue("p_imagen_perfil", foto);
+                    // Ejecutar el comando
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    if (filasAfectadas < 0)
+                        MessageBox.Show("No se encontro el usuario con el ID proporcionado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
 
     }
 }
