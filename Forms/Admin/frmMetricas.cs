@@ -89,7 +89,7 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 if (cboCategoria.SelectedIndex == 0 || metrica.Categoria == cboCategoria.Text) // Si está seleccionada "Todas" o coincide con la categoría seleccionada
                 {
-                    dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadFavoritos, metrica.CantidadComentarios, metrica.CantidadLikes, metrica.CantidadVisualizaciones, metrica.EstadoReceta());
+                    dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos, metrica.EstadoReceta());
                 }
             }
             activas = !activas;

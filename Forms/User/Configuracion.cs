@@ -24,7 +24,7 @@ namespace MicheBytesRecipes.Forms.User
             CargarDatosUsuario();
             DesactivarCampos();
         }
-        
+
 
         private void Configuracion_Load(object sender, EventArgs e)
         {
@@ -184,8 +184,14 @@ namespace MicheBytesRecipes.Forms.User
 
 
             byte[] fotoBytes = Array.Empty<byte>();
+
             if (pbxEditarImagen.Image != null)
             {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Filter = "Archivos JPG(.jpg,.jpeg) |.jpg;.jpeg | Archivos PNG(.png) |.png";
+                }
+
                 using (MemoryStream ms = new MemoryStream())
                 {
                     pbxEditarImagen.Image.Save(ms, pbxEditarImagen.Image.RawFormat);
@@ -228,7 +234,7 @@ namespace MicheBytesRecipes.Forms.User
                 // Si pasa, actualiza la nueva contraseña
 
                 string nuevaContraHash = gestorUsuarios.HashearContraseña(txtContraNueva.Text);
-                gestorUsuarios.CambiarContraseña(usuarioLog.UsuarioId,gestorUsuarios.HashearContraseña(txtContraActual.Text), nuevaContraHash);
+                gestorUsuarios.CambiarContraseña(usuarioLog.UsuarioId, gestorUsuarios.HashearContraseña(txtContraActual.Text), nuevaContraHash);
                 cambioContra = true;
             }
 
@@ -342,8 +348,9 @@ namespace MicheBytesRecipes.Forms.User
 
         private void linkCambiarImagen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            ofdImagenNueva.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp;";
 
-                        if (ofdImagenNueva.ShowDialog() == DialogResult.OK)
+            if (ofdImagenNueva.ShowDialog() == DialogResult.OK)
             {
                 pbxEditarImagen.Image = Image.FromFile(ofdImagenNueva.FileName);
             }
