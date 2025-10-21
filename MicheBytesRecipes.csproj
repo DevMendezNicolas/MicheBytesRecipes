@@ -124,6 +124,7 @@
     <Compile Include="Classes\Recetas\Receta.cs" />
     <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
     <Compile Include="Classes\Recetas\UnidadMedida.cs" />
+    <Compile Include="Classes\TarjetasRecetas\TarjetaReceta.cs" />
     <Compile Include="Classes\Users\PreUsuario.cs" />
     <Compile Include="Classes\Users\Usuario.cs" />
     <Compile Include="Connections\ConexionBD.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Managers\GestorIngredientes.cs" />
     <Compile Include="Managers\GestorReceta.cs" />
     <Compile Include="Managers\GestorInteracciones.cs" />
+    <Compile Include="Managers\GestorTarjetasRecetas.cs" />
     <Compile Include="Managers\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
