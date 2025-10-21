@@ -19,7 +19,7 @@ namespace MicheBytesRecipes.Forms.Admin
     public partial class frmMetricas : Form
     {
         private Usuario usuarioLog;
-        GestorReceta gestorReceta = new GestorReceta();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
         GestorDeMetricas gestorMetricas = new GestorDeMetricas();
         List<Metricas> listaMetricas = new List<Metricas>();
         bool activas = true;
@@ -63,7 +63,7 @@ namespace MicheBytesRecipes.Forms.Admin
         }
         private void Metricas_Load(object sender, EventArgs e)
         {
-            List<Categoria>categorias = gestorReceta.ObtenerListaCategorias();
+            List<Categoria>categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
