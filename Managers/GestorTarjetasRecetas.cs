@@ -13,9 +13,8 @@ namespace MicheBytesRecipes.Managers
 {
     public class GestorTarjetasRecetas
     {
-
-        private FlowLayoutPanel panelContenedor;
-        private List<UcRecetaTarjeta> tarjetas;
+        FlowLayoutPanel panelContenedor;
+        List<UcRecetaTarjeta> tarjetas;
 
         public GestorTarjetasRecetas(FlowLayoutPanel panelContenedor)
         {
@@ -23,9 +22,9 @@ namespace MicheBytesRecipes.Managers
             this.tarjetas = new List<UcRecetaTarjeta>();
         }
 
-        // Método principal para cargar desde PreRecetas (como tu Historial)
-        public void CargarDesdePreRecetas(List<PreReceta> preRecetas, Usuario usuarioLog,
-                                        GestorReceta gestorReceta, GestorCatalogo catalogo)
+        // Metodo para cargar tarjetas desde PreRecetas
+        public void CargarTarjetas(List<PreReceta> preRecetas, Usuario usuarioLog,
+                                  GestorReceta gestorReceta, GestorCatalogo catalogo)
         {
             LimpiarTarjetas();
 
@@ -45,25 +44,6 @@ namespace MicheBytesRecipes.Managers
             }
         }
 
-        // Método para cargar directamente desde Recetas
-        public void CargarDesdeRecetas(List<Receta> recetas, Usuario usuarioLog,
-                                     GestorReceta gestorReceta, GestorCatalogo catalogo)
-        {
-            LimpiarTarjetas();
-
-            if (recetas == null || !recetas.Any())
-            {
-                MostrarMensajeVacio("No se encontraron recetas.");
-                return;
-            }
-
-            foreach (var receta in recetas)
-            {
-                CrearYAgregarTarjeta(receta, usuarioLog, gestorReceta, catalogo);
-            }
-        }
-
-        // Método interno que crea y agrega la tarjeta
         private void CrearYAgregarTarjeta(Receta receta, Usuario usuarioLog,
                                         GestorReceta gestorReceta, GestorCatalogo catalogo)
         {
@@ -75,7 +55,8 @@ namespace MicheBytesRecipes.Managers
                 PaisReceta = catalogo.ObtenerPaisPorId(receta.PaisId)?.Nombre ?? "Desconocido",
                 TiempoReceta = receta.TiempoPreparacion.ToString(@"hh\:mm"),
                 DificultadReceta = receta.NivelDificultad.ToString(),
-                ImagenReceta = receta.ImagenReceta
+                ImagenReceta = receta.ImagenReceta,
+                Visible = true
             };
 
             // Configurar el evento de clic
@@ -103,7 +84,6 @@ namespace MicheBytesRecipes.Managers
             ReorganizarTarjetasEnPanel(tarjetasOrdenadas);
         }
 
-        // Método para reorganizar las tarjetas en el panel
         private void ReorganizarTarjetasEnPanel(List<UcRecetaTarjeta> tarjetasOrdenadas)
         {
             panelContenedor.SuspendLayout();
@@ -112,7 +92,6 @@ namespace MicheBytesRecipes.Managers
             panelContenedor.ResumeLayout();
         }
 
-        // Mostrar mensaje cuando no hay tarjetas
         private void MostrarMensajeVacio(string mensaje)
         {
             var lblVacio = new Label
@@ -126,7 +105,6 @@ namespace MicheBytesRecipes.Managers
             panelContenedor.Controls.Add(lblVacio);
         }
 
-        // Mostrar todas las tarjetas
         public void MostrarTodasLasTarjetas()
         {
             foreach (var tarjeta in tarjetas)
@@ -135,7 +113,6 @@ namespace MicheBytesRecipes.Managers
             }
         }
 
-        // Limpiar todas las tarjetas
         public void LimpiarTarjetas()
         {
             foreach (var tarjeta in tarjetas)

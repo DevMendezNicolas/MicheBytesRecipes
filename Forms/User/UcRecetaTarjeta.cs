@@ -19,8 +19,8 @@ namespace MicheBytesRecipes.Forms.User
         public UcRecetaTarjeta()
         {
             InitializeComponent();
-            this.Size = new Size(200, 250);
-            this.Margin = new Padding(10);
+            this.Size = new Size(170, 240);
+            this.Margin = new Padding(8);
 
             // Propagar evento de click a todos los controles
             this.Click += UcRecetaTarjeta_Click;
