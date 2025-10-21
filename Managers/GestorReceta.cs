@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes
 {
-    internal class GestorReceta
+    public class GestorReceta
     {
         ConexionBD conexion = new ConexionBD();
         // Lista de recetas

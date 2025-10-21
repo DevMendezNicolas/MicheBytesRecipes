@@ -24,7 +24,7 @@ namespace MicheBytesRecipes.Forms.User
         private bool recetasActivas = true;
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo recetasCatalogo = new GestorCatalogo();
-        private UcRecetaTarjeta receta;
+        GestorTarjetasRecetas gestorTarjetas;
 
 
 
@@ -33,6 +33,7 @@ namespace MicheBytesRecipes.Forms.User
             InitializeComponent();
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
+            gestorTarjetas = new GestorTarjetasRecetas(flowLayoutPanel1);
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
                 //Crea una imagen a partir del arreglo de bytes
@@ -74,7 +75,16 @@ namespace MicheBytesRecipes.Forms.User
        
         private void CargarRecetas()
         {
-            flowLayoutPanel1.Controls.Clear();
+
+            List<PreReceta> listaPreRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
+
+            // Cargar las tarjetas usando el gestor
+            gestorTarjetas.CargarDesdePreRecetas(listaPreRecetas, usuarioLog, gestorReceta, recetasCatalogo);
+
+
+
+
+            /*flowLayoutPanel1.Controls.Clear();
 
             // Obtener el historial del usuario
             List<PreReceta> listaRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
@@ -119,7 +129,7 @@ namespace MicheBytesRecipes.Forms.User
                 };
 
                 flowLayoutPanel1.Controls.Add(tarjeta);
-            }
+            }*/
         }
 
     }

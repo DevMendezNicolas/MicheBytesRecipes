@@ -13,7 +13,7 @@ using Org.BouncyCastle.Utilities.Zlib;
 
 namespace MicheBytesRecipes.Managers
 {
-    internal class GestorCatalogo
+    public class GestorCatalogo
     {
         ConexionBD conexion = new ConexionBD();
 
