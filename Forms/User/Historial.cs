@@ -24,7 +24,7 @@ namespace MicheBytesRecipes.Forms.User
         private bool recetasActivas = true;
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo recetasCatalogo = new GestorCatalogo();
-        private UcRecetaTarjeta receta;
+        GestorTarjetasRecetas gestorTarjetas;
 
 
 
@@ -33,6 +33,8 @@ namespace MicheBytesRecipes.Forms.User
             InitializeComponent();
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
+            gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);
+
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
                 //Crea una imagen a partir del arreglo de bytes
@@ -67,59 +69,18 @@ namespace MicheBytesRecipes.Forms.User
 
         private void btnHistorialPdf_Click(object sender, EventArgs e)
         {
-            GeneradorPdf.ExportarPDF(dgvHistorial);
         }
 
       
        
         private void CargarRecetas()
         {
-            flowLayoutPanel1.Controls.Clear();
 
-            // Obtener el historial del usuario
-            List<PreReceta> listaRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
+            List<PreReceta> listaPreRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
 
-            if (listaRecetas == null || listaRecetas.Count == 0)
-            {
-                Label lblVacio = new Label
-                {
-                    Text = "No se encontraron recetas en tu historial.",
-                    AutoSize = true,
-                    ForeColor = Color.Gray
-                };
-                flowLayoutPanel1.Controls.Add(lblVacio);
-                return;
-            }
+            // Cargar las tarjetas usando el gestor
+            gestorTarjetas.CargarTarjetas(listaPreRecetas, usuarioLog, gestorReceta, recetasCatalogo);
 
-            foreach (var preReceta in listaRecetas)
-            {
-                // Obtener la receta completa (con imagen y demás datos)
-                Receta recetaCompleta = gestorReceta.ObtenerRecetaPorId(preReceta.RecetaId);
-                if (recetaCompleta == null) continue;
-
-                // Crear la tarjeta y asignar todos los datos
-                UcRecetaTarjeta tarjeta = new UcRecetaTarjeta
-                {
-                    RecetaId = recetaCompleta.RecetaId,
-                    NombreReceta = recetaCompleta.Nombre,
-                    CategoriaReceta = recetasCatalogo.ObtenerCategoriaPorId(recetaCompleta.CategoriaId)?.Nombre ?? "Desconocida",
-                    PaisReceta = recetasCatalogo.ObtenerPaisPorId(recetaCompleta.PaisId)?.Nombre ?? "Desconocido",
-                    TiempoReceta = recetaCompleta.TiempoPreparacion.ToString(@"hh\:mm"),
-                    DificultadReceta = recetaCompleta.NivelDificultad.ToString(),
-                    ImagenReceta = recetaCompleta.ImagenReceta // directamente el byte[] sin conversiones
-                };
-
-                tarjeta.Tag = recetaCompleta;
-
-                // Evento para abrir el formulario de detalles
-                tarjeta.VerDetallesClick += (s, e) =>
-                {
-                    FrmVerReceta verRecetaForm = new FrmVerReceta(recetaCompleta, usuarioLog);
-                    verRecetaForm.ShowDialog();
-                };
-
-                flowLayoutPanel1.Controls.Add(tarjeta);
-            }
         }
 
     }
