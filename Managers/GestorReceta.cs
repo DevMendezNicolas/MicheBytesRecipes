@@ -451,7 +451,7 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return recetas;
-        }
+        } // ESTA
         public List<PreReceta> ObtenerPreRecetasInactivas()
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -568,7 +568,7 @@ namespace MicheBytesRecipes
             }
 
             return recetas;
-        }
+        }  //ESTA
         public List<PreReceta> ObtenerRecetasFavoritasPorUsuario(int usuarioId)
         {
             List<PreReceta> recetas = new List<PreReceta>();
@@ -645,8 +645,7 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return recetas;
-        }
-
-        // Metodos auxiliares      
+        } // ESTA
+   
     }
 }

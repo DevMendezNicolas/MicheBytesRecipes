@@ -106,15 +106,14 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consultaMeGusta = "SELECT COUNT(*) FROM me_gustas WHERE receta_id = @recetaId AND usuario_id = @usuarioId";
-
-                using (MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
+                string consultaMeGusta = "SELECT Confirmar_me_gusta_usuario (@p_usuario_id, @p_receta_id)";
+                using(MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
                 {
-                    comando.Parameters.AddWithValue("@recetaId", recetaId);
-                    comando.Parameters.AddWithValue("@usuarioId", usuarioId);
+                    comando.Parameters.AddWithValue("@p_receta_id", recetaId);
+                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
                     int count = Convert.ToInt32(comando.ExecuteScalar());
-
-                    if (count > 0)
+                    MessageBox.Show("la funcion me devolvio " + count);
+                    if (count != 0)
                     {
                         //Si existe el me gusta, se elimina
                         using (MySqlCommand comando2 = new MySqlCommand("Eliminar_MeGusta", conexion.GetConexion()))
@@ -129,7 +128,7 @@ namespace MicheBytesRecipes.Managers
                     else
                     {
                         //Si no existe, llamamos al procedimiento para insertar el me gusta
-                        using (MySqlCommand comando3 = new MySqlCommand("insertar_me_gusta", conexion.GetConexion()))
+                        using (MySqlCommand comando3 = new MySqlCommand("Insertar_me_gusta", conexion.GetConexion()))
                         {
                             comando3.CommandType = CommandType.StoredProcedure;
                             comando3.Parameters.AddWithValue("@p_receta_id", recetaId);
