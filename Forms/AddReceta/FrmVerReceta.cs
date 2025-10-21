@@ -282,9 +282,9 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             using (MemoryStream ms = new MemoryStream())
             {
-                //pbxImagen.Image.Save(ms, pbxImagen.Image.RawFormat); // Guarda en el formato original
-                //byte[] foto = ms.ToArray();
-                GeneradorPdf.ExportarRecetaAPdf(lblNombre.Text, lblDescripcion.Text, lblInstruccion.Text, null , ingredientes, lblPais.Text, lblCategoria.Text, lblDificultad.Text, tiempo);
+                pbxImagen.Image.Save(ms, pbxImagen.Image.RawFormat); // Guarda en el formato original
+                byte[] foto = ms.ToArray();
+                GeneradorPdf.ExportarRecetaAPdf(lblNombre.Text, lblDescripcion.Text, lblInstruccion.Text, foto , ingredientes, lblPais.Text, lblCategoria.Text, lblDificultad.Text, tiempo);
             }
 
            
