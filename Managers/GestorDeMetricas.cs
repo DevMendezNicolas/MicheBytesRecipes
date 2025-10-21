@@ -10,7 +10,7 @@ using MySql.Data;
 
 namespace MicheBytesRecipes.Managers
 {
-    internal class GestorDeMetricas
+    public class GestorDeMetricas
     {
         private ConexionBD conexion;
         public GestorDeMetricas()

@@ -13,7 +13,7 @@ using Mysqlx.Session;
 using Org.BouncyCastle.Utilities.Zlib;
 namespace MicheBytesRecipes.Managers
 {
-    internal class GestorInteracciones
+    public class GestorInteracciones
     {
         ConexionBD conexion = new ConexionBD();
         Receta receta = new Receta();
