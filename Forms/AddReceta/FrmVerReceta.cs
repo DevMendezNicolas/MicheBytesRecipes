@@ -1,5 +1,7 @@
 ﻿using MicheBytesRecipes.Classes.Interacciones;
 using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Utilities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -268,6 +270,25 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
         }
 
-        
+        private void btnExportarPdf_Click(object sender, EventArgs e)
+        {
+            TimeSpan tiempo = TimeSpan.Parse(lblTiempo.Text);
+            List<string> ingredientes = new List<string>();
+
+            foreach(var ingrendiente in lstIngredientes.Items)
+            {
+                ingredientes.Add(ingrendiente.ToString());
+            }
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                pbxImagen.Image.Save(ms, pbxImagen.Image.RawFormat); // Guarda en el formato original
+                byte[] foto = ms.ToArray();
+                GeneradorPdf.ExportarRecetaAPdf(lblNombre.Text, lblDescripcion.Text, lblInstruccion.Text, foto, ingredientes, lblPais.Text, lblCategoria.Text, lblDificultad.Text, tiempo);
+            }
+
+           
+
+        }
     }
 }

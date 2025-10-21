@@ -51,6 +51,7 @@
             this.lblIdReceta = new System.Windows.Forms.Label();
             this.lblIdUsuario = new System.Windows.Forms.Label();
             this.lblMeGusta = new System.Windows.Forms.Label();
+            this.btnExportarPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -269,6 +270,16 @@
             this.lblMeGusta.TabIndex = 21;
             this.lblMeGusta.Text = "0";
             // 
+            // btnExportarPdf
+            // 
+            this.btnExportarPdf.Location = new System.Drawing.Point(1037, 534);
+            this.btnExportarPdf.Name = "btnExportarPdf";
+            this.btnExportarPdf.Size = new System.Drawing.Size(126, 41);
+            this.btnExportarPdf.TabIndex = 18;
+            this.btnExportarPdf.Text = "Exportar PDF";
+            this.btnExportarPdf.UseVisualStyleBackColor = true;
+            this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
+            // 
             // FrmVerReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +288,7 @@
             this.Controls.Add(this.lblMeGusta);
             this.Controls.Add(this.lblIdUsuario);
             this.Controls.Add(this.lblIdReceta);
+            this.Controls.Add(this.btnExportarPdf);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lstComentarios);
@@ -332,5 +344,6 @@
         private System.Windows.Forms.Label lblIdReceta;
         private System.Windows.Forms.Label lblIdUsuario;
         private System.Windows.Forms.Label lblMeGusta;
+        private System.Windows.Forms.Button btnExportarPdf;
     }
 }
