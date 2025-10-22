@@ -18,15 +18,18 @@ namespace MicheBytesRecipes.Forms.User
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
+        GestorReceta gestorReceta = new GestorReceta();
+        GestorTarjetasRecetas gestorTarjetas;
+
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         private bool mostrarFavoritas = false;
-        GestorReceta gestorReceta = new GestorReceta();
         public MenuUser(Usuario usuarioActivado)
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
+            gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
                 //Crea una imagen a partir del arreglo de bytes
@@ -80,6 +83,7 @@ namespace MicheBytesRecipes.Forms.User
             // --- Cargar la grilla al inicio ---
             recetasActivas = true;
             this.ActualizarGrilla();
+            this.CargarRecetas();
 
 
 
@@ -113,6 +117,26 @@ namespace MicheBytesRecipes.Forms.User
                     preReceta.TiempoPreparacion.ToString()
                 );
             }
+        }
+
+        private void CargarRecetas()
+        {
+
+            List<PreReceta> preRecetas;
+            if (mostrarFavoritas)
+            {
+                // Trae solo recetas favoritas del usuario
+                preRecetas = gestorReceta.ObtenerRecetasFavoritasPorUsuario(usuarioLog.UsuarioId);
+            }
+            else
+            {
+                // Trae todas las recetas activas
+                preRecetas = gestorReceta.ObtenerPreRecetas();
+            }
+
+            // Cargar las tarjetas usando el gestor
+            gestorTarjetas.CargarTarjetas(preRecetas, usuarioLog, gestorReceta, gestorCatalogo);
+
         }
 
         private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
@@ -197,7 +221,6 @@ namespace MicheBytesRecipes.Forms.User
             }
         }
 
-
         private void btnHistorialFav_Click(object sender, EventArgs e)
         {
             mostrarFavoritas = !mostrarFavoritas;
@@ -210,6 +233,7 @@ namespace MicheBytesRecipes.Forms.User
                 btnHistorialFav.Text = "Ver Favoritas";
             }
             this.ActualizarGrilla();
+            this.CargarRecetas();
 
         }
 

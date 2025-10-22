@@ -300,7 +300,7 @@ namespace MicheBytesRecipes.Managers
         }
 
         //Verificar si existe mail
-        public bool ExisteUsuarioPorEmail(string email)// Emprolijar con una funcion en BDD
+        public bool ExisteUsuarioPorEmail(string email)// MODIFICAR CONTRA LA BASE DE DATOS
         {
             try
             {

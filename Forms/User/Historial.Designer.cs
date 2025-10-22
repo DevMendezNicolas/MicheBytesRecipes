@@ -30,12 +30,10 @@
         {
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlTarjetas = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblHistorial = new System.Windows.Forms.Label();
+            this.lblTituloHistorial = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblReceta = new System.Windows.Forms.Label();
-            this.btnHistorialPdf = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             this.pnlNavegacion.SuspendLayout();
@@ -45,7 +43,7 @@
             // pnlContenido
             // 
             this.pnlContenido.Controls.Add(this.pnlTarjetas);
-            this.pnlContenido.Controls.Add(this.lblHistorial);
+            this.pnlContenido.Controls.Add(this.lblTituloHistorial);
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenido.Location = new System.Drawing.Point(233, 0);
             this.pnlContenido.Margin = new System.Windows.Forms.Padding(4);
@@ -61,23 +59,21 @@
             this.pnlTarjetas.Size = new System.Drawing.Size(923, 570);
             this.pnlTarjetas.TabIndex = 5;
             // 
-            // lblHistorial
+            // lblTituloHistorial
             // 
-            this.lblHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHistorial.AutoSize = true;
-            this.lblHistorial.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHistorial.Location = new System.Drawing.Point(342, 24);
-            this.lblHistorial.Name = "lblHistorial";
-            this.lblHistorial.Size = new System.Drawing.Size(201, 25);
-            this.lblHistorial.TabIndex = 0;
-            this.lblHistorial.Text = "Mi historial de recetas";
+            this.lblTituloHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTituloHistorial.AutoSize = true;
+            this.lblTituloHistorial.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloHistorial.Location = new System.Drawing.Point(342, 24);
+            this.lblTituloHistorial.Name = "lblTituloHistorial";
+            this.lblTituloHistorial.Size = new System.Drawing.Size(201, 25);
+            this.lblTituloHistorial.TabIndex = 0;
+            this.lblTituloHistorial.Text = "Mi historial de recetas";
             // 
             // pnlNavegacion
             // 
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
-            this.pnlNavegacion.Controls.Add(this.lblReceta);
-            this.pnlNavegacion.Controls.Add(this.btnHistorialPdf);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
@@ -104,27 +100,6 @@
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre Usuario";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblReceta
-            // 
-            this.lblReceta.AutoSize = true;
-            this.lblReceta.Location = new System.Drawing.Point(81, 210);
-            this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReceta.Name = "lblReceta";
-            this.lblReceta.Size = new System.Drawing.Size(59, 17);
-            this.lblReceta.TabIndex = 9;
-            this.lblReceta.Text = "Acciones";
-            // 
-            // btnHistorialPdf
-            // 
-            this.btnHistorialPdf.Location = new System.Drawing.Point(13, 231);
-            this.btnHistorialPdf.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHistorialPdf.Name = "btnHistorialPdf";
-            this.btnHistorialPdf.Size = new System.Drawing.Size(198, 42);
-            this.btnHistorialPdf.TabIndex = 3;
-            this.btnHistorialPdf.Text = "&Exportar Historial";
-            this.btnHistorialPdf.UseVisualStyleBackColor = true;
-            this.btnHistorialPdf.Click += new System.EventHandler(this.btnHistorialPdf_Click);
             // 
             // btnInicio
             // 
@@ -155,7 +130,6 @@
             this.pnlContenido.ResumeLayout(false);
             this.pnlContenido.PerformLayout();
             this.pnlNavegacion.ResumeLayout(false);
-            this.pnlNavegacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).EndInit();
             this.ResumeLayout(false);
 
@@ -164,12 +138,10 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlContenido;
-        private System.Windows.Forms.Label lblHistorial;
+        private System.Windows.Forms.Label lblTituloHistorial;
         private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblReceta;
-        private System.Windows.Forms.Button btnHistorialPdf;
         private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.FlowLayoutPanel pnlTarjetas;
     }

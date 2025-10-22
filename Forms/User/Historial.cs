@@ -23,7 +23,7 @@ namespace MicheBytesRecipes.Forms.User
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         GestorReceta gestorReceta = new GestorReceta();
-        GestorCatalogo recetasCatalogo = new GestorCatalogo();
+        GestorCatalogo gestorCatalogo = new GestorCatalogo();
         GestorTarjetasRecetas gestorTarjetas;
 
 
@@ -56,9 +56,7 @@ namespace MicheBytesRecipes.Forms.User
         {
            
             CargarRecetas();
-        }
-
-    
+        } 
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
@@ -66,20 +64,14 @@ namespace MicheBytesRecipes.Forms.User
             MenuUser menuUser = new MenuUser(usuarioLog);
             menuUser.Show();
         }
-
-        private void btnHistorialPdf_Click(object sender, EventArgs e)
-        {
-        }
-
-      
-       
+     
         private void CargarRecetas()
         {
 
             List<PreReceta> listaPreRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
 
             // Cargar las tarjetas usando el gestor
-            gestorTarjetas.CargarTarjetas(listaPreRecetas, usuarioLog, gestorReceta, recetasCatalogo);
+            gestorTarjetas.CargarTarjetas(listaPreRecetas, usuarioLog, gestorReceta, gestorCatalogo);
 
         }
 

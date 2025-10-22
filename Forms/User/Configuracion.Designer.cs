@@ -56,7 +56,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblEditar = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.ofdImagenNueva = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprContra = new System.Windows.Forms.ErrorProvider(this.components);
@@ -325,7 +324,6 @@
             this.pnlNavegacion.Controls.Add(this.lblNombre);
             this.pnlNavegacion.Controls.Add(this.lblEditar);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
-            this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
             this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
@@ -374,16 +372,6 @@
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
-            // btnConfig
-            // 
-            this.btnConfig.Location = new System.Drawing.Point(13, 584);
-            this.btnConfig.Margin = new System.Windows.Forms.Padding(4);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(198, 42);
-            this.btnConfig.TabIndex = 7;
-            this.btnConfig.Text = "&Configuracion";
-            this.btnConfig.UseVisualStyleBackColor = true;
-            // 
             // ofdImagenNueva
             // 
             this.ofdImagenNueva.FileName = "openFileDialog1";
@@ -428,7 +416,6 @@
         private System.Windows.Forms.Panel pnlNavegacion;
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button lblEditar;
         private System.Windows.Forms.Button btnCancelar;

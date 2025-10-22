@@ -52,6 +52,7 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
+            this.pnlTarjetas = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // pnlContenido
             // 
+            this.pnlContenido.Controls.Add(this.pnlTarjetas);
             this.pnlContenido.Controls.Add(this.btnReinicio);
             this.pnlContenido.Controls.Add(this.btnBuscar);
             this.pnlContenido.Controls.Add(this.dgvReceta);
@@ -293,7 +295,7 @@
             // 
             // btnHistorialFav
             // 
-            this.btnHistorialFav.Location = new System.Drawing.Point(13, 459);
+            this.btnHistorialFav.Location = new System.Drawing.Point(13, 210);
             this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialFav.Name = "btnHistorialFav";
             this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
@@ -301,6 +303,14 @@
             this.btnHistorialFav.Text = "&Ver Favoritas";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
+            // 
+            // pnlTarjetas
+            // 
+            this.pnlTarjetas.AutoScroll = true;
+            this.pnlTarjetas.Location = new System.Drawing.Point(16, 210);
+            this.pnlTarjetas.Name = "pnlTarjetas";
+            this.pnlTarjetas.Size = new System.Drawing.Size(923, 439);
+            this.pnlTarjetas.TabIndex = 6;
             // 
             // MenuUser
             // 
@@ -353,5 +363,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dificultad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.FlowLayoutPanel pnlTarjetas;
     }
 }

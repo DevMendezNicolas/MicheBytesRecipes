@@ -52,7 +52,7 @@ namespace MicheBytesRecipes.Forms.Auth
             string email = txtEmail.Text.Trim();
 
             // 🔹 Verificar existencia en la BD
-            bool existeUsuario = gestorUsuarios.ExisteUsuarioPorEmail(email);
+            bool existeUsuario = gestorUsuarios.Encontr(email);
             if (!existeUsuario)
             {
                 MessageBox.Show("No se encontró ninguna cuenta con ese correo.",
