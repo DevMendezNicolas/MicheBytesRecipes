@@ -19,12 +19,12 @@ namespace MicheBytesRecipes
         {
             InitializeComponent();
             //Redondeo de botones y paneles
-            UiHelpers.SetRoundedButton(BtnIniciar, 25);
-            UiHelpers.SetRoundedButton(BtnCrearCuenta, 25);
+            //UiHelpers.SetRoundedButton(BtnIniciar, 25);
+            //UiHelpers.SetRoundedButton(BtnCrearCuenta, 25);
 
             //Aplicación del tema y color gradiente
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            //ThemeManager.ApplyTheme(this);
+            //UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
         }
         // Dirige al login
         private void BtnIniciar_Click(object sender, EventArgs e)

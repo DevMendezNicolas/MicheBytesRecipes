@@ -259,6 +259,7 @@
     <Compile Include="Utilities\TerminosData.cs" />
     <Compile Include="Utilities\TextoJson.cs" />
     <Compile Include="Utilities\Utilidades.cs" />
+    <Content Include="default user profile.png" />
     <EmbeddedResource Include="Forms\AddReceta\FrmAgregarCategoria.resx">
       <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>

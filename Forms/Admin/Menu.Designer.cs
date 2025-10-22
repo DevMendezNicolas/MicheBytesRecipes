@@ -64,7 +64,6 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
-            this.linklblCuenta = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -73,7 +72,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.linklblCuenta);
             this.panel1.Controls.Add(this.brnImportar);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.label4);
@@ -292,6 +290,7 @@
             this.Pais,
             this.Dificultad,
             this.Tiempo});
+            this.dgvReceta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvReceta.Location = new System.Drawing.Point(45, 210);
             this.dgvReceta.MultiSelect = false;
             this.dgvReceta.Name = "dgvReceta";
@@ -423,17 +422,6 @@
             // 
             this.opfImportar.FileName = "openFileDialog1";
             // 
-            // linklblCuenta
-            // 
-            this.linklblCuenta.AutoSize = true;
-            this.linklblCuenta.Location = new System.Drawing.Point(38, 620);
-            this.linklblCuenta.Name = "linklblCuenta";
-            this.linklblCuenta.Size = new System.Drawing.Size(150, 17);
-            this.linklblCuenta.TabIndex = 17;
-            this.linklblCuenta.TabStop = true;
-            this.linklblCuenta.Text = "Configuracion de cuenta";
-            this.linklblCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblCuenta_LinkClicked);
-            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -498,7 +486,6 @@
         private System.Windows.Forms.OpenFileDialog opfImportar;
         private System.Windows.Forms.FolderBrowserDialog fbdCarpetaDestino;
         private System.Windows.Forms.SaveFileDialog sfdExpotar;
-        private System.Windows.Forms.LinkLabel linklblCuenta;
     }
 }
 

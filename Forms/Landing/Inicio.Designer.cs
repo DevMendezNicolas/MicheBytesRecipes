@@ -42,7 +42,7 @@
             // 
             // PanelTop
             // 
-            this.PanelTop.BackColor = System.Drawing.Color.White;
+            this.PanelTop.BackColor = System.Drawing.Color.Transparent;
             this.PanelTop.Controls.Add(this.pbxLogo);
             this.PanelTop.Controls.Add(this.BtnIniciar);
             this.PanelTop.Controls.Add(this.BtnCrearCuenta);
@@ -65,6 +65,7 @@
             // 
             // BtnIniciar
             // 
+            this.BtnIniciar.BackColor = System.Drawing.Color.Silver;
             this.BtnIniciar.FlatAppearance.BorderSize = 0;
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.Location = new System.Drawing.Point(912, 24);
@@ -72,11 +73,12 @@
             this.BtnIniciar.Size = new System.Drawing.Size(111, 30);
             this.BtnIniciar.TabIndex = 1;
             this.BtnIniciar.Text = "Iniciar sesión";
-            this.BtnIniciar.UseVisualStyleBackColor = true;
+            this.BtnIniciar.UseVisualStyleBackColor = false;
             this.BtnIniciar.Click += new System.EventHandler(this.BtnIniciar_Click);
             // 
             // BtnCrearCuenta
             // 
+            this.BtnCrearCuenta.BackColor = System.Drawing.Color.Silver;
             this.BtnCrearCuenta.FlatAppearance.BorderSize = 0;
             this.BtnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearCuenta.Location = new System.Drawing.Point(1061, 24);
@@ -84,12 +86,12 @@
             this.BtnCrearCuenta.Size = new System.Drawing.Size(111, 30);
             this.BtnCrearCuenta.TabIndex = 0;
             this.BtnCrearCuenta.Text = "Crear cuenta";
-            this.BtnCrearCuenta.UseVisualStyleBackColor = true;
+            this.BtnCrearCuenta.UseVisualStyleBackColor = false;
             this.BtnCrearCuenta.Click += new System.EventHandler(this.BtnCrearCuenta_Click);
             // 
             // PanelMid
             // 
-            this.PanelMid.BackColor = System.Drawing.Color.White;
+            this.PanelMid.BackColor = System.Drawing.Color.Transparent;
             this.PanelMid.Controls.Add(this.label2);
             this.PanelMid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelMid.Location = new System.Drawing.Point(0, 122);

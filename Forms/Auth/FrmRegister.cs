@@ -97,6 +97,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void FrmRegister_Load(object sender, EventArgs e)
         {
+            
             //Hacer transparentes los labels formulario
             foreach (Control control in this.Controls )
             {

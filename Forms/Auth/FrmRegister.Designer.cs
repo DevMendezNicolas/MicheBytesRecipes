@@ -67,6 +67,7 @@
             // pbxFotoPerfil
             // 
             this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxFotoPerfil.Image = global::MicheBytesRecipes.Properties.Resources.default_user_profile;
             this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
             this.pbxFotoPerfil.Name = "pbxFotoPerfil";
             this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);

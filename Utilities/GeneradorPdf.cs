@@ -484,7 +484,7 @@ namespace MicheBytesRecipes.Utilities
             {
                 MessageBox.Show($"Error al generar PDF de la receta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        } // HAY QUE PROBARLO
+        } 
 
     }
 }
