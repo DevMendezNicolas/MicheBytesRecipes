@@ -177,7 +177,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(198, 42);
             this.btnGuardar.TabIndex = 8;
-            this.btnGuardar.Text = "&Guardar Cambios";
+            this.btnGuardar.Text = "💾 &Guardar Cambios ";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
