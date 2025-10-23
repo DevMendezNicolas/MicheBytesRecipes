@@ -10,21 +10,35 @@ using MicheBytesRecipes.Forms.Auth;
 using MicheBytesRecipes.Helpers;
 using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
+using Newtonsoft.Json;
+using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes
 {
     public partial class Inicio : Form
     {
+        private const string json_path = @"Data/inicioContenido.json";
         public Inicio()
         {
             InitializeComponent();
+
             //Redondeo de botones y paneles
             UiHelpers.SetRoundedButton(BtnIniciar, 25);
             UiHelpers.SetRoundedButton(BtnCrearCuenta, 25);
+            ThemeManager.AplicarTema(this);
+            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(40, 70, 100), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
 
-            //Aplicación del tema y color gradiente
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+
+            // Aplicar tema inicial
+            ThemeManager.AplicarTema(this);
+
+            // Cargar contenido JSON con manejo inteligente de temas
+            CargarJson.CargarLabels(PanelMid, json_path);
+
+            // Suscribirse al cambio de tema
+
+
         }
         // Dirige al login
         private void BtnIniciar_Click(object sender, EventArgs e)
@@ -33,10 +47,10 @@ namespace MicheBytesRecipes
             //var frmLogin = new frmLogin();
             //frmLogin.FormClosed += (s, args) => this.Show(); // Vuelve a mostrar frmInicio si se cierra frmLogin
             //frmLogin.Show();
-            frmLogin login = new frmLogin();
+            var login = new frmLogin();
             login.Owner = this; // importante
-            login.Show();
             this.Hide();
+            login.Show();
 
         }
 
@@ -58,6 +72,25 @@ namespace MicheBytesRecipes
 
         }
 
-        
+
+        private void btnTheme_Click(object sender, EventArgs e)
+        {
+            if (!ThemeManager.EsTemaOscuro)
+            {
+                ThemeManager.CambiarTema();
+                ThemeManager.AplicarTema(this);
+                CargarJson.CargarLabels(PanelMid, json_path);
+            }
+            else
+            {
+                //Utilizar tema claro   
+                ThemeManager.CambiarTema();
+                ThemeManager.AplicarTema(this);
+            }
+
+            
+
+        }
+
     }
 }
