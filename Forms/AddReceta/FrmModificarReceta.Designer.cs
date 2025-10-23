@@ -67,6 +67,7 @@
             this.btbAgregarCategorias.TabIndex = 47;
             this.btbAgregarCategorias.Text = "&Agregar nueva categoria";
             this.btbAgregarCategorias.UseVisualStyleBackColor = true;
+            this.btbAgregarCategorias.Click += new System.EventHandler(this.btbAgregarCategorias_Click);
             // 
             // btnPais
             // 
@@ -76,6 +77,7 @@
             this.btnPais.TabIndex = 46;
             this.btnPais.Text = "&Agregar nuevo pais";
             this.btnPais.UseVisualStyleBackColor = true;
+            this.btnPais.Click += new System.EventHandler(this.btnPais_Click);
             // 
             // btnAgregarIngrediente
             // 
@@ -85,6 +87,7 @@
             this.btnAgregarIngrediente.TabIndex = 45;
             this.btnAgregarIngrediente.Text = "&Agregar nuevo Ingrediente";
             this.btnAgregarIngrediente.UseVisualStyleBackColor = true;
+            this.btnAgregarIngrediente.Click += new System.EventHandler(this.btnAgregarIngrediente_Click);
             // 
             // clbIngredientes
             // 
@@ -122,6 +125,7 @@
             this.btnCancelar.TabIndex = 41;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnImagen
             // 
@@ -313,10 +317,7 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
             this.Name = "FrmModificarReceta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmModificarReceta";
             this.Load += new System.EventHandler(this.FrmModificarReceta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).EndInit();
