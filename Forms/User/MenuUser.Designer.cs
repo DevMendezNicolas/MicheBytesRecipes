@@ -43,6 +43,7 @@
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
@@ -181,6 +182,7 @@
             // 
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
+            this.pnlNavegacion.Controls.Add(this.btnCerrarSesion);
             this.pnlNavegacion.Controls.Add(this.btnConfig);
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
@@ -210,9 +212,20 @@
             this.lblNombre.Text = "Nombre Usuario";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(13, 572);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(198, 42);
+            this.btnCerrarSesion.TabIndex = 10;
+            this.btnCerrarSesion.Text = "&Cerrar sesión ";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // btnConfig
             // 
-            this.btnConfig.Location = new System.Drawing.Point(13, 559);
+            this.btnConfig.Location = new System.Drawing.Point(13, 525);
             this.btnConfig.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(198, 42);
@@ -223,7 +236,7 @@
             // 
             // btnHistorialRecetas
             // 
-            this.btnHistorialRecetas.Location = new System.Drawing.Point(13, 509);
+            this.btnHistorialRecetas.Location = new System.Drawing.Point(13, 475);
             this.btnHistorialRecetas.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialRecetas.Name = "btnHistorialRecetas";
             this.btnHistorialRecetas.Size = new System.Drawing.Size(198, 42);
@@ -287,5 +300,6 @@
         private System.Windows.Forms.Button btnHistorialRecetas;
         private System.Windows.Forms.Button btnHistorialFav;
         private System.Windows.Forms.FlowLayoutPanel pnlTarjetas;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

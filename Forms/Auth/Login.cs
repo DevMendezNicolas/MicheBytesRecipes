@@ -130,14 +130,13 @@ namespace MicheBytesRecipes
                     frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
                     menuAdmin.Show();
                     salida = true;
-                    this.Close();
+                    this.Hide();
 
                 }
                 else
                 {
                     // Abrir el formulario de menú de usuario
                     MenuUser menuUser = new MenuUser(usuarioActivo);
-                    menuUser.FormClosed += (s, args) => this.Show();
                     menuUser.Show();
                     this.Hide();
                     

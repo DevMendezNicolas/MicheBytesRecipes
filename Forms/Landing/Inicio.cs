@@ -33,10 +33,10 @@ namespace MicheBytesRecipes
             //var frmLogin = new frmLogin();
             //frmLogin.FormClosed += (s, args) => this.Show(); // Vuelve a mostrar frmInicio si se cierra frmLogin
             //frmLogin.Show();
-            var login = new frmLogin();
+            frmLogin login = new frmLogin();
             login.Owner = this; // importante
-            this.Hide();
             login.Show();
+            this.Hide();
 
         }
 

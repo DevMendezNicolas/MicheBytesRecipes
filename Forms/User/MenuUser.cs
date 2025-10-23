@@ -109,7 +109,11 @@ namespace MicheBytesRecipes.Forms.User
 
         private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            // Si no hay formularios abiertos, salir. Si está el Inicio, no cerrar la app.
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnHistorialRecetas_Click(object sender, EventArgs e)
@@ -212,6 +216,31 @@ namespace MicheBytesRecipes.Forms.User
             {
                 btnBuscar.PerformClick();
             }
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Seguro que querés cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Cerramos el menú actual
+                this.Close();
+
+                // Mostramos el Inicio
+                Inicio inicio = Application.OpenForms.OfType<Inicio>().FirstOrDefault();
+                if (inicio != null)
+                {
+                    inicio.Show();
+                }
+                else
+                {
+                    // Por si no existe, creamos uno nuevo
+                    inicio = new Inicio();
+                    inicio.Show();
+                }
+            }
+
         }
     }
 }

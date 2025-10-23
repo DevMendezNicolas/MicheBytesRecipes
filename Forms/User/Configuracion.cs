@@ -1,15 +1,10 @@
-﻿using MicheBytesRecipes.Classes;
-using MicheBytesRecipes.Managers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.User
 {
@@ -355,9 +350,7 @@ namespace MicheBytesRecipes.Forms.User
             pbxEditarImagen.SizeMode = PictureBoxSizeMode.StretchImage;
 
             // Guardamos los bytes originales (si hay)
-            fotoOriginalBytes = usuarioLog.Foto != null && usuarioLog.Foto.Length > 0
-                ? usuarioLog.Foto.ToArray()
-                : Array.Empty<byte>();
+            fotoOriginalBytes = usuarioLog.Foto != null && usuarioLog.Foto.Length > 0 ? usuarioLog.Foto.ToArray() : Array.Empty<byte>();
         }
 
         private void pbEditarImagen_Click(object sender, EventArgs e)
@@ -384,5 +377,7 @@ namespace MicheBytesRecipes.Forms.User
             }
 
         }
+
+
     }
 }

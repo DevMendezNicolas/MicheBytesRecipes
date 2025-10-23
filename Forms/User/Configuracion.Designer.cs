@@ -35,21 +35,21 @@
             this.txtContraActual = new System.Windows.Forms.TextBox();
             this.txtContraNueva = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblContraActual = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblContraNueva = new System.Windows.Forms.Label();
+            this.lblCambiarContra = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.linkCambiarImagen = new System.Windows.Forms.LinkLabel();
             this.pbxEditarImagen = new System.Windows.Forms.PictureBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.lblTelefono = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNombreNuevo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
@@ -74,21 +74,21 @@
             this.pnlContenido.Controls.Add(this.txtContraActual);
             this.pnlContenido.Controls.Add(this.txtContraNueva);
             this.pnlContenido.Controls.Add(this.btnCancelar);
-            this.pnlContenido.Controls.Add(this.label8);
+            this.pnlContenido.Controls.Add(this.lblContraActual);
             this.pnlContenido.Controls.Add(this.btnGuardar);
-            this.pnlContenido.Controls.Add(this.label9);
-            this.pnlContenido.Controls.Add(this.label6);
+            this.pnlContenido.Controls.Add(this.lblContraNueva);
+            this.pnlContenido.Controls.Add(this.lblCambiarContra);
             this.pnlContenido.Controls.Add(this.label5);
             this.pnlContenido.Controls.Add(this.linkCambiarImagen);
             this.pnlContenido.Controls.Add(this.pbxEditarImagen);
             this.pnlContenido.Controls.Add(this.txtEmail);
-            this.pnlContenido.Controls.Add(this.label4);
+            this.pnlContenido.Controls.Add(this.lblEmail);
             this.pnlContenido.Controls.Add(this.txtApellido);
             this.pnlContenido.Controls.Add(this.txtTelefono);
-            this.pnlContenido.Controls.Add(this.label2);
-            this.pnlContenido.Controls.Add(this.label3);
+            this.pnlContenido.Controls.Add(this.lblApellido);
+            this.pnlContenido.Controls.Add(this.lblTelefono);
             this.pnlContenido.Controls.Add(this.txtNombre);
-            this.pnlContenido.Controls.Add(this.label1);
+            this.pnlContenido.Controls.Add(this.lblNombreNuevo);
             this.pnlContenido.Controls.Add(this.lblTitulo);
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenido.Location = new System.Drawing.Point(233, 0);
@@ -160,15 +160,15 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // label8
+            // lblContraActual
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(78, 452);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 21);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Contraseña actual:";
+            this.lblContraActual.AutoSize = true;
+            this.lblContraActual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraActual.Location = new System.Drawing.Point(78, 452);
+            this.lblContraActual.Name = "lblContraActual";
+            this.lblContraActual.Size = new System.Drawing.Size(137, 21);
+            this.lblContraActual.TabIndex = 18;
+            this.lblContraActual.Text = "Contraseña actual:";
             // 
             // btnGuardar
             // 
@@ -181,25 +181,25 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // label9
+            // lblContraNueva
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(77, 501);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(138, 21);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Nueva contraseña:";
+            this.lblContraNueva.AutoSize = true;
+            this.lblContraNueva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraNueva.Location = new System.Drawing.Point(77, 501);
+            this.lblContraNueva.Name = "lblContraNueva";
+            this.lblContraNueva.Size = new System.Drawing.Size(138, 21);
+            this.lblContraNueva.TabIndex = 19;
+            this.lblContraNueva.Text = "Nueva contraseña:";
             // 
-            // label6
+            // lblCambiarContra
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(77, 399);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(175, 21);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "🔒 Cambiar contraseña";
+            this.lblCambiarContra.AutoSize = true;
+            this.lblCambiarContra.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCambiarContra.Location = new System.Drawing.Point(77, 399);
+            this.lblCambiarContra.Name = "lblCambiarContra";
+            this.lblCambiarContra.Size = new System.Drawing.Size(175, 21);
+            this.lblCambiarContra.TabIndex = 16;
+            this.lblCambiarContra.Text = "🔒 Cambiar contraseña";
             // 
             // label5
             // 
@@ -240,15 +240,15 @@
             this.txtEmail.TabIndex = 4;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
-            // label4
+            // lblEmail
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(131, 340);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 21);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Email:";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(131, 340);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(51, 21);
+            this.lblEmail.TabIndex = 2;
+            this.lblEmail.Text = "Email:";
             // 
             // txtApellido
             // 
@@ -268,25 +268,25 @@
             this.txtTelefono.TabIndex = 3;
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
-            // label2
+            // lblApellido
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(132, 244);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 21);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Apellido:";
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellido.Location = new System.Drawing.Point(132, 244);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(70, 21);
+            this.lblApellido.TabIndex = 2;
+            this.lblApellido.Text = "Apellido:";
             // 
-            // label3
+            // lblTelefono
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(131, 293);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 21);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Telefono:";
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(131, 293);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(71, 21);
+            this.lblTelefono.TabIndex = 2;
+            this.lblTelefono.Text = "Telefono:";
             // 
             // txtNombre
             // 
@@ -297,15 +297,15 @@
             this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
-            // label1
+            // lblNombreNuevo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(131, 197);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nombre:";
+            this.lblNombreNuevo.AutoSize = true;
+            this.lblNombreNuevo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreNuevo.Location = new System.Drawing.Point(131, 197);
+            this.lblNombreNuevo.Name = "lblNombreNuevo";
+            this.lblNombreNuevo.Size = new System.Drawing.Size(71, 21);
+            this.lblNombreNuevo.TabIndex = 2;
+            this.lblNombreNuevo.Text = "Nombre:";
             // 
             // lblTitulo
             // 
@@ -363,12 +363,12 @@
             // 
             // btnInicio
             // 
-            this.btnInicio.Location = new System.Drawing.Point(13, 534);
+            this.btnInicio.Location = new System.Drawing.Point(18, 584);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
             this.btnInicio.TabIndex = 10;
-            this.btnInicio.Text = "&Inicio";
+            this.btnInicio.Text = "🔙 &Inicio ";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
@@ -420,21 +420,21 @@
         private System.Windows.Forms.Button lblEditar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNombreNuevo;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.LinkLabel linkCambiarImagen;
         private System.Windows.Forms.PictureBox pbxEditarImagen;
         private System.Windows.Forms.TextBox txtContraActual;
         private System.Windows.Forms.TextBox txtContraNueva;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblContraActual;
+        private System.Windows.Forms.Label lblContraNueva;
+        private System.Windows.Forms.Label lblCambiarContra;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnViewContraNueva;
         private System.Windows.Forms.Button btnViewContra;
