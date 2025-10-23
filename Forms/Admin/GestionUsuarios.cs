@@ -1,16 +1,11 @@
-﻿using MicheBytesRecipes.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MicheBytesRecipes.Managers;
-using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Users;
+using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
@@ -96,6 +91,12 @@ namespace MicheBytesRecipes.Forms.Admin
 
         private void btnAccion_Click(object sender, EventArgs e)
         {
+            // Verificar que haya una fila seleccionada
+            if (dgvUsuarios.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un usuario de la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (usuariosActivos)
             {
                 if (usuarioLog.UsuarioId == Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells["Usuarioid"].Value))
