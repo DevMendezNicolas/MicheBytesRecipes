@@ -18,7 +18,7 @@ namespace MicheBytesRecipes
 {
     public partial class frmInicio : Form
     {
-        private const string json_path = @"Data/inicioContenido.json";
+        private const string json_path = @"DatosJson/inicioContenido.json";
         public frmInicio()
         {
             InitializeComponent();

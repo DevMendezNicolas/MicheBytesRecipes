@@ -15,7 +15,7 @@ namespace MicheBytesRecipes.Forms.Auth
 {
     public partial class frmTerminos : Form
     {
-        private const string jsonpath = @"Data/terms.json";
+        private const string jsonpath = @"DatosJson/terminosContenido.json";
 
         public frmTerminos()
         {
@@ -26,8 +26,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void CargarTerminos()
         {
-            string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "terms.json");
-            CargarJson.CargarRichTextBoxDesdeJson(rtbTerminos, jsonPath);
+            CargarJson.CargarRichTextBoxDesdeJson(rtbTerminos, jsonpath);
         }
 
 
@@ -72,9 +71,5 @@ namespace MicheBytesRecipes.Forms.Auth
 
         }
 
-        private void Terminos_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

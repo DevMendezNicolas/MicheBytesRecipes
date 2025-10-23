@@ -324,13 +324,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Content Include="Data\terms.json">
+    <Content Include="DatosJson\terminosContenido.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\inicioContenido.json">
+    <Content Include="DatosJson\inicioContenido.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\registroContenido.json">
+    <Content Include="DatosJson\registroContenido.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

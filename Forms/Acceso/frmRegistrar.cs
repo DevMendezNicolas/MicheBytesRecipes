@@ -20,7 +20,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private bool salida = false;
-        private const string json_path = @"Data/registroContenido.json";
+        private const string json_path = @"DatosJson/registroContenido.json";
         public frmRegistrar()
         {
             
