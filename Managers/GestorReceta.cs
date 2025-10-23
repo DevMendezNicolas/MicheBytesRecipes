@@ -125,7 +125,7 @@ namespace MicheBytesRecipes
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Receta agregada exitosamente.");
+                
 
             }
             catch (Exception ex)

@@ -64,8 +64,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
             var listaUnidades = gestorCatalogo.ObtenerListaUnidades();
             var listaTipos = gestorCatalogo.ObtenerListaTipos();
 
-            MessageBox.Show($"Unidades: {listaUnidades?.Count ?? 0}, Tipos: {listaTipos?.Count ?? 0}");
-
             CargarCombos(cboUnidad, listaUnidades, "Nombre", "UnidadMedidaId", "No se pudieron cargar las unidades de medida.");           
             CargarCombos(cboTipo, listaTipos, "Nombre", "TipoIngredienteId", "No se pudieron cargar los tipos de ingredientes.");
 
