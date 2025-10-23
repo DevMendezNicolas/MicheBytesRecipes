@@ -130,6 +130,7 @@ namespace MicheBytesRecipes
                     frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
                     menuAdmin.Show();
                     salida = true;
+                    this.Owner.Close();
                     this.Close();
 
                 }
@@ -139,6 +140,7 @@ namespace MicheBytesRecipes
                     MenuUser menuUser = new MenuUser(usuarioActivo);
                     menuUser.FormClosed += (s, args) => this.Show();
                     menuUser.Show();
+                    this.Owner.Close();
                     this.Hide();
                     
                 }

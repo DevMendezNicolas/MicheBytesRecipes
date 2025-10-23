@@ -296,7 +296,7 @@ namespace MicheBytesRecipes
             }
         }
 
-        private void brnImportar_Click(object sender, EventArgs e) // Probar este evento cuando funcione todo
+        private void btnImportar_Click(object sender, EventArgs e) // Probar este evento cuando funcione todo
         {
             try
             {
@@ -333,32 +333,6 @@ namespace MicheBytesRecipes
                 MessageBox.Show($"Error al importar recetas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-        private void linklblCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Configuracion configuracion = new Configuracion(usuarioLog);
-            configuracion.ShowDialog();
-            if (configuracion.DialogResult == DialogResult.OK)
-            {
-                usuarioLog = gestorUsuarios.BuscarPorEmail(usuarioLog.Email);
-                lblNombre.Text = usuarioLog.NombreCompleto();
-                if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
-                {
-                    //Crea una imagen a partir del arreglo de bytes
-                    using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
-                    {
-                        //Se crea un objeto imagen a partir del stream
-                        pictureBox1.Image = System.Drawing.Image.FromStream(ms);
-                        //Ajusta el tamaño de la imagen al tamaño del picturebox
-                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }
-                }
-                else
-                {
-                    pictureBox1.Image = null;
-                }
-            }
         }
     }
 }

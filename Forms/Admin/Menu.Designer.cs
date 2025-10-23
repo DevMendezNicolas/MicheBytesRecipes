@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.brnImportar = new System.Windows.Forms.Button();
+            this.btnImportar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -72,7 +72,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.brnImportar);
+            this.panel1.Controls.Add(this.btnImportar);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -92,16 +92,16 @@
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
             // 
-            // brnImportar
+            // btnImportar
             // 
-            this.brnImportar.Location = new System.Drawing.Point(119, 446);
-            this.brnImportar.Margin = new System.Windows.Forms.Padding(4);
-            this.brnImportar.Name = "brnImportar";
-            this.brnImportar.Size = new System.Drawing.Size(92, 42);
-            this.brnImportar.TabIndex = 15;
-            this.brnImportar.Text = "&Importar";
-            this.brnImportar.UseVisualStyleBackColor = true;
-            this.brnImportar.Click += new System.EventHandler(this.brnImportar_Click);
+            this.btnImportar.Location = new System.Drawing.Point(119, 446);
+            this.btnImportar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(92, 42);
+            this.btnImportar.TabIndex = 15;
+            this.btnImportar.Text = "&Importar";
+            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnExportar
             // 
@@ -482,7 +482,7 @@
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button brnImportar;
+        private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.OpenFileDialog opfImportar;
         private System.Windows.Forms.FolderBrowserDialog fbdCarpetaDestino;
         private System.Windows.Forms.SaveFileDialog sfdExpotar;
