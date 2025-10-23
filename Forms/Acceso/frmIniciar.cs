@@ -36,8 +36,8 @@ namespace MicheBytesRecipes
             UiHelpers.SetRoundedButton(BtnTema, 20);
 
             //Aplicación del tema y color gradiente al formulario
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            //ThemeManager.ApplyTheme(this);
+            //UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
             label1.BackColor = Color.Transparent;
             BtnTema.Text = "\u2600";
 
@@ -52,8 +52,8 @@ namespace MicheBytesRecipes
         private void BtnTema_Click(object sender, EventArgs e)
         {
             //Cambiar tema de claro a oscuro y viceversa
-            ThemeManager.ToggleTheme();
-            ThemeManager.ApplyTheme(this);
+            //ThemeManager.ToggleTheme();
+            //ThemeManager.ApplyTheme(this);
 
         }
 

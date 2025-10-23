@@ -32,14 +32,6 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvMetricas = new System.Windows.Forms.DataGridView();
-            this.Receta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Likes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comentarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Visualizaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Favoritos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
@@ -47,10 +39,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExportar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnAct = new System.Windows.Forms.Button();
-            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
+            this.Receta_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoría = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Likes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Visualizaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Favoritos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetricas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -59,6 +60,8 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.dgvMetricas);
@@ -75,7 +78,9 @@
             // 
             // btnReinicio
             // 
-            this.btnReinicio.Location = new System.Drawing.Point(772, 142);
+            this.btnReinicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReinicio.ForeColor = System.Drawing.Color.Turquoise;
+            this.btnReinicio.Location = new System.Drawing.Point(772, 159);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
             this.btnReinicio.TabIndex = 5;
@@ -85,7 +90,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(591, 142);
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.Turquoise;
+            this.btnBuscar.Location = new System.Drawing.Point(591, 159);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
             this.btnBuscar.TabIndex = 5;
@@ -99,7 +106,7 @@
             this.dgvMetricas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Receta_id,
             this.Nombre,
-            this.Categoria,
+            this.Categoría,
             this.Likes,
             this.Comentarios,
             this.Visualizaciones,
@@ -111,6 +118,138 @@
             this.dgvMetricas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMetricas.Size = new System.Drawing.Size(858, 382);
             this.dgvMetricas.TabIndex = 4;
+            // 
+            // cboCategoria
+            // 
+            this.cboCategoria.FormattingEnabled = true;
+            this.cboCategoria.Location = new System.Drawing.Point(45, 97);
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Size = new System.Drawing.Size(196, 29);
+            this.cboCategoria.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(41, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 21);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Categoría";
+            // 
+            // txtBuscarReceta
+            // 
+            this.txtBuscarReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscarReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarReceta.Location = new System.Drawing.Point(45, 161);
+            this.txtBuscarReceta.Name = "txtBuscarReceta";
+            this.txtBuscarReceta.Size = new System.Drawing.Size(517, 29);
+            this.txtBuscarReceta.TabIndex = 1;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(342, 24);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(235, 32);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Métricas de recetas";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.btnExportar);
+            this.panel1.Controls.Add(this.btnVolver);
+            this.panel1.Controls.Add(this.pbImagenAdmin);
+            this.panel1.Controls.Add(this.lblNombre);
+            this.panel1.Controls.Add(this.lblReceta);
+            this.panel1.Controls.Add(this.btnAct);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 661);
+            this.panel1.TabIndex = 3;
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.Color.Gold;
+            this.btnExportar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.Color.White;
+            this.btnExportar.Location = new System.Drawing.Point(18, 519);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(198, 42);
+            this.btnExportar.TabIndex = 14;
+            this.btnExportar.Text = "Exportar a pdf";
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(18, 581);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(198, 42);
+            this.btnVolver.TabIndex = 13;
+            this.btnVolver.Text = "🔙 &Menú";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // pbImagenAdmin
+            // 
+            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenAdmin.Name = "pbImagenAdmin";
+            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagenAdmin.TabIndex = 12;
+            this.pbImagenAdmin.TabStop = false;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(13, 116);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(198, 74);
+            this.lblNombre.TabIndex = 11;
+            this.lblNombre.Text = "Nombre Administrador";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblReceta
+            // 
+            this.lblReceta.AutoSize = true;
+            this.lblReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReceta.ForeColor = System.Drawing.Color.White;
+            this.lblReceta.Location = new System.Drawing.Point(81, 210);
+            this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblReceta.Name = "lblReceta";
+            this.lblReceta.Size = new System.Drawing.Size(78, 21);
+            this.lblReceta.TabIndex = 9;
+            this.lblReceta.Text = "Acciones";
+            // 
+            // btnAct
+            // 
+            this.btnAct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAct.ForeColor = System.Drawing.Color.White;
+            this.btnAct.Location = new System.Drawing.Point(13, 235);
+            this.btnAct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAct.Name = "btnAct";
+            this.btnAct.Size = new System.Drawing.Size(198, 42);
+            this.btnAct.TabIndex = 5;
+            this.btnAct.Text = "Activas - Inactivas";
+            this.btnAct.UseVisualStyleBackColor = false;
+            this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
             // 
             // Receta_id
             // 
@@ -127,17 +266,17 @@
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             // 
-            // Categoria
+            // Categoría
             // 
-            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
+            this.Categoría.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoría.HeaderText = "Categoria";
+            this.Categoría.Name = "Categoría";
+            this.Categoría.ReadOnly = true;
             // 
             // Likes
             // 
             this.Likes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Likes.HeaderText = "Likes";
+            this.Likes.HeaderText = "Me gustas";
             this.Likes.Name = "Likes";
             this.Likes.ReadOnly = true;
             // 
@@ -169,122 +308,17 @@
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             // 
-            // cboCategoria
+            // label5
             // 
-            this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(45, 97);
-            this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(196, 29);
-            this.cboCategoria.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Categoria";
-            // 
-            // txtBuscarReceta
-            // 
-            this.txtBuscarReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscarReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarReceta.Location = new System.Drawing.Point(45, 142);
-            this.txtBuscarReceta.Name = "txtBuscarReceta";
-            this.txtBuscarReceta.Size = new System.Drawing.Size(517, 29);
-            this.txtBuscarReceta.TabIndex = 1;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(342, 24);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(178, 25);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Metricas de recetas";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnExportar);
-            this.panel1.Controls.Add(this.btnVolver);
-            this.panel1.Controls.Add(this.pbImagenAdmin);
-            this.panel1.Controls.Add(this.lblNombre);
-            this.panel1.Controls.Add(this.lblReceta);
-            this.panel1.Controls.Add(this.btnAct);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 661);
-            this.panel1.TabIndex = 3;
-            // 
-            // btnExportar
-            // 
-            this.btnExportar.Location = new System.Drawing.Point(18, 519);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(198, 42);
-            this.btnExportar.TabIndex = 14;
-            this.btnExportar.Text = "Exportar a pdf";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Location = new System.Drawing.Point(13, 579);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(198, 42);
-            this.btnVolver.TabIndex = 13;
-            this.btnVolver.Text = "🔙 &Menu";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(13, 116);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(198, 74);
-            this.lblNombre.TabIndex = 11;
-            this.lblNombre.Text = "Nombre Administrador";
-            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblReceta
-            // 
-            this.lblReceta.AutoSize = true;
-            this.lblReceta.Location = new System.Drawing.Point(81, 210);
-            this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReceta.Name = "lblReceta";
-            this.lblReceta.Size = new System.Drawing.Size(71, 21);
-            this.lblReceta.TabIndex = 9;
-            this.lblReceta.Text = "Acciones";
-            // 
-            // btnAct
-            // 
-            this.btnAct.Location = new System.Drawing.Point(13, 235);
-            this.btnAct.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAct.Name = "btnAct";
-            this.btnAct.Size = new System.Drawing.Size(198, 42);
-            this.btnAct.TabIndex = 5;
-            this.btnAct.Text = "Activas - Inactivas";
-            this.btnAct.UseVisualStyleBackColor = true;
-            this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
-            // 
-            // pbImagenAdmin
-            // 
-            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
-            this.pbImagenAdmin.Name = "pbImagenAdmin";
-            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
-            this.pbImagenAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImagenAdmin.TabIndex = 12;
-            this.pbImagenAdmin.TabStop = false;
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(41, 138);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Nombre de la receta";
             // 
             // frmMetricas
             // 
@@ -328,14 +362,15 @@
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Button btnAct;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receta_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoría;
         private System.Windows.Forms.DataGridViewTextBoxColumn Likes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comentarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn Visualizaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Favoritos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Label label5;
     }
 }

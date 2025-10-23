@@ -148,7 +148,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnRegistrar.BackColor = System.Drawing.Color.OrangeRed;
             this.btnRegistrar.FlatAppearance.BorderSize = 0;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrar.Location = new System.Drawing.Point(144, 564);
@@ -263,7 +263,7 @@
             // 
             // pnlRight
             // 
-            this.pnlRight.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pnlRight.BackColor = System.Drawing.Color.Orange;
             this.pnlRight.Controls.Add(this.btnViewAgain);
             this.pnlRight.Controls.Add(this.btnViewContra);
             this.pnlRight.Controls.Add(this.lblTelefono);
@@ -295,7 +295,7 @@
             // btnViewAgain
             // 
             this.btnViewAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewAgain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnViewAgain.BackColor = System.Drawing.Color.OrangeRed;
             this.btnViewAgain.FlatAppearance.BorderSize = 0;
             this.btnViewAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewAgain.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -312,7 +312,7 @@
             // btnViewContra
             // 
             this.btnViewContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewContra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnViewContra.BackColor = System.Drawing.Color.OrangeRed;
             this.btnViewContra.FlatAppearance.BorderSize = 0;
             this.btnViewContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewContra.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -350,6 +350,7 @@
             // 
             // pnlLeft
             // 
+            this.pnlLeft.BackColor = System.Drawing.Color.Orange;
             this.pnlLeft.Controls.Add(this.lblTexto);
             this.pnlLeft.Controls.Add(this.lblRelleno);
             this.pnlLeft.Controls.Add(this.lblTituloLeft);

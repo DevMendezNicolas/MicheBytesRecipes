@@ -48,7 +48,7 @@
             // 
             // PanelTop
             // 
-            this.PanelTop.BackColor = System.Drawing.Color.DarkOrange;
+            this.PanelTop.BackColor = System.Drawing.Color.Orange;
             this.PanelTop.Controls.Add(this.pbxLogo);
             this.PanelTop.Controls.Add(this.BtnIniciar);
             this.PanelTop.Controls.Add(this.BtnCrearCuenta);
@@ -61,7 +61,7 @@
             // 
             // BtnIniciar
             // 
-            this.BtnIniciar.BackColor = System.Drawing.Color.Chocolate;
+            this.BtnIniciar.BackColor = System.Drawing.Color.DarkOrange;
             this.BtnIniciar.FlatAppearance.BorderSize = 0;
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIniciar.ForeColor = System.Drawing.Color.White;
@@ -75,7 +75,7 @@
             // 
             // BtnCrearCuenta
             // 
-            this.BtnCrearCuenta.BackColor = System.Drawing.Color.Chocolate;
+            this.BtnCrearCuenta.BackColor = System.Drawing.Color.DarkOrange;
             this.BtnCrearCuenta.FlatAppearance.BorderSize = 0;
             this.BtnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearCuenta.ForeColor = System.Drawing.Color.White;
@@ -89,7 +89,7 @@
             // 
             // PanelMid
             // 
-            this.PanelMid.BackColor = System.Drawing.Color.DarkOrange;
+            this.PanelMid.BackColor = System.Drawing.Color.Orange;
             this.PanelMid.Controls.Add(this.lblFinal);
             this.PanelMid.Controls.Add(this.lblFooter);
             this.PanelMid.Controls.Add(this.lblTituloEsencia);
@@ -182,7 +182,7 @@
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Image = global::MicheBytesRecipes.Properties.Resources.Create_a_friendly__o;
+            this.pbxLogo.Image = global::MicheBytesRecipes.Properties.Resources.logo_editable_con_le;
             this.pbxLogo.Location = new System.Drawing.Point(12, 12);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(184, 104);

@@ -45,9 +45,14 @@ namespace MicheBytesRecipes
             UiHelpers.SetRoundedButton(btnAct, 15);
             UiHelpers.SetRoundedButton(btnEliminar, 15);
             UiHelpers.SetRoundedButton(txtAgregar, 15);
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            //ThemeManager.ApplyTheme(this);
+            UiHelpers.SetGradient(this, Color.FromArgb(0, 192, 192), Color.FromArgb(100, 192, 230), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            UiHelpers.SetGradient(panel3, Color.FromArgb(0, 192, 192), Color.FromArgb(0, 192, 192), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+
+            dgvReceta.BackgroundColor = Color.FromArgb(0, 192, 192); // Fondo del control completo
             //Color de la fuente del DGV en negro
+            dgvReceta.DefaultCellStyle.BackColor = Color.FromArgb(255, 250, 240); // Color tipo crema
+            dgvReceta.DefaultCellStyle.ForeColor = Color.FromArgb(60, 60, 60);    // Gris oscuro
             dgvReceta.ForeColor = Color.Black;
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
             usuarioLog = usuarioActivado;

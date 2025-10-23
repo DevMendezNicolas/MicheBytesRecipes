@@ -93,9 +93,29 @@ namespace MicheBytesRecipes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_editable_con_le {
+            get {
+                object obj = ResourceManager.GetObject("logo_editable_con_le", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_para_softwar {
             get {
                 object obj = ResourceManager.GetObject("logo_para_softwar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap replica_del_logo_en_ {
+            get {
+                object obj = ResourceManager.GetObject("replica_del_logo_en_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

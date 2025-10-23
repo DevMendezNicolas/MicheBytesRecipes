@@ -69,7 +69,7 @@ namespace MicheBytesRecipes.Forms.Admin
             cboCategoria.DisplayMember = "Nombre";
             cboCategoria.ValueMember = "CategoriaId";
             cboCategoria.SelectedIndex = 0;
-
+            dgvMetricas.BackgroundColor = Color.FromArgb(0, 192, 192); // Fondo del control completo
             ActualizarGrilla();
             btnAct.Text = activas ? "Ver Inactivas" : "Ver Activas";
             activas = false;

@@ -84,7 +84,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
                 if (recetaId > 0)
                 {
-                    MessageBox.Show("Receta cargada exitosamente con ID: " + recetaId);
+                    MessageBox.Show("Receta cargada exitosamente");
                 }
 
                 LimpiarFormulario();

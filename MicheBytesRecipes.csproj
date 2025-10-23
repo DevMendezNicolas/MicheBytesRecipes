@@ -259,6 +259,8 @@
     <Compile Include="Utilities\TerminosData.cs" />
     <Compile Include="Utilities\TextoJson.cs" />
     <Compile Include="Utilities\Utilidades.cs" />
+    <None Include="logo_editable_con_le.png" />
+    <None Include="replica_del_logo_en_.png" />
     <None Include="logo_para_softwar.png" />
     <None Include="Create a friendly, o.png" />
     <Content Include="Imagenes\UsuarioCheff.png" />

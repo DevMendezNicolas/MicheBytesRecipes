@@ -32,6 +32,18 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBuscarEmail = new System.Windows.Forms.TextBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnPermisos = new System.Windows.Forms.Button();
+            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblUsuarios = new System.Windows.Forms.Label();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.btnAct = new System.Windows.Forms.Button();
+            this.btnAccion = new System.Windows.Forms.Button();
             this.UsuarioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,18 +52,6 @@
             this.fechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBuscarEmail = new System.Windows.Forms.TextBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnPermisos = new System.Windows.Forms.Button();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblUsuarios = new System.Windows.Forms.Label();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.btnAct = new System.Windows.Forms.Button();
-            this.btnAccion = new System.Windows.Forms.Button();
-            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
@@ -60,6 +60,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.dgvUsuarios);
@@ -75,6 +76,8 @@
             // 
             // btnReinicio
             // 
+            this.btnReinicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReinicio.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnReinicio.Location = new System.Drawing.Point(761, 95);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
@@ -85,6 +88,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.btnBuscar.Location = new System.Drawing.Point(583, 95);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
@@ -111,6 +115,158 @@
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(858, 443);
             this.dgvUsuarios.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(41, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Buscar por Email";
+            // 
+            // txtBuscarEmail
+            // 
+            this.txtBuscarEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscarEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarEmail.Location = new System.Drawing.Point(45, 95);
+            this.txtBuscarEmail.Name = "txtBuscarEmail";
+            this.txtBuscarEmail.Size = new System.Drawing.Size(518, 29);
+            this.txtBuscarEmail.TabIndex = 1;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(334, 24);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(242, 32);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Gestión de Usuarios";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.btnPermisos);
+            this.panel1.Controls.Add(this.pbImagenAdmin);
+            this.panel1.Controls.Add(this.lblNombre);
+            this.panel1.Controls.Add(this.lblUsuarios);
+            this.panel1.Controls.Add(this.btnVolver);
+            this.panel1.Controls.Add(this.btnAct);
+            this.panel1.Controls.Add(this.btnAccion);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 661);
+            this.panel1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(47, 349);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Asignar permisos";
+            // 
+            // btnPermisos
+            // 
+            this.btnPermisos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnPermisos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPermisos.ForeColor = System.Drawing.Color.White;
+            this.btnPermisos.Location = new System.Drawing.Point(13, 383);
+            this.btnPermisos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPermisos.Name = "btnPermisos";
+            this.btnPermisos.Size = new System.Drawing.Size(198, 42);
+            this.btnPermisos.TabIndex = 14;
+            this.btnPermisos.Text = "&Modificar Rol";
+            this.btnPermisos.UseVisualStyleBackColor = false;
+            this.btnPermisos.Click += new System.EventHandler(this.btnPermisos_Click);
+            // 
+            // pbImagenAdmin
+            // 
+            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenAdmin.Name = "pbImagenAdmin";
+            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagenAdmin.TabIndex = 12;
+            this.pbImagenAdmin.TabStop = false;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(13, 116);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(198, 74);
+            this.lblNombre.TabIndex = 11;
+            this.lblNombre.Text = "Nombre Administrador";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblUsuarios
+            // 
+            this.lblUsuarios.AutoSize = true;
+            this.lblUsuarios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarios.ForeColor = System.Drawing.Color.White;
+            this.lblUsuarios.Location = new System.Drawing.Point(81, 210);
+            this.lblUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuarios.Name = "lblUsuarios";
+            this.lblUsuarios.Size = new System.Drawing.Size(71, 20);
+            this.lblUsuarios.TabIndex = 9;
+            this.lblUsuarios.Text = "Acciones";
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(13, 606);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(198, 42);
+            this.btnVolver.TabIndex = 7;
+            this.btnVolver.Text = "🔙 &Menú";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // btnAct
+            // 
+            this.btnAct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAct.ForeColor = System.Drawing.Color.White;
+            this.btnAct.Location = new System.Drawing.Point(13, 294);
+            this.btnAct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAct.Name = "btnAct";
+            this.btnAct.Size = new System.Drawing.Size(198, 42);
+            this.btnAct.TabIndex = 5;
+            this.btnAct.Text = "Activos - Inactivos";
+            this.btnAct.UseVisualStyleBackColor = false;
+            this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
+            // 
+            // btnAccion
+            // 
+            this.btnAccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAccion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccion.ForeColor = System.Drawing.Color.White;
+            this.btnAccion.Location = new System.Drawing.Point(13, 244);
+            this.btnAccion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAccion.Name = "btnAccion";
+            this.btnAccion.Size = new System.Drawing.Size(198, 42);
+            this.btnAccion.TabIndex = 3;
+            this.btnAccion.Text = "&Dar de baja";
+            this.btnAccion.UseVisualStyleBackColor = false;
+            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
             // UsuarioId
             // 
@@ -143,7 +299,7 @@
             // Telefono
             // 
             this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.HeaderText = "Teléfono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
@@ -167,138 +323,6 @@
             this.rol.HeaderText = "Rol";
             this.rol.Name = "rol";
             this.rol.ReadOnly = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Buscar por Email";
-            // 
-            // txtBuscarEmail
-            // 
-            this.txtBuscarEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscarEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarEmail.Location = new System.Drawing.Point(45, 95);
-            this.txtBuscarEmail.Name = "txtBuscarEmail";
-            this.txtBuscarEmail.Size = new System.Drawing.Size(518, 29);
-            this.txtBuscarEmail.TabIndex = 1;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(334, 24);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(181, 25);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Gestión de Usuarios";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnPermisos);
-            this.panel1.Controls.Add(this.pbImagenAdmin);
-            this.panel1.Controls.Add(this.lblNombre);
-            this.panel1.Controls.Add(this.lblUsuarios);
-            this.panel1.Controls.Add(this.btnVolver);
-            this.panel1.Controls.Add(this.btnAct);
-            this.panel1.Controls.Add(this.btnAccion);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 661);
-            this.panel1.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 475);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 21);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Asignar permisos";
-            // 
-            // btnPermisos
-            // 
-            this.btnPermisos.Location = new System.Drawing.Point(18, 500);
-            this.btnPermisos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPermisos.Name = "btnPermisos";
-            this.btnPermisos.Size = new System.Drawing.Size(198, 42);
-            this.btnPermisos.TabIndex = 14;
-            this.btnPermisos.Text = "&Modificar Rol";
-            this.btnPermisos.UseVisualStyleBackColor = true;
-            this.btnPermisos.Click += new System.EventHandler(this.btnPermisos_Click);
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(13, 116);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(198, 74);
-            this.lblNombre.TabIndex = 11;
-            this.lblNombre.Text = "Nombre Administrador";
-            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblUsuarios
-            // 
-            this.lblUsuarios.AutoSize = true;
-            this.lblUsuarios.Location = new System.Drawing.Point(81, 210);
-            this.lblUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUsuarios.Name = "lblUsuarios";
-            this.lblUsuarios.Size = new System.Drawing.Size(71, 21);
-            this.lblUsuarios.TabIndex = 9;
-            this.lblUsuarios.Text = "Acciones";
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Location = new System.Drawing.Point(13, 579);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(198, 42);
-            this.btnVolver.TabIndex = 7;
-            this.btnVolver.Text = "🔙 &Menu";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // btnAct
-            // 
-            this.btnAct.Location = new System.Drawing.Point(13, 294);
-            this.btnAct.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAct.Name = "btnAct";
-            this.btnAct.Size = new System.Drawing.Size(198, 42);
-            this.btnAct.TabIndex = 5;
-            this.btnAct.Text = "Activos - Inactivos";
-            this.btnAct.UseVisualStyleBackColor = true;
-            this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
-            // 
-            // btnAccion
-            // 
-            this.btnAccion.Location = new System.Drawing.Point(13, 244);
-            this.btnAccion.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAccion.Name = "btnAccion";
-            this.btnAccion.Size = new System.Drawing.Size(198, 42);
-            this.btnAccion.TabIndex = 3;
-            this.btnAccion.Text = "&Dar de baja";
-            this.btnAccion.UseVisualStyleBackColor = true;
-            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
-            // 
-            // pbImagenAdmin
-            // 
-            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
-            this.pbImagenAdmin.Name = "pbImagenAdmin";
-            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
-            this.pbImagenAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImagenAdmin.TabIndex = 12;
-            this.pbImagenAdmin.TabStop = false;
             // 
             // GestionUsuarios
             // 
@@ -342,6 +366,8 @@
         private System.Windows.Forms.Button btnAct;
         private System.Windows.Forms.Button btnAccion;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnPermisos;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -350,7 +376,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaAlta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaBaja;
         private System.Windows.Forms.DataGridViewTextBoxColumn rol;
-        private System.Windows.Forms.Button btnPermisos;
-        private System.Windows.Forms.Label label2;
     }
 }

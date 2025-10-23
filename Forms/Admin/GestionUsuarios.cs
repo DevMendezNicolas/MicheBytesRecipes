@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Users;
 using MicheBytesRecipes.Managers;
+using System.Drawing;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
@@ -42,6 +43,7 @@ namespace MicheBytesRecipes.Forms.Admin
         private void GestionUsuarios_Load(object sender, EventArgs e)
         {
             this.ActualizarGrilla();
+            dgvUsuarios.BackgroundColor = Color.FromArgb(0, 192, 192); // Fondo del control completo
         }
         public void ActualizarGrilla()
         {

@@ -130,4 +130,10 @@
   <data name="Create a friendly, o1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Create a friendly, o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="replica_del_logo_en_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\replica_del_logo_en_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_editable_con_le" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\logo_editable_con_le.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
