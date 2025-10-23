@@ -165,6 +165,11 @@ namespace MicheBytesRecipes.Forms.AddReceta
             }
             errorProvider1.Clear();
         }
+
+        private void pcbImagen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
                 

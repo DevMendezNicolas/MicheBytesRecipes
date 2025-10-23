@@ -161,11 +161,62 @@ namespace MicheBytesRecipes.Forms.AddReceta
         }
         private void btnImagen_Click(object sender, EventArgs e)
         {
+            //OpenFileDialog ofd = new OpenFileDialog();
+            openFileDialog1.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+            openFileDialog1.Title = "Seleccionar Imagen";
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pcbImagen.Image = Image.FromFile(openFileDialog1.FileName);
-                this.nuevaRuta = openFileDialog1.FileName; //  Guardar la nueva ruta
+                pcbImagen.SizeMode = PictureBoxSizeMode.Zoom; //Ajusta la imagen al tamanio del PictureBox
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnPais_Click(object sender, EventArgs e)
+        {                        
+            //Llamar al formulario de agregar pais
+            FrmAgregarPais frmAgregarPais = new FrmAgregarPais();
+
+            if (frmAgregarPais.ShowDialog() == DialogResult.OK)
+            {
+                List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
+                cboPais.DataSource = null; //Limpia el origen de datos
+                cboPais.DataSource = paises; //Vuelve a asignar la lista actualizada
+                cboPais.DisplayMember = "Nombre";
+                //MessageBox.Show("Pais agregado a la lista.");
+            }
+        }
+
+        private void btbAgregarCategorias_Click(object sender, EventArgs e)
+        {
+            FrmAgregarCategoria frmAgregarCategoria = new FrmAgregarCategoria();
+            if (frmAgregarCategoria.ShowDialog() == DialogResult.OK)
+            {
+                List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
+                cboCategoria.DataSource = null;
+                cboCategoria.DataSource = categorias;
+                cboCategoria.DisplayMember = "Nombre";
+            }
+        }
+
+        private void btnAgregarIngrediente_Click(object sender, EventArgs e)
+        {
+            FrmAgregarIngrediente frmAgregarIngrediente = new FrmAgregarIngrediente();
+
+            if (frmAgregarIngrediente.ShowDialog() == DialogResult.OK)
+            {
+                List<Ingrediente> ingredientes = gestorIngredientes.ObtenerIngredientes();
+                clbIngredientes.DataSource = null; //Limpia el origen de datos
+                clbIngredientes.DataSource = ingredientes; //Vuelve a asignar la lista actualizada
+                clbIngredientes.DisplayMember = "Nombre";
+                //MessageBox.Show("Ingrediente agregado a la receta.");
             }
         }
     }
+    
 }

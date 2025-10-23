@@ -201,6 +201,7 @@
             this.pcbImagen.Size = new System.Drawing.Size(135, 91);
             this.pcbImagen.TabIndex = 15;
             this.pcbImagen.TabStop = false;
+            this.pcbImagen.Click += new System.EventHandler(this.pcbImagen_Click);
             // 
             // openFileDialog1
             // 
