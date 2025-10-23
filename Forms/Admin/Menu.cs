@@ -40,13 +40,6 @@ namespace MicheBytesRecipes
         public frmMenuAdmin(Usuario usuarioActivado)
         {
             InitializeComponent();
-            UiHelpers.SetRoundedButton(btnBuscar, 15);
-            UiHelpers.SetRoundedButton(btnReinicio, 15);
-            UiHelpers.SetRoundedButton(btnAct, 15);
-            UiHelpers.SetRoundedButton(btnEliminar, 15);
-            UiHelpers.SetRoundedButton(txtAgregar, 15);
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
             //Color de la fuente del DGV en negro
             dgvReceta.ForeColor = Color.Black;
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
@@ -294,7 +287,7 @@ namespace MicheBytesRecipes
             }
         }
 
-        private void brnImportar_Click(object sender, EventArgs e) // Probar este evento cuando funcione todo
+        private void btnImportar_Click(object sender, EventArgs e) // Probar este evento cuando funcione todo
         {
             try
             {
