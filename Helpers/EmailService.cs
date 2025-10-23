@@ -15,16 +15,14 @@ namespace MicheBytesRecipes.Helpers
 {
     public class EmailService
     {
-        private readonly string remitente = "soporte.michebytes@hotmail.com";
-        private readonly string contraseña = "Pipo123456";
-        private readonly string smtpHost = "smtp.office365.com";
+        // Configuración para Gmail
+        private readonly string remitente = "soporte.michebytes@gmail.com";
+        private readonly string contraseña = "tqqstyyjiyqwmelr"; // Contraseña de aplicación de Gmail
+        private readonly string smtpHost = "smtp.gmail.com";
         private readonly int smtpPort = 587;
 
-        private string ultimoCodigoGenerado; // guarda el código para cotejarlo después
+        private string ultimoCodigoGenerado;
 
-        /// <summary>
-        /// Genera un código aleatorio de 6 cifras y lo guarda.
-        /// </summary>
         public string GenerarCodigo()
         {
             Random random = new Random();
@@ -32,34 +30,27 @@ namespace MicheBytesRecipes.Helpers
             return ultimoCodigoGenerado;
         }
 
-        /// <summary>
-        /// Devuelve el último código generado (para validación posterior).
-        /// </summary>
         public string ObtenerUltimoCodigo()
         {
             return ultimoCodigoGenerado;
         }
 
-        /// <summary>
-        /// Envía el código de verificación por correo (SMTP principal).
-        /// Si falla, intenta con SendGrid como alternativa.
-        /// </summary>
-        public async void EnviarCodigoVerificacion(string destinatario)
+        public async Task EnviarCodigoVerificacion(string destinatario)
         {
             string codigo = GenerarCodigo();
 
             string asunto = "Código de Verificación - MicheBytes";
             string cuerpoHtml = $@"
-                <html>
-                <body style='font-family: Arial, sans-serif;'>
-                    <h2 style='color:#007bff;'>Verificación de cuenta</h2>
-                    <p>Tu código de verificación es:</p>
-                    <h1 style='color:#28a745; text-align:center;'>{codigo}</h1>
-                    <p>Ingresalo en la aplicación para continuar con el cambio de contraseña.</p>
-                    <hr />
-                    <small>Equipo MicheBytes</small>
-                </body>
-                </html>";
+            <html>
+            <body style='font-family: Segoe UI, sans-serif;'>
+                <h2 style='color:#007bff;'>Verificación de cuenta</h2>
+                <p>Tu código de verificación es:</p>
+                <h1 style='color:#28a745; text-align:center;'>{codigo}</h1>
+                <p>Ingresalo en la aplicación para continuar con el cambio de contraseña.</p>
+                <hr />
+                <small>Equipo MicheBytes</small>
+            </body>
+            </html>";
 
             try
             {
@@ -67,38 +58,40 @@ namespace MicheBytesRecipes.Helpers
                 {
                     smtp.Credentials = new NetworkCredential(remitente, contraseña);
                     smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                    MailMessage mensaje = new MailMessage();
-                    mensaje.From = new MailAddress(remitente, "Soporte MicheBytes");
-                    mensaje.To.Add(destinatario);
-                    mensaje.Subject = asunto;
-                    mensaje.Body = cuerpoHtml;
-                    mensaje.IsBodyHtml = true;
+                    using (MailMessage mensaje = new MailMessage())
+                    {
+                        mensaje.From = new MailAddress(remitente, "Soporte MicheBytes");
+                        mensaje.To.Add(destinatario);
+                        mensaje.Subject = asunto;
+                        mensaje.Body = cuerpoHtml;
+                        mensaje.IsBodyHtml = true;
 
-                    await smtp.SendMailAsync(mensaje);
-
-                    MessageBox.Show("✅ El código fue enviado correctamente al correo.",
-                                    "Correo enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        await smtp.SendMailAsync(mensaje);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"⚠️ Error al enviar con SMTP: {ex.Message}\nIntentando con SendGrid...",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                // 👉 Envío alternativo con SendGrid
-                /*try
-                {
-                    var backup = new EmailServiceBackup();
-                    await backup.EnviarCodigoAlternativo(destinatario, codigo);
-                }
-                catch (Exception ex2)
-                {
-                    MessageBox.Show($"❌ No se pudo enviar el correo por ningún método.\n{ex2.Message}",
-                                    "Fallo de envío", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
+                throw new Exception($"Error SMTP: {ex.Message}");
             }
         }
+    }
+}
+
+
+        // 👉 Envío alternativo con SendGrid
+        /*try
+        {
+            var backup = new EmailServiceBackup();
+            await backup.EnviarCodigoAlternativo(destinatario, codigo);
+        }
+        catch (Exception ex2)
+        {
+            MessageBox.Show($"❌ No se pudo enviar el correo por ningún método.\n{ex2.Message}",
+                            "Fallo de envío", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }*/
 
 
         /*private ConexionBD conexion = new ConexionBD();
@@ -190,6 +183,4 @@ namespace MicheBytesRecipes.Helpers
                 // Podés registrar en logs, base de datos, etc.
             }
         }*/
-
-    }
-}
+        

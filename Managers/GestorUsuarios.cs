@@ -305,17 +305,18 @@ namespace MicheBytesRecipes.Managers
             try
             {
                 conexion.Abrir();
-                string consulta = "SELECT COUNT(*) FROM usuarios WHERE email = @Email AND fecha_baja IS NULL";
+                string consulta = "SELECT Encontrar_usuario_por_email(@Email);";
                 using (MySqlCommand comando = new MySqlCommand(consulta, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@Email", email);
-                    int count = Convert.ToInt32(comando.ExecuteScalar());
-                    return count > 0;
+                    // ExecuteScalar devuelve el valor retornado por la función
+                    int resultado = Convert.ToInt32(comando.ExecuteScalar());
+                    return resultado == 1; // 1 si existe, 0 si no existe
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al verificar la existencia del usuario: " + ex.Message);
+                throw new Exception("Error al verificar la existencia del usuario con función: " + ex.Message);
             }
             finally
             {

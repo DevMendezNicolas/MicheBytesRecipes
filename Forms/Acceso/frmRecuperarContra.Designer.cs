@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PanelMid = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblTexto = new System.Windows.Forms.Label();
             this.LbLinkContra = new System.Windows.Forms.LinkLabel();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnIngresar = new System.Windows.Forms.Button();
+            this.btnEnviar = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.eprEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtActual = new System.Windows.Forms.TextBox();
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprEmail)).BeginInit();
             this.SuspendLayout();
@@ -46,38 +47,39 @@
             // 
             this.PanelMid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(59)))));
             this.PanelMid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PanelMid.Controls.Add(this.label3);
-            this.PanelMid.Controls.Add(this.label1);
+            this.PanelMid.Controls.Add(this.lblEmail);
+            this.PanelMid.Controls.Add(this.lblTexto);
             this.PanelMid.Controls.Add(this.LbLinkContra);
             this.PanelMid.Controls.Add(this.btnCancelar);
-            this.PanelMid.Controls.Add(this.btnIngresar);
+            this.PanelMid.Controls.Add(this.btnEnviar);
+            this.PanelMid.Controls.Add(this.txtActual);
             this.PanelMid.Controls.Add(this.txtEmail);
-            this.PanelMid.Controls.Add(this.label2);
+            this.PanelMid.Controls.Add(this.lblTitulo);
             this.PanelMid.Location = new System.Drawing.Point(12, 12);
             this.PanelMid.Name = "PanelMid";
             this.PanelMid.Size = new System.Drawing.Size(376, 339);
             this.PanelMid.TabIndex = 7;
             // 
-            // label3
+            // lblEmail
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(180)))), ((int)(((byte)(194)))));
-            this.label3.Location = new System.Drawing.Point(32, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 25);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Email";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(180)))), ((int)(((byte)(194)))));
+            this.lblEmail.Location = new System.Drawing.Point(37, 58);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(59, 25);
+            this.lblEmail.TabIndex = 11;
+            this.lblEmail.Text = "Email";
             // 
-            // label1
+            // lblTexto
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(180)))), ((int)(((byte)(194)))));
-            this.label1.Location = new System.Drawing.Point(32, 178);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 62);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Si tienes una cuenta registrada, recibirás un correo con su clave.";
+            this.lblTexto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTexto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(180)))), ((int)(((byte)(194)))));
+            this.lblTexto.Location = new System.Drawing.Point(37, 177);
+            this.lblTexto.Name = "lblTexto";
+            this.lblTexto.Size = new System.Drawing.Size(311, 51);
+            this.lblTexto.TabIndex = 10;
+            this.lblTexto.Text = "Si tienes una cuenta registrada, recibirás un correo con su clave.";
             // 
             // LbLinkContra
             // 
@@ -95,57 +97,69 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(37, 267);
+            this.btnCancelar.Location = new System.Drawing.Point(60, 289);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(144, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(257, 43);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnIngresar
+            // btnEnviar
             // 
-            this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.btnIngresar.FlatAppearance.BorderSize = 0;
-            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.ForeColor = System.Drawing.Color.White;
-            this.btnIngresar.Location = new System.Drawing.Point(199, 267);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(144, 40);
-            this.btnIngresar.TabIndex = 3;
-            this.btnIngresar.Text = "Enviar";
-            this.btnIngresar.UseVisualStyleBackColor = false;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.btnEnviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnEnviar.FlatAppearance.BorderSize = 0;
+            this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviar.ForeColor = System.Drawing.Color.White;
+            this.btnEnviar.Location = new System.Drawing.Point(60, 231);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(257, 43);
+            this.btnEnviar.TabIndex = 3;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = false;
+            this.btnEnviar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
-            this.txtEmail.Location = new System.Drawing.Point(37, 115);
+            this.txtEmail.Location = new System.Drawing.Point(37, 95);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(306, 26);
             this.txtEmail.TabIndex = 1;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
-            // label2
+            // lblTitulo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(53, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(264, 37);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Recupere su cuenta";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(53, 12);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(264, 37);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Recupere su cuenta";
             // 
             // eprEmail
             // 
             this.eprEmail.ContainerControl = this;
             // 
-            // RecuperarContra
+            // txtActual
+            // 
+            this.txtActual.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtActual.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtActual.ForeColor = System.Drawing.Color.Black;
+            this.txtActual.Location = new System.Drawing.Point(37, 139);
+            this.txtActual.Name = "txtActual";
+            this.txtActual.Size = new System.Drawing.Size(306, 26);
+            this.txtActual.TabIndex = 1;
+            this.txtActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtActual.Visible = false;
+            // 
+            // frmRecuperarContra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +167,7 @@
             this.Controls.Add(this.PanelMid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.Name = "RecuperarContra";
+            this.Name = "frmRecuperarContra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RecuperarContra";
             this.PanelMid.ResumeLayout(false);
@@ -166,12 +180,13 @@
         #endregion
         private System.Windows.Forms.Panel PanelMid;
         private System.Windows.Forms.LinkLabel LbLinkContra;
-        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblTexto;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider eprEmail;
+        private System.Windows.Forms.TextBox txtActual;
     }
 }
