@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Classes;
 using System.IO;
+using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
@@ -19,6 +20,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private bool salida = false;
+        private const string json_path = @"Data/registroContenido.json";
         public FrmRegister()
         {
             
@@ -33,16 +35,7 @@ namespace MicheBytesRecipes.Forms.Auth
             CueProvider.SetCue(txtContra, "Ingresa tu contraseña");
             CueProvider.SetCue(txtRepContra, "Repeti tu contraseña");
 
-            //Redondeo de botones, paneles y textbox
-            UiHelpers.SetRoundedButton(btnRegistrar, 20);
-
-            //Aplicación del tema y color gradiente al formulario y panel derecho
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(pnlRight, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            UiHelpers.SetGradient(pnlRight, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(pnlLeft, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            UiHelpers.SetGradient(pnlLeft, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            CargarJson.CargarLabelsDesdeJson(pnlLeft, json_path);
             txtContra.UseSystemPasswordChar = true;
             txtRepContra.UseSystemPasswordChar = true;
 
