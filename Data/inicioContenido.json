@@ -3,56 +3,42 @@
     {
       "Nombre": "lblTitulo",
       "Texto": "¡Bienvenidos a MicheBytes Recipes! 🎉",
-      "ColorTextoClaro": "#B85C38",
-      "ColorTextoOscuro": "#F4B393",
       "Tamaño": 24,
       "Negrita": true
     },
     {
       "Nombre": "lblRelleno",
       "Texto": "Nuestra aplicación nace con una misión simple pero poderosa: hacer que cocinar sea más fácil, divertido y accesible para todos.\n En MicheBytes Recipes vas a encontrar un espacio pensado para los amantes de la gastronomía: desde quienes recién empiezan a dar sus primeros pasos en la cocina, hasta los que disfrutan creando platos únicos e innovadores.",
-      "ColorTextoClaro": "#704F3A",
-      "ColorTextoOscuro": "#FFE1C2",
       "Tamaño": 13,
       "Negrita": false
     },
     {
       "Nombre": "lblTituloBullet",
       "Texto": "🍴 ¿Qué ofrece MicheBytes Recipes?",
-      "ColorTextoClaro": "#C97E54",
-      "ColorTextoOscuro": "#F7C89B",
       "Tamaño": 16,
       "Negrita": true
     },
     {
       "Nombre": "lblBullet",
       "Texto": " • Una colección variada de recetas explicadas de forma clara y sencilla.\n • Filtros inteligentes para encontrar la receta perfecta según tus gustos, el tiempo o los ingredientes disponibles.\n • Un diseño tierno, colorido y amigable, pensado para que la experiencia sea tan agradable como preparar tu plato favorito.\n • Consejos prácticos y tips gastronómicos que convierten cada receta en una oportunidad de aprender algo nuevo.",
-      "ColorTextoClaro": "#7D5C47",
-      "ColorTextoOscuro": "#FFD8A9",
       "Tamaño": 13,
       "Negrita": false
     },
     {
       "Nombre": "lblTituloEsencia",
       "Texto": "🌈 Nuestra esencia",
-      "ColorTextoClaro": "#C97E54",
-      "ColorTextoOscuro": "#F7C89B",
       "Tamaño": 16,
       "Negrita": true
     },
     {
       "Nombre": "lblFooter",
       "Texto": "MicheBytes Recipes no es solo una app de recetas: es un espacio donde la cocina se transforma en un momento de creatividad, alegría y conexión.\n Queremos inspirarte a experimentar, compartir y disfrutar de cada bocado!",
-      "ColorTextoClaro": "#704F3A",
-      "ColorTextoOscuro": "#FFE1C2",
       "Tamaño": 13,
       "Negrita": false
     },
     {
       "Nombre": "lblFinal",
       "Texto": "¡Con MicheBytes Recipes, cocinar nunca fue tan divertido, accesible y delicioso! 🍳✨",
-      "ColorTextoClaro": "#D97757",
-      "ColorTextoOscuro": "#F5A97F",
       "Tamaño": 14,
       "Negrita": true
     }

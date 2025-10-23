@@ -2,151 +2,125 @@
   "textoJson": [
     {
       "Texto": "🔎 Términos y Condiciones - MicheBytes Recipes",
-      "Color": "#333333",
       "Tamaño": 20,
       "Negrita": true
     },
     {
       "Texto": "Bienvenido a MicheBytes Recipes, tu aplicación favorita para descubrir y compartir recetas culinarias.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "📋 ACEPTACIÓN DE TÉRMINOS",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Al usar nuestra aplicación, aceptas estos términos y condiciones.\n• Debes tener al menos 13 años para utilizar la aplicación.\n• Eres responsable del uso que hagas de la plataforma.",
-      "Color": "#666666",
-      "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "👨‍🍳 CUENTA DE USUARIO",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Debes proporcionar información veraz al registrarte.\n• Eres responsable de mantener la confidencialidad de tu cuenta.\n• Notifícanos inmediatamente cualquier uso no autorizado.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "📝 CONTENIDO DE RECETAS",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Las recetas publicadas deben ser originales o tener derechos para compartirlas.\n• No se permiten recetas que promuevan hábitos alimenticios peligrosos.\n• Nos reservamos el derecho de eliminar contenido inapropiado.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "⭐ SISTEMA DE PUNTUACIONES",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Las puntuaciones deben ser honestas y basadas en la experiencia real.\n• No se permite la manipulación de puntuaciones propias o ajenas.\n• Las reseñas deben ser constructivas y respetuosas.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "💬 COMENTARIOS",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Los comentarios deben ser respetuosos y relacionados con las recetas.\n• No se tolerará lenguaje ofensivo, discriminatorio o spam.\n• Los comentarios inapropiados serán eliminados.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "❤️ FAVORITOS",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Tu lista de favoritos es personal y privada.\n• Puedes gestionar tus recetas favoritas en cualquier momento.\n• Las recetas eliminadas por sus autores desaparecerán de tus favoritos.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "🔒 PRIVACIDAD Y DATOS",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Respetamos tu privacidad y protegemos tus datos personales.\n• Solo utilizamos tu información para mejorar tu experiencia.\n• No compartimos tu información personal con terceros sin tu consentimiento.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "⚖️ PROPIEDAD INTELECTUAL",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Conservas los derechos de autor de tus recetas originales.\n• Al publicar, nos autorizas a mostrar tu contenido en la plataforma.\n• El contenido de la aplicación no puede ser copiado sin permiso.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "🚫 PROHIBICIONES",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Publicar contenido peligroso o ilegal.\n• Suplantar la identidad de otras personas.\n• Realizar actividades comerciales no autorizadas.\n• Vulnerar la seguridad de la aplicación.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "📞 CONTACTO",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Para reportar problemas: soporte@michebytesrecipes.com\n• Sugerencias: sugerencias@michebytesrecipes.com\n• Dudas sobre estos términos: legal@michebytesrecipes.com",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "🔄 MODIFICACIONES",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     },
     {
       "Texto": "• Podemos actualizar estos términos periódicamente.\n• Te notificaremos sobre cambios significativos.\n• El uso continuado implica aceptación de los nuevos términos.",
-      "Color": "#666666",
       "Tamaño": 12,
       "Negrita": false
     },
     {
       "Texto": "✅ Al usar MicheBytes Recipes, aceptas compartir tu pasión por la cocina de manera responsable y respetuosa con nuestra comunidad.\n¡Gracias por ser parte de nuestra familia culinaria! 🍕👨‍🍳👩‍🍳",
-      "Color": "#333333",
       "Tamaño": 14,
       "Negrita": true
     }

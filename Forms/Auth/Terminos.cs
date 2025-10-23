@@ -27,7 +27,7 @@ namespace MicheBytesRecipes.Forms.Auth
         private void CargarTerminos()
         {
             string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "terms.json");
-            CargarJson.CargarRichTextBox(rtbTerminos, jsonPath);
+            CargarJson.CargarRichTextBoxDesdeJson(rtbTerminos, jsonPath);
         }
 
 

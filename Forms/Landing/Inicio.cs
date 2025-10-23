@@ -23,7 +23,7 @@ namespace MicheBytesRecipes
         {
             InitializeComponent();
 
-            CargarJson.CargarLabels(PanelMid, json_path);
+            CargarJson.CargarLabelsDesdeJson(PanelMid, json_path);
 
         }
 

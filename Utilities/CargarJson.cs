@@ -14,62 +14,59 @@ namespace MicheBytesRecipes.Utilities
 {
     public class CargarJson
     {
-        private const string FUENTE = "Segoe UI";
-
-        public static void CargarLabels(Panel panel, string rutaJson)
+        public static void CargarLabelsDesdeJson(Panel panel, string rutaJson)
         {
-            if (!File.Exists(rutaJson))
-            {
-                MessageBox.Show($"Archivo no encontrado: {rutaJson}", "Error");
-                return;
-            }
-
             try
             {
-                var json = File.ReadAllText(rutaJson);
-                var contenido = JsonConvert.DeserializeObject<ContenidoJson>(json);
+                string jsonContent = File.ReadAllText(rutaJson);
+                JsonData datos = JsonConvert.DeserializeObject<JsonData>(jsonContent);
 
-                if (contenido?.textoJson == null) return;
+                if (datos?.textoJson == null) return;
 
-                foreach (var item in contenido.textoJson)
+                foreach (var config in datos.textoJson)
                 {
-                    var label = BuscarLabel(panel, item.Nombre);
+                    Label label = panel.Controls.OfType<Label>()
+                        .FirstOrDefault(l => l.Name == config.Nombre);
+
                     if (label != null)
                     {
-                        AplicarEstilo(label, item);
+                        label.Text = config.Texto;
+                        // Usar Segoe UI como fuente
+                        FontStyle estilo = config.Negrita ? FontStyle.Bold : FontStyle.Regular;
+                        label.Font = new Font("Segoe UI", config.Tamaño, estilo);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error cargando JSON: {ex.Message}", "Error");
+                MessageBox.Show($"Error al cargar texto desde JSON: {ex.Message}");
             }
         }
 
-        public static void CargarRichTextBox(RichTextBox richTextBox, string rutaJson)
+        // Método para RichTextBox
+        public static void CargarRichTextBoxDesdeJson(RichTextBox richTextBox, string rutaJson)
         {
-            if (!File.Exists(rutaJson))
-            {
-                MessageBox.Show($"Archivo no encontrado: {rutaJson}", "Error");
-                return;
-            }
-
             try
             {
-                var json = File.ReadAllText(rutaJson);
-                var contenido = JsonConvert.DeserializeObject<ContenidoJson>(json);
+                string jsonContent = File.ReadAllText(rutaJson);
+                JsonData datos = JsonConvert.DeserializeObject<JsonData>(jsonContent);
 
-                if (contenido?.textoJson == null) return;
+                if (datos?.textoJson == null) return;
 
                 richTextBox.Clear();
 
-                foreach (var item in contenido.textoJson)
+                foreach (var config in datos.textoJson)
                 {
-                    if (!string.IsNullOrEmpty(item.Texto))
-                    {
-                        AplicarEstiloRichTextBox(richTextBox, item);
-                        richTextBox.AppendText(item.Texto + Environment.NewLine + Environment.NewLine);
-                    }
+                    FontStyle estilo = config.Negrita ? FontStyle.Bold : FontStyle.Regular;
+                    float tamaño = config.Tamaño > 0 ? config.Tamaño : 9; // Tamaño por defecto
+
+                    // Usar Segoe UI como fuente
+                    Font fuente = new Font("Segoe UI", tamaño, estilo);
+
+                    richTextBox.SelectionStart = richTextBox.TextLength;
+                    richTextBox.SelectionLength = 0;
+                    richTextBox.SelectionFont = fuente;
+                    richTextBox.AppendText(config.Texto + "\n\n");
                 }
 
                 richTextBox.SelectionStart = 0;
@@ -77,65 +74,9 @@ namespace MicheBytesRecipes.Utilities
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error cargando JSON en RichTextBox: {ex.Message}", "Error");
+                MessageBox.Show($"Error al cargar texto en RichTextBox: {ex.Message}");
             }
         }
-
-        private static void AplicarEstiloRichTextBox(RichTextBox richTextBox, TextoJson item)
-        {
-            // Aplicar fuente
-            var estilo = item.Negrita ? FontStyle.Bold : FontStyle.Regular;
-            richTextBox.SelectionFont = new Font(FUENTE, item.Tamaño, estilo);
-
-            // Aplicar color según el tema
-            //var colorHex = ThemeManager.EsTemaOscuro ? item.ColorTextoOscuro : item.ColorTextoClaro;
-            //richTextBox.SelectionColor = HexAColor(colorHex);
-        }
-
-        private static Label BuscarLabel(Panel panel, string nombre)
-        {
-            return panel.Controls.OfType<Label>()
-                .FirstOrDefault(l => l.Name.Equals(nombre, StringComparison.OrdinalIgnoreCase));
-        }
-
-        private static void AplicarEstilo(Label label, TextoJson item)
-        {
-            label.Text = item.Texto;
-
-            // Aplicar color según el tema
-            //var colorHex = ThemeManager.EsTemaOscuro ? item.ColorTextoOscuro : item.ColorTextoClaro;
-            //if (!string.IsNullOrEmpty(colorHex))
-            {
-            //    label.ForeColor = HexAColor(colorHex);
-            }
-
-            // Aplicar fuente
-            var estilo = item.Negrita ? FontStyle.Bold : FontStyle.Regular;
-            label.Font = new Font(FUENTE, item.Tamaño, estilo);
-        }
-
-        /*private static Color HexAColor(string hex)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(hex))
-                    return ThemeManager.EsTemaOscuro ? Color.White : Color.Black;
-
-                if (!hex.StartsWith("#"))
-                    hex = "#" + hex;
-
-                return ColorTranslator.FromHtml(hex);
-            }
-            catch
-            {
-                return ThemeManager.EsTemaOscuro ? Color.White : Color.Black;
-            }
-        }
-
-        public static void ActualizarColores(Panel panel, string rutaJson)
-        {
-            CargarLabels(panel, rutaJson);
-        }*/
     }
 }
         
