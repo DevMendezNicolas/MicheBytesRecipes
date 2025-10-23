@@ -41,7 +41,6 @@
             this.lblTituloBullet = new System.Windows.Forms.Label();
             this.lblRelleno = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnTheme = new System.Windows.Forms.Button();
             this.PanelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.PanelMid.SuspendLayout();
@@ -97,7 +96,6 @@
             // PanelMid
             // 
             this.PanelMid.BackColor = System.Drawing.Color.White;
-            this.PanelMid.Controls.Add(this.btnTheme);
             this.PanelMid.Controls.Add(this.lblFinal);
             this.PanelMid.Controls.Add(this.lblFooter);
             this.PanelMid.Controls.Add(this.lblTituloEsencia);
@@ -181,16 +179,6 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "¡Bieeeenvenidos a MicheBytes Recipes! 🎉";
             // 
-            // btnTheme
-            // 
-            this.btnTheme.Location = new System.Drawing.Point(52, 428);
-            this.btnTheme.Name = "btnTheme";
-            this.btnTheme.Size = new System.Drawing.Size(75, 23);
-            this.btnTheme.TabIndex = 7;
-            this.btnTheme.Text = "button1";
-            this.btnTheme.UseVisualStyleBackColor = true;
-            this.btnTheme.Click += new System.EventHandler(this.btnTheme_Click);
-            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -203,7 +191,6 @@
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
-            this.Load += new System.EventHandler(this.FrmInicio_Load);
             this.PanelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.PanelMid.ResumeLayout(false);
@@ -226,7 +213,6 @@
         private System.Windows.Forms.Label lblTituloEsencia;
         private System.Windows.Forms.Label lblFooter;
         private System.Windows.Forms.Label lblFinal;
-        private System.Windows.Forms.Button btnTheme;
     }
 }
 
