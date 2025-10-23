@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.Auth
 {
-    partial class RecuperarContra
+    partial class frmRecuperarContra
     {
         /// <summary>
         /// Required designer variable.

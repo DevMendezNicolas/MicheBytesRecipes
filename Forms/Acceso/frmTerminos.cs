@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
-    public partial class Terminos : Form
+    public partial class frmTerminos : Form
     {
         private const string jsonpath = @"Data/terms.json";
 
-        public Terminos()
+        public frmTerminos()
         {
             InitializeComponent();
             CargarTerminos();

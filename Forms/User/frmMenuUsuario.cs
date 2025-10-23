@@ -202,7 +202,7 @@ namespace MicheBytesRecipes.Forms.User
                 cierrePorSesion = true;
 
                 // mostramos frmInicio
-                Inicio inicio = Application.OpenForms.OfType<Inicio>().FirstOrDefault();
+                frmInicio inicio = Application.OpenForms.OfType<frmInicio>().FirstOrDefault();
                 if (inicio != null)
                 {
                     Owner = inicio;

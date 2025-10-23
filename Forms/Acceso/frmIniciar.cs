@@ -59,7 +59,7 @@ namespace MicheBytesRecipes
 
         private void LbLinkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var frmRegistro = new FrmRegister();
+            var frmRegistro = new frmRegistrar();
             frmRegistro.FormClosed += (s, args) => this.Close(); // Cierra login cuando se cierra registro
             frmRegistro.Show();
             this.Hide();
@@ -163,7 +163,7 @@ namespace MicheBytesRecipes
         {
             //abrir Formulario en modal
 
-            RecuperarContra frmRecu = new RecuperarContra();
+            frmRecuperarContra frmRecu = new frmRecuperarContra();
             frmRecu.ShowDialog();
         }
     }

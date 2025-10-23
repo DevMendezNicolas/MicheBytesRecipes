@@ -15,13 +15,13 @@ using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
-    public partial class FrmRegister : Form
+    public partial class frmRegistrar : Form
     {
 
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private bool salida = false;
         private const string json_path = @"Data/registroContenido.json";
-        public FrmRegister()
+        public frmRegistrar()
         {
             
 
@@ -318,7 +318,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void lblLinkTerminos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Terminos frm = new Terminos();
+            frmTerminos frm = new frmTerminos();
             frm.ShowDialog();
 
         }

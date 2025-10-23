@@ -13,10 +13,10 @@ using System.Windows.Forms;
 namespace MicheBytesRecipes.Forms.Auth
 {
     // SYSTEM NET MAIL. 
-    public partial class RecuperarContra : Form
+    public partial class frmRecuperarContra : Form
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
-        public RecuperarContra()
+        public frmRecuperarContra()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.Auth
 {
-    partial class Terminos
+    partial class frmTerminos
     {
         /// <summary>
         /// Required designer variable.

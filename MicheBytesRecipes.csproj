@@ -183,35 +183,35 @@
     <Compile Include="Forms\Admin\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Auth\FrmRegister.cs">
+    <Compile Include="Forms\Acceso\frmRegistrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Auth\FrmRegister.Designer.cs">
-      <DependentUpon>FrmRegister.cs</DependentUpon>
+    <Compile Include="Forms\Acceso\frmRegistrar.Designer.cs">
+      <DependentUpon>frmRegistrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Auth\Login.cs">
+    <Compile Include="Forms\Acceso\frmIniciar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Auth\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Forms\Acceso\frmIniciar.Designer.cs">
+      <DependentUpon>frmIniciar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Auth\RecuperarContra.cs">
+    <Compile Include="Forms\Acceso\frmRecuperarContra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Auth\RecuperarContra.Designer.cs">
-      <DependentUpon>RecuperarContra.cs</DependentUpon>
+    <Compile Include="Forms\Acceso\frmRecuperarContra.Designer.cs">
+      <DependentUpon>frmRecuperarContra.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Auth\Terminos.cs">
+    <Compile Include="Forms\Acceso\frmTerminos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Auth\Terminos.Designer.cs">
-      <DependentUpon>Terminos.cs</DependentUpon>
+    <Compile Include="Forms\Acceso\frmTerminos.Designer.cs">
+      <DependentUpon>frmTerminos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Landing\Inicio.cs">
+    <Compile Include="Forms\Inicio\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Landing\Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <Compile Include="Forms\Inicio\frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\User\frmConfiguracion.cs">
       <SubType>Form</SubType>
@@ -287,20 +287,20 @@
     <EmbeddedResource Include="Forms\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Auth\FrmRegister.resx">
-      <DependentUpon>FrmRegister.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Acceso\frmRegistrar.resx">
+      <DependentUpon>frmRegistrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Auth\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Acceso\frmIniciar.resx">
+      <DependentUpon>frmIniciar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Auth\RecuperarContra.resx">
-      <DependentUpon>RecuperarContra.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Acceso\frmRecuperarContra.resx">
+      <DependentUpon>frmRecuperarContra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Auth\Terminos.resx">
-      <DependentUpon>Terminos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Acceso\frmTerminos.resx">
+      <DependentUpon>frmTerminos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Landing\Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Inicio\frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>

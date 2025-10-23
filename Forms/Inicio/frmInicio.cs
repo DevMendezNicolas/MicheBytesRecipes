@@ -16,10 +16,10 @@ using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes
 {
-    public partial class Inicio : Form
+    public partial class frmInicio : Form
     {
         private const string json_path = @"Data/inicioContenido.json";
-        public Inicio()
+        public frmInicio()
         {
             InitializeComponent();
 
@@ -38,7 +38,7 @@ namespace MicheBytesRecipes
 
         private void BtnCrearCuenta_Click(object sender, EventArgs e)
         {
-            var register = new FrmRegister();
+            var register = new frmRegistrar();
             register.Owner = this;
             this.Hide();
             register.Show();
