@@ -200,15 +200,12 @@ namespace MicheBytesRecipes.Forms.User
             if (resultado == DialogResult.Yes)
             {
                 cierrePorSesion = true;
-                // cerramos formularios intermedios
-                this.Close(); // MenuUser/MenuAdmin
-                frmLogin login = Application.OpenForms.OfType<frmLogin>().FirstOrDefault();
-                login?.Close();
 
                 // mostramos frmInicio
                 Inicio inicio = Application.OpenForms.OfType<Inicio>().FirstOrDefault();
                 if (inicio != null)
                 {
+                    Owner = inicio;
                     inicio.Show();
                 }
 
@@ -223,7 +220,7 @@ namespace MicheBytesRecipes.Forms.User
                 var resultado = MessageBox.Show("¿Seguro que querés salir?", "Salir", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
                 {
-                    Application.Exit(); // Cierra toda la app
+                    Application.Exit();
                 }
                 else
                 {
@@ -231,5 +228,6 @@ namespace MicheBytesRecipes.Forms.User
                 }
             }
         }
+
     }
 }

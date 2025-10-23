@@ -127,18 +127,28 @@ namespace MicheBytesRecipes
                 if (usuarioActivo.Rol == 1)
                 {
                     //Abrir el formulario de menú de administrador y pasar el usuario
-                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo);
+                    frmMenuAdmin menuAdmin = new frmMenuAdmin(usuarioActivo)
+                    {
+                        Owner = this.Owner
+
+                    };
                     menuAdmin.Show();
                     salida = true;
-                    this.Hide();
+                    //cerrar el padre
+
+                    this.Close();
 
                 }
                 else
                 {
                     // Abrir el formulario de menú de usuario
-                    MenuUser menuUser = new MenuUser(usuarioActivo);
+                    MenuUser menuUser = new MenuUser(usuarioActivo)
+                    { 
+                        Owner = this.Owner 
+                    };
                     menuUser.Show();
-                    this.Hide();
+                    salida = true;
+                    this.Close();
                     
                 }
             }
