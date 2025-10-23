@@ -32,7 +32,6 @@
             this.brnImportar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
@@ -64,10 +63,11 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -123,14 +123,6 @@
             this.label4.Size = new System.Drawing.Size(123, 17);
             this.label4.TabIndex = 13;
             this.label4.Text = "&Importar y exportar";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(34, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(154, 85);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
             // 
             // lblNombre
             // 
@@ -421,6 +413,15 @@
             // 
             this.opfImportar.FileName = "openFileDialog1";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(34, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(154, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -439,10 +440,10 @@
             this.Load += new System.EventHandler(this.frmMenuAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

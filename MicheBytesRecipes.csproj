@@ -259,6 +259,8 @@
     <Compile Include="Utilities\TerminosData.cs" />
     <Compile Include="Utilities\TextoJson.cs" />
     <Compile Include="Utilities\Utilidades.cs" />
+    <None Include="logo_para_softwar.png" />
+    <None Include="Create a friendly, o.png" />
     <Content Include="Imagenes\UsuarioCheff.png" />
     <EmbeddedResource Include="Forms\AddReceta\FrmAgregarCategoria.resx">
       <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>

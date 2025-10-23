@@ -47,10 +47,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExportar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnAct = new System.Windows.Forms.Button();
+            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetricas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -245,14 +245,6 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // pbImagenAdmin
-            // 
-            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
-            this.pbImagenAdmin.Name = "pbImagenAdmin";
-            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
-            this.pbImagenAdmin.TabIndex = 12;
-            this.pbImagenAdmin.TabStop = false;
-            // 
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -284,6 +276,15 @@
             this.btnAct.Text = "Activas - Inactivas";
             this.btnAct.UseVisualStyleBackColor = true;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
+            // 
+            // pbImagenAdmin
+            // 
+            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenAdmin.Name = "pbImagenAdmin";
+            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagenAdmin.TabIndex = 12;
+            this.pbImagenAdmin.TabStop = false;
             // 
             // frmMetricas
             // 

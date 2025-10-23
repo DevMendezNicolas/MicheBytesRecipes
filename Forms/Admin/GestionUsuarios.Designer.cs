@@ -46,12 +46,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPermisos = new System.Windows.Forms.Button();
-            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblUsuarios = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
             this.btnAccion = new System.Windows.Forms.Button();
+            this.pbImagenAdmin = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
@@ -237,14 +237,6 @@
             this.btnPermisos.UseVisualStyleBackColor = true;
             this.btnPermisos.Click += new System.EventHandler(this.btnPermisos_Click);
             // 
-            // pbImagenAdmin
-            // 
-            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
-            this.pbImagenAdmin.Name = "pbImagenAdmin";
-            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
-            this.pbImagenAdmin.TabIndex = 12;
-            this.pbImagenAdmin.TabStop = false;
-            // 
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -298,6 +290,15 @@
             this.btnAccion.Text = "&Dar de baja";
             this.btnAccion.UseVisualStyleBackColor = true;
             this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
+            // 
+            // pbImagenAdmin
+            // 
+            this.pbImagenAdmin.Location = new System.Drawing.Point(34, 24);
+            this.pbImagenAdmin.Name = "pbImagenAdmin";
+            this.pbImagenAdmin.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagenAdmin.TabIndex = 12;
+            this.pbImagenAdmin.TabStop = false;
             // 
             // GestionUsuarios
             // 

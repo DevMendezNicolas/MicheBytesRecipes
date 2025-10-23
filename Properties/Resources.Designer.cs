@@ -63,9 +63,39 @@ namespace MicheBytesRecipes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Create_a_friendly__o {
+            get {
+                object obj = ResourceManager.GetObject("Create a friendly, o", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Create_a_friendly__o1 {
+            get {
+                object obj = ResourceManager.GetObject("Create a friendly, o1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cute_and_animated_lo {
             get {
                 object obj = ResourceManager.GetObject("Cute_and_animated_lo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_para_softwar {
+            get {
+                object obj = ResourceManager.GetObject("logo_para_softwar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

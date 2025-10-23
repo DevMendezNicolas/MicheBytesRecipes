@@ -67,6 +67,7 @@
             // pbxFotoPerfil
             // 
             this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxFotoPerfil.Image = global::MicheBytesRecipes.Properties.Resources.Create_a_friendly__o1;
             this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
             this.pbxFotoPerfil.Name = "pbxFotoPerfil";
             this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
@@ -404,7 +405,7 @@
             // 
             this.eprCampos.ContainerControl = this;
             // 
-            // FrmRegister
+            // frmRegistrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -416,7 +417,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
-            this.Name = "FrmRegister";
+            this.Name = "frmRegistrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRegister_FormClosed);

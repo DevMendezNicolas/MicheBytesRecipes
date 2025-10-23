@@ -33,7 +33,11 @@ namespace MicheBytesRecipes.Classes.Recetas
             InitializeComponent();
             this.receta = receta;
             this.usuario = usuarioLog;
-            
+            if (usuarioLog.Rol == 1)
+            {
+                btnMeGusta.Enabled = false;
+                btnFavoritos.Enabled = false;
+            }
 
         }
 
