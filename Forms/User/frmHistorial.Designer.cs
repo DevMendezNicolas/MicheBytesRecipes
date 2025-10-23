@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.User
 {
-    partial class Historial
+    partial class frmHistorial
     {
         /// <summary>
         /// Required designer variable.

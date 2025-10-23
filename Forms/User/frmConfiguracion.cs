@@ -8,12 +8,12 @@ using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.User
 {
-    public partial class Configuracion : Form
+    public partial class frmConfiguracion : Form
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private Usuario usuarioLog;
         private byte[] fotoOriginalBytes = Array.Empty<byte>();
-        public Configuracion(Usuario usuarioActivado)
+        public frmConfiguracion(Usuario usuarioActivado)
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;

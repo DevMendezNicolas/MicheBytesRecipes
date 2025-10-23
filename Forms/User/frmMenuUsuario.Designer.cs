@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.User
 {
-    partial class MenuUser
+    partial class frmMenuUsuario
     {
         /// <summary>
         /// Required designer variable.

@@ -213,23 +213,23 @@
     <Compile Include="Forms\Landing\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\Configuracion.cs">
+    <Compile Include="Forms\User\frmConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User\Configuracion.Designer.cs">
-      <DependentUpon>Configuracion.cs</DependentUpon>
+    <Compile Include="Forms\User\frmConfiguracion.Designer.cs">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\Historial.cs">
+    <Compile Include="Forms\User\frmHistorial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User\Historial.Designer.cs">
-      <DependentUpon>Historial.cs</DependentUpon>
+    <Compile Include="Forms\User\frmHistorial.Designer.cs">
+      <DependentUpon>frmHistorial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\MenuUser.cs">
+    <Compile Include="Forms\User\frmMenuUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User\MenuUser.Designer.cs">
-      <DependentUpon>MenuUser.cs</DependentUpon>
+    <Compile Include="Forms\User\frmMenuUsuario.Designer.cs">
+      <DependentUpon>frmMenuUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\User\UcRecetaTarjeta.cs">
       <SubType>UserControl</SubType>
@@ -302,14 +302,14 @@
     <EmbeddedResource Include="Forms\Landing\Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\Configuracion.resx">
-      <DependentUpon>Configuracion.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\User\frmConfiguracion.resx">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\Historial.resx">
-      <DependentUpon>Historial.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\User\frmHistorial.resx">
+      <DependentUpon>frmHistorial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\MenuUser.resx">
-      <DependentUpon>MenuUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\User\frmMenuUsuario.resx">
+      <DependentUpon>frmMenuUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\UcRecetaTarjeta.resx">
       <DependentUpon>UcRecetaTarjeta.cs</DependentUpon>

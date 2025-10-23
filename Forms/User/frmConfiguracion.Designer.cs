@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.User
 {
-    partial class Configuracion
+    partial class frmConfiguracion
     {
         /// <summary>
         /// Required designer variable.
@@ -386,7 +386,7 @@
             // 
             this.eprContra.ContainerControl = this;
             // 
-            // Configuracion
+            // frmConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -397,7 +397,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "Configuracion";
+            this.Name = "frmConfiguracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuracion";
             this.Load += new System.EventHandler(this.Configuracion_Load);

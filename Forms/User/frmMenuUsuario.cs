@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.User
 {
-    public partial class MenuUser : Form
+    public partial class frmMenuUsuario : Form
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
@@ -24,7 +24,7 @@ namespace MicheBytesRecipes.Forms.User
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         private bool mostrarFavoritas = false;
-        public MenuUser(Usuario usuarioActivado)
+        public frmMenuUsuario(Usuario usuarioActivado)
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;
@@ -110,7 +110,7 @@ namespace MicheBytesRecipes.Forms.User
         private void btnHistorialRecetas_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Historial historial = new Historial(usuarioLog);
+            frmHistorial historial = new frmHistorial(usuarioLog);
             historial.ShowDialog();
             this.Show();
 
@@ -179,7 +179,7 @@ namespace MicheBytesRecipes.Forms.User
         private void btnConfig_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Configuracion configuracion = new Configuracion(usuarioLog);
+            frmConfiguracion configuracion = new frmConfiguracion(usuarioLog);
             configuracion.ShowDialog();
             this.Show();
 

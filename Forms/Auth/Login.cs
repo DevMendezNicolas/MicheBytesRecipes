@@ -142,7 +142,7 @@ namespace MicheBytesRecipes
                 else
                 {
                     // Abrir el formulario de menú de usuario
-                    MenuUser menuUser = new MenuUser(usuarioActivo)
+                    frmMenuUsuario menuUser = new frmMenuUsuario(usuarioActivo)
                     { 
                         Owner = this.Owner 
                     };

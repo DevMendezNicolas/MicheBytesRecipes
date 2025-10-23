@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.User
 {
-    public partial class Historial : Form
+    public partial class frmHistorial : Form
     {
         private Usuario usuarioLog;
         private bool recetasActivas = true;
@@ -28,7 +28,7 @@ namespace MicheBytesRecipes.Forms.User
 
 
 
-        public Historial(Usuario usuarioActivado)
+        public frmHistorial(Usuario usuarioActivado)
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;
@@ -61,7 +61,7 @@ namespace MicheBytesRecipes.Forms.User
         private void btnInicio_Click(object sender, EventArgs e)
         {
             this.Close();
-            MenuUser menuUser = new MenuUser(usuarioLog);
+            frmMenuUsuario menuUser = new frmMenuUsuario(usuarioLog);
             menuUser.Show();
         }
      
