@@ -10,16 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Helpers;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
-    public partial class FrmAgregarPais : Form
+    public partial class FrmAgregarPais : MaterialSkin.Controls.MaterialForm
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
         public FrmAgregarPais()
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

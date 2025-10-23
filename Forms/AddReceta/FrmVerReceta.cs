@@ -13,11 +13,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Helpers;
 
 namespace MicheBytesRecipes.Classes.Recetas
 {
 
-    public partial class FrmVerReceta : Form
+    public partial class FrmVerReceta : MaterialSkin.Controls.MaterialForm
     {
         private Receta receta;
         GestorReceta gestorReceta = new GestorReceta();
@@ -31,6 +33,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         public FrmVerReceta(Receta receta, Usuario usuarioLog)
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
             this.receta = receta;
             this.usuario = usuarioLog;
 

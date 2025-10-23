@@ -13,10 +13,12 @@ using MicheBytesRecipes.Forms.Admin;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Classes.Interacciones;
 using MicheBytesRecipes.Utilities;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Helpers;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
-    public partial class frmMetricas : Form
+    public partial class frmMetricas : MaterialSkin.Controls.MaterialForm
     {
         private Usuario usuarioLog;
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
@@ -28,6 +30,7 @@ namespace MicheBytesRecipes.Forms.Admin
         public frmMetricas(Usuario usuarioActivado)
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
 
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();

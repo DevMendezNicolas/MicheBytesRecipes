@@ -1,11 +1,12 @@
-﻿using MicheBytesRecipes;
+﻿using MaterialSkin;
+using MicheBytesRecipes;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Forms.Admin;
 using MicheBytesRecipes.Helpers;
-using MicheBytesRecipes.Utilities;
 using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Utilities;
 using Mysqlx.Session;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes
 {
-    public partial class frmMenuAdmin : Form
+    public partial class frmMenuAdmin : MaterialSkin.Controls.MaterialForm
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
@@ -40,18 +42,11 @@ namespace MicheBytesRecipes
         public frmMenuAdmin(Usuario usuarioActivado)
         {
             InitializeComponent();
-            UiHelpers.SetRoundedButton(btnBuscar, 15);
-            UiHelpers.SetRoundedButton(btnReinicio, 15);
-            UiHelpers.SetRoundedButton(btnAct, 15);
-            UiHelpers.SetRoundedButton(btnEliminar, 15);
-            UiHelpers.SetRoundedButton(txtAgregar, 15);
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            //Color de la fuente del DGV en negro
-            dgvReceta.ForeColor = Color.Black;
-            CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
+            GestorGrafico.AplicarTema(this);
+
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
+
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
                 //Crea una imagen a partir del arreglo de bytes
@@ -67,6 +62,7 @@ namespace MicheBytesRecipes
             {
                 pictureBox1.Image = null;
             }
+
         }
 
         private void frmMenuAdmin_Load(object sender, EventArgs e)

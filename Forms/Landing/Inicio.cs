@@ -10,21 +10,18 @@ using MicheBytesRecipes.Forms.Auth;
 using MicheBytesRecipes.Helpers;
 using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes
 {
-    public partial class Inicio : Form
+    public partial class Inicio : MaterialForm
     {
         public Inicio()
         {
             InitializeComponent();
-            //Redondeo de botones y paneles
-            UiHelpers.SetRoundedButton(BtnIniciar, 25);
-            UiHelpers.SetRoundedButton(BtnCrearCuenta, 25);
+            GestorGrafico.AplicarTema(this);
 
-            //Aplicación del tema y color gradiente
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
         }
         // Dirige al login
         private void BtnIniciar_Click(object sender, EventArgs e)
@@ -58,6 +55,9 @@ namespace MicheBytesRecipes
 
         }
 
-        
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

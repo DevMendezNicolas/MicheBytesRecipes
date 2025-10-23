@@ -9,10 +9,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Helpers;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
-    public partial class FrmModificarReceta : Form
+    public partial class FrmModificarReceta : MaterialSkin.Controls.MaterialForm
     {
         private Receta receta;
         private Usuario usuarioLog;
@@ -25,6 +27,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public FrmModificarReceta(Receta receta, Usuario usuarioLog)
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
             this.receta = receta;
             this.usuarioLog = usuarioLog;
         }

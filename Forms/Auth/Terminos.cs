@@ -10,16 +10,19 @@ using System.Text;
 using System.Threading.Tasks;
 using MicheBytesRecipes.Utilities;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Helpers;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
-    public partial class Terminos : Form
+    public partial class Terminos : MaterialSkin.Controls.MaterialForm
     {
         private const string jsonpath = @"Data/terms.json";
 
         public Terminos()
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
             CargarTerminos();
             btnAceptar.Enabled = false; // Deshabilitar el botón inicialmente
         }

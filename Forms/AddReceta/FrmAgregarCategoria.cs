@@ -10,12 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MicheBytesRecipes.Helpers;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
 
     
-    public partial class FrmAgregarCategoria : Form
+    public partial class FrmAgregarCategoria : MaterialSkin.Controls.MaterialForm
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
@@ -24,6 +26,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public FrmAgregarCategoria()
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {

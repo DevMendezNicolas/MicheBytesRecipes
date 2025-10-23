@@ -47,10 +47,10 @@
             this.PanelTop.Controls.Add(this.BtnIniciar);
             this.PanelTop.Controls.Add(this.BtnCrearCuenta);
             this.PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelTop.Location = new System.Drawing.Point(0, 0);
+            this.PanelTop.Location = new System.Drawing.Point(3, 64);
             this.PanelTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelTop.Name = "PanelTop";
-            this.PanelTop.Size = new System.Drawing.Size(1184, 122);
+            this.PanelTop.Size = new System.Drawing.Size(1194, 122);
             this.PanelTop.TabIndex = 0;
             // 
             // pbxLogo
@@ -92,9 +92,9 @@
             this.PanelMid.BackColor = System.Drawing.Color.White;
             this.PanelMid.Controls.Add(this.label2);
             this.PanelMid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMid.Location = new System.Drawing.Point(0, 122);
+            this.PanelMid.Location = new System.Drawing.Point(3, 186);
             this.PanelMid.Name = "PanelMid";
-            this.PanelMid.Size = new System.Drawing.Size(1184, 539);
+            this.PanelMid.Size = new System.Drawing.Size(1194, 511);
             this.PanelMid.TabIndex = 1;
             // 
             // label2
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.PanelMid);
             this.Controls.Add(this.PanelTop);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

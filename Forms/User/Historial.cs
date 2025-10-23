@@ -15,10 +15,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes.Forms.User
 {
-    public partial class Historial : Form
+    public partial class Historial : MaterialSkin.Controls.MaterialForm
     {
         private Usuario usuarioLog;
         private bool recetasActivas = true;
@@ -31,6 +32,7 @@ namespace MicheBytesRecipes.Forms.User
         public Historial(Usuario usuarioActivado)
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
             gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);

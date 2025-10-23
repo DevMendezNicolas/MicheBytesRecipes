@@ -72,10 +72,10 @@
             this.pnlContenido.Controls.Add(this.txtBuscarReceta);
             this.pnlContenido.Controls.Add(this.lblBuscar);
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContenido.Location = new System.Drawing.Point(233, 0);
+            this.pnlContenido.Location = new System.Drawing.Point(236, 64);
             this.pnlContenido.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContenido.Name = "pnlContenido";
-            this.pnlContenido.Size = new System.Drawing.Size(951, 661);
+            this.pnlContenido.Size = new System.Drawing.Size(945, 594);
             this.pnlContenido.TabIndex = 4;
             // 
             // btnReinicio
@@ -230,7 +230,7 @@
             this.lblBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(342, 24);
+            this.lblBuscar.Location = new System.Drawing.Point(342, -9);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(232, 25);
             this.lblBuscar.TabIndex = 0;
@@ -244,10 +244,10 @@
             this.pnlNavegacion.Controls.Add(this.btnHistorialRecetas);
             this.pnlNavegacion.Controls.Add(this.btnHistorialFav);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
+            this.pnlNavegacion.Location = new System.Drawing.Point(3, 64);
             this.pnlNavegacion.Margin = new System.Windows.Forms.Padding(4);
             this.pnlNavegacion.Name = "pnlNavegacion";
-            this.pnlNavegacion.Size = new System.Drawing.Size(233, 661);
+            this.pnlNavegacion.Size = new System.Drawing.Size(233, 594);
             this.pnlNavegacion.TabIndex = 3;
             // 
             // pbImagenUser
@@ -262,7 +262,7 @@
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(13, 116);
+            this.lblNombre.Location = new System.Drawing.Point(13, 83);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(198, 74);
             this.lblNombre.TabIndex = 11;

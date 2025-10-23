@@ -13,10 +13,12 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MicheBytesRecipes.Utilities;
 using MicheBytesRecipes.Managers;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Helpers;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
-    public partial class FrmAgregarIngrediente : Form
+    public partial class FrmAgregarIngrediente : MaterialSkin.Controls.MaterialForm
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorIngredientes gestorIngredientes = new GestorIngredientes();
@@ -25,6 +27,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public FrmAgregarIngrediente()
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
         }
 
         private void label2_Click(object sender, EventArgs e)

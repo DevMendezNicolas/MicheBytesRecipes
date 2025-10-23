@@ -14,16 +14,18 @@ using SendGrid.Helpers.Mail;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Forms.User;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : MaterialSkin.Controls.MaterialForm
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private bool salida = false;
         public frmLogin()
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
             //Setea los cues en los textbox
             CueProvider.SetCue(txtContra, "Ingrese su contraseña");
             CueProvider.SetCue(txtEmail, "Ingrese su usuario");
@@ -36,10 +38,7 @@ namespace MicheBytesRecipes
             UiHelpers.SetRoundedButton(BtnTema, 20);
 
             //Aplicación del tema y color gradiente al formulario
-            ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            label1.BackColor = Color.Transparent;
-            BtnTema.Text = "\u2600";
+
 
         }
 
@@ -52,8 +51,8 @@ namespace MicheBytesRecipes
         private void BtnTema_Click(object sender, EventArgs e)
         {
             //Cambiar tema de claro a oscuro y viceversa
-            ThemeManager.ToggleTheme();
-            ThemeManager.ApplyTheme(this);
+            //ThemeManager.ToggleTheme();
+            //ThemeManager.ApplyTheme(this);
 
         }
 

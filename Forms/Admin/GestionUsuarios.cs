@@ -11,10 +11,11 @@ using System.Windows.Forms;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Classes.Users;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
-    public partial class GestionUsuarios : Form
+    public partial class GestionUsuarios : MaterialSkin.Controls.MaterialForm
     {
         private Usuario usuarioLog;
         GestorUsuarios gestorUsuario = new GestorUsuarios();
@@ -24,6 +25,7 @@ namespace MicheBytesRecipes.Forms.Admin
         public GestionUsuarios(Usuario usuarioActivado)
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
 
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();

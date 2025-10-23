@@ -11,10 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace MicheBytesRecipes.Forms.User
 {
-    public partial class MenuUser : Form
+    public partial class MenuUser : MaterialSkin.Controls.MaterialForm
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
@@ -25,6 +26,7 @@ namespace MicheBytesRecipes.Forms.User
         public MenuUser(Usuario usuarioActivado)
         {
             InitializeComponent();
+            GestorGrafico.AplicarTema(this);
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
