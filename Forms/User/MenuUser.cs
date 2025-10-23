@@ -80,44 +80,12 @@ namespace MicheBytesRecipes.Forms.User
             cboDificultad.DataSource = dificultadesConOpcion;
             cboDificultad.SelectedIndex = 0;
 
-            // --- Cargar la grilla al inicio ---
+            // --- Cargar las tarjetas al inicio ---
             recetasActivas = true;
-            this.ActualizarGrilla();
             this.CargarRecetas();
 
-
-
         }
 
-        public void ActualizarGrilla()
-        {
-            dgvReceta.Rows.Clear();
-
-            List<PreReceta> preRecetas;
-
-            if (mostrarFavoritas)
-            {
-                // Trae solo recetas favoritas del usuario
-                preRecetas = gestorReceta.ObtenerRecetasFavoritasPorUsuario(usuarioLog.UsuarioId);
-            }
-            else
-            {
-                // Trae todas las recetas activas
-                preRecetas = gestorReceta.ObtenerPreRecetas();
-            }
-
-            foreach (var preReceta in preRecetas)
-            {
-                dgvReceta.Rows.Add(
-                    preReceta.RecetaId,
-                    preReceta.Nombre,
-                    gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId)?.Nombre,
-                    gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId)?.Nombre,
-                    preReceta.Dificultad,
-                    preReceta.TiempoPreparacion.ToString()
-                );
-            }
-        }
 
         private void CargarRecetas()
         {
@@ -159,7 +127,7 @@ namespace MicheBytesRecipes.Forms.User
             cboPais.SelectedIndex = 0;
             txtBuscarReceta.Text = "";
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
-            this.ActualizarGrilla();
+            this.CargarRecetas();
 
         }
 
@@ -182,12 +150,11 @@ namespace MicheBytesRecipes.Forms.User
                 // Llamada al método del gestor
                 List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad);
 
-                // Mostrar resultados en el DataGridView
-                dgvReceta.Rows.Clear();
-                foreach (var preReceta in recetasFiltradas)
-                {
-                    dgvReceta.Rows.Add(preReceta.RecetaId, preReceta.Nombre, gestorCatalogo.ObtenerCategoriaPorId(preReceta.CategoriaId), gestorCatalogo.ObtenerPaisPorId(preReceta.PaisId), preReceta.Dificultad, preReceta.TiempoPreparacion);
-                }
+                // Mostrar resultados en tarjetas
+                gestorTarjetas.LimpiarTarjetas();
+
+                gestorTarjetas.CargarTarjetas(recetasFiltradas, usuarioLog, gestorReceta, gestorCatalogo);
+
 
             }
             catch (Exception ex)
@@ -196,29 +163,6 @@ namespace MicheBytesRecipes.Forms.User
             }
 
 
-        }
-
-        private void dgvReceta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                int recetaId = Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells[0].Value);
-                
-                Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
-
-                if (receta != null)
-                {
-                    
-                    FrmVerReceta verRecetaForm = new FrmVerReceta(receta, usuarioLog);
-
-                    verRecetaForm.ShowDialog();
-                    ActualizarGrilla();
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo cargar la receta seleccionada.");
-                }
-            }
         }
 
         private void btnHistorialFav_Click(object sender, EventArgs e)
@@ -232,7 +176,6 @@ namespace MicheBytesRecipes.Forms.User
             {
                 btnHistorialFav.Text = "Ver Favoritas";
             }
-            this.ActualizarGrilla();
             this.CargarRecetas();
 
         }
@@ -260,6 +203,14 @@ namespace MicheBytesRecipes.Forms.User
             else
             {
                 pbImagenUser.Image = null;
+            }
+        }
+
+        private void txtBuscarReceta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnBuscar.PerformClick();
             }
         }
     }

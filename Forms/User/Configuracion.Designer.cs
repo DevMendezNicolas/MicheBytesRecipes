@@ -137,7 +137,7 @@
             this.txtContraActual.Location = new System.Drawing.Point(222, 449);
             this.txtContraActual.Name = "txtContraActual";
             this.txtContraActual.Size = new System.Drawing.Size(532, 29);
-            this.txtContraActual.TabIndex = 21;
+            this.txtContraActual.TabIndex = 5;
             this.txtContraActual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraActual_KeyPress);
             // 
             // txtContraNueva
@@ -146,7 +146,7 @@
             this.txtContraNueva.Location = new System.Drawing.Point(222, 498);
             this.txtContraNueva.Name = "txtContraNueva";
             this.txtContraNueva.Size = new System.Drawing.Size(532, 29);
-            this.txtContraNueva.TabIndex = 22;
+            this.txtContraNueva.TabIndex = 6;
             this.txtContraNueva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraNueva_KeyPress);
             // 
             // btnCancelar
@@ -176,7 +176,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(198, 42);
-            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "&Guardar Cambios";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -237,7 +237,7 @@
             this.txtEmail.Location = new System.Drawing.Point(209, 336);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(545, 29);
-            this.txtEmail.TabIndex = 3;
+            this.txtEmail.TabIndex = 4;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // label4
@@ -256,7 +256,7 @@
             this.txtApellido.Location = new System.Drawing.Point(209, 240);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(545, 29);
-            this.txtApellido.TabIndex = 3;
+            this.txtApellido.TabIndex = 2;
             this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtTelefono
@@ -294,7 +294,7 @@
             this.txtNombre.Location = new System.Drawing.Point(209, 193);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(545, 29);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label1
@@ -356,7 +356,7 @@
             this.lblEditar.Margin = new System.Windows.Forms.Padding(4);
             this.lblEditar.Name = "lblEditar";
             this.lblEditar.Size = new System.Drawing.Size(198, 42);
-            this.lblEditar.TabIndex = 7;
+            this.lblEditar.TabIndex = 9;
             this.lblEditar.Text = "&Editar";
             this.lblEditar.UseVisualStyleBackColor = true;
             this.lblEditar.Click += new System.EventHandler(this.lblEditar_Click);
@@ -367,7 +367,7 @@
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
-            this.btnInicio.TabIndex = 7;
+            this.btnInicio.TabIndex = 10;
             this.btnInicio.Text = "&Inicio";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);

@@ -17,6 +17,7 @@ namespace MicheBytesRecipes.Forms.User
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private Usuario usuarioLog;
+        private byte[] fotoOriginalBytes = Array.Empty<byte>();
         public Configuracion(Usuario usuarioActivado)
         {
             InitializeComponent();
@@ -105,6 +106,10 @@ namespace MicheBytesRecipes.Forms.User
             {
                 btnGuardar.Focus();
             }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnGuardar.PerformClick();
+            }
 
         }
         private void DesactivarCampos()
@@ -151,7 +156,6 @@ namespace MicheBytesRecipes.Forms.User
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             // Validaciones de los campos
             eprCampos.Clear();
 
@@ -182,7 +186,6 @@ namespace MicheBytesRecipes.Forms.User
                 return;
             }
 
-
             byte[] fotoBytes = Array.Empty<byte>();
 
             if (pbxEditarImagen.Image != null)
@@ -194,14 +197,20 @@ namespace MicheBytesRecipes.Forms.User
 
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    pbxEditarImagen.Image.Save(ms, pbxEditarImagen.Image.RawFormat);
+                    pbxEditarImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
                     fotoBytes = ms.ToArray();
                 }
             }
 
+            // Confirmación antes de realizar cambios
+            DialogResult confirmacion = MessageBox.Show("¿Desea guardar los cambios realizados?","Confirmar actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+            );
+
+            if (confirmacion != DialogResult.Yes)
+                return; // si el usuario cancela, no se actualiza nada
 
             // Validar que la nueva contraseña y la actual no sean iguales
-
             bool cambioContra = false;
 
             if (!string.IsNullOrWhiteSpace(txtContraActual.Text) || !string.IsNullOrWhiteSpace(txtContraNueva.Text))
@@ -225,14 +234,11 @@ namespace MicheBytesRecipes.Forms.User
                 if (txtContraActual.Text == txtContraNueva.Text)
                 {
                     eprCampos.SetError(txtContraActual, "Las contraseñas no deben coincidir");
-                    eprCampos.SetError(txtContraNueva, "Las contraseñas no deben coincindir");
+                    eprCampos.SetError(txtContraNueva, "Las contraseñas no deben coincidir");
                     return;
                 }
 
-
-
                 // Si pasa, actualiza la nueva contraseña
-
                 string nuevaContraHash = gestorUsuarios.HashearContraseña(txtContraNueva.Text);
                 gestorUsuarios.CambiarContraseña(usuarioLog.UsuarioId, gestorUsuarios.HashearContraseña(txtContraActual.Text), nuevaContraHash);
                 cambioContra = true;
@@ -245,6 +251,7 @@ namespace MicheBytesRecipes.Forms.User
                 txtApellido.Text.Trim(),
                 txtTelefono.Text.Trim(),
                 fotoBytes);
+
             usuarioLog = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
             CargarDatosUsuario();
             DesactivarCampos();
@@ -252,8 +259,8 @@ namespace MicheBytesRecipes.Forms.User
             string mensaje = cambioContra ? "Tus datos y contraseña se actualizaron correctamente." : "Datos actualizados correctamente.";
 
             MessageBox.Show(mensaje, "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
+
 
         private void btnViewContra_MouseUp(object sender, MouseEventArgs e)
         {
@@ -288,6 +295,29 @@ namespace MicheBytesRecipes.Forms.User
 
         }
 
+        private Image CrearImagenDesdeBytes(byte[] bytes)
+        {
+            if (bytes == null || bytes.Length == 0)
+                return null;
+
+            try
+            {
+                using (var ms = new System.IO.MemoryStream(bytes))
+                {
+                    // Se crea la imagen desde los bytes y se clona. Evita el gdi
+                    using (var imgTemp = System.Drawing.Image.FromStream(ms))
+                    {
+                        return new System.Drawing.Bitmap(imgTemp);
+                    }
+                }
+            }
+            catch
+            {
+                // Si falla, devolvemos null para que cargue la de respaldo
+                return null;
+            }
+        }
+
         private void CargarDatosUsuario()
         {
             txtNombre.Text = usuarioLog.Nombre;
@@ -298,38 +328,36 @@ namespace MicheBytesRecipes.Forms.User
             txtContraActual.Clear();
             txtContraNueva.Clear();
 
-            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
+            // Ruta de imagen de respaldo (por ejemplo dentro de /Resources)
+            string rutaRespaldo = Path.Combine(Application.StartupPath, "Imagenes", "default_user.png");
+
+            Image imagenPerfil = CrearImagenDesdeBytes(usuarioLog.Foto);
+
+            // Si falló la carga o la imagen no existe, usamos la de respaldo
+            if (imagenPerfil == null)
             {
-                //Crea una imagen a partir del arreglo de bytes
-                using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
+                if (File.Exists(rutaRespaldo))
                 {
-                    //Se crea un objeto imagen a partir del stream
-                    pbImagenUser.Image = System.Drawing.Image.FromStream(ms);
-                    //Ajusta el tamaño de la imagen al tamaño del picturebox
-                    pbImagenUser.SizeMode = PictureBoxSizeMode.StretchImage;
+                    imagenPerfil = new Bitmap(rutaRespaldo);
+                }
+                else
+                {
+                    // Si ni siquiera existe el respaldo, dejamos null para no romper
+                    imagenPerfil = null;
                 }
             }
-            else
-            {
-                pbImagenUser.Image = null;
-            }
 
-            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
-            {
-                //Crea una imagen a partir del arreglo de bytes
-                using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
-                {
-                    //Se crea un objeto imagen a partir del stream
-                    pbxEditarImagen.Image = System.Drawing.Image.FromStream(ms);
-                    //Ajusta el tamaño de la imagen al tamaño del picturebox
-                    pbxEditarImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else
-            {
-                pbxEditarImagen.Image = null;
-            }
+            // Asignamos la imagen (ya sea original, o de respaldo)
+            pbImagenUser.Image = imagenPerfil != null ? new Bitmap(imagenPerfil) : null;
+            pbImagenUser.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            pbxEditarImagen.Image = imagenPerfil != null ? new Bitmap(imagenPerfil) : null;
+            pbxEditarImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // Guardamos los bytes originales (si hay)
+            fotoOriginalBytes = usuarioLog.Foto != null && usuarioLog.Foto.Length > 0
+                ? usuarioLog.Foto.ToArray()
+                : Array.Empty<byte>();
         }
 
         private void pbEditarImagen_Click(object sender, EventArgs e)
