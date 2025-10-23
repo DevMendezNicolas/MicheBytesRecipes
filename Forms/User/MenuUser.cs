@@ -208,6 +208,7 @@ namespace MicheBytesRecipes.Forms.User
                     Owner = inicio;
                     inicio.Show();
                 }
+                this.Close();
 
             }
 
@@ -220,7 +221,8 @@ namespace MicheBytesRecipes.Forms.User
                 var resultado = MessageBox.Show("¿Seguro que querés salir?", "Salir", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
                 {
-                    Application.Exit();
+
+                    Environment.Exit(0);
                 }
                 else
                 {
