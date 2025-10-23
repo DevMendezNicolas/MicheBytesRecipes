@@ -20,7 +20,7 @@ namespace MicheBytesRecipes.Forms.User
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
         GestorReceta gestorReceta = new GestorReceta();
         GestorTarjetasRecetas gestorTarjetas;
-
+        private bool cierrePorSesion = false;
         private Usuario usuarioLog;
         private bool recetasActivas = true;
         private bool mostrarFavoritas = false;
@@ -199,6 +199,7 @@ namespace MicheBytesRecipes.Forms.User
 
             if (resultado == DialogResult.Yes)
             {
+                cierrePorSesion = true;
                 // cerramos formularios intermedios
                 this.Close(); // MenuUser/MenuAdmin
                 frmLogin login = Application.OpenForms.OfType<frmLogin>().FirstOrDefault();
@@ -215,9 +216,20 @@ namespace MicheBytesRecipes.Forms.User
 
         }
 
-        private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
+        private void MenuUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //btnCerrarSesion.PerformClick();
+            if (!cierrePorSesion)
+            {
+                var resultado = MessageBox.Show("¿Seguro que querés salir?", "Salir", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+                    Application.Exit(); // Cierra toda la app
+                }
+                else
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario
+                }
+            }
         }
     }
 }

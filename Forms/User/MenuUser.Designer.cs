@@ -270,7 +270,7 @@
             this.Name = "MenuUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuUser_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuUser_FormClosing);
             this.Load += new System.EventHandler(this.MenuUser_Load);
             this.pnlContenido.ResumeLayout(false);
             this.pnlContenido.PerformLayout();
