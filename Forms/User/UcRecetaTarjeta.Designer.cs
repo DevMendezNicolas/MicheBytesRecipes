@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.User
 {
-    partial class UcRecetaTarjeta
+    partial class ucRecetaTarjeta
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

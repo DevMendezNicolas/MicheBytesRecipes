@@ -14,12 +14,12 @@ namespace MicheBytesRecipes.Managers
     public class GestorTarjetasRecetas
     {
         FlowLayoutPanel panelContenedor;
-        List<UcRecetaTarjeta> tarjetas;
+        List<ucRecetaTarjeta> tarjetas;
 
         public GestorTarjetasRecetas(FlowLayoutPanel panelContenedor)
         {
             this.panelContenedor = panelContenedor;
-            this.tarjetas = new List<UcRecetaTarjeta>();
+            this.tarjetas = new List<ucRecetaTarjeta>();
         }
 
         // Metodo para cargar tarjetas desde PreRecetas
@@ -47,7 +47,7 @@ namespace MicheBytesRecipes.Managers
         private void CrearYAgregarTarjeta(Receta receta, Usuario usuarioLog,
                                         GestorReceta gestorReceta, GestorCatalogo catalogo)
         {
-            var tarjeta = new UcRecetaTarjeta
+            var tarjeta = new ucRecetaTarjeta
             {
                 RecetaId = receta.RecetaId,
                 NombreReceta = receta.Nombre,
@@ -84,7 +84,7 @@ namespace MicheBytesRecipes.Managers
             ReorganizarTarjetasEnPanel(tarjetasOrdenadas);
         }
 
-        private void ReorganizarTarjetasEnPanel(List<UcRecetaTarjeta> tarjetasOrdenadas)
+        private void ReorganizarTarjetasEnPanel(List<ucRecetaTarjeta> tarjetasOrdenadas)
         {
             panelContenedor.SuspendLayout();
             panelContenedor.Controls.Clear();

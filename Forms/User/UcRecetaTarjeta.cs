@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.User
 {
-    public partial class UcRecetaTarjeta : UserControl
+    public partial class ucRecetaTarjeta : UserControl
     {
         public event EventHandler VerDetallesClick;
 
-        public UcRecetaTarjeta()
+        public ucRecetaTarjeta()
         {
             InitializeComponent();
             this.Size = new Size(170, 240);

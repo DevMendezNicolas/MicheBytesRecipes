@@ -231,11 +231,11 @@
     <Compile Include="Forms\User\frmMenuUsuario.Designer.cs">
       <DependentUpon>frmMenuUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\UcRecetaTarjeta.cs">
+    <Compile Include="Forms\User\ucRecetaTarjeta.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\User\UcRecetaTarjeta.Designer.cs">
-      <DependentUpon>UcRecetaTarjeta.cs</DependentUpon>
+    <Compile Include="Forms\User\ucRecetaTarjeta.Designer.cs">
+      <DependentUpon>ucRecetaTarjeta.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CueProvider.cs" />
     <Compile Include="Helpers\EmailService.cs" />
@@ -311,8 +311,8 @@
     <EmbeddedResource Include="Forms\User\frmMenuUsuario.resx">
       <DependentUpon>frmMenuUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\UcRecetaTarjeta.resx">
-      <DependentUpon>UcRecetaTarjeta.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\User\ucRecetaTarjeta.resx">
+      <DependentUpon>ucRecetaTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
