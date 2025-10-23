@@ -56,7 +56,7 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 if (cboCategoria.SelectedIndex == 0 || metrica.Categoria == cboCategoria.Text) // Si está seleccionada "Todas" o coincide con la categoría seleccionada
                 {
-                    dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadFavoritos, metrica.CantidadComentarios, metrica.CantidadLikes, metrica.CantidadVisualizaciones, metrica.EstadoReceta());
+                    dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos, metrica.EstadoReceta());
                 }
             }
 
@@ -83,17 +83,17 @@ namespace MicheBytesRecipes.Forms.Admin
 
         private void btnAct_Click(object sender, EventArgs e)
         {
-            dgvMetricas.Rows.Clear();
-            listaMetricas = activas ? gestorMetricas.ObtenerMetricasActivas() : gestorMetricas.ObtenerMetricasInactivas();
-            foreach (var metrica in listaMetricas)
-            {
-                if (cboCategoria.SelectedIndex == 0 || metrica.Categoria == cboCategoria.Text) // Si está seleccionada "Todas" o coincide con la categoría seleccionada
+                dgvMetricas.Rows.Clear();
+                listaMetricas = activas ? gestorMetricas.ObtenerMetricasActivas() : gestorMetricas.ObtenerMetricasInactivas();
+                foreach (var metrica in listaMetricas)
                 {
-                    dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos, metrica.EstadoReceta());
+                    if (cboCategoria.SelectedIndex == 0 || metrica.Categoria == cboCategoria.Text) // Si está seleccionada "Todas" o coincide con la categoría seleccionada
+                    {
+                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos, metrica.EstadoReceta());
+                    }
                 }
-            }
-            activas = !activas;
-            btnAct.Text = activas ? "Ver Activas" : "Ver Inactivas";
+                activas = !activas;
+                btnAct.Text = activas ? "Ver Activas" : "Ver Inactivas";
 
         }
 
@@ -122,7 +122,7 @@ namespace MicheBytesRecipes.Forms.Admin
                     listaFiltrada = activas ? gestorMetricas.ObtenerMetricasActivas().FindAll(m => m.Nombre.IndexOf(txtBuscarReceta.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0) : gestorMetricas.ObtenerMetricasInactivas().FindAll(m => m.Nombre.IndexOf(txtBuscarReceta.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                     foreach (var metrica in listaFiltrada)
                     {
-                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadFavoritos, metrica.CantidadComentarios, metrica.CantidadLikes, metrica.CantidadVisualizaciones, metrica.EstadoReceta());
+                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos,  metrica.EstadoReceta());
                     }
                 }
                 else
@@ -139,7 +139,7 @@ namespace MicheBytesRecipes.Forms.Admin
                     listaFiltrada = activas ? gestorMetricas.ObtenerMetricasActivas().FindAll(m => m.Nombre.IndexOf(txtBuscarReceta.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0 && m.Categoria == cboCategoria.Text) : gestorMetricas.ObtenerMetricasInactivas().FindAll(m => m.Nombre.IndexOf(txtBuscarReceta.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0 && m.Categoria == cboCategoria.Text);
                     foreach (var metrica in listaFiltrada)
                     {
-                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadFavoritos, metrica.CantidadComentarios, metrica.CantidadLikes, metrica.CantidadVisualizaciones, metrica.EstadoReceta());
+                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos, metrica.EstadoReceta());
                     }
                 }
                 else
@@ -148,7 +148,7 @@ namespace MicheBytesRecipes.Forms.Admin
                     listaFiltrada = activas ? gestorMetricas.ObtenerMetricasActivas().FindAll(m => m.Categoria == cboCategoria.Text) : gestorMetricas.ObtenerMetricasInactivas().FindAll(m => m.Categoria == cboCategoria.Text);
                     foreach (var metrica in listaFiltrada)
                     {
-                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadFavoritos, metrica.CantidadComentarios, metrica.CantidadLikes, metrica.CantidadVisualizaciones, metrica.EstadoReceta());
+                        dgvMetricas.Rows.Add(metrica.recetaId, metrica.Nombre, metrica.Categoria, metrica.CantidadLikes, metrica.CantidadComentarios, metrica.CantidadVisualizaciones, metrica.CantidadFavoritos, metrica.EstadoReceta());
                     }
                 }
                     
