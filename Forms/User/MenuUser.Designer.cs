@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlContenido = new System.Windows.Forms.Panel();
+            this.lblTituloMichebyte = new System.Windows.Forms.Label();
             this.pnlTarjetas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.lblTituloMichebyte = new System.Windows.Forms.Label();
             this.pnlContenido.SuspendLayout();
             this.pnlNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).BeginInit();
@@ -73,6 +73,17 @@
             this.pnlContenido.Name = "pnlContenido";
             this.pnlContenido.Size = new System.Drawing.Size(951, 661);
             this.pnlContenido.TabIndex = 4;
+            // 
+            // lblTituloMichebyte
+            // 
+            this.lblTituloMichebyte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTituloMichebyte.AutoSize = true;
+            this.lblTituloMichebyte.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloMichebyte.Location = new System.Drawing.Point(326, 24);
+            this.lblTituloMichebyte.Name = "lblTituloMichebyte";
+            this.lblTituloMichebyte.Size = new System.Drawing.Size(245, 32);
+            this.lblTituloMichebyte.TabIndex = 13;
+            this.lblTituloMichebyte.Text = "Michebytes Recetas!";
             // 
             // pnlTarjetas
             // 
@@ -146,7 +157,7 @@
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(37, 20);
             this.lblPais.TabIndex = 2;
-            this.lblPais.Text = "Pais:";
+            this.lblPais.Text = "País:";
             // 
             // lblCategoria
             // 
@@ -157,7 +168,7 @@
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(77, 20);
             this.lblCategoria.TabIndex = 2;
-            this.lblCategoria.Text = "Categoria:";
+            this.lblCategoria.Text = "Categoría:";
             // 
             // txtBuscarReceta
             // 
@@ -173,12 +184,12 @@
             // 
             this.lblBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(7, 91);
+            this.lblBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.Location = new System.Drawing.Point(49, 90);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(232, 25);
+            this.lblBuscar.Size = new System.Drawing.Size(192, 21);
             this.lblBuscar.TabIndex = 0;
-            this.lblBuscar.Text = "Buscar receta por nombre";
+            this.lblBuscar.Text = "Buscar receta por nombre:";
             // 
             // pnlNavegacion
             // 
@@ -233,7 +244,7 @@
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(198, 42);
             this.btnConfig.TabIndex = 10;
-            this.btnConfig.Text = "&Configuracion";
+            this.btnConfig.Text = "&Configuración";
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
@@ -258,17 +269,6 @@
             this.btnHistorialFav.Text = "&Ver Favoritas";
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
-            // 
-            // lblTituloMichebyte
-            // 
-            this.lblTituloMichebyte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTituloMichebyte.AutoSize = true;
-            this.lblTituloMichebyte.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloMichebyte.Location = new System.Drawing.Point(300, 24);
-            this.lblTituloMichebyte.Name = "lblTituloMichebyte";
-            this.lblTituloMichebyte.Size = new System.Drawing.Size(187, 25);
-            this.lblTituloMichebyte.TabIndex = 13;
-            this.lblTituloMichebyte.Text = "Michebytes Recetas!";
             // 
             // MenuUser
             // 

@@ -287,7 +287,7 @@
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(71, 21);
             this.lblTelefono.TabIndex = 2;
-            this.lblTelefono.Text = "Telefono:";
+            this.lblTelefono.Text = "Teléfono:";
             // 
             // txtNombre
             // 
@@ -317,7 +317,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(232, 25);
             this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Configuracion del usuario";
+            this.lblTitulo.Text = "Configuración del usuario";
             // 
             // pnlNavegacion
             // 
