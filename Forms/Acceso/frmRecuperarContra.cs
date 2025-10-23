@@ -67,13 +67,13 @@ namespace MicheBytesRecipes.Forms.Auth
 
             try
             {
-                // 🔥 Usar la MISMA instancia de emailService
+                //Usar la MISMA instancia de emailService
                 await emailService.EnviarCodigoVerificacion(email);
 
                 MessageBox.Show("✅ Te enviamos un correo con el código de verificación.",
                                 "Correo enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 🔥 El código ya está guardado en emailService
+                //El código ya está guardado en emailService
                 txtEmail.Clear();
                 btnEnviar.Text = "Verificar Código";
                 lblTexto.Text = "Ingresá el código de 6 dígitos";
@@ -143,7 +143,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
             try
             {
-                // 🔥 USAR LA VARIABLE DONDE GUARDASTE EL EMAIL
+                //USAR LA VARIABLE DONDE GUARDASTE EL EMAIL
                 string contraseñaHasheada = gestorUsuarios.HashearContraseña(nuevaContraseña);
 
                 // Tu método debería recibir email y contraseña nueva
