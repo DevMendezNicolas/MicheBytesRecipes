@@ -1,22 +1,17 @@
-﻿using MicheBytesRecipes;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Forms.Admin;
 using MicheBytesRecipes.Helpers;
-using MicheBytesRecipes.Utilities;
 using MicheBytesRecipes.Managers;
-using Mysqlx.Session;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes
 {
