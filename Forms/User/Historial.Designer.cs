@@ -87,6 +87,7 @@
             this.pbImagenUser.Location = new System.Drawing.Point(34, 24);
             this.pbImagenUser.Name = "pbImagenUser";
             this.pbImagenUser.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagenUser.TabIndex = 12;
             this.pbImagenUser.TabStop = false;
             // 
@@ -107,7 +108,7 @@
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
-            this.btnInicio.TabIndex = 2;
+            this.btnInicio.TabIndex = 1;
             this.btnInicio.Text = "🔙 &Inicio ";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);

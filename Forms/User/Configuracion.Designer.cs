@@ -227,6 +227,7 @@
             this.pbxEditarImagen.Location = new System.Drawing.Point(135, 55);
             this.pbxEditarImagen.Name = "pbxEditarImagen";
             this.pbxEditarImagen.Size = new System.Drawing.Size(154, 85);
+            this.pbxEditarImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxEditarImagen.TabIndex = 13;
             this.pbxEditarImagen.TabStop = false;
             this.pbxEditarImagen.Click += new System.EventHandler(this.pbEditarImagen_Click);
@@ -336,6 +337,7 @@
             this.pbImagenUser.Location = new System.Drawing.Point(34, 24);
             this.pbImagenUser.Name = "pbImagenUser";
             this.pbImagenUser.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagenUser.TabIndex = 12;
             this.pbImagenUser.TabStop = false;
             // 

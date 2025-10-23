@@ -47,6 +47,7 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
+            this.lblTituloMichebyte = new System.Windows.Forms.Label();
             this.pnlContenido.SuspendLayout();
             this.pnlNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             // pnlContenido
             // 
+            this.pnlContenido.Controls.Add(this.lblTituloMichebyte);
             this.pnlContenido.Controls.Add(this.pnlTarjetas);
             this.pnlContenido.Controls.Add(this.btnReinicio);
             this.pnlContenido.Controls.Add(this.btnBuscar);
@@ -82,7 +84,7 @@
             // 
             // btnReinicio
             // 
-            this.btnReinicio.Location = new System.Drawing.Point(772, 142);
+            this.btnReinicio.Location = new System.Drawing.Point(772, 160);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
             this.btnReinicio.TabIndex = 7;
@@ -92,9 +94,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(751, 69);
+            this.btnBuscar.Location = new System.Drawing.Point(772, 87);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(152, 29);
+            this.btnBuscar.Size = new System.Drawing.Size(131, 29);
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "🔍 Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -103,7 +105,7 @@
             // cboDificultad
             // 
             this.cboDificultad.FormattingEnabled = true;
-            this.cboDificultad.Location = new System.Drawing.Point(566, 146);
+            this.cboDificultad.Location = new System.Drawing.Point(566, 164);
             this.cboDificultad.Name = "cboDificultad";
             this.cboDificultad.Size = new System.Drawing.Size(179, 25);
             this.cboDificultad.TabIndex = 5;
@@ -111,7 +113,7 @@
             // cboPais
             // 
             this.cboPais.FormattingEnabled = true;
-            this.cboPais.Location = new System.Drawing.Point(332, 146);
+            this.cboPais.Location = new System.Drawing.Point(332, 164);
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(179, 25);
             this.cboPais.TabIndex = 4;
@@ -119,7 +121,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(75, 146);
+            this.cboCategoria.Location = new System.Drawing.Point(75, 164);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
             this.cboCategoria.TabIndex = 3;
@@ -129,7 +131,7 @@
             this.lblDificultad.AutoSize = true;
             this.lblDificultad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDificultad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDificultad.Location = new System.Drawing.Point(562, 117);
+            this.lblDificultad.Location = new System.Drawing.Point(562, 135);
             this.lblDificultad.Name = "lblDificultad";
             this.lblDificultad.Size = new System.Drawing.Size(77, 20);
             this.lblDificultad.TabIndex = 2;
@@ -140,7 +142,7 @@
             this.lblPais.AutoSize = true;
             this.lblPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPais.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPais.Location = new System.Drawing.Point(328, 118);
+            this.lblPais.Location = new System.Drawing.Point(328, 136);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(37, 20);
             this.lblPais.TabIndex = 2;
@@ -151,7 +153,7 @@
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(71, 116);
+            this.lblCategoria.Location = new System.Drawing.Point(71, 134);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(77, 20);
             this.lblCategoria.TabIndex = 2;
@@ -161,7 +163,7 @@
             // 
             this.txtBuscarReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarReceta.Location = new System.Drawing.Point(219, 69);
+            this.txtBuscarReceta.Location = new System.Drawing.Point(257, 87);
             this.txtBuscarReceta.Name = "txtBuscarReceta";
             this.txtBuscarReceta.Size = new System.Drawing.Size(488, 29);
             this.txtBuscarReceta.TabIndex = 1;
@@ -172,7 +174,7 @@
             this.lblBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(342, 24);
+            this.lblBuscar.Location = new System.Drawing.Point(7, 91);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(232, 25);
             this.lblBuscar.TabIndex = 0;
@@ -198,6 +200,7 @@
             this.pbImagenUser.Location = new System.Drawing.Point(34, 24);
             this.pbImagenUser.Name = "pbImagenUser";
             this.pbImagenUser.Size = new System.Drawing.Size(154, 85);
+            this.pbImagenUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagenUser.TabIndex = 12;
             this.pbImagenUser.TabStop = false;
             // 
@@ -256,6 +259,17 @@
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
+            // lblTituloMichebyte
+            // 
+            this.lblTituloMichebyte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTituloMichebyte.AutoSize = true;
+            this.lblTituloMichebyte.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloMichebyte.Location = new System.Drawing.Point(300, 24);
+            this.lblTituloMichebyte.Name = "lblTituloMichebyte";
+            this.lblTituloMichebyte.Size = new System.Drawing.Size(187, 25);
+            this.lblTituloMichebyte.TabIndex = 13;
+            this.lblTituloMichebyte.Text = "Michebytes Recetas!";
+            // 
             // MenuUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -301,5 +315,6 @@
         private System.Windows.Forms.Button btnHistorialFav;
         private System.Windows.Forms.FlowLayoutPanel pnlTarjetas;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Label lblTituloMichebyte;
     }
 }
