@@ -52,6 +52,8 @@
             this.lblIdUsuario = new System.Windows.Forms.Label();
             this.lblMeGusta = new System.Windows.Forms.Label();
             this.btnExportarPdf = new System.Windows.Forms.Button();
+            this.btnComentar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,10 +159,13 @@
             // 
             // lstIngredientes
             // 
+            this.lstIngredientes.Enabled = false;
+            this.lstIngredientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstIngredientes.HideSelection = false;
-            this.lstIngredientes.Location = new System.Drawing.Point(16, 147);
+            this.lstIngredientes.Location = new System.Drawing.Point(42, 169);
+            this.lstIngredientes.MultiSelect = false;
             this.lstIngredientes.Name = "lstIngredientes";
-            this.lstIngredientes.Size = new System.Drawing.Size(155, 351);
+            this.lstIngredientes.Size = new System.Drawing.Size(103, 292);
             this.lstIngredientes.TabIndex = 10;
             this.lstIngredientes.UseCompatibleStateImageBehavior = false;
             // 
@@ -198,7 +203,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(12, 510);
+            this.label3.Location = new System.Drawing.Point(12, 483);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 21);
             this.label3.TabIndex = 14;
@@ -206,7 +211,7 @@
             // 
             // txtComentario
             // 
-            this.txtComentario.Location = new System.Drawing.Point(16, 534);
+            this.txtComentario.Location = new System.Drawing.Point(16, 507);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(456, 108);
@@ -218,9 +223,9 @@
             // lstComentarios
             // 
             this.lstComentarios.FormattingEnabled = true;
-            this.lstComentarios.Location = new System.Drawing.Point(508, 534);
+            this.lstComentarios.Location = new System.Drawing.Point(508, 507);
             this.lstComentarios.Name = "lstComentarios";
-            this.lstComentarios.Size = new System.Drawing.Size(502, 108);
+            this.lstComentarios.Size = new System.Drawing.Size(502, 134);
             this.lstComentarios.TabIndex = 16;
             // 
             // label5
@@ -228,7 +233,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(504, 510);
+            this.label5.Location = new System.Drawing.Point(504, 483);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(158, 21);
             this.label5.TabIndex = 17;
@@ -236,7 +241,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(1037, 598);
+            this.btnCerrar.Location = new System.Drawing.Point(1028, 574);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(126, 41);
             this.btnCerrar.TabIndex = 18;
@@ -272,7 +277,7 @@
             // 
             // btnExportarPdf
             // 
-            this.btnExportarPdf.Location = new System.Drawing.Point(1037, 534);
+            this.btnExportarPdf.Location = new System.Drawing.Point(1028, 507);
             this.btnExportarPdf.Name = "btnExportarPdf";
             this.btnExportarPdf.Size = new System.Drawing.Size(126, 41);
             this.btnExportarPdf.TabIndex = 18;
@@ -280,11 +285,33 @@
             this.btnExportarPdf.UseVisualStyleBackColor = true;
             this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
             // 
+            // btnComentar
+            // 
+            this.btnComentar.Location = new System.Drawing.Point(361, 621);
+            this.btnComentar.Name = "btnComentar";
+            this.btnComentar.Size = new System.Drawing.Size(111, 27);
+            this.btnComentar.TabIndex = 22;
+            this.btnComentar.Text = "Comentar";
+            this.btnComentar.UseVisualStyleBackColor = true;
+            this.btnComentar.Click += new System.EventHandler(this.btnComentar_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(38, 145);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 21);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Ingredientes";
+            // 
             // FrmVerReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnComentar);
             this.Controls.Add(this.lblMeGusta);
             this.Controls.Add(this.lblIdUsuario);
             this.Controls.Add(this.lblIdReceta);
@@ -345,5 +372,7 @@
         private System.Windows.Forms.Label lblIdUsuario;
         private System.Windows.Forms.Label lblMeGusta;
         private System.Windows.Forms.Button btnExportarPdf;
+        private System.Windows.Forms.Button btnComentar;
+        private System.Windows.Forms.Label label1;
     }
 }

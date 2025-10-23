@@ -42,7 +42,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
             CBOdificultad.DataSource = Enum.GetValues(typeof(Dificultad));
 
             DTPtiempo.Format = DateTimePickerFormat.Custom;
-            DTPtiempo.CustomFormat = "HH:mm";
+            DTPtiempo.CustomFormat = "HH:mm:ss";
             DTPtiempo.ShowUpDown = true;
             DTPtiempo.Value = DateTime.Today.AddHours(1);
 

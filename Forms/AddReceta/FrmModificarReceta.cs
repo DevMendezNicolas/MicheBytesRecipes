@@ -31,15 +31,14 @@ namespace MicheBytesRecipes.Forms.AddReceta
         private void FrmModificarReceta_Load(object sender, EventArgs e)
         {
             dtpTiempo.Format = DateTimePickerFormat.Custom;
-            dtpTiempo.CustomFormat = "HH:mm";
+            dtpTiempo.CustomFormat = "HH:mm:ss";
             dtpTiempo.ShowUpDown = true;
-            dtpTiempo.Value = DateTime.Today.AddHours(1);
             CargarControles();
             if (receta != null)
             {
                 CargarDatosReceta();
             }
-
+            
         }
         private void CargarDatosReceta()
         {

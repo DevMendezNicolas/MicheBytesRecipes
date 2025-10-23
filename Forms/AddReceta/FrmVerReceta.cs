@@ -33,7 +33,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             InitializeComponent();
             this.receta = receta;
             this.usuario = usuarioLog;
-
+            
 
         }
 
@@ -47,9 +47,36 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             txtComentario.Text = "Escribe un comentario...";
             txtComentario.ForeColor = Color.Gray; //Pone el texto en gris
+            // Estetica ingredientes 
+            lstIngredientes.View = View.List;                          // Vista vertical tipo lista
+            lstIngredientes.BorderStyle = BorderStyle.None;     // Sin borde
+            lstIngredientes.BackColor = Color.WhiteSmoke;              // Fondo suave y moderno
+            lstIngredientes.ForeColor = Color.DarkSlateGray;           // Texto elegante y legible
+            lstIngredientes.Font = new Font("Segoe UI", 10,FontStyle.Bold);           // Tipografía clara y profesional
+            lstIngredientes.Scrollable = true;                         // Scroll vertical si hay muchos ítems
+            lstIngredientes.FullRowSelect = true;                      // Selección completa del ítem
+            lstIngredientes.HideSelection = false;                     // Mantiene selección visible al perder foco
+            lstIngredientes.MultiSelect = false;                       // Selección única (podés cambiarlo si querés múltiple)
+            lstIngredientes.HeaderStyle = ColumnHeaderStyle.None;      // Oculta encabezado si no usás columnas
+            lstIngredientes.Alignment = ListViewAlignment.Top;         // Alineación superior
+            lstIngredientes.LabelWrap = true;                          // Permite que el texto se ajuste si es largo
+            // Estetica comentarios
+            lstComentarios.MultiColumn = false;                  // Vista vertical
+            lstComentarios.HorizontalScrollbar = false;          // Sin scroll horizontal
+            lstComentarios.ScrollAlwaysVisible = true;           // Scroll vertical siempre visible
+            lstComentarios.BorderStyle = BorderStyle.FixedSingle; // Borde limpio y definido
+            lstComentarios.Font = new Font("Segoe UI", 10);      // Tipografía moderna y legible
+            lstComentarios.ForeColor = Color.DarkSlateGray;      // Texto elegante
+            lstComentarios.BackColor = Color.WhiteSmoke;         // Fondo suave
+            lstComentarios.ItemHeight = 22;                      // Espaciado cómodo entre ítems
+            lstComentarios.IntegralHeight = false;               // Permite ajustar altura sin recortes
+            lstComentarios.SelectionMode = SelectionMode.One;    // Selección única (podés cambiar a MultiSimple si querés selección múltiple)
+
+
+
 
             // Verificar si ya dio "Me Gusta"
-            if(gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
+            if (gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
             {
                 btnMeGusta.Text = "❤️ Te gusta";
             }
@@ -225,6 +252,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 txtComentario.Text = "Escribe un comentario...";
                 txtComentario.ForeColor = Color.Gray; //Pone el texto en gris
                 control = true; //Cambia el estado del control para que vuelva a entrar
+                
             }
         }
         private void txtComentario_KeyPress(object sender, KeyPressEventArgs e)
@@ -265,7 +293,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                     txtComentario_Leave(sender, EventArgs.Empty); //Llama al metodo Leave para restaurar el texto
 
                     CargarComentarios();
-                                                                 
+                    this.ActiveControl = null;
+                    
                 }
             }
         }
@@ -312,5 +341,42 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
         }
 
+        private void btnComentar_Click(object sender, EventArgs e)
+        {
+            if (!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
+            {
+                // Asigna el comentario del usuario a la variable
+                comentarioUsuario = txtComentario.Text;
+
+                // Crear un nuevo objeto Comentarios
+                Comentarios nuevoComentario = new Comentarios
+                {
+                    Descripcion = comentarioUsuario,
+                    RecetaId = int.Parse(lblIdReceta.Text),
+                    UsuarioId = int.Parse(lblIdUsuario.Text)
+                };
+
+                // Guardar el comentario usando el gestor de interacciones
+                GestorInteracciones gestorInteracciones = new GestorInteracciones();
+                // Intentar agregar el comentario y mostrar un mensaje según el resultado
+                bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
+                // Mostrar mensaje de éxito o error
+                if (exito)
+                {
+                    MessageBox.Show("Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtComentario.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //Restablecer el cuadro de texto
+                control = true;
+                txtComentario_Leave(sender, EventArgs.Empty); //Llama al metodo Leave para restaurar el texto
+
+                CargarComentarios();
+
+            }
+        }
     }
 }
