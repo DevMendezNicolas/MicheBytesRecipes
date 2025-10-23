@@ -35,9 +35,9 @@
             this.cboDificultad = new System.Windows.Forms.ComboBox();
             this.cboPais = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDificultad = new System.Windows.Forms.Label();
+            this.lblPais = new System.Windows.Forms.Label();
+            this.lblCategoria = new System.Windows.Forms.Label();
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
@@ -60,9 +60,9 @@
             this.pnlContenido.Controls.Add(this.cboDificultad);
             this.pnlContenido.Controls.Add(this.cboPais);
             this.pnlContenido.Controls.Add(this.cboCategoria);
-            this.pnlContenido.Controls.Add(this.label3);
-            this.pnlContenido.Controls.Add(this.label2);
-            this.pnlContenido.Controls.Add(this.label1);
+            this.pnlContenido.Controls.Add(this.lblDificultad);
+            this.pnlContenido.Controls.Add(this.lblPais);
+            this.pnlContenido.Controls.Add(this.lblCategoria);
             this.pnlContenido.Controls.Add(this.txtBuscarReceta);
             this.pnlContenido.Controls.Add(this.lblBuscar);
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -124,38 +124,38 @@
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
             this.cboCategoria.TabIndex = 3;
             // 
-            // label3
+            // lblDificultad
             // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(562, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Dificultad";
+            this.lblDificultad.AutoSize = true;
+            this.lblDificultad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDificultad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDificultad.Location = new System.Drawing.Point(562, 117);
+            this.lblDificultad.Name = "lblDificultad";
+            this.lblDificultad.Size = new System.Drawing.Size(77, 20);
+            this.lblDificultad.TabIndex = 2;
+            this.lblDificultad.Text = "Dificultad:";
             // 
-            // label2
+            // lblPais
             // 
-            this.label2.AutoSize = true;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(328, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Pais";
+            this.lblPais.AutoSize = true;
+            this.lblPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPais.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPais.Location = new System.Drawing.Point(328, 118);
+            this.lblPais.Name = "lblPais";
+            this.lblPais.Size = new System.Drawing.Size(37, 20);
+            this.lblPais.TabIndex = 2;
+            this.lblPais.Text = "Pais:";
             // 
-            // label1
+            // lblCategoria
             // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Categoria";
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Location = new System.Drawing.Point(71, 116);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(77, 20);
+            this.lblCategoria.TabIndex = 2;
+            this.lblCategoria.Text = "Categoria:";
             // 
             // txtBuscarReceta
             // 
@@ -288,9 +288,9 @@
         private System.Windows.Forms.ComboBox cboDificultad;
         private System.Windows.Forms.ComboBox cboPais;
         private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDificultad;
+        private System.Windows.Forms.Label lblPais;
+        private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.TextBox txtBuscarReceta;
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.Panel pnlNavegacion;

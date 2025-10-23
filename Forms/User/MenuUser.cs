@@ -28,7 +28,7 @@ namespace MicheBytesRecipes.Forms.User
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;
-            lblNombre.Text = usuarioLog.NombreCompleto();
+            lblNombre.Text = $"Bienvenido, {usuarioLog.Nombre}";
             gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
@@ -107,20 +107,12 @@ namespace MicheBytesRecipes.Forms.User
 
         }
 
-        private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Si no hay formularios abiertos, salir. Si está el Inicio, no cerrar la app.
-            if (Application.OpenForms.Count == 0)
-            {
-                Application.Exit();
-            }
-        }
-
         private void btnHistorialRecetas_Click(object sender, EventArgs e)
         {
-            Historial historial = new Historial(usuarioLog);
-            historial.Show();
             this.Hide();
+            Historial historial = new Historial(usuarioLog);
+            historial.ShowDialog();
+            this.Show();
 
         }
 
@@ -191,23 +183,6 @@ namespace MicheBytesRecipes.Forms.User
             configuracion.ShowDialog();
             this.Show();
 
-            usuarioLog = gestorUsuarios.BuscarPorEmail(usuarioLog.Email);
-            lblNombre.Text = usuarioLog.NombreCompleto();
-            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
-            {
-                //Crea una imagen a partir del arreglo de bytes
-                using (var ms = new System.IO.MemoryStream(usuarioLog.Foto))
-                {
-                    //Se crea un objeto imagen a partir del stream
-                    pbImagenUser.Image = System.Drawing.Image.FromStream(ms);
-                    //Ajusta el tamaño de la imagen al tamaño del picturebox
-                    pbImagenUser.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else
-            {
-                pbImagenUser.Image = null;
-            }
         }
 
         private void txtBuscarReceta_KeyPress(object sender, KeyPressEventArgs e)
@@ -224,23 +199,25 @@ namespace MicheBytesRecipes.Forms.User
 
             if (resultado == DialogResult.Yes)
             {
-                // Cerramos el menú actual
-                this.Close();
+                // cerramos formularios intermedios
+                this.Close(); // MenuUser/MenuAdmin
+                frmLogin login = Application.OpenForms.OfType<frmLogin>().FirstOrDefault();
+                login?.Close();
 
-                // Mostramos el Inicio
+                // mostramos frmInicio
                 Inicio inicio = Application.OpenForms.OfType<Inicio>().FirstOrDefault();
                 if (inicio != null)
                 {
                     inicio.Show();
                 }
-                else
-                {
-                    // Por si no existe, creamos uno nuevo
-                    inicio = new Inicio();
-                    inicio.Show();
-                }
+
             }
 
+        }
+
+        private void MenuUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //btnCerrarSesion.PerformClick();
         }
     }
 }

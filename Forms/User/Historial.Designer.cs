@@ -108,7 +108,7 @@
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
             this.btnInicio.TabIndex = 2;
-            this.btnInicio.Text = "&Inicio";
+            this.btnInicio.Text = "🔙 &Inicio ";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
