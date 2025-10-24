@@ -20,6 +20,7 @@ namespace MicheBytesRecipes
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
         private Usuario usuarioLog;
+        private bool cierrePorSesion = false;
         private bool recetasActivas = true;
 
         public void ActualizarGrilla()
@@ -164,11 +165,6 @@ namespace MicheBytesRecipes
             {
                 this.ActualizarGrilla();
             }
-        }
-
-        private void frmMenuAdmin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
 
         private void btnAct_Click(object sender, EventArgs e)
@@ -330,6 +326,46 @@ namespace MicheBytesRecipes
             {
                 MessageBox.Show($"Error al importar recetas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Seguro que querés cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                cierrePorSesion = true;
+
+                // mostramos frmInicio
+                frmInicio inicio = Application.OpenForms.OfType<frmInicio>().FirstOrDefault();
+                if (inicio != null)
+                {
+                    Owner = inicio;
+                    inicio.Show();
+                }
+                this.Close();
+
+            }
+
+        }
+
+        private void frmMenuAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!cierrePorSesion)
+            {
+                var resultado = MessageBox.Show("¿Seguro que querés salir?", "Salir", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true; // Cancela el cierre del formulario
+                }
+            }
+
 
         }
     }

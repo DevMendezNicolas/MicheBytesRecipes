@@ -64,6 +64,7 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -80,6 +81,7 @@
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.lblMetricas);
             this.panel1.Controls.Add(this.lblReceta);
+            this.panel1.Controls.Add(this.btnCerrarSesion);
             this.panel1.Controls.Add(this.btnMetricas);
             this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Controls.Add(this.btnAct);
@@ -98,7 +100,7 @@
             this.brnImportar.BackColor = System.Drawing.Color.Gold;
             this.brnImportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brnImportar.ForeColor = System.Drawing.Color.White;
-            this.brnImportar.Location = new System.Drawing.Point(119, 467);
+            this.brnImportar.Location = new System.Drawing.Point(119, 418);
             this.brnImportar.Margin = new System.Windows.Forms.Padding(4);
             this.brnImportar.Name = "brnImportar";
             this.brnImportar.Size = new System.Drawing.Size(92, 42);
@@ -112,7 +114,7 @@
             this.btnExportar.BackColor = System.Drawing.Color.Gold;
             this.btnExportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportar.ForeColor = System.Drawing.Color.White;
-            this.btnExportar.Location = new System.Drawing.Point(18, 467);
+            this.btnExportar.Location = new System.Drawing.Point(18, 418);
             this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(92, 42);
@@ -126,7 +128,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(50, 446);
+            this.label4.Location = new System.Drawing.Point(50, 397);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 17);
@@ -147,9 +149,9 @@
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(13, 116);
+            this.lblNombre.Location = new System.Drawing.Point(13, 112);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(198, 74);
+            this.lblNombre.Size = new System.Drawing.Size(198, 66);
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre Administrador";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -159,7 +161,7 @@
             this.lblMetricas.AutoSize = true;
             this.lblMetricas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMetricas.ForeColor = System.Drawing.Color.White;
-            this.lblMetricas.Location = new System.Drawing.Point(50, 535);
+            this.lblMetricas.Location = new System.Drawing.Point(50, 471);
             this.lblMetricas.Name = "lblMetricas";
             this.lblMetricas.Size = new System.Drawing.Size(128, 17);
             this.lblMetricas.TabIndex = 10;
@@ -170,7 +172,7 @@
             this.lblReceta.AutoSize = true;
             this.lblReceta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReceta.ForeColor = System.Drawing.Color.White;
-            this.lblReceta.Location = new System.Drawing.Point(81, 210);
+            this.lblReceta.Location = new System.Drawing.Point(81, 179);
             this.lblReceta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReceta.Name = "lblReceta";
             this.lblReceta.Size = new System.Drawing.Size(54, 17);
@@ -182,7 +184,7 @@
             this.btnMetricas.BackColor = System.Drawing.Color.LimeGreen;
             this.btnMetricas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMetricas.ForeColor = System.Drawing.Color.White;
-            this.btnMetricas.Location = new System.Drawing.Point(13, 606);
+            this.btnMetricas.Location = new System.Drawing.Point(13, 542);
             this.btnMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.btnMetricas.Name = "btnMetricas";
             this.btnMetricas.Size = new System.Drawing.Size(198, 42);
@@ -196,7 +198,7 @@
             this.btnUsuarios.BackColor = System.Drawing.Color.LawnGreen;
             this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
-            this.btnUsuarios.Location = new System.Drawing.Point(13, 556);
+            this.btnUsuarios.Location = new System.Drawing.Point(13, 492);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(198, 42);
@@ -210,7 +212,7 @@
             this.btnAct.BackColor = System.Drawing.Color.Orange;
             this.btnAct.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAct.ForeColor = System.Drawing.Color.White;
-            this.btnAct.Location = new System.Drawing.Point(13, 380);
+            this.btnAct.Location = new System.Drawing.Point(13, 349);
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
@@ -224,7 +226,7 @@
             this.btnEliminar.BackColor = System.Drawing.Color.Orange;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(13, 330);
+            this.btnEliminar.Location = new System.Drawing.Point(13, 299);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(198, 42);
@@ -238,7 +240,7 @@
             this.btnModificar.BackColor = System.Drawing.Color.Orange;
             this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.White;
-            this.btnModificar.Location = new System.Drawing.Point(13, 280);
+            this.btnModificar.Location = new System.Drawing.Point(13, 249);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(198, 42);
@@ -252,7 +254,7 @@
             this.txtAgregar.BackColor = System.Drawing.Color.Orange;
             this.txtAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgregar.ForeColor = System.Drawing.Color.White;
-            this.txtAgregar.Location = new System.Drawing.Point(13, 230);
+            this.txtAgregar.Location = new System.Drawing.Point(13, 199);
             this.txtAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.txtAgregar.Name = "txtAgregar";
             this.txtAgregar.Size = new System.Drawing.Size(198, 42);
@@ -468,6 +470,20 @@
             // 
             this.opfImportar.FileName = "openFileDialog1";
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.Red;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(13, 592);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(198, 42);
+            this.btnCerrarSesion.TabIndex = 7;
+            this.btnCerrarSesion.Text = "&Cerrar sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -482,7 +498,7 @@
             this.Name = "frmMenuAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMenuAdmin_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuAdmin_FormClosing);
             this.Load += new System.EventHandler(this.frmMenuAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -532,6 +548,7 @@
         private System.Windows.Forms.OpenFileDialog opfImportar;
         private System.Windows.Forms.FolderBrowserDialog fbdCarpetaDestino;
         private System.Windows.Forms.SaveFileDialog sfdExpotar;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }
 
