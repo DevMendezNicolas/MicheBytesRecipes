@@ -114,6 +114,7 @@
             // 
             // dgvMetricas
             // 
+            this.dgvMetricas.AllowUserToAddRows = false;
             this.dgvMetricas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMetricas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Receta_id,
@@ -127,6 +128,7 @@
             this.dgvMetricas.Location = new System.Drawing.Point(45, 210);
             this.dgvMetricas.MultiSelect = false;
             this.dgvMetricas.Name = "dgvMetricas";
+            this.dgvMetricas.RowHeadersVisible = false;
             this.dgvMetricas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMetricas.Size = new System.Drawing.Size(858, 382);
             this.dgvMetricas.TabIndex = 4;
