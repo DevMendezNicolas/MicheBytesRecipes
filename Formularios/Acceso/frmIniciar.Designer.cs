@@ -42,7 +42,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.BtnTema = new System.Windows.Forms.Button();
             this.eprIngresar = new System.Windows.Forms.ErrorProvider(this.components);
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprIngresar)).BeginInit();
@@ -216,20 +215,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Iniciar Sesión";
             // 
-            // BtnTema
-            // 
-            this.BtnTema.FlatAppearance.BorderSize = 0;
-            this.BtnTema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTema.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnTema.ForeColor = System.Drawing.Color.Yellow;
-            this.BtnTema.Location = new System.Drawing.Point(394, 490);
-            this.BtnTema.Name = "BtnTema";
-            this.BtnTema.Size = new System.Drawing.Size(75, 34);
-            this.BtnTema.TabIndex = 5;
-            this.BtnTema.Text = "☀️";
-            this.BtnTema.UseVisualStyleBackColor = true;
-            this.BtnTema.Click += new System.EventHandler(this.BtnTema_Click);
-            // 
             // eprIngresar
             // 
             this.eprIngresar.ContainerControl = this;
@@ -240,7 +225,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(481, 536);
-            this.Controls.Add(this.BtnTema);
             this.Controls.Add(this.PanelMid);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -268,7 +252,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button BtnTema;
         private System.Windows.Forms.LinkLabel lbLinkRegistrar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel LbLinkContra;

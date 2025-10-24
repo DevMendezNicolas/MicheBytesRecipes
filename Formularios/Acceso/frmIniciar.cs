@@ -33,13 +33,11 @@ namespace MicheBytesRecipes
             UiHelpers.SetRoundedTextBox(txtEmail, 10);
             UiHelpers.SetRoundedTextBox(txtContra, 10);
             UiHelpers.SetRoundedButton(btnIngresar, 40);
-            UiHelpers.SetRoundedButton(BtnTema, 20);
 
             //Aplicación del tema y color gradiente al formulario
             //ThemeManager.ApplyTheme(this);
             //UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
             label1.BackColor = Color.Transparent;
-            BtnTema.Text = "\u2600";
 
         }
 
@@ -120,9 +118,17 @@ namespace MicheBytesRecipes
                 return;
             }
 
+            Usuario usuarioActivo = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
+
+            if (usuarioActivo.EsActivo() == false)
+            {
+                MessageBox.Show("La cuenta está desactivada. Por favor, contacte al administrador.");
+                return;
+            }
+
             if (gestorUsuarios.ValidarCredenciales(txtEmail.Text, gestorUsuarios.HashearContraseña(txtContra.Text)))
             {
-                Usuario usuarioActivo = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
+
 
                 if (usuarioActivo.Rol == 1)
                 {

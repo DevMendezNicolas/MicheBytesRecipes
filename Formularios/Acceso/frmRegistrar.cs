@@ -1,17 +1,18 @@
-﻿using System;
+﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MicheBytesRecipes.Helpers;
 using System.Windows.Forms;
-using MicheBytesRecipes.Managers;
-using MicheBytesRecipes.Classes;
-using System.IO;
-using MicheBytesRecipes.Utilities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
@@ -132,6 +133,17 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            bool existeUsuario = gestorUsuarios.ExisteUsuarioPorEmail(txtEmail.Text.Trim());
+            if (existeUsuario)
+            {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("El correo electrónico ya está registrado.", txtEmail, txtEmail.Width, txtEmail.Height - 60, 5000);
+                ShakeControl(txtEmail);
+                eprCampos.SetError(txtEmail, "El correo electrónico ya está registrado.");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
+                return;
+            }
 
             btnRegistrar.Enabled = false;
             eprCampos.Clear();
