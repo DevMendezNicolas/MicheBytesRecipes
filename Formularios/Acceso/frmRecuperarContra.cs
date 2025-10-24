@@ -18,32 +18,12 @@ namespace MicheBytesRecipes.Forms.Auth
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private string emailRecupero;
         private EmailService emailService;
-        private Timer timerEspera = new Timer();
-        private int progreso = 0;
 
         public frmRecuperarContra()
         {
             InitializeComponent();
             emailService = new EmailService();
         }
-
-        private void TimerEspera_Tick(object sender, EventArgs e)
-        {
-            progreso += 2; // 2% cada 100ms → 5 segundos total
-            if (progreso <= 100)
-            {
-                progressBarEspera.Value = progreso;
-            }
-            else
-            {
-                timerEspera.Stop();
-                progressBarEspera.Visible = false;
-                btnEnviar.Enabled = true;
-            }
-        }
-
-
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -61,6 +41,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private async void btnIngresar_Click(object sender, EventArgs e)
         {
+
             eprEmail.Clear();
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
@@ -90,11 +71,6 @@ namespace MicheBytesRecipes.Forms.Auth
 
                 MessageBox.Show("✅ Te enviamos un correo con el código de verificación.",
                                 "Correo enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                progreso = 0;
-                timerEspera.Interval = 50;
-                timerEspera.Tick += TimerEspera_Tick;
-                timerEspera.Start();
 
                 //El código ya está guardado en emailService
                 txtEmail.Clear();

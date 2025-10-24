@@ -39,7 +39,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.eprEmail = new System.Windows.Forms.ErrorProvider(this.components);
-            this.progressBarEspera = new System.Windows.Forms.ProgressBar();
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprEmail)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +47,6 @@
             // 
             this.PanelMid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(59)))));
             this.PanelMid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PanelMid.Controls.Add(this.progressBarEspera);
             this.PanelMid.Controls.Add(this.lblEmail);
             this.PanelMid.Controls.Add(this.lblTexto);
             this.PanelMid.Controls.Add(this.LbLinkContra);
@@ -161,14 +159,6 @@
             // 
             this.eprEmail.ContainerControl = this;
             // 
-            // progressBarEspera
-            // 
-            this.progressBarEspera.Location = new System.Drawing.Point(60, 151);
-            this.progressBarEspera.Name = "progressBarEspera";
-            this.progressBarEspera.Size = new System.Drawing.Size(257, 23);
-            this.progressBarEspera.TabIndex = 12;
-            this.progressBarEspera.Visible = false;
-            // 
             // frmRecuperarContra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +188,5 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider eprEmail;
         private System.Windows.Forms.TextBox txtNuevaContra;
-        private System.Windows.Forms.ProgressBar progressBarEspera;
     }
 }
