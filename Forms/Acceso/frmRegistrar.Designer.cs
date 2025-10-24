@@ -58,6 +58,7 @@
             this.lblTituloLeft = new System.Windows.Forms.Label();
             this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbCambiarImagen = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
@@ -80,7 +81,7 @@
             // 
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtApellido.Location = new System.Drawing.Point(81, 238);
+            this.txtApellido.Location = new System.Drawing.Point(81, 257);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(431, 22);
             this.txtApellido.TabIndex = 2;
@@ -91,7 +92,7 @@
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Location = new System.Drawing.Point(81, 361);
+            this.txtEmail.Location = new System.Drawing.Point(81, 380);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(431, 22);
             this.txtEmail.TabIndex = 4;
@@ -102,7 +103,7 @@
             // 
             this.txtContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtContra.Location = new System.Drawing.Point(81, 422);
+            this.txtContra.Location = new System.Drawing.Point(81, 441);
             this.txtContra.Name = "txtContra";
             this.txtContra.Size = new System.Drawing.Size(431, 22);
             this.txtContra.TabIndex = 5;
@@ -113,7 +114,7 @@
             // 
             this.txtRepContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRepContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRepContra.Location = new System.Drawing.Point(81, 482);
+            this.txtRepContra.Location = new System.Drawing.Point(81, 501);
             this.txtRepContra.Name = "txtRepContra";
             this.txtRepContra.Size = new System.Drawing.Size(431, 22);
             this.txtRepContra.TabIndex = 6;
@@ -126,7 +127,7 @@
             this.chkTerminos.AutoSize = true;
             this.chkTerminos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTerminos.ForeColor = System.Drawing.Color.White;
-            this.chkTerminos.Location = new System.Drawing.Point(85, 519);
+            this.chkTerminos.Location = new System.Drawing.Point(85, 538);
             this.chkTerminos.Name = "chkTerminos";
             this.chkTerminos.Size = new System.Drawing.Size(169, 25);
             this.chkTerminos.TabIndex = 7;
@@ -137,7 +138,7 @@
             // 
             this.lblLinkTerminos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLinkTerminos.AutoSize = true;
-            this.lblLinkTerminos.Location = new System.Drawing.Point(260, 521);
+            this.lblLinkTerminos.Location = new System.Drawing.Point(260, 540);
             this.lblLinkTerminos.Name = "lblLinkTerminos";
             this.lblLinkTerminos.Size = new System.Drawing.Size(174, 21);
             this.lblLinkTerminos.TabIndex = 8;
@@ -151,7 +152,7 @@
             this.btnRegistrar.BackColor = System.Drawing.Color.OrangeRed;
             this.btnRegistrar.FlatAppearance.BorderSize = 0;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.Location = new System.Drawing.Point(144, 564);
+            this.btnRegistrar.Location = new System.Drawing.Point(144, 583);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(290, 37);
             this.btnRegistrar.TabIndex = 9;
@@ -165,7 +166,7 @@
             this.LblCuenta.AutoSize = true;
             this.LblCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LblCuenta.ForeColor = System.Drawing.Color.White;
-            this.LblCuenta.Location = new System.Drawing.Point(197, 621);
+            this.LblCuenta.Location = new System.Drawing.Point(197, 629);
             this.LblCuenta.Name = "LblCuenta";
             this.LblCuenta.Size = new System.Drawing.Size(161, 21);
             this.LblCuenta.TabIndex = 10;
@@ -175,7 +176,7 @@
             // 
             this.LinkIniciar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LinkIniciar.AutoSize = true;
-            this.LinkIniciar.Location = new System.Drawing.Point(351, 621);
+            this.LinkIniciar.Location = new System.Drawing.Point(351, 629);
             this.LinkIniciar.Name = "LinkIniciar";
             this.LinkIniciar.Size = new System.Drawing.Size(102, 21);
             this.LinkIniciar.TabIndex = 10;
@@ -188,7 +189,7 @@
             this.lblApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblApellido.AutoSize = true;
             this.lblApellido.ForeColor = System.Drawing.Color.White;
-            this.lblApellido.Location = new System.Drawing.Point(102, 209);
+            this.lblApellido.Location = new System.Drawing.Point(102, 228);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(67, 21);
             this.lblApellido.TabIndex = 13;
@@ -199,7 +200,7 @@
             this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEmail.AutoSize = true;
             this.lblEmail.ForeColor = System.Drawing.Color.White;
-            this.lblEmail.Location = new System.Drawing.Point(102, 331);
+            this.lblEmail.Location = new System.Drawing.Point(102, 350);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(48, 21);
             this.lblEmail.TabIndex = 14;
@@ -210,7 +211,7 @@
             this.lblContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblContra.AutoSize = true;
             this.lblContra.ForeColor = System.Drawing.Color.White;
-            this.lblContra.Location = new System.Drawing.Point(102, 392);
+            this.lblContra.Location = new System.Drawing.Point(102, 411);
             this.lblContra.Name = "lblContra";
             this.lblContra.Size = new System.Drawing.Size(89, 21);
             this.lblContra.TabIndex = 15;
@@ -221,7 +222,7 @@
             this.lblRepContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRepContra.AutoSize = true;
             this.lblRepContra.ForeColor = System.Drawing.Color.White;
-            this.lblRepContra.Location = new System.Drawing.Point(102, 452);
+            this.lblRepContra.Location = new System.Drawing.Point(102, 471);
             this.lblRepContra.Name = "lblRepContra";
             this.lblRepContra.Size = new System.Drawing.Size(140, 21);
             this.lblRepContra.TabIndex = 16;
@@ -243,7 +244,7 @@
             // 
             this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTelefono.Location = new System.Drawing.Point(81, 299);
+            this.txtTelefono.Location = new System.Drawing.Point(81, 318);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(431, 22);
             this.txtTelefono.TabIndex = 3;
@@ -255,7 +256,7 @@
             this.lblTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.ForeColor = System.Drawing.Color.White;
-            this.lblTelefono.Location = new System.Drawing.Point(102, 269);
+            this.lblTelefono.Location = new System.Drawing.Point(102, 288);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(68, 21);
             this.lblTelefono.TabIndex = 18;
@@ -264,6 +265,7 @@
             // pnlRight
             // 
             this.pnlRight.BackColor = System.Drawing.Color.Orange;
+            this.pnlRight.Controls.Add(this.lbCambiarImagen);
             this.pnlRight.Controls.Add(this.btnViewAgain);
             this.pnlRight.Controls.Add(this.btnViewContra);
             this.pnlRight.Controls.Add(this.lblTelefono);
@@ -300,7 +302,7 @@
             this.btnViewAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewAgain.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnViewAgain.ForeColor = System.Drawing.Color.White;
-            this.btnViewAgain.Location = new System.Drawing.Point(478, 482);
+            this.btnViewAgain.Location = new System.Drawing.Point(478, 501);
             this.btnViewAgain.Name = "btnViewAgain";
             this.btnViewAgain.Size = new System.Drawing.Size(34, 22);
             this.btnViewAgain.TabIndex = 22;
@@ -317,7 +319,7 @@
             this.btnViewContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewContra.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnViewContra.ForeColor = System.Drawing.Color.White;
-            this.btnViewContra.Location = new System.Drawing.Point(478, 422);
+            this.btnViewContra.Location = new System.Drawing.Point(478, 441);
             this.btnViewContra.Name = "btnViewContra";
             this.btnViewContra.Size = new System.Drawing.Size(34, 22);
             this.btnViewContra.TabIndex = 21;
@@ -331,7 +333,7 @@
             this.lblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNombre.AutoSize = true;
             this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(102, 151);
+            this.lblNombre.Location = new System.Drawing.Point(102, 170);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(68, 21);
             this.lblNombre.TabIndex = 12;
@@ -341,7 +343,7 @@
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombre.Location = new System.Drawing.Point(81, 179);
+            this.txtNombre.Location = new System.Drawing.Point(81, 198);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(431, 22);
             this.txtNombre.TabIndex = 1;
@@ -406,6 +408,18 @@
             // 
             this.eprCampos.ContainerControl = this;
             // 
+            // lbCambiarImagen
+            // 
+            this.lbCambiarImagen.AutoSize = true;
+            this.lbCambiarImagen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCambiarImagen.Location = new System.Drawing.Point(233, 152);
+            this.lbCambiarImagen.Name = "lbCambiarImagen";
+            this.lbCambiarImagen.Size = new System.Drawing.Size(136, 21);
+            this.lbCambiarImagen.TabIndex = 23;
+            this.lbCambiarImagen.TabStop = true;
+            this.lbCambiarImagen.Text = "Cambiar Imagen";
+            this.lbCambiarImagen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbCambiarImagen_LinkClicked);
+            // 
             // frmRegistrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -461,5 +475,6 @@
         private System.Windows.Forms.ErrorProvider eprCampos;
         private System.Windows.Forms.Button btnViewContra;
         private System.Windows.Forms.Button btnViewAgain;
+        private System.Windows.Forms.LinkLabel lbCambiarImagen;
     }
 }

@@ -322,5 +322,13 @@ namespace MicheBytesRecipes.Forms.Auth
             frm.ShowDialog();
 
         }
+
+        private void lbCambiarImagen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (ofdFotoPerfil.ShowDialog() == DialogResult.OK)
+            {
+                pbxFotoPerfil.Image = Image.FromFile(ofdFotoPerfil.FileName);
+            }
+        }
     }
 }
