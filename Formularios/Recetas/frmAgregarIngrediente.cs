@@ -41,6 +41,12 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             if (Validaciones.ValidarIngrediente(txtIngrediente, cboUnidad, cboTipo, errorProvider1))
             {
+                string nombreNormalizado = Utilidades.CapitalizarPrimeraLetra(txtIngrediente.Text);
+                if (gestorIngredientes.IngredienteExiste(nombreNormalizado))
+                {
+                    MessageBox.Show("El ingrediente ya existe en el sistema.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 Ingrediente nuevoIngrediente = new Ingrediente
                 {
                     Nombre = Utilidades.CapitalizarPrimeraLetra(txtIngrediente.Text),

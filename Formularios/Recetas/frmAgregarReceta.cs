@@ -165,6 +165,11 @@ namespace MicheBytesRecipes.Forms.AddReceta
             }
             errorProvider1.Clear();
         }
+
+        private void CBOcategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
                 

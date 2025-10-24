@@ -85,5 +85,11 @@ namespace MicheBytesRecipes.Managers
             return true;
         }
 
+        //Metodo para saber si un ingrediente ya existe 
+        public bool IngredienteExiste(string nombre)
+        {
+            var ingredientes = ObtenerIngredientes();
+            return ingredientes.Exists(i => i.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

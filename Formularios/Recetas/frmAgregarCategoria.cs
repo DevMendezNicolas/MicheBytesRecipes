@@ -32,16 +32,28 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Categoria categoria = new Categoria();
+            
             if((Validaciones.ValidarCategoria(txtNombre, txtDescripcion, errorProvider1)))
             {
-                categoria.Nombre = Utilidades.CapitalizarPrimeraLetra(txtNombre.Text);
-                categoria.Descripcion = Utilidades.CapitalizarPrimeraLetra(txtDescripcion.Text);
+                string nombreNormalizado = Utilidades.CapitalizarPrimeraLetra(txtNombre.Text);
+                string descripcionNormalizada = Utilidades.CapitalizarPrimeraLetra(txtDescripcion.Text);
+                if (gestorCatalogo.CategoriaExiste(nombreNormalizado))
+                {
+                    MessageBox.Show("La categoría ya existe en el sistema.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Categoria categoria = new Categoria
+                {
+                    Nombre = nombreNormalizado,
+                    Descripcion = descripcionNormalizada
+                };
 
                 gestorCatalogo.AgregarCategoria(categoria);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
+
     }
 }

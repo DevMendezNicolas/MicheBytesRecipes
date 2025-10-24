@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Connections;
@@ -290,6 +291,21 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
             return categorias;
+        }
+
+
+        //Metodos para verificar si existen paises o categorias por nombre
+        public bool CategoriaExiste(string nombre)
+        {
+            var categorias = ObtenerListaCategorias();
+            return categorias
+                .Any(c => c.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+        }
+        
+        public bool PaisExiste(string nombre)
+        {
+            var paises = ObtenerListaPaises();
+            return paises.Any(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

@@ -123,6 +123,7 @@
             this.CBOcategoria.Name = "CBOcategoria";
             this.CBOcategoria.Size = new System.Drawing.Size(335, 21);
             this.CBOcategoria.TabIndex = 6;
+            this.CBOcategoria.SelectedIndexChanged += new System.EventHandler(this.CBOcategoria_SelectedIndexChanged);
             // 
             // label5
             // 
