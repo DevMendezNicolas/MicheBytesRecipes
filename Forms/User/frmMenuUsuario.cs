@@ -28,8 +28,14 @@ namespace MicheBytesRecipes.Forms.User
         {
             InitializeComponent();
             usuarioLog = usuarioActivado;
-            lblNombre.Text = $"Bienvenido, {usuarioLog.Nombre}";
+            CargarUsuario();
             gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);
+            
+        }
+
+        private void CargarUsuario()
+        {
+            lblNombre.Text = $"Bienvenido, {usuarioLog.Nombre}";
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
             {
                 //Crea una imagen a partir del arreglo de bytes
@@ -45,6 +51,7 @@ namespace MicheBytesRecipes.Forms.User
             {
                 pbImagenUser.Image = null;
             }
+
         }
         private void MenuUser_Load(object sender, EventArgs e)
         {
@@ -180,8 +187,15 @@ namespace MicheBytesRecipes.Forms.User
         {
             this.Hide();
             frmConfiguracion configuracion = new frmConfiguracion(usuarioLog);
-            configuracion.ShowDialog();
+            if(configuracion.ShowDialog() == DialogResult.OK)
+            {
+                usuarioLog = gestorUsuarios.BuscarPorEmail(configuracion.nuevoLog);
+                CargarUsuario();
+
+            }
+            
             this.Show();
+
 
         }
 

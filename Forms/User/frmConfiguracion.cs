@@ -12,6 +12,7 @@ namespace MicheBytesRecipes.Forms.User
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private Usuario usuarioLog;
+        public string nuevoLog;
         private byte[] fotoOriginalBytes = Array.Empty<byte>();
         public frmConfiguracion(Usuario usuarioActivado)
         {
@@ -363,8 +364,9 @@ namespace MicheBytesRecipes.Forms.User
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
+            nuevoLog = usuarioLog.Email;
+            this.DialogResult = DialogResult.OK;
             this.Close();
-
         }
 
         private void linkCambiarImagen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

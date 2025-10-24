@@ -61,8 +61,6 @@ namespace MicheBytesRecipes.Forms.User
         private void btnInicio_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmMenuUsuario menuUser = new frmMenuUsuario(usuarioLog);
-            menuUser.Show();
         }
      
         private void CargarRecetas()

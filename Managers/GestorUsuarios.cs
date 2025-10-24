@@ -452,6 +452,42 @@ namespace MicheBytesRecipes.Managers
             }
         }
 
+        //Metodo cambiar contra
+        public bool OlvideMiContraseña(string email, string nuevaContraseña)
+        {
+            try
+            {
+                conexion.Abrir();
+
+                using (MySqlCommand comando = new MySqlCommand("Olvide_mi_contraseña", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("p_email", email);
+                    comando.Parameters.AddWithValue("p_nueva_contraseña", nuevaContraseña);
+
+                    // Solo ejecutás el procedimiento. No leés el SELECT del final.
+                    comando.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                // Si el SP lanza SIGNAL (por ejemplo, misma contraseña), cae acá
+                MessageBox.Show($"⚠️ Error SQL: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"❌ Error general: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
 
 
     }

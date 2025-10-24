@@ -18,11 +18,28 @@ namespace MicheBytesRecipes.Forms.Auth
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private string emailRecupero;
         private EmailService emailService;
+        private Timer timerEspera = new Timer();
+        private int progreso = 0;
 
         public frmRecuperarContra()
         {
             InitializeComponent();
             emailService = new EmailService();
+        }
+
+        private void TimerEspera_Tick(object sender, EventArgs e)
+        {
+            progreso += 2; // 2% cada 100ms → 5 segundos total
+            if (progreso <= 100)
+            {
+                progressBarEspera.Value = progreso;
+            }
+            else
+            {
+                timerEspera.Stop();
+                progressBarEspera.Visible = false;
+                btnEnviar.Enabled = true;
+            }
         }
 
 
@@ -70,14 +87,21 @@ namespace MicheBytesRecipes.Forms.Auth
                 //Usar la MISMA instancia de emailService
                 await emailService.EnviarCodigoVerificacion(email);
 
+
                 MessageBox.Show("✅ Te enviamos un correo con el código de verificación.",
                                 "Correo enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                progreso = 0;
+                timerEspera.Interval = 50;
+                timerEspera.Tick += TimerEspera_Tick;
+                timerEspera.Start();
+
                 //El código ya está guardado en emailService
                 txtEmail.Clear();
+                lblEmail.Text = "Código de verificación";
                 btnEnviar.Text = "Verificar Código";
                 lblTexto.Text = "Ingresá el código de 6 dígitos";
-                txtActual.Visible = false;
+                txtNuevaContra.Visible = false;
 
                 btnEnviar.Click -= btnIngresar_Click;
                 btnEnviar.Click += VerificarCodigo;
@@ -109,10 +133,11 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             // Configurar interfaz para nueva contraseña
             txtEmail.Clear();
-            txtActual.Clear();
-            txtActual.Visible = true;
+            txtNuevaContra.Clear();
+            txtNuevaContra.Visible = true;
 
             lblTexto.Text = "Ingresá tu nueva contraseña";
+            lblEmail.Text = "Nueva contraseña";
             //txtEmail.PlaceholderText = "Nueva contraseña";
             //txtActual.PlaceholderText = "Confirmar contraseña";
 
@@ -125,7 +150,7 @@ namespace MicheBytesRecipes.Forms.Auth
         private void CambiarContraseña(object sender, EventArgs e)
         {
             string nuevaContraseña = txtEmail.Text.Trim();
-            string confirmarContraseña = txtActual.Text.Trim();
+            string confirmarContraseña = txtNuevaContra.Text.Trim();
 
             // Validar que no estén vacías
             if (string.IsNullOrWhiteSpace(nuevaContraseña) || string.IsNullOrWhiteSpace(confirmarContraseña))
@@ -147,18 +172,18 @@ namespace MicheBytesRecipes.Forms.Auth
                 string contraseñaHasheada = gestorUsuarios.HashearContraseña(nuevaContraseña);
 
                 // Tu método debería recibir email y contraseña nueva
-                /*bool exito = gestorUsuarios.CambiarContraseña(emailRecupero, contraseñaHasheada);
+                bool resultado = gestorUsuarios.OlvideMiContraseña(emailRecupero, contraseñaHasheada);
 
-                if (exito)
+                if (resultado)
                 {
                     MessageBox.Show("✅ Contraseña actualizada correctamente");
                     RestaurarFormularioOriginal();
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("❌ Error al actualizar la contraseña");
-                }*/
-                MessageBox.Show("Contra cambiada");
+                }
             }
             catch (Exception ex)
             {
@@ -169,8 +194,8 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             // Restaurar todo al estado original
             txtEmail.Clear();
-            txtActual.Clear();
-            txtActual.Visible = false;
+            txtNuevaContra.Clear();
+            txtNuevaContra.Visible = false;
 
             lblTitulo.Text = "Recuperar Contraseña";
             //txtEmail.PlaceholderText = "Ingrese su email";

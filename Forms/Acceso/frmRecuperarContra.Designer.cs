@@ -35,10 +35,11 @@
             this.LbLinkContra = new System.Windows.Forms.LinkLabel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnEnviar = new System.Windows.Forms.Button();
+            this.txtNuevaContra = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.eprEmail = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtActual = new System.Windows.Forms.TextBox();
+            this.progressBarEspera = new System.Windows.Forms.ProgressBar();
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprEmail)).BeginInit();
             this.SuspendLayout();
@@ -47,12 +48,13 @@
             // 
             this.PanelMid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(59)))));
             this.PanelMid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PanelMid.Controls.Add(this.progressBarEspera);
             this.PanelMid.Controls.Add(this.lblEmail);
             this.PanelMid.Controls.Add(this.lblTexto);
             this.PanelMid.Controls.Add(this.LbLinkContra);
             this.PanelMid.Controls.Add(this.btnCancelar);
             this.PanelMid.Controls.Add(this.btnEnviar);
-            this.PanelMid.Controls.Add(this.txtActual);
+            this.PanelMid.Controls.Add(this.txtNuevaContra);
             this.PanelMid.Controls.Add(this.txtEmail);
             this.PanelMid.Controls.Add(this.lblTitulo);
             this.PanelMid.Location = new System.Drawing.Point(12, 12);
@@ -120,6 +122,18 @@
             this.btnEnviar.UseVisualStyleBackColor = false;
             this.btnEnviar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
+            // txtNuevaContra
+            // 
+            this.txtNuevaContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNuevaContra.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNuevaContra.ForeColor = System.Drawing.Color.Black;
+            this.txtNuevaContra.Location = new System.Drawing.Point(37, 139);
+            this.txtNuevaContra.Name = "txtNuevaContra";
+            this.txtNuevaContra.Size = new System.Drawing.Size(306, 26);
+            this.txtNuevaContra.TabIndex = 1;
+            this.txtNuevaContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtNuevaContra.Visible = false;
+            // 
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -147,17 +161,13 @@
             // 
             this.eprEmail.ContainerControl = this;
             // 
-            // txtActual
+            // progressBarEspera
             // 
-            this.txtActual.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtActual.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActual.ForeColor = System.Drawing.Color.Black;
-            this.txtActual.Location = new System.Drawing.Point(37, 139);
-            this.txtActual.Name = "txtActual";
-            this.txtActual.Size = new System.Drawing.Size(306, 26);
-            this.txtActual.TabIndex = 1;
-            this.txtActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtActual.Visible = false;
+            this.progressBarEspera.Location = new System.Drawing.Point(60, 151);
+            this.progressBarEspera.Name = "progressBarEspera";
+            this.progressBarEspera.Size = new System.Drawing.Size(257, 23);
+            this.progressBarEspera.TabIndex = 12;
+            this.progressBarEspera.Visible = false;
             // 
             // frmRecuperarContra
             // 
@@ -187,6 +197,7 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider eprEmail;
-        private System.Windows.Forms.TextBox txtActual;
+        private System.Windows.Forms.TextBox txtNuevaContra;
+        private System.Windows.Forms.ProgressBar progressBarEspera;
     }
 }
