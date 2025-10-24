@@ -27,13 +27,16 @@ namespace MicheBytesRecipes.Forms.AddReceta
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void FrmAgregarIngrediente_Load(object sender, EventArgs e)
         {
+            
 
-        }
+            //Cargar las unidades de medida y tipos de ingredientes en los ComboBox
+            var listaUnidades = gestorCatalogo.ObtenerListaUnidades();
+            var listaTipos = gestorCatalogo.ObtenerListaTipos();
 
-        private void label5_Click(object sender, EventArgs e)
-        {
+            CargarCombos(cboUnidad, listaUnidades, "Nombre", "UnidadMedidaId", "No se pudieron cargar las unidades de medida.");           
+            CargarCombos(cboTipo, listaTipos, "Nombre", "TipoIngredienteId", "No se pudieron cargar los tipos de ingredientes.");
 
         }
 
@@ -41,6 +44,12 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             if (Validaciones.ValidarIngrediente(txtIngrediente, cboUnidad, cboTipo, errorProvider1))
             {
+                string nombreNormalizado = Utilidades.CapitalizarPrimeraLetra(txtIngrediente.Text);
+                if (gestorIngredientes.IngredienteExiste(nombreNormalizado))
+                {
+                    MessageBox.Show("El ingrediente ya existe en el sistema.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 Ingrediente nuevoIngrediente = new Ingrediente
                 {
                     Nombre = Utilidades.CapitalizarPrimeraLetra(txtIngrediente.Text),
@@ -55,28 +64,9 @@ namespace MicheBytesRecipes.Forms.AddReceta
             }
 
         }
-
-        private void FrmAgregarIngrediente_Load(object sender, EventArgs e)
-        {
-            
-
-            //Cargar las unidades de medida y tipos de ingredientes en los ComboBox
-            var listaUnidades = gestorCatalogo.ObtenerListaUnidades();
-            var listaTipos = gestorCatalogo.ObtenerListaTipos();
-
-            CargarCombos(cboUnidad, listaUnidades, "Nombre", "UnidadMedidaId", "No se pudieron cargar las unidades de medida.");           
-            CargarCombos(cboTipo, listaTipos, "Nombre", "TipoIngredienteId", "No se pudieron cargar los tipos de ingredientes.");
-
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void cboUnidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void CargarCombos<T>(ComboBox combo, List<T> lista, string displayMember, string valueMember, string mensajeError)

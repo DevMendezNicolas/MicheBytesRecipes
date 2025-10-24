@@ -60,7 +60,6 @@
             this.label2.Size = new System.Drawing.Size(254, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Agregar nuevo ingrediente";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -98,7 +97,6 @@
             this.label5.Size = new System.Drawing.Size(107, 15);
             this.label5.TabIndex = 6;
             this.label5.Text = "Unidad de medida:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // cboTipo
             // 
@@ -117,7 +115,6 @@
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(331, 21);
             this.cboUnidad.TabIndex = 8;
-            this.cboUnidad.SelectedIndexChanged += new System.EventHandler(this.cboUnidad_SelectedIndexChanged);
             // 
             // btnAgregar
             // 

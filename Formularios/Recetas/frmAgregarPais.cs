@@ -29,11 +29,19 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Pais pais = new Pais();
-            if((Validaciones.ValidarPais(txtPais,errorProvider1)))
+            if ((Validaciones.ValidarPais(txtPais, errorProvider1)))
             {
-                pais.Nombre = Utilidades.CapitalizarPrimeraLetra(txtPais.Text);
+                string nombreNormalizado = Utilidades.CapitalizarPrimeraLetra(txtPais.Text);
 
+                if (gestorCatalogo.PaisExiste(nombreNormalizado))
+                {
+                    MessageBox.Show("El país ya existe en el sistema.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                Pais pais = new Pais
+                {
+                    Nombre = nombreNormalizado
+                };
                 gestorCatalogo.AgregarPais(pais);
                 this.DialogResult = DialogResult.OK; //Cerrar el formulario con resultado OK
                 this.Close();
