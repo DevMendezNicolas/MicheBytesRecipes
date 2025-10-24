@@ -32,6 +32,14 @@
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.UsuarioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarEmail = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -44,14 +52,6 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
             this.btnAccion = new System.Windows.Forms.Button();
-            this.UsuarioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
@@ -82,7 +82,7 @@
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
             this.btnReinicio.TabIndex = 5;
-            this.btnReinicio.Text = "🔄 Reiniciar filtros";
+            this.btnReinicio.Text = "🔄 &Reiniciar";
             this.btnReinicio.UseVisualStyleBackColor = true;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
@@ -93,7 +93,7 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
             this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "🔍 Buscar";
+            this.btnBuscar.Text = "🔍 &Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -115,6 +115,62 @@
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(858, 443);
             this.dgvUsuarios.TabIndex = 4;
+            // 
+            // UsuarioId
+            // 
+            this.UsuarioId.HeaderText = "UsuarioId";
+            this.UsuarioId.Name = "UsuarioId";
+            this.UsuarioId.ReadOnly = true;
+            this.UsuarioId.Visible = false;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // fechaAlta
+            // 
+            this.fechaAlta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fechaAlta.HeaderText = "Fecha alta";
+            this.fechaAlta.Name = "fechaAlta";
+            this.fechaAlta.ReadOnly = true;
+            // 
+            // fechaBaja
+            // 
+            this.fechaBaja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fechaBaja.HeaderText = "Fecha baja";
+            this.fechaBaja.Name = "fechaBaja";
+            this.fechaBaja.ReadOnly = true;
+            // 
+            // rol
+            // 
+            this.rol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.rol.HeaderText = "Rol";
+            this.rol.Name = "rol";
+            this.rol.ReadOnly = true;
             // 
             // label1
             // 
@@ -268,63 +324,7 @@
             this.btnAccion.UseVisualStyleBackColor = false;
             this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
-            // UsuarioId
-            // 
-            this.UsuarioId.HeaderText = "UsuarioId";
-            this.UsuarioId.Name = "UsuarioId";
-            this.UsuarioId.ReadOnly = true;
-            this.UsuarioId.Visible = false;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // fechaAlta
-            // 
-            this.fechaAlta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fechaAlta.HeaderText = "Fecha alta";
-            this.fechaAlta.Name = "fechaAlta";
-            this.fechaAlta.ReadOnly = true;
-            // 
-            // fechaBaja
-            // 
-            this.fechaBaja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fechaBaja.HeaderText = "Fecha baja";
-            this.fechaBaja.Name = "fechaBaja";
-            this.fechaBaja.ReadOnly = true;
-            // 
-            // rol
-            // 
-            this.rol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.rol.HeaderText = "Rol";
-            this.rol.Name = "rol";
-            this.rol.ReadOnly = true;
-            // 
-            // GestionUsuarios
+            // frmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -335,7 +335,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
-            this.Name = "GestionUsuarios";
+            this.Name = "frmGestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionUsuarios";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionUsuarios_FormClosed);

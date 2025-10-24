@@ -36,6 +36,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnMetricas = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
@@ -64,7 +65,6 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -178,6 +178,20 @@
             this.lblReceta.Size = new System.Drawing.Size(54, 17);
             this.lblReceta.TabIndex = 9;
             this.lblReceta.Text = "Recetas";
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.Red;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(13, 592);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(198, 42);
+            this.btnCerrarSesion.TabIndex = 7;
+            this.btnCerrarSesion.Text = "&Cerrar sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // btnMetricas
             // 
@@ -302,11 +316,11 @@
             this.btnReinicio.BackColor = System.Drawing.Color.White;
             this.btnReinicio.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReinicio.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.btnReinicio.Location = new System.Drawing.Point(784, 91);
+            this.btnReinicio.Location = new System.Drawing.Point(771, 150);
             this.btnReinicio.Name = "btnReinicio";
-            this.btnReinicio.Size = new System.Drawing.Size(34, 29);
+            this.btnReinicio.Size = new System.Drawing.Size(132, 29);
             this.btnReinicio.TabIndex = 5;
-            this.btnReinicio.Text = "🔄";
+            this.btnReinicio.Text = "🔄 &Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = false;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
             // 
@@ -315,11 +329,11 @@
             this.btnBuscar.BackColor = System.Drawing.Color.White;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.btnBuscar.Location = new System.Drawing.Point(626, 91);
+            this.btnBuscar.Location = new System.Drawing.Point(659, 91);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(152, 29);
+            this.btnBuscar.Size = new System.Drawing.Size(121, 29);
             this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "🔍 Buscar";
+            this.btnBuscar.Text = "🔍 &Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -387,7 +401,7 @@
             // cboDificultad
             // 
             this.cboDificultad.FormattingEnabled = true;
-            this.cboDificultad.Location = new System.Drawing.Point(623, 153);
+            this.cboDificultad.Location = new System.Drawing.Point(536, 154);
             this.cboDificultad.Name = "cboDificultad";
             this.cboDificultad.Size = new System.Drawing.Size(179, 25);
             this.cboDificultad.TabIndex = 3;
@@ -395,7 +409,7 @@
             // cboPais
             // 
             this.cboPais.FormattingEnabled = true;
-            this.cboPais.Location = new System.Drawing.Point(389, 153);
+            this.cboPais.Location = new System.Drawing.Point(302, 154);
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(179, 25);
             this.cboPais.TabIndex = 3;
@@ -403,7 +417,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(132, 153);
+            this.cboCategoria.Location = new System.Drawing.Point(45, 154);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
             this.cboCategoria.TabIndex = 3;
@@ -414,7 +428,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(619, 130);
+            this.label3.Location = new System.Drawing.Point(532, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 2;
@@ -426,7 +440,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(385, 130);
+            this.label2.Location = new System.Drawing.Point(298, 131);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 2;
@@ -438,7 +452,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(128, 130);
+            this.label1.Location = new System.Drawing.Point(41, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 2;
@@ -469,20 +483,6 @@
             // opfImportar
             // 
             this.opfImportar.FileName = "openFileDialog1";
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.BackColor = System.Drawing.Color.Red;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(13, 592);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(198, 42);
-            this.btnCerrarSesion.TabIndex = 7;
-            this.btnCerrarSesion.Text = "&Cerrar sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // frmMenuAdmin
             // 
