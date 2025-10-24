@@ -12,36 +12,28 @@ using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Classes;
 using System.IO;
 using MicheBytesRecipes.Utilities;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Gestores;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
-    public partial class frmRegistrar : Form
+    public partial class frmRegistrar : MaterialForm
     {
-
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private bool salida = false;
         private const string json_path = @"DatosJson/registroContenido.json";
         public frmRegistrar()
         {
-
-
             InitializeComponent();
-
-            //Setea los cues en los textbox
-            CueProvider.SetCue(txtNombre, "Ingresa tu nombre");
-            CueProvider.SetCue(txtApellido, "Ingresa tu apellido");
-            CueProvider.SetCue(txtTelefono, "Ingresa tu teléfono");
-            CueProvider.SetCue(txtEmail, "Ingresa tu correo electrónico");
-            CueProvider.SetCue(txtContra, "Ingresa tu contraseña");
-            CueProvider.SetCue(txtRepContra, "Repeti tu contraseña");
+            GestorMaterialSkin.TemaClaro(this);
 
             CargarJson.CargarLabelsDesdeJson(pnlLeft, json_path);
-            txtContra.UseSystemPasswordChar = true;
-            txtRepContra.UseSystemPasswordChar = true;
+
 
         }
 
-        private void pnlRight_Paint(object sender, PaintEventArgs e)
+        /* private void pnlRight_Paint(object sender, PaintEventArgs e)
         {
 
             //Hacer transparentes los labels y checkbox del panel derecho. Pero no afecta el setcue
@@ -70,7 +62,7 @@ namespace MicheBytesRecipes.Forms.Auth
             lblRelleno.BackColor = Color.Transparent;
             lblTexto.BackColor = Color.Transparent;
 
-        }
+        } */
 
         private void LinkIniciar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -81,7 +73,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         }
 
-        private void FrmRegister_Load(object sender, EventArgs e)
+        /* private void FrmRegister_Load(object sender, EventArgs e)
         {
             //Hacer transparentes los labels formulario
             foreach (Control control in this.Controls)
@@ -91,7 +83,7 @@ namespace MicheBytesRecipes.Forms.Auth
                     control.BackColor = Color.Transparent;
                 }
             }
-        }
+        } */
 
         private void pbxFotoPerfil_Click(object sender, EventArgs e)
         {
@@ -103,7 +95,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         }
 
-        private void btnViewContra_MouseDown(object sender, MouseEventArgs e)
+        /*private void btnViewContra_MouseDown(object sender, MouseEventArgs e)
         {
             txtContra.UseSystemPasswordChar = false;
             txtContra.PasswordChar = '\0';
@@ -115,9 +107,9 @@ namespace MicheBytesRecipes.Forms.Auth
             txtContra.UseSystemPasswordChar = true;
             txtContra.PasswordChar = '●';
 
-        }
+        } */
 
-        private void btnViewAgain_MouseDown(object sender, MouseEventArgs e)
+        /*private void btnViewAgain_MouseDown(object sender, MouseEventArgs e)
         {
             txtRepContra.UseSystemPasswordChar = false;
             txtRepContra.PasswordChar = '\0';
@@ -128,7 +120,7 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             txtRepContra.UseSystemPasswordChar = true;
             txtRepContra.PasswordChar = '●';
-        }
+        } */
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {

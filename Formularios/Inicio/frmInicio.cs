@@ -13,15 +13,22 @@ using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using Newtonsoft.Json;
 using MicheBytesRecipes.Utilities;
+using System.Windows.Media.Media3D;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using MicheBytesRecipes.Gestores;
+
 
 namespace MicheBytesRecipes
 {
-    public partial class frmInicio : Form
+    public partial class frmInicio : MaterialSkin.Controls.MaterialForm
     {
         private const string json_path = @"DatosJson/inicioContenido.json";
         public frmInicio()
         {
             InitializeComponent();
+
+            GestorMaterialSkin.TemaClaro(this);
 
             CargarJson.CargarLabelsDesdeJson(PanelMid, json_path);
 
@@ -45,6 +52,9 @@ namespace MicheBytesRecipes
 
         }
 
+        private void lblBullet_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
