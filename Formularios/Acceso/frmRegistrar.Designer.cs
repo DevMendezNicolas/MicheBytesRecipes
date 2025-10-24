@@ -59,6 +59,7 @@
             this.lblTituloLeft = new System.Windows.Forms.Label();
             this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTipCajas = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
@@ -476,5 +477,6 @@
         private System.Windows.Forms.Button btnViewContra;
         private System.Windows.Forms.Button btnViewAgain;
         private System.Windows.Forms.LinkLabel lbCambiarImagen;
+        private System.Windows.Forms.ToolTip toolTipCajas;
     }
 }

@@ -133,35 +133,39 @@ namespace MicheBytesRecipes.Forms.Auth
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
 
-
+            btnRegistrar.Enabled = false;
             eprCampos.Clear();
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
+                ShakeControl(txtNombre);
                 eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
                 txtNombre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
+                ShakeControl(txtApellido);
                 eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
                 txtApellido.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
+                ShakeControl(txtTelefono);
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
                 txtTelefono.Focus();
                 return;
             }
             if (txtTelefono.Text.Length < 6)
             {
+                ShakeControl(txtTelefono);
                 eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono mayor a 6 dígitos");
-                txtTelefono.Focus();
-                txtTelefono.SelectAll();
+                //txtTelefono.SelectAll();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
+                ShakeControl(txtEmail);
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
                 txtEmail.Focus();
                 return;
@@ -169,6 +173,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (!Usuario.ValidarEmail(txtEmail.Text))
             {
+                ShakeControl(txtEmail);
                 eprCampos.SetError(txtEmail, "El correo electrónico no es válido.");
                 txtEmail.Focus();
                 txtEmail.SelectAll();
@@ -177,12 +182,14 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (string.IsNullOrWhiteSpace(txtContra.Text))
             {
+                ShakeControl(txtContra);
                 eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
                 txtContra.Focus();
                 return;
             }
             if (txtContra.Text.Length < 6)
             {
+                ShakeControl(txtContra);
                 eprCampos.SetError(txtContra, "La contraseña debe tener al menos 6 caracteres.");
                 txtContra.Focus();
                 txtContra.SelectAll();
@@ -191,9 +198,12 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (txtContra.Text != txtRepContra.Text)
             {
+                ShakeControl(txtRepContra);
+                ShakeControl(txtContra);
                 eprCampos.SetError(txtContra, "Las contraseña no coincinden");
                 eprCampos.SetError(txtRepContra, "Las contraseña no coincinden");
                 txtContra.Focus();
+
 
                 return;
             }
@@ -338,6 +348,40 @@ namespace MicheBytesRecipes.Forms.Auth
             {
                 pbxFotoPerfil.Image = Image.FromFile(ofdFotoPerfil.FileName);
             }
+        }
+        private async void ShakeControl(TextBox textBox)
+        {
+            // Guarda los valores originales
+            var originalPos = textBox.Location;
+            var originalBackColor = textBox.BackColor;
+            var originalColor = textBox.ForeColor;
+
+            // 🔹 Estilo de error (fondo y borde rojo)
+            textBox.BackColor = Color.FromArgb(255, 235, 238); // fondo rojo muy suave
+            textBox.BorderStyle = BorderStyle.FixedSingle;
+            textBox.ForeColor = Color.Red;
+
+            // 🔹 Pone foco
+            textBox.Focus();
+
+            // 🔹 Efecto shake (movimiento lateral)
+            for (int i = 0; i < 3; i++) // cantidad de idas y vueltas
+            {
+                textBox.Location = new Point(originalPos.X + 3, originalPos.Y);
+                await Task.Delay(30); // velocidad
+                textBox.Location = new Point(originalPos.X - 3, originalPos.Y);
+                await Task.Delay(30);
+            }
+
+            // 🔹 Vuelve a la posición original
+            textBox.Location = originalPos;
+
+            // 🔹 Espera un momento y restaura estilos
+            await Task.Delay(3000);
+            textBox.BackColor = originalBackColor;
+            textBox.ForeColor = originalColor;
+            btnRegistrar.Enabled = true;
+
         }
     }
 }
