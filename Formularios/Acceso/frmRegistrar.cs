@@ -157,7 +157,12 @@ namespace MicheBytesRecipes.Forms.Auth
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
                 return;
             }
-            if(string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (txtTelefono.Text.Length < 6)
+            {
+                eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono valido");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
                 return;
@@ -210,7 +215,10 @@ namespace MicheBytesRecipes.Forms.Auth
             gestorUsuarios.AgregarUsuario(nuevoUsuario);
 
             limpiarCampos();
-            
+            MessageBox.Show("✅ Usuario registrado correctamente.","Registro exitoso",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
             this.Close();
 
         }
