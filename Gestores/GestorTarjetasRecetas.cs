@@ -65,7 +65,7 @@ namespace MicheBytesRecipes.Managers
                 var recetaCompleta = gestorReceta.ObtenerRecetaPorId(receta.RecetaId);
                 if (recetaCompleta != null)
                 {
-                    var verRecetaForm = new FrmVerReceta(recetaCompleta, usuarioLog);
+                    var verRecetaForm = new frmVerReceta(recetaCompleta, usuarioLog);
                     verRecetaForm.ShowDialog();
                 }
             };

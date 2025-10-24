@@ -10,14 +10,14 @@ using System.Drawing;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
-    public partial class GestionUsuarios : Form
+    public partial class frmGestionUsuarios : Form
     {
         private Usuario usuarioLog;
         GestorUsuarios gestorUsuario = new GestorUsuarios();
         private bool usuariosActivos = true;
         List<PreUsuario> usuarios = new List<PreUsuario>();
 
-        public GestionUsuarios(Usuario usuarioActivado)
+        public frmGestionUsuarios(Usuario usuarioActivado)
         {
             InitializeComponent();
 

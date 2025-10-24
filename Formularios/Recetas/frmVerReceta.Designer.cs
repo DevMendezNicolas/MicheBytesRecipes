@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Classes.Recetas
 {
-    partial class FrmVerReceta
+    partial class frmVerReceta
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVerReceta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerReceta));
             this.lblNombre = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTiempo = new System.Windows.Forms.Label();

@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
-    public partial class FrmAgregarPais : Form
+    public partial class frmAgregarPais : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
-        public FrmAgregarPais()
+        public frmAgregarPais()
         {
             InitializeComponent();
         }

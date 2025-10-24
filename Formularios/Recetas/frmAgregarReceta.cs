@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 { 
-    public partial class FrmAgregarReceta : Form
+    public partial class frmAgregarReceta : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo  gestorCatalogo = new GestorCatalogo();
         GestorIngredientes gestorIngredientes = new GestorIngredientes();
-        public FrmAgregarReceta(Usuario usuario)
+        public frmAgregarReceta(Usuario usuario)
         {
             InitializeComponent();
         }
@@ -95,7 +95,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         private void btnPais_Click(object sender, EventArgs e)
         {
             //Llamar al formulario de agregar pais
-            FrmAgregarPais frmAgregarPais = new FrmAgregarPais();
+            frmAgregarPais frmAgregarPais = new frmAgregarPais();
             
             if(frmAgregarPais.ShowDialog() == DialogResult.OK)
             {
@@ -109,7 +109,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         private void btnAgregarIngrediente_Click(object sender, EventArgs e)
         {
             //llamAR AL FORMULARIO DE AGREGAR INGREDIENTE
-            FrmAgregarIngrediente frmAgregarIngrediente = new FrmAgregarIngrediente();
+            frmAgregarIngrediente frmAgregarIngrediente = new frmAgregarIngrediente();
 
             if (frmAgregarIngrediente.ShowDialog() == DialogResult.OK)
             {
@@ -126,7 +126,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         }
         private void btbAgregarCategorias_Click(object sender, EventArgs e)
         {
-            FrmAgregarCategoria frmAgregarCategoria = new FrmAgregarCategoria();
+            frmAgregarCategoria frmAgregarCategoria = new frmAgregarCategoria();
             if(frmAgregarCategoria.ShowDialog() == DialogResult.OK)
             {
                 List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();

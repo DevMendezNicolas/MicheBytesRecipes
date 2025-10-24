@@ -159,7 +159,7 @@ namespace MicheBytesRecipes
 
         private void txtAgregar_Click(object sender, EventArgs e)
         {
-            FrmAgregarReceta frmAgregarReceta = new FrmAgregarReceta(usuarioLog);
+            frmAgregarReceta frmAgregarReceta = new frmAgregarReceta(usuarioLog);
             frmAgregarReceta.ShowDialog();
             if (frmAgregarReceta.DialogResult == DialogResult.OK)
             {
@@ -202,7 +202,7 @@ namespace MicheBytesRecipes
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GestionUsuarios gestionUsuarios = new GestionUsuarios(usuarioLog);
+            frmGestionUsuarios gestionUsuarios = new frmGestionUsuarios(usuarioLog);
             gestionUsuarios.ShowDialog();
             this.Show();
 
@@ -222,7 +222,7 @@ namespace MicheBytesRecipes
             Receta receta = gestorReceta.ObtenerRecetaPorId(Convert.ToInt32(dgvReceta.Rows[e.RowIndex].Cells["dgvReceta_id"].Value));
             if (receta != null)
             {
-                FrmVerReceta frmVerReceta = new FrmVerReceta(receta, usuarioLog);
+                frmVerReceta frmVerReceta = new frmVerReceta(receta, usuarioLog);
                 frmVerReceta.ShowDialog();
             }
 
@@ -237,7 +237,7 @@ namespace MicheBytesRecipes
                 Receta receta = gestorReceta.ObtenerRecetaPorId(recetaId);
                 if (receta != null)
                 {
-                    FrmModificarReceta frmModificarReceta = new FrmModificarReceta(receta, usuarioLog);
+                    frmModificarReceta frmModificarReceta = new frmModificarReceta(receta, usuarioLog);
                     frmModificarReceta.ShowDialog();
                     if (frmModificarReceta.DialogResult == DialogResult.OK)
                     {

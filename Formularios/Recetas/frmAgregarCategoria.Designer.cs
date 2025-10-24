@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.AddReceta
 {
-    partial class FrmAgregarCategoria
+    partial class frmAgregarCategoria
     {
         /// <summary>
         /// Required designer variable.

@@ -125,116 +125,116 @@
     <Compile Include="Classes\Recetas\TipoIngrediente.cs" />
     <Compile Include="Classes\Recetas\UnidadMedida.cs" />
     <Compile Include="Classes\TarjetasRecetas\TarjetaReceta.cs" />
-    <Compile Include="Classes\Users\PreUsuario.cs" />
-    <Compile Include="Classes\Users\Usuario.cs" />
-    <Compile Include="Connections\ConexionBD.cs" />
-    <Compile Include="Forms\AddReceta\FrmAgregarCategoria.cs">
+    <Compile Include="Classes\Usuarios\PreUsuario.cs" />
+    <Compile Include="Classes\Usuarios\Usuario.cs" />
+    <Compile Include="Conexiones\ConexionBD.cs" />
+    <Compile Include="Formularios\Recetas\frmAgregarCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarCategoria.Designer.cs">
-      <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
+    <Compile Include="Formularios\Recetas\frmAgregarCategoria.Designer.cs">
+      <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.cs">
+    <Compile Include="Formularios\Recetas\frmAgregarIngrediente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarIngrediente.Designer.cs">
-      <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    <Compile Include="Formularios\Recetas\frmAgregarIngrediente.Designer.cs">
+      <DependentUpon>frmAgregarIngrediente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarPais.cs">
+    <Compile Include="Formularios\Recetas\frmAgregarPais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarPais.Designer.cs">
-      <DependentUpon>FrmAgregarPais.cs</DependentUpon>
+    <Compile Include="Formularios\Recetas\frmAgregarPais.Designer.cs">
+      <DependentUpon>frmAgregarPais.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarReceta.cs">
+    <Compile Include="Formularios\Recetas\frmAgregarReceta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmAgregarReceta.Designer.cs">
-      <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
+    <Compile Include="Formularios\Recetas\frmAgregarReceta.Designer.cs">
+      <DependentUpon>frmAgregarReceta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmModificarReceta.cs">
+    <Compile Include="Formularios\Recetas\frmModificarReceta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmModificarReceta.Designer.cs">
-      <DependentUpon>FrmModificarReceta.cs</DependentUpon>
+    <Compile Include="Formularios\Recetas\frmModificarReceta.Designer.cs">
+      <DependentUpon>frmModificarReceta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmVerReceta.cs">
+    <Compile Include="Formularios\Recetas\frmVerReceta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddReceta\FrmVerReceta.Designer.cs">
-      <DependentUpon>FrmVerReceta.cs</DependentUpon>
+    <Compile Include="Formularios\Recetas\frmVerReceta.Designer.cs">
+      <DependentUpon>frmVerReceta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddReceta\Validaciones.cs" />
-    <Compile Include="Forms\Admin\frmMetricas.cs">
+    <Compile Include="Formularios\Recetas\Validaciones.cs" />
+    <Compile Include="Formularios\Admin\frmMetricas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\frmMetricas.Designer.cs">
+    <Compile Include="Formularios\Admin\frmMetricas.Designer.cs">
       <DependentUpon>frmMetricas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\GestionUsuarios.cs">
+    <Compile Include="Formularios\Admin\frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\GestionUsuarios.Designer.cs">
-      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    <Compile Include="Formularios\Admin\frmGestionUsuarios.Designer.cs">
+      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\Menu.cs">
+    <Compile Include="Formularios\Admin\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="Formularios\Admin\frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Acceso\frmRegistrar.cs">
+    <Compile Include="Formularios\Acceso\frmRegistrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Acceso\frmRegistrar.Designer.cs">
+    <Compile Include="Formularios\Acceso\frmRegistrar.Designer.cs">
       <DependentUpon>frmRegistrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Acceso\frmIniciar.cs">
+    <Compile Include="Formularios\Acceso\frmIniciar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Acceso\frmIniciar.Designer.cs">
+    <Compile Include="Formularios\Acceso\frmIniciar.Designer.cs">
       <DependentUpon>frmIniciar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Acceso\frmRecuperarContra.cs">
+    <Compile Include="Formularios\Acceso\frmRecuperarContra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Acceso\frmRecuperarContra.Designer.cs">
+    <Compile Include="Formularios\Acceso\frmRecuperarContra.Designer.cs">
       <DependentUpon>frmRecuperarContra.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Acceso\frmTerminos.cs">
+    <Compile Include="Formularios\Acceso\frmTerminos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Acceso\frmTerminos.Designer.cs">
+    <Compile Include="Formularios\Acceso\frmTerminos.Designer.cs">
       <DependentUpon>frmTerminos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Inicio\frmInicio.cs">
+    <Compile Include="Formularios\Inicio\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Inicio\frmInicio.Designer.cs">
+    <Compile Include="Formularios\Inicio\frmInicio.Designer.cs">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\frmConfiguracion.cs">
+    <Compile Include="Formularios\Usuario\frmConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User\frmConfiguracion.Designer.cs">
+    <Compile Include="Formularios\Usuario\frmConfiguracion.Designer.cs">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\frmHistorial.cs">
+    <Compile Include="Formularios\Usuario\frmHistorial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User\frmHistorial.Designer.cs">
+    <Compile Include="Formularios\Usuario\frmHistorial.Designer.cs">
       <DependentUpon>frmHistorial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\frmMenuUsuario.cs">
+    <Compile Include="Formularios\Usuario\frmMenuUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User\frmMenuUsuario.Designer.cs">
+    <Compile Include="Formularios\Usuario\frmMenuUsuario.Designer.cs">
       <DependentUpon>frmMenuUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\ucRecetaTarjeta.cs">
+    <Compile Include="Formularios\Usuario\ucRecetaTarjeta.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\User\ucRecetaTarjeta.Designer.cs">
+    <Compile Include="Formularios\Usuario\ucRecetaTarjeta.Designer.cs">
       <DependentUpon>ucRecetaTarjeta.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CueProvider.cs" />
@@ -244,78 +244,78 @@
     <Compile Include="Helpers\UiHelpers.cs" />
     <Compile Include="Interfaces\IPermisosUsuario.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
-    <Compile Include="Managers\GestorCatalogo.cs" />
-    <Compile Include="Managers\GestorDeMetricas.cs" />
-    <Compile Include="Managers\GestorIngredientes.cs" />
-    <Compile Include="Managers\GestorReceta.cs" />
-    <Compile Include="Managers\GestorInteracciones.cs" />
-    <Compile Include="Managers\GestorTarjetasRecetas.cs" />
-    <Compile Include="Managers\GestorUsuarios.cs" />
+    <Compile Include="Gestores\GestorCatalogo.cs" />
+    <Compile Include="Gestores\GestorDeMetricas.cs" />
+    <Compile Include="Gestores\GestorIngredientes.cs" />
+    <Compile Include="Gestores\GestorReceta.cs" />
+    <Compile Include="Gestores\GestorInteracciones.cs" />
+    <Compile Include="Gestores\GestorTarjetasRecetas.cs" />
+    <Compile Include="Gestores\GestorUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\CargarJson.cs" />
-    <Compile Include="Utilities\ControlJson.cs" />
-    <Compile Include="Utilities\GeneradorPdf.cs" />
-    <Compile Include="Utilities\TerminosData.cs" />
-    <Compile Include="Utilities\TextoJson.cs" />
-    <Compile Include="Utilities\Utilidades.cs" />
+    <Compile Include="Utilidades\CargarJson.cs" />
+    <Compile Include="Utilidades\ControlJson.cs" />
+    <Compile Include="Utilidades\GeneradorPdf.cs" />
+    <Compile Include="Utilidades\TerminosData.cs" />
+    <Compile Include="Utilidades\TextoJson.cs" />
+    <Compile Include="Utilidades\Utilidades.cs" />
     <None Include="logo_editable_con_le.png" />
     <None Include="replica_del_logo_en_.png" />
     <None Include="logo_para_softwar.png" />
     <None Include="Create a friendly, o.png" />
     <Content Include="Imagenes\UsuarioCheff.png" />
-    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarCategoria.resx">
-      <DependentUpon>FrmAgregarCategoria.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Recetas\frmAgregarCategoria.resx">
+      <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarIngrediente.resx">
-      <DependentUpon>FrmAgregarIngrediente.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Recetas\frmAgregarIngrediente.resx">
+      <DependentUpon>frmAgregarIngrediente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarPais.resx">
-      <DependentUpon>FrmAgregarPais.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Recetas\frmAgregarPais.resx">
+      <DependentUpon>frmAgregarPais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddReceta\FrmAgregarReceta.resx">
-      <DependentUpon>FrmAgregarReceta.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Recetas\frmAgregarReceta.resx">
+      <DependentUpon>frmAgregarReceta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddReceta\FrmModificarReceta.resx">
-      <DependentUpon>FrmModificarReceta.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Recetas\frmModificarReceta.resx">
+      <DependentUpon>frmModificarReceta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddReceta\FrmVerReceta.resx">
-      <DependentUpon>FrmVerReceta.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Recetas\frmVerReceta.resx">
+      <DependentUpon>frmVerReceta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\frmMetricas.resx">
+    <EmbeddedResource Include="Formularios\Admin\frmMetricas.resx">
       <DependentUpon>frmMetricas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\GestionUsuarios.resx">
-      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Admin\frmGestionUsuarios.resx">
+      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Admin\frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Acceso\frmRegistrar.resx">
+    <EmbeddedResource Include="Formularios\Acceso\frmRegistrar.resx">
       <DependentUpon>frmRegistrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Acceso\frmIniciar.resx">
+    <EmbeddedResource Include="Formularios\Acceso\frmIniciar.resx">
       <DependentUpon>frmIniciar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Acceso\frmRecuperarContra.resx">
+    <EmbeddedResource Include="Formularios\Acceso\frmRecuperarContra.resx">
       <DependentUpon>frmRecuperarContra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Acceso\frmTerminos.resx">
+    <EmbeddedResource Include="Formularios\Acceso\frmTerminos.resx">
       <DependentUpon>frmTerminos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Inicio\frmInicio.resx">
+    <EmbeddedResource Include="Formularios\Inicio\frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\frmConfiguracion.resx">
+    <EmbeddedResource Include="Formularios\Usuario\frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\frmHistorial.resx">
+    <EmbeddedResource Include="Formularios\Usuario\frmHistorial.resx">
       <DependentUpon>frmHistorial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\frmMenuUsuario.resx">
+    <EmbeddedResource Include="Formularios\Usuario\frmMenuUsuario.resx">
       <DependentUpon>frmMenuUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User\ucRecetaTarjeta.resx">
+    <EmbeddedResource Include="Formularios\Usuario\ucRecetaTarjeta.resx">
       <DependentUpon>ucRecetaTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

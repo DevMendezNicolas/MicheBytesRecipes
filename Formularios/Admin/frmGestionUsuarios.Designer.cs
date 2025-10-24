@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.Admin
 {
-    partial class GestionUsuarios
+    partial class frmGestionUsuarios
     {
         /// <summary>
         /// Required designer variable.

@@ -16,13 +16,13 @@ using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
-    public partial class FrmAgregarIngrediente : Form
+    public partial class frmAgregarIngrediente : Form
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorIngredientes gestorIngredientes = new GestorIngredientes();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
 
-        public FrmAgregarIngrediente()
+        public frmAgregarIngrediente()
         {
             InitializeComponent();
         }

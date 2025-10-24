@@ -1,6 +1,6 @@
 ﻿namespace MicheBytesRecipes.Forms.AddReceta
 {
-    partial class FrmModificarReceta
+    partial class frmModificarReceta
     {
         /// <summary>
         /// Required designer variable.

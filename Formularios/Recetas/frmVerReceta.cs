@@ -17,7 +17,7 @@ using System.Windows.Forms;
 namespace MicheBytesRecipes.Classes.Recetas
 {
 
-    public partial class FrmVerReceta : Form
+    public partial class frmVerReceta : Form
     {
         private Receta receta;
         GestorReceta gestorReceta = new GestorReceta();
@@ -28,7 +28,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         private string comentarioUsuario; //Almacena el comentario del usuario
         private Usuario usuario; 
 
-        public FrmVerReceta(Receta receta, Usuario usuarioLog)
+        public frmVerReceta(Receta receta, Usuario usuarioLog)
         {
             InitializeComponent();
             this.receta = receta;
