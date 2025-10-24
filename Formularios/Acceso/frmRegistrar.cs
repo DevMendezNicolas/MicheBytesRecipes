@@ -23,7 +23,7 @@ namespace MicheBytesRecipes.Forms.Auth
         private const string json_path = @"DatosJson/registroContenido.json";
         public frmRegistrar()
         {
-            
+
 
             InitializeComponent();
 
@@ -91,7 +91,7 @@ namespace MicheBytesRecipes.Forms.Auth
         private void FrmRegister_Load(object sender, EventArgs e)
         {
             //Hacer transparentes los labels formulario
-            foreach (Control control in this.Controls )
+            foreach (Control control in this.Controls)
             {
                 if (control is Label)
                 {
@@ -121,7 +121,7 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             txtContra.UseSystemPasswordChar = true;
             txtContra.PasswordChar = '●';
-            
+
         }
 
         private void btnViewAgain_MouseDown(object sender, MouseEventArgs e)
@@ -142,24 +142,24 @@ namespace MicheBytesRecipes.Forms.Auth
 
 
             eprCampos.Clear();
-            if(string.IsNullOrWhiteSpace(txtNombre.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
                 return;
             }
-            if(string.IsNullOrWhiteSpace(txtApellido.Text))
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
                 eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
                 return;
             }
-            if(string.IsNullOrWhiteSpace(txtTelefono.Text))
+            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
                 return;
             }
             if (txtTelefono.Text.Length < 6)
             {
-                eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono valido");
+                eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono mayor a 6 dígitos");
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
@@ -179,7 +179,7 @@ namespace MicheBytesRecipes.Forms.Auth
                 eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
                 return;
             }
-            if(txtContra.Text.Length < 6)
+            if (txtContra.Text.Length < 6)
             {
                 eprCampos.SetError(txtContra, "La contraseña debe tener al menos 6 caracteres.");
                 return;
@@ -192,7 +192,7 @@ namespace MicheBytesRecipes.Forms.Auth
                 return;
             }
 
-            if(!chkTerminos.Checked)
+            if (!chkTerminos.Checked)
             {
                 eprCampos.SetError(chkTerminos, "Debes aceptar los términos y condiciones.");
                 return;
@@ -208,18 +208,25 @@ namespace MicheBytesRecipes.Forms.Auth
                 }
             }
 
+            if (Usuario.ValidarEmail(txtEmail.Text))
+            {
 
 
-            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(),gestorUsuarios.HashearContraseña(txtContra.Text),fotoBytes);
-            
-            gestorUsuarios.AgregarUsuario(nuevoUsuario);
+                Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(), gestorUsuarios.HashearContraseña(txtContra.Text), fotoBytes);
 
-            limpiarCampos();
-            MessageBox.Show("✅ Usuario registrado correctamente.","Registro exitoso",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                gestorUsuarios.AgregarUsuario(nuevoUsuario);
 
+                limpiarCampos();
+                MessageBox.Show("✅ Usuario registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
-            this.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("❌ Por favor ingrese un correo electrónico válido.", "Correo inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                txtEmail.SelectAll();
+            }
 
         }
 
@@ -236,7 +243,7 @@ namespace MicheBytesRecipes.Forms.Auth
                 e.KeyChar = char.ToUpper(e.KeyChar);
             }
 
-            if(e.KeyChar == 13)
+            if (e.KeyChar == 13)
             {
                 txtApellido.Focus();
             }
@@ -276,7 +283,6 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Validar que sea un email
             if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && e.KeyChar != '_' && e.KeyChar != '-')
             {
                 e.Handled = true;

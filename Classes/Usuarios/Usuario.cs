@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Mail;
 
 namespace MicheBytesRecipes.Classes
 {
@@ -45,14 +46,23 @@ namespace MicheBytesRecipes.Classes
             this.FechaBaja = null;
         }
         // Validaciones
-        public static bool ValidarEmail(string mail)
+        public static bool ValidarEmail(string email)
         {
             try
             {
-                var email = new MailAddress(mail.Trim());
-                return email.Address == mail.Trim();
+                MailAddress m = new MailAddress(email);
+
+                // Validación adicional: el dominio debe contener un punto
+                if (!m.Host.Contains("."))
+                    return false;
+
+                return true;
             }
-            catch
+            catch (FormatException)
+            {
+                return false;
+            }
+            catch (ArgumentException)
             {
                 return false;
             }
@@ -150,7 +160,7 @@ namespace MicheBytesRecipes.Classes
                 throw new ArgumentException("El apellido no es válido.");
             if (string.IsNullOrWhiteSpace(telefono) || telefono.Length < 5)
                 throw new ArgumentException("El teléfono no es válido.");
-            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@") || !email.Contains(".com"))
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
                 throw new ArgumentException("El email no es válido.");
             if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Length < 6)
                 throw new ArgumentException("La contraseña no es válida.");
