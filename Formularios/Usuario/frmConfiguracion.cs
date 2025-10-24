@@ -158,27 +158,40 @@ namespace MicheBytesRecipes.Forms.User
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
+                txtNombre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
                 eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
+                txtApellido.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
+                txtTelefono.Focus();
+                return;
+            }
+            if (txtTelefono.Text.Length < 6)
+            {
+                eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono mayor a 6 dígitos");
+                txtTelefono.Focus();
+                txtTelefono.SelectAll();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
+                txtEmail.Focus();
                 return;
             }
 
             if (!Usuario.ValidarEmail(txtEmail.Text))
             {
                 eprCampos.SetError(txtEmail, "El correo electrónico no es válido.");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
                 return;
             }
 
@@ -214,23 +227,29 @@ namespace MicheBytesRecipes.Forms.User
                 if (string.IsNullOrWhiteSpace(txtContraActual.Text))
                 {
                     eprCampos.SetError(txtContraActual, "La contraseña actual es obligatoria.");
+                    txtContraActual.Focus();
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(txtContraNueva.Text))
                 {
                     eprCampos.SetError(txtContraNueva, "La nueva contraseña es obligatoria.");
+                    txtContraNueva.Focus();
                     return;
                 }
 
                 if (txtContraNueva.Text.Length < 6)
                 {
                     eprCampos.SetError(txtContraNueva, "La nueva contraseña debe tener al menos 6 caracteres.");
+                    txtContraNueva.Focus();
+                    txtContraNueva.SelectAll();
                     return;
                 }
                 if (txtContraActual.Text == txtContraNueva.Text)
                 {
                     eprCampos.SetError(txtContraActual, "Las contraseñas no deben coincidir");
                     eprCampos.SetError(txtContraNueva, "Las contraseñas no deben coincidir");
+                    txtContraActual.Focus();
+                    txtContraActual.SelectAll();
                     return;
                 }
 

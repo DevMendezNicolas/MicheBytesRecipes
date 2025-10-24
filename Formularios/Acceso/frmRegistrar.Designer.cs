@@ -48,6 +48,7 @@
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.lbCambiarImagen = new System.Windows.Forms.LinkLabel();
             this.btnViewAgain = new System.Windows.Forms.Button();
             this.btnViewContra = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.lblTituloLeft = new System.Windows.Forms.Label();
             this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lbCambiarImagen = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
@@ -294,6 +294,18 @@
             this.pnlRight.TabIndex = 0;
             this.pnlRight.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRight_Paint);
             // 
+            // lbCambiarImagen
+            // 
+            this.lbCambiarImagen.AutoSize = true;
+            this.lbCambiarImagen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCambiarImagen.Location = new System.Drawing.Point(233, 152);
+            this.lbCambiarImagen.Name = "lbCambiarImagen";
+            this.lbCambiarImagen.Size = new System.Drawing.Size(136, 21);
+            this.lbCambiarImagen.TabIndex = 23;
+            this.lbCambiarImagen.TabStop = true;
+            this.lbCambiarImagen.Text = "Cambiar Imagen";
+            this.lbCambiarImagen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbCambiarImagen_LinkClicked);
+            // 
             // btnViewAgain
             // 
             this.btnViewAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -407,18 +419,6 @@
             // eprCampos
             // 
             this.eprCampos.ContainerControl = this;
-            // 
-            // lbCambiarImagen
-            // 
-            this.lbCambiarImagen.AutoSize = true;
-            this.lbCambiarImagen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCambiarImagen.Location = new System.Drawing.Point(233, 152);
-            this.lbCambiarImagen.Name = "lbCambiarImagen";
-            this.lbCambiarImagen.Size = new System.Drawing.Size(136, 21);
-            this.lbCambiarImagen.TabIndex = 23;
-            this.lbCambiarImagen.TabStop = true;
-            this.lbCambiarImagen.Text = "Cambiar Imagen";
-            this.lbCambiarImagen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbCambiarImagen_LinkClicked);
             // 
             // frmRegistrar
             // 

@@ -79,13 +79,6 @@ namespace MicheBytesRecipes.Forms.Auth
             frmLogin.Show();
             this.Hide();
 
-            /*
-            frmLogin login = new frmLogin();
-            this.Close();
-            login.Show();
-            */
-
-
         }
 
         private void FrmRegister_Load(object sender, EventArgs e)
@@ -145,43 +138,54 @@ namespace MicheBytesRecipes.Forms.Auth
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
+                txtNombre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
                 eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
+                txtApellido.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
+                txtTelefono.Focus();
                 return;
             }
             if (txtTelefono.Text.Length < 6)
             {
                 eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono mayor a 6 dígitos");
+                txtTelefono.Focus();
+                txtTelefono.SelectAll();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
+                txtEmail.Focus();
                 return;
             }
 
             if (!Usuario.ValidarEmail(txtEmail.Text))
             {
                 eprCampos.SetError(txtEmail, "El correo electrónico no es válido.");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtContra.Text))
             {
                 eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
+                txtContra.Focus();
                 return;
             }
             if (txtContra.Text.Length < 6)
             {
                 eprCampos.SetError(txtContra, "La contraseña debe tener al menos 6 caracteres.");
+                txtContra.Focus();
+                txtContra.SelectAll();
                 return;
             }
 
@@ -189,6 +193,8 @@ namespace MicheBytesRecipes.Forms.Auth
             {
                 eprCampos.SetError(txtContra, "Las contraseña no coincinden");
                 eprCampos.SetError(txtRepContra, "Las contraseña no coincinden");
+                txtContra.Focus();
+
                 return;
             }
 
@@ -208,25 +214,14 @@ namespace MicheBytesRecipes.Forms.Auth
                 }
             }
 
-            if (Usuario.ValidarEmail(txtEmail.Text))
-            {
+            Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(), gestorUsuarios.HashearContraseña(txtContra.Text), fotoBytes);
 
+            gestorUsuarios.AgregarUsuario(nuevoUsuario);
 
-                Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(), gestorUsuarios.HashearContraseña(txtContra.Text), fotoBytes);
+            limpiarCampos();
+            MessageBox.Show("✅ Usuario registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                gestorUsuarios.AgregarUsuario(nuevoUsuario);
-
-                limpiarCampos();
-                MessageBox.Show("✅ Usuario registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("❌ Por favor ingrese un correo electrónico válido.", "Correo inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Focus();
-                txtEmail.SelectAll();
-            }
+            this.Close();
 
         }
 
