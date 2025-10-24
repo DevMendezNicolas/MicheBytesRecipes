@@ -402,6 +402,7 @@
             // 
             // cboDificultad
             // 
+            this.cboDificultad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDificultad.FormattingEnabled = true;
             this.cboDificultad.Location = new System.Drawing.Point(536, 154);
             this.cboDificultad.Name = "cboDificultad";
@@ -410,6 +411,7 @@
             // 
             // cboPais
             // 
+            this.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPais.FormattingEnabled = true;
             this.cboPais.Location = new System.Drawing.Point(302, 154);
             this.cboPais.Name = "cboPais";
@@ -418,6 +420,7 @@
             // 
             // cboCategoria
             // 
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(45, 154);
             this.cboCategoria.Name = "cboCategoria";

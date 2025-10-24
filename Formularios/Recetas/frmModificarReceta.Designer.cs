@@ -201,6 +201,7 @@
             // 
             // cboDificultad
             // 
+            this.cboDificultad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDificultad.FormattingEnabled = true;
             this.cboDificultad.Location = new System.Drawing.Point(22, 240);
             this.cboDificultad.Name = "cboDificultad";
@@ -219,6 +220,7 @@
             // 
             // cboCategoria
             // 
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(22, 186);
             this.cboCategoria.Name = "cboCategoria";
@@ -227,6 +229,7 @@
             // 
             // cboPais
             // 
+            this.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPais.FormattingEnabled = true;
             this.cboPais.Location = new System.Drawing.Point(22, 130);
             this.cboPais.Name = "cboPais";
@@ -288,7 +291,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // FrmModificarReceta
+            // frmModificarReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -317,7 +320,7 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FrmModificarReceta";
+            this.Name = "frmModificarReceta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmModificarReceta";
             this.Load += new System.EventHandler(this.FrmModificarReceta_Load);

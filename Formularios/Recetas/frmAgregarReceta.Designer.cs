@@ -108,6 +108,7 @@
             // 
             // CBOpais
             // 
+            this.CBOpais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBOpais.FormattingEnabled = true;
             this.CBOpais.Location = new System.Drawing.Point(12, 131);
             this.CBOpais.Name = "CBOpais";
@@ -116,6 +117,7 @@
             // 
             // CBOcategoria
             // 
+            this.CBOcategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBOcategoria.FormattingEnabled = true;
             this.CBOcategoria.Location = new System.Drawing.Point(12, 187);
             this.CBOcategoria.Name = "CBOcategoria";
@@ -134,6 +136,7 @@
             // 
             // CBOdificultad
             // 
+            this.CBOdificultad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBOdificultad.FormattingEnabled = true;
             this.CBOdificultad.Location = new System.Drawing.Point(12, 241);
             this.CBOdificultad.Name = "CBOdificultad";
@@ -288,7 +291,7 @@
             this.btbAgregarCategorias.UseVisualStyleBackColor = true;
             this.btbAgregarCategorias.Click += new System.EventHandler(this.btbAgregarCategorias_Click);
             // 
-            // FrmAgregarReceta
+            // frmAgregarReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -319,7 +322,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.Name = "FrmAgregarReceta";
+            this.Name = "frmAgregarReceta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAgregarReceta";
             this.Load += new System.EventHandler(this.FrmAgregarReceta_Load);

@@ -102,6 +102,7 @@
             // 
             // cboTipo
             // 
+            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipo.FormattingEnabled = true;
             this.cboTipo.Location = new System.Drawing.Point(15, 110);
             this.cboTipo.Name = "cboTipo";
@@ -110,6 +111,7 @@
             // 
             // cboUnidad
             // 
+            this.cboUnidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnidad.FormattingEnabled = true;
             this.cboUnidad.Location = new System.Drawing.Point(15, 152);
             this.cboUnidad.Name = "cboUnidad";
@@ -141,7 +143,7 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // FrmAgregarIngrediente
+            // frmAgregarIngrediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,7 +161,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.Name = "FrmAgregarIngrediente";
+            this.Name = "frmAgregarIngrediente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAgregarIngrediente";
             this.Load += new System.EventHandler(this.FrmAgregarIngrediente_Load);

@@ -115,6 +115,7 @@
             // 
             // cboDificultad
             // 
+            this.cboDificultad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDificultad.FormattingEnabled = true;
             this.cboDificultad.Location = new System.Drawing.Point(566, 164);
             this.cboDificultad.Name = "cboDificultad";
@@ -123,6 +124,7 @@
             // 
             // cboPais
             // 
+            this.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPais.FormattingEnabled = true;
             this.cboPais.Location = new System.Drawing.Point(332, 164);
             this.cboPais.Name = "cboPais";
@@ -131,6 +133,7 @@
             // 
             // cboCategoria
             // 
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(75, 164);
             this.cboCategoria.Name = "cboCategoria";
@@ -270,7 +273,7 @@
             this.btnHistorialFav.UseVisualStyleBackColor = true;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
-            // MenuUser
+            // frmMenuUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -281,7 +284,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "MenuUser";
+            this.Name = "frmMenuUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuUser_FormClosing);
