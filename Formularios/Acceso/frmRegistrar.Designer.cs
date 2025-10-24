@@ -421,6 +421,10 @@
             // 
             this.eprCampos.ContainerControl = this;
             // 
+            // toolTipCajas
+            // 
+            this.toolTipCajas.IsBalloon = true;
+            // 
             // frmRegistrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);

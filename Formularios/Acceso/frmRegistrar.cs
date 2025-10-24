@@ -137,6 +137,8 @@ namespace MicheBytesRecipes.Forms.Auth
             eprCampos.Clear();
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su nombre", txtNombre, txtNombre.Width, txtNombre.Height -60, 5000);
                 ShakeControl(txtNombre);
                 eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
                 txtNombre.Focus();
@@ -144,6 +146,8 @@ namespace MicheBytesRecipes.Forms.Auth
             }
             if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su apellido", txtApellido, txtApellido.Width, txtApellido.Height -60, 5000);
                 ShakeControl(txtApellido);
                 eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
                 txtApellido.Focus();
@@ -151,6 +155,8 @@ namespace MicheBytesRecipes.Forms.Auth
             }
             if (string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese un numero de teléfono", txtTelefono, txtTelefono.Width, txtTelefono.Height -60, 5000); 
                 ShakeControl(txtTelefono);
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
                 txtTelefono.Focus();
@@ -158,13 +164,18 @@ namespace MicheBytesRecipes.Forms.Auth
             }
             if (txtTelefono.Text.Length < 6)
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese un numero de \nteléfono mayor a 6 dígitos", txtTelefono, txtTelefono.Width, txtTelefono.Height -60,5000);
                 ShakeControl(txtTelefono);
                 eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono mayor a 6 dígitos");
-                //txtTelefono.SelectAll();
+
+                 
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su correo electrónico", txtEmail, txtEmail.Width, txtEmail.Height -60, 5000);
                 ShakeControl(txtEmail);
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
                 txtEmail.Focus();
@@ -173,6 +184,8 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (!Usuario.ValidarEmail(txtEmail.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese un correo electrónico\n válido\nEj: 'michebytes@hotmail.com' ", txtEmail, txtEmail.Width, txtEmail.Height - 60, 5000);
                 ShakeControl(txtEmail);
                 eprCampos.SetError(txtEmail, "El correo electrónico no es válido.");
                 txtEmail.Focus();
@@ -182,6 +195,8 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (string.IsNullOrWhiteSpace(txtContra.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su contraseña", txtContra, txtEmail.Width, txtContra.Height - 60, 5000);
                 ShakeControl(txtContra);
                 eprCampos.SetError(txtContra, "La contraseña es obligatoria.");
                 txtContra.Focus();
@@ -189,6 +204,8 @@ namespace MicheBytesRecipes.Forms.Auth
             }
             if (txtContra.Text.Length < 6)
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese una contraseña con mas de 6 caracteres.", txtContra, txtEmail.Width, txtContra.Height - 60, 5000);
                 ShakeControl(txtContra);
                 eprCampos.SetError(txtContra, "La contraseña debe tener al menos 6 caracteres.");
                 txtContra.Focus();
@@ -198,6 +215,8 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (txtContra.Text != txtRepContra.Text)
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Las contraseña deben coincidir", txtContra, txtEmail.Width, txtContra.Height - 60, 5000);
                 ShakeControl(txtRepContra);
                 ShakeControl(txtContra);
                 eprCampos.SetError(txtContra, "Las contraseña no coincinden");
@@ -210,6 +229,8 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (!chkTerminos.Checked)
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Acepte los términos y condiciones para continuar",chkTerminos,chkTerminos.Width,chkTerminos.Height -60,5000);
                 eprCampos.SetError(chkTerminos, "Debes aceptar los términos y condiciones.");
                 return;
             }
@@ -357,8 +378,7 @@ namespace MicheBytesRecipes.Forms.Auth
             var originalColor = textBox.ForeColor;
 
             // 🔹 Estilo de error (fondo y borde rojo)
-            textBox.BackColor = Color.FromArgb(255, 235, 238); // fondo rojo muy suave
-            textBox.BorderStyle = BorderStyle.FixedSingle;
+            textBox.BackColor = Color.FromArgb(255, 200, 200); // fondo rojo muy suave
             textBox.ForeColor = Color.Red;
 
             // 🔹 Pone foco
