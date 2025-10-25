@@ -55,6 +55,7 @@
             // 
             // pnlContenido
             // 
+            this.pnlContenido.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlContenido.Controls.Add(this.lblTituloMichebyte);
             this.pnlContenido.Controls.Add(this.pnlTarjetas);
             this.pnlContenido.Controls.Add(this.btnReinicio);
@@ -79,6 +80,7 @@
             this.lblTituloMichebyte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTituloMichebyte.AutoSize = true;
             this.lblTituloMichebyte.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloMichebyte.ForeColor = System.Drawing.Color.Orange;
             this.lblTituloMichebyte.Location = new System.Drawing.Point(326, 24);
             this.lblTituloMichebyte.Name = "lblTituloMichebyte";
             this.lblTituloMichebyte.Size = new System.Drawing.Size(245, 32);
@@ -95,9 +97,12 @@
             // 
             // btnReinicio
             // 
+            this.btnReinicio.AutoSize = true;
+            this.btnReinicio.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReinicio.ForeColor = System.Drawing.Color.Orange;
             this.btnReinicio.Location = new System.Drawing.Point(772, 160);
             this.btnReinicio.Name = "btnReinicio";
-            this.btnReinicio.Size = new System.Drawing.Size(131, 29);
+            this.btnReinicio.Size = new System.Drawing.Size(147, 30);
             this.btnReinicio.TabIndex = 7;
             this.btnReinicio.Text = "🔄 Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = true;
@@ -105,6 +110,8 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.Orange;
             this.btnBuscar.Location = new System.Drawing.Point(772, 87);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(131, 29);
@@ -116,6 +123,7 @@
             // cboDificultad
             // 
             this.cboDificultad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDificultad.ForeColor = System.Drawing.Color.Orange;
             this.cboDificultad.FormattingEnabled = true;
             this.cboDificultad.Location = new System.Drawing.Point(566, 164);
             this.cboDificultad.Name = "cboDificultad";
@@ -125,6 +133,7 @@
             // cboPais
             // 
             this.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPais.ForeColor = System.Drawing.Color.Orange;
             this.cboPais.FormattingEnabled = true;
             this.cboPais.Location = new System.Drawing.Point(332, 164);
             this.cboPais.Name = "cboPais";
@@ -134,6 +143,7 @@
             // cboCategoria
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.ForeColor = System.Drawing.Color.Orange;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(75, 164);
             this.cboCategoria.Name = "cboCategoria";
@@ -144,10 +154,11 @@
             // 
             this.lblDificultad.AutoSize = true;
             this.lblDificultad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDificultad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDificultad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDificultad.ForeColor = System.Drawing.Color.Orange;
             this.lblDificultad.Location = new System.Drawing.Point(562, 135);
             this.lblDificultad.Name = "lblDificultad";
-            this.lblDificultad.Size = new System.Drawing.Size(77, 20);
+            this.lblDificultad.Size = new System.Drawing.Size(81, 20);
             this.lblDificultad.TabIndex = 2;
             this.lblDificultad.Text = "Dificultad:";
             // 
@@ -155,10 +166,11 @@
             // 
             this.lblPais.AutoSize = true;
             this.lblPais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPais.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPais.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPais.ForeColor = System.Drawing.Color.Orange;
             this.lblPais.Location = new System.Drawing.Point(328, 136);
             this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(37, 20);
+            this.lblPais.Size = new System.Drawing.Size(41, 20);
             this.lblPais.TabIndex = 2;
             this.lblPais.Text = "País:";
             // 
@@ -166,10 +178,11 @@
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.ForeColor = System.Drawing.Color.Orange;
             this.lblCategoria.Location = new System.Drawing.Point(71, 134);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(77, 20);
+            this.lblCategoria.Size = new System.Drawing.Size(80, 20);
             this.lblCategoria.TabIndex = 2;
             this.lblCategoria.Text = "Categoría:";
             // 
@@ -177,6 +190,7 @@
             // 
             this.txtBuscarReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarReceta.ForeColor = System.Drawing.Color.Orange;
             this.txtBuscarReceta.Location = new System.Drawing.Point(257, 87);
             this.txtBuscarReceta.Name = "txtBuscarReceta";
             this.txtBuscarReceta.Size = new System.Drawing.Size(488, 29);
@@ -187,15 +201,17 @@
             // 
             this.lblBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.ForeColor = System.Drawing.Color.Orange;
             this.lblBuscar.Location = new System.Drawing.Point(49, 90);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(192, 21);
+            this.lblBuscar.Size = new System.Drawing.Size(194, 20);
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Buscar receta por nombre:";
             // 
             // pnlNavegacion
             // 
+            this.pnlNavegacion.BackColor = System.Drawing.Color.Orange;
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
             this.pnlNavegacion.Controls.Add(this.btnCerrarSesion);
@@ -221,7 +237,8 @@
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(13, 116);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(198, 74);
@@ -231,46 +248,58 @@
             // 
             // btnCerrarSesion
             // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.Red;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Location = new System.Drawing.Point(13, 572);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(198, 42);
             this.btnCerrarSesion.TabIndex = 10;
             this.btnCerrarSesion.Text = "&Cerrar sesión ";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // btnConfig
             // 
+            this.btnConfig.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfig.ForeColor = System.Drawing.Color.White;
             this.btnConfig.Location = new System.Drawing.Point(13, 525);
             this.btnConfig.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(198, 42);
             this.btnConfig.TabIndex = 10;
             this.btnConfig.Text = "&Configuración";
-            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // btnHistorialRecetas
             // 
+            this.btnHistorialRecetas.BackColor = System.Drawing.Color.Gold;
+            this.btnHistorialRecetas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorialRecetas.ForeColor = System.Drawing.Color.White;
             this.btnHistorialRecetas.Location = new System.Drawing.Point(13, 475);
             this.btnHistorialRecetas.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialRecetas.Name = "btnHistorialRecetas";
             this.btnHistorialRecetas.Size = new System.Drawing.Size(198, 42);
             this.btnHistorialRecetas.TabIndex = 9;
             this.btnHistorialRecetas.Text = "&Mi Historial";
-            this.btnHistorialRecetas.UseVisualStyleBackColor = true;
+            this.btnHistorialRecetas.UseVisualStyleBackColor = false;
             this.btnHistorialRecetas.Click += new System.EventHandler(this.btnHistorialRecetas_Click);
             // 
             // btnHistorialFav
             // 
+            this.btnHistorialFav.BackColor = System.Drawing.Color.Salmon;
+            this.btnHistorialFav.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorialFav.ForeColor = System.Drawing.Color.White;
             this.btnHistorialFav.Location = new System.Drawing.Point(13, 210);
             this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialFav.Name = "btnHistorialFav";
             this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
             this.btnHistorialFav.TabIndex = 8;
             this.btnHistorialFav.Text = "&Ver Favoritas";
-            this.btnHistorialFav.UseVisualStyleBackColor = true;
+            this.btnHistorialFav.UseVisualStyleBackColor = false;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
             // frmMenuUsuario

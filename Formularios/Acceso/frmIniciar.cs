@@ -119,6 +119,11 @@ namespace MicheBytesRecipes
             }
 
             Usuario usuarioActivo = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
+            if (usuarioActivo == null)
+            {
+                eprIngresar.SetError(txtEmail, "El usuario no existe.");
+                return;
+            }
 
             if (usuarioActivo.EsActivo() == false)
             {
