@@ -64,6 +64,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             lstIngredientes.HeaderStyle = ColumnHeaderStyle.None;      // Oculta encabezado si no usás columnas
             lstIngredientes.Alignment = ListViewAlignment.Top;         // Alineación superior
             lstIngredientes.LabelWrap = true;                          // Permite que el texto se ajuste si es largo
+            
             // Estetica comentarios
             lstComentarios.MultiColumn = false;                  // Vista vertical
             lstComentarios.HorizontalScrollbar = false;          // Sin scroll horizontal
@@ -76,6 +77,16 @@ namespace MicheBytesRecipes.Classes.Recetas
             lstComentarios.IntegralHeight = false;               // Permite ajustar altura sin recortes
             lstComentarios.SelectionMode = SelectionMode.One;    // Selección única (podés cambiar a MultiSimple si querés selección múltiple)
 
+            // Estetica RichTextBox Instrucciones
+            rtbInstrucciones.BorderStyle = BorderStyle.FixedSingle; // Borde definido
+            rtbInstrucciones.Font = new Font("Segoe UI", 10);      // Tipografía moderna y legible
+            rtbInstrucciones.ForeColor = Color.DarkSlateGray;      // Texto elegante
+            rtbInstrucciones.BackColor = Color.WhiteSmoke;         // Fondo suave
+            rtbInstrucciones.ReadOnly = true;                      // Solo lectura
+            rtbInstrucciones.ScrollBars = RichTextBoxScrollBars.Vertical; // Scroll vertical
+            rtbInstrucciones.WordWrap = true;                      // Ajuste de línea
+            rtbInstrucciones.HideSelection = false;                // Mantiene selección visible al perder foco
+            
 
 
 
@@ -124,7 +135,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                 lblDescripcion.Text = receta.Descripcion;
                 lblDificultad.Text = receta.NivelDificultad.ToString();
                 lblTiempo.Text = receta.TiempoPreparacion.ToString(@"hh\:mm");
-                lblInstruccion.Text = receta.Instrucciones;
+                //lblInstruccion.Text = receta.Instrucciones;
+                rtbInstrucciones.Text = receta.Instrucciones;
 
                 //Cargar la imagen de la receta si existe
                 if (receta.ImagenReceta != null && receta.ImagenReceta.Length > 0)
@@ -330,7 +342,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 GeneradorPdf.ExportarRecetaAPdf(
                     lblNombre.Text,
                     lblDescripcion.Text,
-                    lblInstruccion.Text,
+                    rtbInstrucciones.Text,
                     foto,
                     ingredientes,
                     lblPais.Text,

@@ -117,22 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblInstruccion.Text" xml:space="preserve">
-    <value>1. **Preparar las milanesas**  
-   - Pasá las fetas de carne (nalga, bola de lomo o cuadrada) por huevo batido con sal, pimienta y ajo.  
-   - Rebozalas en pan rallado, presionando bien para que se adhiera.  
-   - Freílas en aceite caliente hasta que estén doradas. Escurrí sobre papel absorbente.
-
-2. **Armado napolitano**  
-   - Colocá las milanesas en una fuente para horno.  
-   - Cubrilas con una cucharada de salsa de tomate (puede ser casera o envasada).  
-   - Agregá una feta de jamón cocido y una de queso (tipo mozzarella o cremoso).
-
-3. **Gratinado final**  
-   - Llevá la fuente al horno precalentado (180–200 °C) por unos 10 minutos, hasta que el queso se derrita y gratine.
-
-4. **Presentación**  
-   - Serví con papas fritas, puré o ensalada. Podés espolvorear con orégano o perejil fresco.
-</value>
-  </data>
 </root>
