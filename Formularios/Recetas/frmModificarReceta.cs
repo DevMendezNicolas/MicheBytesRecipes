@@ -131,10 +131,33 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 receta.NivelDificultad = (Dificultad)cboDificultad.SelectedItem;
 
                 // Imagen solo si cambio
-                if (!string.IsNullOrEmpty(nuevaRuta) && File.Exists(nuevaRuta))
+                /*
+                 CODIGO VIEJO
+                 if (!string.IsNullOrEmpty(nuevaRuta) && File.Exists(nuevaRuta))
                 {
                     receta.ImagenReceta = File.ReadAllBytes(nuevaRuta);
                 }
+                 */
+                if (pcbImagen.Image != null)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        
+                        pcbImagen.Image.Save(ms, pcbImagen.Image.RawFormat);
+                        receta.ImagenReceta = ms.ToArray();
+                    }
+                }
+                else
+                {
+                    using (var ms = new MemoryStream()) {
+                        // Si no hay imagen, establecer un array vacío
+                        receta.ImagenReceta = ms.ToArray();
+                    }
+                    receta.ImagenReceta = null; // Si no hay imagen, establecer como null
+                }
+
+
+
 
                 // Actualizar ingredientes seleccionados
                 var ingredientesSeleccionados = clbIngredientes.CheckedItems.Cast<Ingrediente>().Select(i => i.IngredienteId).ToList();
