@@ -59,7 +59,6 @@
             this.lblTituloLeft = new System.Windows.Forms.Label();
             this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolTipCajas = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
@@ -127,10 +126,11 @@
             this.chkTerminos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkTerminos.AutoSize = true;
             this.chkTerminos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkTerminos.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTerminos.ForeColor = System.Drawing.Color.White;
             this.chkTerminos.Location = new System.Drawing.Point(85, 538);
             this.chkTerminos.Name = "chkTerminos";
-            this.chkTerminos.Size = new System.Drawing.Size(169, 25);
+            this.chkTerminos.Size = new System.Drawing.Size(193, 27);
             this.chkTerminos.TabIndex = 7;
             this.chkTerminos.Text = "He leído y acepto los";
             this.chkTerminos.UseVisualStyleBackColor = true;
@@ -139,9 +139,10 @@
             // 
             this.lblLinkTerminos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLinkTerminos.AutoSize = true;
-            this.lblLinkTerminos.Location = new System.Drawing.Point(260, 540);
+            this.lblLinkTerminos.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLinkTerminos.Location = new System.Drawing.Point(285, 540);
             this.lblLinkTerminos.Name = "lblLinkTerminos";
-            this.lblLinkTerminos.Size = new System.Drawing.Size(174, 21);
+            this.lblLinkTerminos.Size = new System.Drawing.Size(190, 23);
             this.lblLinkTerminos.TabIndex = 8;
             this.lblLinkTerminos.TabStop = true;
             this.lblLinkTerminos.Text = "términos  y condiciones";
@@ -153,6 +154,8 @@
             this.btnRegistrar.BackColor = System.Drawing.Color.OrangeRed;
             this.btnRegistrar.FlatAppearance.BorderSize = 0;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
             this.btnRegistrar.Location = new System.Drawing.Point(144, 583);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(290, 37);
@@ -167,7 +170,7 @@
             this.LblCuenta.AutoSize = true;
             this.LblCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LblCuenta.ForeColor = System.Drawing.Color.White;
-            this.LblCuenta.Location = new System.Drawing.Point(197, 629);
+            this.LblCuenta.Location = new System.Drawing.Point(151, 629);
             this.LblCuenta.Name = "LblCuenta";
             this.LblCuenta.Size = new System.Drawing.Size(161, 21);
             this.LblCuenta.TabIndex = 10;
@@ -177,7 +180,7 @@
             // 
             this.LinkIniciar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LinkIniciar.AutoSize = true;
-            this.LinkIniciar.Location = new System.Drawing.Point(351, 629);
+            this.LinkIniciar.Location = new System.Drawing.Point(332, 629);
             this.LinkIniciar.Name = "LinkIniciar";
             this.LinkIniciar.Size = new System.Drawing.Size(102, 21);
             this.LinkIniciar.TabIndex = 10;
@@ -189,10 +192,11 @@
             // 
             this.lblApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblApellido.AutoSize = true;
+            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellido.ForeColor = System.Drawing.Color.White;
             this.lblApellido.Location = new System.Drawing.Point(102, 228);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(67, 21);
+            this.lblApellido.Size = new System.Drawing.Size(75, 21);
             this.lblApellido.TabIndex = 13;
             this.lblApellido.Text = "Apellido";
             // 
@@ -200,10 +204,11 @@
             // 
             this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.Color.White;
             this.lblEmail.Location = new System.Drawing.Point(102, 350);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(48, 21);
+            this.lblEmail.Size = new System.Drawing.Size(53, 21);
             this.lblEmail.TabIndex = 14;
             this.lblEmail.Text = "Email";
             // 
@@ -211,10 +216,11 @@
             // 
             this.lblContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblContra.AutoSize = true;
+            this.lblContra.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContra.ForeColor = System.Drawing.Color.White;
             this.lblContra.Location = new System.Drawing.Point(102, 411);
             this.lblContra.Name = "lblContra";
-            this.lblContra.Size = new System.Drawing.Size(89, 21);
+            this.lblContra.Size = new System.Drawing.Size(96, 21);
             this.lblContra.TabIndex = 15;
             this.lblContra.Text = "Contraseña";
             // 
@@ -222,10 +228,11 @@
             // 
             this.lblRepContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRepContra.AutoSize = true;
+            this.lblRepContra.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRepContra.ForeColor = System.Drawing.Color.White;
             this.lblRepContra.Location = new System.Drawing.Point(102, 471);
             this.lblRepContra.Name = "lblRepContra";
-            this.lblRepContra.Size = new System.Drawing.Size(140, 21);
+            this.lblRepContra.Size = new System.Drawing.Size(153, 21);
             this.lblRepContra.TabIndex = 16;
             this.lblRepContra.Text = "Repetir contraseña";
             // 
@@ -256,10 +263,11 @@
             // 
             this.lblTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefono.ForeColor = System.Drawing.Color.White;
             this.lblTelefono.Location = new System.Drawing.Point(102, 288);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(68, 21);
+            this.lblTelefono.Size = new System.Drawing.Size(77, 21);
             this.lblTelefono.TabIndex = 18;
             this.lblTelefono.Text = "Telefono";
             // 
@@ -345,10 +353,11 @@
             // 
             this.lblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(102, 170);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(68, 21);
+            this.lblNombre.Size = new System.Drawing.Size(73, 21);
             this.lblNombre.TabIndex = 12;
             this.lblNombre.Text = "Nombre";
             // 
@@ -421,10 +430,6 @@
             // 
             this.eprCampos.ContainerControl = this;
             // 
-            // toolTipCajas
-            // 
-            this.toolTipCajas.IsBalloon = true;
-            // 
             // frmRegistrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -481,6 +486,5 @@
         private System.Windows.Forms.Button btnViewContra;
         private System.Windows.Forms.Button btnViewAgain;
         private System.Windows.Forms.LinkLabel lbCambiarImagen;
-        private System.Windows.Forms.ToolTip toolTipCajas;
     }
 }
