@@ -36,6 +36,8 @@ namespace MicheBytesRecipes
         public frmMenuAdmin(Usuario usuarioActivado)
         {
             InitializeComponent();
+            ThemeManager.ThemeChanged += OnThemeChanged;
+            this.FormClosed += (s, e) => ThemeManager.ThemeChanged -= OnThemeChanged;
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
@@ -95,11 +97,9 @@ namespace MicheBytesRecipes
 
             // --- Cargar la grilla al inicio ---
             this.ActualizarGrilla();
-            // Asignar tags a paneles y botones
-            AsignarTagsPanelesYBotones();
-
-            // Aplicar tema a TODO el formulario
+            AsignarTags();
             ThemeManager.ApplyTheme(this);
+            ActualizarBotonTema();
 
 
         }
@@ -197,6 +197,9 @@ namespace MicheBytesRecipes
         {
             this.Hide();
             frmGestionUsuarios gestionUsuarios = new frmGestionUsuarios(usuarioLog);
+            ThemeManager.ApplyTheme(gestionUsuarios);
+            ThemeManager.ThemeChanged += gestionUsuarios.OnThemeChanged;
+            gestionUsuarios.FormClosed += (s, args) => ThemeManager.ThemeChanged -= gestionUsuarios.OnThemeChanged;
             gestionUsuarios.ShowDialog();
             this.Show();
 
@@ -206,6 +209,12 @@ namespace MicheBytesRecipes
         {
             this.Hide();
             frmMetricas metricas = new frmMetricas(usuarioLog);
+
+            ThemeManager.ApplyTheme(metricas);
+            ThemeManager.ThemeChanged += metricas.OnThemeChanged;
+
+            metricas.FormClosed += (s, args) => ThemeManager.ThemeChanged -= metricas.OnThemeChanged;
+
             metricas.ShowDialog();
             this.Show();
 
@@ -367,7 +376,7 @@ namespace MicheBytesRecipes
 
         // En tu formulario de administrador, asigna los tags:
 
-        private void AsignarTagsPanelesYBotones()
+        private void AsignarTags()
         {
 
             // 🔴 BOTONES especiales
@@ -376,6 +385,9 @@ namespace MicheBytesRecipes
             btnImportar.Tag = "importar";
             btnUsuarios.Tag = "info";
             btnMetricas.Tag = "metricas";
+            btnBuscar.Tag = "buscar";
+            btnReinicio.Tag = "reiniciar";
+            btnTema.Tag = "tema";
 
             // Los demás botones sin tag = color por defecto
         }
@@ -383,9 +395,19 @@ namespace MicheBytesRecipes
         private void btnTema_Click(object sender, EventArgs e)
         {
             ThemeManager.ToggleTheme();
-            ThemeManager.ApplyTheme(this);
-            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️ Tema Claro" : "🌙 Tema Oscuro";
 
+        }
+
+        private void OnThemeChanged()
+        {
+            // Cuando el tema cambia en cualquier parte, actualizar este formulario
+            ThemeManager.ApplyTheme(this);
+            ActualizarBotonTema();
+            this.Refresh();
+        }
+        private void ActualizarBotonTema()
+        {
+            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️": "🌙";
         }
 
     }

@@ -52,6 +52,7 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
             this.btnAccion = new System.Windows.Forms.Button();
+            this.btnTema = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,6 +62,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.btnTema);
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
             this.panel3.Controls.Add(this.dgvUsuarios);
@@ -326,6 +328,17 @@
             this.btnAccion.UseVisualStyleBackColor = false;
             this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(896, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 17;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
+            // 
             // frmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -378,5 +391,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaAlta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaBaja;
         private System.Windows.Forms.DataGridViewTextBoxColumn rol;
+        private System.Windows.Forms.Button btnTema;
     }
 }

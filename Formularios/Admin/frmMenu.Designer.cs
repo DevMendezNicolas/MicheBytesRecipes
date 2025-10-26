@@ -75,7 +75,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.btnTema);
             this.panel1.Controls.Add(this.btnImportar);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.label4);
@@ -99,11 +98,12 @@
             // 
             // btnTema
             // 
-            this.btnTema.Location = new System.Drawing.Point(18, 635);
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(896, 616);
             this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(75, 23);
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
             this.btnTema.TabIndex = 16;
-            this.btnTema.Text = "button1";
+            this.btnTema.Text = "sol";
             this.btnTema.UseVisualStyleBackColor = true;
             this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
@@ -292,6 +292,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.btnTema);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);

@@ -52,6 +52,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnAct = new System.Windows.Forms.Button();
+            this.btnTema = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetricas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,6 +62,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.btnTema);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnReinicio);
             this.panel3.Controls.Add(this.btnBuscar);
@@ -322,6 +324,17 @@
             this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
             // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(896, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 17;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
+            // 
             // frmMetricas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -374,5 +387,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Favoritos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnTema;
     }
 }

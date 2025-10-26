@@ -1,4 +1,9 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Interacciones;
+using MicheBytesRecipes.Forms.Admin;
+using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +14,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MicheBytesRecipes.Forms.Admin;
-using MicheBytesRecipes.Managers;
-using MicheBytesRecipes.Classes.Interacciones;
-using MicheBytesRecipes.Utilities;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
@@ -28,7 +29,6 @@ namespace MicheBytesRecipes.Forms.Admin
         public frmMetricas(Usuario usuarioActivado)
         {
             InitializeComponent();
-
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
@@ -46,6 +46,8 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 pbImagenAdmin.Image = null;
             }
+            this.FormClosed += (s, e) => ThemeManager.ThemeChanged -= OnThemeChanged;
+
         }
 
         public void ActualizarGrilla()
@@ -63,17 +65,41 @@ namespace MicheBytesRecipes.Forms.Admin
         }
         private void Metricas_Load(object sender, EventArgs e)
         {
-            List<Categoria>categorias = gestorCatalogo.ObtenerListaCategorias();
+            List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
             cboCategoria.DataSource = categorias;
             cboCategoria.DisplayMember = "Nombre";
             cboCategoria.ValueMember = "CategoriaId";
             cboCategoria.SelectedIndex = 0;
-            dgvMetricas.BackgroundColor = Color.FromArgb(0, 192, 192); // Fondo del control completo
+            dgvMetricas.BackgroundColor = Color.FromArgb(0, 192, 192);
             ActualizarGrilla();
             btnAct.Text = activas ? "Ver Inactivas" : "Ver Activas";
             activas = false;
 
+            AsignarTags();
+            ThemeManager.ApplyTheme(this);
+            ActualizarBotonTema();
+
+
+        }
+        private void AsignarTags()
+        {
+
+            // BOTONES especiales
+            btnAct.Tag = "alta";
+            btnExportar.Tag = "exportar";
+            btnVolver.Tag = "menu";
+            btnBuscar.Tag = "buscar";
+            btnReinicio.Tag = "reiniciar";
+            btnTema.Tag = "tema";
+
+        }
+
+        public void OnThemeChanged()
+        {
+            ThemeManager.ApplyTheme(this);
+            ActualizarBotonTema();
+            this.Refresh();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -161,6 +187,16 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 GeneradorPdf.ExportarPDF(dgvMetricas, "Métricas de Recetas", true);
             }
+        }
+        private void ActualizarBotonTema()
+        {
+            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️" : "🌙";
+        }
+
+        private void btnTema_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme();
+
         }
     }
 }

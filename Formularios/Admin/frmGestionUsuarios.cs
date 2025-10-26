@@ -1,12 +1,13 @@
-﻿using System;
+﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Classes.Users;
+using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using MicheBytesRecipes.Classes;
-using MicheBytesRecipes.Classes.Users;
-using MicheBytesRecipes.Managers;
-using System.Drawing;
 
 namespace MicheBytesRecipes.Forms.Admin
 {
@@ -20,7 +21,7 @@ namespace MicheBytesRecipes.Forms.Admin
         public frmGestionUsuarios(Usuario usuarioActivado)
         {
             InitializeComponent();
-
+            ThemeManager.ThemeChanged += OnThemeChanged;
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
@@ -38,12 +39,17 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 pbImagenAdmin.Image = null;
             }
+            this.FormClosed += (s, e) => ThemeManager.ThemeChanged -= OnThemeChanged;
+
         }
 
         private void GestionUsuarios_Load(object sender, EventArgs e)
         {
             this.ActualizarGrilla();
-            dgvUsuarios.BackgroundColor = Color.FromArgb(0, 192, 192); // Fondo del control completo
+            AsignarTags();
+            ThemeManager.ApplyTheme(this); // Se aplica el tema actual automáticamente
+            ActualizarBotonTema();
+
         }
         public void ActualizarGrilla()
         {
@@ -182,5 +188,36 @@ namespace MicheBytesRecipes.Forms.Admin
         {
             this.Close();
         }
+        private void AsignarTags()
+        {
+
+            // BOTONES especiales
+            btnAct.Tag = "alta";
+            btnAccion.Tag = "alta";
+            btnVolver.Tag = "menu";
+            btnBuscar.Tag = "buscar";
+            btnReinicio.Tag = "reiniciar";
+            btnPermisos.Tag = "rol";
+            btnTema.Tag = "tema";
+
+        }
+        public void OnThemeChanged()
+        {
+            // Se actualiza automáticamente cuando el tema cambia
+            ThemeManager.ApplyTheme(this);
+            ActualizarBotonTema();
+            this.Refresh();
+        }
+
+        private void btnTema_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme();
+
+        }
+        private void ActualizarBotonTema()
+        {
+            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️" : "🌙";
+        }
     }
 }
+
