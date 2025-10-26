@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Managers;
+using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using MicheBytesRecipes.Classes;
-using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.User
 {
@@ -152,36 +154,51 @@ namespace MicheBytesRecipes.Forms.User
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+
             // Validaciones de los campos
             eprCampos.Clear();
-
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su nombre", txtNombre, txtNombre.Width, txtNombre.Height - 60, 5000);
+                ShakeControl(txtNombre);
                 eprCampos.SetError(txtNombre, "El nombre es obligatorio.");
                 txtNombre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su apellido", txtApellido, txtApellido.Width, txtApellido.Height - 60, 5000);
+                ShakeControl(txtApellido);
                 eprCampos.SetError(txtApellido, "El apellido es obligatorio.");
                 txtApellido.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtTelefono.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese un numero de teléfono", txtTelefono, txtTelefono.Width, txtTelefono.Height - 60, 5000);
+                ShakeControl(txtTelefono);
                 eprCampos.SetError(txtTelefono, "El teléfono es obligatorio.");
                 txtTelefono.Focus();
                 return;
             }
             if (txtTelefono.Text.Length < 6)
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese un numero de \nteléfono mayor a 6 dígitos", txtTelefono, txtTelefono.Width, txtTelefono.Height - 60, 5000);
+                ShakeControl(txtTelefono);
                 eprCampos.SetError(txtTelefono, "Ingrese un numero de teléfono mayor a 6 dígitos");
-                txtTelefono.Focus();
-                txtTelefono.SelectAll();
+
+
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese su correo electrónico", txtEmail, txtEmail.Width, txtEmail.Height - 60, 5000);
+                ShakeControl(txtEmail);
                 eprCampos.SetError(txtEmail, "El correo electrónico es obligatorio.");
                 txtEmail.Focus();
                 return;
@@ -189,92 +206,19 @@ namespace MicheBytesRecipes.Forms.User
 
             if (!Usuario.ValidarEmail(txtEmail.Text))
             {
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Ingrese un correo electrónico\n válido\nEj: 'michebytes@hotmail.com' ", txtEmail, txtEmail.Width, txtEmail.Height - 60, 5000);
+                ShakeControl(txtEmail);
                 eprCampos.SetError(txtEmail, "El correo electrónico no es válido.");
                 txtEmail.Focus();
                 txtEmail.SelectAll();
                 return;
             }
 
-            byte[] fotoBytes = Array.Empty<byte>();
-
-            if (pbxEditarImagen.Image != null)
-            {
-                using (OpenFileDialog ofd = new OpenFileDialog())
-                {
-                    ofd.Filter = "Archivos JPG(.jpg,.jpeg) |.jpg;.jpeg | Archivos PNG(.png) |.png";
-                }
-
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    pbxEditarImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-
-                    fotoBytes = ms.ToArray();
-                }
-            }
-
-            // Confirmación antes de realizar cambios
-            DialogResult confirmacion = MessageBox.Show("¿Desea guardar los cambios realizados?","Confirmar actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-            );
-
-            if (confirmacion != DialogResult.Yes)
-                return; // si el usuario cancela, no se actualiza nada
-
-            // Validar que la nueva contraseña y la actual no sean iguales
-            bool cambioContra = false;
-
-            if (!string.IsNullOrWhiteSpace(txtContraActual.Text) || !string.IsNullOrWhiteSpace(txtContraNueva.Text))
-            {
-                if (string.IsNullOrWhiteSpace(txtContraActual.Text))
-                {
-                    eprCampos.SetError(txtContraActual, "La contraseña actual es obligatoria.");
-                    txtContraActual.Focus();
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(txtContraNueva.Text))
-                {
-                    eprCampos.SetError(txtContraNueva, "La nueva contraseña es obligatoria.");
-                    txtContraNueva.Focus();
-                    return;
-                }
-
-                if (txtContraNueva.Text.Length < 6)
-                {
-                    eprCampos.SetError(txtContraNueva, "La nueva contraseña debe tener al menos 6 caracteres.");
-                    txtContraNueva.Focus();
-                    txtContraNueva.SelectAll();
-                    return;
-                }
-                if (txtContraActual.Text == txtContraNueva.Text)
-                {
-                    eprCampos.SetError(txtContraActual, "Las contraseñas no deben coincidir");
-                    eprCampos.SetError(txtContraNueva, "Las contraseñas no deben coincidir");
-                    txtContraActual.Focus();
-                    txtContraActual.SelectAll();
-                    return;
-                }
-
-                // Si pasa, actualiza la nueva contraseña
-                string nuevaContraHash = gestorUsuarios.HashearContraseña(txtContraNueva.Text);
-                gestorUsuarios.CambiarContraseña(usuarioLog.UsuarioId, gestorUsuarios.HashearContraseña(txtContraActual.Text), nuevaContraHash);
-                cambioContra = true;
-            }
-
-            gestorUsuarios.ActualizarUsuario(
-                usuarioLog.UsuarioId,
-                txtEmail.Text.Trim(),
-                txtNombre.Text.Trim(),
-                txtApellido.Text.Trim(),
-                txtTelefono.Text.Trim(),
-                fotoBytes);
-
-            usuarioLog = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
-            CargarDatosUsuario();
-            DesactivarCampos();
-
-            string mensaje = cambioContra ? "Tus datos y contraseña se actualizaron correctamente." : "Datos actualizados correctamente.";
-
-            MessageBox.Show(mensaje, "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            GuardarUsuario();
+            
         }
+
 
 
         private void btnViewContra_MouseUp(object sender, MouseEventArgs e)
@@ -375,10 +319,7 @@ namespace MicheBytesRecipes.Forms.User
 
         private void pbEditarImagen_Click(object sender, EventArgs e)
         {
-            if (ofdImagenNueva.ShowDialog() == DialogResult.OK)
-            {
-                pbxEditarImagen.Image = Image.FromFile(ofdImagenNueva.FileName);
-            }
+            CambiarImagen(pbxEditarImagen);
         }
 
         private void btnInicio_Click(object sender, EventArgs e)
@@ -390,14 +331,180 @@ namespace MicheBytesRecipes.Forms.User
 
         private void linkCambiarImagen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ofdImagenNueva.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp;";
+            CambiarImagen(pbxEditarImagen);
+        }
 
+        private void CambiarImagen(PictureBox pictureBox)
+        {
+            ofdImagenNueva.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp";
             if (ofdImagenNueva.ShowDialog() == DialogResult.OK)
             {
-                pbxEditarImagen.Image = Image.FromFile(ofdImagenNueva.FileName);
+                try
+                {
+                    pictureBox.Image?.Dispose();
+                    pictureBox.Image = Image.FromFile(ofdImagenNueva.FileName);
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen seleccionada.\n\n" + ex.Message,
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private async void ShakeControl(TextBox textBox)
+        {
+            btnGuardar.Enabled = false;
+            // Guarda los valores originales
+            var originalPos = textBox.Location;
+            var originalBackColor = textBox.BackColor;
+            var originalColor = textBox.ForeColor;
+
+            // 🔹 Estilo de error (fondo y borde rojo)
+            textBox.BackColor = Color.FromArgb(255, 200, 200); // fondo rojo muy suave
+            textBox.ForeColor = Color.Red;
+
+            // 🔹 Pone foco
+            textBox.Focus();
+
+            // 🔹 Efecto shake (movimiento lateral)
+            for (int i = 0; i < 3; i++) // cantidad de idas y vueltas
+            {
+                textBox.Location = new Point(originalPos.X + 3, originalPos.Y);
+                await Task.Delay(30); // velocidad
+                textBox.Location = new Point(originalPos.X - 3, originalPos.Y);
+                await Task.Delay(30);
             }
 
+            // 🔹 Vuelve a la posición original
+            textBox.Location = originalPos;
+
+            // 🔹 Espera un momento y restaura estilos
+            await Task.Delay(3000);
+            textBox.BackColor = originalBackColor;
+            textBox.ForeColor = originalColor;
+            btnGuardar.Enabled = true;
+
         }
+
+        private void GuardarUsuario()
+        {
+            try
+            {
+                // Convertir imagen actual a bytes
+                byte[] fotoBytes = fotoOriginalBytes;
+                if (pbxEditarImagen.Image != null)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pbxEditarImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        fotoBytes = ms.ToArray();
+                    }
+                }
+
+                // Manejo de contraseña
+                bool cambioContra = false;
+
+                if (!string.IsNullOrWhiteSpace(txtContraActual.Text) || !string.IsNullOrWhiteSpace(txtContraNueva.Text))
+                {
+                    if (string.IsNullOrWhiteSpace(txtContraActual.Text))
+                    {
+                        eprCampos.SetError(txtContraActual, "La contraseña actual es obligatoria.");
+                        toolTipCajas.Active = true;
+                        toolTipCajas.Show("Ingrese su contraseña actual", txtContraActual, txtContraActual.Width, txtContraActual.Height - 60, 5000);
+                        ShakeControl(txtContraActual);
+                        txtContraActual.Focus();
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(txtContraNueva.Text))
+                    {
+                        eprCampos.SetError(txtContraNueva, "La nueva contraseña es obligatoria.");
+                        toolTipCajas.Active = true;
+                        toolTipCajas.Show("Ingrese su contraseña nueva", txtContraNueva, txtContraNueva.Width, txtContraNueva.Height - 60, 5000);
+                        ShakeControl(txtContraNueva);
+                        txtContraNueva.Focus();
+                        return;
+                    }
+
+                    if (txtContraNueva.Text.Length < 6)
+                    {
+                        eprCampos.SetError(txtContraNueva, "La nueva contraseña debe tener al menos 6 caracteres.");
+                        toolTipCajas.Active = true;
+                        toolTipCajas.Show("Ingrese una contraseña más larga", txtContraNueva, txtContraNueva.Width, txtContraNueva.Height - 60, 5000);
+                        ShakeControl(txtContraNueva);
+                        txtContraNueva.Focus();
+                        txtContraNueva.SelectAll();
+                        return;
+                    }
+
+                    if (txtContraActual.Text == txtContraNueva.Text)
+                    {
+                        eprCampos.SetError(txtContraActual, "Las contraseñas no deben coincidir");
+                        eprCampos.SetError(txtContraNueva, "Las contraseñas no deben coincidir");
+                        toolTipCajas.Active = true;
+                        toolTipCajas.Show("Ingrese contraseñas distintas", txtContraNueva, txtContraNueva.Width, txtContraNueva.Height - 60, 5000);
+                        ShakeControl(txtContraActual);
+                        ShakeControl(txtContraNueva);
+                        txtContraNueva.Focus();
+                        txtContraNueva.SelectAll();
+                        return;
+                    }
+
+                    // Actualizar contraseña
+                    string nuevaContraHash = gestorUsuarios.HashearContraseña(txtContraNueva.Text);
+                    gestorUsuarios.CambiarContraseña(
+                        usuarioLog.UsuarioId,
+                        gestorUsuarios.HashearContraseña(txtContraActual.Text),
+                        nuevaContraHash
+                    );
+                    cambioContra = true;
+                }
+
+                // Confirmación
+                DialogResult confirmacion = MessageBox.Show("¿Desea guardar los cambios realizados?", "actualización", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                if (confirmacion != DialogResult.Yes)
+                    return;
+
+                // Actualización de datos del usuario
+                gestorUsuarios.ActualizarUsuario(
+                    usuarioLog.UsuarioId,
+                    txtEmail.Text.Trim(),
+                    txtNombre.Text.Trim(),
+                    txtApellido.Text.Trim(),
+                    txtTelefono.Text.Trim(),
+                    fotoBytes
+                );
+
+                // Si llegó aquí, la actualización fue exitosa
+
+                // Refrescar datos
+                usuarioLog = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
+                CargarDatosUsuario();
+                DesactivarCampos();
+
+                string mensajeFinal = cambioContra ? "Tus datos y contraseña se actualizaron correctamente." : "Datos actualizados correctamente.";
+
+                MessageBox.Show(mensajeFinal, "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) when (ex.Message.Contains("ya pertenece"))
+            {
+                // Captura SOLO el error de email duplicado
+                MessageBox.Show(ex.Message, "Email duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                eprCampos.SetError(txtEmail, "Correo ya registrado");
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Correo ya registrado. Ingrese uno nuevo", txtEmail, txtEmail.Width, txtEmail.Height - 60, 5000);
+                ShakeControl(txtEmail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
 
 
     }
