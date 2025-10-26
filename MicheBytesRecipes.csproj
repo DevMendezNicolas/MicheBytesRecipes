@@ -259,7 +259,6 @@
     <Compile Include="Utilidades\TerminosData.cs" />
     <Compile Include="Utilidades\TextoJson.cs" />
     <Compile Include="Utilidades\Utilidades.cs" />
-    <None Include="DatosJson\Tutorial.json" />
     <None Include="logo_editable_con_le.png" />
     <None Include="replica_del_logo_en_.png" />
     <None Include="logo_para_softwar.png" />
