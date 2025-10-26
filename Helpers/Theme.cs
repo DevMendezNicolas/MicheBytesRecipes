@@ -1,243 +1,227 @@
 ﻿using System;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Helpers
 {
     public static class ThemeManager
     {
-        private static Theme currentTheme;
-        private static bool isDarkMode = false;
+        private static bool isDark = false;
 
-        public static event Action ThemeChanged;
+        // Tema Claro
+        private static readonly Theme LightTheme = new Theme
+        {
+            PanelPrimario = Color.FromArgb(0, 192, 192),           // Panel por defecto
+            PanelSecundario = Color.FromArgb(230, 230, 230), // Panel secundario
+
+            TextoPrincipal = Color.FromArgb(255, 255, 255),
+            Botones = Color.FromArgb(255, 165, 0),
+            TextoBotones = Color.White,
+            BackgroundTextBox = Color.White,
+            TextoCajaTexto = Color.Black,
+
+            // Botones especiales
+            BotonPeligro = Color.FromArgb(255, 0, 0),
+            BotonExportar = Color.FromArgb(255, 215, 0),
+            BotonImportar = Color.FromArgb(255, 215, 0),
+            BotonInfo = Color.FromArgb(124, 252, 0),
+            BotonMetricas = Color.FromArgb(50, 205, 50),
+            BotonBuscar = Color.White,
+            BotonReiniciar = Color.White,
+
+        };
+
+        // Tema Oscuro
+        private static readonly Theme DarkTheme = new Theme
+        {
+            PanelPrimario = Color.FromArgb(45, 45, 45),              // Panel por defecto
+            PanelSecundario = Color.FromArgb(55, 55, 55),    // Panel secundario
+            TextoPrincipal = Color.FromArgb(240, 240, 240),
+            Botones = Color.FromArgb(65, 130, 210),
+            TextoBotones = Color.White,
+            BackgroundTextBox = Color.FromArgb(60, 60, 60),
+            TextoCajaTexto = Color.White,
+
+            // Botones especiales
+            BotonPeligro = Color.FromArgb(200, 70, 50),
+            BotonExportar = Color.FromArgb(130, 85, 160),
+            BotonImportar = Color.FromArgb(220, 130, 50),
+            BotonInfo = Color.FromArgb(20, 140, 160),
+            BotonMetricas = Color.FromArgb(70, 175, 120)
+        };
+
+        public static Theme CurrentTheme => isDark ? DarkTheme : LightTheme;
+        public static bool IsDarkTheme => isDark;
 
         public static void ToggleTheme()
         {
-            isDarkMode = !isDarkMode;
-            currentTheme = isDarkMode ? Themes.Dark : Themes.Light;
-            ThemeChanged?.Invoke();
+            isDark = !isDark;
         }
 
         public static void ApplyTheme(Form form)
         {
-            currentTheme = isDarkMode ? Themes.Dark : Themes.Light;
-
-            form.BackColor = currentTheme.FondoPrincipal;
-            form.ForeColor = currentTheme.TextoPrincipal;
-
-            ApplyThemeToControls(form.Controls);
+            ApplyThemeToControlAndChildren(form);
         }
 
-        private static void ApplyThemeToControls(Control.ControlCollection controls)
+        private static void ApplyThemeToControlAndChildren(Control parent)
         {
-            foreach (Control control in controls)
+            // Aplicar tema al control padre
+            ApplyThemeToControl(parent);
+
+            // Aplicar recursivamente a todos los hijos
+            foreach (Control child in parent.Controls)
             {
-                // 🟦 Paneles
-                if (control is Panel panel)
-                {
-                    panel.BackColor = currentTheme.Panel;
-                    ApplyThemeToControls(panel.Controls);
-                }
-
-                // 🟧 Botones
-                else if (control is Button boton)
-                {
-                    ApplyButtonTheme(boton);
-                }
-
-                // 🟩 Labels
-                else if (control is Label label)
-                {
-                    label.ForeColor = currentTheme.TextoPrincipal;
-                    label.BackColor = Color.Transparent;
-                }
-
-                // 🟨 ComboBox
-                else if (control is ComboBox combo)
-                {
-                    combo.BackColor = currentTheme.BackgroundTextBox;
-                    combo.ForeColor = currentTheme.TextoCajaTexto;
-                    combo.FlatStyle = FlatStyle.Flat;
-                }
-
-                // 🟦 TextBox
-                else if (control is TextBox txt)
-                {
-                    txt.BackColor = currentTheme.BackgroundTextBox;
-                    txt.ForeColor = currentTheme.TextoCajaTexto;
-                    txt.BorderStyle = BorderStyle.FixedSingle;
-                }
-
-                // 🟪 DataGridView
-                else if (control is DataGridView dgv)
-                {
-                    ApplyDataGridViewTheme(dgv);
-                }
-
-                // Recursión para contenedores anidados
-                if (control.HasChildren)
-                    ApplyThemeToControls(control.Controls);
+                ApplyThemeToControlAndChildren(child);
             }
         }
 
-        private static void ApplyButtonTheme(Button boton)
+        private static void ApplyThemeToControl(Control control)
         {
-            boton.BackColor = currentTheme.BotonColorPorTag(boton.Tag?.ToString());
-
-            // Contraste de texto automático
-            if (ShouldUseDarkText(boton.BackColor))
+            // 🎨 PANELES CON TAGS ESPECÍFICOS
+            if (control is Panel || control is GroupBox || control is TabPage)
             {
-                boton.ForeColor = Color.Black;
-            }
-            else
-            {
-                boton.ForeColor = Color.White;
+                ApplyThemeToPanel(control);
             }
 
-            // Estilo de borde con color del tema
-            boton.FlatStyle = FlatStyle.Flat;
-            boton.FlatAppearance.BorderSize = 1;
-            boton.FlatAppearance.BorderColor = currentTheme.TextoSecundario;
+            // Form
+            else if (control is Form)
+            {
+                control.BackColor = CurrentTheme.FondoPrincipal;
+                control.ForeColor = CurrentTheme.TextoPrincipal;
+            }
+
+            // Texto (Label, LinkLabel, etc.)
+            else if (control is Label || control is LinkLabel)
+            {
+                control.ForeColor = CurrentTheme.TextoPrincipal;
+                control.BackColor = Color.Transparent;
+            }
+
+            // Botones
+            else if (control is Button)
+            {
+                ApplyThemeToButton((Button)control);
+            }
+
+            // Cajas de texto
+            else if (control is TextBox || control is RichTextBox)
+            {
+                control.BackColor = CurrentTheme.BackgroundTextBox;
+                control.ForeColor = CurrentTheme.TextoCajaTexto;
+            }
+
+            // Listas y combos
+            else if (control is ComboBox || control is ListBox || control is CheckedListBox)
+            {
+                control.BackColor = CurrentTheme.BackgroundTextBox;
+                control.ForeColor = CurrentTheme.TextoCajaTexto;
+            }
+
+            // CheckBox y RadioButton
+            else if (control is CheckBox || control is RadioButton)
+            {
+                control.ForeColor = CurrentTheme.TextoPrincipal;
+                control.BackColor = Color.Transparent;
+            }
+
+            // DataGridView
+            else if (control is DataGridView)
+            {
+                ApplyThemeToDataGridView((DataGridView)control);
+            }
         }
 
-        private static void ApplyDataGridViewTheme(DataGridView dgv)
+        private static void ApplyThemeToPanel(Control panel)
         {
-            dgv.BackgroundColor = currentTheme.Panel;
-            dgv.GridColor = currentTheme.TextoSecundario;
-            dgv.BorderStyle = BorderStyle.FixedSingle;
+            var tag = panel.Tag?.ToString()?.ToLower();
+            Color backColor = CurrentTheme.PanelPrimario; // Por defecto
+
+            if (!string.IsNullOrEmpty(tag))
+            {
+                switch (tag)
+                {
+                    case "secundario":
+                        backColor = CurrentTheme.PanelSecundario;
+                        break;
+                }
+            }
+
+            panel.BackColor = backColor;
+            panel.ForeColor = CurrentTheme.TextoPrincipal;
+        }
+
+        private static void ApplyThemeToButton(Button button)
+        {
+            // Color según el Tag
+            var tag = button.Tag?.ToString()?.ToLower();
+            Color backColor = CurrentTheme.Botones; // Por defecto
+
+            if (!string.IsNullOrEmpty(tag))
+            {
+                switch (tag)
+                {
+                    case "peligro":
+                        backColor = CurrentTheme.BotonPeligro;
+                        break;
+                    case "exportar":
+                        backColor = CurrentTheme.BotonExportar;
+                        break;
+                    case "importar":
+                        backColor = CurrentTheme.BotonImportar;
+                        break;
+                    case "info":
+                        backColor = CurrentTheme.BotonInfo;
+                        break;
+                    case "metricas":
+                        backColor = CurrentTheme.BotonMetricas;
+                        break;
+                    case "buscar":
+                        backColor = CurrentTheme.BotonBuscar;
+                        break;
+                    case "reiniciar":
+                        backColor = CurrentTheme.BotonReiniciar;
+                        break;
+                }
+            }
+
+            button.BackColor = backColor;
+            button.ForeColor = CurrentTheme.TextoBotones;
+            button.FlatStyle = FlatStyle.Standard;
+            button.FlatAppearance.BorderSize = 1;
+        }
+
+        private static void ApplyThemeToDataGridView(DataGridView dgv)
+        {
+            dgv.BackgroundColor = CurrentTheme.PanelPrimario;
+            dgv.DefaultCellStyle.BackColor = CurrentTheme.BackgroundTextBox;
+            dgv.DefaultCellStyle.ForeColor = CurrentTheme.TextoCajaTexto;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = CurrentTheme.Botones;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = CurrentTheme.TextoBotones;
             dgv.EnableHeadersVisualStyles = false;
-
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = currentTheme.Botones;
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = currentTheme.TextoBotones;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-
-            dgv.DefaultCellStyle.BackColor = currentTheme.BackgroundTextBox;
-            dgv.DefaultCellStyle.ForeColor = currentTheme.TextoCajaTexto;
-            dgv.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
-            dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            if (isDarkMode)
-            {
-                dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
-            }
         }
-
-        private static bool ShouldUseDarkText(Color backgroundColor)
-        {
-            // Calcular luminosidad para determinar contraste
-            double luminance = (0.299 * backgroundColor.R + 0.587 * backgroundColor.G + 0.114 * backgroundColor.B) / 255;
-            return luminance > 0.5; // Usar texto negro en fondos claros
-        }
-
-        public static Theme GetCurrentTheme() => currentTheme;
-        public static bool IsDarkTheme => isDarkMode;
     }
 
     public class Theme
     {
         public Color FondoPrincipal { get; set; }
-        public Color Panel { get; set; }
-        public Color TextoPrincipal { get; set; }
-        public Color TextoSecundario { get; set; }
+        public Color PanelPrimario { get; set; }                    // Panel por defecto
+        public Color PanelSecundario { get; set; }          // Panel secundario
 
+        public Color TextoPrincipal { get; set; }
         public Color Botones { get; set; }
         public Color TextoBotones { get; set; }
-        public Color BotonPeligro { get; set; }
-        public Color BotonExito { get; set; }
-        public Color BotonAdvertencia { get; set; }
-        public Color BotonSecundario { get; set; }
-        public Color BotonInfo { get; set; }
-        public Color BotonExportar { get; set; }
-        public Color BotonImportar { get; set; }
-        public Color BotonMetricas { get; set; }
-
         public Color BackgroundTextBox { get; set; }
         public Color TextoCajaTexto { get; set; }
 
-        public Color BotonColorPorTag(string tag)
-        {
-            if (string.IsNullOrEmpty(tag))
-                return Botones;
+        // Botones especiales
+        public Color BotonPeligro { get; set; }
+        public Color BotonExportar { get; set; }
+        public Color BotonImportar { get; set; }
+        public Color BotonInfo { get; set; }
+        public Color BotonMetricas { get; set; }
 
-            switch (tag.ToLowerInvariant())
-            {
-                case "peligro":
-                case "danger":
-                    return BotonPeligro;
-                case "exito":
-                case "success":
-                    return BotonExito;
-                case "advertencia":
-                case "warning":
-                    return BotonAdvertencia;
-                case "secundario":
-                case "secondary":
-                    return BotonSecundario;
-                case "info":
-                    return BotonInfo;
-                case "exportar":
-                case "export":
-                    return BotonExportar;
-                case "importar":
-                case "import":
-                    return BotonImportar;
-                case "metricas":
-                case "metrics":
-                    return BotonMetricas;
-                default:
-                    return Botones;
-            }
-        }
-    }
+        public Color BotonReiniciar { get; set; }
 
-    public static class Themes
-    {
-        public static readonly Theme Light = new Theme
-        {
-            FondoPrincipal = Color.FromArgb(0, 188, 212),  // Cyan
-            Panel = Color.FromArgb(0, 171, 197),           // Cyan oscuro
-            TextoPrincipal = Color.White,
-            TextoSecundario = Color.FromArgb(240, 240, 240),
-
-            Botones = Color.FromArgb(255, 160, 0),         // Naranja
-            TextoBotones = Color.Black,
-
-            BotonPeligro = Color.FromArgb(230, 57, 70),    // Rojo
-            BotonExito = Color.FromArgb(46, 204, 113),     // Verde
-            BotonAdvertencia = Color.FromArgb(255, 214, 10), // Amarillo
-            BotonSecundario = Color.FromArgb(41, 128, 185), // Azul
-            BotonInfo = Color.FromArgb(30, 144, 255),      // Azul info
-            BotonExportar = Color.FromArgb(255, 214, 10),  // Amarillo
-            BotonImportar = Color.FromArgb(255, 214, 10),  // Amarillo
-            BotonMetricas = Color.FromArgb(46, 204, 113),  // Verde
-
-            BackgroundTextBox = Color.White,
-            TextoCajaTexto = Color.Black,
-        };
-
-        public static readonly Theme Dark = new Theme
-        {
-            FondoPrincipal = Color.FromArgb(30, 30, 45),   // Azul oscuro
-            Panel = Color.FromArgb(45, 45, 60),
-            TextoPrincipal = Color.White,
-            TextoSecundario = Color.FromArgb(100, 100, 120),
-
-            Botones = Color.FromArgb(255, 180, 0),         // Naranja más claro
-            TextoBotones = Color.Black,
-
-            BotonPeligro = Color.FromArgb(220, 80, 70),    // Rojo más vibrante
-            BotonExito = Color.FromArgb(60, 220, 130),     // Verde más brillante
-            BotonAdvertencia = Color.FromArgb(255, 230, 50), // Amarillo más brillante
-            BotonSecundario = Color.FromArgb(70, 150, 210), // Azul más claro
-            BotonInfo = Color.FromArgb(50, 170, 255),      // Azul info más brillante
-            BotonExportar = Color.FromArgb(255, 230, 50),  // Amarillo
-            BotonImportar = Color.FromArgb(255, 230, 50),  // Amarillo
-            BotonMetricas = Color.FromArgb(60, 220, 130),  // Verde
-
-            BackgroundTextBox = Color.FromArgb(50, 50, 65),
-            TextoCajaTexto = Color.White,
-        };
+        public Color BotonBuscar { get; set; }
     }
 }

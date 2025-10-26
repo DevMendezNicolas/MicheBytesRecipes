@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTema = new System.Windows.Forms.Button();
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
-            this.btnTema = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -96,6 +96,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
+            // 
+            // btnTema
+            // 
+            this.btnTema.Location = new System.Drawing.Point(18, 635);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(75, 23);
+            this.btnTema.TabIndex = 16;
+            this.btnTema.Text = "button1";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // btnImportar
             // 
@@ -490,16 +500,6 @@
             // opfImportar
             // 
             this.opfImportar.FileName = "openFileDialog1";
-            // 
-            // btnTema
-            // 
-            this.btnTema.Location = new System.Drawing.Point(18, 635);
-            this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(75, 23);
-            this.btnTema.TabIndex = 16;
-            this.btnTema.Text = "button1";
-            this.btnTema.UseVisualStyleBackColor = true;
-            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // frmMenuAdmin
             // 

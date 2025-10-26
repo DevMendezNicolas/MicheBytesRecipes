@@ -54,7 +54,7 @@ namespace MicheBytesRecipes
             {
                 pictureBox1.Image = null;
             }
-            ThemeManager.ThemeChanged += OnThemeChanged;
+
 
 
         }
@@ -95,7 +95,10 @@ namespace MicheBytesRecipes
 
             // --- Cargar la grilla al inicio ---
             this.ActualizarGrilla();
-            AsignarTagsBotones();
+            // Asignar tags a paneles y botones
+            AsignarTagsPanelesYBotones();
+
+            // Aplicar tema a TODO el formulario
             ThemeManager.ApplyTheme(this);
 
 
@@ -363,62 +366,28 @@ namespace MicheBytesRecipes
         }
 
         // En tu formulario de administrador, asigna los tags:
-        private void AsignarTagsBotones()
+
+        private void AsignarTagsPanelesYBotones()
         {
-            // Botones principales - color azul por defecto
-            btnAgregar.Tag = "";
-            btnModificar.Tag = "";
-            btnEliminar.Tag = "";
-            btnAct.Tag = "";
 
-            // Botones especiales
-            btnImportar.Tag = "importar";
-            btnExportar.Tag = "exportar";
-            btnUsuarios.Tag = "info"; // O el que prefieras
-            btnMetricas.Tag = "metricas";
+            // 🔴 BOTONES especiales
             btnCerrarSesion.Tag = "peligro";
+            btnExportar.Tag = "exportar";
+            btnImportar.Tag = "importar";
+            btnUsuarios.Tag = "info";
+            btnMetricas.Tag = "metricas";
 
-            btnTema.Tag = "secundario";
+            // Los demás botones sin tag = color por defecto
         }
 
         private void btnTema_Click(object sender, EventArgs e)
         {
             ThemeManager.ToggleTheme();
             ThemeManager.ApplyTheme(this);
-
-        }
-        private void OnThemeChanged()
-        {
-            // Aplicar el nuevo tema a todos los controles
-            ThemeManager.ApplyTheme(this);
-
-            // Actualizar el texto del botón
-            ActualizarBotonTema();
-
-            // Opcional: Forzar redibujado para asegurar que todos los cambios se apliquen
-            this.Refresh();
-
-        }
-        private void ActualizarBotonTema()
-        {
-            if (ThemeManager.IsDarkTheme)
-            {
-                btnTema.Text = "☀️ Cambiar a Claro";
-                btnTema.Tag = "info"; // Puedes cambiar el tag si quieres otro color
-            }
-            else
-            {
-                btnTema.Text = "🌙 Cambiar a Oscuro";
-                btnTema.Tag = "secundario";
-            }
+            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️ Tema Claro" : "🌙 Tema Oscuro";
 
         }
 
-        // Limpiar el evento cuando se cierre el formulario
-        private void FormAdministrador_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ThemeManager.ThemeChanged -= OnThemeChanged;
-        }
     }
 }
 
