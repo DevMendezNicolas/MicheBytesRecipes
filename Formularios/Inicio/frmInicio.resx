@@ -121,12 +121,6 @@
     <value>MicheBytes Recipes no es solo una app de recetas: es un espacio donde la cocina se transforma en un momento de creatividad, alegría y conexión.
 Queremos inspirarte a experimentar, compartir y disfrutar de cada bocado.</value>
   </data>
-  <data name="lblBullet.Text" xml:space="preserve">
-    <value>• Una colección variada de recetas explicadas de forma clara y sencilla.
-• Filtros inteligentes para encontrar la receta perfecta según tus gustos, el tiempo o los ingredientes disponibles.
-• Un diseño tierno, colorido y amigable, pensado para que la experiencia sea tan agradable como preparar tu plato favorito. 
-• Consejos prácticos y tips gastronómicos que convierten cada receta en una oportunidad de aprender algo nuevo.</value>
-  </data>
   <data name="lblRelleno.Text" xml:space="preserve">
     <value>Nuestra aplicación nace con una misión simple pero poderosa: hacer que cocinar sea más fácil, divertido y accesible para todos.
 En MicheBytes Recipes vas a encontrar un espacio pensado para los amantes de la gastronomía: desde quienes recién empiezan a dar sus primeros pasos en la cocina, hasta los que disfrutan creando platos únicos e innovadores.</value>

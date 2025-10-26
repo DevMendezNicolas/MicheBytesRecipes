@@ -23,11 +23,11 @@ namespace MicheBytesRecipes
         {
             InitializeComponent();
 
-            CargarJson.CargarLabelsDesdeJson(PanelMid, json_path);
+            CargarJson.CargarLabelsDesdeJson(panelMid, json_path);
 
         }
 
-        private void BtnIniciar_Click(object sender, EventArgs e)
+        private void btnIniciar_Click(object sender, EventArgs e)
         {
             var login = new frmLogin();
             login.Owner = this; // importante
@@ -36,7 +36,7 @@ namespace MicheBytesRecipes
 
         }
 
-        private void BtnCrearCuenta_Click(object sender, EventArgs e)
+        private void btnCrearCuenta_Click(object sender, EventArgs e)
         {
             var register = new frmRegistrar();
             register.Owner = this;
@@ -47,7 +47,7 @@ namespace MicheBytesRecipes
 
         private void frmInicio_Load(object sender, EventArgs e)
         {
-
+            AsignarTags();
             GestorTemaUsuario.AplicarTema(this);
             GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
 
@@ -57,5 +57,18 @@ namespace MicheBytesRecipes
         {
             GestorTemaUsuario.AlternarTema();
         }
+        private void AsignarTags()
+        {
+
+            // 🔴 BOTONES especiales
+
+
+            btnTema.Tag = "tema";
+            panelTop.Tag = "secundario";
+
+            // Los demás botones sin tag = color por defecto
+        }
+
+
     }
 }

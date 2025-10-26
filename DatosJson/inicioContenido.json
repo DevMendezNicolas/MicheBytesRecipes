@@ -3,43 +3,75 @@
     {
       "Nombre": "lblTitulo",
       "Texto": "¡Bienvenidos a MicheBytes Recipes! 🎉",
-      "Tamaño": 24,
+      "Tamaño": 32,
       "Negrita": true
     },
     {
       "Nombre": "lblRelleno",
       "Texto": "Nuestra aplicación nace con una misión simple pero poderosa: hacer que cocinar sea más fácil, divertido y accesible para todos.\n En MicheBytes Recipes vas a encontrar un espacio pensado para los amantes de la gastronomía: desde quienes recién empiezan a dar sus primeros pasos en la cocina, hasta los que disfrutan creando platos únicos e innovadores.",
-      "Tamaño": 13,
+      "Tamaño": 12,
       "Negrita": false
     },
     {
-      "Nombre": "lblTituloBullet",
-      "Texto": "🍴 ¿Qué ofrece MicheBytes Recipes?",
+      "Nombre": "lblQueOfrece",
+      "Texto": "¿Qué ofrece MicheBytes Recipes?",
+      "Tamaño": 22,
+      "Negrita": true
+    },
+    {
+      "Nombre": "lblTituloBullet1",
+      "Texto": "🍴 Recetas variadas",
       "Tamaño": 16,
       "Negrita": true
     },
     {
-      "Nombre": "lblBullet",
-      "Texto": " • Una colección variada de recetas explicadas de forma clara y sencilla.\n • Filtros inteligentes para encontrar la receta perfecta según tus gustos, el tiempo o los ingredientes disponibles.\n • Un diseño tierno, colorido y amigable, pensado para que la experiencia sea tan agradable como preparar tu plato favorito.\n • Consejos prácticos y tips gastronómicos que convierten cada receta en una oportunidad de aprender algo nuevo.",
-      "Tamaño": 13,
+      "Nombre": "lblTituloBullet2",
+      "Texto": "🔎 Filtros inteligentes",
+      "Tamaño": 16,
+      "Negrita": true
+    },
+    {
+      "Nombre": "lblTituloBullet3",
+      "Texto": "🎨 Consejos prácticos",
+      "Tamaño": 16,
+      "Negrita": true
+    },
+
+
+    {
+      "Nombre": "lblBullet1",
+      "Texto": "• Una colección variada de recetas explicadas de forma clara y sencilla.",
+      "Tamaño": 12,
+      "Negrita": false
+    },
+    {
+      "Nombre": "lblBullet2",
+      "Texto": "• Filtros inteligentes para encontrar la receta perfecta según tus gustos, el tiempo o los ingredientes disponibles.",
+      "Tamaño": 12,
+      "Negrita": false
+    },
+    {
+      "Nombre": "lblBullet3",
+      "Texto": "• Consejos prácticos y tips gastronómicos que convierten cada receta en una oportunidad de aprender algo nuevo.",
+      "Tamaño": 12,
       "Negrita": false
     },
     {
       "Nombre": "lblTituloEsencia",
-      "Texto": "🌈 Nuestra esencia",
-      "Tamaño": 16,
+      "Texto": "✨ Nuestra esencia",
+      "Tamaño": 21,
       "Negrita": true
     },
     {
       "Nombre": "lblFooter",
       "Texto": "MicheBytes Recipes no es solo una app de recetas: es un espacio donde la cocina se transforma en un momento de creatividad, alegría y conexión.\n Queremos inspirarte a experimentar, compartir y disfrutar de cada bocado!",
-      "Tamaño": 13,
+      "Tamaño": 12,
       "Negrita": false
     },
     {
       "Nombre": "lblFinal",
-      "Texto": "¡Con MicheBytes Recipes, cocinar nunca fue tan divertido, accesible y delicioso! 🍳✨",
-      "Tamaño": 14,
+      "Texto": "¡Con MicheBytes Recipes, cocinar nunca fue tan divertido, accesible y delicioso! 🧑‍🍳✨",
+      "Tamaño": 16,
       "Negrita": true
     }
   ]

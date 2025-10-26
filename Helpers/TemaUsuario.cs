@@ -41,10 +41,10 @@ namespace MicheBytesRecipes.Helpers
         {
             // MODIFICA ESTOS COLORES SEGÚN LA PALETA QUE QUIERAS PARA USUARIO
             PanelPrimario = Color.FromArgb(255, 165, 0),
-            PanelSecundario = Color.FromArgb(240, 248, 255),
+            PanelSecundario = Color.FromArgb(255, 165, 0),
 
-            TextoPrincipal = Color.FromArgb(25, 25, 112),
-            Botones = Color.FromArgb(255, 140, 0),
+            TextoPrincipal = Color.White,
+            Botones = Color.FromArgb(99, 64, 44),
             TextoBotones = Color.White,
             BackgroundTextBox = Color.White,
             TextoCajaTexto = Color.Black,
