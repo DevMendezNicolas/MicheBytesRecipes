@@ -374,10 +374,8 @@ namespace MicheBytesRecipes.Managers
         }
 
         // Actualizar datos del usuario.
-        public string ActualizarUsuario(int usuario_id, string email, string nombre, string apellido, string telefono, byte[] foto)
+        public void ActualizarUsuario(int usuario_id, string email, string nombre, string apellido, string telefono, byte[] foto)
         {
-            string mensaje = "";
-
             try
             {
                 conexion.Abrir();
@@ -390,31 +388,37 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.AddWithValue("p_nombre", nombre);
                     comando.Parameters.AddWithValue("p_apellido", apellido);
                     comando.Parameters.AddWithValue("p_telefono", telefono);
-                    comando.Parameters.AddWithValue("p_imagen_perfil", foto);
+                    comando.Parameters.AddWithValue("p_imagen_perfil", foto ?? (object)DBNull.Value);
 
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            mensaje = reader.GetString(0); // Obtiene el mensaje del SELECT del SP
+                            string mensaje = reader.GetString(0);
+
+                            // SOLO lanzar excepción para email duplicado
+                            if (mensaje.Contains("ya pertenece"))
+                            {
+                                throw new Exception(mensaje);
+                            }
+                            // Para otros mensajes (éxito o otros errores), no hacer nada
                         }
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex) when (ex.Number == 1644)
             {
-                mensaje = "Error SQL: " + ex.Message;
+                // Convertir el SIGNAL SQLSTATE a Exception
+                throw new Exception(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                mensaje = "Error general: " + ex.Message;
+                throw; // Relanzar otras excepciones
             }
             finally
             {
                 conexion.Cerrar();
             }
-
-            return mensaje;
         }
 
 

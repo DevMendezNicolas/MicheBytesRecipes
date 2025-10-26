@@ -468,7 +468,7 @@ namespace MicheBytesRecipes.Forms.User
                     return;
 
                 // Actualización de datos del usuario
-                string resultado = gestorUsuarios.ActualizarUsuario(
+                gestorUsuarios.ActualizarUsuario(
                     usuarioLog.UsuarioId,
                     txtEmail.Text.Trim(),
                     txtNombre.Text.Trim(),
@@ -477,13 +477,21 @@ namespace MicheBytesRecipes.Forms.User
                     fotoBytes
                 );
 
+                // Si llegó aquí, la actualización fue exitosa
+
                 // Refrescar datos
                 usuarioLog = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
                 CargarDatosUsuario();
                 DesactivarCampos();
+
                 string mensajeFinal = cambioContra ? "Tus datos y contraseña se actualizaron correctamente." : "Datos actualizados correctamente.";
 
                 MessageBox.Show(mensajeFinal, "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) when (ex.Message.Contains("ya pertenece"))
+            {
+                // Captura SOLO el error de email duplicado
+                MessageBox.Show(ex.Message, "Email duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
