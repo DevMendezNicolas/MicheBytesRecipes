@@ -392,35 +392,24 @@ namespace MicheBytesRecipes.Managers
 
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
-                        if (reader.Read())
-                        {
-                            string mensaje = reader.GetString(0);
-
-                            // SOLO lanzar excepción para email duplicado
-                            if (mensaje.Contains("ya pertenece"))
-                            {
-                                throw new Exception(mensaje);
-                            }
-                            // Para otros mensajes (éxito o otros errores), no hacer nada
-                        }
+                        // No necesitamos hacer nada aquí
+                        // Si llegó hasta aquí sin excepción, la actualización fue exitosa
                     }
                 }
             }
             catch (MySqlException ex) when (ex.Number == 1644)
             {
-                // Convertir el SIGNAL SQLSTATE a Exception
                 throw new Exception(ex.Message);
             }
             catch (Exception)
             {
-                throw; // Relanzar otras excepciones
+                throw;
             }
             finally
             {
                 conexion.Cerrar();
             }
         }
-
 
 
         //Buscar usuario por email y contra
