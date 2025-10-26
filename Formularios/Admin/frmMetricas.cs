@@ -46,7 +46,7 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 pbImagenAdmin.Image = null;
             }
-            this.FormClosed += (s, e) => ThemeManager.ThemeChanged -= OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= OnThemeChanged;
 
         }
 
@@ -77,7 +77,7 @@ namespace MicheBytesRecipes.Forms.Admin
             activas = false;
 
             AsignarTags();
-            ThemeManager.ApplyTheme(this);
+            GestorTemaAdmin.AplicarTema(this);
             ActualizarBotonTema();
 
 
@@ -97,7 +97,7 @@ namespace MicheBytesRecipes.Forms.Admin
 
         public void OnThemeChanged()
         {
-            ThemeManager.ApplyTheme(this);
+            GestorTemaAdmin.AplicarTema(this);
             ActualizarBotonTema();
             this.Refresh();
         }
@@ -190,12 +190,12 @@ namespace MicheBytesRecipes.Forms.Admin
         }
         private void ActualizarBotonTema()
         {
-            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️" : "🌙";
+            btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️" : "🌙";
         }
 
         private void btnTema_Click(object sender, EventArgs e)
         {
-            ThemeManager.ToggleTheme();
+            GestorTemaAdmin.CambiarTema();
 
         }
     }

@@ -4,15 +4,52 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Helpers
 {
-    public static class ThemeManager
+    public class TemaAdmin
     {
-        private static bool isDark = false;
+        public Color FondoPrincipal { get; set; }
+        public Color PanelPrimario { get; set; }  
+        public Color PanelSecundario { get; set; } 
+        public Color TextoBotonPanel2 { get; set; }
+        public Color TextoPrincipal { get; set; }
+        public Color Botones { get; set; }
+        public Color TextoBotones { get; set; }
+        public Color BackgroundTextBox { get; set; }
+        public Color TextoCajaTexto { get; set; }
+
+        // Botones especiales
+        public Color BotonCerrar { get; set; }
+        public Color BotonExportar { get; set; }
+        public Color BotonImportar { get; set; }
+        public Color BotonUsuario { get; set; }
+        public Color BotonMetricas { get; set; }
+        public Color BotonAltas { get; set; }
+        public Color BotonRol { get; set; }
+        public Color BotonMenu { get; set; }
+
+        public Color BotonReiniciar { get; set; }
+
+        public Color BotonBuscar { get; set; }
+        public Color BotonTema { get; set; }
+
+        //Propiedades para el DataGrid
+        public Color GridFondo { get; set; }
+        public Color GridCeldasFondo { get; set; }
+        public Color GridCeldasTexto { get; set; }
+        public Color GridEncabezadosFondo { get; set; }
+        public Color GridEncabezadosTexto { get; set; }
+        public Color GridLineas { get; set; }
+        public Color GridSeleccionFondo { get; set; }
+        public Color GridSeleccionTexto { get; set; }
+    }
+    public static class GestorTemaAdmin
+    {
+        private static bool esOscuro = false;
 
         // Evento para notificar a TODOS los formularios cuando cambia el tema
-        public static event Action ThemeChanged;
+        public static event Action TemaCambiado;
 
         // Tema Claro
-        private static readonly Theme LightTheme = new Theme
+        private static readonly TemaAdmin TemaClaro = new TemaAdmin
         {
             PanelPrimario = Color.FromArgb(0, 192, 192),           // Panel por defecto
             PanelSecundario = Color.FromArgb(230, 230, 230), // Panel secundario
@@ -52,7 +89,7 @@ namespace MicheBytesRecipes.Helpers
         };
 
         // Tema Oscuro
-        private static readonly Theme DarkTheme = new Theme
+        private static readonly TemaAdmin TemaOscuro = new TemaAdmin
         {
             PanelPrimario = Color.FromArgb(45, 45, 45),              // Panel por defecto
             PanelSecundario = Color.FromArgb(55, 55, 55),
@@ -88,160 +125,160 @@ namespace MicheBytesRecipes.Helpers
 
         };
 
-        public static Theme CurrentTheme => isDark ? DarkTheme : LightTheme;
-        public static bool IsDarkTheme => isDark;
+        public static TemaAdmin TemaActual => esOscuro ? TemaOscuro : TemaClaro;
+        public static bool EsTemaOscuro => esOscuro;
 
-        public static void ToggleTheme()
+        public static void CambiarTema()
         {
-            isDark = !isDark;
+            esOscuro = !esOscuro;
             //Notificar a TODOS los formularios que el tema cambió
-            ThemeChanged?.Invoke();
+            TemaCambiado?.Invoke();
         }
 
-        public static void ApplyTheme(Form form)
+        public static void AplicarTema(Form form)
         {
-            ApplyThemeToControlAndChildren(form);
+            AplicarTemaEnCascada(form);
         }
 
-        private static void ApplyThemeToControlAndChildren(Control parent)
+        private static void AplicarTemaEnCascada(Control parent)
         {
             // Aplicar tema al control padre
-            ApplyThemeToControl(parent);
+            AplicarTemaAControl(parent);
 
             // Aplicar recursivamente a todos los hijos
             foreach (Control child in parent.Controls)
             {
-                ApplyThemeToControlAndChildren(child);
+                AplicarTemaEnCascada(child);
             }
         }
 
-        private static void ApplyThemeToControl(Control control)
+        private static void AplicarTemaAControl(Control control)
         {
             // 🎨 PANELES CON TAGS ESPECÍFICOS
             if (control is Panel || control is GroupBox || control is TabPage)
             {
-                ApplyThemeToPanel(control);
+                AplicarTemaAPanel(control);
             }
 
             // Form
             else if (control is Form)
             {
-                control.BackColor = CurrentTheme.FondoPrincipal;
-                control.ForeColor = CurrentTheme.TextoPrincipal;
+                control.BackColor = TemaActual.FondoPrincipal;
+                control.ForeColor = TemaActual.TextoPrincipal;
             }
 
             // Texto (Label, LinkLabel, etc.)
             else if (control is Label || control is LinkLabel)
             {
-                control.ForeColor = CurrentTheme.TextoPrincipal;
+                control.ForeColor = TemaActual.TextoPrincipal;
                 control.BackColor = Color.Transparent;
             }
 
             // Botones
             else if (control is Button)
             {
-                ApplyThemeToButton((Button)control);
+                AplicarTemaABoton((Button)control);
             }
 
             // Cajas de texto
             else if (control is TextBox || control is RichTextBox)
             {
-                control.BackColor = CurrentTheme.BackgroundTextBox;
-                control.ForeColor = CurrentTheme.TextoCajaTexto;
+                control.BackColor = TemaActual.BackgroundTextBox;
+                control.ForeColor = TemaActual.TextoCajaTexto;
             }
 
             // Listas y combos
             else if (control is ComboBox || control is ListBox || control is CheckedListBox)
             {
-                control.BackColor = CurrentTheme.BackgroundTextBox;
-                control.ForeColor = CurrentTheme.TextoCajaTexto;
+                control.BackColor = TemaActual.BackgroundTextBox;
+                control.ForeColor = TemaActual.TextoCajaTexto;
             }
 
             // CheckBox y RadioButton
             else if (control is CheckBox || control is RadioButton)
             {
-                control.ForeColor = CurrentTheme.TextoPrincipal;
+                control.ForeColor = TemaActual.TextoPrincipal;
                 control.BackColor = Color.Transparent;
             }
 
             // DataGridView
             else if (control is DataGridView)
             {
-                ApplyThemeToDataGridView((DataGridView)control);
+                AplicarTemaADataGrid((DataGridView)control);
             }
         }
 
-        private static void ApplyThemeToPanel(Control panel)
+        private static void AplicarTemaAPanel(Control panel)
         {
             var tag = panel.Tag?.ToString()?.ToLower();
-            Color backColor = CurrentTheme.PanelPrimario; // Por defecto
+            Color backColor = TemaActual.PanelPrimario; // Por defecto
 
             if (!string.IsNullOrEmpty(tag))
             {
                 switch (tag)
                 {
                     case "secundario":
-                        backColor = CurrentTheme.PanelSecundario;
+                        backColor = TemaActual.PanelSecundario;
                         break;
                 }
             }
 
             panel.BackColor = backColor;
-            panel.ForeColor = CurrentTheme.TextoPrincipal;
+            panel.ForeColor = TemaActual.TextoPrincipal;
         }
 
-        private static void ApplyThemeToButton(Button button)
+        private static void AplicarTemaABoton(Button button)
         {
             // Color según el Tag
             var tag = button.Tag?.ToString()?.ToLower();
-            Color backColor = CurrentTheme.Botones; // Por defecto
+            Color backColor = TemaActual.Botones; // Por defecto
 
             if (!string.IsNullOrEmpty(tag))
             {
                 switch (tag)
                 {
                     case "peligro":
-                        backColor = CurrentTheme.BotonCerrar;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonCerrar;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "exportar":
-                        backColor = CurrentTheme.BotonExportar;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonExportar;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "importar":
-                        backColor = CurrentTheme.BotonImportar;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonImportar;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "info":
-                        backColor = CurrentTheme.BotonUsuario;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonUsuario;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "metricas":
-                        backColor = CurrentTheme.BotonMetricas;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonMetricas;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "buscar":
-                        backColor = CurrentTheme.BotonBuscar;
-                        button.ForeColor = CurrentTheme.TextoBotonPanel2;
+                        backColor = TemaActual.BotonBuscar;
+                        button.ForeColor = TemaActual.TextoBotonPanel2;
                         break;
                     case "reiniciar":
-                        backColor = CurrentTheme.BotonReiniciar;
-                        button.ForeColor = CurrentTheme.TextoBotonPanel2;
+                        backColor = TemaActual.BotonReiniciar;
+                        button.ForeColor = TemaActual.TextoBotonPanel2;
                         break;
                     case "alta":
-                        backColor = CurrentTheme.BotonAltas;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonAltas;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "menu":
-                        backColor = CurrentTheme.BotonMenu;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonMenu;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "rol":
-                        backColor = CurrentTheme.BotonRol;
-                        button.ForeColor = CurrentTheme.TextoBotones;
+                        backColor = TemaActual.BotonRol;
+                        button.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "tema":
-                        backColor = CurrentTheme.BotonTema;
+                        backColor = TemaActual.BotonTema;
                         break;
                 }
             }
@@ -251,69 +288,33 @@ namespace MicheBytesRecipes.Helpers
             button.FlatAppearance.BorderSize = 1;
         }
 
-        private static void ApplyThemeToDataGridView(DataGridView dgv)
+        private static void AplicarTemaADataGrid(DataGridView dgv)
         {
             // Configuración completa del DataGridView
-            dgv.BackgroundColor = CurrentTheme.GridFondo;
-            dgv.GridColor = CurrentTheme.GridLineas;
+            dgv.BackgroundColor = TemaActual.GridFondo;
+            dgv.GridColor = TemaActual.GridLineas;
 
             // Estilo de las celdas normales
-            dgv.DefaultCellStyle.BackColor = CurrentTheme.GridCeldasFondo;
-            dgv.DefaultCellStyle.ForeColor = CurrentTheme.GridCeldasTexto;
-            dgv.DefaultCellStyle.SelectionBackColor = CurrentTheme.GridSeleccionFondo;
-            dgv.DefaultCellStyle.SelectionForeColor = CurrentTheme.GridSeleccionTexto;
+            dgv.DefaultCellStyle.BackColor = TemaActual.GridCeldasFondo;
+            dgv.DefaultCellStyle.ForeColor = TemaActual.GridCeldasTexto;
+            dgv.DefaultCellStyle.SelectionBackColor = TemaActual.GridSeleccionFondo;
+            dgv.DefaultCellStyle.SelectionForeColor = TemaActual.GridSeleccionTexto;
 
             // Estilo de los encabezados de columnas
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = CurrentTheme.GridEncabezadosFondo;
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = CurrentTheme.GridEncabezadosTexto;
-            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = CurrentTheme.GridEncabezadosFondo;
-            dgv.ColumnHeadersDefaultCellStyle.SelectionForeColor = CurrentTheme.GridEncabezadosTexto;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = TemaActual.GridEncabezadosFondo;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = TemaActual.GridEncabezadosTexto;
+            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = TemaActual.GridEncabezadosFondo;
+            dgv.ColumnHeadersDefaultCellStyle.SelectionForeColor = TemaActual.GridEncabezadosTexto;
 
             // Estilo de los encabezados de filas
-            dgv.RowHeadersDefaultCellStyle.BackColor = CurrentTheme.GridEncabezadosFondo;
-            dgv.RowHeadersDefaultCellStyle.ForeColor = CurrentTheme.GridEncabezadosTexto;
-            dgv.RowHeadersDefaultCellStyle.SelectionBackColor = CurrentTheme.GridEncabezadosFondo;
-            dgv.RowHeadersDefaultCellStyle.SelectionForeColor = CurrentTheme.GridEncabezadosTexto;
+            dgv.RowHeadersDefaultCellStyle.BackColor = TemaActual.GridEncabezadosFondo;
+            dgv.RowHeadersDefaultCellStyle.ForeColor = TemaActual.GridEncabezadosTexto;
+            dgv.RowHeadersDefaultCellStyle.SelectionBackColor = TemaActual.GridEncabezadosFondo;
+            dgv.RowHeadersDefaultCellStyle.SelectionForeColor = TemaActual.GridEncabezadosTexto;
 
             dgv.EnableHeadersVisualStyles = false;
         }
     }
 
-    public class Theme
-    {
-        public Color FondoPrincipal { get; set; }
-        public Color PanelPrimario { get; set; }                    // Panel por defecto
-        public Color PanelSecundario { get; set; }          // Panel secundario
-        public Color TextoBotonPanel2 { get; set; }
-        public Color TextoPrincipal { get; set; }
-        public Color Botones { get; set; }
-        public Color TextoBotones { get; set; }
-        public Color BackgroundTextBox { get; set; }
-        public Color TextoCajaTexto { get; set; }
-
-        // Botones especiales
-        public Color BotonCerrar { get; set; }
-        public Color BotonExportar { get; set; }
-        public Color BotonImportar { get; set; }
-        public Color BotonUsuario { get; set; }
-        public Color BotonMetricas { get; set; }
-        public Color BotonAltas { get; set; }
-        public Color BotonRol { get; set; }
-        public Color BotonMenu { get; set; }
-
-        public Color BotonReiniciar { get; set; }
-
-        public Color BotonBuscar { get; set; }
-        public Color BotonTema { get; set; }
-
-        //Propiedades para el DataGrid
-        public Color GridFondo { get; set; }
-        public Color GridCeldasFondo { get; set; }
-        public Color GridCeldasTexto { get; set; }
-        public Color GridEncabezadosFondo { get; set; }
-        public Color GridEncabezadosTexto { get; set; }
-        public Color GridLineas { get; set; }
-        public Color GridSeleccionFondo { get; set; } 
-        public Color GridSeleccionTexto { get; set; }
-    }
+    
 }

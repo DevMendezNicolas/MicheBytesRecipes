@@ -36,8 +36,8 @@ namespace MicheBytesRecipes
         public frmMenuAdmin(Usuario usuarioActivado)
         {
             InitializeComponent();
-            ThemeManager.ThemeChanged += OnThemeChanged;
-            this.FormClosed += (s, e) => ThemeManager.ThemeChanged -= OnThemeChanged;
+            GestorTemaAdmin.TemaCambiado += OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= OnThemeChanged;
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
@@ -98,7 +98,7 @@ namespace MicheBytesRecipes
             // --- Cargar la grilla al inicio ---
             this.ActualizarGrilla();
             AsignarTags();
-            ThemeManager.ApplyTheme(this);
+            GestorTemaAdmin.AplicarTema(this);
             ActualizarBotonTema();
 
 
@@ -197,9 +197,9 @@ namespace MicheBytesRecipes
         {
             this.Hide();
             frmGestionUsuarios gestionUsuarios = new frmGestionUsuarios(usuarioLog);
-            ThemeManager.ApplyTheme(gestionUsuarios);
-            ThemeManager.ThemeChanged += gestionUsuarios.OnThemeChanged;
-            gestionUsuarios.FormClosed += (s, args) => ThemeManager.ThemeChanged -= gestionUsuarios.OnThemeChanged;
+            GestorTemaAdmin.AplicarTema(gestionUsuarios);
+            GestorTemaAdmin.TemaCambiado += gestionUsuarios.OnThemeChanged;
+            gestionUsuarios.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= gestionUsuarios.OnThemeChanged;
             gestionUsuarios.ShowDialog();
             this.Show();
 
@@ -210,10 +210,10 @@ namespace MicheBytesRecipes
             this.Hide();
             frmMetricas metricas = new frmMetricas(usuarioLog);
 
-            ThemeManager.ApplyTheme(metricas);
-            ThemeManager.ThemeChanged += metricas.OnThemeChanged;
+            GestorTemaAdmin.AplicarTema(metricas);
+            GestorTemaAdmin.TemaCambiado += metricas.OnThemeChanged;
 
-            metricas.FormClosed += (s, args) => ThemeManager.ThemeChanged -= metricas.OnThemeChanged;
+            metricas.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= metricas.OnThemeChanged;
 
             metricas.ShowDialog();
             this.Show();
@@ -394,20 +394,20 @@ namespace MicheBytesRecipes
 
         private void btnTema_Click(object sender, EventArgs e)
         {
-            ThemeManager.ToggleTheme();
+            GestorTemaAdmin.CambiarTema();
 
         }
 
         private void OnThemeChanged()
         {
             // Cuando el tema cambia en cualquier parte, actualizar este formulario
-            ThemeManager.ApplyTheme(this);
+            GestorTemaAdmin.AplicarTema(this);
             ActualizarBotonTema();
             this.Refresh();
         }
         private void ActualizarBotonTema()
         {
-            btnTema.Text = ThemeManager.IsDarkTheme ? "☀️": "🌙";
+            btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️": "🌙";
         }
 
     }
