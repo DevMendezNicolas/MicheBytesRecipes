@@ -46,6 +46,32 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
+        public bool EliminarComentario(int usuarioId, int recetaId, string comentario)
+        {
+            try
+            {
+                conexion.Abrir();
+                // Usar un comando para llamar al procedimiento almacenado
+                using (MySqlCommand comando = new MySqlCommand("Eliminar_comentario", conexion.GetConexion()))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@p_usuario_id", usuarioId);
+                    comando.Parameters.AddWithValue("@p_receta_id", recetaId);
+                    comando.Parameters.AddWithValue("@p_descripcion", comentario);
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    return filasAfectadas > 0; // Retorna true si se eliminó al menos una fila
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar comentario: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
         public List<Comentarios> CargarComentarios(int recetaId)
         {
             List<Comentarios> listaComentarios = new List<Comentarios>();

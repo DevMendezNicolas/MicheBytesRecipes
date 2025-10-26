@@ -79,9 +79,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             // Estetica RichTextBox Instrucciones
             rtbInstrucciones.BorderStyle = BorderStyle.FixedSingle; // Borde definido
-            rtbInstrucciones.Font = new Font("Segoe UI", 10);      // Tipografía moderna y legible
-            rtbInstrucciones.ForeColor = Color.DarkSlateGray;      // Texto elegante
-            rtbInstrucciones.BackColor = Color.WhiteSmoke;         // Fondo suave
+            rtbInstrucciones.Font = new Font("Segoe UI", 10,FontStyle.Regular);      // Tipografía moderna y legible
             rtbInstrucciones.ReadOnly = true;                      // Solo lectura
             rtbInstrucciones.ScrollBars = RichTextBoxScrollBars.Vertical; // Scroll vertical
             rtbInstrucciones.WordWrap = true;                      // Ajuste de línea
@@ -392,6 +390,44 @@ namespace MicheBytesRecipes.Classes.Recetas
 
                 CargarComentarios();
 
+            }
+        }
+
+     
+
+        private void borrarComentarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstComentarios.SelectedItem != null)
+            {
+                string comentarioSeleccionado = lstComentarios.SelectedItem.ToString();
+                // Extraer el texto del comentario sin el nombre de usuario y la fecha
+                int indiceDosPuntos = comentarioSeleccionado.IndexOf(": ");
+                if (indiceDosPuntos != -1)
+                {
+                    string textoComentario = comentarioSeleccionado.Substring(indiceDosPuntos + 2);
+                    // Llamar al gestor para eliminar el comentario
+                    bool exito = gestorInteracciones.EliminarComentario(usuario.UsuarioId, receta.RecetaId, textoComentario);
+                    if (exito)
+                    {
+                        MessageBox.Show("Comentario eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarComentarios();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            CargarComentarios();
+        }
+
+        private void lstComentarios_Click(object sender, EventArgs e)
+        {
+            if (lstComentarios.SelectedItem == null)
+                return;
+            if (Control.MouseButtons == MouseButtons.Right)
+            {
+                cmsComentarios.Show(Cursor.Position);
             }
         }
     }
