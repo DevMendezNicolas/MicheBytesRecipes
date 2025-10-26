@@ -75,10 +75,11 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void LinkIniciar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var frmLogin = new frmLogin();
-            frmLogin.FormClosed += (s, args) => this.Close(); // Cierra registro cuando se cierra login
-            frmLogin.Show();
+
+            var login = new frmLogin();
+            login.Owner = this;
             this.Hide();
+            login.Show();
 
         }
 
