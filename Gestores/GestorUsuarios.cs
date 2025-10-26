@@ -390,11 +390,6 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.AddWithValue("p_telefono", telefono);
                     comando.Parameters.AddWithValue("p_imagen_perfil", foto ?? (object)DBNull.Value);
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        // No necesitamos hacer nada aquí
-                        // Si llegó hasta aquí sin excepción, la actualización fue exitosa
-                    }
                 }
             }
             catch (MySqlException ex) when (ex.Number == 1644)
