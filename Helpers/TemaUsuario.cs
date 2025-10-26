@@ -40,11 +40,11 @@ namespace MicheBytesRecipes.Helpers
         private static readonly TemaUsuario TemaClaro = new TemaUsuario
         {
             // MODIFICA ESTOS COLORES SEGÚN LA PALETA QUE QUIERAS PARA USUARIO
-            PanelPrimario = Color.FromArgb(70, 130, 180),           // Azul acero para panel principal
-            PanelSecundario = Color.FromArgb(240, 248, 255),        // Azul alice para panel secundario
+            PanelPrimario = Color.FromArgb(255, 165, 0),
+            PanelSecundario = Color.FromArgb(240, 248, 255),
 
-            TextoPrincipal = Color.FromArgb(25, 25, 112),           // Azul oscuro para texto
-            Botones = Color.FromArgb(100, 149, 237),                // Azul claro para botones
+            TextoPrincipal = Color.FromArgb(25, 25, 112),
+            Botones = Color.FromArgb(255, 140, 0),
             TextoBotones = Color.White,
             BackgroundTextBox = Color.White,
             TextoCajaTexto = Color.Black,

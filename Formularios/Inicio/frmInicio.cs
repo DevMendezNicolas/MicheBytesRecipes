@@ -55,7 +55,7 @@ namespace MicheBytesRecipes
 
         private void btnTema_Click(object sender, EventArgs e)
         {
-            
+            GestorTemaUsuario.AlternarTema();
         }
     }
 }
