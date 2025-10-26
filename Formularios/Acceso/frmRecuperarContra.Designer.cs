@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PanelMid = new System.Windows.Forms.Panel();
+            this.btnViewAgain = new System.Windows.Forms.Button();
+            this.btnViewContra = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblTexto = new System.Windows.Forms.Label();
             this.LbLinkContra = new System.Windows.Forms.LinkLabel();
@@ -39,6 +41,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.eprEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprEmail)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +50,9 @@
             // 
             this.PanelMid.BackColor = System.Drawing.Color.Orange;
             this.PanelMid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PanelMid.Controls.Add(this.progressBar);
+            this.PanelMid.Controls.Add(this.btnViewAgain);
+            this.PanelMid.Controls.Add(this.btnViewContra);
             this.PanelMid.Controls.Add(this.lblEmail);
             this.PanelMid.Controls.Add(this.lblTexto);
             this.PanelMid.Controls.Add(this.LbLinkContra);
@@ -60,6 +66,42 @@
             this.PanelMid.Size = new System.Drawing.Size(376, 339);
             this.PanelMid.TabIndex = 7;
             // 
+            // btnViewAgain
+            // 
+            this.btnViewAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewAgain.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnViewAgain.FlatAppearance.BorderSize = 0;
+            this.btnViewAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewAgain.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnViewAgain.ForeColor = System.Drawing.Color.White;
+            this.btnViewAgain.Location = new System.Drawing.Point(309, 139);
+            this.btnViewAgain.Name = "btnViewAgain";
+            this.btnViewAgain.Size = new System.Drawing.Size(34, 26);
+            this.btnViewAgain.TabIndex = 23;
+            this.btnViewAgain.Text = "N\r\n";
+            this.btnViewAgain.UseVisualStyleBackColor = false;
+            this.btnViewAgain.Visible = false;
+            this.btnViewAgain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnViewAgain_MouseDown);
+            this.btnViewAgain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnViewAgain_MouseUp);
+            // 
+            // btnViewContra
+            // 
+            this.btnViewContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewContra.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnViewContra.FlatAppearance.BorderSize = 0;
+            this.btnViewContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewContra.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnViewContra.ForeColor = System.Drawing.Color.White;
+            this.btnViewContra.Location = new System.Drawing.Point(309, 95);
+            this.btnViewContra.Name = "btnViewContra";
+            this.btnViewContra.Size = new System.Drawing.Size(34, 26);
+            this.btnViewContra.TabIndex = 22;
+            this.btnViewContra.Text = "N\r\n";
+            this.btnViewContra.UseVisualStyleBackColor = false;
+            this.btnViewContra.Visible = false;
+            this.btnViewContra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnViewContra_MouseDown);
+            this.btnViewContra.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnViewContra_MouseUp);
+            // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
@@ -67,9 +109,9 @@
             this.lblEmail.ForeColor = System.Drawing.Color.White;
             this.lblEmail.Location = new System.Drawing.Point(37, 58);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(59, 25);
+            this.lblEmail.Size = new System.Drawing.Size(270, 25);
             this.lblEmail.TabIndex = 11;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "Ingresa tu correo electronico";
             // 
             // lblTexto
             // 
@@ -100,7 +142,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(60, 289);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(257, 43);
-            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -128,7 +170,7 @@
             this.txtNuevaContra.Location = new System.Drawing.Point(37, 139);
             this.txtNuevaContra.Name = "txtNuevaContra";
             this.txtNuevaContra.Size = new System.Drawing.Size(306, 26);
-            this.txtNuevaContra.TabIndex = 1;
+            this.txtNuevaContra.TabIndex = 2;
             this.txtNuevaContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtNuevaContra.Visible = false;
             // 
@@ -159,6 +201,15 @@
             // 
             this.eprEmail.ContainerControl = this;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(85, 127);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(194, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 24;
+            this.progressBar.Visible = false;
+            // 
             // frmRecuperarContra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,5 +239,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider eprEmail;
         private System.Windows.Forms.TextBox txtNuevaContra;
+        private System.Windows.Forms.Button btnViewContra;
+        private System.Windows.Forms.Button btnViewAgain;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

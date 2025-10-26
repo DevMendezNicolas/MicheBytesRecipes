@@ -23,6 +23,8 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             InitializeComponent();
             emailService = new EmailService();
+            CueProvider.SetCue(txtEmail, "tuCorreo@hotmail.com");
+            txtNuevaContra.UseSystemPasswordChar = true;
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -65,6 +67,9 @@ namespace MicheBytesRecipes.Forms.Auth
 
             try
             {
+                progressBar.Visible = true;
+                btnEnviar.Enabled = false;
+                btnCancelar.Enabled = false;
                 //Usar la MISMA instancia de emailService
                 await emailService.EnviarCodigoVerificacion(email);
 
@@ -74,10 +79,10 @@ namespace MicheBytesRecipes.Forms.Auth
 
                 //El código ya está guardado en emailService
                 txtEmail.Clear();
-                lblEmail.Text = "Código de verificación";
+                CueProvider.SetCue(txtEmail, "Código de verificación");
+                lblEmail.Text = "Ingrese su codigo de verificación";
                 btnEnviar.Text = "Verificar Código";
-                lblTexto.Text = "Ingresá el código de 6 dígitos";
-                txtNuevaContra.Visible = false;
+                lblTexto.Text = "Ingresá el código de 6 dígitos que llego a tu correo.";
 
                 btnEnviar.Click -= btnIngresar_Click;
                 btnEnviar.Click += VerificarCodigo;
@@ -87,7 +92,15 @@ namespace MicheBytesRecipes.Forms.Auth
                 MessageBox.Show($"❌ No se pudo enviar el correo.\nError: {ex.Message}",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                progressBar.Visible = false;
+                btnEnviar.Enabled = true;
+                btnCancelar.Enabled = true;
+            }
+
         }
+
 
         private void VerificarCodigo(object sender, EventArgs e)
         {
@@ -96,12 +109,18 @@ namespace MicheBytesRecipes.Forms.Auth
 
             if (codigoIngresado == codigoGenerado)
             {
-                MessageBox.Show("✅ Código correcto!");
+                MessageBox.Show("El código de verificación es correcto. Ahora puede crear su nueva contraseña.",
+                               "✅ Verificación Exitosa",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
                 NuevaContraseña();
             }
             else
             {
-                MessageBox.Show("❌ Código incorrecto");
+                MessageBox.Show("El código ingresado no es válido.",
+                               "❌ Código Incorrecto",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
             }
         }
 
@@ -109,18 +128,22 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             // Configurar interfaz para nueva contraseña
             txtEmail.Clear();
+            CueProvider.SetCue(txtNuevaContra, "Repeti tu nueva contraseña");
             txtNuevaContra.Clear();
             txtNuevaContra.Visible = true;
 
             lblTexto.Text = "Ingresá tu nueva contraseña";
             lblEmail.Text = "Nueva contraseña";
-            //txtEmail.PlaceholderText = "Nueva contraseña";
-            //txtActual.PlaceholderText = "Confirmar contraseña";
+            CueProvider.SetCue(txtEmail, "Ingresa tu nueva contraseña");
+
 
             // Cambiar a evento de cambio de contraseña
             btnEnviar.Click -= VerificarCodigo;
             btnEnviar.Click += CambiarContraseña;
             btnEnviar.Text = "Cambiar Contraseña";
+            txtEmail.UseSystemPasswordChar = true;
+            btnViewAgain.Visible = true;
+            btnViewContra.Visible = true;
         }
 
         private void CambiarContraseña(object sender, EventArgs e)
@@ -131,39 +154,41 @@ namespace MicheBytesRecipes.Forms.Auth
             // Validar que no estén vacías
             if (string.IsNullOrWhiteSpace(nuevaContraseña) || string.IsNullOrWhiteSpace(confirmarContraseña))
             {
-                MessageBox.Show("❌ Ambas contraseñas son obligatorias");
+                MessageBox.Show("Ambas contraseñas son obligatorias para continuar.",
+                               "⚠️ Campos Requeridos",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Warning);
                 return;
             }
 
             // Validar que coincidan
             if (nuevaContraseña != confirmarContraseña)
             {
-                MessageBox.Show("❌ Las contraseñas no coinciden");
+                MessageBox.Show("Las contraseñas ingresadas no coinciden. Por favor, verifique e intente nuevamente.",
+                               "❌ Contraseñas No Coinciden", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
-                //USAR LA VARIABLE DONDE GUARDASTE EL EMAIL
                 string contraseñaHasheada = gestorUsuarios.HashearContraseña(nuevaContraseña);
 
-                // Tu método debería recibir email y contraseña nueva
                 bool resultado = gestorUsuarios.OlvideMiContraseña(emailRecupero, contraseñaHasheada);
 
                 if (resultado)
                 {
-                    MessageBox.Show("✅ Contraseña actualizada correctamente");
+                    MessageBox.Show("Su contraseña ha sido actualizada exitosamente.", "✅ Contraseña Actualizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestaurarFormularioOriginal();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("❌ Error al actualizar la contraseña");
+                    MessageBox.Show("No se pudo actualizar la contraseña. Por favor, intente nuevamente", "❌ Error al Actualizar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"❌ Error: {ex.Message}");
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "⚠️ Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void RestaurarFormularioOriginal()
@@ -174,7 +199,6 @@ namespace MicheBytesRecipes.Forms.Auth
             txtNuevaContra.Visible = false;
 
             lblTitulo.Text = "Recuperar Contraseña";
-            //txtEmail.PlaceholderText = "Ingrese su email";
 
             // Restaurar evento original
             btnEnviar.Click -= CambiarContraseña;
@@ -183,6 +207,33 @@ namespace MicheBytesRecipes.Forms.Auth
 
             // Limpiar tag
             txtEmail.Tag = null;
+        }
+
+        private void btnViewContra_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtEmail.UseSystemPasswordChar = false;
+            txtEmail.PasswordChar = '\0';
+
+        }
+
+        private void btnViewAgain_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtNuevaContra.UseSystemPasswordChar = false;
+            txtNuevaContra.PasswordChar = '\0';
+
+        }
+
+        private void btnViewContra_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtEmail.UseSystemPasswordChar = true;
+            txtEmail.PasswordChar = '●';
+
+        }
+
+        private void btnViewAgain_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtNuevaContra.UseSystemPasswordChar = true;
+            txtNuevaContra.PasswordChar = '●';
         }
     }
 }
