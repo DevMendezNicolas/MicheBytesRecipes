@@ -492,6 +492,10 @@ namespace MicheBytesRecipes.Forms.User
             {
                 // Captura SOLO el error de email duplicado
                 MessageBox.Show(ex.Message, "Email duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                eprCampos.SetError(txtEmail, "Correo ya registrado");
+                toolTipCajas.Active = true;
+                toolTipCajas.Show("Correo ya registrado. Ingrese uno nuevo", txtEmail, txtEmail.Width, txtEmail.Height - 60, 5000);
+                ShakeControl(txtEmail);
             }
             catch (Exception ex)
             {
