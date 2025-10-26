@@ -70,6 +70,7 @@
             // 
             // pnlContenido
             // 
+            this.pnlContenido.BackColor = System.Drawing.SystemColors.Control;
             this.pnlContenido.Controls.Add(this.btnViewContraNueva);
             this.pnlContenido.Controls.Add(this.btnViewContra);
             this.pnlContenido.Controls.Add(this.txtContraActual);
@@ -101,7 +102,7 @@
             // btnViewContraNueva
             // 
             this.btnViewContraNueva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewContraNueva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnViewContraNueva.BackColor = System.Drawing.Color.Orange;
             this.btnViewContraNueva.FlatAppearance.BorderSize = 0;
             this.btnViewContraNueva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewContraNueva.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -118,7 +119,7 @@
             // btnViewContra
             // 
             this.btnViewContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewContra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnViewContra.BackColor = System.Drawing.Color.Orange;
             this.btnViewContra.FlatAppearance.BorderSize = 0;
             this.btnViewContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewContra.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -152,53 +153,62 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(81, 584);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(198, 42);
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblContraActual
             // 
             this.lblContraActual.AutoSize = true;
-            this.lblContraActual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraActual.Location = new System.Drawing.Point(78, 452);
+            this.lblContraActual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraActual.ForeColor = System.Drawing.Color.Orange;
+            this.lblContraActual.Location = new System.Drawing.Point(71, 452);
             this.lblContraActual.Name = "lblContraActual";
-            this.lblContraActual.Size = new System.Drawing.Size(137, 21);
+            this.lblContraActual.Size = new System.Drawing.Size(151, 21);
             this.lblContraActual.TabIndex = 18;
             this.lblContraActual.Text = "Contraseña actual:";
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(625, 584);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(198, 42);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "💾 &Guardar Cambios ";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblContraNueva
             // 
             this.lblContraNueva.AutoSize = true;
-            this.lblContraNueva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraNueva.Location = new System.Drawing.Point(77, 501);
+            this.lblContraNueva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraNueva.ForeColor = System.Drawing.Color.Orange;
+            this.lblContraNueva.Location = new System.Drawing.Point(71, 501);
             this.lblContraNueva.Name = "lblContraNueva";
-            this.lblContraNueva.Size = new System.Drawing.Size(138, 21);
+            this.lblContraNueva.Size = new System.Drawing.Size(152, 21);
             this.lblContraNueva.TabIndex = 19;
             this.lblContraNueva.Text = "Nueva contraseña:";
             // 
             // lblCambiarContra
             // 
             this.lblCambiarContra.AutoSize = true;
-            this.lblCambiarContra.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCambiarContra.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCambiarContra.ForeColor = System.Drawing.Color.Orange;
             this.lblCambiarContra.Location = new System.Drawing.Point(77, 399);
             this.lblCambiarContra.Name = "lblCambiarContra";
-            this.lblCambiarContra.Size = new System.Drawing.Size(175, 21);
+            this.lblCambiarContra.Size = new System.Drawing.Size(216, 25);
             this.lblCambiarContra.TabIndex = 16;
             this.lblCambiarContra.Text = "🔒 Cambiar contraseña";
             // 
@@ -245,10 +255,11 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.Orange;
             this.lblEmail.Location = new System.Drawing.Point(131, 340);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(51, 21);
+            this.lblEmail.Size = new System.Drawing.Size(57, 21);
             this.lblEmail.TabIndex = 2;
             this.lblEmail.Text = "Email:";
             // 
@@ -273,20 +284,22 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellido.ForeColor = System.Drawing.Color.Orange;
             this.lblApellido.Location = new System.Drawing.Point(132, 244);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(70, 21);
+            this.lblApellido.Size = new System.Drawing.Size(79, 21);
             this.lblApellido.TabIndex = 2;
             this.lblApellido.Text = "Apellido:";
             // 
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.ForeColor = System.Drawing.Color.Orange;
             this.lblTelefono.Location = new System.Drawing.Point(131, 293);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(71, 21);
+            this.lblTelefono.Size = new System.Drawing.Size(81, 21);
             this.lblTelefono.TabIndex = 2;
             this.lblTelefono.Text = "Teléfono:";
             // 
@@ -302,10 +315,11 @@
             // lblNombreNuevo
             // 
             this.lblNombreNuevo.AutoSize = true;
-            this.lblNombreNuevo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreNuevo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreNuevo.ForeColor = System.Drawing.Color.Orange;
             this.lblNombreNuevo.Location = new System.Drawing.Point(131, 197);
             this.lblNombreNuevo.Name = "lblNombreNuevo";
-            this.lblNombreNuevo.Size = new System.Drawing.Size(71, 21);
+            this.lblNombreNuevo.Size = new System.Drawing.Size(77, 21);
             this.lblNombreNuevo.TabIndex = 2;
             this.lblNombreNuevo.Text = "Nombre:";
             // 
@@ -313,15 +327,17 @@
             // 
             this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(336, 24);
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.Orange;
+            this.lblTitulo.Location = new System.Drawing.Point(305, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(232, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(312, 32);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Configuración del usuario";
             // 
             // pnlNavegacion
             // 
+            this.pnlNavegacion.BackColor = System.Drawing.Color.Orange;
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
             this.pnlNavegacion.Controls.Add(this.lblEditar);
@@ -346,6 +362,7 @@
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(13, 116);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(198, 74);
@@ -355,24 +372,30 @@
             // 
             // lblEditar
             // 
+            this.lblEditar.BackColor = System.Drawing.Color.Salmon;
+            this.lblEditar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditar.ForeColor = System.Drawing.Color.White;
             this.lblEditar.Location = new System.Drawing.Point(18, 194);
             this.lblEditar.Margin = new System.Windows.Forms.Padding(4);
             this.lblEditar.Name = "lblEditar";
             this.lblEditar.Size = new System.Drawing.Size(198, 42);
             this.lblEditar.TabIndex = 9;
             this.lblEditar.Text = "&Editar";
-            this.lblEditar.UseVisualStyleBackColor = true;
+            this.lblEditar.UseVisualStyleBackColor = false;
             this.lblEditar.Click += new System.EventHandler(this.lblEditar_Click);
             // 
             // btnInicio
             // 
+            this.btnInicio.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.Location = new System.Drawing.Point(18, 584);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
             this.btnInicio.TabIndex = 10;
             this.btnInicio.Text = "🔙 &Inicio ";
-            this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // ofdImagenNueva

@@ -63,15 +63,17 @@
             // 
             this.lblTituloHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTituloHistorial.AutoSize = true;
-            this.lblTituloHistorial.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloHistorial.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloHistorial.ForeColor = System.Drawing.Color.Orange;
             this.lblTituloHistorial.Location = new System.Drawing.Point(342, 24);
             this.lblTituloHistorial.Name = "lblTituloHistorial";
-            this.lblTituloHistorial.Size = new System.Drawing.Size(201, 25);
+            this.lblTituloHistorial.Size = new System.Drawing.Size(267, 32);
             this.lblTituloHistorial.TabIndex = 0;
             this.lblTituloHistorial.Text = "Mi historial de recetas";
             // 
             // pnlNavegacion
             // 
+            this.pnlNavegacion.BackColor = System.Drawing.Color.Orange;
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
@@ -94,7 +96,8 @@
             // lblNombre
             // 
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(13, 116);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(198, 74);
@@ -104,16 +107,19 @@
             // 
             // btnInicio
             // 
+            this.btnInicio.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.Location = new System.Drawing.Point(13, 550);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
             this.btnInicio.TabIndex = 1;
             this.btnInicio.Text = "🔙 &Inicio ";
-            this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
-            // Historial
+            // frmHistorial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +130,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "Historial";
+            this.Name = "frmHistorial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial";
             this.Load += new System.EventHandler(this.Historial_Load);
