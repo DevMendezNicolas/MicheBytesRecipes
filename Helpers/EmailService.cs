@@ -39,18 +39,142 @@ namespace MicheBytesRecipes.Helpers
         {
             string codigo = GenerarCodigo();
 
-            string asunto = "Código de Verificación - MicheBytes";
+            string asunto = "🔐 Código de Verificación - MicheBytes";
             string cuerpoHtml = $@"
-            <html>
-            <body style='font-family: Segoe UI, sans-serif;'>
-                <h2 style='color:#007bff;'>Verificación de cuenta</h2>
-                <p>Tu código de verificación es:</p>
-                <h1 style='color:#28a745; text-align:center;'>{codigo}</h1>
-                <p>Ingresalo en la aplicación para continuar con el cambio de contraseña.</p>
-                <hr />
-                <small>Equipo MicheBytes</small>
-            </body>
-            </html>";
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset='utf-8'>
+        <style>
+            body {{ 
+                font-family: 'Segoe UI', Arial, sans-serif; 
+                background-color: #f6f9fc; 
+                margin: 0; 
+                padding: 0; 
+            }}
+            .container {{ 
+                max-width: 600px; 
+                margin: 0 auto; 
+                background: white; 
+                border-radius: 12px; 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+                overflow: hidden;
+            }}
+            .header {{ 
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 30px 20px; 
+                text-align: center; 
+                color: white;
+            }}
+            .logo {{ 
+                font-size: 28px; 
+                font-weight: bold; 
+                margin-bottom: 10px;
+            }}
+            .content {{ 
+                padding: 40px 30px; 
+                color: #333;
+            }}
+            .code-container {{ 
+                background: #f8f9fa; 
+                border: 2px dashed #dee2e6; 
+                border-radius: 8px; 
+                padding: 20px; 
+                text-align: center; 
+                margin: 25px 0;
+            }}
+            .verification-code {{ 
+                font-size: 32px; 
+                font-weight: bold; 
+                color: #28a745; 
+                letter-spacing: 8px; 
+                margin: 10px 0;
+            }}
+            .instructions {{ 
+                color: #6c757d; 
+                line-height: 1.6; 
+                margin-bottom: 25px;
+            }}
+            .warning {{ 
+                background: #fff3cd; 
+                border: 1px solid #ffeaa7; 
+                border-radius: 6px; 
+                padding: 15px; 
+                margin: 20px 0;
+                color: #856404;
+            }}
+            .footer {{ 
+                background: #f8f9fa; 
+                padding: 20px; 
+                text-align: center; 
+                color: #6c757d; 
+                font-size: 12px;
+                border-top: 1px solid #e9ecef;
+            }}
+            .button {{ 
+                display: inline-block; 
+                background: #28a745; 
+                color: white; 
+                padding: 12px 30px; 
+                text-decoration: none; 
+                border-radius: 6px; 
+                font-weight: bold; 
+                margin: 10px 0;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <div class='logo'>🔐 MicheBytes</div>
+                <h1 style='margin: 10px 0; font-size: 24px;'>Verificación de Seguridad</h1>
+            </div>
+            
+            <div class='content'>
+                <h2 style='color: #333; margin-bottom: 20px;'>Hola,</h2>
+                
+                <p class='instructions'>
+                    Has solicitado restablecer tu contraseña. Para completar este proceso, 
+                    utiliza el siguiente código de verificación:
+                </p>
+                
+                <div class='code-container'>
+                    <p style='margin: 0 0 10px 0; color: #6c757d; font-size: 14px;'>CÓDIGO DE VERIFICACIÓN</p>
+                    <div class='verification-code'>{codigo}</div>
+                    <p style='margin: 10px 0 0 0; color: #6c757d; font-size: 12px;'>
+                        Válido por 10 minutos
+                    </p>
+                </div>
+                
+                <p class='instructions'>
+                    Ingresa este código en la aplicación para continuar con el cambio de contraseña.
+                </p>
+                
+                <div class='warning'>
+                    <strong>⚠️ Importante:</strong><br>
+                    • Este código es de un solo uso<br>
+                    • No compartas este código con nadie<br>
+                    • Si no solicitaste este cambio, ignora este mensaje
+                </div>
+                
+                <p style='text-align: center; margin: 30px 0 10px 0;'>
+                    <a href='#' class='button'>Ir a la Aplicación</a>
+                </p>
+            </div>
+            
+            <div class='footer'>
+                <p style='margin: 0 0 10px 0;'>
+                    <strong>Equipo MicheBytes</strong><br>
+                    Soporte y desarrollo
+                </p>
+                <p style='margin: 0; font-size: 11px; color: #adb5bd;'>
+                    Este es un mensaje automático, por favor no respondas a este correo.<br>
+                    © 2025 MicheBytes. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </body>
+    </html>";
 
             try
             {
@@ -62,11 +186,13 @@ namespace MicheBytesRecipes.Helpers
 
                     using (MailMessage mensaje = new MailMessage())
                     {
-                        mensaje.From = new MailAddress(remitente, "Soporte MicheBytes");
+                        mensaje.From = new MailAddress(remitente, "Soporte MicheBytes 🔐");
                         mensaje.To.Add(destinatario);
                         mensaje.Subject = asunto;
                         mensaje.Body = cuerpoHtml;
                         mensaje.IsBodyHtml = true;
+                        // Prioridad alta para emails de verificación
+                        mensaje.Priority = MailPriority.High;
 
                         await smtp.SendMailAsync(mensaje);
                     }
@@ -81,106 +207,3 @@ namespace MicheBytesRecipes.Helpers
 }
 
 
-        // 👉 Envío alternativo con SendGrid
-        /*try
-        {
-            var backup = new EmailServiceBackup();
-            await backup.EnviarCodigoAlternativo(destinatario, codigo);
-        }
-        catch (Exception ex2)
-        {
-            MessageBox.Show($"❌ No se pudo enviar el correo por ningún método.\n{ex2.Message}",
-                            "Fallo de envío", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }*/
-
-
-        /*private ConexionBD conexion = new ConexionBD();
-        private readonly string _apiKey;
-        private readonly string _emailFrom;
-
-        public EmailService()
-        {
-            // TUS DATOS REALES - REEMPLAZA EL API KEY
-            _apiKey = "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"; // TU API KEY DE SENDGRID
-            _emailFrom = "soporte.michebytes@hotmail.com"; // Email verificado
-        }
-
-        // 🔹 Método genérico para enviar emails con SendGrid
-        public async Task<bool> EnviarEmailAsync(string to, string subject, string htmlBody, string plainTextBody)
-        {
-            try
-            {
-                var client = new SendGridClient(_apiKey);
-                var from = new EmailAddress(_emailFrom, "Michebytes");
-                var toEmail = new EmailAddress(to);
-
-                var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, plainTextBody, htmlBody);
-                var response = await client.SendEmailAsync(msg);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("✅ Email enviado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show($"❌ Error en el envío: {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"❌ Error al enviar el correo: {ex.Message}", "Excepción", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        // 🔑 Envío específico para recuperación de contraseña
-        public async void EnviarRecuperacionPassword(string emailDestino, string password)
-        {
-            string subject = "Recuperación de Contraseña - Michebytes";
-
-            string htmlBody = $@"
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <style>
-                        body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
-                        .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
-                        .header {{ background: #007bff; color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }}
-                        .content {{ background: #f8f9fa; padding: 20px; border-radius: 0 0 5px 5px; }}
-                        .password {{ font-size: 24px; color: #dc3545; font-weight: bold; text-align: center; }}
-                        .footer {{ margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; text-align: center; font-size: 13px; }}
-                    </style>
-                </head>
-                <body>
-                    <div class='container'>
-                        <div class='header'>
-                            <h1>🔐 Recuperación de Contraseña</h1>
-                        </div>
-                        <div class='content'>
-                            <p>Hola,</p>
-                            <p>Recibimos una solicitud para recuperar tu contraseña. Aquí están tus datos:</p>
-                            <p><strong>Email:</strong> {emailDestino}</p>
-                            <p><strong>Contraseña:</strong></p>
-                            <div class='password'>{password}</div>
-                            <p>Por seguridad, te recomendamos cambiar tu contraseña después de iniciar sesión.</p>
-                        </div>
-                        <div class='footer'>
-                            <p>Equipo <strong>Michebytes</strong></p>
-                            <p><small>Este es un mensaje automático, por favor no responder.</small></p>
-                        </div>
-                    </div>
-                </body>
-                </html>";
-
-            string plainTextBody = $"Recuperación de Contraseña - Michebytes\n\nTu contraseña es: {password}\n\nPor seguridad, te recomendamos cambiarla al iniciar sesión.";
-
-            bool exito = await EnviarEmailAsync(emailDestino, subject, htmlBody, plainTextBody);
-
-            if (exito)
-            {
-                // Podés registrar en logs, base de datos, etc.
-            }
-        }*/
-        
