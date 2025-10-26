@@ -171,9 +171,9 @@ namespace MicheBytesRecipes.Forms.Auth
 
             try
             {
-                string contraseñaHasheada = gestorUsuarios.HashearContraseña(nuevaContraseña);
+                string nuevaContraHash = gestorUsuarios.HashearContraseña(nuevaContraseña);
 
-                bool resultado = gestorUsuarios.OlvideMiContraseña(emailRecupero, contraseñaHasheada);
+                bool resultado = gestorUsuarios.OlvideMiContraseña(emailRecupero, nuevaContraHash);
 
                 if (resultado)
                 {
