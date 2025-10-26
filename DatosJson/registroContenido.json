@@ -9,14 +9,14 @@
     {
       "Nombre": "lblRelleno",
       "Texto": "Unite a nuestra comunidad y llevá tu experiencia en la cocina al siguiente nivel.",
-      "Tamaño": 14,
-      "Negrita": false
+      "Tamaño": 16,
+      "Negrita": true
     },
     {
       "Nombre": "lblTexto",
       "Texto": "Con tu registro accedés a:\n🍲 Recetas fáciles y variadas para todos los gustos.\n👩‍🍳 Consejos prácticos que harán que cocinar sea más divertido.\n🌈 Un diseño tierno y amigable que te va a inspirar cada día.\n\n¡Registrate gratis y empezá hoy mismo a crear momentos deliciosos con MicheBytes Recipes! 🍴✨",
       "Tamaño": 16,
-      "Negrita": false
+      "Negrita": true
     }
   ]
 }

@@ -42,36 +42,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         }
 
-        private void pnlRight_Paint(object sender, PaintEventArgs e)
-        {
-
-            //Hacer transparentes los labels y checkbox del panel derecho. Pero no afecta el setcue
-            foreach (Control control in pnlRight.Controls)
-            {
-                if (control is Label)
-                {
-                    control.BackColor = Color.Transparent;
-                }
-            }
-
-            lblLinkTerminos.BackColor = Color.Transparent;
-            LinkIniciar.BackColor = Color.Transparent;
-
-        }
-        private void pnlLeft_Paint(object sender, PaintEventArgs e)
-        {
-            foreach (Control control in pnlRight.Controls)
-            {
-                if (control is Label)
-                {
-                    control.BackColor = Color.Transparent;
-                }
-            }
-            lblTituloLeft.BackColor = Color.Transparent;
-            lblRelleno.BackColor = Color.Transparent;
-            lblTexto.BackColor = Color.Transparent;
-
-        }
+ 
 
         private void LinkIniciar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

@@ -33,12 +33,6 @@ namespace MicheBytesRecipes
             UiHelpers.SetRoundedTextBox(txtEmail, 10);
             UiHelpers.SetRoundedTextBox(txtContra, 10);
             UiHelpers.SetRoundedButton(btnIngresar, 40);
-
-            //Aplicación del tema y color gradiente al formulario
-            //ThemeManager.ApplyTheme(this);
-            //UiHelpers.SetGradient(this, Color.FromArgb(0, 10, 20), Color.FromArgb(10, 30, 50), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            label1.BackColor = Color.Transparent;
-
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -47,13 +41,6 @@ namespace MicheBytesRecipes
             txtContra.MaxLength = 20;
         }
 
-        private void BtnTema_Click(object sender, EventArgs e)
-        {
-            //Cambiar tema de claro a oscuro y viceversa
-            //ThemeManager.ToggleTheme();
-            //ThemeManager.ApplyTheme(this);
-
-        }
 
         private void LbLinkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

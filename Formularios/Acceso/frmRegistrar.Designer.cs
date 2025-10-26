@@ -302,7 +302,6 @@
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(600, 661);
             this.pnlRight.TabIndex = 0;
-            this.pnlRight.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRight_Paint);
             // 
             // lbCambiarImagen
             // 
@@ -319,7 +318,7 @@
             // btnViewAgain
             // 
             this.btnViewAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewAgain.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnViewAgain.BackColor = System.Drawing.Color.DarkOrange;
             this.btnViewAgain.FlatAppearance.BorderSize = 0;
             this.btnViewAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewAgain.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -336,7 +335,7 @@
             // btnViewContra
             // 
             this.btnViewContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewContra.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnViewContra.BackColor = System.Drawing.Color.DarkOrange;
             this.btnViewContra.FlatAppearance.BorderSize = 0;
             this.btnViewContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewContra.Font = new System.Drawing.Font("Webdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -384,7 +383,6 @@
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(584, 661);
             this.pnlLeft.TabIndex = 1;
-            this.pnlLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLeft_Paint);
             // 
             // lblTexto
             // 
