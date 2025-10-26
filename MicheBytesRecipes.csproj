@@ -240,7 +240,6 @@
     <Compile Include="Helpers\CueProvider.cs" />
     <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Theme.cs" />
-    <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\UiHelpers.cs" />
     <Compile Include="Interfaces\IPermisosUsuario.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />

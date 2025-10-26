@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.brnImportar = new System.Windows.Forms.Button();
+            this.btnImportar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,7 +42,7 @@
             this.btnAct = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.txtAgregar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnReinicio = new System.Windows.Forms.Button();
@@ -65,6 +65,7 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
+            this.btnTema = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -74,7 +75,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.brnImportar);
+            this.panel1.Controls.Add(this.btnTema);
+            this.panel1.Controls.Add(this.btnImportar);
             this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -87,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAct);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnModificar);
-            this.panel1.Controls.Add(this.txtAgregar);
+            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -95,19 +97,19 @@
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
             // 
-            // brnImportar
+            // btnImportar
             // 
-            this.brnImportar.BackColor = System.Drawing.Color.Gold;
-            this.brnImportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brnImportar.ForeColor = System.Drawing.Color.White;
-            this.brnImportar.Location = new System.Drawing.Point(119, 418);
-            this.brnImportar.Margin = new System.Windows.Forms.Padding(4);
-            this.brnImportar.Name = "brnImportar";
-            this.brnImportar.Size = new System.Drawing.Size(92, 42);
-            this.brnImportar.TabIndex = 15;
-            this.brnImportar.Text = "&Importar";
-            this.brnImportar.UseVisualStyleBackColor = false;
-            this.brnImportar.Click += new System.EventHandler(this.brnImportar_Click);
+            this.btnImportar.BackColor = System.Drawing.Color.Gold;
+            this.btnImportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportar.ForeColor = System.Drawing.Color.White;
+            this.btnImportar.Location = new System.Drawing.Point(119, 418);
+            this.btnImportar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(92, 42);
+            this.btnImportar.TabIndex = 15;
+            this.btnImportar.Text = "&Importar";
+            this.btnImportar.UseVisualStyleBackColor = false;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnExportar
             // 
@@ -263,19 +265,19 @@
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // txtAgregar
+            // btnAgregar
             // 
-            this.txtAgregar.BackColor = System.Drawing.Color.Orange;
-            this.txtAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAgregar.ForeColor = System.Drawing.Color.White;
-            this.txtAgregar.Location = new System.Drawing.Point(13, 199);
-            this.txtAgregar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAgregar.Name = "txtAgregar";
-            this.txtAgregar.Size = new System.Drawing.Size(198, 42);
-            this.txtAgregar.TabIndex = 2;
-            this.txtAgregar.Text = "&Agregar";
-            this.txtAgregar.UseVisualStyleBackColor = false;
-            this.txtAgregar.Click += new System.EventHandler(this.txtAgregar_Click);
+            this.btnAgregar.BackColor = System.Drawing.Color.Orange;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Location = new System.Drawing.Point(13, 199);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(198, 42);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "&Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // panel3
             // 
@@ -489,6 +491,16 @@
             // 
             this.opfImportar.FileName = "openFileDialog1";
             // 
+            // btnTema
+            // 
+            this.btnTema.Location = new System.Drawing.Point(18, 635);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(75, 23);
+            this.btnTema.TabIndex = 16;
+            this.btnTema.Text = "button1";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -524,7 +536,7 @@
         private System.Windows.Forms.Button btnAct;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button txtAgregar;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label lblReceta;
         private System.Windows.Forms.Label lblMetricas;
         private System.Windows.Forms.Label lblNombre;
@@ -549,11 +561,12 @@
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button brnImportar;
+        private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.OpenFileDialog opfImportar;
         private System.Windows.Forms.FolderBrowserDialog fbdCarpetaDestino;
         private System.Windows.Forms.SaveFileDialog sfdExpotar;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnTema;
     }
 }
 

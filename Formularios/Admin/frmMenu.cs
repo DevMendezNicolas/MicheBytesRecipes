@@ -36,20 +36,6 @@ namespace MicheBytesRecipes
         public frmMenuAdmin(Usuario usuarioActivado)
         {
             InitializeComponent();
-            UiHelpers.SetRoundedButton(btnBuscar, 15);
-            UiHelpers.SetRoundedButton(btnReinicio, 15);
-            UiHelpers.SetRoundedButton(btnAct, 15);
-            UiHelpers.SetRoundedButton(btnEliminar, 15);
-            UiHelpers.SetRoundedButton(txtAgregar, 15);
-            //ThemeManager.ApplyTheme(this);
-            UiHelpers.SetGradient(this, Color.FromArgb(0, 192, 192), Color.FromArgb(100, 192, 230), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            UiHelpers.SetGradient(panel3, Color.FromArgb(0, 192, 192), Color.FromArgb(0, 192, 192), System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-
-            dgvReceta.BackgroundColor = Color.FromArgb(0, 192, 192); // Fondo del control completo
-            //Color de la fuente del DGV en negro
-            dgvReceta.DefaultCellStyle.BackColor = Color.FromArgb(255, 250, 240); // Color tipo crema
-            dgvReceta.DefaultCellStyle.ForeColor = Color.FromArgb(60, 60, 60);    // Gris oscuro
-            dgvReceta.ForeColor = Color.Black;
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
@@ -68,6 +54,9 @@ namespace MicheBytesRecipes
             {
                 pictureBox1.Image = null;
             }
+            ThemeManager.ThemeChanged += OnThemeChanged;
+
+
         }
 
         private void frmMenuAdmin_Load(object sender, EventArgs e)
@@ -106,6 +95,8 @@ namespace MicheBytesRecipes
 
             // --- Cargar la grilla al inicio ---
             this.ActualizarGrilla();
+            AsignarTagsBotones();
+            ThemeManager.ApplyTheme(this);
 
 
         }
@@ -157,7 +148,7 @@ namespace MicheBytesRecipes
 
         }
 
-        private void txtAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAgregarReceta frmAgregarReceta = new frmAgregarReceta(usuarioLog);
             frmAgregarReceta.ShowDialog();
@@ -290,7 +281,7 @@ namespace MicheBytesRecipes
             }
         }
 
-        private void brnImportar_Click(object sender, EventArgs e) // Probar este evento cuando funcione todo
+        private void btnImportar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -327,7 +318,9 @@ namespace MicheBytesRecipes
                 MessageBox.Show($"Error al importar recetas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
+        }// Probar este evento cuando funcione todo
+
+
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -368,5 +361,64 @@ namespace MicheBytesRecipes
 
 
         }
+
+        // En tu formulario de administrador, asigna los tags:
+        private void AsignarTagsBotones()
+        {
+            // Botones principales - color azul por defecto
+            btnAgregar.Tag = "";
+            btnModificar.Tag = "";
+            btnEliminar.Tag = "";
+            btnAct.Tag = "";
+
+            // Botones especiales
+            btnImportar.Tag = "importar";
+            btnExportar.Tag = "exportar";
+            btnUsuarios.Tag = "info"; // O el que prefieras
+            btnMetricas.Tag = "metricas";
+            btnCerrarSesion.Tag = "peligro";
+
+            btnTema.Tag = "secundario";
+        }
+
+        private void btnTema_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme();
+            ThemeManager.ApplyTheme(this);
+
+        }
+        private void OnThemeChanged()
+        {
+            // Aplicar el nuevo tema a todos los controles
+            ThemeManager.ApplyTheme(this);
+
+            // Actualizar el texto del botón
+            ActualizarBotonTema();
+
+            // Opcional: Forzar redibujado para asegurar que todos los cambios se apliquen
+            this.Refresh();
+
+        }
+        private void ActualizarBotonTema()
+        {
+            if (ThemeManager.IsDarkTheme)
+            {
+                btnTema.Text = "☀️ Cambiar a Claro";
+                btnTema.Tag = "info"; // Puedes cambiar el tag si quieres otro color
+            }
+            else
+            {
+                btnTema.Text = "🌙 Cambiar a Oscuro";
+                btnTema.Tag = "secundario";
+            }
+
+        }
+
+        // Limpiar el evento cuando se cierre el formulario
+        private void FormAdministrador_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ThemeManager.ThemeChanged -= OnThemeChanged;
+        }
     }
 }
+
