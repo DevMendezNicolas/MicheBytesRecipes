@@ -59,6 +59,7 @@
             this.ofdImagenNueva = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprContra = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTipCajas = new System.Windows.Forms.ToolTip(this.components);
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEditarImagen)).BeginInit();
             this.pnlNavegacion.SuspendLayout();
@@ -444,5 +445,6 @@
         private System.Windows.Forms.ErrorProvider eprCampos;
         private System.Windows.Forms.ErrorProvider eprContra;
         private System.Windows.Forms.Button btnInicio;
+        private System.Windows.Forms.ToolTip toolTipCajas;
     }
 }

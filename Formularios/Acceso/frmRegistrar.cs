@@ -145,7 +145,6 @@ namespace MicheBytesRecipes.Forms.Auth
                 return;
             }
 
-            btnRegistrar.Enabled = false;
             eprCampos.Clear();
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
@@ -234,8 +233,6 @@ namespace MicheBytesRecipes.Forms.Auth
                 eprCampos.SetError(txtContra, "Las contraseña no coincinden");
                 eprCampos.SetError(txtRepContra, "Las contraseña no coincinden");
                 txtContra.Focus();
-
-
                 return;
             }
 
@@ -384,6 +381,7 @@ namespace MicheBytesRecipes.Forms.Auth
         }
         private async void ShakeControl(TextBox textBox)
         {
+            btnRegistrar.Enabled = false;
             // Guarda los valores originales
             var originalPos = textBox.Location;
             var originalBackColor = textBox.BackColor;

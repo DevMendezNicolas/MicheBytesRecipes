@@ -374,37 +374,50 @@ namespace MicheBytesRecipes.Managers
         }
 
         // Actualizar datos del usuario.
-        public void ActualizarUsuario(int usuario_id, string email, string nombre, string apellido, string telefono, Byte[] foto)
+        public string ActualizarUsuario(int usuario_id, string email, string nombre, string apellido, string telefono, byte[] foto)
         {
+            string mensaje = "";
+
             try
             {
                 conexion.Abrir();
-                string consultaActualizar = "Actualizar_Usuario";
-                using (MySqlCommand comando = new MySqlCommand(consultaActualizar, conexion.GetConexion()))
+                using (MySqlCommand comando = new MySqlCommand("Actualizar_Usuario", conexion.GetConexion()))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    // Parametros IN
+
                     comando.Parameters.AddWithValue("p_usuario_id", usuario_id);
                     comando.Parameters.AddWithValue("p_email", email);
                     comando.Parameters.AddWithValue("p_nombre", nombre);
                     comando.Parameters.AddWithValue("p_apellido", apellido);
                     comando.Parameters.AddWithValue("p_telefono", telefono);
                     comando.Parameters.AddWithValue("p_imagen_perfil", foto);
-                    // Ejecutar el comando
-                    int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas < 0)
-                        MessageBox.Show("No se encontro el usuario con el ID proporcionado.");
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            mensaje = reader.GetString(0); // Obtiene el mensaje del SELECT del SP
+                        }
+                    }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                mensaje = "Error SQL: " + ex.Message;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al actualizar el usuario: " + ex.Message);
+                mensaje = "Error general: " + ex.Message;
             }
             finally
             {
                 conexion.Cerrar();
             }
+
+            return mensaje;
         }
+
+
 
         //Buscar usuario por email y contra
 
