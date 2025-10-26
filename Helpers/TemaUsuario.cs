@@ -29,7 +29,7 @@ namespace MicheBytesRecipes.Helpers
         public Color BotonCancelar { get; set; }
     }
 
-    public static class ManejadorTemasUsuario
+    public static class GestorTemaUsuario
     {
         private static bool _esOscuro = false;
 

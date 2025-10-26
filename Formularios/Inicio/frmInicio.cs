@@ -45,6 +45,17 @@ namespace MicheBytesRecipes
 
         }
 
+        private void frmInicio_Load(object sender, EventArgs e)
+        {
 
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+
+        }
+
+        private void btnTema_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

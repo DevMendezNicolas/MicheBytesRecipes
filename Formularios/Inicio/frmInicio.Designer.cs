@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             this.PanelTop = new System.Windows.Forms.Panel();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.BtnIniciar = new System.Windows.Forms.Button();
             this.BtnCrearCuenta = new System.Windows.Forms.Button();
             this.PanelMid = new System.Windows.Forms.Panel();
@@ -40,10 +41,10 @@
             this.lblTituloBullet = new System.Windows.Forms.Label();
             this.lblRelleno = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.btnTema = new System.Windows.Forms.Button();
             this.PanelTop.SuspendLayout();
-            this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
+            this.PanelMid.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -58,6 +59,16 @@
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.Size = new System.Drawing.Size(1184, 122);
             this.PanelTop.TabIndex = 0;
+            // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Image = global::MicheBytesRecipes.Properties.Resources.logo_editable_con_le;
+            this.pbxLogo.Location = new System.Drawing.Point(12, 12);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(184, 104);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 2;
+            this.pbxLogo.TabStop = false;
             // 
             // BtnIniciar
             // 
@@ -90,6 +101,7 @@
             // PanelMid
             // 
             this.PanelMid.BackColor = System.Drawing.Color.Orange;
+            this.PanelMid.Controls.Add(this.btnTema);
             this.PanelMid.Controls.Add(this.lblFinal);
             this.PanelMid.Controls.Add(this.lblFooter);
             this.PanelMid.Controls.Add(this.lblTituloEsencia);
@@ -180,15 +192,16 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "¡Bieeeenvenidos a MicheBytes Recipes! 🎉";
             // 
-            // pbxLogo
+            // btnTema
             // 
-            this.pbxLogo.Image = global::MicheBytesRecipes.Properties.Resources.logo_editable_con_le;
-            this.pbxLogo.Location = new System.Drawing.Point(12, 12);
-            this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(184, 104);
-            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLogo.TabIndex = 2;
-            this.pbxLogo.TabStop = false;
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(1129, 494);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 18;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // frmInicio
             // 
@@ -203,10 +216,11 @@
             this.Name = "frmInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
+            this.Load += new System.EventHandler(this.frmInicio_Load);
             this.PanelTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.PanelMid.ResumeLayout(false);
             this.PanelMid.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,6 +239,7 @@
         private System.Windows.Forms.Label lblTituloEsencia;
         private System.Windows.Forms.Label lblFooter;
         private System.Windows.Forms.Label lblFinal;
+        private System.Windows.Forms.Button btnTema;
     }
 }
 
