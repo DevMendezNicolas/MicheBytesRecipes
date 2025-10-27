@@ -1,5 +1,9 @@
 ﻿using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Connections;
+using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Utilities;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
@@ -10,9 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using MicheBytesRecipes.Utilities;
-using MicheBytesRecipes.Managers;
 
 namespace MicheBytesRecipes.Forms.AddReceta
 {
@@ -25,6 +26,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public frmAgregarIngrediente()
         {
             InitializeComponent();
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
+
         }
 
         private void FrmAgregarIngrediente_Load(object sender, EventArgs e)
@@ -37,6 +40,19 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
             CargarCombos(cboUnidad, listaUnidades, "Nombre", "UnidadMedidaId", "No se pudieron cargar las unidades de medida.");           
             CargarCombos(cboTipo, listaTipos, "Nombre", "TipoIngredienteId", "No se pudieron cargar los tipos de ingredientes.");
+
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+
+        }
+        public void ActualizarTema()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
+        {
 
         }
 

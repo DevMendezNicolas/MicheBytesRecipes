@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
@@ -24,11 +25,23 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public frmAgregarCategoria()
         {
             InitializeComponent();
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public void ActualizarTema()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
+        {
+
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -52,6 +65,12 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void frmAgregarCategoria_Load(object sender, EventArgs e)
+        {
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
         }
     }
 }

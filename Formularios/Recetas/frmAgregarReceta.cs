@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
@@ -22,8 +23,11 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public frmAgregarReceta(Usuario usuario)
         {
             InitializeComponent();
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
+
+
         }
-  
+
         private void FrmAgregarReceta_Load(object sender, EventArgs e)
         {
             List<Ingrediente> ingredientes = gestorIngredientes.ObtenerIngredientes();
@@ -45,6 +49,19 @@ namespace MicheBytesRecipes.Forms.AddReceta
             DTPtiempo.CustomFormat = "HH:mm:ss";
             DTPtiempo.ShowUpDown = true;
             DTPtiempo.Value = DateTime.Today.AddHours(1);
+
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+
+        }
+        public void ActualizarTema()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
+        {
 
         }
 

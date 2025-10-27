@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using Microsoft.Win32;
@@ -27,6 +28,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
             InitializeComponent();
             this.receta = receta;
             this.usuarioLog = usuarioLog;
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
+
         }
         private void FrmModificarReceta_Load(object sender, EventArgs e)
         {
@@ -38,7 +41,19 @@ namespace MicheBytesRecipes.Forms.AddReceta
             {
                 CargarDatosReceta();
             }
-            
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+
+        }
+        public void ActualizarTema()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
+        {
+
         }
         private void CargarDatosReceta()
         {

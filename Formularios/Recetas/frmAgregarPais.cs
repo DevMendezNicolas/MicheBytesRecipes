@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
 using System;
@@ -20,6 +21,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
         public frmAgregarPais()
         {
             InitializeComponent();
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -49,6 +52,18 @@ namespace MicheBytesRecipes.Forms.AddReceta
         }
 
         private void FrmAgregarPais_Load(object sender, EventArgs e)
+        {
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+
+        }
+        public void ActualizarTema()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
         {
 
         }
