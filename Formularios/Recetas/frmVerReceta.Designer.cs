@@ -277,7 +277,7 @@
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
             this.lblDescripcion.Location = new System.Drawing.Point(12, 113);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(1156, 58);
+            this.lblDescripcion.Size = new System.Drawing.Size(1156, 71);
             this.lblDescripcion.TabIndex = 36;
             this.lblDescripcion.Text = "Clásicas milanesas de carne empanada, gratinadas con salsa de tomate, jamón y que" +
     "so, ideales para una cena reconfortante.";
@@ -344,6 +344,8 @@
             this.lstComentarios.Size = new System.Drawing.Size(502, 134);
             this.lstComentarios.TabIndex = 25;
             this.lstComentarios.Click += new System.EventHandler(this.lstComentarios_Click);
+            this.lstComentarios.SelectedIndexChanged += new System.EventHandler(this.lstComentarios_SelectedIndexChanged);
+            this.lstComentarios.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstComentarios_MouseDown);
             // 
             // btnComentar
             // 
@@ -421,7 +423,7 @@
             // borrarComentarioToolStripMenuItem
             // 
             this.borrarComentarioToolStripMenuItem.Name = "borrarComentarioToolStripMenuItem";
-            this.borrarComentarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrarComentarioToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.borrarComentarioToolStripMenuItem.Text = "Borrar comentario";
             this.borrarComentarioToolStripMenuItem.Click += new System.EventHandler(this.borrarComentarioToolStripMenuItem_Click);
             // 

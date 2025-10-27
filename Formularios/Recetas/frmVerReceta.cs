@@ -89,8 +89,6 @@ namespace MicheBytesRecipes.Classes.Recetas
             rtbInstrucciones.HideSelection = false;                // Mantiene selección visible al perder foco
             
 
-
-
             // Verificar si ya dio "Me Gusta"
             if (gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
             {
@@ -468,10 +466,27 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             if (lstComentarios.SelectedItem == null)
                 return;
-            if (Control.MouseButtons == MouseButtons.Right)
+            
+        }
+
+        private void lstComentarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstComentarios_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
             {
-                cmsComentarios.Show(Cursor.Position);
+                int index = lstComentarios.IndexFromPoint(e.Location);
+                if (index != ListBox.NoMatches)
+                {
+                    lstComentarios.SelectedIndex = index;
+                    cmsComentarios.Show(Cursor.Position);
+                }
             }
+
+
         }
     }
 }
