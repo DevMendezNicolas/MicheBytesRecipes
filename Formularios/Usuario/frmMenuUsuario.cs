@@ -55,6 +55,9 @@ namespace MicheBytesRecipes.Forms.User
         }
         private void MenuUser_Load(object sender, EventArgs e)
         {
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
             // --- Categorías ---
             List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
@@ -244,6 +247,14 @@ namespace MicheBytesRecipes.Forms.User
                 }
             }
         }
+        private void AsignarTags()
+        {
+
+            lblTitulo.Tag = "titulo";
+            PanelMid.Tag = "secundario";
+
+        }
+
 
     }
 }
