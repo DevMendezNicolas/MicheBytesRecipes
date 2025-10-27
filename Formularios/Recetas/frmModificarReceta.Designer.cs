@@ -146,6 +146,7 @@
             // 
             // pcbImagen
             // 
+            this.pcbImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pcbImagen.Location = new System.Drawing.Point(25, 334);
             this.pcbImagen.Name = "pcbImagen";
             this.pcbImagen.Size = new System.Drawing.Size(135, 91);
