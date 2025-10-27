@@ -83,6 +83,36 @@ namespace MicheBytesRecipes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Create_a_friendly__o2 {
+            get {
+                object obj = ResourceManager.GetObject("Create a friendly, o2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Create_a_friendly__o3 {
+            get {
+                object obj = ResourceManager.GetObject("Create a friendly, o3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Create_a_friendly__o4 {
+            get {
+                object obj = ResourceManager.GetObject("Create a friendly, o4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cute_and_animated_lo {
             get {
                 object obj = ResourceManager.GetObject("Cute_and_animated_lo", resourceCulture);
@@ -96,6 +126,16 @@ namespace MicheBytesRecipes.Properties {
         internal static System.Drawing.Bitmap logo_editable_con_le {
             get {
                 object obj = ResourceManager.GetObject("logo_editable_con_le", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_editable_con_le1 {
+            get {
+                object obj = ResourceManager.GetObject("logo_editable_con_le1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnTema = new System.Windows.Forms.Button();
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -52,7 +53,6 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
             this.btnAccion = new System.Windows.Forms.Button();
-            this.btnTema = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel1.SuspendLayout();
@@ -76,6 +76,17 @@
             this.panel3.Size = new System.Drawing.Size(951, 661);
             this.panel3.TabIndex = 4;
             // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(896, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 9;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
+            // 
             // btnReinicio
             // 
             this.btnReinicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -83,7 +94,7 @@
             this.btnReinicio.Location = new System.Drawing.Point(761, 95);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(131, 29);
-            this.btnReinicio.TabIndex = 5;
+            this.btnReinicio.TabIndex = 7;
             this.btnReinicio.Text = "🔄 &Reiniciar";
             this.btnReinicio.UseVisualStyleBackColor = true;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
@@ -94,7 +105,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(583, 95);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(152, 29);
-            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "🔍 &Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -195,7 +206,7 @@
             this.txtBuscarEmail.Location = new System.Drawing.Point(45, 95);
             this.txtBuscarEmail.Name = "txtBuscarEmail";
             this.txtBuscarEmail.Size = new System.Drawing.Size(518, 29);
-            this.txtBuscarEmail.TabIndex = 1;
+            this.txtBuscarEmail.TabIndex = 5;
             // 
             // lblTitulo
             // 
@@ -248,7 +259,7 @@
             this.btnPermisos.Margin = new System.Windows.Forms.Padding(4);
             this.btnPermisos.Name = "btnPermisos";
             this.btnPermisos.Size = new System.Drawing.Size(198, 42);
-            this.btnPermisos.TabIndex = 14;
+            this.btnPermisos.TabIndex = 3;
             this.btnPermisos.Text = "&Modificar Rol";
             this.btnPermisos.UseVisualStyleBackColor = false;
             this.btnPermisos.Click += new System.EventHandler(this.btnPermisos_Click);
@@ -295,7 +306,7 @@
             this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(198, 42);
-            this.btnVolver.TabIndex = 7;
+            this.btnVolver.TabIndex = 8;
             this.btnVolver.Text = "🔙 &Menú";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -309,7 +320,7 @@
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
-            this.btnAct.TabIndex = 5;
+            this.btnAct.TabIndex = 2;
             this.btnAct.Text = "Activos - Inactivos";
             this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
@@ -323,21 +334,10 @@
             this.btnAccion.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccion.Name = "btnAccion";
             this.btnAccion.Size = new System.Drawing.Size(198, 42);
-            this.btnAccion.TabIndex = 3;
+            this.btnAccion.TabIndex = 1;
             this.btnAccion.Text = "&Dar de baja";
             this.btnAccion.UseVisualStyleBackColor = false;
             this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
-            // 
-            // btnTema
-            // 
-            this.btnTema.AutoSize = true;
-            this.btnTema.Location = new System.Drawing.Point(896, 616);
-            this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(43, 33);
-            this.btnTema.TabIndex = 17;
-            this.btnTema.Text = "sol";
-            this.btnTema.UseVisualStyleBackColor = true;
-            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // frmGestionUsuarios
             // 

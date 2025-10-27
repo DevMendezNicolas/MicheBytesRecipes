@@ -42,13 +42,13 @@
             this.txtBuscarReceta = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
+            this.btnTema = new System.Windows.Forms.Button();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
-            this.btnTema = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             this.pnlNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).BeginInit();
@@ -104,7 +104,7 @@
             this.btnReinicio.Location = new System.Drawing.Point(772, 160);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(147, 30);
-            this.btnReinicio.TabIndex = 7;
+            this.btnReinicio.TabIndex = 9;
             this.btnReinicio.Text = "🔄 Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = true;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
@@ -116,7 +116,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(772, 87);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(131, 29);
-            this.btnBuscar.TabIndex = 6;
+            this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "🔍 Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -129,7 +129,7 @@
             this.cboDificultad.Location = new System.Drawing.Point(566, 164);
             this.cboDificultad.Name = "cboDificultad";
             this.cboDificultad.Size = new System.Drawing.Size(179, 25);
-            this.cboDificultad.TabIndex = 5;
+            this.cboDificultad.TabIndex = 7;
             // 
             // cboPais
             // 
@@ -139,7 +139,7 @@
             this.cboPais.Location = new System.Drawing.Point(332, 164);
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(179, 25);
-            this.cboPais.TabIndex = 4;
+            this.cboPais.TabIndex = 6;
             // 
             // cboCategoria
             // 
@@ -149,7 +149,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(75, 164);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
-            this.cboCategoria.TabIndex = 3;
+            this.cboCategoria.TabIndex = 5;
             // 
             // lblDificultad
             // 
@@ -195,7 +195,7 @@
             this.txtBuscarReceta.Location = new System.Drawing.Point(257, 87);
             this.txtBuscarReceta.Name = "txtBuscarReceta";
             this.txtBuscarReceta.Size = new System.Drawing.Size(488, 29);
-            this.txtBuscarReceta.TabIndex = 1;
+            this.txtBuscarReceta.TabIndex = 4;
             this.txtBuscarReceta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarReceta_KeyPress);
             // 
             // lblBuscar
@@ -226,6 +226,17 @@
             this.pnlNavegacion.Name = "pnlNavegacion";
             this.pnlNavegacion.Size = new System.Drawing.Size(233, 661);
             this.pnlNavegacion.TabIndex = 3;
+            // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(18, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(35, 33);
+            this.btnTema.TabIndex = 11;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // pbImagenUser
             // 
@@ -271,7 +282,7 @@
             this.btnConfig.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(198, 42);
-            this.btnConfig.TabIndex = 10;
+            this.btnConfig.TabIndex = 3;
             this.btnConfig.Text = "&Configuración";
             this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
@@ -285,7 +296,7 @@
             this.btnHistorialRecetas.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialRecetas.Name = "btnHistorialRecetas";
             this.btnHistorialRecetas.Size = new System.Drawing.Size(198, 42);
-            this.btnHistorialRecetas.TabIndex = 9;
+            this.btnHistorialRecetas.TabIndex = 2;
             this.btnHistorialRecetas.Text = "&Mi Historial";
             this.btnHistorialRecetas.UseVisualStyleBackColor = false;
             this.btnHistorialRecetas.Click += new System.EventHandler(this.btnHistorialRecetas_Click);
@@ -299,21 +310,10 @@
             this.btnHistorialFav.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorialFav.Name = "btnHistorialFav";
             this.btnHistorialFav.Size = new System.Drawing.Size(198, 42);
-            this.btnHistorialFav.TabIndex = 8;
+            this.btnHistorialFav.TabIndex = 1;
             this.btnHistorialFav.Text = "&Ver Favoritas";
             this.btnHistorialFav.UseVisualStyleBackColor = false;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
-            // 
-            // btnTema
-            // 
-            this.btnTema.AutoSize = true;
-            this.btnTema.Location = new System.Drawing.Point(18, 616);
-            this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(35, 33);
-            this.btnTema.TabIndex = 13;
-            this.btnTema.Text = "sol";
-            this.btnTema.UseVisualStyleBackColor = true;
-            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // frmMenuUsuario
             // 

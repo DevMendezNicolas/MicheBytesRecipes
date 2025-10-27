@@ -84,7 +84,7 @@
             this.btnTema.Location = new System.Drawing.Point(896, 616);
             this.btnTema.Name = "btnTema";
             this.btnTema.Size = new System.Drawing.Size(43, 33);
-            this.btnTema.TabIndex = 17;
+            this.btnTema.TabIndex = 8;
             this.btnTema.Text = "sol";
             this.btnTema.UseVisualStyleBackColor = true;
             this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
@@ -108,7 +108,7 @@
             this.btnReinicio.Location = new System.Drawing.Point(256, 97);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(162, 29);
-            this.btnReinicio.TabIndex = 5;
+            this.btnReinicio.TabIndex = 6;
             this.btnReinicio.Text = "🔄 Reiniciar filtro";
             this.btnReinicio.UseVisualStyleBackColor = true;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
@@ -209,7 +209,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(45, 97);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(196, 29);
-            this.cboCategoria.TabIndex = 3;
+            this.cboCategoria.TabIndex = 4;
             // 
             // label1
             // 
@@ -230,7 +230,7 @@
             this.txtBuscarReceta.Location = new System.Drawing.Point(45, 161);
             this.txtBuscarReceta.Name = "txtBuscarReceta";
             this.txtBuscarReceta.Size = new System.Drawing.Size(517, 29);
-            this.txtBuscarReceta.TabIndex = 1;
+            this.txtBuscarReceta.TabIndex = 3;
             // 
             // lblTitulo
             // 
@@ -269,7 +269,7 @@
             this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(198, 42);
-            this.btnExportar.TabIndex = 14;
+            this.btnExportar.TabIndex = 2;
             this.btnExportar.Text = "Exportar a pdf";
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
@@ -283,7 +283,7 @@
             this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(198, 42);
-            this.btnVolver.TabIndex = 13;
+            this.btnVolver.TabIndex = 7;
             this.btnVolver.Text = "🔙 &Menú";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -330,7 +330,7 @@
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
-            this.btnAct.TabIndex = 5;
+            this.btnAct.TabIndex = 1;
             this.btnAct.Text = "Activas - Inactivas";
             this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);

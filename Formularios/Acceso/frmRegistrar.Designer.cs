@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrar));
-            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtContra = new System.Windows.Forms.TextBox();
@@ -60,23 +59,12 @@
             this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTipCajas = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
+            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.pnlRight.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprCampos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbxFotoPerfil
-            // 
-            this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxFotoPerfil.Image = global::MicheBytesRecipes.Properties.Resources.Create_a_friendly__o1;
-            this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
-            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
-            this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
-            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxFotoPerfil.TabIndex = 1;
-            this.pbxFotoPerfil.TabStop = false;
-            this.pbxFotoPerfil.Click += new System.EventHandler(this.pbxFotoPerfil_Click);
             // 
             // txtApellido
             // 
@@ -445,6 +433,18 @@
             // 
             this.toolTipCajas.IsBalloon = true;
             // 
+            // pbxFotoPerfil
+            // 
+            this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxFotoPerfil.Image = global::MicheBytesRecipes.Properties.Resources.Create_a_friendly__o4;
+            this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
+            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
+            this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
+            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFotoPerfil.TabIndex = 1;
+            this.pbxFotoPerfil.TabStop = false;
+            this.pbxFotoPerfil.Click += new System.EventHandler(this.pbxFotoPerfil_Click);
+            // 
             // frmRegistrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -462,11 +462,11 @@
             this.Text = "Registro";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRegister_FormClosed);
             this.Load += new System.EventHandler(this.FrmRegister_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).EndInit();
             this.pnlRight.ResumeLayout(false);
             this.pnlRight.PerformLayout();
             this.pnlLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.eprCampos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -34,18 +34,18 @@
             this.btnIniciar = new System.Windows.Forms.Button();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
             this.panelMid = new System.Windows.Forms.Panel();
+            this.lblTituloBullet3 = new System.Windows.Forms.Label();
+            this.lblTituloBullet2 = new System.Windows.Forms.Label();
+            this.lblTituloBullet1 = new System.Windows.Forms.Label();
+            this.lblBullet3 = new System.Windows.Forms.Label();
+            this.lblBullet2 = new System.Windows.Forms.Label();
+            this.btnTema = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.lblFooter = new System.Windows.Forms.Label();
             this.lblTituloEsencia = new System.Windows.Forms.Label();
             this.lblBullet1 = new System.Windows.Forms.Label();
             this.lblQueOfrece = new System.Windows.Forms.Label();
             this.lblFinal = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnTema = new System.Windows.Forms.Button();
-            this.lblBullet2 = new System.Windows.Forms.Label();
-            this.lblBullet3 = new System.Windows.Forms.Label();
-            this.lblTituloBullet1 = new System.Windows.Forms.Label();
-            this.lblTituloBullet2 = new System.Windows.Forms.Label();
-            this.lblTituloBullet3 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.panelMid.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Image = global::MicheBytesRecipes.Properties.Resources.logo_editable_con_le;
+            this.pbxLogo.Image = global::MicheBytesRecipes.Properties.Resources.logo_editable_con_le1;
             this.pbxLogo.Location = new System.Drawing.Point(0, 0);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(184, 104);
@@ -122,6 +122,89 @@
             this.panelMid.Name = "panelMid";
             this.panelMid.Size = new System.Drawing.Size(1184, 556);
             this.panelMid.TabIndex = 1;
+            // 
+            // lblTituloBullet3
+            // 
+            this.lblTituloBullet3.AutoSize = true;
+            this.lblTituloBullet3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBullet3.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblTituloBullet3.Location = new System.Drawing.Point(886, 217);
+            this.lblTituloBullet3.Name = "lblTituloBullet3";
+            this.lblTituloBullet3.Size = new System.Drawing.Size(191, 30);
+            this.lblTituloBullet3.TabIndex = 11;
+            this.lblTituloBullet3.Text = "Consejos prácticos";
+            this.lblTituloBullet3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTituloBullet2
+            // 
+            this.lblTituloBullet2.AutoSize = true;
+            this.lblTituloBullet2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBullet2.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblTituloBullet2.Location = new System.Drawing.Point(461, 217);
+            this.lblTituloBullet2.Name = "lblTituloBullet2";
+            this.lblTituloBullet2.Size = new System.Drawing.Size(188, 30);
+            this.lblTituloBullet2.TabIndex = 10;
+            this.lblTituloBullet2.Text = "Filtros inteligentes";
+            this.lblTituloBullet2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTituloBullet1
+            // 
+            this.lblTituloBullet1.AutoSize = true;
+            this.lblTituloBullet1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBullet1.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblTituloBullet1.Location = new System.Drawing.Point(61, 217);
+            this.lblTituloBullet1.Name = "lblTituloBullet1";
+            this.lblTituloBullet1.Size = new System.Drawing.Size(170, 30);
+            this.lblTituloBullet1.TabIndex = 9;
+            this.lblTituloBullet1.Text = "Recetas variadas";
+            this.lblTituloBullet1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblBullet3
+            // 
+            this.lblBullet3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBullet3.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblBullet3.Location = new System.Drawing.Point(829, 247);
+            this.lblBullet3.Name = "lblBullet3";
+            this.lblBullet3.Size = new System.Drawing.Size(343, 77);
+            this.lblBullet3.TabIndex = 8;
+            this.lblBullet3.Text = "• Consejos prácticos y tips gastronómicos que convierten cada receta en una oport" +
+    "unidad de aprender algo nuevo.";
+            this.lblBullet3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblBullet2
+            // 
+            this.lblBullet2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBullet2.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblBullet2.Location = new System.Drawing.Point(379, 239);
+            this.lblBullet2.Name = "lblBullet2";
+            this.lblBullet2.Size = new System.Drawing.Size(402, 92);
+            this.lblBullet2.TabIndex = 7;
+            this.lblBullet2.Text = "\r\n• Filtros inteligentes para encontrar la receta perfecta según tus gustos, el t" +
+    "iempo o los ingredientes disponibles.\r\n";
+            this.lblBullet2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(1138, 520);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 3;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitulo.Location = new System.Drawing.Point(200, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(791, 59);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "¡Bienvenidos a MicheBytes Recipes! 🎉";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblFooter
             // 
@@ -180,89 +263,6 @@
             this.lblFinal.TabIndex = 1;
             this.lblFinal.Text = "¡Cocinar nunca fue tan divertido, accesible y delicioso!";
             this.lblFinal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitulo.Location = new System.Drawing.Point(200, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(791, 59);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "¡Bienvenidos a MicheBytes Recipes! 🎉";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnTema
-            // 
-            this.btnTema.AutoSize = true;
-            this.btnTema.Location = new System.Drawing.Point(1138, 520);
-            this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(43, 33);
-            this.btnTema.TabIndex = 3;
-            this.btnTema.Text = "sol";
-            this.btnTema.UseVisualStyleBackColor = true;
-            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
-            // 
-            // lblBullet2
-            // 
-            this.lblBullet2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBullet2.ForeColor = System.Drawing.Color.Chocolate;
-            this.lblBullet2.Location = new System.Drawing.Point(379, 239);
-            this.lblBullet2.Name = "lblBullet2";
-            this.lblBullet2.Size = new System.Drawing.Size(402, 92);
-            this.lblBullet2.TabIndex = 7;
-            this.lblBullet2.Text = "\r\n• Filtros inteligentes para encontrar la receta perfecta según tus gustos, el t" +
-    "iempo o los ingredientes disponibles.\r\n";
-            this.lblBullet2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblBullet3
-            // 
-            this.lblBullet3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBullet3.ForeColor = System.Drawing.Color.Chocolate;
-            this.lblBullet3.Location = new System.Drawing.Point(829, 247);
-            this.lblBullet3.Name = "lblBullet3";
-            this.lblBullet3.Size = new System.Drawing.Size(343, 77);
-            this.lblBullet3.TabIndex = 8;
-            this.lblBullet3.Text = "• Consejos prácticos y tips gastronómicos que convierten cada receta en una oport" +
-    "unidad de aprender algo nuevo.";
-            this.lblBullet3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTituloBullet1
-            // 
-            this.lblTituloBullet1.AutoSize = true;
-            this.lblTituloBullet1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBullet1.ForeColor = System.Drawing.Color.Chocolate;
-            this.lblTituloBullet1.Location = new System.Drawing.Point(61, 217);
-            this.lblTituloBullet1.Name = "lblTituloBullet1";
-            this.lblTituloBullet1.Size = new System.Drawing.Size(170, 30);
-            this.lblTituloBullet1.TabIndex = 9;
-            this.lblTituloBullet1.Text = "Recetas variadas";
-            this.lblTituloBullet1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTituloBullet2
-            // 
-            this.lblTituloBullet2.AutoSize = true;
-            this.lblTituloBullet2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBullet2.ForeColor = System.Drawing.Color.Chocolate;
-            this.lblTituloBullet2.Location = new System.Drawing.Point(461, 217);
-            this.lblTituloBullet2.Name = "lblTituloBullet2";
-            this.lblTituloBullet2.Size = new System.Drawing.Size(188, 30);
-            this.lblTituloBullet2.TabIndex = 10;
-            this.lblTituloBullet2.Text = "Filtros inteligentes";
-            this.lblTituloBullet2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTituloBullet3
-            // 
-            this.lblTituloBullet3.AutoSize = true;
-            this.lblTituloBullet3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBullet3.ForeColor = System.Drawing.Color.Chocolate;
-            this.lblTituloBullet3.Location = new System.Drawing.Point(886, 217);
-            this.lblTituloBullet3.Name = "lblTituloBullet3";
-            this.lblTituloBullet3.Size = new System.Drawing.Size(191, 30);
-            this.lblTituloBullet3.TabIndex = 11;
-            this.lblTituloBullet3.Text = "Consejos prácticos";
-            this.lblTituloBullet3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmInicio
             // 

@@ -139,7 +139,7 @@
             this.txtContraActual.Location = new System.Drawing.Point(222, 449);
             this.txtContraActual.Name = "txtContraActual";
             this.txtContraActual.Size = new System.Drawing.Size(532, 29);
-            this.txtContraActual.TabIndex = 5;
+            this.txtContraActual.TabIndex = 7;
             this.txtContraActual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraActual_KeyPress);
             // 
             // txtContraNueva
@@ -148,7 +148,7 @@
             this.txtContraNueva.Location = new System.Drawing.Point(222, 498);
             this.txtContraNueva.Name = "txtContraNueva";
             this.txtContraNueva.Size = new System.Drawing.Size(532, 29);
-            this.txtContraNueva.TabIndex = 6;
+            this.txtContraNueva.TabIndex = 8;
             this.txtContraNueva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraNueva_KeyPress);
             // 
             // btnCancelar
@@ -160,7 +160,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(198, 42);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -185,7 +185,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(198, 42);
-            this.btnGuardar.TabIndex = 8;
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "💾 &Guardar Cambios ";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -228,7 +228,7 @@
             this.linkCambiarImagen.Location = new System.Drawing.Point(162, 152);
             this.linkCambiarImagen.Name = "linkCambiarImagen";
             this.linkCambiarImagen.Size = new System.Drawing.Size(104, 17);
-            this.linkCambiarImagen.TabIndex = 14;
+            this.linkCambiarImagen.TabIndex = 6;
             this.linkCambiarImagen.TabStop = true;
             this.linkCambiarImagen.Text = "Cambiar Imagen";
             this.linkCambiarImagen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCambiarImagen_LinkClicked);
@@ -249,7 +249,7 @@
             this.txtEmail.Location = new System.Drawing.Point(209, 336);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(545, 29);
-            this.txtEmail.TabIndex = 4;
+            this.txtEmail.TabIndex = 5;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblEmail
@@ -269,7 +269,7 @@
             this.txtApellido.Location = new System.Drawing.Point(209, 240);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(545, 29);
-            this.txtApellido.TabIndex = 2;
+            this.txtApellido.TabIndex = 3;
             this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtTelefono
@@ -278,7 +278,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(209, 289);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(545, 29);
-            this.txtTelefono.TabIndex = 3;
+            this.txtTelefono.TabIndex = 4;
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // lblApellido
@@ -309,7 +309,7 @@
             this.txtNombre.Location = new System.Drawing.Point(209, 193);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(545, 29);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 2;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // lblNombreNuevo
@@ -379,7 +379,7 @@
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(198, 42);
-            this.btnEditar.TabIndex = 9;
+            this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "&Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -393,7 +393,7 @@
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(198, 42);
-            this.btnInicio.TabIndex = 10;
+            this.btnInicio.TabIndex = 11;
             this.btnInicio.Text = "🔙 &Inicio ";
             this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
