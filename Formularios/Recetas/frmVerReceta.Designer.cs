@@ -290,7 +290,7 @@
             this.btnMeGusta.Location = new System.Drawing.Point(1042, 4);
             this.btnMeGusta.Name = "btnMeGusta";
             this.btnMeGusta.Size = new System.Drawing.Size(126, 41);
-            this.btnMeGusta.TabIndex = 37;
+            this.btnMeGusta.TabIndex = 1;
             this.btnMeGusta.Text = "MeGusta";
             this.btnMeGusta.UseVisualStyleBackColor = false;
             this.btnMeGusta.Click += new System.EventHandler(this.btnMeGusta_Click);
@@ -301,7 +301,7 @@
             this.btnFavoritos.Location = new System.Drawing.Point(1042, 47);
             this.btnFavoritos.Name = "btnFavoritos";
             this.btnFavoritos.Size = new System.Drawing.Size(126, 41);
-            this.btnFavoritos.TabIndex = 38;
+            this.btnFavoritos.TabIndex = 2;
             this.btnFavoritos.Text = "Favorito";
             this.btnFavoritos.UseVisualStyleBackColor = true;
             this.btnFavoritos.Click += new System.EventHandler(this.btnFavoritos_Click);
@@ -352,7 +352,7 @@
             this.btnComentar.Location = new System.Drawing.Point(370, 161);
             this.btnComentar.Name = "btnComentar";
             this.btnComentar.Size = new System.Drawing.Size(111, 27);
-            this.btnComentar.TabIndex = 29;
+            this.btnComentar.TabIndex = 3;
             this.btnComentar.Text = "Comentar";
             this.btnComentar.UseVisualStyleBackColor = true;
             this.btnComentar.Click += new System.EventHandler(this.btnComentar_Click);
@@ -374,7 +374,7 @@
             this.btnExportarPdf.Location = new System.Drawing.Point(1042, 93);
             this.btnExportarPdf.Name = "btnExportarPdf";
             this.btnExportarPdf.Size = new System.Drawing.Size(126, 41);
-            this.btnExportarPdf.TabIndex = 27;
+            this.btnExportarPdf.TabIndex = 4;
             this.btnExportarPdf.Text = "Exportar PDF";
             this.btnExportarPdf.UseVisualStyleBackColor = true;
             this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
@@ -397,7 +397,7 @@
             this.btnCerrar.Location = new System.Drawing.Point(1042, 140);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(126, 41);
-            this.btnCerrar.TabIndex = 28;
+            this.btnCerrar.TabIndex = 5;
             this.btnCerrar.Text = "🔙 Menú";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
