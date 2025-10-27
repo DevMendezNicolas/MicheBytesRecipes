@@ -11,34 +11,8 @@ namespace MicheBytesRecipes.Helpers
 {
     public class UiHelpers
     {
-        /// <summary>
-        /// Aplica un gradiente a un control en su evento Paint
-        /// </summary>
-        /// <param name="control">Control al que aplicar el gradiente</param>
-        /// <param name="color1">Color inicial del gradiente</param>
-        /// <param name="color2">Color final del gradiente</param>
-        /// <param name="mode">Dirección del gradiente</param>
-        public static void SetGradient(Control control, Color color1, Color color2, LinearGradientMode mode = LinearGradientMode.Vertical)
-        {
-            control.Paint += (s, e) =>
-            {
-                Rectangle rect = control.ClientRectangle;
-                using (LinearGradientBrush brush = new LinearGradientBrush(rect, color1, color2, mode))
-                {
-                    e.Graphics.FillRectangle(brush, rect);
-                }
-            };
-
-            // Forzar repaint para que se vea al instante
-            control.Invalidate();
-        }
 
         /// Redondea un botón existente.
-        /// </summary>
-        /// <param name="btn">Botón a redondear</param>
-        /// <param name="radius">Radio de las esquinas</param>
-        /// <param name="borderColor">Color del borde (opcional, null = sin borde)</param>
-        /// <param name="borderWidth">Grosor del borde</param>
         public static void SetRoundedButton(Button btn, int radius, Color? borderColor = null, int borderWidth = 1)
         {
             btn.Paint += (s, e) =>
@@ -68,19 +42,9 @@ namespace MicheBytesRecipes.Helpers
             btn.Invalidate(); // Fuerza repaint
         }
 
-        /// <summary>
-        /// Redondea un TextBox existente.
-        /// Nota: Funciona mejor con BorderStyle = None
-        /// </summary>
-        /// <param name="textBox">TextBox a redondear</param>
-        /// <param name="radius">Radio de las esquinas</param>
-        /// <param name="borderColor">Color del borde (opcional)</param>
-        /// <param name="borderWidth">Grosor del borde</param>
-        /// <summary>
-        /// Redondea un TextBox existente.
-        /// Funciona correctamente en controles existentes del diseñador.
-        /// Nota: BorderStyle debe ser None.
-        /// </summary>
+
+        // Redondea un TextBox
+
         public static void SetRoundedTextBox(TextBox textBox, int radius)
         {
             if (textBox.BorderStyle != BorderStyle.None)
@@ -99,9 +63,9 @@ namespace MicheBytesRecipes.Helpers
             }
         }
 
-        /// <summary>
-        /// Redondea un panel existente.
-        /// </summary>
+
+        // Redondea un panel
+
         public static void SetRoundedPanel(Panel panel, int radius)
         {
             panel.Paint += (s, e) =>
