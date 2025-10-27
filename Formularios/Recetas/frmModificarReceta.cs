@@ -59,7 +59,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
             btnImagen.Tag = "importar";
             btnCancelar.Tag = "cerrar";
             btnModificar.Tag = "metricas";
-
         }
         private void CargarDatosReceta()
         {
