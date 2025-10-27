@@ -35,12 +35,14 @@ namespace MicheBytesRecipes.Forms.AddReceta
         }
         public void ActualizarTema()
         {
-            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaAdmin.AplicarTema(this);
             this.Refresh();
         }
 
         private void AsignarTags()
         {
+            btnAgregar.Tag = "metricas";
+            btnCancelar.Tag = "cerrar";
 
         }
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         private void frmAgregarCategoria_Load(object sender, EventArgs e)
         {
             AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaAdmin.AplicarTema(this);
         }
     }
 }

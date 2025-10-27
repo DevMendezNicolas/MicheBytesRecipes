@@ -29,55 +29,55 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.TXTnombre = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblPais = new System.Windows.Forms.Label();
+            this.lblCategoria = new System.Windows.Forms.Label();
             this.CBOpais = new System.Windows.Forms.ComboBox();
             this.CBOcategoria = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblDificultad = new System.Windows.Forms.Label();
             this.CBOdificultad = new System.Windows.Forms.ComboBox();
             this.DTPtiempo = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblTiempo = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
             this.TXTdescripcion = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblInstruccion = new System.Windows.Forms.Label();
             this.TXTinstrucciones = new System.Windows.Forms.TextBox();
             this.pcbImagen = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnImagen = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.CMDcargar = new System.Windows.Forms.Button();
+            this.btnCargar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblIngredientes = new System.Windows.Forms.Label();
             this.clbIngredientes = new System.Windows.Forms.CheckedListBox();
             this.btnAgregarIngrediente = new System.Windows.Forms.Button();
-            this.btnPais = new System.Windows.Forms.Button();
+            this.btnAgregarPais = new System.Windows.Forms.Button();
             this.btbAgregarCategorias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(286, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Agregar receta nueva";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(286, 9);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(222, 30);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Agregar receta nueva";
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre: ";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(12, 53);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(75, 21);
+            this.lblNombre.TabIndex = 1;
+            this.lblNombre.Text = "Nombre: ";
             // 
             // TXTnombre
             // 
@@ -87,25 +87,25 @@
             this.TXTnombre.Size = new System.Drawing.Size(335, 29);
             this.TXTnombre.TabIndex = 2;
             // 
-            // label3
+            // lblPais
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 21);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Pais:";
+            this.lblPais.AutoSize = true;
+            this.lblPais.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPais.Location = new System.Drawing.Point(12, 108);
+            this.lblPais.Name = "lblPais";
+            this.lblPais.Size = new System.Drawing.Size(40, 21);
+            this.lblPais.TabIndex = 3;
+            this.lblPais.Text = "Pais:";
             // 
-            // label4
+            // lblCategoria
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 162);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 21);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Categoria:";
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Location = new System.Drawing.Point(12, 162);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(80, 21);
+            this.lblCategoria.TabIndex = 4;
+            this.lblCategoria.Text = "Categoria:";
             // 
             // CBOpais
             // 
@@ -127,15 +127,15 @@
             this.CBOcategoria.Size = new System.Drawing.Size(335, 29);
             this.CBOcategoria.TabIndex = 6;
             // 
-            // label5
+            // lblDificultad
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 216);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 21);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Dificultad";
+            this.lblDificultad.AutoSize = true;
+            this.lblDificultad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDificultad.Location = new System.Drawing.Point(12, 216);
+            this.lblDificultad.Name = "lblDificultad";
+            this.lblDificultad.Size = new System.Drawing.Size(76, 21);
+            this.lblDificultad.TabIndex = 7;
+            this.lblDificultad.Text = "Dificultad";
             // 
             // CBOdificultad
             // 
@@ -156,44 +156,45 @@
             this.DTPtiempo.Size = new System.Drawing.Size(210, 29);
             this.DTPtiempo.TabIndex = 9;
             // 
-            // label6
+            // lblTiempo
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 269);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(173, 21);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Tiempo de preparacion:";
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempo.Location = new System.Drawing.Point(12, 269);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(173, 21);
+            this.lblTiempo.TabIndex = 10;
+            this.lblTiempo.Text = "Tiempo de preparacion:";
             // 
-            // label7
+            // lblDescripcion
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(372, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 21);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Descripcion:";
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Location = new System.Drawing.Point(372, 53);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(94, 21);
+            this.lblDescripcion.TabIndex = 11;
+            this.lblDescripcion.Text = "Descripcion:";
             // 
             // TXTdescripcion
             // 
             this.TXTdescripcion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TXTdescripcion.Location = new System.Drawing.Point(366, 78);
+            this.TXTdescripcion.MaxLength = 450;
             this.TXTdescripcion.Multiline = true;
             this.TXTdescripcion.Name = "TXTdescripcion";
             this.TXTdescripcion.Size = new System.Drawing.Size(443, 106);
             this.TXTdescripcion.TabIndex = 12;
             // 
-            // label8
+            // lblInstruccion
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(372, 186);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 21);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Instrucciones:";
+            this.lblInstruccion.AutoSize = true;
+            this.lblInstruccion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccion.Location = new System.Drawing.Point(372, 186);
+            this.lblInstruccion.Name = "lblInstruccion";
+            this.lblInstruccion.Size = new System.Drawing.Size(104, 21);
+            this.lblInstruccion.TabIndex = 13;
+            this.lblInstruccion.Text = "Instrucciones:";
             // 
             // TXTinstrucciones
             // 
@@ -238,30 +239,30 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // CMDcargar
+            // btnCargar
             // 
-            this.CMDcargar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CMDcargar.Location = new System.Drawing.Point(711, 520);
-            this.CMDcargar.Name = "CMDcargar";
-            this.CMDcargar.Size = new System.Drawing.Size(98, 33);
-            this.CMDcargar.TabIndex = 18;
-            this.CMDcargar.Text = "&Cargar";
-            this.CMDcargar.UseVisualStyleBackColor = true;
-            this.CMDcargar.Click += new System.EventHandler(this.CMDcargar_Click);
+            this.btnCargar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargar.Location = new System.Drawing.Point(711, 520);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(98, 33);
+            this.btnCargar.TabIndex = 18;
+            this.btnCargar.Text = "&Cargar";
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label9
+            // lblIngredientes
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(372, 354);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 21);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Ingredientes:";
+            this.lblIngredientes.AutoSize = true;
+            this.lblIngredientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIngredientes.Location = new System.Drawing.Point(372, 354);
+            this.lblIngredientes.Name = "lblIngredientes";
+            this.lblIngredientes.Size = new System.Drawing.Size(99, 21);
+            this.lblIngredientes.TabIndex = 19;
+            this.lblIngredientes.Text = "Ingredientes:";
             // 
             // clbIngredientes
             // 
@@ -269,7 +270,7 @@
             this.clbIngredientes.FormattingEnabled = true;
             this.clbIngredientes.Location = new System.Drawing.Point(370, 380);
             this.clbIngredientes.Name = "clbIngredientes";
-            this.clbIngredientes.Size = new System.Drawing.Size(439, 109);
+            this.clbIngredientes.Size = new System.Drawing.Size(439, 100);
             this.clbIngredientes.TabIndex = 20;
             // 
             // btnAgregarIngrediente
@@ -283,16 +284,16 @@
             this.btnAgregarIngrediente.UseVisualStyleBackColor = true;
             this.btnAgregarIngrediente.Click += new System.EventHandler(this.btnAgregarIngrediente_Click);
             // 
-            // btnPais
+            // btnAgregarPais
             // 
-            this.btnPais.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPais.Location = new System.Drawing.Point(12, 524);
-            this.btnPais.Name = "btnPais";
-            this.btnPais.Size = new System.Drawing.Size(149, 33);
-            this.btnPais.TabIndex = 22;
-            this.btnPais.Text = "&Agregar pais";
-            this.btnPais.UseVisualStyleBackColor = true;
-            this.btnPais.Click += new System.EventHandler(this.btnPais_Click);
+            this.btnAgregarPais.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarPais.Location = new System.Drawing.Point(12, 524);
+            this.btnAgregarPais.Name = "btnAgregarPais";
+            this.btnAgregarPais.Size = new System.Drawing.Size(149, 33);
+            this.btnAgregarPais.TabIndex = 22;
+            this.btnAgregarPais.Text = "&Agregar pais";
+            this.btnAgregarPais.UseVisualStyleBackColor = true;
+            this.btnAgregarPais.Click += new System.EventHandler(this.btnPais_Click);
             // 
             // btbAgregarCategorias
             // 
@@ -311,29 +312,29 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 565);
             this.Controls.Add(this.btbAgregarCategorias);
-            this.Controls.Add(this.btnPais);
+            this.Controls.Add(this.btnAgregarPais);
             this.Controls.Add(this.btnAgregarIngrediente);
             this.Controls.Add(this.clbIngredientes);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.CMDcargar);
+            this.Controls.Add(this.lblIngredientes);
+            this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.pcbImagen);
             this.Controls.Add(this.TXTinstrucciones);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblInstruccion);
             this.Controls.Add(this.TXTdescripcion);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblDescripcion);
+            this.Controls.Add(this.lblTiempo);
             this.Controls.Add(this.DTPtiempo);
             this.Controls.Add(this.CBOdificultad);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblDificultad);
             this.Controls.Add(this.CBOcategoria);
             this.Controls.Add(this.CBOpais);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblCategoria);
+            this.Controls.Add(this.lblPais);
             this.Controls.Add(this.TXTnombre);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNombre);
+            this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "frmAgregarReceta";
@@ -349,31 +350,31 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox TXTnombre;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPais;
+        private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.ComboBox CBOpais;
         private System.Windows.Forms.ComboBox CBOcategoria;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblDificultad;
         private System.Windows.Forms.ComboBox CBOdificultad;
         private System.Windows.Forms.DateTimePicker DTPtiempo;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTiempo;
+        private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.TextBox TXTdescripcion;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblInstruccion;
         private System.Windows.Forms.TextBox TXTinstrucciones;
         private System.Windows.Forms.PictureBox pcbImagen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnImagen;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button CMDcargar;
+        private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnAgregarIngrediente;
         private System.Windows.Forms.CheckedListBox clbIngredientes;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnPais;
+        private System.Windows.Forms.Label lblIngredientes;
+        private System.Windows.Forms.Button btnAgregarPais;
         private System.Windows.Forms.Button btbAgregarCategorias;
     }
 }

@@ -42,17 +42,20 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 CargarDatosReceta();
             }
             AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaAdmin.AplicarTema(this);
 
         }
         public void ActualizarTema()
         {
-            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaAdmin.AplicarTema(this);
             this.Refresh();
         }
 
         private void AsignarTags()
         {
+            btnImagen.Tag = "importar";
+            btnCancelar.Tag = "cerrar";
+            btnModificar.Tag = "metricas";
 
         }
         private void CargarDatosReceta()

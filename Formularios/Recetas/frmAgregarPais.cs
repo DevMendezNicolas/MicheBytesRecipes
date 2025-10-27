@@ -54,18 +54,19 @@ namespace MicheBytesRecipes.Forms.AddReceta
         private void FrmAgregarPais_Load(object sender, EventArgs e)
         {
             AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaAdmin.AplicarTema(this);
 
         }
         public void ActualizarTema()
         {
-            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaAdmin.AplicarTema(this);
             this.Refresh();
         }
 
         private void AsignarTags()
         {
-
+            btnAgregar.Tag = "metricas";
+            btnCancelar.Tag = "cerrar";
         }
     }
 }

@@ -53,7 +53,7 @@ namespace MicheBytesRecipes.Helpers
         {
             PanelPrimario = Color.FromArgb(0, 192, 192),           // Panel por defecto
             PanelSecundario = Color.FromArgb(230, 230, 230), // Panel secundario
-
+            FondoPrincipal = Color.FromArgb(0, 192, 192),
             TextoPrincipal = Color.FromArgb(255, 255, 255),
             Botones = Color.FromArgb(255, 165, 0),
             TextoBotones = Color.White,
