@@ -55,9 +55,10 @@ namespace MicheBytesRecipes.Forms.User
         }
         private void MenuUser_Load(object sender, EventArgs e)
         {
-            //AsignarTags();
-            //GestorTemaUsuario.AplicarTema(this);
-            //GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+
             // --- Categorías ---
             List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
             categorias.Insert(0, new Categoria { CategoriaId = 0, Nombre = "Todas" });
@@ -251,6 +252,18 @@ namespace MicheBytesRecipes.Forms.User
         {
 
             lblTituloMichebyte.Tag = "titulo";
+            pnlContenido.Tag = "opcional";
+            pnlTarjetas.Tag = "opcional";
+            lblBuscar.Tag = "relleno";
+            lblCategoria.Tag = "relleno";
+            lblPais.Tag = "relleno";
+            lblDificultad.Tag = "relleno";
+
+            btnCerrarSesion.Tag = "cerrar";
+            btnConfig.Tag = "configuracion";
+            btnReinicio.Tag = "reinicio";
+            btnBuscar.Tag = "buscar";
+            btnHistorialFav.Tag = "favoritos";
 
         }
 

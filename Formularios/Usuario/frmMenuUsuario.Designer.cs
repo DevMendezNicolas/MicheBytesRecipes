@@ -55,7 +55,7 @@
             // 
             // pnlContenido
             // 
-            this.pnlContenido.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlContenido.BackColor = System.Drawing.Color.Wheat;
             this.pnlContenido.Controls.Add(this.lblTituloMichebyte);
             this.pnlContenido.Controls.Add(this.pnlTarjetas);
             this.pnlContenido.Controls.Add(this.btnReinicio);

@@ -18,9 +18,9 @@ namespace MicheBytesRecipes.Helpers
 
         // Botones especiales para usuario
         public Color BotonCerrar { get; set; }
-        public Color BotonRecetas { get; set; }
+        public Color BotonConfiguracion { get; set; }
         public Color BotonFavoritos { get; set; }
-        public Color BotonPerfil { get; set; }
+        public Color BotonHistorial { get; set; }
         public Color BotonBuscar { get; set; }
         public Color BotonReiniciar { get; set; }
         public Color BotonMenu { get; set; }
@@ -50,7 +50,6 @@ namespace MicheBytesRecipes.Helpers
             PanelSecundario = Color.FromArgb(255, 140, 0), //DarkOrange
             PanelOpcional = Color.FromArgb(245, 222, 179), //Beige
 
-            TextoPrincipal = Color.FromArgb(245,222,179), //Beige
             Botones = Color.FromArgb(254, 93, 70), //Rojo michebytes imagen
             TextoBotones = Color.FromArgb(245, 222, 179), //Beige
             BackgroundTextBox = Color.White,
@@ -58,21 +57,23 @@ namespace MicheBytesRecipes.Helpers
             TextoBotonPanel2 = Color.FromArgb(70, 130, 180), 
 
             // Botones especiales para usuario
-            BotonCerrar = Color.FromArgb(220, 20, 60),
-            BotonRecetas = Color.FromArgb(34, 139, 34),
-            BotonFavoritos = Color.FromArgb(255, 215, 0),
-            BotonPerfil = Color.FromArgb(138, 43, 226),
-            BotonBuscar = Color.White,
-            BotonReiniciar = Color.White,
-            BotonMenu = Color.FromArgb(70, 130, 180),
+            BotonFavoritos = Color.FromArgb(250, 128, 114), //Salmón
+            BotonHistorial = Color.FromArgb(255, 215, 0), //Amarillo
+            BotonConfiguracion = Color.FromArgb(255, 140, 0), //DarkOrange
+            BotonMenu = Color.FromArgb(138, 43, 226),
+            BotonBuscar = Color.FromArgb(255,255,255),
+            BotonReiniciar = Color.FromArgb(255, 255, 255),
+            BotonCerrar = Color.FromArgb(255,0,0),
             BotonTema = Color.FromArgb(41, 128, 185),
             BotonGuardar = Color.FromArgb(50, 205, 50),
             BotonCancelar = Color.FromArgb(255, 99, 71),
 
             // Labels
-            LabelTitulo = Color.FromArgb(64,0,0),
+            LabelTitulo = Color.FromArgb(64,0,0), 
             LabelSubtitulo = Color.FromArgb(210, 105, 30),
-            LabelRelleno = Color.FromArgb(255, 214, 10)
+            LabelRelleno = Color.FromArgb(255, 165, 0),
+            TextoPrincipal = Color.FromArgb(245, 222, 179) //Beige
+
         };
 
         // Tema Oscuro para Usuario
@@ -92,9 +93,9 @@ namespace MicheBytesRecipes.Helpers
 
             // Botones especiales para usuario
             BotonCerrar = Color.FromArgb(200, 70, 50),
-            BotonRecetas = Color.FromArgb(60, 179, 113),
+            BotonConfiguracion = Color.FromArgb(60, 179, 113),
             BotonFavoritos = Color.FromArgb(218, 165, 32),
-            BotonPerfil = Color.FromArgb(147, 112, 219),
+            BotonHistorial = Color.FromArgb(147, 112, 219),
             BotonBuscar = Color.FromArgb(70, 70, 75),
             BotonReiniciar = Color.FromArgb(70, 70, 75),
             BotonMenu = Color.FromArgb(180, 80, 80),
@@ -254,20 +255,20 @@ namespace MicheBytesRecipes.Helpers
             {
                 switch (etiqueta)
                 {
-                    case "peligro":
+                    case "cerrar":
                         colorFondo = TemaActual.BotonCerrar;
                         boton.ForeColor = TemaActual.TextoBotones;
                         break;
-                    case "recetas":
-                        colorFondo = TemaActual.BotonRecetas;
+                    case "configuracion":
+                        colorFondo = TemaActual.BotonConfiguracion;
                         boton.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "favoritos":
                         colorFondo = TemaActual.BotonFavoritos;
                         boton.ForeColor = TemaActual.TextoBotones;
                         break;
-                    case "perfil":
-                        colorFondo = TemaActual.BotonPerfil;
+                    case "historial":
+                        colorFondo = TemaActual.BotonHistorial;
                         boton.ForeColor = TemaActual.TextoBotones;
                         break;
                     case "buscar":
