@@ -35,7 +35,6 @@ namespace MicheBytesRecipes.Forms.Auth
             CueProvider.SetCue(txtEmail, "Ingresa tu correo electrónico");
             CueProvider.SetCue(txtContra, "Ingresa tu contraseña");
             CueProvider.SetCue(txtRepContra, "Repeti tu contraseña");
-
             CargarJson.CargarLabelsDesdeJson(pnlLeft, json_path);
             txtContra.UseSystemPasswordChar = true;
             txtRepContra.UseSystemPasswordChar = true;
