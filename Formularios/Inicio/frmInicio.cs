@@ -48,8 +48,8 @@ namespace MicheBytesRecipes
         private void frmInicio_Load(object sender, EventArgs e)
         {
             AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
-            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+           //GestorTemaUsuario.AplicarTema(this);
+           //GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
 
         }
 
@@ -60,13 +60,10 @@ namespace MicheBytesRecipes
         private void AsignarTags()
         {
 
-            // 🔴 BOTONES especiales
-
-
             btnTema.Tag = "tema";
             panelTop.Tag = "secundario";
+            panelMid.Tag = "opcional";
 
-            // Los demás botones sin tag = color por defecto
         }
 
 

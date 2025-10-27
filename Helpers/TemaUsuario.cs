@@ -9,6 +9,7 @@ namespace MicheBytesRecipes.Helpers
         public Color FondoPrincipal { get; set; }
         public Color PanelPrimario { get; set; }
         public Color PanelSecundario { get; set; }
+        public Color PanelOpcional {  get; set; }
         public Color TextoBotonPanel2 { get; set; }
         public Color TextoPrincipal { get; set; }
         public Color Botones { get; set; }
@@ -42,10 +43,11 @@ namespace MicheBytesRecipes.Helpers
             // MODIFICA ESTOS COLORES SEGÚN LA PALETA QUE QUIERAS PARA USUARIO
             PanelPrimario = Color.FromArgb(255, 165, 0),
             PanelSecundario = Color.FromArgb(255, 165, 0),
+            PanelOpcional = Color.FromArgb(245,222,179),
 
-            TextoPrincipal = Color.White,
-            Botones = Color.FromArgb(99, 64, 44),
-            TextoBotones = Color.White,
+            TextoPrincipal = Color.FromArgb(74,0,0),
+            Botones = Color.FromArgb(254, 93, 70),
+            TextoBotones = Color.FromArgb(245,222,179),
             BackgroundTextBox = Color.White,
             TextoCajaTexto = Color.Black,
             TextoBotonPanel2 = Color.FromArgb(70, 130, 180),
@@ -68,6 +70,7 @@ namespace MicheBytesRecipes.Helpers
         {
             PanelPrimario = Color.FromArgb(45, 45, 45),
             PanelSecundario = Color.FromArgb(55, 55, 55),
+            PanelOpcional = Color.FromArgb(245, 222, 179),
             TextoPrincipal = Color.FromArgb(240, 240, 240),
             Botones = Color.FromArgb(65, 130, 210),
             TextoBotones = Color.White,
@@ -184,6 +187,9 @@ namespace MicheBytesRecipes.Helpers
                 {
                     case "secundario":
                         colorFondo = TemaActual.PanelSecundario;
+                        break;
+                    case "opcional":
+                        colorFondo = TemaActual.PanelOpcional;
                         break;
                 }
             }

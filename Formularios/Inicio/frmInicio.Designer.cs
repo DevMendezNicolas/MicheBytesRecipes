@@ -34,12 +34,11 @@
             this.btnIniciar = new System.Windows.Forms.Button();
             this.btnCrearCuenta = new System.Windows.Forms.Button();
             this.panelMid = new System.Windows.Forms.Panel();
-            this.lblFinal = new System.Windows.Forms.Label();
             this.lblFooter = new System.Windows.Forms.Label();
             this.lblTituloEsencia = new System.Windows.Forms.Label();
             this.lblBullet1 = new System.Windows.Forms.Label();
             this.lblQueOfrece = new System.Windows.Forms.Label();
-            this.lblRelleno = new System.Windows.Forms.Label();
+            this.lblFinal = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnTema = new System.Windows.Forms.Button();
             this.lblBullet2 = new System.Windows.Forms.Label();
@@ -77,10 +76,10 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnIniciar.BackColor = System.Drawing.Color.OrangeRed;
             this.btnIniciar.FlatAppearance.BorderSize = 0;
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIniciar.ForeColor = System.Drawing.Color.White;
+            this.btnIniciar.ForeColor = System.Drawing.Color.Wheat;
             this.btnIniciar.Location = new System.Drawing.Point(918, 29);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(111, 30);
@@ -91,10 +90,10 @@
             // 
             // btnCrearCuenta
             // 
-            this.btnCrearCuenta.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnCrearCuenta.BackColor = System.Drawing.Color.OrangeRed;
             this.btnCrearCuenta.FlatAppearance.BorderSize = 0;
             this.btnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrearCuenta.ForeColor = System.Drawing.Color.White;
+            this.btnCrearCuenta.ForeColor = System.Drawing.Color.Wheat;
             this.btnCrearCuenta.Location = new System.Drawing.Point(1052, 29);
             this.btnCrearCuenta.Name = "btnCrearCuenta";
             this.btnCrearCuenta.Size = new System.Drawing.Size(111, 30);
@@ -105,7 +104,7 @@
             // 
             // panelMid
             // 
-            this.panelMid.BackColor = System.Drawing.Color.Orange;
+            this.panelMid.BackColor = System.Drawing.Color.Wheat;
             this.panelMid.Controls.Add(this.lblTituloBullet3);
             this.panelMid.Controls.Add(this.lblTituloBullet2);
             this.panelMid.Controls.Add(this.lblTituloBullet1);
@@ -113,36 +112,22 @@
             this.panelMid.Controls.Add(this.lblBullet2);
             this.panelMid.Controls.Add(this.btnTema);
             this.panelMid.Controls.Add(this.lblTitulo);
-            this.panelMid.Controls.Add(this.lblFinal);
             this.panelMid.Controls.Add(this.lblFooter);
             this.panelMid.Controls.Add(this.lblTituloEsencia);
             this.panelMid.Controls.Add(this.lblBullet1);
             this.panelMid.Controls.Add(this.lblQueOfrece);
-            this.panelMid.Controls.Add(this.lblRelleno);
+            this.panelMid.Controls.Add(this.lblFinal);
             this.panelMid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMid.Location = new System.Drawing.Point(0, 105);
             this.panelMid.Name = "panelMid";
             this.panelMid.Size = new System.Drawing.Size(1184, 556);
             this.panelMid.TabIndex = 1;
             // 
-            // lblFinal
-            // 
-            this.lblFinal.AutoSize = true;
-            this.lblFinal.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinal.ForeColor = System.Drawing.Color.White;
-            this.lblFinal.Location = new System.Drawing.Point(170, 507);
-            this.lblFinal.Name = "lblFinal";
-            this.lblFinal.Size = new System.Drawing.Size(859, 30);
-            this.lblFinal.TabIndex = 6;
-            this.lblFinal.Text = "¡Con MicheBytes Recipes, cocinar nunca fue tan divertido, accesible y delicioso! " +
-    "🍳✨";
-            this.lblFinal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lblFooter
             // 
             this.lblFooter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFooter.ForeColor = System.Drawing.Color.White;
-            this.lblFooter.Location = new System.Drawing.Point(325, 394);
+            this.lblFooter.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblFooter.Location = new System.Drawing.Point(317, 424);
             this.lblFooter.Name = "lblFooter";
             this.lblFooter.Size = new System.Drawing.Size(519, 90);
             this.lblFooter.TabIndex = 5;
@@ -153,8 +138,8 @@
             // 
             this.lblTituloEsencia.AutoSize = true;
             this.lblTituloEsencia.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloEsencia.ForeColor = System.Drawing.Color.White;
-            this.lblTituloEsencia.Location = new System.Drawing.Point(435, 345);
+            this.lblTituloEsencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTituloEsencia.Location = new System.Drawing.Point(434, 366);
             this.lblTituloEsencia.Name = "lblTituloEsencia";
             this.lblTituloEsencia.Size = new System.Drawing.Size(256, 37);
             this.lblTituloEsencia.TabIndex = 4;
@@ -164,8 +149,8 @@
             // lblBullet1
             // 
             this.lblBullet1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBullet1.ForeColor = System.Drawing.Color.White;
-            this.lblBullet1.Location = new System.Drawing.Point(26, 259);
+            this.lblBullet1.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblBullet1.Location = new System.Drawing.Point(14, 254);
             this.lblBullet1.Name = "lblBullet1";
             this.lblBullet1.Size = new System.Drawing.Size(313, 51);
             this.lblBullet1.TabIndex = 3;
@@ -176,35 +161,36 @@
             // 
             this.lblQueOfrece.AutoSize = true;
             this.lblQueOfrece.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQueOfrece.ForeColor = System.Drawing.Color.White;
-            this.lblQueOfrece.Location = new System.Drawing.Point(322, 153);
+            this.lblQueOfrece.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblQueOfrece.Location = new System.Drawing.Point(376, 155);
             this.lblQueOfrece.Name = "lblQueOfrece";
-            this.lblQueOfrece.Size = new System.Drawing.Size(503, 40);
+            this.lblQueOfrece.Size = new System.Drawing.Size(396, 40);
             this.lblQueOfrece.TabIndex = 2;
-            this.lblQueOfrece.Text = "🍴 ¿Qué ofrece MicheBytes Recipes?";
+            this.lblQueOfrece.Text = "🍴 ¿Qué ofrece MicheBytes?";
             this.lblQueOfrece.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRelleno
+            // lblFinal
             // 
-            this.lblRelleno.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelleno.ForeColor = System.Drawing.Color.White;
-            this.lblRelleno.Location = new System.Drawing.Point(214, 41);
-            this.lblRelleno.Name = "lblRelleno";
-            this.lblRelleno.Size = new System.Drawing.Size(815, 112);
-            this.lblRelleno.TabIndex = 1;
-            this.lblRelleno.Text = resources.GetString("lblRelleno.Text");
-            this.lblRelleno.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFinal.AutoSize = true;
+            this.lblFinal.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinal.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblFinal.Location = new System.Drawing.Point(316, 74);
+            this.lblFinal.Name = "lblFinal";
+            this.lblFinal.Size = new System.Drawing.Size(515, 30);
+            this.lblFinal.TabIndex = 1;
+            this.lblFinal.Text = "¡Cocinar nunca fue tan divertido, accesible y delicioso!";
+            this.lblFinal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(0)))));
-            this.lblTitulo.Location = new System.Drawing.Point(179, -6);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitulo.Location = new System.Drawing.Point(200, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(860, 59);
+            this.lblTitulo.Size = new System.Drawing.Size(791, 59);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "¡Bieeeenvenidos a MicheBytes Recipes! 🎉";
+            this.lblTitulo.Text = "¡Bienvenidos a MicheBytes Recipes! 🎉";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnTema
@@ -221,10 +207,10 @@
             // lblBullet2
             // 
             this.lblBullet2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBullet2.ForeColor = System.Drawing.Color.White;
-            this.lblBullet2.Location = new System.Drawing.Point(360, 239);
+            this.lblBullet2.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblBullet2.Location = new System.Drawing.Point(379, 239);
             this.lblBullet2.Name = "lblBullet2";
-            this.lblBullet2.Size = new System.Drawing.Size(402, 90);
+            this.lblBullet2.Size = new System.Drawing.Size(402, 92);
             this.lblBullet2.TabIndex = 7;
             this.lblBullet2.Text = "\r\n• Filtros inteligentes para encontrar la receta perfecta según tus gustos, el t" +
     "iempo o los ingredientes disponibles.\r\n";
@@ -233,10 +219,10 @@
             // lblBullet3
             // 
             this.lblBullet3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBullet3.ForeColor = System.Drawing.Color.White;
-            this.lblBullet3.Location = new System.Drawing.Point(779, 254);
+            this.lblBullet3.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblBullet3.Location = new System.Drawing.Point(829, 247);
             this.lblBullet3.Name = "lblBullet3";
-            this.lblBullet3.Size = new System.Drawing.Size(386, 77);
+            this.lblBullet3.Size = new System.Drawing.Size(343, 77);
             this.lblBullet3.TabIndex = 8;
             this.lblBullet3.Text = "• Consejos prácticos y tips gastronómicos que convierten cada receta en una oport" +
     "unidad de aprender algo nuevo.";
@@ -245,10 +231,11 @@
             // lblTituloBullet1
             // 
             this.lblTituloBullet1.AutoSize = true;
-            this.lblTituloBullet1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBullet1.Location = new System.Drawing.Point(87, 222);
+            this.lblTituloBullet1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBullet1.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblTituloBullet1.Location = new System.Drawing.Point(61, 217);
             this.lblTituloBullet1.Name = "lblTituloBullet1";
-            this.lblTituloBullet1.Size = new System.Drawing.Size(166, 30);
+            this.lblTituloBullet1.Size = new System.Drawing.Size(170, 30);
             this.lblTituloBullet1.TabIndex = 9;
             this.lblTituloBullet1.Text = "Recetas variadas";
             this.lblTituloBullet1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -256,10 +243,11 @@
             // lblTituloBullet2
             // 
             this.lblTituloBullet2.AutoSize = true;
-            this.lblTituloBullet2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBullet2.Location = new System.Drawing.Point(453, 222);
+            this.lblTituloBullet2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBullet2.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblTituloBullet2.Location = new System.Drawing.Point(461, 217);
             this.lblTituloBullet2.Name = "lblTituloBullet2";
-            this.lblTituloBullet2.Size = new System.Drawing.Size(181, 30);
+            this.lblTituloBullet2.Size = new System.Drawing.Size(188, 30);
             this.lblTituloBullet2.TabIndex = 10;
             this.lblTituloBullet2.Text = "Filtros inteligentes";
             this.lblTituloBullet2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -267,10 +255,11 @@
             // lblTituloBullet3
             // 
             this.lblTituloBullet3.AutoSize = true;
-            this.lblTituloBullet3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloBullet3.Location = new System.Drawing.Point(879, 224);
+            this.lblTituloBullet3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloBullet3.ForeColor = System.Drawing.Color.Chocolate;
+            this.lblTituloBullet3.Location = new System.Drawing.Point(886, 217);
             this.lblTituloBullet3.Name = "lblTituloBullet3";
-            this.lblTituloBullet3.Size = new System.Drawing.Size(185, 30);
+            this.lblTituloBullet3.Size = new System.Drawing.Size(191, 30);
             this.lblTituloBullet3.TabIndex = 11;
             this.lblTituloBullet3.Text = "Consejos prácticos";
             this.lblTituloBullet3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -305,12 +294,11 @@
         private System.Windows.Forms.PictureBox pbxLogo;
         private System.Windows.Forms.Panel panelMid;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label lblRelleno;
+        private System.Windows.Forms.Label lblFinal;
         private System.Windows.Forms.Label lblQueOfrece;
         private System.Windows.Forms.Label lblBullet1;
         private System.Windows.Forms.Label lblTituloEsencia;
         private System.Windows.Forms.Label lblFooter;
-        private System.Windows.Forms.Label lblFinal;
         private System.Windows.Forms.Button btnTema;
         private System.Windows.Forms.Label lblBullet3;
         private System.Windows.Forms.Label lblBullet2;

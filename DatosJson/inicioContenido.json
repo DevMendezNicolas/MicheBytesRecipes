@@ -7,14 +7,8 @@
       "Negrita": true
     },
     {
-      "Nombre": "lblRelleno",
-      "Texto": "Nuestra aplicación nace con una misión simple pero poderosa: hacer que cocinar sea más fácil, divertido y accesible para todos.\n En MicheBytes Recipes vas a encontrar un espacio pensado para los amantes de la gastronomía: desde quienes recién empiezan a dar sus primeros pasos en la cocina, hasta los que disfrutan creando platos únicos e innovadores.",
-      "Tamaño": 12,
-      "Negrita": false
-    },
-    {
       "Nombre": "lblQueOfrece",
-      "Texto": "¿Qué ofrece MicheBytes Recipes?",
+      "Texto": "¿Qué ofrece MicheBytes?",
       "Tamaño": 22,
       "Negrita": true
     },
@@ -36,7 +30,6 @@
       "Tamaño": 16,
       "Negrita": true
     },
-
 
     {
       "Nombre": "lblBullet1",
@@ -70,9 +63,9 @@
     },
     {
       "Nombre": "lblFinal",
-      "Texto": "¡Con MicheBytes Recipes, cocinar nunca fue tan divertido, accesible y delicioso! 🧑‍🍳✨",
+      "Texto": "¡Cocinar nunca fue tan divertido, accesible y delicioso!",
       "Tamaño": 16,
-      "Negrita": true
+      "Negrita": false
     }
   ]
 }
