@@ -48,6 +48,7 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnHistorialRecetas = new System.Windows.Forms.Button();
             this.btnHistorialFav = new System.Windows.Forms.Button();
+            this.btnTema = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
             this.pnlNavegacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).BeginInit();
@@ -90,9 +91,9 @@
             // pnlTarjetas
             // 
             this.pnlTarjetas.AutoScroll = true;
-            this.pnlTarjetas.Location = new System.Drawing.Point(16, 210);
+            this.pnlTarjetas.Location = new System.Drawing.Point(27, 210);
             this.pnlTarjetas.Name = "pnlTarjetas";
-            this.pnlTarjetas.Size = new System.Drawing.Size(923, 439);
+            this.pnlTarjetas.Size = new System.Drawing.Size(903, 439);
             this.pnlTarjetas.TabIndex = 12;
             // 
             // btnReinicio
@@ -212,6 +213,7 @@
             // pnlNavegacion
             // 
             this.pnlNavegacion.BackColor = System.Drawing.Color.Orange;
+            this.pnlNavegacion.Controls.Add(this.btnTema);
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
             this.pnlNavegacion.Controls.Add(this.btnCerrarSesion);
@@ -302,6 +304,17 @@
             this.btnHistorialFav.UseVisualStyleBackColor = false;
             this.btnHistorialFav.Click += new System.EventHandler(this.btnHistorialFav_Click);
             // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(18, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(35, 33);
+            this.btnTema.TabIndex = 13;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
+            // 
             // frmMenuUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -321,6 +334,7 @@
             this.pnlContenido.ResumeLayout(false);
             this.pnlContenido.PerformLayout();
             this.pnlNavegacion.ResumeLayout(false);
+            this.pnlNavegacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenUser)).EndInit();
             this.ResumeLayout(false);
 
@@ -348,5 +362,6 @@
         private System.Windows.Forms.FlowLayoutPanel pnlTarjetas;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Label lblTituloMichebyte;
+        private System.Windows.Forms.Button btnTema;
     }
 }

@@ -30,7 +30,9 @@ namespace MicheBytesRecipes.Forms.User
             usuarioLog = usuarioActivado;
             CargarUsuario();
             gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);
-            
+            GestorTemaUsuario.TemaCambiado += OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= OnThemeChanged;
+
         }
 
         private void CargarUsuario()
@@ -57,7 +59,7 @@ namespace MicheBytesRecipes.Forms.User
         {
             AsignarTags();
             GestorTemaUsuario.AplicarTema(this);
-            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+            ActualizarBotonTema();
 
             // --- Categorías ---
             List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
@@ -261,12 +263,27 @@ namespace MicheBytesRecipes.Forms.User
 
             btnCerrarSesion.Tag = "cerrar";
             btnConfig.Tag = "configuracion";
-            btnReinicio.Tag = "reinicio";
+            btnReinicio.Tag = "reiniciar";
             btnBuscar.Tag = "buscar";
             btnHistorialFav.Tag = "favoritos";
+            btnHistorialRecetas.Tag = "historial";
 
         }
+        private void ActualizarBotonTema()
+        {
+            btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️" : "🌙";
+        }
+        private void OnThemeChanged()
+        {
+            // Cuando el tema cambia en cualquier parte, actualizar este formulario
+            GestorTemaUsuario.AplicarTema(this);
+            ActualizarBotonTema();
+            this.Refresh();
+        }
 
-
+        private void btnTema_Click(object sender, EventArgs e)
+        {
+            GestorTemaUsuario.AlternarTema();
+        }
     }
 }

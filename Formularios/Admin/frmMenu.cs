@@ -56,9 +56,6 @@ namespace MicheBytesRecipes
             {
                 pictureBox1.Image = null;
             }
-
-
-
         }
 
         private void frmMenuAdmin_Load(object sender, EventArgs e)

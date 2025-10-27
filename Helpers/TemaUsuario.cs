@@ -54,7 +54,7 @@ namespace MicheBytesRecipes.Helpers
             TextoBotones = Color.FromArgb(245, 222, 179), //Beige
             BackgroundTextBox = Color.White,
             TextoCajaTexto = Color.Black,
-            TextoBotonPanel2 = Color.FromArgb(70, 130, 180), 
+            TextoBotonPanel2 = Color.FromArgb(255, 165, 0), //SteelBlue
 
             // Botones especiales para usuario
             BotonFavoritos = Color.FromArgb(250, 128, 114), //Salmón

@@ -73,6 +73,10 @@ namespace MicheBytesRecipes
             lblBullet3.Tag = "subtitulo";
             lblFooter.Tag = "subtitulo";
         }
+        private void ActualizarBotonTema()
+        {
+            btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️" : "🌙";
+        }
 
 
     }
