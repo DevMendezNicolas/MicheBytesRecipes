@@ -41,6 +41,9 @@ namespace MicheBytesRecipes.Forms.AddReceta
             {
                 CargarDatosReceta();
             }
+            txtDescripcion.ScrollBars = ScrollBars.Vertical;
+            txtInstrucciones.ScrollBars = ScrollBars.Vertical;
+
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
 

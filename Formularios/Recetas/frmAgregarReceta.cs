@@ -49,7 +49,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
             DTPtiempo.CustomFormat = "HH:mm:ss";
             DTPtiempo.ShowUpDown = true;
             DTPtiempo.Value = DateTime.Today.AddHours(1);
-
+            TXTdescripcion.ScrollBars = ScrollBars.Vertical;
+            TXTinstrucciones.ScrollBars = ScrollBars.Vertical;
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
 
@@ -70,7 +71,46 @@ namespace MicheBytesRecipes.Forms.AddReceta
         //Botones 
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            //Crear una nueva receta
+            Receta nuevaReceta = new Receta();
+            if (Validaciones.ValidarReceta(TXTnombre, TXTdescripcion, TXTinstrucciones, CBOcategoria, CBOpais, CBOdificultad, DTPtiempo, pcbImagen, btnCargar, clbIngredientes, errorProvider1))
+            {
+                nuevaReceta.Nombre = Utilidades.CapitalizarPrimeraLetra(TXTnombre.Text);
+                nuevaReceta.Descripcion = TXTdescripcion.Text;
+                nuevaReceta.Instrucciones = TXTinstrucciones.Text;
+                nuevaReceta.TiempoPreparacion = DTPtiempo.Value.TimeOfDay;
 
+                nuevaReceta.ImagenReceta = File.ReadAllBytes(openFileDialog1.FileName);// Imagen blob
+
+                nuevaReceta.CategoriaId = Convert.ToInt32(CBOcategoria.SelectedValue);
+                nuevaReceta.PaisId = Convert.ToInt32(CBOpais.SelectedValue);
+
+                nuevaReceta.NivelDificultad = (Dificultad)CBOdificultad.SelectedItem;
+
+                nuevaReceta.UsuarioId = 1;
+
+                nuevaReceta.FechaRegistro = DateTime.Now;
+
+                //Obtener los IDs de los ingredientes seleccionados
+                List<int> ingredientesIds = new List<int>();
+                //Agregar los ingredientes seleccionados en el CheckedListBox a la receta
+                foreach (Ingrediente ing in clbIngredientes.CheckedItems)
+                {
+                    ingredientesIds.Add(ing.IngredienteId);
+                }
+
+                //Guardar receta + ingrediente en un solo paso
+                int recetaId = gestorReceta.AgregarReceta(nuevaReceta, ingredientesIds);
+
+                if (recetaId > 0)
+                {
+                    MessageBox.Show("Receta cargada exitosamente");
+                }
+
+                LimpiarFormulario();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
         private void btnPais_Click(object sender, EventArgs e)
         {

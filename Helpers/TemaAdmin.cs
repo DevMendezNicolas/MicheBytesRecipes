@@ -93,11 +93,13 @@ namespace MicheBytesRecipes.Helpers
         {
             PanelPrimario = Color.FromArgb(45, 45, 45),              // Panel por defecto
             PanelSecundario = Color.FromArgb(55, 55, 55),
+            FondoPrincipal = Color.FromArgb(45, 45, 45),
+
             TextoPrincipal = Color.FromArgb(240, 240, 240),
             Botones = Color.FromArgb(65, 130, 210),
             TextoBotones = Color.White,
             BackgroundTextBox = Color.White,
-            TextoCajaTexto = Color.White,
+            TextoCajaTexto = Color.Black,
             TextoBotonPanel2 = Color.White,
 
             // Botones especiales
