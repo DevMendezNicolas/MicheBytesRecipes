@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PanelMid = new System.Windows.Forms.Panel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnViewAgain = new System.Windows.Forms.Button();
             this.btnViewContra = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.eprEmail = new System.Windows.Forms.ErrorProvider(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprEmail)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,15 @@
             this.PanelMid.Name = "PanelMid";
             this.PanelMid.Size = new System.Drawing.Size(376, 339);
             this.PanelMid.TabIndex = 7;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(85, 127);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(194, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 24;
+            this.progressBar.Visible = false;
             // 
             // btnViewAgain
             // 
@@ -201,15 +210,6 @@
             // 
             this.eprEmail.ContainerControl = this;
             // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(85, 127);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(194, 23);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar.TabIndex = 24;
-            this.progressBar.Visible = false;
-            // 
             // frmRecuperarContra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,6 +221,7 @@
             this.Name = "frmRecuperarContra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RecuperarContra";
+            this.Load += new System.EventHandler(this.frmRecuperarContra_Load);
             this.PanelMid.ResumeLayout(false);
             this.PanelMid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprEmail)).EndInit();

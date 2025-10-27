@@ -32,6 +32,13 @@ namespace MicheBytesRecipes.Forms.Auth
             this.Close();
 
         }
+        private void AsignarTags()
+        {
+
+            lblTitulo.Tag = "titulo";
+            PanelMid.Tag = "secundario";
+
+        }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -234,6 +241,14 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             txtNuevaContra.UseSystemPasswordChar = true;
             txtNuevaContra.PasswordChar = '●';
+        }
+
+        private void frmRecuperarContra_Load(object sender, EventArgs e)
+        {
+            UiHelpers.SetRoundedPanel(PanelMid, 25);
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
         }
     }
 }
