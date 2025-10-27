@@ -36,8 +36,8 @@ namespace MicheBytesRecipes
         public frmMenuAdmin(Usuario usuarioActivado)
         {
             InitializeComponent();
-            GestorTemaAdmin.TemaCambiado += OnThemeChanged;
-            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= OnThemeChanged;
+            GestorTemaAdmin.TemaCambiado += ActualizarTema;
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
             CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
@@ -195,8 +195,8 @@ namespace MicheBytesRecipes
             this.Hide();
             frmGestionUsuarios gestionUsuarios = new frmGestionUsuarios(usuarioLog);
             GestorTemaAdmin.AplicarTema(gestionUsuarios);
-            GestorTemaAdmin.TemaCambiado += gestionUsuarios.OnThemeChanged;
-            gestionUsuarios.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= gestionUsuarios.OnThemeChanged;
+            GestorTemaAdmin.TemaCambiado += gestionUsuarios.ActualizarTema;
+            gestionUsuarios.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= gestionUsuarios.ActualizarTema;
             gestionUsuarios.ShowDialog();
             this.Show();
 
@@ -208,9 +208,9 @@ namespace MicheBytesRecipes
             frmMetricas metricas = new frmMetricas(usuarioLog);
 
             GestorTemaAdmin.AplicarTema(metricas);
-            GestorTemaAdmin.TemaCambiado += metricas.OnThemeChanged;
+            GestorTemaAdmin.TemaCambiado += metricas.ActualizarTema;
 
-            metricas.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= metricas.OnThemeChanged;
+            metricas.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= metricas.ActualizarTema;
 
             metricas.ShowDialog();
             this.Show();
@@ -395,7 +395,7 @@ namespace MicheBytesRecipes
 
         }
 
-        private void OnThemeChanged()
+        private void ActualizarTema()
         {
             // Cuando el tema cambia en cualquier parte, actualizar este formulario
             GestorTemaAdmin.AplicarTema(this);

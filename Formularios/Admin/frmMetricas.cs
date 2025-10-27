@@ -46,7 +46,7 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 pbImagenAdmin.Image = null;
             }
-            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
 
         }
 
@@ -95,7 +95,7 @@ namespace MicheBytesRecipes.Forms.Admin
 
         }
 
-        public void OnThemeChanged()
+        public void ActualizarTema()
         {
             GestorTemaAdmin.AplicarTema(this);
             ActualizarBotonTema();

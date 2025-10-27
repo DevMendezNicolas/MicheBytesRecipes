@@ -31,8 +31,8 @@ namespace MicheBytesRecipes.Forms.User
             usuarioLog = usuarioActivado;
             CargarUsuario();
             gestorTarjetas = new GestorTarjetasRecetas(pnlTarjetas);
-            GestorTemaUsuario.TemaCambiado += OnThemeChanged;
-            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= OnThemeChanged;
+            GestorTemaUsuario.TemaCambiado += ActualizarTema;
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
 
         }
 
@@ -126,8 +126,8 @@ namespace MicheBytesRecipes.Forms.User
             this.Hide();
             frmHistorial historial = new frmHistorial(usuarioLog);
             GestorTemaUsuario.AplicarTema(historial);
-            GestorTemaUsuario.TemaCambiado += historial.OnThemeChanged;
-            historial.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= historial.OnThemeChanged;
+            GestorTemaUsuario.TemaCambiado += historial.ActualizarTema;
+            historial.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= historial.ActualizarTema;
             historial.ShowDialog();
             this.Show();
 
@@ -198,8 +198,8 @@ namespace MicheBytesRecipes.Forms.User
             this.Hide();
             frmConfiguracion configuracion = new frmConfiguracion(usuarioLog);
             GestorTemaUsuario.AplicarTema(configuracion);
-            GestorTemaUsuario.TemaCambiado += configuracion.OnThemeChanged;
-            configuracion.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= configuracion.OnThemeChanged;
+            GestorTemaUsuario.TemaCambiado += configuracion.ActualizarTema;
+            configuracion.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= configuracion.ActualizarTema;
             configuracion.ShowDialog();
             this.Show();
 
@@ -274,7 +274,7 @@ namespace MicheBytesRecipes.Forms.User
         {
             btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️" : "🌙";
         }
-        public void OnThemeChanged()
+        public void ActualizarTema()
         {
             // Cuando el tema cambia en cualquier parte, actualizar este formulario
             GestorTemaUsuario.AplicarTema(this);

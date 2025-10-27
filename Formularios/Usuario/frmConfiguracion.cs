@@ -23,7 +23,7 @@ namespace MicheBytesRecipes.Forms.User
             usuarioLog = usuarioActivado;
             CargarDatosUsuario();
             DesactivarCampos();
-            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
 
         }
 
@@ -37,7 +37,7 @@ namespace MicheBytesRecipes.Forms.User
             GestorTemaUsuario.AplicarTema(this);
 
         }
-        public void OnThemeChanged()
+        public void ActualizarTema()
         {
             GestorTemaUsuario.AplicarTema(this);
             this.Refresh();

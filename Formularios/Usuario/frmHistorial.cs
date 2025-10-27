@@ -50,7 +50,7 @@ namespace MicheBytesRecipes.Forms.User
             {
                 pbImagenUser.Image = null;
             }
-            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
 
         }
 
@@ -61,7 +61,7 @@ namespace MicheBytesRecipes.Forms.User
             AsignarTags();
             GestorTemaUsuario.AplicarTema(this);
         }
-        public void OnThemeChanged()
+        public void ActualizarTema()
         {
             GestorTemaUsuario.AplicarTema(this);
             this.Refresh();

@@ -21,7 +21,7 @@ namespace MicheBytesRecipes.Forms.Admin
         public frmGestionUsuarios(Usuario usuarioActivado)
         {
             InitializeComponent();
-            GestorTemaAdmin.TemaCambiado += OnThemeChanged;
+            GestorTemaAdmin.TemaCambiado += ActualizarTema;
             usuarioLog = usuarioActivado;
             lblNombre.Text = usuarioLog.NombreCompleto();
             if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
@@ -39,7 +39,7 @@ namespace MicheBytesRecipes.Forms.Admin
             {
                 pbImagenAdmin.Image = null;
             }
-            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= OnThemeChanged;
+            this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
 
         }
 
@@ -201,7 +201,7 @@ namespace MicheBytesRecipes.Forms.Admin
             btnTema.Tag = "tema";
 
         }
-        public void OnThemeChanged()
+        public void ActualizarTema()
         {
             // Se actualiza automáticamente cuando el tema cambia
             GestorTemaAdmin.AplicarTema(this);
