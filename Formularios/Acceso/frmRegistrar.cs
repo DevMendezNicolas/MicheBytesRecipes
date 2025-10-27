@@ -243,7 +243,7 @@ namespace MicheBytesRecipes.Forms.Auth
         }
         private void CambiarImagen(PictureBox pictureBox)
         {
-            ofdFotoPerfil.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp";
+            ofdFotoPerfil.Filter = "Archivos de imagen|.png;*";
             if (ofdFotoPerfil.ShowDialog() == DialogResult.OK)
             {
                 try
