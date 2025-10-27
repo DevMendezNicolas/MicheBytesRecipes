@@ -48,8 +48,8 @@ namespace MicheBytesRecipes
         private void frmInicio_Load(object sender, EventArgs e)
         {
             AsignarTags();
-           //GestorTemaUsuario.AplicarTema(this);
-           //GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+           GestorTemaUsuario.AplicarTema(this);
+           GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
 
         }
 
@@ -59,11 +59,19 @@ namespace MicheBytesRecipes
         }
         private void AsignarTags()
         {
-
             btnTema.Tag = "tema";
-            panelTop.Tag = "secundario";
             panelMid.Tag = "opcional";
-
+            lblTitulo.Tag = "titulo";
+            lblQueOfrece.Tag = "titulo";
+            lblTituloEsencia.Tag = "titulo";
+            lblTituloBullet1.Tag = "subtitulo";
+            lblTituloBullet2.Tag = "subtitulo";
+            lblTituloBullet3.Tag = "subtitulo";
+            lblFinal.Tag = "subtitulo";
+            lblBullet1.Tag = "subtitulo";
+            lblBullet2.Tag = "subtitulo";
+            lblBullet3.Tag = "subtitulo";
+            lblFooter.Tag = "subtitulo";
         }
 
 
