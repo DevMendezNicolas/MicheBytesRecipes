@@ -201,6 +201,7 @@ namespace MicheBytesRecipes.Forms.User
             GestorTemaUsuario.TemaCambiado += configuracion.ActualizarTema;
             configuracion.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= configuracion.ActualizarTema;
             configuracion.ShowDialog();
+            usuarioLog = gestorUsuarios.BuscarPorEmail(configuracion.nuevoLog);
             this.Show();
 
 

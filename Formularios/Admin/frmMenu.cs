@@ -9,6 +9,7 @@ using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
 using MicheBytesRecipes.Forms.AddReceta;
 using MicheBytesRecipes.Forms.Admin;
+using MicheBytesRecipes.Forms.User;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using MicheBytesRecipes.Utilities;
@@ -19,6 +20,7 @@ namespace MicheBytesRecipes
     {
         GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
         private Usuario usuarioLog;
         private bool cierrePorSesion = false;
         private bool recetasActivas = true;
@@ -407,6 +409,33 @@ namespace MicheBytesRecipes
             btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️": "🌙";
         }
 
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmConfiguracion configuracion = new frmConfiguracion(usuarioLog);
+            GestorTemaUsuario.AplicarTema(configuracion);
+            GestorTemaUsuario.TemaCambiado += configuracion.ActualizarTema;
+            configuracion.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= configuracion.ActualizarTema;
+            configuracion.ShowDialog();
+            usuarioLog = gestorUsuarios.BuscarPorEmail(configuracion.nuevoLog);
+            lblNombre.Text = usuarioLog.NombreCompleto();
+            if (usuarioLog.Foto != null && usuarioLog.Foto.Length > 0)
+            {
+                //Crea una imagen a partir del arreglo de bytes
+                using (MemoryStream ms = new MemoryStream(usuarioLog.Foto))
+                {
+                    //Se crea un objeto imagen a partir del stream
+                    pictureBox1.Image = Image.FromStream(ms);
+                    //Ajusta el tamaño de la imagen al tamaño del picturebox
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+            this.Show();
+        }
     }
 }
 

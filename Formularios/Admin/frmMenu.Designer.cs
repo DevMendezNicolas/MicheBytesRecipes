@@ -66,6 +66,7 @@
             this.opfImportar = new System.Windows.Forms.OpenFileDialog();
             this.fbdCarpetaDestino = new System.Windows.Forms.FolderBrowserDialog();
             this.sfdExpotar = new System.Windows.Forms.SaveFileDialog();
+            this.btnConfig = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -292,6 +293,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.btnConfig);
             this.panel3.Controls.Add(this.btnTema);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnReinicio);
@@ -502,6 +504,20 @@
             // 
             this.opfImportar.FileName = "openFileDialog1";
             // 
+            // btnConfig
+            // 
+            this.btnConfig.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfig.ForeColor = System.Drawing.Color.White;
+            this.btnConfig.Location = new System.Drawing.Point(759, 616);
+            this.btnConfig.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(130, 33);
+            this.btnConfig.TabIndex = 17;
+            this.btnConfig.Text = "&Configuración";
+            this.btnConfig.UseVisualStyleBackColor = false;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
             // frmMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -568,6 +584,7 @@
         private System.Windows.Forms.SaveFileDialog sfdExpotar;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnTema;
+        private System.Windows.Forms.Button btnConfig;
     }
 }
 
