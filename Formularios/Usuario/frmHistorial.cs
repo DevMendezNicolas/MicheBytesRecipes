@@ -50,13 +50,27 @@ namespace MicheBytesRecipes.Forms.User
             {
                 pbImagenUser.Image = null;
             }
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= OnThemeChanged;
+
         }
 
         private void Historial_Load(object sender, EventArgs e)
         {
            
             CargarRecetas();
-        } 
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+        }
+        public void OnThemeChanged()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
+        {
+
+        }
 
         private void btnInicio_Click(object sender, EventArgs e)
         {

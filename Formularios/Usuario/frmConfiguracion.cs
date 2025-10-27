@@ -1,4 +1,5 @@
 ﻿using MicheBytesRecipes.Classes;
+using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using System;
 using System.Diagnostics.Eventing.Reader;
@@ -22,6 +23,8 @@ namespace MicheBytesRecipes.Forms.User
             usuarioLog = usuarioActivado;
             CargarDatosUsuario();
             DesactivarCampos();
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= OnThemeChanged;
+
         }
 
 
@@ -30,6 +33,18 @@ namespace MicheBytesRecipes.Forms.User
 
             txtContraActual.UseSystemPasswordChar = true;
             txtContraNueva.UseSystemPasswordChar = true;
+            GestorTemaUsuario.AplicarTema(this);
+
+        }
+        public void OnThemeChanged()
+        {
+            GestorTemaUsuario.AplicarTema(this);
+            this.Refresh();
+        }
+
+        private void AsignarTags()
+        {
+
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)

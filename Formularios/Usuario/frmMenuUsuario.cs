@@ -1,5 +1,6 @@
 ﻿using MicheBytesRecipes.Classes;
 using MicheBytesRecipes.Classes.Recetas;
+using MicheBytesRecipes.Forms.Admin;
 using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
 using System;
@@ -124,6 +125,9 @@ namespace MicheBytesRecipes.Forms.User
         {
             this.Hide();
             frmHistorial historial = new frmHistorial(usuarioLog);
+            GestorTemaUsuario.AplicarTema(historial);
+            GestorTemaUsuario.TemaCambiado += historial.OnThemeChanged;
+            historial.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= historial.OnThemeChanged;
             historial.ShowDialog();
             this.Show();
 
@@ -193,13 +197,10 @@ namespace MicheBytesRecipes.Forms.User
         {
             this.Hide();
             frmConfiguracion configuracion = new frmConfiguracion(usuarioLog);
-            if(configuracion.ShowDialog() == DialogResult.OK)
-            {
-                usuarioLog = gestorUsuarios.BuscarPorEmail(configuracion.nuevoLog);
-                CargarUsuario();
-
-            }
-            
+            GestorTemaUsuario.AplicarTema(configuracion);
+            GestorTemaUsuario.TemaCambiado += configuracion.OnThemeChanged;
+            configuracion.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= configuracion.OnThemeChanged;
+            configuracion.ShowDialog();
             this.Show();
 
 
@@ -273,7 +274,7 @@ namespace MicheBytesRecipes.Forms.User
         {
             btnTema.Text = GestorTemaAdmin.EsTemaOscuro ? "☀️" : "🌙";
         }
-        private void OnThemeChanged()
+        public void OnThemeChanged()
         {
             // Cuando el tema cambia en cualquier parte, actualizar este formulario
             GestorTemaUsuario.AplicarTema(this);

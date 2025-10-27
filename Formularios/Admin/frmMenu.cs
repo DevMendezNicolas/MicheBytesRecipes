@@ -376,7 +376,7 @@ namespace MicheBytesRecipes
         private void AsignarTags()
         {
 
-            // 🔴 BOTONES especiales
+            // BOTONES especiales
             btnCerrarSesion.Tag = "peligro";
             btnExportar.Tag = "exportar";
             btnImportar.Tag = "importar";
