@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btbAgregarCategorias = new System.Windows.Forms.Button();
+            this.btnAgregarCategorias = new System.Windows.Forms.Button();
             this.btnPais = new System.Windows.Forms.Button();
             this.btnAgregarIngrediente = new System.Windows.Forms.Button();
             this.clbIngredientes = new System.Windows.Forms.CheckedListBox();
@@ -59,16 +59,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btbAgregarCategorias
+            // btnAgregarCategorias
             // 
-            this.btbAgregarCategorias.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btbAgregarCategorias.Location = new System.Drawing.Point(180, 523);
-            this.btbAgregarCategorias.Name = "btbAgregarCategorias";
-            this.btbAgregarCategorias.Size = new System.Drawing.Size(149, 33);
-            this.btbAgregarCategorias.TabIndex = 47;
-            this.btbAgregarCategorias.Text = "&Agregar categoria";
-            this.btbAgregarCategorias.UseVisualStyleBackColor = true;
-            this.btbAgregarCategorias.Click += new System.EventHandler(this.btbAgregarCategorias_Click);
+            this.btnAgregarCategorias.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCategorias.Location = new System.Drawing.Point(180, 523);
+            this.btnAgregarCategorias.Name = "btnAgregarCategorias";
+            this.btnAgregarCategorias.Size = new System.Drawing.Size(149, 33);
+            this.btnAgregarCategorias.TabIndex = 12;
+            this.btnAgregarCategorias.Text = "&Agregar categoria";
+            this.btnAgregarCategorias.UseVisualStyleBackColor = true;
+            this.btnAgregarCategorias.Click += new System.EventHandler(this.btnAgregarCategorias_Click);
             // 
             // btnPais
             // 
@@ -76,7 +76,7 @@
             this.btnPais.Location = new System.Drawing.Point(25, 523);
             this.btnPais.Name = "btnPais";
             this.btnPais.Size = new System.Drawing.Size(149, 33);
-            this.btnPais.TabIndex = 46;
+            this.btnPais.TabIndex = 11;
             this.btnPais.Text = "&Agregar pais";
             this.btnPais.UseVisualStyleBackColor = true;
             this.btnPais.Click += new System.EventHandler(this.btnPais_Click);
@@ -87,7 +87,7 @@
             this.btnAgregarIngrediente.Location = new System.Drawing.Point(25, 484);
             this.btnAgregarIngrediente.Name = "btnAgregarIngrediente";
             this.btnAgregarIngrediente.Size = new System.Drawing.Size(149, 33);
-            this.btnAgregarIngrediente.TabIndex = 45;
+            this.btnAgregarIngrediente.TabIndex = 10;
             this.btnAgregarIngrediente.Text = "&Agregar ingrediente";
             this.btnAgregarIngrediente.UseVisualStyleBackColor = true;
             this.btnAgregarIngrediente.Click += new System.EventHandler(this.btnAgregarIngrediente_Click);
@@ -99,7 +99,7 @@
             this.clbIngredientes.Location = new System.Drawing.Point(376, 379);
             this.clbIngredientes.Name = "clbIngredientes";
             this.clbIngredientes.Size = new System.Drawing.Size(443, 100);
-            this.clbIngredientes.TabIndex = 44;
+            this.clbIngredientes.TabIndex = 9;
             // 
             // label9
             // 
@@ -117,7 +117,7 @@
             this.btnModificar.Location = new System.Drawing.Point(704, 519);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(98, 33);
-            this.btnModificar.TabIndex = 42;
+            this.btnModificar.TabIndex = 13;
             this.btnModificar.Text = "&Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -128,7 +128,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(376, 519);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 33);
-            this.btnCancelar.TabIndex = 41;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -139,7 +139,7 @@
             this.btnImagen.Location = new System.Drawing.Point(25, 431);
             this.btnImagen.Name = "btnImagen";
             this.btnImagen.Size = new System.Drawing.Size(135, 29);
-            this.btnImagen.TabIndex = 40;
+            this.btnImagen.TabIndex = 6;
             this.btnImagen.Text = "&Cargar imagen";
             this.btnImagen.UseVisualStyleBackColor = true;
             this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
@@ -160,7 +160,7 @@
             this.txtInstrucciones.Multiline = true;
             this.txtInstrucciones.Name = "txtInstrucciones";
             this.txtInstrucciones.Size = new System.Drawing.Size(443, 140);
-            this.txtInstrucciones.TabIndex = 38;
+            this.txtInstrucciones.TabIndex = 8;
             // 
             // label8
             // 
@@ -180,7 +180,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(443, 106);
-            this.txtDescripcion.TabIndex = 36;
+            this.txtDescripcion.TabIndex = 7;
             // 
             // label7
             // 
@@ -209,7 +209,7 @@
             this.dtpTiempo.Location = new System.Drawing.Point(22, 293);
             this.dtpTiempo.Name = "dtpTiempo";
             this.dtpTiempo.Size = new System.Drawing.Size(210, 27);
-            this.dtpTiempo.TabIndex = 33;
+            this.dtpTiempo.TabIndex = 5;
             // 
             // cboDificultad
             // 
@@ -219,7 +219,7 @@
             this.cboDificultad.Location = new System.Drawing.Point(22, 238);
             this.cboDificultad.Name = "cboDificultad";
             this.cboDificultad.Size = new System.Drawing.Size(335, 28);
-            this.cboDificultad.TabIndex = 32;
+            this.cboDificultad.TabIndex = 4;
             // 
             // label5
             // 
@@ -239,7 +239,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(22, 184);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(335, 28);
-            this.cboCategoria.TabIndex = 30;
+            this.cboCategoria.TabIndex = 3;
             // 
             // cboPais
             // 
@@ -249,7 +249,7 @@
             this.cboPais.Location = new System.Drawing.Point(22, 130);
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(335, 28);
-            this.cboPais.TabIndex = 29;
+            this.cboPais.TabIndex = 2;
             // 
             // label4
             // 
@@ -277,7 +277,7 @@
             this.txtNombre.Location = new System.Drawing.Point(22, 76);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(335, 27);
-            this.txtNombre.TabIndex = 26;
+            this.txtNombre.TabIndex = 1;
             // 
             // label2
             // 
@@ -312,7 +312,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 565);
-            this.Controls.Add(this.btbAgregarCategorias);
+            this.Controls.Add(this.btnAgregarCategorias);
             this.Controls.Add(this.btnPais);
             this.Controls.Add(this.btnAgregarIngrediente);
             this.Controls.Add(this.clbIngredientes);
@@ -350,7 +350,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btbAgregarCategorias;
+        private System.Windows.Forms.Button btnAgregarCategorias;
         private System.Windows.Forms.Button btnPais;
         private System.Windows.Forms.Button btnAgregarIngrediente;
         private System.Windows.Forms.CheckedListBox clbIngredientes;

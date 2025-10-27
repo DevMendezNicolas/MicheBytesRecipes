@@ -234,7 +234,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
             }
         }
 
-        private void btbAgregarCategorias_Click(object sender, EventArgs e)
+        private void btnAgregarCategorias_Click(object sender, EventArgs e)
         {
             frmAgregarCategoria frmAgregarCategoria = new frmAgregarCategoria();
             if (frmAgregarCategoria.ShowDialog() == DialogResult.OK)
