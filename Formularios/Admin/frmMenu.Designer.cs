@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTema = new System.Windows.Forms.Button();
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnTema = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnReinicio = new System.Windows.Forms.Button();
@@ -96,17 +96,6 @@
             this.panel1.Size = new System.Drawing.Size(233, 661);
             this.panel1.TabIndex = 0;
             // 
-            // btnTema
-            // 
-            this.btnTema.AutoSize = true;
-            this.btnTema.Location = new System.Drawing.Point(896, 616);
-            this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(43, 33);
-            this.btnTema.TabIndex = 16;
-            this.btnTema.Text = "sol";
-            this.btnTema.UseVisualStyleBackColor = true;
-            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
-            // 
             // btnImportar
             // 
             this.btnImportar.BackColor = System.Drawing.Color.Gold;
@@ -116,7 +105,7 @@
             this.btnImportar.Margin = new System.Windows.Forms.Padding(4);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(92, 42);
-            this.btnImportar.TabIndex = 15;
+            this.btnImportar.TabIndex = 6;
             this.btnImportar.Text = "&Importar";
             this.btnImportar.UseVisualStyleBackColor = false;
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
@@ -130,7 +119,7 @@
             this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(92, 42);
-            this.btnExportar.TabIndex = 14;
+            this.btnExportar.TabIndex = 5;
             this.btnExportar.Text = "&Exportar";
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
@@ -200,7 +189,7 @@
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(198, 42);
-            this.btnCerrarSesion.TabIndex = 7;
+            this.btnCerrarSesion.TabIndex = 15;
             this.btnCerrarSesion.Text = "&Cerrar sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
@@ -214,7 +203,7 @@
             this.btnMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.btnMetricas.Name = "btnMetricas";
             this.btnMetricas.Size = new System.Drawing.Size(198, 42);
-            this.btnMetricas.TabIndex = 7;
+            this.btnMetricas.TabIndex = 8;
             this.btnMetricas.Text = "&Métricas";
             this.btnMetricas.UseVisualStyleBackColor = false;
             this.btnMetricas.Click += new System.EventHandler(this.btnMetricas_Click);
@@ -228,7 +217,7 @@
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(198, 42);
-            this.btnUsuarios.TabIndex = 6;
+            this.btnUsuarios.TabIndex = 7;
             this.btnUsuarios.Text = "&Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = false;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
@@ -242,7 +231,7 @@
             this.btnAct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAct.Name = "btnAct";
             this.btnAct.Size = new System.Drawing.Size(198, 42);
-            this.btnAct.TabIndex = 5;
+            this.btnAct.TabIndex = 4;
             this.btnAct.Text = "Activas - Inactivas";
             this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
@@ -256,7 +245,7 @@
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(198, 42);
-            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "&Dar baja";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -270,7 +259,7 @@
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(198, 42);
-            this.btnModificar.TabIndex = 3;
+            this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "&Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -284,10 +273,21 @@
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(198, 42);
-            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(896, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 16;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // panel3
             // 
@@ -332,7 +332,7 @@
             this.btnReinicio.Location = new System.Drawing.Point(771, 150);
             this.btnReinicio.Name = "btnReinicio";
             this.btnReinicio.Size = new System.Drawing.Size(132, 29);
-            this.btnReinicio.TabIndex = 5;
+            this.btnReinicio.TabIndex = 14;
             this.btnReinicio.Text = "🔄 &Reiniciar filtros";
             this.btnReinicio.UseVisualStyleBackColor = false;
             this.btnReinicio.Click += new System.EventHandler(this.btnReinicio_Click);
@@ -345,7 +345,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(659, 91);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(121, 29);
-            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.TabIndex = 13;
             this.btnBuscar.Text = "🔍 &Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -420,7 +420,7 @@
             this.cboDificultad.Location = new System.Drawing.Point(536, 154);
             this.cboDificultad.Name = "cboDificultad";
             this.cboDificultad.Size = new System.Drawing.Size(179, 25);
-            this.cboDificultad.TabIndex = 3;
+            this.cboDificultad.TabIndex = 12;
             // 
             // cboPais
             // 
@@ -429,7 +429,7 @@
             this.cboPais.Location = new System.Drawing.Point(302, 154);
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(179, 25);
-            this.cboPais.TabIndex = 3;
+            this.cboPais.TabIndex = 11;
             // 
             // cboCategoria
             // 
@@ -438,7 +438,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(45, 154);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(179, 25);
-            this.cboCategoria.TabIndex = 3;
+            this.cboCategoria.TabIndex = 10;
             // 
             // label3
             // 
@@ -483,7 +483,7 @@
             this.txtBuscarReceta.Location = new System.Drawing.Point(132, 91);
             this.txtBuscarReceta.Name = "txtBuscarReceta";
             this.txtBuscarReceta.Size = new System.Drawing.Size(488, 29);
-            this.txtBuscarReceta.TabIndex = 1;
+            this.txtBuscarReceta.TabIndex = 9;
             // 
             // lblBuscar
             // 

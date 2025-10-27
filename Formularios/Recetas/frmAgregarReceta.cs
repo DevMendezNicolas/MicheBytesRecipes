@@ -35,22 +35,22 @@ namespace MicheBytesRecipes.Forms.AddReceta
             clbIngredientes.DisplayMember = "Nombre";
             clbIngredientes.ValueMember = "IngredienteId";
             List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
-            CBOpais.DataSource = paises;
-            CBOpais.DisplayMember = "Nombre";
-            CBOpais.ValueMember = "PaisId";
+            cboPais.DataSource = paises;
+            cboPais.DisplayMember = "Nombre";
+            cboPais.ValueMember = "PaisId";
             List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
-            CBOcategoria.DataSource = categorias;
-            CBOcategoria.DisplayMember = "Nombre";
-            CBOcategoria.SelectedIndex = 2;
-            CBOcategoria.ValueMember = "CategoriaId";
-            CBOdificultad.DataSource = Enum.GetValues(typeof(Dificultad));
+            cboCategoria.DataSource = categorias;
+            cboCategoria.DisplayMember = "Nombre";
+            cboCategoria.SelectedIndex = 2;
+            cboCategoria.ValueMember = "CategoriaId";
+            cboDificultad.DataSource = Enum.GetValues(typeof(Dificultad));
 
-            DTPtiempo.Format = DateTimePickerFormat.Custom;
-            DTPtiempo.CustomFormat = "HH:mm:ss";
-            DTPtiempo.ShowUpDown = true;
-            DTPtiempo.Value = DateTime.Today.AddHours(1);
-            TXTdescripcion.ScrollBars = ScrollBars.Vertical;
-            TXTinstrucciones.ScrollBars = ScrollBars.Vertical;
+            dtpTiempo.Format = DateTimePickerFormat.Custom;
+            dtpTiempo.CustomFormat = "HH:mm:ss";
+            dtpTiempo.ShowUpDown = true;
+            dtpTiempo.Value = DateTime.Today.AddHours(1);
+            txtDescripcion.ScrollBars = ScrollBars.Vertical;
+            txtInstrucciones.ScrollBars = ScrollBars.Vertical;
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
 
@@ -73,19 +73,19 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             //Crear una nueva receta
             Receta nuevaReceta = new Receta();
-            if (Validaciones.ValidarReceta(TXTnombre, TXTdescripcion, TXTinstrucciones, CBOcategoria, CBOpais, CBOdificultad, DTPtiempo, pcbImagen, btnCargar, clbIngredientes, errorProvider1))
+            if (Validaciones.ValidarReceta(txtNombre, txtDescripcion, txtInstrucciones, cboCategoria, cboPais, cboDificultad, dtpTiempo, pcbImagen, btnCargar, clbIngredientes, errorProvider1))
             {
-                nuevaReceta.Nombre = Utilidades.CapitalizarPrimeraLetra(TXTnombre.Text);
-                nuevaReceta.Descripcion = TXTdescripcion.Text;
-                nuevaReceta.Instrucciones = TXTinstrucciones.Text;
-                nuevaReceta.TiempoPreparacion = DTPtiempo.Value.TimeOfDay;
+                nuevaReceta.Nombre = Utilidades.CapitalizarPrimeraLetra(txtNombre.Text);
+                nuevaReceta.Descripcion = txtDescripcion.Text;
+                nuevaReceta.Instrucciones = txtInstrucciones.Text;
+                nuevaReceta.TiempoPreparacion = dtpTiempo.Value.TimeOfDay;
 
                 nuevaReceta.ImagenReceta = File.ReadAllBytes(openFileDialog1.FileName);// Imagen blob
 
-                nuevaReceta.CategoriaId = Convert.ToInt32(CBOcategoria.SelectedValue);
-                nuevaReceta.PaisId = Convert.ToInt32(CBOpais.SelectedValue);
+                nuevaReceta.CategoriaId = Convert.ToInt32(cboCategoria.SelectedValue);
+                nuevaReceta.PaisId = Convert.ToInt32(cboPais.SelectedValue);
 
-                nuevaReceta.NivelDificultad = (Dificultad)CBOdificultad.SelectedItem;
+                nuevaReceta.NivelDificultad = (Dificultad)cboDificultad.SelectedItem;
 
                 nuevaReceta.UsuarioId = 1;
 
@@ -120,9 +120,9 @@ namespace MicheBytesRecipes.Forms.AddReceta
             if(frmAgregarPais.ShowDialog() == DialogResult.OK)
             {
                 List<Pais> paises = gestorCatalogo.ObtenerListaPaises();
-                CBOpais.DataSource = null; //Limpia el origen de datos
-                CBOpais.DataSource = paises; //Vuelve a asignar la lista actualizada
-                CBOpais.DisplayMember = "Nombre";
+                cboPais.DataSource = null; //Limpia el origen de datos
+                cboPais.DataSource = paises; //Vuelve a asignar la lista actualizada
+                cboPais.DisplayMember = "Nombre";
                 //MessageBox.Show("Pais agregado a la lista.");
             }
         }
@@ -144,15 +144,15 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             this.Close();
         }
-        private void btbAgregarCategorias_Click(object sender, EventArgs e)
+        private void btnAgregarCategorias_Click(object sender, EventArgs e)
         {
             frmAgregarCategoria frmAgregarCategoria = new frmAgregarCategoria();
             if(frmAgregarCategoria.ShowDialog() == DialogResult.OK)
             {
                 List<Categoria> categorias = gestorCatalogo.ObtenerListaCategorias();
-                CBOcategoria.DataSource = null;
-                CBOcategoria.DataSource = categorias;
-                CBOcategoria.DisplayMember = "Nombre";
+                cboCategoria.DataSource = null;
+                cboCategoria.DataSource = categorias;
+                cboCategoria.DisplayMember = "Nombre";
             }
         }
         private void btnImagen_Click(object sender, EventArgs e)
@@ -171,13 +171,13 @@ namespace MicheBytesRecipes.Forms.AddReceta
         //metodo para limpiar el formulario
         private void LimpiarFormulario()
         {
-            TXTnombre.Clear();
-            TXTdescripcion.Clear();
-            TXTinstrucciones.Clear();
-            CBOcategoria.SelectedIndex = 2;
-            CBOpais.SelectedIndex = 0;
-            CBOdificultad.SelectedIndex = 0;
-            DTPtiempo.Value = DateTime.Today.AddHours(1);
+            txtNombre.Clear();
+            txtDescripcion.Clear();
+            txtInstrucciones.Clear();
+            cboCategoria.SelectedIndex = 2;
+            cboPais.SelectedIndex = 0;
+            cboDificultad.SelectedIndex = 0;
+            dtpTiempo.Value = DateTime.Today.AddHours(1);
             pcbImagen.Image = null;
             foreach (int i in clbIngredientes.CheckedIndices)
             {
