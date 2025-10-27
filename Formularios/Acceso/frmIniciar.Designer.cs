@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.PanelMid = new System.Windows.Forms.Panel();
             this.lblLinkResetContra = new System.Windows.Forms.LinkLabel();
             this.btnView = new System.Windows.Forms.Button();
             this.LbLinkContra = new System.Windows.Forms.LinkLabel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblNuevoEn = new System.Windows.Forms.Label();
             this.lbLinkRegistrar = new System.Windows.Forms.LinkLabel();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.txtContra = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblContra = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitulo2 = new System.Windows.Forms.Label();
             this.eprIngresar = new System.Windows.Forms.ErrorProvider(this.components);
             this.PanelMid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprIngresar)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Orange;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(76, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(326, 47);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Estrellas Michebyte";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.Color.Orange;
+            this.lblTitulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitulo.Location = new System.Drawing.Point(76, 24);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(326, 47);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Estrellas Michebyte";
             // 
             // PanelMid
             // 
@@ -67,14 +67,14 @@
             this.PanelMid.Controls.Add(this.lblLinkResetContra);
             this.PanelMid.Controls.Add(this.btnView);
             this.PanelMid.Controls.Add(this.LbLinkContra);
-            this.PanelMid.Controls.Add(this.label6);
+            this.PanelMid.Controls.Add(this.lblNuevoEn);
             this.PanelMid.Controls.Add(this.lbLinkRegistrar);
             this.PanelMid.Controls.Add(this.btnIngresar);
             this.PanelMid.Controls.Add(this.txtContra);
-            this.PanelMid.Controls.Add(this.label4);
+            this.PanelMid.Controls.Add(this.lblContra);
             this.PanelMid.Controls.Add(this.txtEmail);
             this.PanelMid.Controls.Add(this.lblEmail);
-            this.PanelMid.Controls.Add(this.label2);
+            this.PanelMid.Controls.Add(this.lblTitulo2);
             this.PanelMid.Location = new System.Drawing.Point(46, 102);
             this.PanelMid.Name = "PanelMid";
             this.PanelMid.Size = new System.Drawing.Size(376, 382);
@@ -118,16 +118,16 @@
             this.LbLinkContra.TabIndex = 9;
             this.LbLinkContra.TabStop = true;
             // 
-            // label6
+            // lblNuevoEn
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(35, 336);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(167, 21);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "¿Nuevo en Michebyte?";
+            this.lblNuevoEn.AutoSize = true;
+            this.lblNuevoEn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNuevoEn.ForeColor = System.Drawing.Color.White;
+            this.lblNuevoEn.Location = new System.Drawing.Point(35, 336);
+            this.lblNuevoEn.Name = "lblNuevoEn";
+            this.lblNuevoEn.Size = new System.Drawing.Size(167, 21);
+            this.lblNuevoEn.TabIndex = 8;
+            this.lblNuevoEn.Text = "¿Nuevo en Michebyte?";
             // 
             // lbLinkRegistrar
             // 
@@ -158,6 +158,7 @@
             // 
             // txtContra
             // 
+            this.txtContra.BackColor = System.Drawing.Color.Beige;
             this.txtContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContra.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContra.ForeColor = System.Drawing.Color.Black;
@@ -170,19 +171,20 @@
             this.txtContra.UseSystemPasswordChar = true;
             this.txtContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContra_KeyPress);
             // 
-            // label4
+            // lblContra
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(31, 148);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 25);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Contraseña";
+            this.lblContra.AutoSize = true;
+            this.lblContra.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContra.ForeColor = System.Drawing.Color.White;
+            this.lblContra.Location = new System.Drawing.Point(31, 148);
+            this.lblContra.Name = "lblContra";
+            this.lblContra.Size = new System.Drawing.Size(113, 25);
+            this.lblContra.TabIndex = 3;
+            this.lblContra.Text = "Contraseña";
             // 
             // txtEmail
             // 
+            this.txtEmail.BackColor = System.Drawing.Color.Beige;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
@@ -204,16 +206,16 @@
             this.lblEmail.TabIndex = 1;
             this.lblEmail.Text = "Email";
             // 
-            // label2
+            // lblTitulo2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(93, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 37);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Iniciar Sesión";
+            this.lblTitulo2.AutoSize = true;
+            this.lblTitulo2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitulo2.Location = new System.Drawing.Point(93, 12);
+            this.lblTitulo2.Name = "lblTitulo2";
+            this.lblTitulo2.Size = new System.Drawing.Size(187, 37);
+            this.lblTitulo2.TabIndex = 0;
+            this.lblTitulo2.Text = "Iniciar Sesión";
             // 
             // eprIngresar
             // 
@@ -226,7 +228,7 @@
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(481, 536);
             this.Controls.Add(this.PanelMid);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "frmLogin";
@@ -244,16 +246,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel PanelMid;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.TextBox txtContra;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblContra;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTitulo2;
         private System.Windows.Forms.LinkLabel lbLinkRegistrar;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblNuevoEn;
         private System.Windows.Forms.LinkLabel LbLinkContra;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.LinkLabel lblLinkResetContra;

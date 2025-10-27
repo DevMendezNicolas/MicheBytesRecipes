@@ -45,17 +45,17 @@ namespace MicheBytesRecipes.Helpers
         // Tema Claro para Usuario
         private static readonly TemaUsuario TemaClaro = new TemaUsuario
         {
-            FondoPrincipal = Color.FromArgb(255, 250, 245),
-            PanelPrimario = Color.FromArgb(255, 165, 0),
-            PanelSecundario = Color.FromArgb(255, 240, 230),
-            PanelOpcional = Color.FromArgb(245, 222, 179),
+            FondoPrincipal = Color.FromArgb(255, 165, 0), //Orange comun de Michebyte
+            PanelPrimario = Color.FromArgb(255, 165, 0), //Orange comun de Michebyte
+            PanelSecundario = Color.FromArgb(255, 140, 0), //DarkOrange
+            PanelOpcional = Color.FromArgb(245, 222, 179), //Beige
 
-            TextoPrincipal = Color.FromArgb(245,222,179),
-            Botones = Color.FromArgb(254, 93, 70),
-            TextoBotones = Color.FromArgb(245, 222, 179),
+            TextoPrincipal = Color.FromArgb(245,222,179), //Beige
+            Botones = Color.FromArgb(254, 93, 70), //Rojo michebytes imagen
+            TextoBotones = Color.FromArgb(245, 222, 179), //Beige
             BackgroundTextBox = Color.White,
             TextoCajaTexto = Color.Black,
-            TextoBotonPanel2 = Color.FromArgb(70, 130, 180),
+            TextoBotonPanel2 = Color.FromArgb(70, 130, 180), 
 
             // Botones especiales para usuario
             BotonCerrar = Color.FromArgb(220, 20, 60),
@@ -298,7 +298,6 @@ namespace MicheBytesRecipes.Helpers
 
             boton.BackColor = colorFondo;
             boton.FlatStyle = FlatStyle.Standard;
-            boton.FlatAppearance.BorderSize = 1;
         }
     }
 }

@@ -30,15 +30,22 @@ namespace MicheBytesRecipes
 
             //Redondeo de botones, paneles y textbox
             UiHelpers.SetRoundedPanel(PanelMid, 25);
-            UiHelpers.SetRoundedTextBox(txtEmail, 10);
-            UiHelpers.SetRoundedTextBox(txtContra, 10);
-            UiHelpers.SetRoundedButton(btnIngresar, 40);
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             txtEmail.MaxLength = 50;
             txtContra.MaxLength = 20;
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+        }
+        private void AsignarTags()
+        {
+            lblTitulo.Tag = "titulo";
+            lblTitulo2.Tag = "titulo";
+            PanelMid.Tag = "secundario";
+
         }
 
 
