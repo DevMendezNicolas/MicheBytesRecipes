@@ -33,6 +33,7 @@ namespace MicheBytesRecipes.Forms.User
 
             txtContraActual.UseSystemPasswordChar = true;
             txtContraNueva.UseSystemPasswordChar = true;
+            AsignarTags();
             GestorTemaUsuario.AplicarTema(this);
 
         }
@@ -44,6 +45,21 @@ namespace MicheBytesRecipes.Forms.User
 
         private void AsignarTags()
         {
+            lblTitulo.Tag = "titulo";
+            pnlContenido.Tag = "opcional";
+            lblNombreNuevo.Tag = "relleno";
+            lblApellido.Tag = "relleno";
+            lblTelefono.Tag = "relleno";
+            lblEmail.Tag = "relleno";
+            lblCambiarContra.Tag = "titulo";
+            lblContraActual.Tag = "relleno";
+            lblContraNueva.Tag = "relleno";
+
+            btnEditar.Tag = "favoritos";
+            btnGuardar.Tag = "guardar";
+            btnCancelar.Tag = "cancelar";
+            btnInicio.Tag = "menu";
+
 
         }
 
@@ -262,7 +278,7 @@ namespace MicheBytesRecipes.Forms.User
             txtContraNueva.PasswordChar = '\0';
         }
 
-        private void lblEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
             ActivarCampos();
             txtNombre.Focus();
@@ -517,9 +533,6 @@ namespace MicheBytesRecipes.Forms.User
                 MessageBox.Show("Error al guardar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
 
 
     }

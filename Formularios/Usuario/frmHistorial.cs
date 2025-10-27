@@ -69,7 +69,10 @@ namespace MicheBytesRecipes.Forms.User
 
         private void AsignarTags()
         {
-
+            lblTituloHistorial.Tag = "titulo";
+            pnlContenido.Tag = "opcional";
+            pnlTarjetas.Tag = "opcional";
+            btnInicio.Tag = "menu";
         }
 
         private void btnInicio_Click(object sender, EventArgs e)

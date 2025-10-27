@@ -50,6 +50,7 @@ namespace MicheBytesRecipes
             AsignarTags();
            GestorTemaUsuario.AplicarTema(this);
            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+            ActualizarBotonTema();
 
         }
 

@@ -54,7 +54,7 @@
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.pbImagenUser = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblEditar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.ofdImagenNueva = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
@@ -340,7 +340,7 @@
             this.pnlNavegacion.BackColor = System.Drawing.Color.Orange;
             this.pnlNavegacion.Controls.Add(this.pbImagenUser);
             this.pnlNavegacion.Controls.Add(this.lblNombre);
-            this.pnlNavegacion.Controls.Add(this.lblEditar);
+            this.pnlNavegacion.Controls.Add(this.btnEditar);
             this.pnlNavegacion.Controls.Add(this.btnInicio);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 0);
@@ -370,19 +370,19 @@
             this.lblNombre.Text = "Nombre Usuario";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblEditar
+            // btnEditar
             // 
-            this.lblEditar.BackColor = System.Drawing.Color.Salmon;
-            this.lblEditar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditar.ForeColor = System.Drawing.Color.White;
-            this.lblEditar.Location = new System.Drawing.Point(18, 194);
-            this.lblEditar.Margin = new System.Windows.Forms.Padding(4);
-            this.lblEditar.Name = "lblEditar";
-            this.lblEditar.Size = new System.Drawing.Size(198, 42);
-            this.lblEditar.TabIndex = 9;
-            this.lblEditar.Text = "&Editar";
-            this.lblEditar.UseVisualStyleBackColor = false;
-            this.lblEditar.Click += new System.EventHandler(this.lblEditar_Click);
+            this.btnEditar.BackColor = System.Drawing.Color.Salmon;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.Location = new System.Drawing.Point(18, 194);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(198, 42);
+            this.btnEditar.TabIndex = 9;
+            this.btnEditar.Text = "&Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnInicio
             // 
@@ -443,7 +443,7 @@
         private System.Windows.Forms.PictureBox pbImagenUser;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button lblEditar;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblNombreNuevo;

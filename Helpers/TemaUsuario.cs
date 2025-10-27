@@ -60,13 +60,13 @@ namespace MicheBytesRecipes.Helpers
             BotonFavoritos = Color.FromArgb(250, 128, 114), //Salmón
             BotonHistorial = Color.FromArgb(255, 215, 0), //Amarillo
             BotonConfiguracion = Color.FromArgb(255, 140, 0), //DarkOrange
-            BotonMenu = Color.FromArgb(138, 43, 226),
+            BotonMenu = Color.FromArgb(255, 140, 0),
             BotonBuscar = Color.FromArgb(255,255,255),
             BotonReiniciar = Color.FromArgb(255, 255, 255),
             BotonCerrar = Color.FromArgb(255,0,0),
             BotonTema = Color.FromArgb(41, 128, 185),
-            BotonGuardar = Color.FromArgb(50, 205, 50),
-            BotonCancelar = Color.FromArgb(255, 99, 71),
+            BotonGuardar = Color.FromArgb(255, 140, 0),
+            BotonCancelar = Color.FromArgb(255, 140, 0),
 
             // Labels
             LabelTitulo = Color.FromArgb(64,0,0), 
@@ -76,37 +76,37 @@ namespace MicheBytesRecipes.Helpers
 
         };
 
-        // Tema Oscuro para Usuario
+        // Tema Oscuro para Usuario - Elegante con azules/verdes
         private static readonly TemaUsuario TemaOscuro = new TemaUsuario
         {
-            FondoPrincipal = Color.FromArgb(40, 40, 45),
-            PanelPrimario = Color.FromArgb(255, 140, 0),
-            PanelSecundario = Color.FromArgb(60, 55, 50),
-            PanelOpcional = Color.FromArgb(80, 70, 60),
+            FondoPrincipal = Color.FromArgb(25, 35, 45),        // Azul noche oscuro
+            PanelPrimario = Color.FromArgb(35, 45, 55),         // Azul grafito
+            PanelSecundario = Color.FromArgb(45, 55, 65),       // Azul acero
+            PanelOpcional = Color.FromArgb(55, 65, 75),         // Azul pizarra
 
-            TextoPrincipal = Color.FromArgb(240, 240, 240),
-            Botones = Color.FromArgb(255, 120, 0),
+            TextoPrincipal = Color.FromArgb(220, 230, 240),     // Azul claro suave
+            Botones = Color.FromArgb(70, 130, 180),             // Azul acero medio
             TextoBotones = Color.White,
-            BackgroundTextBox = Color.FromArgb(50, 50, 55),
-            TextoCajaTexto = Color.FromArgb(220, 220, 220),
-            TextoBotonPanel2 = Color.FromArgb(255, 180, 80),
+            BackgroundTextBox = Color.White, 
+            TextoCajaTexto = Color.FromArgb(220, 230, 240),     // Azul claro
+            TextoBotonPanel2 = Color.FromArgb(160, 200, 220),   // Azul cielo
 
-            // Botones especiales para usuario
-            BotonCerrar = Color.FromArgb(200, 70, 50),
-            BotonConfiguracion = Color.FromArgb(60, 179, 113),
-            BotonFavoritos = Color.FromArgb(218, 165, 32),
-            BotonHistorial = Color.FromArgb(147, 112, 219),
-            BotonBuscar = Color.FromArgb(70, 70, 75),
-            BotonReiniciar = Color.FromArgb(70, 70, 75),
-            BotonMenu = Color.FromArgb(180, 80, 80),
-            BotonTema = Color.FromArgb(52, 152, 219),
-            BotonGuardar = Color.FromArgb(46, 139, 87),
-            BotonCancelar = Color.FromArgb(205, 92, 92),
+            // Botones especiales para usuario - Tonos azules/verdes armónicos
+            BotonFavoritos = Color.FromArgb(80, 160, 120),      // Verde esmeralda
+            BotonHistorial = Color.FromArgb(200, 190, 230),     // Azul suave
+            BotonConfiguracion = Color.FromArgb(90, 140, 180),  // Azul medio
+            BotonMenu = Color.FromArgb(255, 140, 0),            // Naranja acento (tu color)
+            BotonBuscar = Color.FromArgb(60, 70, 80),           // Azul grafito
+            BotonReiniciar = Color.FromArgb(60, 70, 80),        // Azul grafito
+            BotonCerrar = Color.FromArgb(200, 80, 80),          // Rojo suave
+            BotonTema = Color.FromArgb(120, 180, 220),          // Azul cielo
+            BotonGuardar = Color.FromArgb(70, 160, 110),        // Verde éxito
+            BotonCancelar = Color.FromArgb(180, 100, 100),      // Rojo terracota
 
             // Labels
-            LabelTitulo = Color.White,
-            LabelSubtitulo = Color.FromArgb(200, 200, 200),
-            LabelRelleno = Color.FromArgb(255, 200, 50)
+            LabelTitulo = Color.FromArgb(255, 180, 80),         // Naranja dorado (acento)
+            LabelSubtitulo = Color.FromArgb(160, 200, 220),     // Azul cielo
+            LabelRelleno = Color.FromArgb(120, 180, 220),       // Azul claro
         };
 
         public static TemaUsuario TemaActual => _esOscuro ? TemaOscuro : TemaClaro;
