@@ -88,7 +88,7 @@ namespace MicheBytesRecipes.Helpers
             Botones = Color.FromArgb(70, 130, 180),             // Azul acero medio
             TextoBotones = Color.White,
             BackgroundTextBox = Color.White, 
-            TextoCajaTexto = Color.FromArgb(220, 230, 240),     // Azul claro
+            TextoCajaTexto = Color.Black,     // Azul claro
             TextoBotonPanel2 = Color.FromArgb(160, 200, 220),   // Azul cielo
 
             // Botones especiales para usuario - Tonos azules/verdes armónicos
