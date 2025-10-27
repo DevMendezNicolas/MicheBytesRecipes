@@ -62,12 +62,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(286, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 30);
+            this.label1.Size = new System.Drawing.Size(222, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Agregar recetas nuevas";
+            this.label1.Text = "Agregar receta nueva";
             // 
             // label2
             // 
@@ -81,16 +81,17 @@
             // 
             // TXTnombre
             // 
-            this.TXTnombre.Location = new System.Drawing.Point(12, 78);
+            this.TXTnombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TXTnombre.Location = new System.Drawing.Point(12, 77);
             this.TXTnombre.Name = "TXTnombre";
-            this.TXTnombre.Size = new System.Drawing.Size(335, 20);
+            this.TXTnombre.Size = new System.Drawing.Size(335, 29);
             this.TXTnombre.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 106);
+            this.label3.Location = new System.Drawing.Point(12, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 21);
             this.label3.TabIndex = 3;
@@ -109,19 +110,21 @@
             // CBOpais
             // 
             this.CBOpais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBOpais.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBOpais.FormattingEnabled = true;
             this.CBOpais.Location = new System.Drawing.Point(12, 131);
             this.CBOpais.Name = "CBOpais";
-            this.CBOpais.Size = new System.Drawing.Size(335, 21);
+            this.CBOpais.Size = new System.Drawing.Size(335, 29);
             this.CBOpais.TabIndex = 5;
             // 
             // CBOcategoria
             // 
             this.CBOcategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBOcategoria.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBOcategoria.FormattingEnabled = true;
             this.CBOcategoria.Location = new System.Drawing.Point(12, 187);
             this.CBOcategoria.Name = "CBOcategoria";
-            this.CBOcategoria.Size = new System.Drawing.Size(335, 21);
+            this.CBOcategoria.Size = new System.Drawing.Size(335, 29);
             this.CBOcategoria.TabIndex = 6;
             // 
             // label5
@@ -137,18 +140,20 @@
             // CBOdificultad
             // 
             this.CBOdificultad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBOdificultad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBOdificultad.FormattingEnabled = true;
-            this.CBOdificultad.Location = new System.Drawing.Point(12, 241);
+            this.CBOdificultad.Location = new System.Drawing.Point(12, 240);
             this.CBOdificultad.Name = "CBOdificultad";
-            this.CBOdificultad.Size = new System.Drawing.Size(335, 21);
+            this.CBOdificultad.Size = new System.Drawing.Size(335, 29);
             this.CBOdificultad.TabIndex = 8;
             // 
             // DTPtiempo
             // 
+            this.DTPtiempo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DTPtiempo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.DTPtiempo.Location = new System.Drawing.Point(12, 294);
             this.DTPtiempo.Name = "DTPtiempo";
-            this.DTPtiempo.Size = new System.Drawing.Size(210, 20);
+            this.DTPtiempo.Size = new System.Drawing.Size(210, 29);
             this.DTPtiempo.TabIndex = 9;
             // 
             // label6
@@ -173,6 +178,7 @@
             // 
             // TXTdescripcion
             // 
+            this.TXTdescripcion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TXTdescripcion.Location = new System.Drawing.Point(366, 78);
             this.TXTdescripcion.Multiline = true;
             this.TXTdescripcion.Name = "TXTdescripcion";
@@ -191,6 +197,7 @@
             // 
             // TXTinstrucciones
             // 
+            this.TXTinstrucciones.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TXTinstrucciones.Location = new System.Drawing.Point(366, 211);
             this.TXTinstrucciones.Multiline = true;
             this.TXTinstrucciones.Name = "TXTinstrucciones";
@@ -211,9 +218,10 @@
             // 
             // btnImagen
             // 
-            this.btnImagen.Location = new System.Drawing.Point(15, 432);
+            this.btnImagen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImagen.Location = new System.Drawing.Point(12, 432);
             this.btnImagen.Name = "btnImagen";
-            this.btnImagen.Size = new System.Drawing.Size(98, 23);
+            this.btnImagen.Size = new System.Drawing.Size(135, 31);
             this.btnImagen.TabIndex = 16;
             this.btnImagen.Text = "&Cargar imagen";
             this.btnImagen.UseVisualStyleBackColor = true;
@@ -221,7 +229,8 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(366, 520);
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(370, 520);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 33);
             this.btnCancelar.TabIndex = 17;
@@ -231,7 +240,8 @@
             // 
             // CMDcargar
             // 
-            this.CMDcargar.Location = new System.Drawing.Point(603, 520);
+            this.CMDcargar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CMDcargar.Location = new System.Drawing.Point(711, 520);
             this.CMDcargar.Name = "CMDcargar";
             this.CMDcargar.Size = new System.Drawing.Size(98, 33);
             this.CMDcargar.TabIndex = 18;
@@ -255,6 +265,7 @@
             // 
             // clbIngredientes
             // 
+            this.clbIngredientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbIngredientes.FormattingEnabled = true;
             this.clbIngredientes.Location = new System.Drawing.Point(370, 380);
             this.clbIngredientes.Name = "clbIngredientes";
@@ -263,31 +274,34 @@
             // 
             // btnAgregarIngrediente
             // 
-            this.btnAgregarIngrediente.Location = new System.Drawing.Point(15, 485);
+            this.btnAgregarIngrediente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarIngrediente.Location = new System.Drawing.Point(12, 485);
             this.btnAgregarIngrediente.Name = "btnAgregarIngrediente";
             this.btnAgregarIngrediente.Size = new System.Drawing.Size(149, 33);
             this.btnAgregarIngrediente.TabIndex = 21;
-            this.btnAgregarIngrediente.Text = "&Agregar nuevo Ingrediente";
+            this.btnAgregarIngrediente.Text = "&Agregar ingrediente";
             this.btnAgregarIngrediente.UseVisualStyleBackColor = true;
             this.btnAgregarIngrediente.Click += new System.EventHandler(this.btnAgregarIngrediente_Click);
             // 
             // btnPais
             // 
-            this.btnPais.Location = new System.Drawing.Point(15, 524);
+            this.btnPais.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPais.Location = new System.Drawing.Point(12, 524);
             this.btnPais.Name = "btnPais";
             this.btnPais.Size = new System.Drawing.Size(149, 33);
             this.btnPais.TabIndex = 22;
-            this.btnPais.Text = "&Agregar nuevo pais";
+            this.btnPais.Text = "&Agregar pais";
             this.btnPais.UseVisualStyleBackColor = true;
             this.btnPais.Click += new System.EventHandler(this.btnPais_Click);
             // 
             // btbAgregarCategorias
             // 
+            this.btbAgregarCategorias.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btbAgregarCategorias.Location = new System.Drawing.Point(170, 524);
             this.btbAgregarCategorias.Name = "btbAgregarCategorias";
             this.btbAgregarCategorias.Size = new System.Drawing.Size(149, 33);
             this.btbAgregarCategorias.TabIndex = 23;
-            this.btbAgregarCategorias.Text = "&Agregar nueva categoria";
+            this.btbAgregarCategorias.Text = "&Agregar categoria";
             this.btbAgregarCategorias.UseVisualStyleBackColor = true;
             this.btbAgregarCategorias.Click += new System.EventHandler(this.btbAgregarCategorias_Click);
             // 
