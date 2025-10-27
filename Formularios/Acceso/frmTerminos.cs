@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using MicheBytesRecipes.Helpers;
+using MicheBytesRecipes.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MicheBytesRecipes.Utilities;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.Auth
@@ -71,5 +72,16 @@ namespace MicheBytesRecipes.Forms.Auth
 
         }
 
+        private void frmTerminos_Load(object sender, EventArgs e)
+        {
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+        }
+        private void AsignarTags()
+        {
+            lblTitulo.Tag = "titulo";
+
+        }
     }
 }

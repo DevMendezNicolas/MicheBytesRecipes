@@ -91,6 +91,7 @@
             this.Name = "frmTerminos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Terminos";
+            this.Load += new System.EventHandler(this.frmTerminos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
