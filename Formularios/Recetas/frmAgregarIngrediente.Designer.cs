@@ -77,7 +77,7 @@
             this.txtIngrediente.Location = new System.Drawing.Point(16, 65);
             this.txtIngrediente.Name = "txtIngrediente";
             this.txtIngrediente.Size = new System.Drawing.Size(332, 25);
-            this.txtIngrediente.TabIndex = 3;
+            this.txtIngrediente.TabIndex = 1;
             // 
             // label4
             // 
@@ -107,7 +107,7 @@
             this.cboTipo.Location = new System.Drawing.Point(15, 120);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(331, 25);
-            this.cboTipo.TabIndex = 7;
+            this.cboTipo.TabIndex = 2;
             // 
             // cboUnidad
             // 
@@ -117,7 +117,7 @@
             this.cboUnidad.Location = new System.Drawing.Point(15, 170);
             this.cboUnidad.Name = "cboUnidad";
             this.cboUnidad.Size = new System.Drawing.Size(331, 25);
-            this.cboUnidad.TabIndex = 8;
+            this.cboUnidad.TabIndex = 3;
             // 
             // btnAgregar
             // 
@@ -125,7 +125,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(245, 203);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(103, 32);
-            this.btnAgregar.TabIndex = 9;
+            this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -136,7 +136,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(16, 202);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(103, 32);
-            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

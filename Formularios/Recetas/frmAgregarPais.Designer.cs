@@ -65,7 +65,7 @@
             this.txtPais.Location = new System.Drawing.Point(12, 63);
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(318, 29);
-            this.txtPais.TabIndex = 2;
+            this.txtPais.TabIndex = 1;
             // 
             // btnCancelar
             // 
@@ -84,7 +84,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(236, 113);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(94, 29);
-            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);

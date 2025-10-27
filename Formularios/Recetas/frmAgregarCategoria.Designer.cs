@@ -75,7 +75,7 @@
             this.txtNombre.Location = new System.Drawing.Point(12, 63);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(330, 25);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 1;
             // 
             // btnCancelar
             // 
@@ -83,7 +83,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(12, 144);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(89, 34);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -94,7 +94,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(253, 144);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(89, 34);
-            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -119,7 +119,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(12, 113);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(330, 25);
-            this.txtDescripcion.TabIndex = 9;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // frmAgregarCategoria
             // 
