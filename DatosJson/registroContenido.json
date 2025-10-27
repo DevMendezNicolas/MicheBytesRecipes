@@ -3,7 +3,7 @@
     {
       "Nombre": "lblTituloLeft",
       "Texto": "🌟 Descubrí la magia de cocinar con MicheBytes Recipes 🌟",
-      "Tamaño": 18,
+      "Tamaño": 20,
       "Negrita": true
     },
     {
@@ -14,7 +14,7 @@
     },
     {
       "Nombre": "lblTexto",
-      "Texto": "Con tu registro accedés a:\n🍲 Recetas fáciles y variadas para todos los gustos.\n👩‍🍳 Consejos prácticos que harán que cocinar sea más divertido.\n🌈 Un diseño tierno y amigable que te va a inspirar cada día.\n\n¡Registrate gratis y empezá hoy mismo a crear momentos deliciosos con MicheBytes Recipes! 🍴✨",
+      "Texto": "Con tu registro accedés a:\n• Recetas fáciles y variadas para todos los gustos.🍲 \n• Consejos prácticos que harán que cocinar sea más divertido.👩‍🍳 \n• Un diseño tierno y amigable que te va a inspirar cada día.🌈 \n\n¡Registrate gratis y empezá hoy mismo a crear momentos deliciosos con MicheBytes Recipes! 🍴✨",
       "Tamaño": 16,
       "Negrita": true
     }

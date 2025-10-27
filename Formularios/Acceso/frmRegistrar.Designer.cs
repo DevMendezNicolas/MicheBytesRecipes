@@ -81,7 +81,9 @@
             // txtApellido
             // 
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtApellido.BackColor = System.Drawing.Color.Beige;
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtApellido.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtApellido.Location = new System.Drawing.Point(81, 257);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(431, 22);
@@ -92,7 +94,9 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.BackColor = System.Drawing.Color.Beige;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtEmail.Location = new System.Drawing.Point(81, 380);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(431, 22);
@@ -103,7 +107,9 @@
             // txtContra
             // 
             this.txtContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContra.BackColor = System.Drawing.Color.Beige;
             this.txtContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContra.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtContra.Location = new System.Drawing.Point(81, 441);
             this.txtContra.Name = "txtContra";
             this.txtContra.Size = new System.Drawing.Size(431, 22);
@@ -114,7 +120,9 @@
             // txtRepContra
             // 
             this.txtRepContra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRepContra.BackColor = System.Drawing.Color.Beige;
             this.txtRepContra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRepContra.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtRepContra.Location = new System.Drawing.Point(81, 501);
             this.txtRepContra.Name = "txtRepContra";
             this.txtRepContra.Size = new System.Drawing.Size(431, 22);
@@ -156,7 +164,7 @@
             this.btnRegistrar.FlatAppearance.BorderSize = 0;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.ForeColor = System.Drawing.Color.Wheat;
             this.btnRegistrar.Location = new System.Drawing.Point(144, 583);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(290, 37);
@@ -170,7 +178,7 @@
             this.LblCuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LblCuenta.AutoSize = true;
             this.LblCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LblCuenta.ForeColor = System.Drawing.Color.White;
+            this.LblCuenta.ForeColor = System.Drawing.Color.Wheat;
             this.LblCuenta.Location = new System.Drawing.Point(151, 629);
             this.LblCuenta.Name = "LblCuenta";
             this.LblCuenta.Size = new System.Drawing.Size(161, 21);
@@ -242,7 +250,7 @@
             this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTitulo.Location = new System.Drawing.Point(186, 9);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(202, 37);
@@ -252,7 +260,9 @@
             // txtTelefono
             // 
             this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTelefono.BackColor = System.Drawing.Color.Beige;
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTelefono.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtTelefono.Location = new System.Drawing.Point(81, 318);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(431, 22);
@@ -364,7 +374,9 @@
             // txtNombre
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNombre.BackColor = System.Drawing.Color.Beige;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtNombre.Location = new System.Drawing.Point(81, 198);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(431, 22);
@@ -388,19 +400,19 @@
             // 
             this.lblTexto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTexto.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTexto.ForeColor = System.Drawing.Color.White;
-            this.lblTexto.Location = new System.Drawing.Point(0, 276);
+            this.lblTexto.ForeColor = System.Drawing.Color.Beige;
+            this.lblTexto.Location = new System.Drawing.Point(37, 276);
             this.lblTexto.Name = "lblTexto";
-            this.lblTexto.Size = new System.Drawing.Size(584, 314);
+            this.lblTexto.Size = new System.Drawing.Size(547, 314);
             this.lblTexto.TabIndex = 24;
             this.lblTexto.Text = resources.GetString("lblTexto.Text");
-            this.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRelleno
             // 
             this.lblRelleno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRelleno.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelleno.ForeColor = System.Drawing.Color.White;
+            this.lblRelleno.ForeColor = System.Drawing.Color.Beige;
             this.lblRelleno.Location = new System.Drawing.Point(0, 170);
             this.lblRelleno.Name = "lblRelleno";
             this.lblRelleno.Size = new System.Drawing.Size(584, 97);
@@ -413,7 +425,7 @@
             // 
             this.lblTituloLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTituloLeft.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloLeft.ForeColor = System.Drawing.Color.White;
+            this.lblTituloLeft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTituloLeft.Location = new System.Drawing.Point(0, 0);
             this.lblTituloLeft.Name = "lblTituloLeft";
             this.lblTituloLeft.Size = new System.Drawing.Size(584, 139);

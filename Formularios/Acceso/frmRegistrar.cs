@@ -56,14 +56,17 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void FrmRegister_Load(object sender, EventArgs e)
         {
-            //Hacer transparentes los labels formulario
-            foreach (Control control in this.Controls)
-            {
-                if (control is Label)
-                {
-                    control.BackColor = Color.Transparent;
-                }
-            }
+
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+        }
+        private void AsignarTags()
+        {
+
+            lblTitulo.Tag = "titulo";
+            lblTituloLeft.Tag = "titulo";
+
         }
 
         private void pbxFotoPerfil_Click(object sender, EventArgs e)
