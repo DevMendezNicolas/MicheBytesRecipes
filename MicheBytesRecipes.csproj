@@ -251,6 +251,8 @@
     <Compile Include="Gestores\GestorInteracciones.cs" />
     <Compile Include="Gestores\GestorTarjetasRecetas.cs" />
     <Compile Include="Gestores\GestorUsuarios.cs" />
+    <Compile Include="Moderador IA\ComentarioEliminado.cs" />
+    <Compile Include="Moderador IA\ModeradorComentario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\CargarJson.cs" />
@@ -260,6 +262,7 @@
     <Compile Include="Utilidades\TextoJson.cs" />
     <Compile Include="Utilidades\Utilidades.cs" />
     <None Include="logo_editable_con_le.png" />
+    <None Include="Moderador IA\registroComentarios.json" />
     <None Include="replica_del_logo_en_.png" />
     <None Include="logo_para_softwar.png" />
     <None Include="Create a friendly, o.png" />

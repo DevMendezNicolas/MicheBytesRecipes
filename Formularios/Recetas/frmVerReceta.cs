@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MicheBytesRecipes.Moderador_IA;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Classes.Recetas
@@ -24,6 +25,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         GestorInteracciones gestorInteracciones = new GestorInteracciones();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
         GestorIngredientes gestorIngredientes = new GestorIngredientes();
+        private ModeradorComentarios moderadorComentarios;
         private bool control = true; //Controla el estado del texto comentario
         private string comentarioUsuario; //Almacena el comentario del usuario
         private Usuario usuario; 
@@ -33,6 +35,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             InitializeComponent();
             this.receta = receta;
             this.usuario = usuarioLog;
+            moderadorComentarios = new ModeradorComentarios();
             if (usuarioLog.Rol == 1)
             {
                 btnMeGusta.Enabled = false;
@@ -269,18 +272,42 @@ namespace MicheBytesRecipes.Classes.Recetas
                 
             }
         }
-        private void txtComentario_KeyPress(object sender, KeyPressEventArgs e)
+        private async void txtComentario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter) //Si se presiona la tecla Enter
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                e.Handled = true; //Asegura que no se agregue una nueva linea
+                e.Handled = true;
 
-                if(!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
+                if (!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
                 {
-                    // Asigna el comentario del usuario a la variable
                     comentarioUsuario = txtComentario.Text;
 
-                    // Crear un nuevo objeto Comentarios
+                    // ✅ ANALIZAR CON IA ANTES DE GUARDAR
+                    var (esToxico, puntuacion, razon) = await moderadorComentarios.AnalizarComentario(comentarioUsuario);
+
+                    if (esToxico)
+                    {
+                        // 🚫 COMENTARIO TÓXICO - REGISTRAR Y NO GUARDAR
+                        moderadorComentarios.RegistrarComentarioEliminado(
+                            usuario.UsuarioId.ToString(),
+                            comentarioUsuario,
+                            razon,
+                            puntuacion
+                        );
+
+                        // ✅ MENSAJE SIMPLIFICADO
+                        MessageBox.Show("❌ Comentario eliminado por contenido inapropiado.",
+                                      "Moderación Automática",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Warning);
+
+                        txtComentario.Clear();
+                        control = true;
+                        txtComentario_Leave(sender, EventArgs.Empty);
+                        return;
+                    }
+
+                    // ✅ COMENTARIO APROBADO - GUARDAR NORMALMENTE
                     Comentarios nuevoComentario = new Comentarios
                     {
                         Descripcion = comentarioUsuario,
@@ -288,27 +315,23 @@ namespace MicheBytesRecipes.Classes.Recetas
                         UsuarioId = int.Parse(lblIdUsuario.Text)
                     };
 
-                    // Guardar el comentario usando el gestor de interacciones
                     GestorInteracciones gestorInteracciones = new GestorInteracciones();
-                    // Intentar agregar el comentario y mostrar un mensaje según el resultado
                     bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
-                    // Mostrar mensaje de éxito o error
+
                     if (exito)
                     {
-                        MessageBox.Show("Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("✅ Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtComentario.Clear();
                     }
                     else
                     {
                         MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    //Restablecer el cuadro de texto
-                    control = true;
-                    txtComentario_Leave(sender, EventArgs.Empty); //Llama al metodo Leave para restaurar el texto
 
+                    control = true;
+                    txtComentario_Leave(sender, EventArgs.Empty);
                     CargarComentarios();
                     this.ActiveControl = null;
-                    
                 }
             }
         }
@@ -355,14 +378,38 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
         }
 
-        private void btnComentar_Click(object sender, EventArgs e)
+        private async void btnComentar_Click(object sender, EventArgs e)
         {
             if (!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
             {
-                // Asigna el comentario del usuario a la variable
                 comentarioUsuario = txtComentario.Text;
 
-                // Crear un nuevo objeto Comentarios
+                // ✅ ANALIZAR CON IA ANTES DE GUARDAR
+                var (esToxico, puntuacion, razon) = await moderadorComentarios.AnalizarComentario(comentarioUsuario);
+
+                if (esToxico)
+                {
+                    // 🚫 COMENTARIO TÓXICO
+                    moderadorComentarios.RegistrarComentarioEliminado(
+                        usuario.UsuarioId.ToString(),
+                        comentarioUsuario,
+                        razon,
+                        puntuacion
+                    );
+
+                    // ✅ MENSAJE SIMPLIFICADO
+                    MessageBox.Show("❌ Comentario eliminado por contenido inapropiado.",
+                                  "Moderación Automática",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
+
+                    txtComentario.Clear();
+                    control = true;
+                    txtComentario_Leave(sender, EventArgs.Empty);
+                    return;
+                }
+
+                // ✅ COMENTARIO APROBADO
                 Comentarios nuevoComentario = new Comentarios
                 {
                     Descripcion = comentarioUsuario,
@@ -370,30 +417,26 @@ namespace MicheBytesRecipes.Classes.Recetas
                     UsuarioId = int.Parse(lblIdUsuario.Text)
                 };
 
-                // Guardar el comentario usando el gestor de interacciones
                 GestorInteracciones gestorInteracciones = new GestorInteracciones();
-                // Intentar agregar el comentario y mostrar un mensaje según el resultado
                 bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
-                // Mostrar mensaje de éxito o error
+
                 if (exito)
                 {
-                    MessageBox.Show("Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("✅ Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtComentario.Clear();
                 }
                 else
                 {
                     MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                //Restablecer el cuadro de texto
+
                 control = true;
-                txtComentario_Leave(sender, EventArgs.Empty); //Llama al metodo Leave para restaurar el texto
-
+                txtComentario_Leave(sender, EventArgs.Empty);
                 CargarComentarios();
-
             }
         }
 
-     
+
 
         private void borrarComentarioToolStripMenuItem_Click(object sender, EventArgs e)
         {

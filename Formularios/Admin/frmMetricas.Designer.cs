@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnTema = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnReinicio = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblReceta = new System.Windows.Forms.Label();
             this.btnAct = new System.Windows.Forms.Button();
-            this.btnTema = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetricas)).BeginInit();
             this.panel1.SuspendLayout();
@@ -77,6 +77,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(951, 661);
             this.panel3.TabIndex = 4;
+            // 
+            // btnTema
+            // 
+            this.btnTema.AutoSize = true;
+            this.btnTema.Location = new System.Drawing.Point(896, 616);
+            this.btnTema.Name = "btnTema";
+            this.btnTema.Size = new System.Drawing.Size(43, 33);
+            this.btnTema.TabIndex = 17;
+            this.btnTema.Text = "sol";
+            this.btnTema.UseVisualStyleBackColor = true;
+            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // label5
             // 
@@ -323,17 +334,6 @@
             this.btnAct.Text = "Activas - Inactivas";
             this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
-            // 
-            // btnTema
-            // 
-            this.btnTema.AutoSize = true;
-            this.btnTema.Location = new System.Drawing.Point(896, 616);
-            this.btnTema.Name = "btnTema";
-            this.btnTema.Size = new System.Drawing.Size(43, 33);
-            this.btnTema.TabIndex = 17;
-            this.btnTema.Text = "sol";
-            this.btnTema.UseVisualStyleBackColor = true;
-            this.btnTema.Click += new System.EventHandler(this.btnTema_Click);
             // 
             // frmMetricas
             // 
