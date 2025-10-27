@@ -46,8 +46,8 @@
             this.lblNombreReceta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNombreReceta.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreReceta.ForeColor = System.Drawing.Color.White;
+            this.lblNombreReceta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreReceta.ForeColor = System.Drawing.Color.Wheat;
             this.lblNombreReceta.Location = new System.Drawing.Point(7, 9);
             this.lblNombreReceta.Name = "lblNombreReceta";
             this.lblNombreReceta.Size = new System.Drawing.Size(160, 33);
@@ -101,6 +101,7 @@
             // 
             // pbImagenReceta
             // 
+            this.pbImagenReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImagenReceta.Location = new System.Drawing.Point(20, 55);
             this.pbImagenReceta.Name = "pbImagenReceta";
             this.pbImagenReceta.Size = new System.Drawing.Size(128, 74);
@@ -111,7 +112,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Wheat;
             this.label1.Location = new System.Drawing.Point(3, 144);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 17);
@@ -122,7 +123,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Wheat;
             this.label2.Location = new System.Drawing.Point(3, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 17);
@@ -133,7 +134,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.Wheat;
             this.label3.Location = new System.Drawing.Point(4, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 17);
@@ -144,7 +145,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.Wheat;
             this.label4.Location = new System.Drawing.Point(4, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
