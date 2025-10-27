@@ -237,7 +237,7 @@ namespace MicheBytesRecipes.Helpers
             {
                 switch (tag)
                 {
-                    case "peligro":
+                    case "cerrar":
                         backColor = TemaActual.BotonCerrar;
                         button.ForeColor = TemaActual.TextoBotones;
                         break;
@@ -249,7 +249,7 @@ namespace MicheBytesRecipes.Helpers
                         backColor = TemaActual.BotonImportar;
                         button.ForeColor = TemaActual.TextoBotones;
                         break;
-                    case "info":
+                    case "usuario":
                         backColor = TemaActual.BotonUsuario;
                         button.ForeColor = TemaActual.TextoBotones;
                         break;

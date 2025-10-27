@@ -377,10 +377,10 @@ namespace MicheBytesRecipes
         {
 
             // BOTONES especiales
-            btnCerrarSesion.Tag = "peligro";
+            btnCerrarSesion.Tag = "cerrar";
             btnExportar.Tag = "exportar";
             btnImportar.Tag = "importar";
-            btnUsuarios.Tag = "info";
+            btnUsuarios.Tag = "usuario";
             btnMetricas.Tag = "metricas";
             btnBuscar.Tag = "buscar";
             btnReinicio.Tag = "reiniciar";
