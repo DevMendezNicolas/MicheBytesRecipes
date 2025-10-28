@@ -91,6 +91,11 @@ namespace MicheBytesRecipes.Classes.Recetas
             rtbInstrucciones.WordWrap = true;                      // Ajuste de línea
             rtbInstrucciones.HideSelection = false;                // Mantiene selección visible al perder foco
 
+            //
+            bool megusta = gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId);
+            // msgbox.Show(megusta.ToString());
+            MessageBox.Show($"Usuario: {usuario.UsuarioId}\nReceta: {receta.RecetaId}\nMe Gusta: {megusta}", "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             // Verificar si ya dio "Me Gusta"
             if (gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
