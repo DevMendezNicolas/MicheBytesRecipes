@@ -59,7 +59,7 @@ namespace MicheBytesRecipes.Forms.User
            
             CargarRecetas();
             AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
+            ActualizarTema();
         }
         public void ActualizarTema()
         {

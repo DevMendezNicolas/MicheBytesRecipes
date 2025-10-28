@@ -413,9 +413,9 @@ namespace MicheBytesRecipes
         {
             this.Hide();
             frmConfiguracion configuracion = new frmConfiguracion(usuarioLog);
-            GestorTemaUsuario.AplicarTema(configuracion);
-            GestorTemaUsuario.TemaCambiado += configuracion.ActualizarTema;
-            configuracion.FormClosed += (s, args) => GestorTemaUsuario.TemaCambiado -= configuracion.ActualizarTema;
+            GestorTemaAdmin.AplicarTema(configuracion);
+            GestorTemaAdmin.TemaCambiado += configuracion.ActualizarTema;
+            configuracion.FormClosed += (s, args) => GestorTemaAdmin.TemaCambiado -= configuracion.ActualizarTema;
             configuracion.ShowDialog();
             usuarioLog = gestorUsuarios.BuscarPorEmail(configuracion.nuevoLog);
             lblNombre.Text = usuarioLog.NombreCompleto();

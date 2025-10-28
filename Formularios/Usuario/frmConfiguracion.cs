@@ -23,7 +23,15 @@ namespace MicheBytesRecipes.Forms.User
             usuarioLog = usuarioActivado;
             CargarDatosUsuario();
             DesactivarCampos();
-            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
+            if (usuarioActivado.Rol == 1)
+            {
+                this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
+            }
+            else // ✅ CORREGIDO - AGREGA EL ELSE
+            {
+                this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
+
+            }
 
         }
 
@@ -33,20 +41,40 @@ namespace MicheBytesRecipes.Forms.User
 
             txtContraActual.UseSystemPasswordChar = true;
             txtContraNueva.UseSystemPasswordChar = true;
-            AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
+            if (usuarioLog.Rol == 1)
+            {
+                AsignarTagsAdmin();
+                GestorTemaAdmin.TemaCambiado += ActualizarTema;
+            }
+            else
+            {
+
+                AsignarTagsUsuario();
+                GestorTemaUsuario.TemaCambiado += ActualizarTema; 
+            }
+            ActualizarTema();
+            
 
         }
         public void ActualizarTema()
         {
-            GestorTemaUsuario.AplicarTema(this);
+            if (usuarioLog.Rol == 1)
+            {
+                AsignarTagsAdmin();
+                GestorTemaAdmin.AplicarTema(this);
+            }
+            else
+            {
+
+                AsignarTagsUsuario();
+                GestorTemaUsuario.AplicarTema(this);
+            }
             this.Refresh();
         }
 
-        private void AsignarTags()
+        private void AsignarTagsUsuario()
         {
             lblTitulo.Tag = "titulo";
-            pnlContenido.Tag = "opcional";
             lblNombreNuevo.Tag = "relleno";
             lblApellido.Tag = "relleno";
             lblTelefono.Tag = "relleno";
@@ -54,13 +82,27 @@ namespace MicheBytesRecipes.Forms.User
             lblCambiarContra.Tag = "titulo";
             lblContraActual.Tag = "relleno";
             lblContraNueva.Tag = "relleno";
-
+            pnlContenido.Tag = "opcional";
             btnEditar.Tag = "favoritos";
             btnGuardar.Tag = "guardar";
             btnCancelar.Tag = "cancelar";
             btnInicio.Tag = "menu";
+        }
 
-
+        private void AsignarTagsAdmin()
+        {
+            lblTitulo.Tag = "titulo";
+            lblNombreNuevo.Tag = "relleno";
+            lblApellido.Tag = "relleno";
+            lblTelefono.Tag = "relleno";
+            lblEmail.Tag = "relleno";
+            lblCambiarContra.Tag = "titulo";
+            lblContraActual.Tag = "relleno";
+            lblContraNueva.Tag = "relleno";
+            pnlContenido.Tag = "opcional";
+            btnGuardar.Tag = "guardar";
+            btnCancelar.Tag = "cancelar";
+            btnInicio.Tag = "menu";
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -247,7 +289,7 @@ namespace MicheBytesRecipes.Forms.User
             }
 
             GuardarUsuario();
-            
+
         }
 
 
@@ -493,7 +535,7 @@ namespace MicheBytesRecipes.Forms.User
                 }
 
                 // Confirmación
-                DialogResult confirmacion = MessageBox.Show("¿Desea guardar los cambios realizados?", "actualización", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                DialogResult confirmacion = MessageBox.Show("¿Desea guardar los cambios realizados?", "actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmacion != DialogResult.Yes)
                     return;

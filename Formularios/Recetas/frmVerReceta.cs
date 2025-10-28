@@ -1,5 +1,7 @@
 ﻿using MicheBytesRecipes.Classes.Interacciones;
+using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
+using MicheBytesRecipes.Moderador_IA;
 using MicheBytesRecipes.Utilities;
 using Microsoft.Win32;
 using System;
@@ -12,7 +14,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MicheBytesRecipes.Moderador_IA;
 using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Classes.Recetas
@@ -41,6 +42,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                 btnMeGusta.Enabled = false;
                 btnFavoritos.Enabled = false;
             }
+
+            this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
 
         }
 
@@ -106,6 +109,23 @@ namespace MicheBytesRecipes.Classes.Recetas
             {
                 btnFavoritos.Text = "🤍 Favorito";
             }
+
+            AsignarTags();
+            ActualizarTema();
+
+        }
+        public void ActualizarTema()
+        {
+            if (GestorTemaUsuario.EsTemaOscuro)
+            {
+                AsignarTags();
+                GestorTemaUsuario.AplicarTema(this);
+                this.Refresh();
+            }
+
+        }
+        private void AsignarTags()
+        {
 
         }
 
