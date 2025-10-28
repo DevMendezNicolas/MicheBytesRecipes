@@ -126,6 +126,11 @@ namespace MicheBytesRecipes.Classes.Recetas
         }
         private void AsignarTags()
         {
+            btnMeGusta.Tag = "menu";
+            btnFavoritos.Tag = "favoritos";
+            btnExportarPdf.Tag = "exportar";
+            btnCerrar.Tag = "cerrar";
+            btnComentar.Tag = "buscar";
 
         }
 
