@@ -189,8 +189,6 @@ namespace MicheBytesRecipes.Managers
                     comando.Parameters.AddWithValue("@recetaId", recetaId);
                     comando.Parameters.AddWithValue("@usuarioId", usuarioId);
                     int count = Convert.ToInt32(comando.ExecuteScalar());
-                    
-
                     return count > 0; //Retorna true si tiene me gusta
                 }
             }
