@@ -183,12 +183,14 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 string consultaMeGusta = " SELECT COUNT(*) FROM vista_me_gustas WHERE receta_id = @recetaId AND usuario_id = @usuarioId";
-
+                
                 using (MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@recetaId", recetaId);
                     comando.Parameters.AddWithValue("@usuarioId", usuarioId);
                     int count = Convert.ToInt32(comando.ExecuteScalar());
+                    
+
                     return count > 0; //Retorna true si tiene me gusta
                 }
             }
