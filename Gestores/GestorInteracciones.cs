@@ -302,7 +302,6 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
-
         public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
         {
             try
