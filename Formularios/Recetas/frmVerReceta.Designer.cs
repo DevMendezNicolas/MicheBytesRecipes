@@ -61,6 +61,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmsComentarios = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.borrarComentarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -297,13 +298,15 @@
             // 
             // btnFavoritos
             // 
+            this.btnFavoritos.BackColor = System.Drawing.Color.Salmon;
             this.btnFavoritos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFavoritos.ForeColor = System.Drawing.Color.White;
             this.btnFavoritos.Location = new System.Drawing.Point(1042, 47);
             this.btnFavoritos.Name = "btnFavoritos";
             this.btnFavoritos.Size = new System.Drawing.Size(126, 41);
             this.btnFavoritos.TabIndex = 2;
             this.btnFavoritos.Text = "Favorito";
-            this.btnFavoritos.UseVisualStyleBackColor = true;
+            this.btnFavoritos.UseVisualStyleBackColor = false;
             this.btnFavoritos.Click += new System.EventHandler(this.btnFavoritos_Click);
             // 
             // lblMeGusta
@@ -349,12 +352,14 @@
             // 
             // btnComentar
             // 
+            this.btnComentar.BackColor = System.Drawing.Color.Wheat;
+            this.btnComentar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComentar.Location = new System.Drawing.Point(370, 161);
             this.btnComentar.Name = "btnComentar";
-            this.btnComentar.Size = new System.Drawing.Size(111, 27);
+            this.btnComentar.Size = new System.Drawing.Size(111, 30);
             this.btnComentar.TabIndex = 3;
             this.btnComentar.Text = "Comentar";
-            this.btnComentar.UseVisualStyleBackColor = true;
+            this.btnComentar.UseVisualStyleBackColor = false;
             this.btnComentar.Click += new System.EventHandler(this.btnComentar_Click);
             // 
             // label3
@@ -370,13 +375,15 @@
             // 
             // btnExportarPdf
             // 
+            this.btnExportarPdf.BackColor = System.Drawing.Color.Gold;
             this.btnExportarPdf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarPdf.ForeColor = System.Drawing.Color.White;
             this.btnExportarPdf.Location = new System.Drawing.Point(1042, 93);
             this.btnExportarPdf.Name = "btnExportarPdf";
             this.btnExportarPdf.Size = new System.Drawing.Size(126, 41);
             this.btnExportarPdf.TabIndex = 4;
             this.btnExportarPdf.Text = "Exportar PDF";
-            this.btnExportarPdf.UseVisualStyleBackColor = true;
+            this.btnExportarPdf.UseVisualStyleBackColor = false;
             this.btnExportarPdf.Click += new System.EventHandler(this.btnExportarPdf_Click);
             // 
             // txtComentario
@@ -393,13 +400,15 @@
             // 
             // btnCerrar
             // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Red;
             this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
             this.btnCerrar.Location = new System.Drawing.Point(1042, 140);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(126, 41);
             this.btnCerrar.TabIndex = 5;
             this.btnCerrar.Text = "🔙 Menú";
-            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // label5
@@ -427,12 +436,22 @@
             this.borrarComentarioToolStripMenuItem.Text = "Borrar comentario";
             this.borrarComentarioToolStripMenuItem.Click += new System.EventHandler(this.borrarComentarioToolStripMenuItem_Click);
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(469, 342);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(194, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 40;
+            this.progressBar.Visible = false;
+            // 
             // frmVerReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.rtbInstrucciones);
@@ -491,5 +510,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ContextMenuStrip cmsComentarios;
         private System.Windows.Forms.ToolStripMenuItem borrarComentarioToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

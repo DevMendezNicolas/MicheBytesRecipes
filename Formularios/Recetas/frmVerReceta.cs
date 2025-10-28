@@ -28,7 +28,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         private ModeradorComentarios moderadorComentarios;
         private bool control = true; //Controla el estado del texto comentario
         private string comentarioUsuario; //Almacena el comentario del usuario
-        private Usuario usuario; 
+        private Usuario usuario;
 
         public frmVerReceta(Receta receta, Usuario usuarioLog)
         {
@@ -59,7 +59,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             lstIngredientes.BorderStyle = BorderStyle.None;     // Sin borde
             lstIngredientes.BackColor = Color.WhiteSmoke;              // Fondo suave y moderno
             lstIngredientes.ForeColor = Color.DarkSlateGray;           // Texto elegante y legible
-            lstIngredientes.Font = new Font("Segoe UI", 10,FontStyle.Bold);           // Tipografía clara y profesional
+            lstIngredientes.Font = new Font("Segoe UI", 10, FontStyle.Bold);           // Tipografía clara y profesional
             lstIngredientes.Scrollable = true;                         // Scroll vertical si hay muchos ítems
             lstIngredientes.FullRowSelect = true;                      // Selección completa del ítem
             lstIngredientes.HideSelection = false;                     // Mantiene selección visible al perder foco
@@ -67,7 +67,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             lstIngredientes.HeaderStyle = ColumnHeaderStyle.None;      // Oculta encabezado si no usás columnas
             lstIngredientes.Alignment = ListViewAlignment.Top;         // Alineación superior
             lstIngredientes.LabelWrap = true;                          // Permite que el texto se ajuste si es largo
-            
+
             // Estetica comentarios
             lstComentarios.MultiColumn = false;                  // Vista vertical
             lstComentarios.HorizontalScrollbar = false;          // Sin scroll horizontal
@@ -82,12 +82,12 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             // Estetica RichTextBox Instrucciones
             rtbInstrucciones.BorderStyle = BorderStyle.FixedSingle; // Borde definido
-            rtbInstrucciones.Font = new Font("Segoe UI", 10,FontStyle.Regular);      // Tipografía moderna y legible
+            rtbInstrucciones.Font = new Font("Segoe UI", 10, FontStyle.Regular);      // Tipografía moderna y legible
             rtbInstrucciones.ReadOnly = true;                      // Solo lectura
             rtbInstrucciones.ScrollBars = RichTextBoxScrollBars.Vertical; // Scroll vertical
             rtbInstrucciones.WordWrap = true;                      // Ajuste de línea
             rtbInstrucciones.HideSelection = false;                // Mantiene selección visible al perder foco
-            
+
 
             // Verificar si ya dio "Me Gusta"
             if (gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))
@@ -98,7 +98,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             {
                 btnMeGusta.Text = "🤍 Me gusta";
             }
-            if(gestorInteracciones.EstaFavorito(receta.RecetaId, usuario.UsuarioId))
+            if (gestorInteracciones.EstaFavorito(receta.RecetaId, usuario.UsuarioId))
             {
                 btnFavoritos.Text = "❤️ Favorito";
             }
@@ -108,7 +108,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             }
 
         }
-        
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -162,7 +162,8 @@ namespace MicheBytesRecipes.Classes.Recetas
                     {
                         lstIngredientes.Items.Add(ingrediente.Nombre);
                     }
-                }else
+                }
+                else
                 {
                     lstIngredientes.Items.Add("No hay ingredientes");
                 }
@@ -192,7 +193,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 }
             }
             else
-                lstComentarios.Items.Add("No hay comentarios");            
+                lstComentarios.Items.Add("No hay comentarios");
         }
 
         // Metodo para gestionar Interacciones
@@ -221,10 +222,11 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             int cantidad = gestorInteracciones.ContarMeGusta(receta.RecetaId);
 
-            if(cantidad >= 0)
+            if (cantidad >= 0)
             {
                 lblMeGusta.Text = cantidad.ToString();
-            }else
+            }
+            else
             {
                 lblMeGusta.Text = "Error";
             }
@@ -262,75 +264,20 @@ namespace MicheBytesRecipes.Classes.Recetas
         }
         private void txtComentario_Leave(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtComentario.Text))
+            if (string.IsNullOrWhiteSpace(txtComentario.Text))
             {
                 txtComentario.Text = "Escribe un comentario...";
                 txtComentario.ForeColor = Color.Gray; //Pone el texto en gris
                 control = true; //Cambia el estado del control para que vuelva a entrar
-                
+
             }
         }
         private async void txtComentario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                e.Handled = true;
-
-                if (!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
-                {
-                    comentarioUsuario = txtComentario.Text;
-
-                    // ✅ ANALIZAR CON IA ANTES DE GUARDAR
-                    var (esToxico, puntuacion, razon) = await moderadorComentarios.AnalizarComentario(comentarioUsuario);
-
-                    if (esToxico)
-                    {
-                        // 🚫 COMENTARIO TÓXICO - REGISTRAR Y NO GUARDAR
-                        moderadorComentarios.RegistrarComentarioEliminado(
-                            usuario.UsuarioId.ToString(),
-                            comentarioUsuario,
-                            razon,
-                            puntuacion
-                        );
-
-                        // ✅ MENSAJE SIMPLIFICADO
-                        MessageBox.Show("❌ Comentario eliminado por contenido inapropiado.",
-                                      "Moderación Automática",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Warning);
-
-                        txtComentario.Clear();
-                        control = true;
-                        txtComentario_Leave(sender, EventArgs.Empty);
-                        return;
-                    }
-
-                    // ✅ COMENTARIO APROBADO - GUARDAR NORMALMENTE
-                    Comentarios nuevoComentario = new Comentarios
-                    {
-                        Descripcion = comentarioUsuario,
-                        RecetaId = int.Parse(lblIdReceta.Text),
-                        UsuarioId = int.Parse(lblIdUsuario.Text)
-                    };
-
-                    GestorInteracciones gestorInteracciones = new GestorInteracciones();
-                    bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
-
-                    if (exito)
-                    {
-                        MessageBox.Show("✅ Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtComentario.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    control = true;
-                    txtComentario_Leave(sender, EventArgs.Empty);
-                    CargarComentarios();
-                    this.ActiveControl = null;
-                }
+                e.Handled = true; //
+                await ProcesarComentario();
             }
         }
 
@@ -378,61 +325,106 @@ namespace MicheBytesRecipes.Classes.Recetas
 
         private async void btnComentar_Click(object sender, EventArgs e)
         {
+            await ProcesarComentario();
+        }
+        private async Task ProcesarComentario()
+        {
             if (!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
             {
-                comentarioUsuario = txtComentario.Text;
+                // ✅ MOSTRAR PROGRESS BAR Y BLOQUEAR CONTROLES
+                progressBar.Visible = true;
+                BloquearControles(true);
 
-                // ✅ ANALIZAR CON IA ANTES DE GUARDAR
-                var (esToxico, puntuacion, razon) = await moderadorComentarios.AnalizarComentario(comentarioUsuario);
-
-                if (esToxico)
+                try
                 {
-                    // 🚫 COMENTARIO TÓXICO
-                    moderadorComentarios.RegistrarComentarioEliminado(
-                        usuario.UsuarioId.ToString(),
-                        comentarioUsuario,
-                        razon,
-                        puntuacion
-                    );
+                    comentarioUsuario = txtComentario.Text;
 
-                    // ✅ MENSAJE SIMPLIFICADO
-                    MessageBox.Show("❌ Comentario eliminado por contenido inapropiado.",
-                                  "Moderación Automática",
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Warning);
+                    // ✅ ANALIZAR CON IA ANTES DE GUARDAR
+                    var (esToxico, puntuacion, razon) = await moderadorComentarios.AnalizarComentario(comentarioUsuario);
 
-                    txtComentario.Clear();
-                    control = true;
-                    txtComentario_Leave(sender, EventArgs.Empty);
-                    return;
+                    if (esToxico)
+                    {
+                        // 🚫 COMENTARIO TÓXICO - REGISTRAR Y NO GUARDAR
+                        moderadorComentarios.RegistrarComentarioEliminado(
+                            usuario.UsuarioId.ToString(),
+                            comentarioUsuario,
+                            razon,
+                            puntuacion
+                        );
+
+                        // ✅ MENSAJE SIMPLIFICADO
+                        MessageBox.Show("❌ Comentario eliminado por contenido inapropiado.",
+                                      "Moderación Automática",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Warning);
+
+                        // Limpiar campo directamente
+                        txtComentario.Clear();
+                        control = true;
+                        txtComentario_Leave(null, EventArgs.Empty);
+                        return;
+                    }
+
+                    // ✅ COMENTARIO APROBADO - GUARDAR NORMALMENTE
+                    Comentarios nuevoComentario = new Comentarios
+                    {
+                        Descripcion = comentarioUsuario,
+                        RecetaId = int.Parse(lblIdReceta.Text),
+                        UsuarioId = int.Parse(lblIdUsuario.Text)
+                    };
+
+                    GestorInteracciones gestorInteracciones = new GestorInteracciones();
+                    bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
+
+                    if (exito)
+                    {
+                        MessageBox.Show("✅ Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Limpiar campo directamente
+                        txtComentario.Clear();
+                        control = true;
+                        txtComentario_Leave(null, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    CargarComentarios();
+                    this.ActiveControl = null;
                 }
-
-                // ✅ COMENTARIO APROBADO
-                Comentarios nuevoComentario = new Comentarios
+                catch (Exception ex)
                 {
-                    Descripcion = comentarioUsuario,
-                    RecetaId = int.Parse(lblIdReceta.Text),
-                    UsuarioId = int.Parse(lblIdUsuario.Text)
-                };
-
-                GestorInteracciones gestorInteracciones = new GestorInteracciones();
-                bool exito = gestorInteracciones.AgregarComentario(nuevoComentario);
-
-                if (exito)
-                {
-                    MessageBox.Show("✅ Comentario agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtComentario.Clear();
+                    MessageBox.Show($"❌ Error al procesar el comentario: {ex.Message}",
+                                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
+                finally
                 {
-                    MessageBox.Show("Error al agregar el comentario. Inténtalo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // ✅ OCULTAR PROGRESS BAR Y DESBLOQUEAR CONTROLES
+                    progressBar.Visible = false;
+                    BloquearControles(false);
                 }
-
-                control = true;
-                txtComentario_Leave(sender, EventArgs.Empty);
-                CargarComentarios();
             }
         }
+
+        // Método para bloquear/desbloquear controles del formulario
+        private void BloquearControles(bool bloquear)
+        {
+            // Controles principales de interacción
+            btnComentar.Enabled = !bloquear;
+            btnMeGusta.Enabled = !bloquear;
+            btnFavoritos.Enabled = !bloquear;
+            btnExportarPdf.Enabled = !bloquear;
+            btnCerrar.Enabled = !bloquear;
+
+            // Campo de comentario
+            txtComentario.Enabled = !bloquear;
+
+            // Listas y controles de navegación
+            lstComentarios.Enabled = !bloquear;
+            lstIngredientes.Enabled = !bloquear;
+
+        }
+
 
 
 
@@ -466,7 +458,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             if (lstComentarios.SelectedItem == null)
                 return;
-            
+
         }
 
         private void lstComentarios_SelectedIndexChanged(object sender, EventArgs e)
