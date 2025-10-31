@@ -22,10 +22,8 @@ namespace MicheBytesRecipes.Classes.Recetas
     public partial class frmVerReceta : Form
     {
         private Receta receta;
-        GestorReceta gestorReceta = new GestorReceta();
         GestorInteracciones gestorInteracciones = new GestorInteracciones();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
-        GestorIngredientes gestorIngredientes = new GestorIngredientes();
         private ModeradorComentarios moderadorComentarios;
         private bool control = true; //Controla el estado del texto comentario
         private string comentarioUsuario; //Almacena el comentario del usuario
@@ -314,7 +312,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 TimeSpan tiempo = TimeSpan.Parse(lblTiempo.Text);
                 List<string> ingredientes = lstIngredientes.Items
                     .Cast<ListViewItem>()
-                    .Select(item => item.Text) // 👈 obtiene solo el texto visible
+                    .Select(item => item.Text) //  obtiene solo el texto visible
                     .ToList();
 
 
@@ -357,7 +355,7 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             if (!control && !string.IsNullOrWhiteSpace(txtComentario.Text))
             {
-                // ✅ MOSTRAR PROGRESS BAR Y BLOQUEAR CONTROLES
+                //MOSTRAR PROGRESS BAR Y BLOQUEAR CONTROLES
                 progressBar.Visible = true;
                 BloquearControles(true);
 
@@ -365,12 +363,12 @@ namespace MicheBytesRecipes.Classes.Recetas
                 {
                     comentarioUsuario = txtComentario.Text;
 
-                    // ✅ ANALIZAR CON IA ANTES DE GUARDAR
+                    // ANALIZAR CON IA ANTES DE GUARDAR
                     var (esToxico, puntuacion, razon) = await moderadorComentarios.AnalizarComentario(comentarioUsuario);
 
                     if (esToxico)
                     {
-                        // 🚫 COMENTARIO TÓXICO - REGISTRAR Y NO GUARDAR
+                        // COMENTARIO TÓXICO - REGISTRAR Y NO GUARDAR
                         moderadorComentarios.RegistrarComentarioEliminado(
                             usuario.UsuarioId.ToString(),
                             comentarioUsuario,
@@ -378,7 +376,6 @@ namespace MicheBytesRecipes.Classes.Recetas
                             puntuacion
                         );
 
-                        // ✅ MENSAJE SIMPLIFICADO
                         MessageBox.Show("❌ Comentario eliminado por contenido inapropiado.",
                                       "Moderación Automática",
                                       MessageBoxButtons.OK,
@@ -391,7 +388,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                         return;
                     }
 
-                    // ✅ COMENTARIO APROBADO - GUARDAR NORMALMENTE
+                    // COMENTARIO APROBADO - GUARDAR NORMALMENTE
                     Comentarios nuevoComentario = new Comentarios
                     {
                         Descripcion = comentarioUsuario,
@@ -425,7 +422,7 @@ namespace MicheBytesRecipes.Classes.Recetas
                 }
                 finally
                 {
-                    // ✅ OCULTAR PROGRESS BAR Y DESBLOQUEAR CONTROLES
+                    // OCULTAR PROGRESS BAR Y DESBLOQUEAR CONTROLES
                     progressBar.Visible = false;
                     BloquearControles(false);
                 }

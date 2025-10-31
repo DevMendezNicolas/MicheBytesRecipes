@@ -329,9 +329,7 @@ namespace MicheBytesRecipes
                 MessageBox.Show($"Error al importar recetas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }// Probar este evento cuando funcione todo
-
-
+        }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -373,12 +371,9 @@ namespace MicheBytesRecipes
 
         }
 
-        // En tu formulario de administrador, asigna los tags:
-
         private void AsignarTags()
         {
 
-            // BOTONES especiales
             btnCerrarSesion.Tag = "cerrar";
             btnExportar.Tag = "exportar";
             btnImportar.Tag = "importar";
@@ -388,7 +383,6 @@ namespace MicheBytesRecipes
             btnReinicio.Tag = "reiniciar";
             btnTema.Tag = "tema";
 
-            // Los demás botones sin tag = color por defecto
         }
 
         private void btnTema_Click(object sender, EventArgs e)

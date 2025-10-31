@@ -192,7 +192,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
         }
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
             openFileDialog1.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             openFileDialog1.Title = "Seleccionar Imagen";
 
@@ -210,7 +209,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void btnPais_Click(object sender, EventArgs e)
         {                        
-            //Llamar al formulario de agregar pais
             frmAgregarPais frmAgregarPais = new frmAgregarPais();
 
             if (frmAgregarPais.ShowDialog() == DialogResult.OK)
@@ -219,7 +217,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 cboPais.DataSource = null; //Limpia el origen de datos
                 cboPais.DataSource = paises; //Vuelve a asignar la lista actualizada
                 cboPais.DisplayMember = "Nombre";
-                //MessageBox.Show("Pais agregado a la lista.");
             }
         }
 
@@ -245,7 +242,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 clbIngredientes.DataSource = null; //Limpia el origen de datos
                 clbIngredientes.DataSource = ingredientes; //Vuelve a asignar la lista actualizada
                 clbIngredientes.DisplayMember = "Nombre";
-                //MessageBox.Show("Ingrediente agregado a la receta.");
             }
         }
     }

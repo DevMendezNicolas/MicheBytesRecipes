@@ -16,7 +16,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
 {
     public partial class frmAgregarPais : Form
     {
-        GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
         public frmAgregarPais()
         {
@@ -55,6 +54,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
+            CueProvider.SetCue(txtPais, "Ingrese el nombre del país..");
 
         }
         public void ActualizarTema()

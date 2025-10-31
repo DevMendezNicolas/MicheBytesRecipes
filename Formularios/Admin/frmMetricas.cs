@@ -85,7 +85,6 @@ namespace MicheBytesRecipes.Forms.Admin
         private void AsignarTags()
         {
 
-            // BOTONES especiales
             btnAct.Tag = "alta";
             btnExportar.Tag = "exportar";
             btnVolver.Tag = "menu";

@@ -224,7 +224,6 @@ namespace MicheBytesRecipes.Forms.User
             {
                 cierrePorSesion = true;
 
-                // mostramos frmInicio
                 frmInicio inicio = Application.OpenForms.OfType<frmInicio>().FirstOrDefault();
                 if (inicio != null)
                 {

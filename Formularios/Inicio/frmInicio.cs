@@ -30,7 +30,7 @@ namespace MicheBytesRecipes
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             var login = new frmLogin();
-            login.Owner = this; // importante
+            login.Owner = this;
             this.Hide();
             login.Show();
 

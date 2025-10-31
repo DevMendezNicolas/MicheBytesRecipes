@@ -18,7 +18,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
     
     public partial class frmAgregarCategoria : Form
     {
-        GestorReceta gestorReceta = new GestorReceta();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
 
 
@@ -63,7 +62,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 };
 
                 gestorCatalogo.AgregarCategoria(categoria);
-
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -73,6 +71,8 @@ namespace MicheBytesRecipes.Forms.AddReceta
         {
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
+            CueProvider.SetCue(txtNombre, "Ingrese la nueva categoria..");
+            CueProvider.SetCue(txtDescripcion, "Ingrese una descripción..");
         }
     }
 }

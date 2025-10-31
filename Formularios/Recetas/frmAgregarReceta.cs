@@ -53,6 +53,9 @@ namespace MicheBytesRecipes.Forms.AddReceta
             txtInstrucciones.ScrollBars = ScrollBars.Vertical;
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
+            CueProvider.SetCue(txtNombre, "Ingrese el nombre de la receta..");
+            CueProvider.SetCue(txtDescripcion, "Ingrese una descripción de la receta..");
+            CueProvider.SetCue(txtInstrucciones, "Ingrese las instrucciones de la receta..");
 
         }
         public void ActualizarTema()
@@ -123,12 +126,10 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 cboPais.DataSource = null; //Limpia el origen de datos
                 cboPais.DataSource = paises; //Vuelve a asignar la lista actualizada
                 cboPais.DisplayMember = "Nombre";
-                //MessageBox.Show("Pais agregado a la lista.");
             }
         }
         private void btnAgregarIngrediente_Click(object sender, EventArgs e)
         {
-            //llamAR AL FORMULARIO DE AGREGAR INGREDIENTE
             frmAgregarIngrediente frmAgregarIngrediente = new frmAgregarIngrediente();
 
             if (frmAgregarIngrediente.ShowDialog() == DialogResult.OK)
@@ -137,7 +138,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
                 clbIngredientes.DataSource = null; //Limpia el origen de datos
                 clbIngredientes.DataSource = ingredientes; //Vuelve a asignar la lista actualizada
                 clbIngredientes.DisplayMember = "Nombre"; 
-                //MessageBox.Show("Ingrediente agregado a la receta.");
             }
         }
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -168,7 +168,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
             }
         }
 
-        //metodo para limpiar el formulario
         private void LimpiarFormulario()
         {
             txtNombre.Clear();

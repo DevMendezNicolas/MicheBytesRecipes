@@ -71,8 +71,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void pbxFotoPerfil_Click(object sender, EventArgs e)
         {
-            //CambiarImagen(pbxFotoPerfil);
-
+            lbCambiarImagen_LinkClicked(sender, null);
 
         }
 
@@ -235,19 +234,6 @@ namespace MicheBytesRecipes.Forms.Auth
                 }
                 fotoBytes = null; // Si no hay imagen, establecer como null
             }
-            //try
-            //{
-            //    using (MemoryStream ms = new MemoryStream())
-            //    {
-            //        pbxFotoPerfil.Image.Save(ms, pbxFotoPerfil.Image.RawFormat);
-            //        fotoBytes = ms.ToArray();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error al procesar la imagen de perfil: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
 
             Usuario nuevoUsuario = Usuario.CrearUsuario(txtNombre.Text, txtApellido.Text, txtTelefono.Text.Trim(), txtEmail.Text.Trim(), gestorUsuarios.HashearContraseña(txtContra.Text), fotoBytes);
 
@@ -259,27 +245,7 @@ namespace MicheBytesRecipes.Forms.Auth
             this.Close();
 
         }
-        //private void CambiarImagen(PictureBox pictureBox)
-        //{
-        //    ofdFotoPerfil.Filter = "Archivos de imagen|.png;*";
-        //    if (ofdFotoPerfil.ShowDialog() == DialogResult.OK)
-        //    {
-        //        try
-        //        {
-        //            pictureBox.Image?.Dispose();
-        //            using (var tempImage = Image.FromFile(ofdFotoPerfil.FileName))
-        //            {
-        //                pictureBox.Image = new Bitmap(tempImage);
-        //            }
-        //            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show("Error al cargar la imagen seleccionada.\n\n" + ex.Message,
-        //                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //}
+        
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -390,7 +356,6 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void lbCambiarImagen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //CambiarImagen(pbxFotoPerfil);
             ofdFotoPerfil.Title = "Seleccionar Imagen de Perfil";
             ofdFotoPerfil.Filter = "Archivos de imagen|*.png;*.jpg;*.jpeg;*.bmp;*.gif";
             if (ofdFotoPerfil.ShowDialog() == DialogResult.OK)

@@ -15,7 +15,6 @@ namespace MicheBytesRecipes
     {
         public static bool ValidarReceta(TextBox txtNombre, TextBox txtDescripcion, TextBox txtInstrucciones, ComboBox cboCategoria, ComboBox cboPais, ComboBox cboDificultad, DateTimePicker dtpTiempo, PictureBox pcbImagen, Button btnAsociado, CheckedListBox clbIngrediente, ErrorProvider errorProvider)
         {
-            // Validar que los campos no esten vacios
             bool esValido = true;
             errorProvider.Clear();
 

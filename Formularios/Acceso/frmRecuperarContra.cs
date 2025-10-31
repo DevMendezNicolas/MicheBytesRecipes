@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace MicheBytesRecipes.Forms.Auth
 {
-    // SYSTEM NET MAIL. 
     public partial class frmRecuperarContra : Form
     {
         GestorUsuarios gestorUsuarios = new GestorUsuarios();
@@ -26,6 +25,14 @@ namespace MicheBytesRecipes.Forms.Auth
             CueProvider.SetCue(txtEmail, "tuCorreo@hotmail.com");
             txtNuevaContra.UseSystemPasswordChar = true;
         }
+        private void frmRecuperarContra_Load(object sender, EventArgs e)
+        {
+            UiHelpers.SetRoundedPanel(PanelMid, 25);
+            AsignarTags();
+            GestorTemaUsuario.AplicarTema(this);
+            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -111,7 +118,7 @@ namespace MicheBytesRecipes.Forms.Auth
 
         private void VerificarCodigo(object sender, EventArgs e)
         {
-            string codigoGenerado = emailService.ObtenerUltimoCodigo(); // ← Mismo código que se envió
+            string codigoGenerado = emailService.ObtenerUltimoCodigo();
             string codigoIngresado = txtEmail.Text.Trim();
 
             if (codigoIngresado == codigoGenerado)
@@ -158,7 +165,6 @@ namespace MicheBytesRecipes.Forms.Auth
             string nuevaContraseña = txtEmail.Text.Trim();
             string confirmarContraseña = txtNuevaContra.Text.Trim();
 
-            // Validar que no estén vacías
             if (string.IsNullOrWhiteSpace(nuevaContraseña) || string.IsNullOrWhiteSpace(confirmarContraseña))
             {
                 MessageBox.Show("Ambas contraseñas son obligatorias para continuar.",
@@ -168,7 +174,6 @@ namespace MicheBytesRecipes.Forms.Auth
                 return;
             }
 
-            // Validar que coincidan
             if (nuevaContraseña != confirmarContraseña)
             {
                 MessageBox.Show("Las contraseñas ingresadas no coinciden. Por favor, verifique e intente nuevamente.",
@@ -243,12 +248,5 @@ namespace MicheBytesRecipes.Forms.Auth
             txtNuevaContra.PasswordChar = '●';
         }
 
-        private void frmRecuperarContra_Load(object sender, EventArgs e)
-        {
-            UiHelpers.SetRoundedPanel(PanelMid, 25);
-            AsignarTags();
-            GestorTemaUsuario.AplicarTema(this);
-            GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
-        }
     }
 }

@@ -22,7 +22,7 @@ namespace MicheBytesRecipes.Forms.Auth
         {
             InitializeComponent();
             CargarTerminos();
-            btnAceptar.Enabled = false; // Deshabilitar el botón inicialmente
+            btnAceptar.Enabled = false;
         }
 
         private void CargarTerminos()
@@ -52,7 +52,6 @@ namespace MicheBytesRecipes.Forms.Auth
         }
         private void VerificarFinalScroll()
         {
-            // Método más preciso para verificar si llegó al final
             if (ScrollFinalTexto())
             {
                 btnAceptar.Enabled = true;

@@ -21,7 +21,6 @@ namespace MicheBytesRecipes.Forms.User
             InitializeComponent();
             this.Size = new Size(170, 240);
             this.Margin = new Padding(8);
-
             // Propagar evento de click a todos los controles
             this.Click += UcRecetaTarjeta_Click;
             foreach (Control ctrl in this.Controls)

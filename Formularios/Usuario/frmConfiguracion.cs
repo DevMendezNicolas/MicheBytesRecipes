@@ -27,7 +27,7 @@ namespace MicheBytesRecipes.Forms.User
             {
                 this.FormClosed += (s, e) => GestorTemaAdmin.TemaCambiado -= ActualizarTema;
             }
-            else // ✅ CORREGIDO - AGREGA EL ELSE
+            else
             {
                 this.FormClosed += (s, e) => GestorTemaUsuario.TemaCambiado -= ActualizarTema;
 
@@ -433,14 +433,12 @@ namespace MicheBytesRecipes.Forms.User
             var originalBackColor = textBox.BackColor;
             var originalColor = textBox.ForeColor;
 
-            // 🔹 Estilo de error (fondo y borde rojo)
             textBox.BackColor = Color.FromArgb(255, 200, 200); // fondo rojo muy suave
             textBox.ForeColor = Color.Red;
 
-            // 🔹 Pone foco
             textBox.Focus();
 
-            // 🔹 Efecto shake (movimiento lateral)
+            //Efecto shake (movimiento lateral)
             for (int i = 0; i < 3; i++) // cantidad de idas y vueltas
             {
                 textBox.Location = new Point(originalPos.X + 3, originalPos.Y);
@@ -449,10 +447,10 @@ namespace MicheBytesRecipes.Forms.User
                 await Task.Delay(30);
             }
 
-            // 🔹 Vuelve a la posición original
+            //Vuelve a la posición original
             textBox.Location = originalPos;
 
-            // 🔹 Espera un momento y restaura estilos
+            //Espera un momento y restaura estilos
             await Task.Delay(3000);
             textBox.BackColor = originalBackColor;
             textBox.ForeColor = originalColor;
@@ -550,9 +548,7 @@ namespace MicheBytesRecipes.Forms.User
                     fotoBytes
                 );
 
-                // Si llegó aquí, la actualización fue exitosa
 
-                // Refrescar datos
                 usuarioLog = gestorUsuarios.BuscarPorEmail(txtEmail.Text.Trim());
                 CargarDatosUsuario();
                 DesactivarCampos();

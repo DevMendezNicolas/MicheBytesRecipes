@@ -85,7 +85,6 @@ namespace MicheBytesRecipes.Forms.User
 
             List<PreReceta> listaPreRecetas = gestorReceta.ObtenerHistorialUsuario(usuarioLog.UsuarioId);
 
-            // Cargar las tarjetas usando el gestor
             gestorTarjetas.CargarTarjetas(listaPreRecetas, usuarioLog, gestorReceta, gestorCatalogo);
 
         }

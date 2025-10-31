@@ -24,11 +24,8 @@ namespace MicheBytesRecipes
         public frmLogin()
         {
             InitializeComponent();
-            //Setea los cues en los textbox
             CueProvider.SetCue(txtContra, "Ingrese su contraseña");
             CueProvider.SetCue(txtEmail, "Ingrese su usuario");
-
-            //Redondeo de botones, paneles y textbox
             UiHelpers.SetRoundedPanel(PanelMid, 25);
         }
 

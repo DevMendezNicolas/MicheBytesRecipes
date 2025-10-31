@@ -49,6 +49,7 @@ namespace MicheBytesRecipes.Forms.Admin
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this); // Se aplica el tema actual automáticamente
             ActualizarBotonTema();
+            CueProvider.SetCue(txtBuscarEmail, "Ej: usuario.hotmail.com");
 
         }
         public void ActualizarGrilla()

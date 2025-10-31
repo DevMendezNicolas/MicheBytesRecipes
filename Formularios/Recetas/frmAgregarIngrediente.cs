@@ -19,7 +19,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
 {
     public partial class frmAgregarIngrediente : Form
     {
-        GestorReceta gestorReceta = new GestorReceta();
         GestorIngredientes gestorIngredientes = new GestorIngredientes();
         GestorCatalogo gestorCatalogo = new GestorCatalogo();
 
@@ -32,7 +31,6 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
         private void FrmAgregarIngrediente_Load(object sender, EventArgs e)
         {
-            
 
             //Cargar las unidades de medida y tipos de ingredientes en los ComboBox
             var listaUnidades = gestorCatalogo.ObtenerListaUnidades();
@@ -43,6 +41,7 @@ namespace MicheBytesRecipes.Forms.AddReceta
 
             AsignarTags();
             GestorTemaAdmin.AplicarTema(this);
+            CueProvider.SetCue(txtIngrediente, "Ingrese el nombre del ingrediente..");
 
         }
         public void ActualizarTema()
