@@ -13,7 +13,6 @@ namespace MicheBytesRecipes.Interfaces
     internal interface IUsuarioRepository
     {
         string HashearContraseña(string contraseña);
-
         void AgregarUsuario(Usuario usuario);
         bool ValidarCredenciales(string email, string contraseña);
         void DarDeBajaUsuario(int AdminId, int usuarioBajaId);

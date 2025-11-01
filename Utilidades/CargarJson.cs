@@ -60,7 +60,6 @@ namespace MicheBytesRecipes.Utilities
                     FontStyle estilo = config.Negrita ? FontStyle.Bold : FontStyle.Regular;
                     float tamaño = config.Tamaño > 0 ? config.Tamaño : 9; // Tamaño por defecto
 
-                    // Usar Segoe UI como fuente
                     Font fuente = new Font("Segoe UI", tamaño, estilo);
 
                     richTextBox.SelectionStart = richTextBox.TextLength;

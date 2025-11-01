@@ -10,7 +10,6 @@ namespace MicheBytesRecipes.Classes
 {
     public class Usuario
     {
-        // Propiedades de la clase Usuario
         public int UsuarioId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -21,6 +20,7 @@ namespace MicheBytesRecipes.Classes
         public int Rol { get; set; }
         public DateTime FechaRegistro { get; set; }
         public DateTime? FechaBaja { get; set; }
+
         // Constructores de Usuario
         public Usuario(string email, int usuarioId, string nombre, string apellido, string telefono, byte[] foto, int rol,DateTime fechaRegistro, DateTime? fechaBaja)
         {
@@ -130,7 +130,7 @@ namespace MicheBytesRecipes.Classes
 
             Contraseña = nuevaContraseña;
         }
-        // Metodo estatico para construir un usuario con sus validaciones  -> REVISAR
+        // Metodo estatico para construir un usuario con sus validaciones
         public static Usuario CrearUsuario(int usuarioId, string nombre, string apellido, string telefono, string email, byte[] foto, int rol, DateTime fechaRegistro, DateTime? fechaBaja)
         {
             if (string.IsNullOrWhiteSpace(nombre) || nombre.Length < 3)
@@ -145,9 +145,6 @@ namespace MicheBytesRecipes.Classes
                 foto = Array.Empty<byte>();
             if (rol <= 0)
                 throw new ArgumentException("El rol no es válido.");
-            
-
-
 
             return new Usuario(email, usuarioId, nombre, apellido, telefono, foto, rol, fechaRegistro,fechaBaja);
         }

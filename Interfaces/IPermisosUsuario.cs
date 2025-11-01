@@ -15,6 +15,5 @@ namespace MicheBytesRecipes.Interfaces
         void OtorgarRolAdministrador(int usuarioId, int adminId);
         // Revocar rol administrador a un usuario
         void RevocarRolAdministrador(int usuarioId, int adminId);
-        
     }
 }

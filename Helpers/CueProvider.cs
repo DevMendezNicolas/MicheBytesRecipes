@@ -21,6 +21,5 @@ namespace MicheBytesRecipes.Helpers
             SendMessage(control.Handle, EM_SETCUEBANNER, 0, cueText);
             
         }
-
     }
 }

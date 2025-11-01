@@ -22,7 +22,6 @@ namespace MicheBytesRecipes.Moderador_IA
             Razon = razon;
             PuntuacionToxicidad = puntuacion;
         }
-
         public ComentarioEliminado() { }
     }
 }

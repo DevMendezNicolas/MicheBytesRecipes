@@ -5,10 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicheBytesRecipes.Forms.Auth;
 
-
-
-
-
 namespace MicheBytesRecipes
 {
     public static class Program

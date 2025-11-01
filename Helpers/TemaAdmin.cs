@@ -7,8 +7,8 @@ namespace MicheBytesRecipes.Helpers
     public class TemaAdmin
     {
         public Color FondoPrincipal { get; set; }
-        public Color PanelPrimario { get; set; }  
-        public Color PanelSecundario { get; set; } 
+        public Color PanelPrimario { get; set; }
+        public Color PanelSecundario { get; set; }
         public Color TextoBotonPanel2 { get; set; }
         public Color TextoPrincipal { get; set; }
         public Color Botones { get; set; }
@@ -91,7 +91,7 @@ namespace MicheBytesRecipes.Helpers
         // Tema Oscuro
         private static readonly TemaAdmin TemaOscuro = new TemaAdmin
         {
-            PanelPrimario = Color.FromArgb(45, 45, 45),              // Panel por defecto
+            PanelPrimario = Color.FromArgb(45, 45, 45),
             PanelSecundario = Color.FromArgb(55, 55, 55),
             FondoPrincipal = Color.FromArgb(45, 45, 45),
 
@@ -133,7 +133,6 @@ namespace MicheBytesRecipes.Helpers
         public static void CambiarTema()
         {
             esOscuro = !esOscuro;
-            //Notificar a TODOS los formularios que el tema cambió
             TemaCambiado?.Invoke();
         }
 
@@ -156,7 +155,6 @@ namespace MicheBytesRecipes.Helpers
 
         private static void AplicarTemaAControl(Control control)
         {
-            // 🎨 PANELES CON TAGS ESPECÍFICOS
             if (control is Panel || control is GroupBox || control is TabPage)
             {
                 AplicarTemaAPanel(control);
@@ -317,6 +315,4 @@ namespace MicheBytesRecipes.Helpers
             dgv.EnableHeadersVisualStyles = false;
         }
     }
-
-    
 }

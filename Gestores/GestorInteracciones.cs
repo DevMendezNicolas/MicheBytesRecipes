@@ -16,7 +16,7 @@ namespace MicheBytesRecipes.Managers
     internal class GestorInteracciones
     {
         ConexionBD conexion = new ConexionBD();
-        Receta receta = new Receta();
+        Receta receta = new Receta(); //??? BORRAR?
 
         public bool AgregarComentario(Comentarios comentarios)
         {
@@ -98,7 +98,6 @@ namespace MicheBytesRecipes.Managers
                     using (MySqlDataReader lector = comando.ExecuteReader())
                     {
                         // Leer cada fila y crear objetos Comentarios
-                        //Console.WriteLine("No se encontraron comentarios para la receta ID: " + recetaId);
                         while (lector.Read())
                         {
                             Comentarios comentarios = new Comentarios
@@ -183,7 +182,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 string consultaMeGusta = " SELECT COUNT(*) FROM vista_me_gustas WHERE receta_id = @recetaId AND usuario_id = @usuarioId";
-                
+
                 using (MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@recetaId", recetaId);
@@ -323,7 +322,6 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
-        } // Usar cuando nehuen termine el formulario
-
+        }
     }
 }

@@ -29,6 +29,5 @@ namespace MicheBytesRecipes.Classes.Recetas
         {
             return $"Receta ID: {RecetaId} Nombre: {Nombre} - Categoria ID: {CategoriaId}, Pais ID: {PaisId}, Dificultad: {Dificultad}, Tiempo Preparacion: {TiempoPreparacion}";
         }
-
     }
 }

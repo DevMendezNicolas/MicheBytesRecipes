@@ -38,7 +38,6 @@ namespace MicheBytesRecipes.Managers
                 {
                     builder.Append(b.ToString("x2"));
                 }
-                //Console.WriteLine(builder.ToString());
                 return builder.ToString();
             }
         }
@@ -72,9 +71,9 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Cerrar();
             }
-        } //OK
+        } 
         // Validar credenciales de usuario (Email y Contraseña)
-        public bool ValidarCredenciales(string email, string contraseña) // MEJORAR
+        public bool ValidarCredenciales(string email, string contraseña)
         {
             try
             {
@@ -83,7 +82,7 @@ namespace MicheBytesRecipes.Managers
                 using (MySqlCommand comando = new MySqlCommand(consultaValidar, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@Email", email);
-                    comando.Parameters.AddWithValue("@Contraseña", contraseña /*HashearContraseña(contraseña)*/);
+                    comando.Parameters.AddWithValue("@Contraseña", contraseña);
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
                         return reader.HasRows; // Si hay filas, las credenciales son validas
@@ -490,8 +489,5 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
-
-
-
     }
 }

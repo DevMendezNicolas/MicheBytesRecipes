@@ -35,6 +35,7 @@ namespace MicheBytesRecipes.Helpers
             return ultimoCodigoGenerado;
         }
 
+        // Enviar código de verificación por email
         public async Task EnviarCodigoVerificacion(string destinatario)
         {
             string codigo = GenerarCodigo();

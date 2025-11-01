@@ -74,24 +74,6 @@ namespace MicheBytesRecipes.Managers
             panelContenedor.Controls.Add(tarjeta);
         }
 
-        // Ordenar por nombre
-        public void OrdenarPorNombre(bool ascendente = true)
-        {
-            var tarjetasOrdenadas = ascendente
-                ? tarjetas.OrderBy(t => t.NombreReceta).ToList()
-                : tarjetas.OrderByDescending(t => t.NombreReceta).ToList();
-
-            ReorganizarTarjetasEnPanel(tarjetasOrdenadas);
-        }
-
-        private void ReorganizarTarjetasEnPanel(List<ucRecetaTarjeta> tarjetasOrdenadas)
-        {
-            panelContenedor.SuspendLayout();
-            panelContenedor.Controls.Clear();
-            panelContenedor.Controls.AddRange(tarjetasOrdenadas.ToArray());
-            panelContenedor.ResumeLayout();
-        }
-
         private void MostrarMensajeVacio(string mensaje)
         {
             var lblVacio = new Label

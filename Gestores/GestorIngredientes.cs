@@ -57,7 +57,7 @@ namespace MicheBytesRecipes.Managers
                 using (MySqlCommand comando = new MySqlCommand("Insertar_ingrediente", conexion.GetConexion()))
                 //Usar procedimiento almacenado
                 {
-                    comando.CommandType = CommandType.StoredProcedure;// IMPORTANTE: Esto indica que es un procedimiento almacenado
+                    comando.CommandType = CommandType.StoredProcedure;
 
                     comando.Parameters.AddWithValue("@p_nombre", ingrediente.Nombre);
                     comando.Parameters.AddWithValue("@p_unidad_de_medida_id", ingrediente.Unidad.UnidadMedidaId);
@@ -84,7 +84,6 @@ namespace MicheBytesRecipes.Managers
             }
             return true;
         }
-
 
         //Metodo para saber si un ingrediente ya existe 
         public bool IngredienteExiste(string nombre)

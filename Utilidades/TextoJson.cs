@@ -13,7 +13,6 @@ namespace MicheBytesRecipes.Utilities
         public string Texto { get; set; }
         public int Tamaño { get; set; }
         public bool Negrita { get; set; }
-
     }
     public class JsonData
     {

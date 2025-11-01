@@ -41,6 +41,5 @@ namespace MicheBytesRecipes.Classes.Interacciones
         {
             return $"{Descripcion} (Usuario ID: {UsuarioId}, Receta ID: {RecetaId}, Fecha: {FechaComentario})";
         }
-
     }
 }

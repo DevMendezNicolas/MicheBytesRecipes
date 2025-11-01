@@ -98,7 +98,6 @@ namespace MicheBytesRecipes
                     //Tiempo (TimeSpan -> TIME)
                     comando.Parameters.AddWithValue("@p_tiempo_preparacion", receta.TiempoPreparacion);
                     comando.Parameters.AddWithValue("@p_dificultad", receta.NivelDificultad.ToString());
-                    //comando.Parameters.AddWithValue("@FechaRegistro", receta.FechaRegistro);
                     //Claves foraneas
                     comando.Parameters.AddWithValue("@p_pais_id", receta.PaisId);
                     comando.Parameters.AddWithValue("@p_categoria_id", receta.CategoriaId);
@@ -272,7 +271,7 @@ namespace MicheBytesRecipes
                 conexion.Cerrar();
             }
             return contador;
-        } // Verificar uso
+        } 
 
         //Metodos de mantenimiento
         public bool DarDeBajaReceta(int recetaId, int usuarioId)

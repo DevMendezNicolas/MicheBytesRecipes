@@ -17,6 +17,7 @@ namespace MicheBytesRecipes.Managers
         {
             conexion = new ConexionBD();
         }
+
         // Obtiene las métricas de las recetas activas (fechaBaja IS NULL)
         public List<Metricas> ObtenerMetricasActivas()
         {

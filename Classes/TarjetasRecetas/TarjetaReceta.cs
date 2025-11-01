@@ -19,7 +19,7 @@ namespace MicheBytesRecipes.Classes.TarjetasRecetas
 
         public TarjetaReceta() { }
 
-        // Constructor desde tu entidad Receta
+        // Constructor desde Receta
         public TarjetaReceta(Receta receta, GestorCatalogo catalogo)
         {
             RecetaId = receta.RecetaId;
@@ -30,6 +30,5 @@ namespace MicheBytesRecipes.Classes.TarjetasRecetas
             DificultadReceta = receta.NivelDificultad.ToString();
             ImagenReceta = receta.ImagenReceta;
         }
-
     }
 }

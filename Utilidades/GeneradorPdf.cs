@@ -31,7 +31,6 @@ namespace MicheBytesRecipes.Utilities
                 );
             }
         }
-
         public static void ExportarPDF(DataGridView dgv, string titulo = "Reporte", bool landscapeIfManyColumns = true)
         {
             try
@@ -213,7 +212,7 @@ namespace MicheBytesRecipes.Utilities
         {
             try
             {
-                // 📂 Crear carpeta de destino (Descargas o Escritorio)
+                // Crear carpeta de destino (Descargas o Escritorio)
                 string carpetaDescargas = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
                 string carpetaDestino = Directory.Exists(carpetaDescargas)
                     ? carpetaDescargas
@@ -232,7 +231,7 @@ namespace MicheBytesRecipes.Utilities
                     writer.PageEvent = new PdfHeaderFooter(nombreReceta);
                     doc.Open();
 
-                    // 🎨 Fuentes y colores
+                    //Fuentes y colores
                     BaseColor colorPrincipal = new BaseColor(240, 90, 40); // naranja suave
                     BaseColor colorSecundario = new BaseColor(80, 80, 80);
                     BaseColor colorFondo = new BaseColor(250, 250, 250);
@@ -242,7 +241,7 @@ namespace MicheBytesRecipes.Utilities
                     var fuenteTexto = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
                     var fuenteIngrediente = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.DARK_GRAY);
  
-                    // 🏷️ TÍTULO CENTRADO CON LÍNEA DECORATIVA
+                    // TÍTULO CENTRADO CON LÍNEA DECORATIVA
                     var titulo = new Paragraph(nombreReceta.ToUpper(), fuenteTitulo)
                     {
                         Alignment = Element.ALIGN_CENTER,
@@ -254,7 +253,7 @@ namespace MicheBytesRecipes.Utilities
                     var lineaTitulo = new LineSeparator(1f, 40f, colorPrincipal, Element.ALIGN_CENTER, -2);
                     doc.Add(new Chunk(lineaTitulo));
 
-                    // 📋 PANEL DE INFORMACIÓN PRINCIPAL
+                    // PANEL DE INFORMACIÓN PRINCIPAL
                     PdfPTable tablaInfo = new PdfPTable(2)
                     {
                         WidthPercentage = 85,
@@ -266,7 +265,7 @@ namespace MicheBytesRecipes.Utilities
                     // Fondo suave y bordes redondeados simulados con padding
                     BaseColor fondoInfo = new BaseColor(255, 247, 240); // color crema suave
 
-                    // 🧩 Función para agregar filas estilizadas
+                    // Función para agregar filas estilizadas
                     void AddInfo(string emoji, string label, string value)
                     {
                         var cellLabel = new PdfPCell(new Phrase($"{emoji} {label.ToUpper()}", fuenteSubtitulo))
@@ -298,7 +297,7 @@ namespace MicheBytesRecipes.Utilities
                     doc.Add(tablaInfo);
 
 
-                    // 🖼️ Imagen centrada
+                    // Imagen centrada
                     if (imagenReceta != null && imagenReceta.Length > 0)
                     {
                         try
@@ -317,7 +316,7 @@ namespace MicheBytesRecipes.Utilities
                         }
                     }
 
-                    // 🧾 BLOQUE DE DESCRIPCIÓN CON ESTILO TARJETA
+                    // BLOQUE DE DESCRIPCIÓN CON ESTILO TARJETA
                     PdfPTable tablaDescripcion = new PdfPTable(1)
                     {
                         WidthPercentage = 85,
@@ -329,7 +328,7 @@ namespace MicheBytesRecipes.Utilities
                     BaseColor fondoDescripcion = new BaseColor(255, 250, 245); // color cálido
                     BaseColor bordeDescripcion = new BaseColor(240, 90, 40);   // naranja principal
 
-                    // 📄 Título de la sección
+                    //Título de la sección
                     PdfPCell celdaTitulo = new PdfPCell(new Phrase("🧾 DESCRIPCIÓN", fuenteSubtitulo))
                     {
                         BackgroundColor = bordeDescripcion,
@@ -339,7 +338,7 @@ namespace MicheBytesRecipes.Utilities
                     };
                     celdaTitulo.Phrase.Font.Color = BaseColor.WHITE; // Texto blanco sobre fondo naranja
 
-                    // 📃 Texto descriptivo
+                    // Texto descriptivo
                     PdfPCell celdaTexto = new PdfPCell(new Phrase(descripcion ?? "Sin descripción disponible.", fuenteTexto))
                     {
                         BorderColor = bordeDescripcion,
@@ -353,7 +352,7 @@ namespace MicheBytesRecipes.Utilities
                     doc.Add(tablaDescripcion);
 
 
-                    // 🍽️ Ingredientes (versión estética mejorada)
+                    // Ingredientes
                     doc.Add(new Paragraph("\nIngredientes", fuenteSubtitulo)
                     {
                         Alignment = Element.ALIGN_CENTER,
@@ -417,10 +416,7 @@ namespace MicheBytesRecipes.Utilities
                         doc.Add(sinIngredientes);
                     }
 
-
-                    //doc.Add(new Paragraph("\nInstrucciones", fuenteSubtitulo) { SpacingBefore = 10f, SpacingAfter = 5f });
-                    //doc.Add(new Paragraph(instrucciones ?? "Sin instrucciones.", fuenteTexto));
-                    // 🍳 BLOQUE DE INSTRUCCIONES CON ESTILO TARJETA
+                    //BLOQUE DE INSTRUCCIONES CON ESTILO TARJETA
                     PdfPTable tablaInstrucciones = new PdfPTable(1)
                     {
                         WidthPercentage = 85,
@@ -431,7 +427,7 @@ namespace MicheBytesRecipes.Utilities
                     BaseColor fondoInstrucciones = new BaseColor(255, 255, 250); // fondo cálido claro
                     BaseColor bordeInstrucciones = new BaseColor(240, 90, 40);   // naranja principal
 
-                    // 🔹 Título con fondo naranja
+                    //Título con fondo naranja
                     PdfPCell celdaTituloInstr = new PdfPCell(new Phrase("🍳 INSTRUCCIONES", fuenteSubtitulo))
                     {
                         BackgroundColor = bordeInstrucciones,
@@ -441,7 +437,7 @@ namespace MicheBytesRecipes.Utilities
                     };
                     celdaTituloInstr.Phrase.Font.Color = BaseColor.WHITE;
 
-                    // 📖 Texto de las instrucciones
+                    // Texto de las instrucciones
                     PdfPCell celdaTextoInstr = new PdfPCell(new Phrase(instrucciones ?? "Sin instrucciones disponibles.", fuenteTexto))
                     {
                         BorderColor = bordeInstrucciones,
@@ -457,7 +453,7 @@ namespace MicheBytesRecipes.Utilities
                     doc.Add(tablaInstrucciones);
 
 
-                    // 🧾 Línea divisoria y pie
+                    // Línea divisoria y pie
                     var linea = new LineSeparator(1f, 100f, colorPrincipal, Element.ALIGN_CENTER, -2);
                     doc.Add(new Chunk(linea));
                     doc.Add(new Paragraph($"PDF generado el {DateTime.Now:dd/MM/yyyy HH:mm}", FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 9, BaseColor.GRAY))
@@ -468,7 +464,7 @@ namespace MicheBytesRecipes.Utilities
                     doc.Close();
                 }
 
-                // ✅ Abrir el PDF al finalizar
+                // Abrir el PDF al finalizar
                 if (File.Exists(rutaPdf))
                 {
                     var psi = new ProcessStartInfo
@@ -485,7 +481,6 @@ namespace MicheBytesRecipes.Utilities
                 MessageBox.Show($"Error al generar PDF de la receta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         } 
-
     }
 }
 

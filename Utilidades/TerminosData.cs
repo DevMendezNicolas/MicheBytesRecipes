@@ -8,7 +8,6 @@ namespace MicheBytesRecipes.Utilities
 {
     public class TerminosData
     {
-        
         public string titulo { get; set; }
         public string contenido { get; set; }
 

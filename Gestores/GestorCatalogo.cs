@@ -18,7 +18,6 @@ namespace MicheBytesRecipes.Managers
     {
         ConexionBD conexion = new ConexionBD();
 
-        //Metodos para obtener paises y categorias por ID
         public Pais ObtenerPaisPorId(int paisId)
         {
             try
@@ -274,8 +273,8 @@ namespace MicheBytesRecipes.Managers
                     {
                         Categoria categoria = new Categoria
                         {
-                            CategoriaId = lector.GetInt32("categoria_id"), // <- nombre real en la vista
-                            Nombre = lector.GetString("nombre")            // <- nombre real en la vista
+                            CategoriaId = lector.GetInt32("categoria_id"),
+                            Nombre = lector.GetString("nombre")
                         };
                         categorias.Add(categoria);
                     }

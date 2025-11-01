@@ -10,7 +10,6 @@ namespace MicheBytesRecipes.Connections
     internal class ConexionBD
     {
         private MySqlConnection conexion;
-
         public ConexionBD()
         {
             //se arma el string/cadena de conexion (se puede googlear y se adapta)
@@ -34,8 +33,6 @@ namespace MicheBytesRecipes.Connections
                 throw new Exception("Error al abrir la conexión a la base de datos", ex);
             }
         }
-
-
         public void Cerrar()
         {
             if (conexion.State == System.Data.ConnectionState.Open)

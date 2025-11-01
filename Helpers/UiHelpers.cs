@@ -12,7 +12,6 @@ namespace MicheBytesRecipes.Helpers
     public class UiHelpers
     {
         // Redondea un panel
-
         public static void SetRoundedPanel(Panel panel, int radius)
         {
             panel.Paint += (s, e) =>
@@ -35,6 +34,5 @@ namespace MicheBytesRecipes.Helpers
             };
             panel.Invalidate();
         }
-
     }
 }

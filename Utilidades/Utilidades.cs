@@ -17,9 +17,5 @@ namespace MicheBytesRecipes.Utilities
             return char.ToUpper(texto[0]) + texto.Substring(1).ToLower();
             //Convierto la primera letra a mayuscula y el resto a minuscula
         } 
-
-
-
-
     }
 }

@@ -104,7 +104,7 @@ namespace MicheBytesRecipes.Helpers
             BotonCancelar = Color.FromArgb(180, 100, 100),      // Rojo terracota
 
             // Labels
-            LabelTitulo = Color.FromArgb(255, 180, 80),         // Naranja dorado (acento)
+            LabelTitulo = Color.FromArgb(255, 180, 80),         // Naranja dorado
             LabelSubtitulo = Color.FromArgb(160, 200, 220),     // Azul cielo
             LabelRelleno = Color.FromArgb(120, 180, 220),       // Azul claro
         };
@@ -140,7 +140,6 @@ namespace MicheBytesRecipes.Helpers
 
         private static void AplicarTemaAControl(Control control)
         {
-            // PANELES CON TAGS ESPECÍFICOS
             if (control is Panel || control is GroupBox || control is TabPage)
             {
                 AplicarTemaAPanel(control);

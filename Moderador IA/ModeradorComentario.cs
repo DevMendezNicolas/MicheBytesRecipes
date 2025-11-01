@@ -16,8 +16,6 @@ namespace MicheBytesRecipes.Moderador_IA
         private readonly HttpClient _clienteHttp;
         private readonly string _claveAPI = "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";
         private const string URL_API = "https://api-inference.huggingface.co/models/";
-
-        // ✅ Ruta CORREGIDA - dentro de la carpeta "Moderador IA"
         private readonly string registroComentarios = @"Moderador IA\registroComentarios.json";
 
         public ModeradorComentarios()
@@ -26,7 +24,7 @@ namespace MicheBytesRecipes.Moderador_IA
             _clienteHttp.DefaultRequestHeaders.Add("Authorization", $"Bearer {_claveAPI}");
             _clienteHttp.Timeout = TimeSpan.FromSeconds(30);
 
-            // ✅ Asegurar que la carpeta existe
+            //Asegurar que la carpeta existe
             AsegurarDirectorio();
         }
 
@@ -34,7 +32,7 @@ namespace MicheBytesRecipes.Moderador_IA
         {
             try
             {
-                // ✅ Usar _archivoRegistro (la variable de clase)
+                // Usar _archivoRegistro (la variable de clase)
                 var directorio = Path.GetDirectoryName(registroComentarios);
                 if (!string.IsNullOrEmpty(directorio) && !Directory.Exists(directorio))
                 {
@@ -157,5 +155,4 @@ namespace MicheBytesRecipes.Moderador_IA
             return new List<ComentarioEliminado>();
         }
     }
-
 }

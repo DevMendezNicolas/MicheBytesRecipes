@@ -30,7 +30,5 @@ namespace MicheBytesRecipes
         {
             return this.PaisId.GetHashCode();
         }
-
-
     }
 }

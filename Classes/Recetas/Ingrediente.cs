@@ -15,9 +15,6 @@ namespace MicheBytesRecipes
         public UnidadMedida Unidad { get; set; } //Creo una propiedad de tipo UnidadMedida
         public TipoIngrediente Tipo { get; set; } //Creo una propiedad de tipo TipoIngrediente
 
-
-
-        //Constructor de la clase Ingrediente
         public Ingrediente(){}
         public Ingrediente(string nombre)
         {
