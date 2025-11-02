@@ -405,7 +405,7 @@ namespace MicheBytesRecipes
             }
             return recetas;
         }
-        public List<PreReceta> ObtenerPreRecetasFiltradas(string nombre, int paisId, int categoriaId, Dificultad? dificultad)
+        public List<PreReceta> ObtenerPreRecetasFiltradas(string nombre, int paisId, int categoriaId, Dificultad? dificultad, bool activas)
         {
             List<PreReceta> recetas = new List<PreReceta>();
 
@@ -420,6 +420,14 @@ namespace MicheBytesRecipes
                 {
                     consulta += " AND LOWER(nombre) LIKE CONCAT('%', LOWER(@Nombre), '%')";
                     parametros.Add(new MySqlParameter("@Nombre", nombre));
+                }
+                if (activas)
+                {
+                    consulta += " AND fecha_baja IS NULL";
+                }
+                else
+                {
+                    consulta += " AND fecha_baja IS NOT NULL";
                 }
 
                 if (paisId > 0)

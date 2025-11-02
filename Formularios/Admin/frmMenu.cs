@@ -131,7 +131,7 @@ namespace MicheBytesRecipes
                 }
 
                 // Llamada al método del gestor
-                List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad);
+                List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad, recetasActivas);
 
                 // Mostrar resultados en el DataGridView
                 dgvReceta.Rows.Clear();

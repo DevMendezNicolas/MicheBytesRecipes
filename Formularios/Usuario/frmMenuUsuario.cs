@@ -161,7 +161,7 @@ namespace MicheBytesRecipes.Forms.User
                 }
 
                 // Llamada al método del gestor
-                List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad);
+                List<PreReceta> recetasFiltradas = gestorReceta.ObtenerPreRecetasFiltradas(nombre, paisId, categoriaId, dificultad, true);
 
                 // Mostrar resultados en tarjetas
                 gestorTarjetas.LimpiarTarjetas();
