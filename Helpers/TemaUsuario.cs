@@ -178,13 +178,6 @@ namespace MicheBytesRecipes.Helpers
                 control.ForeColor = TemaActual.TextoCajaTexto;
             }
 
-            // CheckBox y RadioButton
-            else if (control is CheckBox || control is RadioButton)
-            {
-                control.ForeColor = TemaActual.TextoPrincipal;
-                control.BackColor = Color.Transparent;
-            }
-
             // PictureBox (común en interfaces de usuario)
             else if (control is PictureBox)
             {

@@ -125,7 +125,7 @@
             this.chkTerminos.BackColor = System.Drawing.Color.Orange;
             this.chkTerminos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTerminos.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkTerminos.ForeColor = System.Drawing.Color.White;
+            this.chkTerminos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chkTerminos.Location = new System.Drawing.Point(85, 538);
             this.chkTerminos.Name = "chkTerminos";
             this.chkTerminos.Size = new System.Drawing.Size(193, 27);
