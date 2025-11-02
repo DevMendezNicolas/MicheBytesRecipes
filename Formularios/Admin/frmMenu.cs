@@ -162,6 +162,11 @@ namespace MicheBytesRecipes
 
         private void btnAct_Click(object sender, EventArgs e)
         {
+            cboCategoria.SelectedIndex = 0;
+            cboDificultad.SelectedIndex = 0;
+            cboPais.SelectedIndex = 0;
+            txtBuscarReceta.Text = "";
+            CueProvider.SetCue(txtBuscarReceta, "Ej: Fideos con tuco, Milanesa a la napolitana...");
             recetasActivas = !recetasActivas;
             btnAct.Text = recetasActivas ? "Ver Inactivas" : "Ver Activas";
             btnEliminar.Text = recetasActivas ? "Dar baja" : "Dar alta";
