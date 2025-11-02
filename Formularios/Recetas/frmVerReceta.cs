@@ -83,7 +83,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             // Estetica RichTextBox Instrucciones
             rtbInstrucciones.BorderStyle = BorderStyle.FixedSingle; // Borde definido
-            rtbInstrucciones.Font = new Font("Segoe UI", 10, FontStyle.Regular);      // Tipografía moderna y legible
+            rtbInstrucciones.Font = new Font("Segoe UI", 14, FontStyle.Regular);      // Tipografía moderna y legible
             rtbInstrucciones.ReadOnly = true;                      // Solo lectura
             rtbInstrucciones.ScrollBars = RichTextBoxScrollBars.Vertical; // Scroll vertical
             rtbInstrucciones.WordWrap = true;                      // Ajuste de línea
