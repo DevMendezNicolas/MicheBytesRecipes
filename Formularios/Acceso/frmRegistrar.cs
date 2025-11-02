@@ -60,6 +60,9 @@ namespace MicheBytesRecipes.Forms.Auth
             AsignarTags();
             GestorTemaUsuario.AplicarTema(this);
             GestorTemaUsuario.TemaCambiado += () => GestorTemaUsuario.AplicarTema(this);
+            
+
+
         }
         private void AsignarTags()
         {

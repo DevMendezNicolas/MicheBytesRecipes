@@ -52,6 +52,7 @@
             this.btnViewContra = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblTexto = new System.Windows.Forms.Label();
             this.lblRelleno = new System.Windows.Forms.Label();
@@ -59,11 +60,10 @@
             this.ofdFotoPerfil = new System.Windows.Forms.OpenFileDialog();
             this.eprCampos = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTipCajas = new System.Windows.Forms.ToolTip(this.components);
-            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.pnlRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprCampos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
             this.SuspendLayout();
             // 
             // txtApellido
@@ -122,6 +122,7 @@
             // 
             this.chkTerminos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkTerminos.AutoSize = true;
+            this.chkTerminos.BackColor = System.Drawing.Color.Orange;
             this.chkTerminos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTerminos.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTerminos.ForeColor = System.Drawing.Color.White;
@@ -130,7 +131,7 @@
             this.chkTerminos.Size = new System.Drawing.Size(193, 27);
             this.chkTerminos.TabIndex = 7;
             this.chkTerminos.Text = "He leído y acepto los";
-            this.chkTerminos.UseVisualStyleBackColor = true;
+            this.chkTerminos.UseVisualStyleBackColor = false;
             // 
             // lblLinkTerminos
             // 
@@ -372,6 +373,18 @@
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
+            // pbxFotoPerfil
+            // 
+            this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxFotoPerfil.Image = global::MicheBytesRecipes.Properties.Resources.Create_a_friendly__o4;
+            this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
+            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
+            this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
+            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFotoPerfil.TabIndex = 1;
+            this.pbxFotoPerfil.TabStop = false;
+            this.pbxFotoPerfil.Click += new System.EventHandler(this.pbxFotoPerfil_Click);
+            // 
             // pnlLeft
             // 
             this.pnlLeft.BackColor = System.Drawing.Color.Orange;
@@ -433,18 +446,6 @@
             // 
             this.toolTipCajas.IsBalloon = true;
             // 
-            // pbxFotoPerfil
-            // 
-            this.pbxFotoPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxFotoPerfil.Image = global::MicheBytesRecipes.Properties.Resources.Create_a_friendly__o4;
-            this.pbxFotoPerfil.Location = new System.Drawing.Point(235, 61);
-            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
-            this.pbxFotoPerfil.Size = new System.Drawing.Size(123, 88);
-            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxFotoPerfil.TabIndex = 1;
-            this.pbxFotoPerfil.TabStop = false;
-            this.pbxFotoPerfil.Click += new System.EventHandler(this.pbxFotoPerfil_Click);
-            // 
             // frmRegistrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -464,9 +465,9 @@
             this.Load += new System.EventHandler(this.FrmRegister_Load);
             this.pnlRight.ResumeLayout(false);
             this.pnlRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).EndInit();
             this.pnlLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.eprCampos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).EndInit();
             this.ResumeLayout(false);
 
         }
