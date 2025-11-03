@@ -170,7 +170,7 @@
             this.Controls.Add(this.pbImagenReceta);
             this.Name = "ucRecetaTarjeta";
             this.Size = new System.Drawing.Size(170, 240);
-            this.Click += new System.EventHandler(this.UcRecetaTarjeta_Click);
+            this.DoubleClick += new System.EventHandler(this.ucRecetaTarjeta_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenReceta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
