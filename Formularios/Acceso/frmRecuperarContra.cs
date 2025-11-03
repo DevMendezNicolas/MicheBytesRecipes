@@ -1,5 +1,6 @@
 ﻿using MicheBytesRecipes.Helpers;
 using MicheBytesRecipes.Managers;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -186,7 +187,7 @@ namespace MicheBytesRecipes.Forms.Auth
                 string nuevaContraHash = gestorUsuarios.HashearContraseña(nuevaContraseña);
 
                 bool resultado = gestorUsuarios.OlvideMiContraseña(emailRecupero, nuevaContraHash);
-
+                
                 if (resultado)
                 {
                     MessageBox.Show("Su contraseña ha sido actualizada exitosamente.", "✅ Contraseña Actualizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
