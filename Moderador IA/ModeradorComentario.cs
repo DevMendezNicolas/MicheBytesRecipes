@@ -14,7 +14,7 @@ namespace MicheBytesRecipes.Moderador_IA
     public class ModeradorComentarios
     {
         private readonly HttpClient _clienteHttp;
-        private readonly string _claveAPI = "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";
+        private readonly string _claveAPI = "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";
         private const string URL_API = "https://api-inference.huggingface.co/models/";
         private readonly string registroComentarios = @"Moderador IA\registroComentarios.json";
 
