@@ -23,7 +23,6 @@ namespace MicheBytesRecipes.Forms.User
         GestorTarjetasRecetas gestorTarjetas;
         private bool cierrePorSesion = false;
         private Usuario usuarioLog;
-        private bool recetasActivas = true;
         private bool mostrarFavoritas = false;
         public frmMenuUsuario(Usuario usuarioActivado)
         {
@@ -95,7 +94,7 @@ namespace MicheBytesRecipes.Forms.User
             cboDificultad.SelectedIndex = 0;
 
             // --- Cargar las tarjetas al inicio ---
-            recetasActivas = true;
+            
             this.CargarRecetas();
 
         }
