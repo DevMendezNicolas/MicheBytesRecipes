@@ -15,16 +15,17 @@ namespace MicheBytesRecipes.Forms.User
     public partial class ucRecetaTarjeta : UserControl
     {
         public event EventHandler VerDetallesClick;
-
+        private bool _clickEnProceso = false;
+        private readonly int _delayClick = 400;
         public ucRecetaTarjeta()
         {
             InitializeComponent();
             this.Size = new Size(170, 240);
             this.Margin = new Padding(8);
-            // Propagar evento de click a todos los controles
-            this.DoubleClick += ucRecetaTarjeta_DoubleClick;
+
+            this.Click += UcRecetaTarjeta_Click;
             foreach (Control ctrl in this.Controls)
-                ctrl.DoubleClick += ucRecetaTarjeta_DoubleClick;
+                ctrl.Click += UcRecetaTarjeta_Click;
         }
 
         public int RecetaId { get; set; }
@@ -85,15 +86,63 @@ namespace MicheBytesRecipes.Forms.User
                 }
                 else
                 {
-                    pbImagenReceta.Image = null;
+                    // Cargar imagen por defecto cuando value es null o vacío
+                    CargarImagenDefaultEnPictureBox();
                 }
             }
         }
 
-       
-        private void ucRecetaTarjeta_DoubleClick(object sender, EventArgs e)
+        private void CargarImagenDefaultEnPictureBox()
         {
-            VerDetallesClick?.Invoke(this, EventArgs.Empty);
+            string[] imagenesDefault = { "recetaDefault.png", "recetaDefault2.png", "recetaDefault3.png" };
+            int indiceImagen = (RecetaId % imagenesDefault.Length);
+
+            string imagenElegida = imagenesDefault[indiceImagen];
+            string rutaImagen = Path.Combine(Application.StartupPath, "Imagenes", imagenElegida);
+
+            if (File.Exists(rutaImagen))
+            {
+                pbImagenReceta.Image = Image.FromFile(rutaImagen);
+            }
+            else
+            {
+                // Buscar cualquier imagen disponible
+                foreach (string imagen in imagenesDefault)
+                {
+                    rutaImagen = Path.Combine(Application.StartupPath, "Imagenes", imagen);
+                    if (File.Exists(rutaImagen))
+                    {
+                        pbImagenReceta.Image = Image.FromFile(rutaImagen);
+                        break;
+                    }
+                }
+
+                if (pbImagenReceta.Image == null)
+                {
+                    pbImagenReceta.BackColor = Color.LightGray;
+                }
+            }
+
+            pbImagenReceta.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private async void UcRecetaTarjeta_Click(object sender, EventArgs e)
+        {
+            if (_clickEnProceso) return;
+
+            _clickEnProceso = true;
+
+            try
+            {
+                VerDetallesClick?.Invoke(this, EventArgs.Empty);
+
+                // Esperar antes de permitir otro click
+                await Task.Delay(_delayClick);
+            }
+            finally
+            {
+                _clickEnProceso = false;
+            }
         }
     }
 }

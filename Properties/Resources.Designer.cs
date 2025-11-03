@@ -153,6 +153,16 @@ namespace MicheBytesRecipes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap recetaDefault {
+            get {
+                object obj = ResourceManager.GetObject("recetaDefault", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap replica_del_logo_en_ {
             get {
                 object obj = ResourceManager.GetObject("replica_del_logo_en_", resourceCulture);

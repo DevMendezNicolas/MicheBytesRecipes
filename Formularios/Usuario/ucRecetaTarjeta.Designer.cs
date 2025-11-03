@@ -102,9 +102,11 @@
             // pbImagenReceta
             // 
             this.pbImagenReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImagenReceta.Image = global::MicheBytesRecipes.Properties.Resources.recetaDefault;
             this.pbImagenReceta.Location = new System.Drawing.Point(20, 55);
             this.pbImagenReceta.Name = "pbImagenReceta";
             this.pbImagenReceta.Size = new System.Drawing.Size(128, 74);
+            this.pbImagenReceta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagenReceta.TabIndex = 0;
             this.pbImagenReceta.TabStop = false;
             // 
@@ -170,7 +172,6 @@
             this.Controls.Add(this.pbImagenReceta);
             this.Name = "ucRecetaTarjeta";
             this.Size = new System.Drawing.Size(170, 240);
-            this.DoubleClick += new System.EventHandler(this.ucRecetaTarjeta_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenReceta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
