@@ -33,11 +33,11 @@
             this.lblPais = new System.Windows.Forms.Label();
             this.lblDificultad = new System.Windows.Forms.Label();
             this.lblTiempo = new System.Windows.Forms.Label();
-            this.pbImagenReceta = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbImagenReceta = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenReceta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,15 +99,6 @@
             this.lblTiempo.TabIndex = 5;
             this.lblTiempo.Text = "Tiempo";
             // 
-            // pbImagenReceta
-            // 
-            this.pbImagenReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImagenReceta.Location = new System.Drawing.Point(20, 55);
-            this.pbImagenReceta.Name = "pbImagenReceta";
-            this.pbImagenReceta.Size = new System.Drawing.Size(128, 74);
-            this.pbImagenReceta.TabIndex = 0;
-            this.pbImagenReceta.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -151,6 +142,17 @@
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 5;
             this.label4.Text = "Tiempo:";
+            // 
+            // pbImagenReceta
+            // 
+            this.pbImagenReceta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImagenReceta.Image = global::MicheBytesRecipes.Properties.Resources.recetaDefault;
+            this.pbImagenReceta.Location = new System.Drawing.Point(20, 55);
+            this.pbImagenReceta.Name = "pbImagenReceta";
+            this.pbImagenReceta.Size = new System.Drawing.Size(128, 74);
+            this.pbImagenReceta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagenReceta.TabIndex = 0;
+            this.pbImagenReceta.TabStop = false;
             // 
             // ucRecetaTarjeta
             // 

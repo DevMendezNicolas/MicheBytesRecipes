@@ -124,14 +124,17 @@
   <data name="replica_del_logo_en_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\replica_del_logo_en_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_editable_con_le1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\logo_editable_con_le.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Create a friendly, o4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Create a friendly, o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_editable_con_le" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="logo_editable_con_le1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\logo_editable_con_le.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo_para_softwar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\logo_para_softwar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imagenReceta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagenReceta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Create a friendly, o" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Create a friendly, o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,10 +145,13 @@
   <data name="Create a friendly, o2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\Create a friendly, o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logo_editable_con_le" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\logo_editable_con_le.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Cute_and_animated_lo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Cute_and_animated_lo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Create a friendly, o4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Create a friendly, o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="recetaDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\recetaDefault.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

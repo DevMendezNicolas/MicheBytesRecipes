@@ -86,9 +86,45 @@ namespace MicheBytesRecipes.Forms.User
                 }
                 else
                 {
-                    pbImagenReceta.Image = null;
+                    // Cargar imagen por defecto cuando value es null o vacío
+                    CargarImagenDefaultEnPictureBox();
                 }
             }
+        }
+
+        private void CargarImagenDefaultEnPictureBox()
+        {
+            // Usar la ruta base de la aplicación
+            string defaultImagePath = Path.Combine(Application.StartupPath, "Imagenes", "recetaDefault.png");
+
+            if (File.Exists(defaultImagePath))
+            {
+                pbImagenReceta.Image = Image.FromFile(defaultImagePath);
+            }
+            else
+            {
+                // Si no existe, intentar con rutas alternativas
+                string[] posiblesRutas = {
+            Path.Combine("Imagenes", "recetaDefault.png"),
+            Path.Combine("..", "Imagenes", "recetaDefault.png"),
+            Path.Combine("..", "..", "Imagenes", "recetaDefault.png")
+        };
+
+                foreach (string ruta in posiblesRutas)
+                {
+                    if (File.Exists(ruta))
+                    {
+                        pbImagenReceta.Image = Image.FromFile(ruta);
+                        break;
+                    }
+                }
+
+                if (pbImagenReceta.Image == null)
+                {
+                    pbImagenReceta.BackColor = Color.LightGray;
+                }
+            }
+            pbImagenReceta.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void UcRecetaTarjeta_Click(object sender, EventArgs e)

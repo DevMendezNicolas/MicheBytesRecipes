@@ -123,6 +123,16 @@ namespace MicheBytesRecipes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imagenReceta {
+            get {
+                object obj = ResourceManager.GetObject("imagenReceta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_editable_con_le {
             get {
                 object obj = ResourceManager.GetObject("logo_editable_con_le", resourceCulture);
@@ -146,6 +156,16 @@ namespace MicheBytesRecipes.Properties {
         internal static System.Drawing.Bitmap logo_para_softwar {
             get {
                 object obj = ResourceManager.GetObject("logo_para_softwar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap recetaDefault {
+            get {
+                object obj = ResourceManager.GetObject("recetaDefault", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

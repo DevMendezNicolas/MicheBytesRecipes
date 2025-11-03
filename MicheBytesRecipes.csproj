@@ -266,6 +266,10 @@
     <Compile Include="Utilidades\TerminosData.cs" />
     <Compile Include="Utilidades\TextoJson.cs" />
     <Compile Include="Utilidades\Utilidades.cs" />
+    <EmbeddedResource Include="Imagenes\recetaDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Resources\imagenReceta.png" />
     <None Include="logo_editable_con_le.png" />
     <None Include="Moderador IA\registroComentarios.json" />
     <None Include="replica_del_logo_en_.png" />
@@ -356,8 +360,6 @@
   <ItemGroup>
     <Content Include="Cute_and_animated_lo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Imagenes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
