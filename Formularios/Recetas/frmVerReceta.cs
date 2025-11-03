@@ -73,7 +73,7 @@ namespace MicheBytesRecipes.Classes.Recetas
 
             // Estetica comentarios
             lstComentarios.MultiColumn = false;                  // Vista vertical
-            lstComentarios.HorizontalScrollbar = false;          // Sin scroll horizontal
+            lstComentarios.HorizontalScrollbar = true;           // Con scroll horizontal
             lstComentarios.ScrollAlwaysVisible = true;           // Scroll vertical siempre visible
             lstComentarios.BorderStyle = BorderStyle.FixedSingle; // Borde limpio y definido
             lstComentarios.Font = new Font("Segoe UI", 10);      // Tipografía moderna y legible
@@ -91,6 +91,7 @@ namespace MicheBytesRecipes.Classes.Recetas
             rtbInstrucciones.WordWrap = true;                      // Ajuste de línea
             rtbInstrucciones.HideSelection = false;                // Mantiene selección visible al perder foco
 
+           
 
             // Verificar si ya dio "Me Gusta"
             if (gestorInteracciones.TieneMeGusta(receta.RecetaId, usuario.UsuarioId))

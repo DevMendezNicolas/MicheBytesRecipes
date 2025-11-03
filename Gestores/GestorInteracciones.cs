@@ -183,7 +183,7 @@ namespace MicheBytesRecipes.Managers
             {
                 conexion.Abrir();
                 string consultaMeGusta = " SELECT COUNT(*) FROM vista_me_gustas WHERE receta_id = @recetaId AND usuario_id = @usuarioId";
-
+                
                 using (MySqlCommand comando = new MySqlCommand(consultaMeGusta, conexion.GetConexion()))
                 {
                     comando.Parameters.AddWithValue("@recetaId", recetaId);
@@ -302,7 +302,6 @@ namespace MicheBytesRecipes.Managers
                 conexion.Cerrar();
             }
         }
-
         public void AgregarVisitaAlHistorial(int recetaId, int usuarioId)
         {
             try

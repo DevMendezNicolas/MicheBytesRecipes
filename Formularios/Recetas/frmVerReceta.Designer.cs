@@ -341,10 +341,12 @@
             // lstComentarios
             // 
             this.lstComentarios.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lstComentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstComentarios.FormattingEnabled = true;
+            this.lstComentarios.ItemHeight = 16;
             this.lstComentarios.Location = new System.Drawing.Point(517, 47);
             this.lstComentarios.Name = "lstComentarios";
-            this.lstComentarios.Size = new System.Drawing.Size(502, 134);
+            this.lstComentarios.Size = new System.Drawing.Size(502, 132);
             this.lstComentarios.TabIndex = 25;
             this.lstComentarios.Click += new System.EventHandler(this.lstComentarios_Click);
             this.lstComentarios.SelectedIndexChanged += new System.EventHandler(this.lstComentarios_SelectedIndexChanged);
@@ -389,6 +391,7 @@
             // txtComentario
             // 
             this.txtComentario.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComentario.Location = new System.Drawing.Point(25, 47);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
