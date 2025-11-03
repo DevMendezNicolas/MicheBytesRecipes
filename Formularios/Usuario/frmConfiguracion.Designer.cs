@@ -203,12 +203,11 @@
             // 
             // lblCambiarContra
             // 
-            this.lblCambiarContra.AutoSize = true;
             this.lblCambiarContra.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCambiarContra.ForeColor = System.Drawing.Color.Orange;
             this.lblCambiarContra.Location = new System.Drawing.Point(77, 399);
             this.lblCambiarContra.Name = "lblCambiarContra";
-            this.lblCambiarContra.Size = new System.Drawing.Size(216, 25);
+            this.lblCambiarContra.Size = new System.Drawing.Size(397, 25);
             this.lblCambiarContra.TabIndex = 16;
             this.lblCambiarContra.Text = "🔒 Cambiar contraseña";
             // 
