@@ -266,9 +266,15 @@
     <Compile Include="Utilidades\TerminosData.cs" />
     <Compile Include="Utilidades\TextoJson.cs" />
     <Compile Include="Utilidades\Utilidades.cs" />
-    <EmbeddedResource Include="Imagenes\recetaDefault.png">
+    <Content Include="Imagenes\recetaDefault.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
+    <Content Include="Imagenes\recetaDefault2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\recetaDefault3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\imagenReceta.png" />
     <None Include="logo_editable_con_le.png" />
     <None Include="Moderador IA\registroComentarios.json" />

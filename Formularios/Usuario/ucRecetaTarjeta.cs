@@ -93,39 +93,38 @@ namespace MicheBytesRecipes.Forms.User
         }
 
         private void CargarImagenDefaultEnPictureBox()
+{
+    string[] imagenesDefault = { "recetaDefault.png", "recetaDefault2.png", "recetaDefault3.png" };
+    int indiceImagen = (RecetaId % imagenesDefault.Length);
+    
+    string imagenElegida = imagenesDefault[indiceImagen];
+    string rutaImagen = Path.Combine(Application.StartupPath, "Imagenes", imagenElegida);
+    
+    if (File.Exists(rutaImagen))
+    {
+        pbImagenReceta.Image = Image.FromFile(rutaImagen);
+    }
+    else
+    {
+        // Buscar cualquier imagen disponible
+        foreach (string imagen in imagenesDefault)
         {
-            // Usar la ruta base de la aplicación
-            string defaultImagePath = Path.Combine(Application.StartupPath, "Imagenes", "recetaDefault.png");
-
-            if (File.Exists(defaultImagePath))
+            rutaImagen = Path.Combine(Application.StartupPath, "Imagenes", imagen);
+            if (File.Exists(rutaImagen))
             {
-                pbImagenReceta.Image = Image.FromFile(defaultImagePath);
+                pbImagenReceta.Image = Image.FromFile(rutaImagen);
+                break;
             }
-            else
-            {
-                // Si no existe, intentar con rutas alternativas
-                string[] posiblesRutas = {
-            Path.Combine("Imagenes", "recetaDefault.png"),
-            Path.Combine("..", "Imagenes", "recetaDefault.png"),
-            Path.Combine("..", "..", "Imagenes", "recetaDefault.png")
-        };
-
-                foreach (string ruta in posiblesRutas)
-                {
-                    if (File.Exists(ruta))
-                    {
-                        pbImagenReceta.Image = Image.FromFile(ruta);
-                        break;
-                    }
-                }
-
-                if (pbImagenReceta.Image == null)
-                {
-                    pbImagenReceta.BackColor = Color.LightGray;
-                }
-            }
-            pbImagenReceta.SizeMode = PictureBoxSizeMode.StretchImage;
         }
+        
+        if (pbImagenReceta.Image == null)
+        {
+            pbImagenReceta.BackColor = Color.LightGray;
+        }
+    }
+    
+    pbImagenReceta.SizeMode = PictureBoxSizeMode.StretchImage;
+}
 
         private void UcRecetaTarjeta_Click(object sender, EventArgs e)
         {
