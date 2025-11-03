@@ -22,9 +22,9 @@ namespace MicheBytesRecipes.Forms.User
             this.Size = new Size(170, 240);
             this.Margin = new Padding(8);
             // Propagar evento de click a todos los controles
-            this.Click += UcRecetaTarjeta_Click;
+            this.DoubleClick += ucRecetaTarjeta_DoubleClick;
             foreach (Control ctrl in this.Controls)
-                ctrl.Click += UcRecetaTarjeta_Click;
+                ctrl.DoubleClick += ucRecetaTarjeta_DoubleClick;
         }
 
         public int RecetaId { get; set; }
@@ -90,7 +90,13 @@ namespace MicheBytesRecipes.Forms.User
             }
         }
 
-        private void UcRecetaTarjeta_Click(object sender, EventArgs e)
+        //private void UcRecetaTarjeta_Click(object sender, EventArgs e)
+        //{
+        //    VerDetallesClick?.Invoke(this, EventArgs.Empty);
+        //}
+
+      
+        private void ucRecetaTarjeta_DoubleClick(object sender, EventArgs e)
         {
             VerDetallesClick?.Invoke(this, EventArgs.Empty);
         }
