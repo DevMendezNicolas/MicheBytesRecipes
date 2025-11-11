@@ -1,0 +1,578 @@
+[
+  {
+  "RecetaId": 1,
+  "Nombre": "Arroz salteado con verduras",
+  "PaisId": 7,
+  "CategoriaId": 9,
+  "UsuarioId": 1,
+  "Descripcion": "Arroz cocido con vegetales frescos y sazonado con sal.",
+  "Instrucciones": "1. Lavar y cocinar el arroz en agua con una pizca de sal hasta que esté tierno.\n2. Picar zanahoria y tomate en cubos pequeños.\n3. Calentar una sartén con un poco de aceite y saltear las verduras hasta que estén tiernas pero crujientes.\n4. Mezclar el arroz con las verduras salteadas y añadir una cucharada de sal al gusto.\n5. Servir caliente acompañado de hojas frescas de lechuga si se desea.",
+  "TiempoPreparacion": "00:30:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 4, "Nombre": "Arroz", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 3, "Nombre": "Zanahoria", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Tazas" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } },
+    { "IngredienteId": 11, "Nombre": "Lechuga", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } }
+  ]
+},
+  {
+  "RecetaId": 2,
+  "Nombre": "Pollo a la sal",
+  "PaisId": 2,
+  "CategoriaId": 3,
+  "UsuarioId": 1,
+  "Descripcion": "Pollo cocido lentamente cubierto con sal gruesa para mantener su jugosidad.",
+  "Instrucciones": "1. Precalentar el horno a 180°C.\n2. Limpiar las pechugas de pollo y cubrirlas completamente con una capa de sal gruesa.\n3. Colocar el pollo en una fuente resistente al calor y hornear durante 50-60 minutos.\n4. Retirar del horno y dejar reposar 5 minutos antes de romper la costra de sal.\n5. Servir acompañado de arroz blanco o vegetales al vapor.",
+  "TiempoPreparacion": "01:00:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 2, "Nombre": "Pollo", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+  "RecetaId": 3,
+  "Nombre": "Zanahoria rallada con leche",
+  "PaisId": 11,
+  "CategoriaId": 1,
+  "UsuarioId": 1,
+  "Descripcion": "Postre fresco y nutritivo a base de zanahoria y leche.",
+  "Instrucciones": "1. Pelar y rallar las zanahorias finamente.\n2. Calentar la leche en una cacerola sin que hierva.\n3. Agregar la zanahoria rallada a la leche caliente y cocinar a fuego bajo durante 10 minutos, revolviendo constantemente.\n4. Añadir azúcar al gusto y mezclar bien.\n5. Servir frío en copas individuales y decorar con canela si se desea.",
+  "TiempoPreparacion": "00:15:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 3, "Nombre": "Zanahoria", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 54, "Nombre": "Canela", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+  "RecetaId": 4,
+  "Nombre": "Arroz con zanahoria",
+  "PaisId": 3,
+  "CategoriaId": 5,
+  "UsuarioId": 1,
+  "Descripcion": "Guarnición simple y sabrosa, combinando arroz con zanahoria rallada.",
+  "Instrucciones": "1. Lavar y cocinar el arroz en agua con una pizca de sal hasta que esté suelto.\n2. Pelar y rallar la zanahoria.\n3. Calentar un poco de aceite en una sartén y saltear la zanahoria durante 3-4 minutos.\n4. Mezclar el arroz cocido con la zanahoria salteada y ajustar la sal al gusto.\n5. Servir caliente como acompañamiento de carnes o platos principales.",
+  "TiempoPreparacion": "00:30:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 4, "Nombre": "Arroz", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 3, "Nombre": "Zanahoria", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Tazas" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } }
+  ]
+},
+  {
+  "RecetaId": 5,
+  "Nombre": "Tarta de manzana",
+  "PaisId": 6,
+  "CategoriaId": 1,
+  "UsuarioId": 1,
+  "Descripcion": "Clásica tarta dulce con relleno de manzanas y canela.",
+  "Instrucciones": "1. Preparar la masa mezclando harina, levadura y azúcar con un poco de leche hasta formar una masa homogénea.\n2. Pelar y cortar las manzanas en láminas finas y colocarlas sobre la masa estirada en un molde.\n3. Espolvorear azúcar sobre las manzanas y añadir un toque de canela.\n4. Hornear a 180°C durante 35 minutos hasta que la masa esté dorada y las manzanas tiernas.\n5. Dejar enfriar y servir sola o con helado de vainilla.",
+  "TiempoPreparacion": "01:00:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 6, "Nombre": "Manzana", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Frutas" } },
+    { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 10, "Nombre": "Levadura", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 54, "Nombre": "Canela", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+{
+  "RecetaId": 6,
+  "Nombre": "Ensalada fresca de lechuga y tomate",
+  "PaisId": 1,
+  "CategoriaId": 6,
+  "UsuarioId": 1,
+  "Descripcion": "Ensalada simple con lechuga y tomate aliñada con sal.",
+  "Instrucciones": "1. Lavar y trocear la lechuga.\n2. Cortar el tomate en cubos.\n3. Mezclar lechuga y tomate en un bol.\n4. Añadir una cucharada de sal y mezclar suavemente.\n5. Servir fría.",
+  "TiempoPreparacion": "00:10:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 11, "Nombre": "Lechuga", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+  "RecetaId": 7,
+  "Nombre": "Pollo al horno sencillo",
+  "PaisId": 15,
+  "CategoriaId": 3,
+  "UsuarioId": 1,
+  "Descripcion": "Pollo asado con sal, tierno y jugoso.",
+  "Instrucciones": "1. Precalentar el horno a 200°C.\n2. Salpimentar el pollo con una cucharada de sal.\n3. Colocar el pollo en una bandeja y hornear 45 minutos o hasta que esté cocido.\n4. Retirar y reposar 10 minutos antes de servir.",
+  "TiempoPreparacion": "01:00:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 2, "Nombre": "Pollo", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 47, "Nombre": "Pimienta", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+    "RecetaId": 8,
+    "Nombre": "Tarta rápida de manzana",
+    "PaisId": 11,
+    "CategoriaId": 1,
+    "UsuarioId": 1,
+    "Descripcion": "Tarta casera de manzana con base de harina y azúcar.",
+    "Instrucciones": "1. Precalentar el horno a 180°C.\n2. Mezclar harina y azúcar en un bol.\n3. Incorporar manzanas en trozos y mezclar.\n4. Colocar la mezcla en un molde y hornear 35 minutos.\n5. Dejar enfriar y desmoldar.",
+    "TiempoPreparacion": "01:00:00",
+    "NivelDificultad": 1,
+    "FechaRegistro": "0001-01-01T00:00:00",
+    "Ingredientes": [
+      { "IngredienteId": 6, "Nombre": "Manzana", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Frutas" } },
+      { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+      { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+    ]
+  },
+  {
+    "RecetaId": 9,
+    "Nombre": "Arroz con carne picada",
+    "PaisId": 7,
+    "CategoriaId": 9,
+    "UsuarioId": 1,
+    "Descripcion": "Arroz cocido mezclado con carne picada salteada.",
+    "Instrucciones": "1. Cocinar el arroz en agua con sal hasta que esté tierno.\n2. Saltear la carne picada en una sartén hasta dorar.\n3. Mezclar la carne con el arroz cocido.\n4. Ajustar con una cucharada de sal al gusto.\n5. Servir caliente.",
+    "TiempoPreparacion": "00:40:00",
+    "NivelDificultad": 1,
+    "FechaRegistro": "0001-01-01T00:00:00",
+    "Ingredientes": [
+      { "IngredienteId": 4, "Nombre": "Arroz", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+      { "IngredienteId": 8, "Nombre": "Carne picada", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+      { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+    ]
+  },
+  {
+    "RecetaId": 10,
+    "Nombre": "Pan casero rápido",
+    "PaisId": 12,
+    "CategoriaId": 8,
+    "UsuarioId": 1,
+    "Descripcion": "Pan simple hecho con harina y levadura, ideal para principiantes.",
+    "Instrucciones": "1. Mezclar harina y levadura en un bol.\n2. Añadir agua tibia y amasar hasta obtener una masa homogénea.\n3. Dejar levar 30 minutos en un lugar tibio.\n4. Formar el pan y hornear a 200°C durante 25 minutos.\n5. Dejar enfriar antes de cortar.",
+    "TiempoPreparacion": "01:15:00",
+    "NivelDificultad": 1,
+    "FechaRegistro": "0001-01-01T00:00:00",
+    "Ingredientes": [
+      { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+      { "IngredienteId": 10, "Nombre": "Levadura", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+      { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+    ]
+  },
+  {
+    "RecetaId": 11,
+    "Nombre": "Café con leche clásico",
+    "PaisId": 14,
+    "CategoriaId": 9,
+    "UsuarioId": 1,
+    "Descripcion": "Bebida caliente de café mezclada con leche y una pizca de azúcar.",
+    "Instrucciones": "1. Preparar una taza de café expreso o filtrado.\n2. Calentar la leche sin hervir.\n3. Mezclar el café con la leche al gusto.\n4. Endulzar con una cucharada de azúcar si se desea.\n5. Servir caliente.",
+    "TiempoPreparacion": "00:07:00",
+    "NivelDificultad": 0,
+    "FechaRegistro": "0001-01-01T00:00:00",
+    "Ingredientes": [
+      { "IngredienteId": 13, "Nombre": "Café", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+      { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+      { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+    ]
+  },
+  {
+  "RecetaId": 12,
+  "Nombre": "Sopa crema de zanahoria",
+  "PaisId": 3,
+  "CategoriaId": 7,
+  "UsuarioId": 1,
+  "Descripcion": "Crema suave de zanahoria, nutritiva y fácil de preparar.",
+  "Instrucciones": "1. Pelar y cortar las zanahorias.\n2. Cocinar las zanahorias en agua hasta que estén tiernas.\n3. Licuar las zanahorias con parte del caldo hasta obtener una crema.\n4. Salpimentar con una cucharada de sal al gusto.\n5. Calentar nuevamente y servir.",
+  "TiempoPreparacion": "00:35:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 3, "Nombre": "Zanahoria", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 47, "Nombre": "Pimienta", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+  "RecetaId": 13,
+  "Nombre": "Panqueques rápidos",
+  "PaisId": 2,
+  "CategoriaId": 8,
+  "UsuarioId": 1,
+  "Descripcion": "Panqueques esponjosos hechos con harina y leche.",
+  "Instrucciones": "1. Mezclar harina y leche hasta obtener una masa suave.\n2. Calentar una sartén antiadherente con un poco de aceite.\n3. Verter porciones de masa y cocinar hasta dorar por ambos lados.\n4. Repetir con el resto de la masa.\n5. Servir calientes.",
+  "TiempoPreparacion": "00:20:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Tazas" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } }
+  ]
+},
+  {
+  "RecetaId": 14,
+  "Nombre": "Manzana al horno con azúcar",
+  "PaisId": 10,
+  "CategoriaId": 1,
+  "UsuarioId": 1,
+  "Descripcion": "Postre simple de manzana horneada con una capa de azúcar caramelizada.",
+  "Instrucciones": "1. Precalentar el horno a 180°C.\n2. Cortar las manzanas por la mitad y espolvorear azúcar por encima.\n3. Colocar en una bandeja y hornear 25 minutos.\n4. Retirar y servir tibio.\n5. Opcional: acompañar con un poco de leche o crema si se desea.",
+  "TiempoPreparacion": "00:35:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 6, "Nombre": "Manzana", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Frutas" } },
+    { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } }
+  ]
+},
+  {
+  "RecetaId": 15,
+  "Nombre": "Galletas rápidas de harina",
+  "PaisId": 13,
+  "CategoriaId": 8,
+  "UsuarioId": 1,
+  "Descripcion": "Galletas caseras simples hechas con harina y azúcar.",
+  "Instrucciones": "1. Precalentar el horno a 180°C.\n2. Mezclar harina y azúcar hasta integrar.\n3. Añadir un poco de agua o leche para unir la masa.\n4. Formar pequeñas porciones y colocar en una bandeja.\n5. Hornear 12-15 minutos hasta dorar y dejar enfriar.",
+  "TiempoPreparacion": "00:30:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } }
+  ]
+},
+{
+  "RecetaId": 16,
+  "Nombre": "Ensalada de pepino y yogur",
+  "PaisId": 5,
+  "CategoriaId": 6,
+  "UsuarioId": 1,
+  "Descripcion": "Ensalada refrescante con pepino y aderezo de yogur.",
+  "Instrucciones": "1. Lavar y cortar el pepino en rodajas finas.\n2. Mezclar el pepino con yogur natural en un bol.\n3. Añadir una pizca de sal y pimienta al gusto.\n4. Revolver suavemente para que se integren los sabores.\n5. Servir fría como acompañamiento.",
+  "TiempoPreparacion": "00:10:00",
+  "NivelDificultad": 0,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 14, "Nombre": "Pepino", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 15, "Nombre": "Yogur natural", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 47, "Nombre": "Pimienta", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+  "RecetaId": 17,
+  "Nombre": "Pasta al pesto",
+  "PaisId": 8,
+  "CategoriaId": 9,
+  "UsuarioId": 1,
+  "Descripcion": "Pasta cocida con salsa de albahaca, aceite de oliva y queso rallado.",
+  "Instrucciones": "1. Cocinar la pasta en agua con sal hasta que esté al dente.\n2. Preparar la salsa pesto triturando albahaca, ajo, piñones, queso rallado y aceite de oliva.\n3. Mezclar la pasta con la salsa hasta que quede bien cubierta.\n4. Servir caliente y, si se desea, añadir un poco más de queso rallado por encima.",
+  "TiempoPreparacion": "00:25:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 16, "Nombre": "Pasta", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 17, "Nombre": "Albahaca fresca", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 26, "Nombre": "Piñones", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Frutas" } },
+    { "IngredienteId": 19, "Nombre": "Queso rallado", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Mililitros" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+},
+  {
+  "RecetaId": 18,
+  "Nombre": "Sopa de tomate",
+  "PaisId": 9,
+  "CategoriaId": 7,
+  "UsuarioId": 1,
+  "Descripcion": "Sopa caliente de tomate con un toque de hierbas aromáticas.",
+  "Instrucciones": "1. Lavar y cortar los tomates en trozos.\n2. Calentar aceite en una cacerola y saltear cebolla y ajo picados hasta dorar.\n3. Agregar los tomates y cocinar hasta que estén blandos.\n4. Licuar la mezcla hasta obtener una textura suave.\n5. Añadir sal, pimienta y hierbas al gusto, calentar unos minutos más y servir.",
+  "TiempoPreparacion": "00:30:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 20, "Nombre": "Cebolla", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 47, "Nombre": "Pimienta", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 53, "Nombre": "Hierbas italianas", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+}
+,
+  {
+    "RecetaId": 19,
+    "Nombre": "Tortilla de papa",
+    "PaisId": 4,
+    "CategoriaId": 3,
+    "UsuarioId": 1,
+    "Descripcion": "Clásica tortilla española hecha con huevos y papas.",
+    "Instrucciones": "1. Pelar y cortar las papas en rodajas finas.\n2. Freír las papas en aceite hasta que estén tiernas.\n3. Batir los huevos en un bol y añadir las papas fritas.\n4. Mezclar suavemente y verter en una sartén antiadherente.\n5. Cocinar a fuego medio hasta que la tortilla esté dorada por ambos lados y servir caliente.",
+    "TiempoPreparacion": "00:40:00",
+    "NivelDificultad": 1,
+    "FechaRegistro": "0001-01-01T00:00:00",
+    "Ingredientes": [
+      { "IngredienteId": 22, "Nombre": "Papa", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+      { "IngredienteId": 23, "Nombre": "Huevo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+      { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Mililitros" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } },
+      { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+    ]
+  },
+  {
+    "RecetaId": 20,
+    "Nombre": "Batido de banana y leche",
+    "PaisId": 6,
+    "CategoriaId": 9,
+    "UsuarioId": 1,
+    "Descripcion": "Bebida dulce y nutritiva a base de banana y leche.",
+    "Instrucciones": "1. Pelar y cortar las bananas en trozos.\n2. Colocar las bananas en una licuadora junto con la leche.\n3. Añadir azúcar al gusto y licuar hasta obtener una mezcla homogénea.\n4. Servir frío en vasos individuales.\n5. Opcional: añadir hielo para un batido más fresco.",
+    "TiempoPreparacion": "00:10:00",
+    "NivelDificultad": 0,
+    "FechaRegistro": "0001-01-01T00:00:00",
+    "Ingredientes": [
+      { "IngredienteId": 24, "Nombre": "Banana", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Frutas" } },
+      { "IngredienteId": 1, "Nombre": "Leche", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Litros" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+      { "IngredienteId": 7, "Nombre": "Azúcar", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+    ]
+  },
+{
+  "RecetaId": 21,
+  "Nombre": "Lasagna clásica italiana",
+  "PaisId": 12,
+  "CategoriaId": 2,
+  "UsuarioId": 1,
+  "Descripcion": "Capas de pasta con carne, salsa de tomate y queso gratinado, típica de Italia.",
+  "Instrucciones": "1. Precalentar el horno a 190°C.\n2. Cocinar las láminas de pasta en agua con sal hasta que estén al dente y reservar.\n3. En una sartén grande, saltear carne picada con cebolla picada y ajo hasta dorar.\n4. Agregar tomate triturado, sal, pimienta y hierbas italianas, y cocinar a fuego lento 20 minutos.\n5. En una fuente para horno, colocar una capa de pasta, una capa de la mezcla de carne, y una capa de queso rallado. Repetir hasta llenar la fuente.\n6. Cubrir con queso y hornear 35-40 minutos hasta que el queso esté dorado.\n7. Dejar reposar 10 minutos antes de servir.",
+  "TiempoPreparacion": "02:15:00",
+  "NivelDificultad": 2,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 16, "Nombre": "Pasta", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 8, "Nombre": "Carne picada", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 19, "Nombre": "Queso rallado", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 20, "Nombre": "Cebolla", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 47, "Nombre": "Pimienta", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 53, "Nombre": "Hierbas italianas", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } }
+  ]
+}
+,
+  {
+  "RecetaId": 22,
+  "Nombre": "Ceviche peruano",
+  "PaisId": 7,
+  "CategoriaId": 6,
+  "UsuarioId": 1,
+  "Descripcion": "Plato frío con pescado marinado en limón y especias, tradicional de Perú.",
+  "Instrucciones": "1. Cortar pescado fresco en cubos de 2 cm y colocarlos en un bol.\n2. Exprimir suficiente jugo de limón para cubrir completamente el pescado.\n3. Agregar sal, pimienta, cebolla morada en juliana, cilantro picado y ají picante al gusto.\n4. Mezclar suavemente y dejar marinar en el refrigerador 20-25 minutos hasta que el pescado se opaque.\n5. Servir acompañado de rodajas de camote cocido y maíz chulpe.\n6. Decorar con hojas de lechuga fresca.",
+  "TiempoPreparacion": "01:00:00",
+  "NivelDificultad": 2,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 46, "Nombre": "Pescado fresco", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 37, "Nombre": "Limón", "Unidad": { "UnidadMedidaId": 6, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 47, "Nombre": "Pimienta", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 48, "Nombre": "Cebolla morada", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 49, "Nombre": "Cilantro", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 50, "Nombre": "Ají picante", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 51, "Nombre": "Camote", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 52, "Nombre": "Maíz chulpe", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 11, "Nombre": "Lechuga", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } }
+  ]
+}
+,
+  {
+  "RecetaId": 23,
+  "Nombre": "Paella valenciana",
+  "PaisId": 11,
+  "CategoriaId": 9,
+  "UsuarioId": 1,
+  "Descripcion": "Arroz cocido con mariscos, pollo, verduras y azafrán, plato típico español.",
+  "Instrucciones": "1. En una paellera, calentar aceite de oliva y dorar los trozos de pollo.\n2. Agregar cebolla, ajo, pimiento rojo y verde picados y saltear 5 minutos.\n3. Añadir arroz y remover hasta que quede ligeramente transparente.\n4. Incorporar caldo caliente, azafrán y sal al gusto.\n5. Cocinar a fuego medio 20 minutos sin remover demasiado.\n6. Añadir mariscos y guisantes y cocinar 10 minutos más.\n7. Dejar reposar 5 minutos antes de servir y decorar con limón.",
+  "TiempoPreparacion": "02:30:00",
+  "NivelDificultad": 2,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 4, "Nombre": "Arroz", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 2, "Nombre": "Pollo", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 20, "Nombre": "Cebolla", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 41, "Nombre": "Pimiento rojo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 42, "Nombre": "Pimiento verde", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Tazas" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } },
+    { "IngredienteId": 31, "Nombre": "Caldo de verduras", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Mililitros" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Líquidos" } },
+    { "IngredienteId": 43, "Nombre": "Azafrán", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 5, "Nombre": "Sal", "Unidad": { "UnidadMedidaId": 3, "Nombre": "Cucharadas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 44, "Nombre": "Mariscos", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 45, "Nombre": "Guisantes", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 37, "Nombre": "Limón", "Unidad": { "UnidadMedidaId": 6, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } }
+  ]
+},
+  {
+  "RecetaId": 24,
+  "Nombre": "Ratatouille francés",
+  "PaisId": 13,
+  "CategoriaId": 5,
+  "UsuarioId": 1,
+  "Descripcion": "Guiso de vegetales al horno en rodajas finas con hierbas provenzales.",
+  "Instrucciones": "1. Precalentar el horno a 180°C.\n2. Cortar berenjena, calabacín, pimiento y tomate en rodajas finas.\n3. Preparar una base de cebolla y ajo picados en sartén con un chorrito de aceite de oliva y sazonar con sal y pimienta.\n4. Colocar la base en una fuente para horno y sobre ella ir alternando capas de verduras en espiral.\n5. Rociar con aceite de oliva y hierbas provenzales.\n6. Cubrir con papel aluminio y hornear 40 minutos.\n7. Retirar el papel, gratinar 10 minutos más y servir caliente.",
+  "TiempoPreparacion": "02:00:00",
+  "NivelDificultad": 2,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 20, "Nombre": "Cebolla", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Tazas" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } }
+  ]
+},
+{
+  "RecetaId": 25,
+  "Nombre": "Pasta al pesto genovés",
+  "PaisId": 12,
+  "CategoriaId": 2,
+  "UsuarioId": 1,
+  "Descripcion": "Pasta cocida con salsa de albahaca, ajo, piñones y queso parmesano.",
+  "Instrucciones": "1. Cocinar la pasta en agua con sal hasta que esté al dente.\n2. En una licuadora, mezclar albahaca, ajo, piñones, queso parmesano y aceite de oliva hasta obtener una salsa homogénea.\n3. Escurrir la pasta y mezclar con el pesto.\n4. Servir caliente con queso extra por encima.",
+  "TiempoPreparacion": "00:30:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 16, "Nombre": "Pasta", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 25, "Nombre": "Albahaca", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 26, "Nombre": "Piñones", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Frutos secos" } },
+    { "IngredienteId": 27, "Nombre": "Queso parmesano", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } }
+  ]
+},
+{
+  "RecetaId": 26,
+  "Nombre": "Bruschettas de tomate y albahaca",
+  "PaisId": 12,
+  "CategoriaId": 1,
+  "UsuarioId": 1,
+  "Descripcion": "Tostadas de pan con tomate fresco, albahaca y aceite de oliva.",
+  "Instrucciones": "1. Cortar el pan en rebanadas y tostar ligeramente.\n2. Picar tomate y albahaca, mezclar con aceite de oliva y sal.\n3. Colocar la mezcla sobre las tostadas.\n4. Servir como entrada o aperitivo.",
+  "TiempoPreparacion": "00:20:00",
+  "NivelDificultad": 1,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 28, "Nombre": "Pan", "Unidad": { "UnidadMedidaId": 6, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 25, "Nombre": "Albahaca", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 18, "Nombre": "Aceite de oliva", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Tazas" }, "Tipo": { "TipoIngredienteId": 7, "Nombre": "Aceites" } }
+  ]
+},
+{
+  "RecetaId": 27,
+  "Nombre": "Risotto de hongos",
+  "PaisId": 12,
+  "CategoriaId": 2,
+  "UsuarioId": 1,
+  "Descripcion": "Arroz cremoso cocido lentamente con hongos, caldo y queso.",
+  "Instrucciones": "1. Saltear cebolla y ajo en manteca.\n2. Agregar arroz arborio y tostar ligeramente.\n3. Incorporar hongos picados y caldo caliente poco a poco, removiendo constantemente.\n4. Cocinar hasta que el arroz esté cremoso.\n5. Añadir queso rallado y servir.",
+  "TiempoPreparacion": "01:00:00",
+  "NivelDificultad": 2,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 29, "Nombre": "Arroz arborio", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 20, "Nombre": "Cebolla", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 30, "Nombre": "Hongos", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 31, "Nombre": "Caldo de verduras", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Mililitros" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Líquidos" } },
+    { "IngredienteId": 19, "Nombre": "Queso rallado", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } }
+  ]
+}
+,
+{
+  "RecetaId": 28,
+  "Nombre": "Ossobuco alla milanese",
+  "PaisId": 12,
+  "CategoriaId": 2,
+  "UsuarioId": 1,
+  "Descripcion": "Guiso tradicional de jarrete de ternera cocido lentamente con verduras, vino blanco y gremolata.",
+  "Instrucciones": "1. Salpimentar los jarretes y enharinarlos ligeramente.\n2. Dorarlos en una olla con aceite de oliva y reservar.\n3. En la misma olla, saltear cebolla, zanahoria y apio picados.\n4. Agregar vino blanco y dejar reducir.\n5. Incorporar los jarretes, caldo de carne y tomate triturado. Cocinar tapado a fuego bajo durante 2 horas.\n6. Preparar gremolata mezclando ajo, perejil y ralladura de limón.\n7. Servir el ossobuco con gremolata espolvoreada por encima.",
+  "TiempoPreparacion": "02:30:00",
+  "NivelDificultad": 3,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 32, "Nombre": "Jarrete de ternera", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 2, "Nombre": "Carnes" } },
+    { "IngredienteId": 20, "Nombre": "Cebolla", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 33, "Nombre": "Apio", "Unidad": { "UnidadMedidaId": 6, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 34, "Nombre": "Vino blanco", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Mililitros" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Líquidos" } },
+    { "IngredienteId": 35, "Nombre": "Caldo de carne", "Unidad": { "UnidadMedidaId": 4, "Nombre": "Mililitros" }, "Tipo": { "TipoIngredienteId": 6, "Nombre": "Líquidos" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 21, "Nombre": "Ajo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 36, "Nombre": "Perejil", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 37, "Nombre": "Limón", "Unidad": { "UnidadMedidaId": 6, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } }
+  ]
+},
+{
+  "RecetaId": 29,
+  "Nombre": "Ravioles caseros rellenos de ricotta y espinaca",
+  "PaisId": 12,
+  "CategoriaId": 2,
+  "UsuarioId": 1,
+  "Descripcion": "Pasta fresca rellena con mezcla de ricotta y espinaca, servida con salsa de tomate.",
+  "Instrucciones": "1. Preparar la masa mezclando harina, huevos y sal. Amasar y dejar reposar 30 minutos.\n2. Cocinar espinaca, escurrir y picar finamente. Mezclar con ricotta, nuez moscada y sal.\n3. Estirar la masa en láminas finas y colocar pequeñas porciones del relleno. Cubrir con otra lámina y cortar los ravioles.\n4. Cocinar en agua hirviendo con sal hasta que floten.\n5. Servir con salsa de tomate casera y queso rallado.",
+  "TiempoPreparacion": "02:00:00",
+  "NivelDificultad": 3,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 23, "Nombre": "Huevo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 38, "Nombre": "Ricotta", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 39, "Nombre": "Espinaca", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 40, "Nombre": "Nuez moscada", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 19, "Nombre": "Queso rallado", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } }
+  ]
+}
+,
+{
+  "RecetaId": 30,
+  "Nombre": "Raviolones rellenos",
+  "PaisId": 12,
+  "CategoriaId": 2,
+  "UsuarioId": 1,
+  "Descripcion": "Pasta fresca rellena con mezcla de ricotta y espinaca, servida con salsa de tomate.",
+  "Instrucciones": "1. En un bol grande, mezclar la harina con una pizca de sal. Formar un hueco en el centro y agregar los huevos. Amasar hasta obtener una masa homogénea y elástica. Cubrir con film y dejar reposar 30 minutos.\n2. Lavar la espinaca y cocerla en agua hirviendo durante 3-4 minutos. Escurrir muy bien y picar finamente.\n3. Mezclar la espinaca picada con la ricotta, una pizca de sal y nuez moscada al gusto. Reservar el relleno.\n4. Estirar la masa sobre una superficie enharinada hasta obtener láminas finas. Colocar pequeñas porciones del relleno con una cucharadita, dejando espacio entre cada porción.\n5. Cubrir con otra lámina de masa y presionar alrededor de cada porción para sellar los ravioles. Cortar con un cortador o cuchillo en cuadrados uniformes.\n6. Cocinar los ravioles en abundante agua hirviendo con sal durante 3-4 minutos o hasta que floten. Retirar con cuidado y escurrir.\n7. Servir con salsa de tomate casera y espolvorear con queso rallado al gusto.",
+  "TiempoPreparacion": "02:00:00",
+  "NivelDificultad": 3,
+  "FechaRegistro": "0001-01-01T00:00:00",
+  "Ingredientes": [
+    { "IngredienteId": 9, "Nombre": "Harina", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 4, "Nombre": "Cereales" } },
+    { "IngredienteId": 23, "Nombre": "Huevo", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 38, "Nombre": "Ricotta", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } },
+    { "IngredienteId": 40, "Nombre": "Nuez moscada", "Unidad": { "UnidadMedidaId": 2, "Nombre": "Cucharaditas" }, "Tipo": { "TipoIngredienteId": 5, "Nombre": "Especias" } },
+    { "IngredienteId": 12, "Nombre": "Tomate", "Unidad": { "UnidadMedidaId": 5, "Nombre": "Unidades" }, "Tipo": { "TipoIngredienteId": 3, "Nombre": "Vegetales" } },
+    { "IngredienteId": 19, "Nombre": "Queso rallado", "Unidad": { "UnidadMedidaId": 1, "Nombre": "Gramos" }, "Tipo": { "TipoIngredienteId": 1, "Nombre": "Lácteos" } }
+  ]
+}
+]
