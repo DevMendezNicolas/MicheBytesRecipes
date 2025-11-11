@@ -22,7 +22,6 @@ namespace MicheBytesRecipes.Utilities
                 JsonData datos = JsonConvert.DeserializeObject<JsonData>(jsonContent);
 
                 if (datos?.textoJson == null) return;
-
                 foreach (var config in datos.textoJson)
                 {
                     Label label = panel.Controls.OfType<Label>()
